@@ -2517,6 +2517,151 @@ label.icon_content img {
     padding-bottom: 0 !important;
   }
 </style>
+<style>
+/* =========================================
+   CONSOLIDATED DESIGN: COMPACT + VISUALS
+   ========================================= */
+
+/* 1. FORCE 4 ITEMS PER ROW (Compact Layout) */
+@media screen and (min-width: 1008px) {
+    .Grid__Cell.\31\/3--desk { 
+        width: 25% !important; 
+    }
+}
+
+/* 2. MAIN CARD CONTAINER (Beige Background) */
+.ProductItem {
+    background-color: #FFF8F0; /* Cream/Beige */
+    border-radius: 12px;       /* Compact rounded corners */
+    overflow: hidden;          /* Clips the button at the bottom */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 40px !important; /* Space for the smaller button */
+    margin-bottom: 25px;
+    border: 1px solid #f0ebe4;
+}
+
+.ProductItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* 3. RIBBON / BOOKMARK (Top Right) */
+.ProductItem::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: 15px;
+    width: 20px;   /* Compact width */
+    height: 35px;  /* Compact height */
+    background-color: #FF6F61; /* Salmon Red */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 4. IMAGE CONTAINER (White Box) */
+.ProductItem__Wrapper {
+    padding: 10px 10px 0 10px; /* Tight padding */
+}
+
+.ProductItem__ImageWrapper {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+    margin-bottom: 10px;
+}
+
+/* 5. TEXT CONTENT (Compacted) */
+.ProductItem__Info {
+    padding: 0 15px 10px 15px;
+    text-align: left !important;
+}
+
+.ProductItem__Title {
+    margin-bottom: 5px;
+}
+
+.ProductItem__Title a {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px; /* Compact Font Size */
+    color: #3e2723;
+    text-decoration: none;
+}
+
+/* Placeholder Description */
+.ProductItem__Info::after {
+    content: "Premium quality item.";
+    display: block;
+    font-size: 11px;
+    color: #8d8d8d;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+/* 6. PRICE & STARS (Compacted) */
+.ProductItem__PriceList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.ProductItem__Price {
+    font-size: 18px; /* Compact Price */
+    font-weight: 800;
+    color: #3e2723;
+}
+
+/* Visual Star Rating */
+.ProductItem__PriceList::after {
+    content: "★★★★☆"; 
+    color: #3e2723;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* 7. 'ADD TO CART' BUTTON (Bottom Footer) */
+.ProductItem::after {
+    content: "ADD TO CART";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px; /* Compact height */
+    background-color: #FF6F61; /* Matches Ribbon */
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ProductItem:hover::after {
+    background-color: #e65b4e;
+}
+
+/* --- ALTERNATE COLOR (Teal for every 2nd card) --- */
+.Grid__Cell:nth-child(even) .ProductItem {
+    background-color: #FFFDF5;
+}
+.Grid__Cell:nth-child(even) .ProductItem::before {
+    background-color: #4ECDC4;
+}
+.Grid__Cell:nth-child(even) .ProductItem::after {
+    background-color: #4ECDC4;
+}
+.Grid__Cell:nth-child(even) .ProductItem:hover::after {
+    background-color: #3dbbb3;
+}
+</style>
  <script src="../js/cart.js"></script>
 </body>
  <style>
