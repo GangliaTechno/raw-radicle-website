@@ -490,6 +490,93 @@ for (var attr in meta) {
   ga('set', 'userId', 'USER_ID'); // Set the user ID using signed-in user_id.
 };
   </script>
+  <style>
+    /* Predictive Search Dropdown Styles */
+/* Search Bar & Dropdown Styles */
+.Header__SearchContainer {
+  position: relative;
+}
+
+.Header__SearchForm {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e1e1e1;
+  border-radius: 30px;
+  padding: 6px 15px;
+  width: 250px;
+  transition: border-color 0.2s;
+  background: transparent; /* <--- Updated to transparent */
+}
+
+.Header__SearchForm:focus-within {
+  border-color: #1c1b1b;
+}
+
+.Header__SearchInput {
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font-size: 13px;
+  color: #1c1b1b;
+}
+
+#search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 100;
+  display: none;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 5px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #f7f7f7;
+  text-decoration: none !important;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background-color: #f9f9f9;
+}
+
+.search-result-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 12px;
+  border-radius: 4px;
+}
+
+.search-result-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.search-result-price {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 12px;
+  color: #888;
+}
+</style>
  </head>
  <body class="prestige--v4 features--heading-small features--heading-uppercase features--show-button-transition features--show-image-zooming features--show-element-staggering template-index">
   <script>
@@ -941,13 +1028,13 @@ label.icon_content img {
        <nav aria-label="Main navigation" class="Header__MainNav hidden-pocket hidden-lap">
         <ul class="HorizontalList HorizontalList--spacingExtraLoose">
          <li class="HorizontalList__Item is-active">
-          <a class="Heading u-h6" href="index.html">
-           Home
-           <span class="Header__LinkSpacer">
-            Home
-           </span>
-          </a>
-         </li>
+  <a class="Heading u-h6" href="index.html">
+   Home
+   <span class="Header__LinkSpacer">
+    Home
+   </span>
+  </a>
+</li>
          <li aria-haspopup="true" class="HorizontalList__Item">
           <a class="Heading u-h6" href="pages/products.html">
            Products
@@ -1010,30 +1097,6 @@ label.icon_content img {
               
              </ul>
             </div>
-            <div class="MegaMenu__Item" style="width: 660px; min-width: 425px;">
-             <div class="MegaMenu__Push MegaMenu__Push--shrink">
-              <div class="MegaMenu__PushImageWrapper AspectRatio" style="background: url(assets/chocolate.jpg); max-width: 370px; --aspect-ratio: 1.0">
-               <img alt="" class="Image--lazyLoad Image--fadeIn" src="assets/chocolate.jpg"/>
-               <span class="Image__Loader">
-               </span>
-              </div>
-              <p class="MegaMenu__PushHeading Heading u-h6">
-               Chocolates
-              </p>
-              
-             </div>
-             <div class="MegaMenu__Push MegaMenu__Push--shrink">
-              <div class="MegaMenu__PushImageWrapper AspectRatio" style="background: url(assets/balm.jpg); max-width: 370px; --aspect-ratio: 1.0">
-               <img alt="ALC Aluminum Suitcase Silver MVST" class="Image--lazyLoad Image--fadeIn" src="assets/balm.jpg"/>
-               <span class="Image__Loader">
-               </span>
-              </div>
-              <p class="MegaMenu__PushHeading Heading u-h6">
-               Balms
-              </p>
-              
-             </div>
-            </div>
            </div>
           </div>
          </li>
@@ -1067,11 +1130,27 @@ label.icon_content img {
            Account
           </a>
          </li> -->
-         <li class="HorizontalList__Item">
-          <a class="Heading Link Link--primary Text--subdued u-h8" data-action="toggle-search" href="pages/search.html">
-           Search
-          </a>
-         </li>
+         <li class="HorizontalList__Item Header__SearchContainer">
+  <div class="Header__SearchForm">
+    <input 
+      id="local-search-input"
+      type="search" 
+      class="Header__SearchInput" 
+      placeholder="Search products..." 
+      autocomplete="off"
+      aria-label="Search">
+      
+    <button type="button" class="Header__SearchButton" style="border:none; background:none; cursor:pointer;">
+      <svg class="Icon Icon--search" role="presentation" viewBox="0 0 18 17" style="width: 16px; height: 16px;">
+        <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square" transform="translate(1 1)">
+          <path d="M16 16l-5.0752-5.0752"></path>
+          <circle cx="6.4" cy="6.4" r="6.4"></circle>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <div id="search-results"></div>
+</li>
          <li class="HorizontalList__Item">
           <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart" href="pages/cart.html">
            Cart (
@@ -1302,7 +1381,7 @@ label.icon_content img {
     <header class="SectionHeader">
       <h3 class="SectionHeader__SubHeading Heading u-h6">FEATURED</h3>
       <h2 class="SectionHeader__Heading SectionHeader__Heading--emphasize Heading u-h1">
-        Your 4th Slide Title
+        The Shots and The Balms
       </h2>
       <div class="SectionHeader__ButtonWrapper">
         <div class="ButtonGroup ButtonGroup--spacingSmall ButtonGroup--sameSize">
@@ -1346,278 +1425,291 @@ label.icon_content img {
      </style>
     </div>
     <div class="shopify-section shopify-section--bordered" id="shopify-section-template--16772990828800__featured-collections">
-     <section class="Section Section--spacingNormal" data-section-id="template--16772990828800__featured-collections" data-section-type="featured-collections" data-settings='{
-  "layout": "carousel"
-}'>
-      <header class="SectionHeader SectionHeader--center">
-       <div class="Container">
-        <h3 class="SectionHeader__SubHeading Heading u-h6">
-         EXPLORE
-        </h3>
-        <h2 class="SectionHeader__Heading Heading u-h1">
-         All Our Medical Products
-        </h2>
-       </div>
-      </header>
-      <div aria-hidden="false" class="TabPanel" id="block-featured-collection-0" role="tabpanel">
-       <div class="ProductListWrapper">
-        <div class="ProductList ProductList--carousel Carousel" data-flickity-config='{
-    "prevNextButtons": true,
-    "pageDots": false,
-    "wrapAround": false,
-    "contain": true,
-    "cellAlign": "center",
-    "watchCSS": true,
-    "dragThreshold": 8,
-    "groupCells": true,
-    "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
-  }'>
-         <div class="Carousel__Cell">
-          <div class="ProductItem">
-           <div class="ProductItem__Wrapper">
-            <a class="ProductItem__ImageWrapper" href="pages/balm.html">
-             <div class="AspectRatio AspectRatio--withFallback" style="max-width: 4000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-              <img alt="TREK Aluminum Suitcase Silver MVST" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="30536378810624" data-sizes="auto" data-src="assets/jatyadi.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-              <span class="Image__Loader">
-              </span>
-              <noscript>
-               <img alt="TREK Aluminum Suitcase Silver MVST" class="ProductItem__Image ProductItem__Image--alternate" src="assets/jatyadi.png"/>
-               <img alt="TREK Aluminum Suitcase Silver MVST" class="ProductItem__Image" src="assets/jatyadi.png"/>
-              </noscript>
-             </div>
-            </a>
-            <div class="ProductItem__Info ProductItem__Info--center">
-             <h2 class="ProductItem__Title Heading">
-              <a href="pages/balm.html">
-               JATYADI BALM
-              </a>
-             </h2>
-             <div class="ProductItem__PriceList Heading">
-              <span class="ProductItem__Price Price Text--subdued">
-               Rs.
-               <span class="transcy-money">
-                ₹50.00
-               </span>
-              </span>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="Carousel__Cell">
-          <div class="ProductItem">
-           <div class="ProductItem__Wrapper">
-            <a class="ProductItem__ImageWrapper" href="pages/shots.html">
-             <div class="AspectRatio AspectRatio--withFallback" style="max-width: 3278px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-              <img alt="TREK Aluminum Suitcase Black MVST" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="29044853440768" data-sizes="auto" data-src="assets/shots.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-              <span class="Image__Loader">
-              </span>
-              <noscript>
-               <img alt="TREK Aluminum Suitcase Black MVST" class="ProductItem__Image ProductItem__Image--alternate" src="assets/shots.png"/>
-               <img alt="TREK Aluminum Suitcase Black MVST" class="ProductItem__Image" src="assets/shots.png"/>
-              </noscript>
-             </div>
-            </a>
-            <div class="ProductItem__Info ProductItem__Info--center">
-             <h2 class="ProductItem__Title Heading">
-              <a href="pages/shots.html">
-               Mushtarista Shots
-              </a>
-             </h2>
-             <div class="ProductItem__PriceList Heading">
-              <span class="ProductItem__Price Price Text--subdued">
-               Rs.
-               <span class="transcy-money">
-                ₹150.00
-               </span>
-              </span>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="Carousel__Cell">
-          <div class="ProductItem">
-           <div class="ProductItem__Wrapper">
-            <a class="ProductItem__ImageWrapper" href="pages/adarkc.html">
-             <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-              <img alt="Aphrodasiac DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982490628352" data-sizes="auto" data-src="assets/aphdc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-              <span class="Image__Loader">
-              </span>
-              <noscript>
-               <img alt="Aphrodasiac DARK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="assets/aphdc.png"/>
-               <img alt="Aphrodasiac DARK Chocolate Slab" class="ProductItem__Image" src="assets/aphdc.png"/>
-              </noscript>
-             </div>
-            </a>
-            <div class="ProductItem__Info ProductItem__Info--center">
-             <h2 class="ProductItem__Title Heading">
-              <a href="pages/adarkc.html">
-                Aphrodasiac DARK Chocolate Slab
-              </a>
-             </h2>
-             <div class="ProductItem__PriceList Heading">
-              <span class="ProductItem__Price Price Text--subdued">
-               Rs.
-               <span class="transcy-money">
-                ₹250.00
-               </span>
-              </span>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="Carousel__Cell">
-          <div class="ProductItem">
-           <div class="ProductItem__Wrapper">
-            <a class="ProductItem__ImageWrapper" href="pages/amilkc.html">
-             <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-              <img alt="Aphrodasiac MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982513434880" data-sizes="auto" data-src="assets/aphmc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-              <span class="Image__Loader">
-              </span>
-              <noscript>
-               <img alt="Aphrodasiac MILK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="assets/aphmc.png"/>
-               <img alt="Aphrodasiac MILK Chocolate Slab" class="ProductItem__Image" src="assets/aphmc.png"/>
-              </noscript>
-             </div>
-            </a>
-            <div class="ProductItem__Info ProductItem__Info--center">
-             <h2 class="ProductItem__Title Heading">
-              <a href="pages/amilkc.html">
-                Aphrodasiac MILK Chocolate Slab
-              </a>
-             </h2>
-             <div class="ProductItem__PriceList Heading">
-              <span class="ProductItem__Price Price Text--subdued">
-               Rs.
-               <span class="transcy-money">
-                ₹250.00
-               </span>
-              </span>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="Carousel__Cell">
-          <div class="ProductItem">
-           <div class="ProductItem__Wrapper">
-            <a class="ProductItem__ImageWrapper" href="pages/bmilkc.html">
-             <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-              <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982517006592" data-sizes="auto" data-src="assets/brmc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-              <span class="Image__Loader">
-              </span>
-              <noscript>
-               <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="assets/brmc.png"/>
-               <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image" src="assets/brmc.png"/>
-              </noscript>
-             </div>
-            </a>
-            <div class="ProductItem__Info ProductItem__Info--center">
-             <h2 class="ProductItem__Title Heading">
-              <a href="pages/bmilkc.html">
-                Brahmi MILK Chocolate Slab
-              </a>
-             </h2>
-             <div class="ProductItem__PriceList Heading">
-              <span class="ProductItem__Price Price Text--subdued">
-               Rs.
-               <span class="transcy-money">
-                ₹250.00
-               </span>
-              </span>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="Carousel__Cell">
-          <div class="ProductItem">
-           <div class="ProductItem__Wrapper">
-            <a class="ProductItem__ImageWrapper" href="pages/cdarkc.html">
-             <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-              <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982509207808" data-sizes="auto" data-src="assets/chdc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-              <span class="Image__Loader">
-              </span>
-              <noscript>
-               <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="assets/chdc.png"/>
-               <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image" src="assets/chdc.png"/>
-              </noscript>
-             </div>
-            </a>
-            <div class="ProductItem__Info ProductItem__Info--center">
-             <h2 class="ProductItem__Title Heading">
-              <a href="pages/cdarkc.html">
-                Chyawanaprash DARK Chocolate Slab
-              </a>
-             </h2>
-             <div class="ProductItem__PriceList Heading">
-              <span class="ProductItem__Price Price Text--subdued">
-               Rs.
-               <span class="transcy-money">
-                ₹250.00
-               </span>
-              </span>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="Carousel__Cell">
-          <div class="ProductItem">
-           <div class="ProductItem__Wrapper">
-            <a class="ProductItem__ImageWrapper" href="pages/cmilkc.html">
-             <div class="AspectRatio AspectRatio--withFallback" style="max-width: 4000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-              <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="30486778773760" data-sizes="auto" data-src="assets/chmc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-              <span class="Image__Loader">
-              </span>
-              <noscript>
-               <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="assets/chmc.png"/>
-               <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image" src="assets/chmc.png"/>
-              </noscript>
-             </div>
-            </a>
-            <div class="ProductItem__Info ProductItem__Info--center">
-             <h2 class="ProductItem__Title Heading">
-              <a href="pages/cmilkc.html">
-                Chyawanaprash MILK Chocolate Slab
-              </a>
-             </h2>
-             <div class="ProductItem__PriceList Heading">
-              <span class="ProductItem__Price Price Text--subdued">
-               Rs.
-               <span class="transcy-money">
-                ₹250.00
-               </span>
-              </span>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         
-     </section>
-     <style>
-      #section-template--16772990828800__collection-list .CollectionItem .Heading,
-  #section-template--16772990828800__collection-list .flickity-page-dots {
-    color: #ffffff;
-  }
-
-  #section-template--16772990828800__collection-list .CollectionItem__Link {
-    color: #363636;
-    border-color: #ffffff;
-  }
-
-  #section-template--16772990828800__collection-list .CollectionItem__Link::before {
-    background-color: #ffffff;
-  }@media (-moz-touch-enabled: 0), (hover: hover) {
-      #section-template--16772990828800__collection-list .CollectionItem__Link:hover {
-        color: #ffffff;
-      }
+  
+  <style>
+    /* 1. SECTION CONTAINER */
+    .NewDesign-Section {
+      /* Increased bottom padding to accommodate the lowered card */
+      padding: 120px 0 120px 0; 
+      background-color: #f9f9f9;
+      overflow: visible !important;
     }
-     </style>
+
+    .NewDesign-Carousel {
+      width: 100%;
+      overflow: visible !important;
+    }
+
+    .flickity-viewport {
+      overflow: visible !important;
+    }
+
+    /* 2. SLIDE CELL */
+    .NewDesign-Cell {
+      width: 30%; 
+      margin: 0 2%;
+      transition: transform 0.3s ease-in-out; 
+      transform: scale(0.9);
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .NewDesign-Cell { width: 85%; margin: 0 7.5%; }
+    }
+
+    /* 3. CARD DESIGN */
+    .ProductCard {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 70px 20px 30px 20px; 
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: visible !important; 
+      transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    }
+
+    /* 4. FLOATING IMAGE WRAPPER */
+    .ProductCard__ImageWrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin-top: -160px; 
+      margin-bottom: 20px;
+      z-index: 50;
+    }
+
+    .ProductCard__Image {
+      max-width: 100%;
+      max-height: 240px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3)); 
+    }
+
+    /* TYPOGRAPHY & BUTTONS */
+    .ProductCard__Title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .ProductCard__Desc {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      padding: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .ProductCard__Price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 25px;
+      transition: color 0.3s ease;
+    }
+
+    .ProductCard__Actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .ProductCard__Qty {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    .Qty-Btn { cursor: pointer; padding: 0 8px; font-size: 18px; }
+    .Qty-Val { padding: 0 8px; }
+
+    .ProductCard__Button {
+      background: white;
+      border: 2px solid #f6a429;
+      color: #f6a429;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    /* =========================================
+       ACTIVE (CENTER) SLIDE STYLES 
+       ========================================= */
+    
+    .NewDesign-Cell.is-selected {
+      /* Added translateY to move the center card down */
+      transform: scale(1.1) translateY(40px); 
+      z-index: 100;
+    }
+
+    /* Orange Background for Center Card */
+    .NewDesign-Cell.is-selected .ProductCard {
+      background: #f6a429;
+      box-shadow: 0 30px 60px rgba(246, 164, 41, 0.4);
+    }
+
+    /* White Text for Center Card */
+    .NewDesign-Cell.is-selected .ProductCard__Title,
+    .NewDesign-Cell.is-selected .ProductCard__Desc,
+    .NewDesign-Cell.is-selected .ProductCard__Price,
+    .NewDesign-Cell.is-selected .ProductCard__Qty {
+      color: #ffffff;
+    }
+
+    /* Inverted Button for Center Card */
+    .NewDesign-Cell.is-selected .ProductCard__Button {
+      background: #ffffff;
+      color: #f6a429;
+      border: 2px solid #ffffff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+  </style>
+
+  <section class="NewDesign-Section">
+    <header class="SectionHeader SectionHeader--center">
+      <div class="Container">
+        <h3 class="SectionHeader__SubHeading Heading u-h6" style="color:#999">EXPLORE</h3>
+        <h2 class="SectionHeader__Heading Heading u-h1" style="color:#333">All Our Medical Products</h2>
+      </div>
+    </header>
+
+    <div class="NewDesign-Carousel" data-flickity='{ 
+      "cellAlign": "center", 
+      "contain": true, 
+      "wrapAround": true, 
+      "prevNextButtons": false, 
+      "pageDots": false,
+      "groupCells": false,
+      "autoPlay": 3000,
+      "pauseAutoPlayOnHover": true,
+      "selectedAttraction": 0.015,
+      "friction": 0.25
+    }'>
+
+      <div class="NewDesign-Cell">
+        <div class="ProductCard">
+          <div class="ProductCard__ImageWrapper">
+            <img src="assets/jatyadi.png" class="ProductCard__Image" alt="Jatyadi Balm">
+          </div>
+          <h3 class="ProductCard__Title">Jatyadi Balm</h3>
+          <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          <div class="ProductCard__Price">₹50.00</div>
+          <div class="ProductCard__Actions">
+            <div class="ProductCard__Qty">
+              <span class="Qty-Btn">-</span>
+              <span class="Qty-Val">1</span>
+              <span class="Qty-Btn">+</span>
+            </div>
+            <button class="ProductCard__Button">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="NewDesign-Cell">
+        <div class="ProductCard">
+          <div class="ProductCard__ImageWrapper">
+            <img src="assets/shots.png" class="ProductCard__Image" alt="Mushtarista Shots">
+          </div>
+          <h3 class="ProductCard__Title">Mushtarista Shots</h3>
+          <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          <div class="ProductCard__Price">₹150.00</div>
+          <div class="ProductCard__Actions">
+            <div class="ProductCard__Qty">
+              <span class="Qty-Btn">-</span>
+              <span class="Qty-Val">1</span>
+              <span class="Qty-Btn">+</span>
+            </div>
+            <button class="ProductCard__Button">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="NewDesign-Cell">
+        <div class="ProductCard">
+          <div class="ProductCard__ImageWrapper">
+            <img src="assets/aphdc.png" class="ProductCard__Image" alt="Dark Chocolate Slab">
+          </div>
+          <h3 class="ProductCard__Title">Dark Chocolate</h3>
+          <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          <div class="ProductCard__Price">₹250.00</div>
+          <div class="ProductCard__Actions">
+            <div class="ProductCard__Qty">
+              <span class="Qty-Btn">-</span>
+              <span class="Qty-Val">1</span>
+              <span class="Qty-Btn">+</span>
+            </div>
+            <button class="ProductCard__Button">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="NewDesign-Cell">
+        <div class="ProductCard">
+          <div class="ProductCard__ImageWrapper">
+            <img src="assets/aphmc.png" class="ProductCard__Image" alt="Milk Chocolate Slab">
+          </div>
+          <h3 class="ProductCard__Title">Milk Chocolate</h3>
+          <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          <div class="ProductCard__Price">₹250.00</div>
+          <div class="ProductCard__Actions">
+            <div class="ProductCard__Qty">
+              <span class="Qty-Btn">-</span>
+              <span class="Qty-Val">1</span>
+              <span class="Qty-Btn">+</span>
+            </div>
+            <button class="ProductCard__Button">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+      
+       <div class="NewDesign-Cell">
+        <div class="ProductCard">
+          <div class="ProductCard__ImageWrapper">
+            <img src="assets/brmc.png" class="ProductCard__Image" alt="Brahmi Chocolate Slab">
+          </div>
+          <h3 class="ProductCard__Title">Brahmi Chocolate</h3>
+          <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          <div class="ProductCard__Price">₹250.00</div>
+          <div class="ProductCard__Actions">
+            <div class="ProductCard__Qty">
+              <span class="Qty-Btn">-</span>
+              <span class="Qty-Val">1</span>
+              <span class="Qty-Btn">+</span>
+            </div>
+            <button class="ProductCard__Button">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
+</div>
     <div class="shopify-section" id="shopify-section-template--16772990828800__1641828472fc7c3016">
      <section id="section-template--16772990828800__1641828472fc7c3016">
       <div class="FlexboxIeFix">
@@ -2393,6 +2485,71 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 2000);
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // 1. YOUR PRODUCT DATA (Local Database)
+  const products = [
+    { title: "Jatyadi Balm", url: "pages/balm.html", price: "₹50.00", image: "assets/jatyadi.png" },
+    { title: "Mushtarista Shots", url: "pages/shots.html", price: "₹150.00", image: "assets/shots.png" },
+    { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹250.00", image: "assets/chdc.png" },
+    { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹250.00", image: "assets/chmc.png" },
+    { title: "Aphrodisiac Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "assets/aphdc.png" },
+    { title: "Aphrodisiac Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "assets/aphmc.png" },
+    { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹250.00", image: "assets/brmc.png" }
+  ];
+
+  const searchInput = document.getElementById('local-search-input');
+  const resultsContainer = document.getElementById('search-results');
+
+  // 2. Filter Function
+  if(searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase().trim();
+      resultsContainer.innerHTML = ''; // Clear previous results
+
+      if (query.length === 0) {
+        resultsContainer.style.display = 'none';
+        return;
+      }
+
+      // Filter products array
+      const matches = products.filter(product => 
+        product.title.toLowerCase().includes(query)
+      );
+
+      // 3. Display Results
+      if (matches.length > 0) {
+        matches.forEach(product => {
+          const item = document.createElement('a');
+          item.href = product.url;
+          item.className = 'search-result-item';
+          
+          item.innerHTML = `
+            <img src="${product.image}" class="search-result-image" alt="${product.title}">
+            <div class="search-result-info">
+              <span class="search-result-title">${product.title}</span>
+              <span class="search-result-price">${product.price}</span>
+            </div>
+          `;
+          resultsContainer.appendChild(item);
+        });
+        resultsContainer.style.display = 'block';
+      } else {
+        resultsContainer.innerHTML = '<div style="padding:10px; text-align:center; color:#888; font-size:13px;">No products found</div>';
+        resultsContainer.style.display = 'block';
+      }
+    });
+
+    // 4. Hide when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+        resultsContainer.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
  <script src="js/cart.js"></script>
 </body>
  <style>
@@ -2402,23 +2559,3 @@ document.addEventListener('DOMContentLoaded', function() {
 }
  </style>
 </html>
-<!--
-     FILE ARCHIVED ON 09:43:57 Jun 05, 2023 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 08:48:38 Jan 08, 2026.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
--->
-<!--
-playback timings (ms):
-  captures_list: 0.881
-  exclusion.robots: 0.065
-  exclusion.robots.policy: 0.053
-  esindex: 0.014
-  cdx.remote: 76.515
-  LoadShardBlock: 150.279 (3)
-  PetaboxLoader3.datanode: 89.572 (4)
-  PetaboxLoader3.resolve: 79.115 (3)
-  load_resource: 76.419
--->

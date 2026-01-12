@@ -210,6 +210,55 @@ Version: 2.43.0
     --cursor-zoom-in-2x-svg : url(//web.archive.org/web/20230605101710im_/https://cdn.shopify.com/s/files/1/0013/2146/8022/t/45/assets/cursor-zoom-in-2x.svg?v=56685658183649387561684244781);
   }
   </style>
+  <style>
+  /* --- TASK 1: REMOVE REWARDS BUTTON (UPDATED) --- */
+  /* Targets the specific app block in your HTML */
+  #shopify-block-6174324309569838175,
+  .smile-shopify-init {
+      display: none !important;
+  }
+
+  /* Targets the dynamic containers Smile.io injects into the body */
+  #smile-ui-container,
+  #smile-ui-lite-container,
+  .smile-launcher-frame-container,
+  iframe[title="Rewards Launcher"],
+  iframe[title="Smile UI"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      height: 0 !important;
+      width: 0 !important;
+      z-index: -9999 !important;
+  }
+
+  /* --- TASK 2: HIDE STATIC SIDEBAR & SHOW FILTER BUTTON --- */
+  
+  /* 1. Hide the static sidebar section shown in your screenshot */
+  .CollectionInner__Sidebar {
+      display: none !important;
+  }
+
+  /* 2. Expand the product grid to full width */
+  .CollectionInner__Products {
+      width: 100% !important;
+      padding-left: 0 !important;
+  }
+
+  /* 3. Reveal the "Filter" button on Desktop */
+  .CollectionToolbar__Item--filter.hidden-lap-and-up {
+      display: inline-block !important; 
+  }
+
+  /* 4. Ensure the parent container displays correctly on desktop */
+  @media screen and (min-width: 1008px) {
+      .CollectionToolbar__Group {
+          display: flex !important;
+          align-items: center;
+      }
+  }
+</style>
   <script>
    function uet_report_conversion() {window.uetq = window.uetq || [];window.uetq.push('event', 'PRODUCT_PURCHASE', {"ecomm_prodid":"REPLACE_WITH_PRODUCT_ID","ecomm_pagetype":"PURCHASE","revenue_value":1,"currency":"USD"});}
   </script>
@@ -923,30 +972,40 @@ label.icon_content img {
       </div>
       <div class="Header__FlexItem Header__FlexItem--fill">
        <nav class="Header__SecondaryNav hidden-phone">
-        <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
-         <div class="transcy-switcher-manual transcy-desktop hidden HorizontalList__Item">
-         </div>
-         <!-- <li class="HorizontalList__Item">
-          <a class="Heading Link Link--primary Text--subdued u-h8" href="account.html">
-           Account
-          </a>
-         </li> -->
-         <li class="HorizontalList__Item">
-          <a class="Heading Link Link--primary Text--subdued u-h8" data-action="toggle-search" href="search.html">
-           Search
-          </a>
-         </li>
-         <li class="HorizontalList__Item">
-          <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart" href="cart.html">
-           Cart (
-           <span class="Header__CartCount">
-            0
-           </span>
-           )
-          </a>
-         </li>
-        </ul>
-       </nav>
+  <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
+    
+    <div class="transcy-switcher-manual transcy-desktop hidden HorizontalList__Item"></div>
+
+    <li class="HorizontalList__Item Header__SearchContainer">
+      <div class="Header__SearchForm">
+        <button type="button" class="Header__SearchButton">
+          <svg class="Icon Icon--search" role="presentation" viewBox="0 0 18 17" style="width: 15px; height: 15px;">
+            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square" transform="translate(1 1)">
+              <path d="M16 16l-5.0752-5.0752"></path>
+              <circle cx="6.4" cy="6.4" r="6.4"></circle>
+            </g>
+          </svg>
+        </button>
+        <input 
+          id="local-search-input" 
+          type="search" 
+          class="Header__SearchInput" 
+          placeholder="Search products..." 
+          autocomplete="off" 
+          aria-label="Search">
+      </div>
+      <div id="search-results"></div>
+    </li>
+
+    <li class="HorizontalList__Item">
+      <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart" href="pages/cart.html">
+        Cart (
+        <span class="Header__CartCount">0</span>
+        )
+      </a>
+    </li>
+  </ul>
+</nav>
        <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="toggle-search" href="search.html">
         <span class="hidden-tablet-and-up">
          <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
@@ -2315,6 +2374,149 @@ label.icon_content img {
    <div class="smile-shopify-init" data-channel-key="channel_OEYn6QsWGiP7JXbJDPVwhOVQ">
    </div>
   </div>
+  <style>
+  /* =========================================
+     1. MEGA MENU HOVER EFFECT
+     ========================================= */
+  @media screen and (min-width: 1024px) {
+    /* Target the MegaMenu when hovering over the parent List Item */
+    .HorizontalList__Item:hover .MegaMenu {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+      overflow: visible !important;
+    }
+
+    /* Ensure the MegaMenu has a base state for transition */
+    .MegaMenu {
+      display: block !important; /* Force block so opacity works */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px); /* Slight slide up effect */
+      transition: all 0.3s ease-in-out;
+      top: 100%; /* Ensure it sits right below the header */
+    }
+    
+    /* Ensure the dropdown goes over other content */
+    .Header {
+      z-index: 999;
+    }
+  }
+
+  /* =========================================
+     2. EXPOSED SEARCH BAR STYLING
+     ========================================= */
+  
+  /* Hide the old search icon/button on Desktop */
+  .hidden-pocket[data-action="toggle-search"],
+  a[href*="search"].Header__Icon {
+    display: none !important;
+  }
+
+  /* Style the Search Container */
+  .Header__SearchContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  /* Style the Form wrapper */
+  .Header__SearchForm {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e1e1e1;
+    border-radius: 40px; /* Pill shape */
+    padding: 8px 15px;
+    width: 280px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+  }
+
+  /* Focus state for search bar */
+  .Header__SearchForm:focus-within {
+    border-color: #1c1b1b;
+  }
+
+  /* Style the Input Field */
+  .Header__SearchInput {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #333;
+    padding-left: 5px;
+  }
+
+  .Header__SearchInput::placeholder {
+    color: #999;
+  }
+
+  /* Search Icon inside the bar */
+  .Header__SearchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: #555;
+  }
+
+  /* Transparent Header Adjustments */
+  .Header--transparent .Header__SearchForm {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: transparent;
+  }
+</style>
+<style>
+  /* =========================================
+     1. REMOVE MEGA MENU IMAGES
+     ========================================= */
+  
+  /* Hides the images inside the dropdown */
+  .MegaMenu__Push {
+    display: none !important;
+  }
+
+  /* Hides the specific container that held the images 
+     so you don't have a large empty white space on the right */
+  .MegaMenu__Inner .MegaMenu__Item:last-child {
+    display: none !important;
+  }
+
+  /* =========================================
+     2. FIX SEARCH BAR & CART ALIGNMENT
+     ========================================= */
+
+  /* Turns the navigation list into a Flexbox to force vertical centering */
+  .Header__SecondaryNav .HorizontalList {
+    display: flex !important;
+    align-items: center !important; /* The key fix for alignment */
+  }
+
+  /* Ensures the individual list items are also centered */
+  .Header__SecondaryNav .HorizontalList__Item {
+    display: flex !important;
+    align-items: center !important;
+    height: 100%;
+  }
+
+  /* Adds clean spacing between the Search Bar and the Cart link */
+  .Header__SearchContainer {
+    margin-right: 25px !important; 
+  }
+  
+  /* Optional: Adjusts the Cart text position slightly if needed */
+  a.Heading.u-h6 {
+    line-height: 1 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+</style>
  <script src="../js/cart.js"></script>
 </body>
  <style>
@@ -2324,23 +2526,3 @@ label.icon_content img {
 }
  </style>
 </html>
-<!--
-     FILE ARCHIVED ON 10:17:10 Jun 05, 2023 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 08:55:16 Jan 08, 2026.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
--->
-<!--
-playback timings (ms):
-  captures_list: 1.221
-  exclusion.robots: 0.098
-  exclusion.robots.policy: 0.083
-  esindex: 0.025
-  cdx.remote: 17.091
-  LoadShardBlock: 125.044 (3)
-  PetaboxLoader3.datanode: 150.22 (4)
-  load_resource: 357.735
-  PetaboxLoader3.resolve: 89.431
--->
