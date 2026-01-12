@@ -75,6 +75,72 @@ Version: 2.43.0
   <meta charset="utf-8"/>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- Fix Wayback Machine URLs - MUST be loaded first -->
   <script src="js/fix-urls.js"></script>
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
@@ -484,6 +550,43 @@ for (var attr in meta) {
     document.body.appendChild(script);
   })();
   </script>
+  <style>
+/* Hide rewards button - bottom left */
+.RewardsButton,
+.SmilesRewardsButton,
+[class*="reward"],
+[class*="Reward"], 
+[class*="loyalty"],
+[class*="points"],
+[class*="smile"],
+[href*="reward"],
+[href*="loyalty"],
+[href*="points"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Kill dynamically loaded rewards */
+iframe[src*="smile"], iframe[src*="reward"] { display: none !important; }
+
+/* Target bottom-left positioned elements with rewards text */
+button[style*="bottom"],
+a[style*="bottom"] {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Mobile-specific bottom-left buttons */
+  .fixed-bottom-left,
+  [class*="fixed"][class*="bottom"] {
+    display: none !important;
+  }
+}
+</style>
   <!-- Google Tag Manager (noscript) -->
   
   <!-- End Google Tag Manager (noscript) -->
@@ -1065,7 +1168,7 @@ label.icon_content img {
   "wrapAround": true,
   "dragThreshold": 15,
   "pauseAutoPlayOnHover": false,
-  "autoPlay": 5000,
+  "autoPlay": 7000,
   "pageDots": true
 }'>
 <div class="Slideshow__Slide Carousel__Cell is-selected" data-slide-index="0" id="Slide12247080-6569-4432-9f27-69679fb6445c" style="visibility: visible">
@@ -1097,7 +1200,7 @@ label.icon_content img {
       </h2>
       <div class="SectionHeader__ButtonWrapper">
         <div class="ButtonGroup ButtonGroup--spacingSmall ButtonGroup--sameSize">
-          <a class="ButtonGroup__Item Button" href="pages/products.html">SHOP NOW</a>
+          <a class="ButtonGroup__Item Button" href="pages/cdarkc.html">SHOP NOW</a>
           <a class="ButtonGroup__Item Button" href="pages/products.html">VIEW ALL PRODUCTS</a>
         </div>
       </div>
@@ -1134,7 +1237,7 @@ label.icon_content img {
       </h2>
       <div class="SectionHeader__ButtonWrapper">
         <div class="ButtonGroup ButtonGroup--spacingSmall ButtonGroup--sameSize">
-          <a class="ButtonGroup__Item Button" href="pages/products.html">SHOP NOW</a>
+          <a class="ButtonGroup__Item Button" href="pages/shots.html">SHOP NOW</a>
           <a class="ButtonGroup__Item Button" href="pages/products.html">VIEW ALL PRODUCTS</a>
         </div>
       </div>
@@ -1172,12 +1275,44 @@ label.icon_content img {
       </h2>
       <div class="SectionHeader__ButtonWrapper">
         <div class="ButtonGroup ButtonGroup--spacingSmall ButtonGroup--sameSize">
-          <a class="ButtonGroup__Item Button" href="pages/products.html">SHOP NOW</a>
+          <a class="ButtonGroup__Item Button" href="pages/balm.html">SHOP NOW</a>
           <a class="ButtonGroup__Item Button" href="pages/products.html">VIEW ALL PRODUCTS</a>
         </div>
       </div>
     </header>
   </div>
+  </div>
+  <div class="Slideshow__Slide Carousel__Cell" data-slide-index="3" id="Slide4th">
+  <div class="Slideshow__ImageContainer Image--contrast hidden-tablet-and-up"
+       style="background-image: url(assets/banner4.jpg)">
+    <img alt="Your 4th slide" class="Slideshow__Image Image--lazyLoad" src="assets/banner4.jpg"/>
+    <noscript><img alt="Your 4th slide" class="Slideshow__Image" src="assets/banner4.jpg"/></noscript>
+  </div>
+  
+  <div class="Slideshow__ImageContainer Image--contrast hidden-phone"
+     style="background-image: url(assets/banner4.jpg)">
+  <img alt="Your 4th slide" class="Slideshow__Image Image--lazyLoad hide-no-js"
+       src="assets/banner4.jpg" 
+       data-sizes="auto" data-src="assets/banner4.jpg"
+       data-widths="[400,600,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000]"/>
+  <noscript><img alt="Your 4th slide" class="Slideshow__Image" src="assets/banner4.jpg"/></noscript>
+</div>
+
+  <div class="Slideshow__Content Slideshow__Content--bottomLeft">
+    <header class="SectionHeader">
+      <h3 class="SectionHeader__SubHeading Heading u-h6">FEATURED</h3>
+      <h2 class="SectionHeader__Heading SectionHeader__Heading--emphasize Heading u-h1">
+        Your 4th Slide Title
+      </h2>
+      <div class="SectionHeader__ButtonWrapper">
+        <div class="ButtonGroup ButtonGroup--spacingSmall ButtonGroup--sameSize">
+          <a class="ButtonGroup__Item Button" href="pages/balm.html">SHOP NOW</a>
+          <a class="ButtonGroup__Item Button" href="pages/products.html">VIEW COLLECTION</a>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
 </div>
 
        <button aria-label="Scroll to content" class="Slideshow__ScrollButton RoundButton RoundButton--medium" data-animate-bottom="" data-href="#section-template--16772990828800__slideshow-end">
@@ -2236,6 +2371,28 @@ label.icon_content img {
      }
    })();
   </script>
+  <script>
+// Fix slideshow + prevent rewards on 4th slide
+document.addEventListener('DOMContentLoaded', function() {
+  // Force 4 slides continuous loop
+  const carousel = document.querySelector('.Slideshow__Carousel');
+  if (carousel && window.Flickity) {
+    const flkty = Flickity.data(carousel);
+    if (flkty) {
+      flkty.options.wrapAround = true;
+      flkty.options.autoPlay = 5000;
+      flkty.options.pauseAutoPlayOnHover = false;
+      flkty.resize();
+      flkty.playPlayer();
+    }
+  }
+  
+  // Double-kill rewards after lazy load
+  setTimeout(() => {
+    document.querySelectorAll('[class*="reward"], [class*="smile"], [href*="reward"]').forEach(el => el.remove());
+  }, 2000);
+});
+</script>
  <script src="js/cart.js"></script>
 </body>
  <style>
