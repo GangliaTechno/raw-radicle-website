@@ -2523,75 +2523,54 @@ label.icon_content img {
    ========================================= */
 
 @media screen and (min-width: 1008px) {
-    .ProductList--grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr 1fr !important;
-        grid-template-rows: 380px 380px 380px !important; 
-        gap: 20px !important;
-        width: 100% !important;
-        
-        /* Force alignment to the left */
-        margin-left: 0 !important; 
-        margin-right: auto !important; 
-        
-        /* Optional: If it's stuck inside a padded container, pull it left */
-        /* transform: translateX(-20px); */ 
+    .Grid__Cell.\31\/3--desk { 
+        width: 25% !important; 
     }
+}
 
-    .Grid__Cell {
-        width: 100% !important;
-        height: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important;
-    }
+/* 2. MAIN CARD CONTAINER (Beige Background) */
+.ProductItem {
+    background-color: #FFF8F0; /* Cream/Beige */
+    border-radius: 12px;       /* Compact rounded corners */
+    overflow: hidden;          /* Clips the button at the bottom */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 40px !important; /* Space for the smaller button */
+    margin-bottom: 25px;
+    border: 1px solid #f0ebe4;
+}
 
-    /* --- STRICT COORDINATE MAPPING --- */
+.ProductItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
-    /* 1. Top Left (Cream) */
-    .Grid__Cell:nth-of-type(1) {
-        grid-column: 1 / 2 !important;
-        grid-row: 1 / 2 !important;
-    }
+/* 3. RIBBON / BOOKMARK (Top Right) */
+.ProductItem::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: 15px;
+    width: 20px;   /* Compact width */
+    height: 35px;  /* Compact height */
+    background-color: #000; /* Salmon Red */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
 
-    /* 2. CENTER HERO (White Bottle) */
-    .Grid__Cell:nth-of-type(2) {
-        grid-column: 2 / 4 !important;
-        grid-row: 1 / 3 !important;
-        z-index: 10;
-    }
+/* 4. IMAGE CONTAINER (White Box) */
+.ProductItem__Wrapper {
+    padding: 10px 10px 0 10px; /* Tight padding */
+}
 
-    /* 3. Top Right (Green) */
-    .Grid__Cell:nth-of-type(3) {
-        grid-column: 4 / 5 !important;
-        grid-row: 1 / 2 !important;
-    }
-
-    /* 4. Middle Left (Pink) */
-    .Grid__Cell:nth-of-type(4) {
-        grid-column: 1 / 2 !important;
-        grid-row: 2 / 3 !important;
-        position: relative !important;
-        z-index: 5;
-    }
-
-    /* 5. Middle Right (Yellow) */
-    .Grid__Cell:nth-of-type(5) {
-        grid-column: 4 / 5 !important;
-        grid-row: 2 / 3 !important;
-    }
-
-    /* 6. Bottom Left Wide (Purple) */
-    .Grid__Cell:nth-of-type(6) {
-        grid-column: 1 / 3 !important;
-        grid-row: 3 / 4 !important;
-    }
-
-    /* 7. Bottom Right Wide (Teal) */
-    .Grid__Cell:nth-of-type(7) {
-        grid-column: 3 / 5 !important;
-        grid-row: 3 / 4 !important;
-    }
+.ProductItem__ImageWrapper {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+    margin-bottom: 10px;
 }
 
 /* =========================================
@@ -2675,86 +2654,43 @@ label.icon_content img {
     color: #333;
 }
 
-/* =========================================
-   === ADD TO CART BUTTON ENGINE ===
-   ========================================= */
-
-/* Unhide the button container if it was hidden */
-.ProductItem::after, .ProductItem::before { display: none !important; }
-
-/* Target the most common Shopify "Add" button classes */
-.ProductItem__QuickAdd,
-.ProductItem__ViewButton,
-.ProductItem .btn,
-.ProductItem button[name="add"],
-.ProductForm__Submit,
-.ProductItem__IconList {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    
-    /* Floating Position */
-    position: absolute !important;
-    bottom: 20px !important;
-    right: 20px !important;
-    top: auto !important;
-    left: auto !important;
-    
-    /* Circle Shape */
-    width: 45px !important;
-    height: 45px !important;
-    border-radius: 50% !important;
-    background: #000000 !important; /* Black background */
-    color: #ffffff !important;      /* White Text/Icon */
-    
-    /* Content Alignment */
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    z-index: 50 !important;
-    border: none !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-    transform: none !important; /* Prevent weird offsets */
+/* 7. 'ADD TO CART' BUTTON (Bottom Footer) */
+.ProductItem::after {
+    content: "ADD TO CART";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px; /* Compact height */
+    background-color: #000000; /* Matches Ribbon */
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-/* Add a clean "Plus" icon effect */
-.ProductItem__QuickAdd::before,
-.ProductItem__ViewButton::before,
-.ProductForm__Submit::before {
-    content: '+' !important;
-    font-size: 24px !important;
-    font-weight: 300 !important;
-    line-height: 1 !important;
-    color: #fff !important;
+.ProductItem:hover::after {
+    background-color: #6a6a6a;
 }
 
-/* Hide original text to keep it a perfect circle */
-.ProductItem__QuickAdd span,
-.ProductItem__ViewButton span,
-.ProductForm__Submit span {
-    display: none !important;
+/* --- ALTERNATE COLOR (Teal for every 2nd card) --- */
+.Grid__Cell:nth-child(even) .ProductItem {
+    background-color: #FFFDF5;
 }
-
-/* Hover Effect for Button */
-.ProductItem__QuickAdd:hover,
-.ProductForm__Submit:hover {
-    transform: scale(1.1) !important;
-    background: #333 !important;
+.Grid__Cell:nth-child(even) .ProductItem::before {
+    background-color: #000;
 }
-
-/* =========================================
-   COLOR ASSIGNMENT
-   ========================================= */
-.Grid__Cell:nth-of-type(1) .ProductItem { background-color: #FDF6E3; } 
-.Grid__Cell:nth-of-type(2) .ProductItem { background-color: #ffffff; } 
-.Grid__Cell:nth-of-type(3) .ProductItem { background-color: #Dcedc8; } 
-.Grid__Cell:nth-of-type(4) .ProductItem { background-color: #FFCCBC; } 
-.Grid__Cell:nth-of-type(5) .ProductItem { background-color: #E1BEE7; } 
-.Grid__Cell:nth-of-type(6) .ProductItem { background-color: #B2DFDB; } 
-.Grid__Cell:nth-of-type(7) .ProductItem { background-color: #D7CCC8; } 
-
+.Grid__Cell:nth-child(even) .ProductItem::after {
+    background-color: #000;
+}
+.Grid__Cell:nth-child(even) .ProductItem:hover::after {
+    background-color: #6a6a6a;
+}
 </style>
 <script src="../js/cart.js"></script>
 </body>
