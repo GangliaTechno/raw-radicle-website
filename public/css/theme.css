@@ -8832,8 +8832,20 @@ shopify-payment-terms {
   .ShopTheLook__ProductItem .ProductItem__ImageWrapper {
     max-width: 250px;
   }
+  .ShopTheLook__ViewButton,
+  .ShopTheLook__ViewButton:before {
+    border-radius: 50px !important; /* This makes the pill shape */
+    overflow: hidden !important; /* Ensures the hover effect background doesn't leak out of the corners */
+  }
+
   .ShopTheLook__ViewButton {
-    margin-top: 25px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .ShopTheLook .flickity-prev-next-button {
     top: calc(50% - 22.5px);

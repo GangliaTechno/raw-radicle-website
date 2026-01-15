@@ -564,7 +564,9 @@ for (var attr in meta) {
           <li class="Linklist__Item">
            <a class="Linklist__Link Heading u-h6" href="../index.html">Home</a>
           </li>
-          
+          <li class="Linklist__Item">
+            <a class="Linklist__Link Heading u-h6" href="./about.html">About</a>
+           </li>
           <li class="Linklist__Item">
            <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
             Products
@@ -612,7 +614,7 @@ for (var attr in meta) {
           </li>
           
           <li class="Linklist__Item">
-           <a class="Linklist__Link Heading u-h6" href="./about.html">About</a>
+           <a class="Linklist__Link Heading u-h6" href="./about.html">Contact Us</a>
           </li>
          </ul>
         </nav>
@@ -793,6 +795,14 @@ label.icon_content img {
            </span>
           </a>
          </li>
+         <li class="HorizontalList__Item">
+          <a class="Heading u-h6" href="about.html">
+           About
+           <span class="Header__LinkSpacer">
+            About
+           </span>
+          </a>
+         </li>
          <li aria-haspopup="true" class="HorizontalList__Item is-active">
           <a class="Heading u-h6" href="./products.html">
            Products
@@ -884,9 +894,9 @@ label.icon_content img {
          </li>
          <li class="HorizontalList__Item">
           <a class="Heading u-h6" href="about.html">
-           About
+           Contact us
            <span class="Header__LinkSpacer">
-            About
+            Contact Us
            </span>
           </a>
          </li>
@@ -1331,11 +1341,194 @@ label.icon_content img {
             </div>
           </div>
           
-          <div class="ProductForm__BuyButtons">
+          <!-- <div class="ProductForm__BuyButtons">
             <button class="ProductForm__AddToCart Button Button--secondary Button--full" data-action="add-to-cart" type="submit">
               <span>Add to cart</span>
             </button>
+            <div class="ProductForm__BuyButtons">
+              <style>
+                .Marketplace__Grid {
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 10px;
+                  margin-top: 15px;
+                }
+                .Button--Marketplace {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 12px 5px;
+                  font-size: 12px;
+                  font-weight: bold;
+                  border-radius: 4px;
+                  text-transform: uppercase;
+                  transition: opacity 0.2s;
+                  text-decoration: none !important;
+                  border: 1px solid #ddd;
+                }
+                .Button--Marketplace:hover { opacity: 0.8; }
+                
+                /* Branding Colors */
+                .btn-blinkit { background-color: #F7EC09; color: #000; border-color: #F7EC09; }
+                .btn-zepto { background-color: #4B1A91; color: #fff; border-color: #4B1A91; }
+                .btn-amazon { background-color: #FF9900; color: #000; border-color: #FF9900; }
+                .btn-instamart { background-color: #FF5200; color: #fff; border-color: #FF5200; }
+                .btn-flipkart { background-color: #2874F0; color: #fff; border-color: #2874F0; }
+              </style>
+            
+              <div class="Marketplace__Grid">
+                <a href="" target="_blank" class="Button--Marketplace btn-blinkit">Buy on Blinkit</a>
+                <a href="" target="_blank" class="Button--Marketplace btn-zepto">Buy on Zepto</a>
+                <a href="" target="_blank" class="Button--Marketplace btn-amazon">Buy on Amazon</a>
+                <a href="" target="_blank" class="Button--Marketplace btn-instamart">Instamart</a>
+                <a href="" target="_blank" class="Button--Marketplace btn-flipkart" style="grid-column: span 2;">Buy on Flipkart</a>
+              </div>
+            </div>
+          </div> -->
+          <div class="ProductForm__BuyButtons Marketplace">
+            <style>
+              /* Force rounded edges even on hover / focus */
+              .Marketplace .Button,
+              .Marketplace .Button:hover,
+              .Marketplace .Button:focus,
+              .Marketplace .Button:active,
+              .Marketplace .Button::before,
+              .Marketplace .Button::after,
+              .Marketplace .Button:hover::before,
+              .Marketplace .Button:hover::after {
+                border-radius: 30px !important;
+              }
+            </style>
+            
+
+            <div class="Marketplace__Grid"
+                 style="
+                   display:grid;
+                   grid-template-columns:1fr 1fr;
+                   gap:12px;
+                   margin-top:15px;
+                 ">
+          
+              <a href=""
+                 target="_blank"
+                 class="ProductForm__AddToCart Button Button--secondary Button--full"
+                 style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                 ">
+                <img src="../assets/blinkit.png"
+                     alt="Blinkit"
+                     style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     ">
+                Buy on Blinkit
+              </a>
+          
+              <a href=""
+                 target="_blank"
+                 class="ProductForm__AddToCart Button Button--secondary Button--full"
+                 style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                 ">
+                <img src="../assets/zepto.png"
+                     alt="Zepto"
+                     style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     ">
+                Buy on Zepto
+              </a>
+          
+              <a href=""
+                 target="_blank"
+                 class="ProductForm__AddToCart Button Button--secondary Button--full"
+                 style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                 ">
+                <img src="../assets/amazon.png"
+                     alt="Amazon"
+                     style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     ">
+                Buy on Amazon
+              </a>
+          
+              <a href=""
+                 target="_blank"
+                 class="ProductForm__AddToCart Button Button--secondary Button--full"
+                 style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                 ">
+                <img src="../assets/instamart.png"
+                     alt="Instamart"
+                     style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     ">
+                Buy on Instamart
+              </a>
+          
+              <a href=""
+                 target="_blank"
+                 class="ProductForm__AddToCart Button Button--secondary Button--full"
+                 style="
+                   grid-column:span 2;
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                 ">
+                <img src="../assets/flipkart.png"
+                     alt="Flipkart"
+                     style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     ">
+                Buy on Flipkart
+              </a>
+          
+            </div>
           </div>
+          
+          
        <div class="Product__Aside">
         <span class="Anchor" id="ProductAside">
         </span>
