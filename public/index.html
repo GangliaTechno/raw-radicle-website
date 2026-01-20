@@ -16,6 +16,7 @@
   <style>
    .Grid__Cell:has([href*="navidium"]) { display: none !important; }
   </style>
+  
   <script>
    1==location.pathname.includes("products/navidium-shipping")&&(location.href="/")
   </script>
@@ -73,70 +74,6 @@ Version: 2.43.0
   </script>
   <!-- End Google Tag Manager -->
   <meta charset="utf-8"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1067,47 +1004,42 @@ label.icon_content img {
        </h1>
       </div>
       <div class="Header__FlexItem Header__FlexItem--fill">
-       <nav class="Header__SecondaryNav hidden-phone">
-        <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
-         <div class="transcy-switcher-manual transcy-desktop hidden HorizontalList__Item">
-         </div>
-         <!-- <li class="HorizontalList__Item">
-          <a class="Heading Link Link--primary Text--subdued u-h8" href="pages/account.html">
-           Account
-          </a>
-         </li> -->
-         <li class="HorizontalList__Item Header__SearchContainer">
-  <div class="Header__SearchForm">
-    <input 
-      id="local-search-input"
-      type="search" 
-      class="Header__SearchInput" 
-      placeholder="Search products..." 
-      autocomplete="off"
-      aria-label="Search">
-      
-    <button type="button" class="Header__SearchButton" style="border:none; background:none; cursor:pointer;">
-      <svg class="Icon Icon--search" role="presentation" viewBox="0 0 18 17" style="width: 16px; height: 16px;">
-        <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square" transform="translate(1 1)">
-          <path d="M16 16l-5.0752-5.0752"></path>
-          <circle cx="6.4" cy="6.4" r="6.4"></circle>
-        </g>
-      </svg>
-    </button>
-  </div>
-  <div id="search-results"></div>
-</li>
-         <li class="HorizontalList__Item">
-          <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart" href="pages/cart.html">
-           Cart (
-           <span class="Header__CartCount">
-            0
-           </span>
-           )
-          </a>
-         </li>
-        </ul>
-       </nav>
+        <nav class="Header__SecondaryNav hidden-phone">
+
+          <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
+            
+            <li class="HorizontalList__Item Header__SearchContainer">
+              <div class="Header__SearchForm">
+                <input 
+                  id="local-search-input"
+                  type="search" 
+                  class="Header__SearchInput" 
+                  placeholder="Search products..." 
+                  autocomplete="off"
+                  aria-label="Search">
+                  
+                <button type="button" class="Header__SearchButton" style="border:none; background:none; cursor:pointer;">
+                  <svg class="Icon Icon--search" role="presentation" viewBox="0 0 18 17" style="width: 16px; height: 16px;">
+                    <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square" transform="translate(1 1)">
+                      <path d="M16 16l-5.0752-5.0752"></path>
+                      <circle cx="6.4" cy="6.4" r="6.4"></circle>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              
+              <!-- Search Results Container -->
+              <div id="search-results"></div>
+            </li>
+        
+            <li class="HorizontalList__Item">
+              <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart" href="#">
+                Cart (<span class="Header__CartCount">0</span>)
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
        <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="toggle-search" href="pages/search.html">
         <span class="hidden-tablet-and-up">
          <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
@@ -2442,69 +2374,76 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Product Database
+    const products = [
+      { title: "Jatyadi Balm", url: "balm.html", price: "₹50.00", image: "../assets/jatyadi.png" },
+      { title: "Mushtarista Shots", url: "shots.html", price: "₹150.00", image: "../assets/shots.png" },
+      { title: "Chyawanaprash Dark Chocolate", url: "cdarkc.html", price: "₹250.00", image: "../assets/chdc.png" },
+      { title: "Chyawanaprash Milk Chocolate", url: "cmilkc.html", price: "₹250.00", image: "../assets/chmc.png" },
+      { title: "Aphrodisiac Dark Chocolate", url: "adarkc.html", price: "₹250.00", image: "../assets/aphdc.png" },
+      { title: "Aphrodisiac Milk Chocolate", url: "amilkc.html", price: "₹250.00", image: "../assets/aphmc.png" },
+      { title: "Brahmi Milk Chocolate", url: "bmilkc.html", price: "₹250.00", image: "../assets/brmc.png" }
+    ];
   
-  // 1. YOUR PRODUCT DATA (Local Database)
-  const products = [
-    { title: "Jatyadi Balm", url: "pages/balm.html", price: "₹50.00", image: "assets/jatyadi.png" },
-    { title: "Mushtarista Shots", url: "pages/shots.html", price: "₹150.00", image: "assets/shots.png" },
-    { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹250.00", image: "assets/chdc.png" },
-    { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹250.00", image: "assets/chmc.png" },
-    { title: "Aphrodisiac Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "assets/aphdc.png" },
-    { title: "Aphrodisiac Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "assets/aphmc.png" },
-    { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹250.00", image: "assets/brmc.png" }
-  ];
-
-  const searchInput = document.getElementById('local-search-input');
-  const resultsContainer = document.getElementById('search-results');
-
-  // 2. Filter Function
-  if(searchInput) {
-    searchInput.addEventListener('input', function(e) {
-      const query = e.target.value.toLowerCase().trim();
-      resultsContainer.innerHTML = ''; // Clear previous results
-
-      if (query.length === 0) {
-        resultsContainer.style.display = 'none';
-        return;
-      }
-
-      // Filter products array
-      const matches = products.filter(product => 
-        product.title.toLowerCase().includes(query)
-      );
-
-      // 3. Display Results
-      if (matches.length > 0) {
-        matches.forEach(product => {
-          const item = document.createElement('a');
-          item.href = product.url;
-          item.className = 'search-result-item';
-          
-          item.innerHTML = `
-            <img src="${product.image}" class="search-result-image" alt="${product.title}">
-            <div class="search-result-info">
-              <span class="search-result-title">${product.title}</span>
-              <span class="search-result-price">${product.price}</span>
-            </div>
-          `;
-          resultsContainer.appendChild(item);
-        });
-        resultsContainer.style.display = 'block';
-      } else {
-        resultsContainer.innerHTML = '<div style="padding:10px; text-align:center; color:#888; font-size:13px;">No products found</div>';
-        resultsContainer.style.display = 'block';
-      }
-    });
-
-    // 4. Hide when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
-        resultsContainer.style.display = 'none';
-      }
-    });
-  }
-});
+    const searchInput = document.getElementById('local-search-input');
+    const resultsContainer = document.getElementById('search-results');
+  
+    // Search Filter Function
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase().trim();
+        resultsContainer.innerHTML = '';
+  
+        if (query.length === 0) {
+          resultsContainer.style.display = 'none';
+          return;
+        }
+  
+        // Filter products
+        const matches = products.filter(product => 
+          product.title.toLowerCase().includes(query)
+        );
+  
+        // Display Results
+        if (matches.length > 0) {
+          matches.forEach(product => {
+            const item = document.createElement('a');
+            item.href = product.url;
+            item.className = 'search-result-item';
+            
+            item.innerHTML = `
+              <img src="${product.image}" class="search-result-image" alt="${product.title}">
+              <div class="search-result-info">
+                <span class="search-result-title">${product.title}</span>
+                <span class="search-result-price">${product.price}</span>
+              </div>
+            `;
+            resultsContainer.appendChild(item);
+          });
+          resultsContainer.style.display = 'block';
+        } else {
+          resultsContainer.innerHTML = '<div style="padding:20px; text-align:center; color:#888; font-size:14px;">No products found</div>';
+          resultsContainer.style.display = 'block';
+        }
+      });
+  
+      // Hide results when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+          resultsContainer.style.display = 'none';
+        }
+      });
+      
+      // Show results when focusing back on input (if there's a query)
+      searchInput.addEventListener('focus', function() {
+        if (this.value.trim().length > 0) {
+          resultsContainer.style.display = 'block';
+        }
+      });
+    }
+  });
 </script>
  <script src="js/cart.js"></script>
 </body>
