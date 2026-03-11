@@ -316,7 +316,7 @@ Version: 2.43.0
       --heading-font-weight: 500;
       --heading-font-style: normal;
 
-      --text-font-family: "Nunito Sans", sans-serif;
+      --text-font-family: Montserrat, sans-serif;
       --text-font-weight: 400;
       --text-font-style: normal;
 
@@ -341,13 +341,13 @@ Version: 2.43.0
       --button-text-color: #ffffff;
 
       --header-background: #ffffff;
-      --header-heading-color: #1c1b1b;
+      --header-heading-color: #1c1c1c;
       --header-light-text-color: #6a6a6a;
       --header-border-color: #dddddd;
 
-      --footer-background: #ffffff;
-      --footer-text-color: #6a6a6a;
-      --footer-heading-color: #1c1b1b;
+      --footer-background: #1c1c1c;
+      --footer-text-color: #ffffff;
+      --footer-heading-color: #ffffff;
       --footer-border-color: #e9e9e9;
 
       --navigation-background: #1c1b1b;
@@ -918,7 +918,7 @@ Version: 2.43.0
     <div aria-hidden="true" class="Search" id="Search">
       <div class="Search__Inner">
         <div class="Search__SearchBar">
-          <form action="products.html" class="Search__Form" name="GET" role="search">
+          <form action="" class="Search__Form" name="GET" role="search">
             <div class="Search__InputIconWrapper">
               <span class="hidden-tablet-and-up">
                 <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
@@ -964,6 +964,17 @@ Version: 2.43.0
   "isSticky": true
 }' data-section-type="header" id="section-header" role="banner">
       <div class="Header__Wrapper">
+        <div class="Header__FlexItem Header__FlexItem--logo">
+          <h1 class="Header__Logo">
+            <a class="Header__LogoLink" href="../index.html">
+              <img alt="MVST" class="Header__LogoImage Header__LogoImage--primary" height="296"
+                src="../assets/RR_Logo-1.png" width="600" />
+              <img alt="MVST" class="Header__LogoImage Header__LogoImage--transparent" height="296"
+                src="../assets/RR_Logo-1.png" srcset="../assets/RR_Logo-1.png" width="600" />
+            </a>
+          </h1>
+        </div>
+
         <div class="Header__FlexItem Header__FlexItem--fill notranslate">
           <button aria-expanded="false" aria-label="Open navigation"
             class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="open-drawer"
@@ -983,136 +994,86 @@ Version: 2.43.0
           </button>
           <nav aria-label="Main navigation" class="Header__MainNav hidden-pocket hidden-lap">
             <ul class="HorizontalList HorizontalList--spacingExtraLoose">
-              <li class="HorizontalList__Item ">
+              <li class="HorizontalList__Item">
                 <a class="Heading u-h6" href="../index.html">
                   Home
-                  <span class="Header__LinkSpacer">
-                    Home
-                  </span>
+                  <span class="Header__LinkSpacer"> Home </span>
                 </a>
               </li>
               <li class="HorizontalList__Item">
-                <a class="Heading u-h6" href="./about.html">
+                <a class="Heading u-h6" href="about.html">
                   About
-                  <span class="Header__LinkSpacer">
-                    About
-                  </span>
+                  <span class="Header__LinkSpacer"> About </span>
                 </a>
               </li>
               <li aria-haspopup="true" class="HorizontalList__Item is-active">
-                <a class="Heading u-h6" href="./products.html">
+                <a class="Heading u-h6" href="products.html">
                   Products
-                  <span class="Header__LinkSpacer">
-                    Products
-                  </span>
+                  <span class="Header__LinkSpacer"> Products </span>
                 </a>
                 <div aria-hidden="true" class="MegaMenu">
                   <div class="MegaMenu__Inner">
-                    <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="./products.html">
+                    <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         BALM
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./balm.html">
+                          <a class="Link Link--secondary" href="balm.html">
                             JATYADI
                           </a>
                         </li>
 
                       </ul>
-                    </div>
+                    </div> -->
                     <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="./products.html">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         CHOCOLATE
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./cdarkc.html">
-                            CHYAWANAPRASH DARK
-                          </a>
+                          <a class="Link Link--secondary" href="cdarkc.html"> CHYAWANAPRASH DARK </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./cmilkc.html">
-                            CHYAWANAPRASH MILK
-                          </a>
+                          <a class="Link Link--secondary" href="cmilkc.html"> CHYAWANAPRASH MILK </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./amilkc.html">
-                            APHRODISIAC MILK
-                          </a>
+                          <a class="Link Link--secondary" href="amilkc.html"> APHRODISIAC MILK </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./adarkc.html">
-                            APHRODISIAC DARK
-                          </a>
+                          <a class="Link Link--secondary" href="adarkc.html"> APHRODISIAC DARK </a>
                         </li>
                       </ul>
                     </div>
-                    <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="./products.html">
+                    <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         SHOTS
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./shots.html">
+                          <a class="Link Link--secondary" href="shots.html">
                             MUSHTARISHTA
                           </a>
                         </li>
 
                       </ul>
-                    </div>
-                    <div class="MegaMenu__Item" style="width: 660px; min-width: 425px;">
-                      <div class="MegaMenu__Push MegaMenu__Push--shrink">
-                        <div class="MegaMenu__PushImageWrapper AspectRatio"
-                          style="background: url(); max-width: 370px; --aspect-ratio: 1.0">
-                          <img alt="" class="Image--lazyLoad Image--fadeIn" src="../assets/chocolate.jpg" />
-                          <span class="Image__Loader">
-                          </span>
-                        </div>
-                        <p class="MegaMenu__PushHeading Heading u-h6">
-                          Chocolates
-                        </p>
-
-                      </div>
-                      <div class="MegaMenu__Push MegaMenu__Push--shrink">
-                        <div class="MegaMenu__PushImageWrapper AspectRatio"
-                          style="background: url(); max-width: 370px; --aspect-ratio: 1.0">
-                          <img alt="ALC Aluminum Suitcase Silver MVST" class="Image--lazyLoad Image--fadeIn"
-                            src="../assets/balm.jpg" />
-                          <span class="Image__Loader">
-                          </span>
-                        </div>
-                        <p class="MegaMenu__PushHeading Heading u-h6">
-                          Balms
-                        </p>
-
-                      </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </li>
               <li class="HorizontalList__Item">
                 <a class="Heading u-h6" href="contact.html">
                   Contact Us
-                  <span class="Header__LinkSpacer">
-                    Contact Us
-                  </span>
+                  <span class="Header__LinkSpacer"> Contact Us </span>
                 </a>
               </li>
 
             </ul>
           </nav>
         </div>
-        <div class="Header__FlexItem Header__FlexItem--logo">
-          <div class="Header__Logo">
-            <a class="Header__LogoLink" href="../index.html">
-              <img alt="RawRadicles" class="Header__LogoImage Header__LogoImage--primary" height="296"
-                src="../assets/RR_Logo-1.png" srcset="../assets/RR_Logo-1.png" width="600" />
-            </a>
-          </div>
-        </div>
         <div class="Header__FlexItem Header__FlexItem--fill">
           <nav class="Header__SecondaryNav hidden-phone">
+
             <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
 
               <li class="HorizontalList__Item Header__SearchContainer">
@@ -1137,16 +1098,12 @@ Version: 2.43.0
                 <div id="search-results"></div>
               </li>
 
-              <li class="HorizontalList__Item">
-                <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart"
-                  href="#">
-                  Cart (<span class="Header__CartCount">0</span>)
-                </a>
-              </li>
+
             </ul>
           </nav>
+
           <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
-            data-action="toggle-search" href="pages/search.html">
+            data-action="toggle-search" href="search.html">
             <span class="hidden-tablet-and-up">
               <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
@@ -1170,57 +1127,11 @@ Version: 2.43.0
               </svg>
             </span>
           </a>
-          <a aria-expanded="false" aria-label="Open cart"
-            class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="open-drawer"
-            data-drawer-id="sidebar-cart" href="cart.html">
-            <span class="hidden-tablet-and-up">
-              <svg class="Icon Icon--cart" role="presentation" viewbox="0 0 17 20">
-                <path
-                  d="M0 20V4.995l1 .006v.015l4-.002V4c0-2.484 1.274-4 3.5-4C10.518 0 12 1.48 12 4v1.012l5-.003v.985H1V19h15V6.005h1V20H0zM11 4.49C11 2.267 10.507 1 8.5 1 6.5 1 6 2.27 6 4.49V5l5-.002V4.49z"
-                  fill="currentColor">
-                </path>
-              </svg>
-            </span>
-            <span class="hidden-phone">
-              <svg class="Icon Icon--cart-desktop" role="presentation" viewbox="0 0 19 23">
-                <path
-                  d="M0 22.985V5.995L2 6v.03l17-.014v16.968H0zm17-15H2v13h15v-13zm-5-2.882c0-2.04-.493-3.203-2.5-3.203-2 0-2.5 1.164-2.5 3.203v.912H5V4.647C5 1.19 7.274 0 9.5 0 11.517 0 14 1.354 14 4.647v1.368h-2v-.912z"
-                  fill="currentColor">
-                </path>
-              </svg>
-            </span>
-            <span class="Header__CartDot">
-            </span>
-          </a>
+
         </div>
       </div>
     </header>
-    <style>
-      :root {
-        --use-sticky-header: 1;
-        --use-unsticky-header: 0;
-      }
-
-      .shopify-section--header {
-        position: -webkit-sticky;
-        position: sticky;
-      }
-
-      .Header__LogoImage {
-        max-width: 110px;
-      }
-
-      @media screen and (max-width: 640px) {
-        .Header__LogoImage {
-          max-width: 90px;
-        }
-      }
-
-      :root {
-        --header-is-not-transparent: 1;
-        --header-is-transparent: 0;
-      }
-    </style>
+    <link href="../css/custom-navbar.css" rel="stylesheet">
     <script>
       document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-header').offsetHeight + 'px');
     </script>
@@ -2935,3 +2846,6 @@ Version: 2.43.0
 </style>
 
 </html>
+
+
+

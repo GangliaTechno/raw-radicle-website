@@ -1,0 +1,173 @@
+/* Custom Navbar — match mvstselect.com
+   Works WITH theme.css Header--logoLeft layout. */
+
+/* ===== HEADER SIZE & BACKGROUND ===== */
+.Header {
+    background-color: #EFEFEF !important;
+    height: 85px !important;
+    min-height: 85px !important;
+    max-height: 85px !important;
+    box-shadow: 0 -1px #e0e0e0 inset !important;
+}
+
+.Header__Wrapper {
+    height: 85px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    align-items: center !important;
+}
+
+/* ===== CENTER NAV LINKS =====
+   Give logo and search equal fixed widths so the nav
+   section (flex:1) naturally centers on the page. */
+
+.Header--logoLeft .Header__FlexItem--logo {
+    flex: 0 0 200px !important;
+    align-items: center !important;
+}
+
+.Header--logoLeft .Header__FlexItem--fill {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.Header--logoLeft .Header__FlexItem--fill:last-child {
+    flex: 0 0 200px !important;
+    justify-content: flex-end !important;
+}
+
+/* ===== OVERRIDE TRANSPARENT HEADER =====
+   theme.css forces white text for transparent headers.
+   We use a solid background, so keep text dark. */
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent {
+    background-color: #EFEFEF !important;
+}
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__Icon,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .HorizontalList__Item>.SelectButton,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .HorizontalList__Item>.Heading,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__LogoLink>.Heading,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Text--subdued {
+    color: #1c1c1c !important;
+}
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__Icon svg {
+    filter: none !important;
+}
+
+/* Keep primary logo visible */
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__LogoImage--primary:not(:only-child) {
+    opacity: 1 !important;
+}
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__LogoImage--transparent {
+    opacity: 0 !important;
+}
+
+/* ===== NAV LINK TYPOGRAPHY ===== */
+.Header__MainNav .Heading,
+.Header__SecondaryNav .Heading,
+.Header__MainNav .u-h6,
+.Header__SecondaryNav .u-h6 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #1c1c1c !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.944px !important;
+}
+
+/* ===== HOVER UNDERLINE ===== */
+.HorizontalList__Item .Header__LinkSpacer:after {
+    border-bottom-color: #1c1c1c !important;
+}
+
+.Header--transparent .HorizontalList__Item.is-active .Header__LinkSpacer:after,
+.Header--transparent .HorizontalList__Item.is-expanded .Header__LinkSpacer:after,
+.Header--transparent .HorizontalList__Item:hover .Header__LinkSpacer:after {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+}
+
+/* ===== LOGO ===== */
+.Header__LogoImage {
+    max-width: 180px !important;
+    max-height: 110px !important;
+    height: auto !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* ===== MEGA MENU ===== */
+.MegaMenu {
+    background-color: #EFEFEF !important;
+}
+
+.MegaMenu__Title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.944px !important;
+    text-transform: uppercase !important;
+    color: #1c1c1c !important;
+}
+
+.MegaMenu .Link--secondary {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    color: #555 !important;
+    text-transform: uppercase !important;
+}
+
+.MegaMenu .Link--secondary:hover {
+    color: #1c1c1c !important;
+}
+
+/* ===== SEARCH INPUT ===== */
+.Header__SearchInput {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    color: #1c1c1c !important;
+}
+
+.Header__SearchInput::placeholder {
+    color: #999 !important;
+    text-transform: uppercase !important;
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+}
+
+/* ===== TABLET ===== */
+@media screen and (max-width: 1140px) {
+    .Header--logoLeft .Header__FlexItem--logo {
+        flex: 0 0 150px !important;
+    }
+
+    .Header--logoLeft .Header__FlexItem--fill:last-child {
+        flex: 0 0 150px !important;
+    }
+}
+
+/* ===== MOBILE ===== */
+@media screen and (max-width: 640px) {
+    .Header {
+        height: 63px !important;
+        min-height: 63px !important;
+        max-height: 63px !important;
+    }
+
+    .Header__Wrapper {
+        height: 63px !important;
+    }
+
+    .Header__LogoImage {
+        max-width: 120px !important;
+    }
+}
