@@ -1270,9 +1270,11 @@ Version: 2.43.0
           position: relative;
         }
 
+        /* Let Flickity handle slide clipping + wrapAround for seamless loop */
+
         /* Product Card */
         .MvstProducts__Card {
-          width: 20%;
+          width: 25%;
           padding: 0 15px;
           box-sizing: border-box;
         }
@@ -1283,10 +1285,19 @@ Version: 2.43.0
           text-decoration: none;
           display: block;
           color: inherit;
+          transition: transform 0.3s ease;
+        }
+
+        .MvstProducts__CardInner:hover {
+          transform: translateY(-5px);
         }
 
         .MvstProducts__CardInner:hover .MvstProducts__Image {
-          transform: scale(1.03);
+          transform: scale(1.05);
+        }
+
+        .MvstProducts__CardInner:hover .MvstProducts__Name {
+          text-decoration: underline;
         }
 
         .MvstProducts__ImageWrap {
@@ -1304,7 +1315,7 @@ Version: 2.43.0
           max-width: 85%;
           max-height: 85%;
           object-fit: contain;
-          transition: transform 0.3s ease;
+          transition: transform 0.4s ease;
         }
 
         .MvstProducts__Name {
@@ -1382,15 +1393,17 @@ Version: 2.43.0
           text-transform: uppercase;
           color: #fff;
           background: #1c1c1c;
-          border: none;
+          border: 2px solid #1c1c1c;
           padding: 16px 40px;
           cursor: pointer;
           text-decoration: none;
-          transition: background 0.3s ease;
+          transition: all 0.3s ease;
         }
 
         .MvstProducts__ViewAllBtn:hover {
-          background: #333;
+          background: #ffffff;
+          color: #1c1c1c;
+          border-color: #1c1c1c;
         }
 
         /* Responsive */
