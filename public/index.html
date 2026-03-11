@@ -1561,40 +1561,72 @@ Version: 2.43.0
     </div>
 
     </div>
-    <div class="shopify-section" id="shopify-section-template--16772990828800__1641828472fc7c3016">
-      <section id="section-template--16772990828800__1641828472fc7c3016">
-        <div class="FlexboxIeFix">
-          <div class="ImageHero" style="background: url(assets/banner2.jpg)">
-            <div class="ImageHero__ImageWrapper">
-              <div class="ImageHero__Image Image--lazyLoad Image--zoomOut" data-bgset="assets/banner2.jpg"
-                data-expand="-150" data-optimumx="1.4">
-              </div>
-              <noscript>
-                <div class="ImageHero__Image" style="background-image: url(assets/banner2.jpg)">
-                </div>
-              </noscript>
-            </div>
-            <div class="ImageHero__ContentOverlay">
-              <header class="SectionHeader">
-                <h3 class="SectionHeader__SubHeading Heading u-h6">
-                  WELLNESS WITHOUT COMPROMISE
-                </h3>
-                <h2 class="SectionHeader__Heading Heading u-h1">
-                  Ancient Ayurvedic wisdom reimagined for the modern lifestyle
-                </h2>
-              </header>
-            </div>
-          </div>
+    <div class="shopify-section" id="shopify-section-video-hero">
+      <section class="VideoHero">
+        <div class="VideoHero__VideoWrapper">
+          <video class="VideoHero__Video" autoplay muted loop playsinline poster="assets/pure_chocolate_hero.png">
+            <source src="https://cdn.pixabay.com/video/2021/11/18/98283-647561752_large.mp4" type="video/mp4">
+          </video>
+          <div class="VideoHero__Overlay"></div>
+        </div>
+        <div class="VideoHero__ContentOverlay">
+          <header class="SectionHeader">
+            <h3 class="SectionHeader__SubHeading Heading u-h6" style="color: #ffffff; letter-spacing: 2px;">
+              WELLNESS WITHOUT COMPROMISE
+            </h3>
+            <h2 class="SectionHeader__Heading Heading u-h1" style="color: #ffffff; font-weight: bold; margin-top: 15px;">
+              Ancient Ayurvedic wisdom reimagined for the modern lifestyle
+            </h2>
+          </header>
         </div>
       </section>
       <style>
-        #section-template--16772990828800__1641828472fc7c3016,
-        #section-template--16772990828800__1641828472fc7c3016 .Heading {
-          color: #ffffff;
+        .VideoHero {
+          position: relative;
+          height: 80vh;
+          min-height: 500px;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        #section-template--16772990828800__1641828472fc7c3016 .ImageHero__ImageWrapper--hasOverlay::before {
-          background-color: rgba(0, 0, 0, 0.0);
+        .VideoHero__VideoWrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+
+        .VideoHero__Video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .VideoHero__Overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 2;
+        }
+
+        .VideoHero__ContentOverlay {
+          position: relative;
+          z-index: 3;
+          text-align: center;
+          padding: 0 20px;
+        }
+
+        @media (max-width: 768px) {
+          .VideoHero {
+            height: 60vh;
+          }
         }
       </style>
     </div>
