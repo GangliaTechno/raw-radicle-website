@@ -1241,304 +1241,296 @@ Version: 2.43.0
       id="shopify-section-template--16772990828800__featured-collections">
 
       <style>
-        /* 1. SECTION CONTAINER */
-        .NewDesign-Section {
-          /* Increased bottom padding to accommodate the lowered card */
-          padding: 120px 0 120px 0;
-          background-color: #f9f9f9;
-          overflow: hidden;
+        /* ===== MVST-STYLE PRODUCT SECTION ===== */
+        .MvstProducts {
+          padding: 80px 0 60px;
+          background-color: #f5f5f5;
         }
 
-        .NewDesign-Carousel {
+        .MvstProducts__Header {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .MvstProducts__Title {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 32px;
+          font-weight: 400;
+          letter-spacing: 8px;
+          text-transform: uppercase;
+          color: #1c1c1c;
+          margin: 0;
+        }
+
+        /* Carousel Container */
+        .MvstProducts__Carousel {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 60px;
+          position: relative;
+        }
+
+        /* Product Card */
+        .MvstProducts__Card {
+          width: 20%;
+          padding: 0 15px;
+          box-sizing: border-box;
+        }
+
+        .MvstProducts__CardInner {
+          text-align: center;
+          cursor: pointer;
+          text-decoration: none;
+          display: block;
+          color: inherit;
+        }
+
+        .MvstProducts__CardInner:hover .MvstProducts__Image {
+          transform: scale(1.03);
+        }
+
+        .MvstProducts__ImageWrap {
           width: 100%;
-          overflow: visible !important;
+          aspect-ratio: 1 / 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+          overflow: hidden;
+          background: #f5f5f5;
         }
 
-        .flickity-viewport {
-          overflow: visible !important;
+        .MvstProducts__Image {
+          max-width: 85%;
+          max-height: 85%;
+          object-fit: contain;
+          transition: transform 0.3s ease;
         }
 
-        /* 2. SLIDE CELL */
-        .NewDesign-Cell {
-          width: 30%;
-          margin: 0 2%;
-          transition: transform 0.3s ease-in-out;
-          transform: scale(0.9);
-          opacity: 1;
-          z-index: 1;
+        .MvstProducts__Name {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #1c1c1c;
+          margin: 0 0 8px 0;
+          line-height: 1.4;
         }
 
-        @media (max-width: 768px) {
-          .NewDesign-Cell {
-            width: 85%;
-            margin: 0 7.5%;
+        .MvstProducts__Price {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          color: #888;
+          margin: 0;
+        }
+
+        /* Prev/Next Arrows */
+        .MvstProducts__Arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-70%);
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #fff;
+          border: none;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          transition: box-shadow 0.2s ease;
+        }
+
+        .MvstProducts__Arrow:hover {
+          box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .MvstProducts__Arrow--prev {
+          left: 10px;
+        }
+
+        .MvstProducts__Arrow--next {
+          right: 10px;
+        }
+
+        .MvstProducts__Arrow svg {
+          width: 14px;
+          height: 14px;
+          stroke: #1c1c1c;
+          fill: none;
+          stroke-width: 2;
+        }
+
+        /* View All Button */
+        .MvstProducts__ViewAll {
+          text-align: center;
+          margin-top: 50px;
+        }
+
+        .MvstProducts__ViewAllBtn {
+          display: inline-block;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #fff;
+          background: #1c1c1c;
+          border: none;
+          padding: 16px 40px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: background 0.3s ease;
+        }
+
+        .MvstProducts__ViewAllBtn:hover {
+          background: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+          .MvstProducts__Card {
+            width: 33.33%;
           }
         }
 
-        /* 3. CARD DESIGN */
-        .ProductCard {
-          background: #ffffff;
-          border-radius: 20px;
-          padding: 70px 20px 30px 20px;
-          text-align: center;
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          overflow: visible !important;
-          transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        @media (max-width: 768px) {
+          .MvstProducts__Title {
+            font-size: 22px;
+            letter-spacing: 5px;
+          }
+          .MvstProducts__Card {
+            width: 50%;
+            padding: 0 10px;
+          }
+          .MvstProducts__Carousel {
+            padding: 0 40px;
+          }
+          .MvstProducts {
+            padding: 50px 0 40px;
+          }
         }
 
-        /* 4. FLOATING IMAGE WRAPPER */
-        .ProductCard__ImageWrapper {
-          position: relative;
-          width: 100%;
-          height: 200px;
-          display: flex;
-          align-items: flex-end;
-          justify-content: center;
-          margin-top: -160px;
-          margin-bottom: 20px;
-          z-index: 50;
-        }
-
-        .ProductCard__Image {
-          max-width: 100%;
-          max-height: 240px;
-          height: auto;
-          object-fit: contain;
-          filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
-        }
-
-        /* TYPOGRAPHY & BUTTONS */
-        .ProductCard__Title {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 20px;
-          color: #333;
-          margin-bottom: 10px;
-          transition: color 0.3s ease;
-        }
-
-        .ProductCard__Desc {
-          font-family: 'Nunito Sans', sans-serif;
-          font-size: 13px;
-          color: #777;
-          margin-bottom: 20px;
-          line-height: 1.4;
-          padding: 0 10px;
-          transition: color 0.3s ease;
-        }
-
-        .ProductCard__Price {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 24px;
-          color: #333;
-          margin-bottom: 25px;
-          transition: color 0.3s ease;
-        }
-
-        .ProductCard__Actions {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          width: 100%;
-        }
-
-        .ProductCard__Qty {
-          display: flex;
-          align-items: center;
-          font-weight: bold;
-          font-family: 'Montserrat', sans-serif;
-          color: #333;
-          transition: color 0.3s ease;
-        }
-
-        .Qty-Btn {
-          cursor: pointer;
-          padding: 0 8px;
-          font-size: 18px;
-        }
-
-        .Qty-Val {
-          padding: 0 8px;
-        }
-
-        .ProductCard__Button {
-          background: white;
-          border: 2px solid #f6a429;
-          color: #f6a429;
-          padding: 10px 25px;
-          border-radius: 50px;
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 12px;
-          cursor: pointer;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          transition: all 0.3s ease;
-          white-space: nowrap;
-        }
-
-        /* =========================================
-       ACTIVE (CENTER) SLIDE STYLES 
-       ========================================= */
-
-        .NewDesign-Cell.is-selected {
-          /* Added translateY to move the center card down */
-          transform: scale(1.1) translateY(40px);
-          z-index: 100;
-        }
-
-        /* Orange Background for Center Card */
-        .NewDesign-Cell.is-selected .ProductCard {
-          background: #f6a429;
-          box-shadow: 0 30px 60px rgba(246, 164, 41, 0.4);
-        }
-
-        /* White Text for Center Card */
-        .NewDesign-Cell.is-selected .ProductCard__Title,
-        .NewDesign-Cell.is-selected .ProductCard__Desc,
-        .NewDesign-Cell.is-selected .ProductCard__Price,
-        .NewDesign-Cell.is-selected .ProductCard__Qty {
-          color: #ffffff;
-        }
-
-        /* Inverted Button for Center Card */
-        .NewDesign-Cell.is-selected .ProductCard__Button {
-          background: #ffffff;
-          color: #f6a429;
-          border: 2px solid #ffffff;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        @media (max-width: 480px) {
+          .MvstProducts__Card {
+            width: 80%;
+          }
         }
       </style>
 
-      <section class="NewDesign-Section">
-        <header class="SectionHeader SectionHeader--center">
-          <div class="Container">
-            <h3 class="SectionHeader__SubHeading Heading u-h6" style="color:#999">EXPLORE</h3>
-            <h2 class="SectionHeader__Heading Heading u-h1" style="color:#333">All Our Medical Products</h2>
-          </div>
-        </header>
+      <section class="MvstProducts">
+        <div class="MvstProducts__Header">
+          <h2 class="MvstProducts__Title">All Our Medical Products</h2>
+        </div>
 
-        <div class="NewDesign-Carousel" data-flickity='{ 
-      "cellAlign": "center", 
-      "contain": true, 
-      "wrapAround": true, 
-      "prevNextButtons": false, 
-      "pageDots": false,
-      "groupCells": false,
-      "autoPlay": 3000,
-      "pauseAutoPlayOnHover": true,
-      "selectedAttraction": 0.015,
-      "friction": 0.25
-    }'>
+        <div class="MvstProducts__Carousel">
+          <div class="MvstProducts__Slider" data-flickity='{
+            "cellAlign": "left",
+            "contain": true,
+            "wrapAround": true,
+            "prevNextButtons": false,
+            "pageDots": false,
+            "groupCells": false,
+            "freeScroll": false,
+            "autoPlay": 4000,
+            "pauseAutoPlayOnHover": true
+          }'>
 
-          <!-- <div class="NewDesign-Cell">
-            <div class="ProductCard">
-              <div class="ProductCard__ImageWrapper">
-                <img src="assets/jatyadi.png" class="ProductCard__Image" alt="Jatyadi Balm">
-              </div>
-              <h3 class="ProductCard__Title">Jatyadi Balm</h3>
-              <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor.</p>
-              <div class="ProductCard__Price">₹50.00</div>
-              <div class="ProductCard__Actions">
-                <div class="ProductCard__Qty">
-                  <span class="Qty-Btn">-</span>
-                  <span class="Qty-Val">1</span>
-                  <span class="Qty-Btn">+</span>
+            <div class="MvstProducts__Card">
+              <a class="MvstProducts__CardInner" href="pages/adarkc.html">
+                <div class="MvstProducts__ImageWrap">
+                  <img class="MvstProducts__Image" src="assets/aphdc.png" alt="Aphrodisiac Dark Chocolate Slab">
                 </div>
-                <button class="ProductCard__Button">ADD TO CART</button>
-              </div>
+                <h3 class="MvstProducts__Name">Aphrodisiac Dark Chocolate Slab</h3>
+                <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
+              </a>
             </div>
-          </div> -->
 
-          <!-- <div class="NewDesign-Cell">
-            <div class="ProductCard">
-              <div class="ProductCard__ImageWrapper">
-                <img src="assets/shots.png" class="ProductCard__Image" alt="Mushtarista Shots">
-              </div>
-              <h3 class="ProductCard__Title">Mushtarista Shots</h3>
-              <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor.</p>
-              <div class="ProductCard__Price">₹150.00</div>
-              <div class="ProductCard__Actions">
-                <div class="ProductCard__Qty">
-                  <span class="Qty-Btn">-</span>
-                  <span class="Qty-Val">1</span>
-                  <span class="Qty-Btn">+</span>
+            <div class="MvstProducts__Card">
+              <a class="MvstProducts__CardInner" href="pages/amilkc.html">
+                <div class="MvstProducts__ImageWrap">
+                  <img class="MvstProducts__Image" src="assets/aphmc.png" alt="Aphrodisiac Milk Chocolate Slab">
                 </div>
-                <button class="ProductCard__Button">ADD TO CART</button>
-              </div>
+                <h3 class="MvstProducts__Name">Aphrodisiac Milk Chocolate Slab</h3>
+                <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
+              </a>
             </div>
-          </div> -->
 
-          <div class="NewDesign-Cell">
-            <div class="ProductCard">
-              <div class="ProductCard__ImageWrapper">
-                <img src="assets/aphdc.png" class="ProductCard__Image" alt="Dark Chocolate Slab">
-              </div>
-              <h3 class="ProductCard__Title">Dark Chocolate</h3>
-              <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor.</p>
-              <div class="ProductCard__Price">₹250.00</div>
-              <div class="ProductCard__Actions">
-                <div class="ProductCard__Qty">
-                  <span class="Qty-Btn">-</span>
-                  <span class="Qty-Val">1</span>
-                  <span class="Qty-Btn">+</span>
+            <div class="MvstProducts__Card">
+              <a class="MvstProducts__CardInner" href="pages/cdarkc.html">
+                <div class="MvstProducts__ImageWrap">
+                  <img class="MvstProducts__Image" src="assets/chdc.png" alt="Chyawanaprash Dark Chocolate Slab">
                 </div>
-                <button class="ProductCard__Button">ADD TO CART</button>
-              </div>
+                <h3 class="MvstProducts__Name">Chyawanaprash Dark Chocolate Slab</h3>
+                <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
+              </a>
             </div>
+
+            <div class="MvstProducts__Card">
+              <a class="MvstProducts__CardInner" href="pages/cmilkc.html">
+                <div class="MvstProducts__ImageWrap">
+                  <img class="MvstProducts__Image" src="assets/chmc.png" alt="Chyawanaprash Milk Chocolate Slab">
+                </div>
+                <h3 class="MvstProducts__Name">Chyawanaprash Milk Chocolate Slab</h3>
+                <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
+              </a>
+            </div>
+
+            <div class="MvstProducts__Card">
+              <a class="MvstProducts__CardInner" href="pages/bmilkc.html">
+                <div class="MvstProducts__ImageWrap">
+                  <img class="MvstProducts__Image" src="assets/brmc.png" alt="Brahmi Milk Chocolate Slab">
+                </div>
+                <h3 class="MvstProducts__Name">Brahmi Milk Chocolate Slab</h3>
+                <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
+              </a>
+            </div>
+
           </div>
 
-          <div class="NewDesign-Cell">
-            <div class="ProductCard">
-              <div class="ProductCard__ImageWrapper">
-                <img src="assets/aphmc.png" class="ProductCard__Image" alt="Milk Chocolate Slab">
-              </div>
-              <h3 class="ProductCard__Title">Milk Chocolate</h3>
-              <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor.</p>
-              <div class="ProductCard__Price">₹250.00</div>
-              <div class="ProductCard__Actions">
-                <div class="ProductCard__Qty">
-                  <span class="Qty-Btn">-</span>
-                  <span class="Qty-Val">1</span>
-                  <span class="Qty-Btn">+</span>
-                </div>
-                <button class="ProductCard__Button">ADD TO CART</button>
-              </div>
-            </div>
-          </div>
+          <!-- Prev/Next Arrows -->
+          <button class="MvstProducts__Arrow MvstProducts__Arrow--prev" aria-label="Previous" onclick="document.querySelector('.MvstProducts__Slider').flickity && document.querySelector('.MvstProducts__Slider').flickity.previous()">
+            <svg viewBox="0 0 14 14"><polyline points="10 1 4 7 10 13"></polyline></svg>
+          </button>
+          <button class="MvstProducts__Arrow MvstProducts__Arrow--next" aria-label="Next" onclick="document.querySelector('.MvstProducts__Slider').flickity && document.querySelector('.MvstProducts__Slider').flickity.next()">
+            <svg viewBox="0 0 14 14"><polyline points="4 1 10 7 4 13"></polyline></svg>
+          </button>
+        </div>
 
-          <div class="NewDesign-Cell">
-            <div class="ProductCard">
-              <div class="ProductCard__ImageWrapper">
-                <img src="assets/brmc.png" class="ProductCard__Image" alt="Brahmi Chocolate Slab">
-              </div>
-              <h3 class="ProductCard__Title">Brahmi Chocolate</h3>
-              <p class="ProductCard__Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor.</p>
-              <div class="ProductCard__Price">₹250.00</div>
-              <div class="ProductCard__Actions">
-                <div class="ProductCard__Qty">
-                  <span class="Qty-Btn">-</span>
-                  <span class="Qty-Val">1</span>
-                  <span class="Qty-Btn">+</span>
-                </div>
-                <button class="ProductCard__Button">ADD TO CART</button>
-              </div>
-            </div>
-          </div>
-
+        <div class="MvstProducts__ViewAll">
+          <a class="MvstProducts__ViewAllBtn" href="pages/products.html">View all</a>
         </div>
       </section>
+
+      <!-- Arrow button JS (Flickity API) -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var sliderEl = document.querySelector('.MvstProducts__Slider');
+          // Wait for Flickity to initialize
+          var checkFlickity = setInterval(function() {
+            if (sliderEl && sliderEl.classList.contains('flickity-enabled')) {
+              var flkty = Flickity.data(sliderEl);
+              document.querySelector('.MvstProducts__Arrow--prev').addEventListener('click', function(e) {
+                e.preventDefault();
+                flkty.previous();
+              });
+              document.querySelector('.MvstProducts__Arrow--next').addEventListener('click', function(e) {
+                e.preventDefault();
+                flkty.next();
+              });
+              clearInterval(checkFlickity);
+            }
+          }, 200);
+        });
+      </script>
+    </div>
+
     </div>
     <div class="shopify-section" id="shopify-section-template--16772990828800__1641828472fc7c3016">
       <section id="section-template--16772990828800__1641828472fc7c3016">
