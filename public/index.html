@@ -1639,13 +1639,15 @@ Version: 2.43.0
       }
 
       .InstaSection__Title {
-        text-align: center;
         font-family: 'Montserrat', sans-serif;
-        font-size: 21px;
-        font-weight: bold;
-        letter-spacing: 2px;
+        font-size: 32px;
+        font-weight: 400;
+        letter-spacing: 8px;
+        text-transform: uppercase;
         color: #1c1c1c;
-        margin: 0 0 30px 0;
+        text-align: center;
+        margin-bottom: 50px;
+
       }
 
       .InstaSection__Carousel {
@@ -1985,13 +1987,14 @@ Version: 2.43.0
       }
 
       .ShopOnSection__Title {
-        text-align: center;
         font-family: 'Montserrat', sans-serif;
-        font-size: 21px;
-        font-weight: bold;
-        letter-spacing: 2px;
+        font-size: 32px;
+        font-weight: 400;
+        letter-spacing: 8px;
+        text-transform: uppercase;
         color: #1c1c1c;
-        margin: 0 0 30px 0;
+        text-align: center;
+        margin-bottom: 50px;
       }
 
       .ShopOnSection__Container {
@@ -2041,19 +2044,15 @@ Version: 2.43.0
       .ShopOnSection__IconCircle {
         width: 60px;
         height: 60px;
-        background: #fff;
-        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         margin-bottom: 10px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease;
       }
 
       .ShopOnSection__Link:hover .ShopOnSection__IconCircle {
         transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
 
       .ShopOnSection__IconText {
@@ -2076,6 +2075,51 @@ Version: 2.43.0
         width: 32px;
         height: 32px;
         object-fit: contain;
+      }
+
+      /* Ultimate Packing & Shipping Animation */
+      @keyframes ultimateBoxPack {
+        0% { transform: translateY(-20px); opacity: 0; }
+        15% { opacity: 1; }
+        35% { transform: translateY(8px); opacity: 1; }
+        100% { transform: translateY(8px); opacity: 1; }
+      }
+
+      @keyframes ultimateGroupShip {
+        0%, 50% { transform: translateX(0); opacity: 1; }
+        85% { transform: translateX(60px); opacity: 0; }
+        100% { transform: translateX(60px); opacity: 0; }
+      }
+
+      @keyframes ultimateWheelSpin {
+        0%, 50% { transform: rotate(0deg); }
+        85% { transform: rotate(1080deg); }
+        100% { transform: rotate(1080deg); }
+      }
+
+      .ultimate-shipping-container {
+        position: relative;
+        overflow: hidden;
+        width: 100px;
+        height: 60px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #box-packer {
+        animation: ultimateBoxPack 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      #truck-mover {
+        animation: ultimateGroupShip 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .ultimate-wheel {
+        transform-origin: center;
+        transform-box: fill-box;
+        animation: ultimateWheelSpin 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       @media (max-width: 768px) {
@@ -2141,12 +2185,23 @@ Version: 2.43.0
 
           <!-- Free Shipping -->
           <div class="ShopOnSection__Column">
+
+
             <h3 class="ShopOnSection__ColumnTitle">Free Shipping</h3>
-            <div class="ShopOnSection__IconCircle" style="margin: 0 auto 15px auto;">
-              <svg class="ShopOnSection__IconSVG" viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.5">
-                <path d="M1 3h15v13H1V3zM16 8l4 0l3 3l0 5l-7 0" stroke-linecap="round" stroke-linejoin="round" />
-                <circle cx="5.5" cy="18.5" r="2.5" />
-                <circle cx="18.5" cy="18.5" r="2.5" />
+            <div class="ultimate-shipping-container" style="margin: 0 auto 15px auto;">
+              <svg class="ShopOnSection__IconSVG" viewBox="0 0 40 24" fill="none" stroke="#1c1c1c" stroke-width="1.5" style="width: 100%; height: 100%;">
+                <!-- Root Mover Group (Animates X) -->
+                <g id="truck-mover">
+                  <!-- Box Group (Animates Y) -->
+                  <g id="box-packer">
+                    <rect x="4" y="0" width="8" height="6" fill="#795548" stroke="none" />
+                  </g>
+                  <!-- Truck Body -->
+                  <path d="M1 7h15v9H1V7zM16 10l4 0l3 3l0 3l-7 0" stroke-linecap="round" stroke-linejoin="round" />
+                  <!-- Wheels -->
+                  <circle class="ultimate-wheel" cx="5.5" cy="18.5" r="2.5" />
+                  <circle class="ultimate-wheel" cx="18.5" cy="18.5" r="2.5" />
+                </g>
               </svg>
             </div>
             <p class="ShopOnSection__Description">
