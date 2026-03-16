@@ -414,6 +414,7 @@
   </script>
   <script src="../js/sca_affiliate.js" type="text/javascript">
   </script>
+  <link href="../css/custom-navbar.css" rel="stylesheet" />
   <link href="../css/font-awesome.min.css" rel="stylesheet" />
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
@@ -2042,6 +2043,189 @@
           </ul>
         </div>
       </div>
+
+    <style>
+      /* ===== SHOP ON SECTION ===== */
+      .ShopOnSection {
+        padding: 60px 0;
+        background-color: #f9f9f9;
+        border-top: 1px solid #e8e8e8;
+      }
+
+      .ShopOnSection__Title {
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 21px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #1c1c1c;
+        margin: 0 0 30px 0;
+      }
+
+      .ShopOnSection__Container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .ShopOnSection__Column {
+        flex: 1;
+        text-align: center;
+      }
+
+      .ShopOnSection__ColumnTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #1c1c1c;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .ShopOnSection__Grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .ShopOnSection__Link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #5c5c5c;
+        transition: color 0.3s ease;
+      }
+
+      .ShopOnSection__Link:hover {
+        color: #1c1c1c;
+      }
+
+      .ShopOnSection__IconCircle {
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .ShopOnSection__Link:hover .ShopOnSection__IconCircle {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .ShopOnSection__IconText {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .ShopOnSection__Description {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #5c5c5c;
+        max-width: 280px;
+        margin: 0 auto;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .ShopOnSection__IconSVG {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+
+      @media (max-width: 768px) {
+        .ShopOnSection__Container {
+          flex-direction: column;
+          gap: 50px;
+        }
+
+        .ShopOnSection__Column {
+          width: 100%;
+        }
+      }
+    </style>
+
+    <div class="shopify-section" id="shopify-section-shop-on">
+      <section class="ShopOnSection">
+        <h2 class="ShopOnSection__Title">SHOP ON</h2>
+
+        <div class="ShopOnSection__Container">
+          <!-- Quick Commerce -->
+          <div class="ShopOnSection__Column">
+            <h3 class="ShopOnSection__ColumnTitle">Quick Commerce</h3>
+            <div class="ShopOnSection__Grid">
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/bkit.png" alt="Blinkit" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Blinkit</span>
+              </a>
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/zep.png" alt="Zepto" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Zepto</span>
+              </a>
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/imart.png" alt="Instamart" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Instamart</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Ecommerce -->
+          <div class="ShopOnSection__Column">
+            <h3 class="ShopOnSection__ColumnTitle">Ecommerce</h3>
+            <div class="ShopOnSection__Grid">
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/azon.png" alt="Amazon" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Amazon</span>
+              </a>
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/fkart.png" alt="Flipkart" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Flipkart</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Free Shipping -->
+          <div class="ShopOnSection__Column">
+            <h3 class="ShopOnSection__ColumnTitle">Free Shipping</h3>
+            <div class="ShopOnSection__Grid">
+                <div class="ShopOnSection__Link">
+                    <div class="ShopOnSection__IconCircle">
+                        <svg class="ShopOnSection__IconSVG" viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.5">
+                            <path d="M1 3h15v13H1V3zM16 8l4 0l3 3l0 5l-7 0" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="5.5" cy="18.5" r="2.5" />
+                            <circle cx="18.5" cy="18.5" r="2.5" />
+                        </svg>
+                    </div>
+                    <span class="ShopOnSection__IconText">Free Shipping</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <footer id="section-footer" class="Footer Footer--withMargin" role="contentinfo" data-section-id="footer" data-section-type="footer">
   </div>

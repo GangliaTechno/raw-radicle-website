@@ -431,123 +431,7 @@ Version: 2.43.0
       ga('set', 'userId', 'USER_ID'); // Set the user ID using signed-in user_id.
     };
   </script>
-  <style>
-    /* Predictive Search Dropdown Styles */
-    /* Search Bar & Dropdown Styles */
-    .Header__SearchContainer {
-      position: relative;
-    }
 
-    .Header__SearchForm {
-      display: flex;
-      align-items: center;
-      border: 1px solid #e1e1e1;
-      border-radius: 30px;
-      padding: 6px 15px;
-      width: 250px;
-      transition: all 0.2s;
-      background: transparent;
-    }
-
-    /* Transparent state styles */
-    .Header--transparent .Header__SearchForm {
-      border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .Header--transparent .Header__SearchForm:focus-within {
-      border-color: #ffffff;
-    }
-
-    .Header--transparent .Header__SearchInput {
-      color: #ffffff;
-    }
-
-    .Header--transparent .Header__SearchInput::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .Header--transparent .Header__SearchButton {
-      color: #ffffff;
-    }
-
-    /* Revert to dark when not transparent (scrolled) */
-    .Header:not(.Header--transparent) .Header__SearchForm {
-      border-color: #e1e1e1;
-    }
-
-    .Header:not(.Header--transparent) .Header__SearchForm:focus-within {
-      border-color: #1c1c1c;
-    }
-
-    .Header:not(.Header--transparent) .Header__SearchInput {
-      color: #1c1c1c;
-    }
-
-    .Header__SearchInput {
-      border: none;
-      background: transparent;
-      width: 100%;
-      outline: none;
-      font-size: 13px;
-      color: #1c1b1b;
-    }
-
-    #search-results {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: #ffffff;
-      border: 1px solid #e1e1e1;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 100;
-      display: none;
-      max-height: 300px;
-      overflow-y: auto;
-      margin-top: 5px;
-    }
-
-    .search-result-item {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-      border-bottom: 1px solid #f7f7f7;
-      text-decoration: none !important;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-
-    .search-result-item:hover {
-      background-color: #f9f9f9;
-    }
-
-    .search-result-image {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      margin-right: 12px;
-      border-radius: 4px;
-    }
-
-    .search-result-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .search-result-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .search-result-price {
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 12px;
-      color: #888;
-    }
-  </style>
 </head>
 
 <body
@@ -1779,6 +1663,336 @@ Version: 2.43.0
           min-width: calc((100% - 4px) / 2);
         }
       }
+
+      /* ===== FAQ & FEEDBACK SECTION ===== */
+      .FAQFeedbackSection {
+        padding: 100px 0;
+        background-color: #f8f8fb; /* Light pearl background */
+      }
+
+      .FAQFeedback__Container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        gap: 80px;
+        align-items: flex-start; /* Ensure columns start from top */
+      }
+
+      .FAQFeedback__Column {
+        flex: 1;
+      }
+
+      .FAQFeedback__Title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 32px;
+        font-weight: 400;
+        letter-spacing: 8px;
+        color: #1c1c1c;
+        margin-bottom: 30px; /* Reduced gap */
+        text-transform: uppercase;
+        position: relative;
+        padding-bottom: 15px; /* Space for underline */
+      }
+
+      .FAQFeedback__Title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: #1c1c1c;
+      }
+
+      /* FAQ Accordion Styles */
+      .FAQ__List {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .FAQ__Item {
+        background: #fff;
+        border-radius: 24px; /* Perfectly match Feedback cards */
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+
+      .FAQ__Item:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        border-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .FAQ__Question {
+        padding: 24px 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .FAQ__Question h4 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        color: #1c1c1c;
+        transition: color 0.3s ease;
+      }
+
+      .FAQ__Icon {
+        width: 14px;
+        height: 14px;
+        stroke: #1c1c1c;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .FAQ__Answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 0 30px;
+        background: #fcfcfc;
+      }
+
+      .FAQ__Answer p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #5c5c5c;
+        margin: 0;
+        padding-bottom: 24px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.4s ease;
+      }
+
+      .FAQ__Item.is-active {
+        border-color: #1c1c1c;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .FAQ__Item.is-active h4 {
+        color: #1c1c1c;
+      }
+
+      .FAQ__Item.is-active .FAQ__Answer {
+        max-height: 250px;
+      }
+
+      .FAQ__Item.is-active .FAQ__Answer p {
+        opacity: 1;
+        transform: translateY(0);
+        padding-top: 10px;
+      }
+
+      .FAQ__Item.is-active .FAQ__Icon {
+        transform: rotate(180deg);
+      }
+
+      /* Feedback Carousel Styles */
+      .Feedback__Carousel {
+        position: relative;
+        overflow: visible;
+        padding: 0; /* Removed padding to align title baseline */
+        min-height: 400px;
+      }
+
+      .Feedback__Track {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+      }
+
+      .Feedback__Card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 50px;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        opacity: 0;
+        transform: translateZ(-100px) translateY(20px);
+        z-index: 0;
+      }
+
+      /* Stack States */
+      .Feedback__Card.is-active {
+        opacity: 1;
+        transform: translateZ(0) translateY(0);
+        z-index: 3;
+        pointer-events: all;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      }
+
+      .Feedback__Card.is-behind {
+        opacity: 0.8;
+        transform: translateZ(-50px) translateY(30px) scale(0.96);
+        z-index: 2;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .Feedback__Card.is-far-behind {
+        opacity: 0.4;
+        transform: translateZ(-100px) translateY(60px) scale(0.92);
+        z-index: 1;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      }
+
+      .Feedback__Card:hover {
+        transform: translateY(-5px) scale(1.02);
+      }
+
+      .Feedback__Rating {
+        display: flex;
+        gap: 6px;
+      }
+
+      .Feedback__Rating svg {
+        width: 18px;
+        height: 18px;
+        fill: #ffb400; /* Gold */
+      }
+
+      .Feedback__Text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.8;
+        color: #1c1c1c;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .Feedback__Text::before {
+        content: '“';
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        font-size: 60px;
+        color: rgba(0, 0, 0, 0.05);
+        font-family: serif;
+      }
+
+      .Feedback__User {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .Feedback__UserInitial {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #1c1c1c 0%, #444 100%);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 16px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .Feedback__UserName {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #1c1c1c;
+      }
+
+      /* In-card Navigation */
+      .Feedback__InCardNav {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        gap: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .Feedback__Card.is-active .Feedback__InCardNav {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+      }
+
+      .Feedback__InCardBtn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #f8f8fb;
+        border: 1px solid rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #1c1c1c;
+      }
+
+      .Feedback__InCardBtn:hover {
+        background: #1c1c1c;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .Feedback__InCardBtn svg {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2.5;
+      }
+
+      @media (max-width: 480px) {
+        .Feedback__InCardNav {
+          bottom: 20px;
+          right: 20px;
+          gap: 8px;
+        }
+        .Feedback__InCardBtn {
+          width: 32px;
+          height: 32px;
+        }
+        .Feedback__InCardBtn svg {
+          width: 12px;
+          height: 12px;
+        }
+        .Feedback__Card {
+          padding: 30px;
+        }
+      }
+
+      .Feedback__Nav {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .FAQFeedback__Container {
+          flex-direction: column;
+          gap: 60px;
+        }
+        .FAQFeedbackSection {
+          padding: 60px 0;
+        }
+      }
     </style>
 
     <div class="shopify-section shopify-section--bordered" id="shopify-section-instagram">
@@ -1946,10 +2160,211 @@ Version: 2.43.0
           </button>
         </div>
       </section>
+    </div>
 
-      <script>
-        (function () {
-          var track = document.getElementById('instaTrack');
+    <section class="FAQFeedbackSection">
+      <div class="FAQFeedback__Container">
+        <!-- FAQ Column -->
+        <div class="FAQFeedback__Column FAQFeedback__FAQ">
+          <h2 class="FAQFeedback__Title">Common Queries</h2>
+          <div class="FAQ__List">
+            <div class="FAQ__Item">
+              <div class="FAQ__Question">
+                <h4>How do I track my order?</h4>
+                <svg class="FAQ__Icon" viewBox="0 0 12 12" fill="none" stroke="currentColor">
+                  <path d="M1 4l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="FAQ__Answer">
+                <p>Once your order is shipped, you will receive an email with a tracking number and a link to track your package in real-time.</p>
+              </div>
+            </div>
+            <div class="FAQ__Item">
+              <div class="FAQ__Question">
+                <h4>What is your return policy?</h4>
+                <svg class="FAQ__Icon" viewBox="0 0 12 12" fill="none" stroke="currentColor">
+                  <path d="M1 4l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="FAQ__Answer">
+                <p>We offer a 30-day return policy for most items. Products must be in their original packaging and unused condition.</p>
+              </div>
+            </div>
+            <div class="FAQ__Item">
+              <div class="FAQ__Question">
+                <h4>Do you offer international shipping?</h4>
+                <svg class="FAQ__Icon" viewBox="0 0 12 12" fill="none" stroke="currentColor">
+                  <path d="M1 4l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="FAQ__Answer">
+                <p>Currently, we ship within India. We are working on expanding our reach to international customers soon.</p>
+              </div>
+            </div>
+            <div class="FAQ__Item">
+              <div class="FAQ__Question">
+                <h4>Are your products natural?</h4>
+                <svg class="FAQ__Icon" viewBox="0 0 12 12" fill="none" stroke="currentColor">
+                  <path d="M1 4l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="FAQ__Answer">
+                <p>Yes, all Raw Radicles products are made with 100% natural ingredients, with no artificial preservatives or colors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Column -->
+        <div class="FAQFeedback__Column FAQFeedback__Feedback">
+          <h2 class="FAQFeedback__Title">What People Say</h2>
+          <div class="Feedback__Carousel">
+            <div class="Feedback__Track" id="feedbackTrack">
+              <div class="Feedback__Card">
+                <div class="Feedback__Rating">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <p class="Feedback__Text">"The Chyawanaprash chocolate is a game changer. Healthy and delicious at the same time!"</p>
+                <div class="Feedback__User">
+                  <div class="Feedback__UserInitial">A</div>
+                  <span class="Feedback__UserName">Aditi Sharma</span>
+                </div>
+                <div class="Feedback__InCardNav">
+                  <button class="Feedback__InCardBtn" aria-label="Previous">
+                    <svg viewBox="0 0 14 14"><polyline points="9 1 3 7 9 13"/></svg>
+                  </button>
+                  <button class="Feedback__InCardBtn" aria-label="Next">
+                    <svg viewBox="0 0 14 14"><polyline points="5 1 11 7 5 13"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="Feedback__Card">
+                <div class="Feedback__Rating">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <p class="Feedback__Text">"Premium quality products and very prompt delivery. Highly impressed with the brand."</p>
+                <div class="Feedback__User">
+                  <div class="Feedback__UserInitial">R</div>
+                  <span class="Feedback__UserName">Rohan Verma</span>
+                </div>
+                <div class="Feedback__InCardNav">
+                  <button class="Feedback__InCardBtn" aria-label="Previous">
+                    <svg viewBox="0 0 14 14"><polyline points="9 1 3 7 9 13"/></svg>
+                  </button>
+                  <button class="Feedback__InCardBtn" aria-label="Next">
+                    <svg viewBox="0 0 14 14"><polyline points="5 1 11 7 5 13"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        // FAQ Accordion Logic
+        var faqQuestions = document.querySelectorAll('.FAQ__Question');
+        faqQuestions.forEach(function(question) {
+          question.addEventListener('click', function() {
+            var item = this.parentElement;
+            var isActive = item.classList.contains('is-active');
+            
+            // Close all other items
+            document.querySelectorAll('.FAQ__Item').forEach(function(el) {
+              el.classList.remove('is-active');
+            });
+
+            if (!isActive) {
+              item.classList.add('is-active');
+            }
+          });
+        });
+
+        // Feedback Stacked Carousel Logic
+        var fbTrack = document.getElementById('feedbackTrack');
+        var fbCards = fbTrack ? Array.from(fbTrack.children) : [];
+        var fbPrev = document.getElementById('feedbackPrev');
+        var fbNext = document.getElementById('feedbackNext');
+        var fbIndex = 0;
+        var autoplayInterval;
+
+        function updateFeedbackStack() {
+          fbCards.forEach(function(card, i) {
+            card.classList.remove('is-active', 'is-behind', 'is-far-behind');
+            
+            var pos = (i - fbIndex + fbCards.length) % fbCards.length;
+            
+            if (pos === 0) {
+              card.classList.add('is-active');
+            } else if (pos === 1) {
+              card.classList.add('is-behind');
+            } else if (pos === 2) {
+              card.classList.add('is-far-behind');
+            }
+          });
+        }
+
+        function nextFeedback() {
+          fbIndex = (fbIndex + 1) % fbCards.length;
+          updateFeedbackStack();
+        }
+
+        function prevFeedback() {
+          fbIndex = (fbIndex - 1 + fbCards.length) % fbCards.length;
+          updateFeedbackStack();
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          autoplayInterval = setInterval(nextFeedback, 5000);
+        }
+
+        function stopAutoplay() {
+          if (autoplayInterval) clearInterval(autoplayInterval);
+        }
+
+        if (fbTrack) {
+          updateFeedbackStack();
+          startAutoplay();
+          
+          fbTrack.addEventListener('mouseenter', stopAutoplay);
+          fbTrack.addEventListener('mouseleave', startAutoplay);
+        }
+
+        // In-card button listeners
+        document.querySelectorAll('.Feedback__InCardBtn').forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent card hover/click interference
+            if (this.getAttribute('aria-label') === 'Next') {
+              nextFeedback();
+            } else {
+              prevFeedback();
+            }
+            startAutoplay(); // Reset timer
+          });
+        });
+
+        if (fbPrev) fbPrev.addEventListener('click', function() { 
+          prevFeedback(); 
+          startAutoplay(); // Reset timer
+        });
+        if (fbNext) fbNext.addEventListener('click', function() { 
+          nextFeedback(); 
+          startAutoplay(); // Reset timer
+        });
+
+        // Existing Instagram logic
+        var track = document.getElementById('instaTrack');
           var prevBtn = document.getElementById('instaPrev');
           var nextBtn = document.getElementById('instaNext');
           var offset = 0;
@@ -1976,7 +2391,6 @@ Version: 2.43.0
           if (nextBtn) nextBtn.addEventListener('click', function () { slide(1); });
         })();
       </script>
-    </div>
 
     <style>
       /* ===== SHOP ON SECTION ===== */
@@ -2042,8 +2456,8 @@ Version: 2.43.0
       }
 
       .ShopOnSection__IconCircle {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2072,9 +2486,14 @@ Version: 2.43.0
       }
 
       .ShopOnSection__IconSVG {
-        width: 32px;
-        height: 32px;
+        width: 60px;
+        height: 60px;
         object-fit: contain;
+      }
+
+      .ShopOnSection__IconSVG--small {
+        width: 50px;
+        height: 50px;
       }
 
       /* Ultimate Packing & Shipping Animation */
@@ -2151,13 +2570,13 @@ Version: 2.43.0
               </a>
               <a href="#" class="ShopOnSection__Link">
                 <div class="ShopOnSection__IconCircle">
-                  <img src="assets/zep.png" alt="Zepto" class="ShopOnSection__IconSVG">
+                  <img src="assets/zep.png" alt="Zepto" class="ShopOnSection__IconSVG ShopOnSection__IconSVG--small">
                 </div>
                 <span class="ShopOnSection__IconText">Zepto</span>
               </a>
               <a href="#" class="ShopOnSection__Link">
                 <div class="ShopOnSection__IconCircle">
-                  <img src="assets/imart.png" alt="Instamart" class="ShopOnSection__IconSVG">
+                  <img src="assets/imart.png" alt="Instamart" class="ShopOnSection__IconSVG ShopOnSection__IconSVG--small">
                 </div>
                 <span class="ShopOnSection__IconText">Instamart</span>
               </a>
