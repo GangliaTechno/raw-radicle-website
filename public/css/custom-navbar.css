@@ -139,6 +139,7 @@
     border-radius: 30px !important;
     padding: 6px 15px !important;
     width: 250px !important;
+    max-width: 100% !important;
     transition: all 0.2s !important;
     background: transparent !important;
 }
@@ -279,11 +280,35 @@
 /* ===== TABLET ===== */
 @media screen and (max-width: 1140px) {
     .Header--logoLeft .Header__FlexItem--logo {
-        flex: 0 0 150px !important;
+        flex: 0 0 auto !important;
+        min-width: 44px !important;
     }
 
     .Header--logoLeft .Header__FlexItem--fill:last-child {
-        flex: 0 0 150px !important;
+        flex: 0 0 auto !important;
+        min-width: 44px !important;
+    }
+
+    .Header__SearchForm {
+        width: 180px !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .Header__MainNav {
+        display: none !important;
+    }
+    
+    .Header__FlexItem--logo {
+        flex: 0 0 auto !important;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .Header__FlexItem--fill {
+        flex: 1 1 0% !important;
+        min-width: 0 !important;
     }
 }
 
@@ -297,9 +322,139 @@
 
     .Header__Wrapper {
         height: 63px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    .Header__FlexItem--logo {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        flex: none !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .Header__LogoImage {
-        max-width: 120px !important;
+        max-width: 90px !important;
+    }
+
+    .Header__FlexItem--fill:first-child {
+        display: none !important; /* Completely remove from layout on mobile */
+    }
+
+    .Header__FlexItem--fill:last-child {
+        flex: 1 !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
+        padding-right: 5px !important;
+    }
+
+    .Header__Icon {
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .Header__Icon {
+        margin: 0 !important; /* Reset margins for grouped icons */
+    }
+
+    .Header__SearchForm {
+        display: none !important; /* Hide search bar input on small mobile, use search icon instead */
+    }
+}
+
+/* Fix product slider layout overlap and responsiveness */
+@media screen and (max-width: 480px) {
+    .MvstProducts__Card {
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+    .MvstProducts__Name {
+        min-height: 40px !important; /* Ensure enough space for titles */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .MvstProducts__Price {
+        position: relative !important;
+        margin-top: 10px !important;
+    }
+}
+
+/* Fix product slider layout overlap and responsiveness */
+@media screen and (max-width: 768px) {
+    .MvstProducts__Card {
+        width: 100% !important;
+        padding: 0 20px !important;
+        margin-bottom: 30px !important;
+    }
+    .MvstProducts__ImageWrap {
+        max-width: 300px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .MvstProducts__Name {
+        font-size: 14px !important;
+        min-height: auto !important;
+        margin-bottom: 8px !important;
+        padding: 0 10px !important;
+    }
+    .MvstProducts__Price {
+        position: relative !important;
+        margin-top: 5px !important;
+        font-size: 12px !important;
+    }
+    .MvstProducts__Slider {
+        width: 100% !important;
+    }
+}
+
+/* ===== GLOBAL FOOTER RESPONSIVENESS ===== */
+@media screen and (max-width: 640px) {
+    .Footer__Aside {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+
+    .Footer__Copyright {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Hide the pipes on mobile */
+    .Footer__Copyright {
+        color: transparent !important; /* Hide the literal "|" text */
+    }
+
+    .Footer__Copyright a,
+    .Footer__Copyright span {
+        color: #888 !important; /* Restore link color */
+        display: block !important;
+    }
+
+    .Footer__PaymentList {
+        justify-content: center !important;
+        margin-top: 10px !important;
+    }
+}
+
+/* Fix for search icon hidden state on some pages */
+.Header__Icon.hidden-desk {
+    display: inline-block !important;
+}
+
+@media screen and (min-width: 1141px) {
+    .Header__Icon.hidden-desk {
+        display: none !important;
     }
 }
