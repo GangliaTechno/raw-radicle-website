@@ -1125,21 +1125,26 @@ Version: 2.43.0
         @media screen and (max-width: 768px) {
           .SectionHeader__Heading {
             font-size: 28px !important;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Improved contrast */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            /* Improved contrast */
           }
+
           .SectionHeader__SubHeading {
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
           }
+
           .Slideshow__Content {
             bottom: 40px !important;
             left: 20px !important;
             padding: 0 20px !important;
           }
+
           .ButtonGroup {
             flex-direction: column !important;
             gap: 10px !important;
             width: 100% !important;
           }
+
           .ButtonGroup__Item {
             width: 100% !important;
             margin: 0 !important;
@@ -1210,13 +1215,34 @@ Version: 2.43.0
           margin-bottom: 20px;
           overflow: hidden;
           background: #f5f5f5;
+          position: relative; /* For secondary image positioning */
         }
 
         .MvstProducts__Image {
           max-width: 85%;
           max-height: 85%;
           object-fit: contain;
-          transition: transform 0.4s ease;
+          transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .MvstProducts__Image--secondary {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.9);
+          opacity: 0;
+          transition: transform 0.4s ease, opacity 0.4s ease;
+          pointer-events: none;
+        }
+
+        .MvstProducts__CardInner:hover .MvstProducts__Image--secondary {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .MvstProducts__CardInner:hover .MvstProducts__Image:not(.MvstProducts__Image--secondary) {
+          opacity: 0;
+          transform: scale(1.05);
         }
 
         .MvstProducts__Name {
@@ -1349,7 +1375,6 @@ Version: 2.43.0
             padding: 50px 0 40px;
           }
         }
-
       </style>
 
       <section class="MvstProducts">
@@ -1373,7 +1398,8 @@ Version: 2.43.0
             <div class="MvstProducts__Card">
               <a class="MvstProducts__CardInner" href="pages/adarkc.html">
                 <div class="MvstProducts__ImageWrap">
-                  <img class="MvstProducts__Image" src="assets/aphdc.png" alt="Aphrodisiac Dark Chocolate Slab">
+                  <img class="MvstProducts__Image" src="assets/ch1.png" alt="Aphrodisiac Dark Chocolate Slab">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch1-2.png" alt="Aphrodisiac Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Aphrodisiac Dark Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1383,7 +1409,8 @@ Version: 2.43.0
             <div class="MvstProducts__Card">
               <a class="MvstProducts__CardInner" href="pages/amilkc.html">
                 <div class="MvstProducts__ImageWrap">
-                  <img class="MvstProducts__Image" src="assets/aphmc.png" alt="Aphrodisiac Milk Chocolate Slab">
+                  <img class="MvstProducts__Image" src="assets/ch2.png" alt="Aphrodisiac Milk Chocolate Slab">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch2-2.png" alt="Aphrodisiac Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Aphrodisiac Milk Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1393,7 +1420,8 @@ Version: 2.43.0
             <div class="MvstProducts__Card">
               <a class="MvstProducts__CardInner" href="pages/cdarkc.html">
                 <div class="MvstProducts__ImageWrap">
-                  <img class="MvstProducts__Image" src="assets/chdc.png" alt="Chyawanaprash Dark Chocolate Slab">
+                  <img class="MvstProducts__Image" src="assets/ch3.png" alt="Chyawanaprash Dark Chocolate Slab">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch3-2.png" alt="Chyawanaprash Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Dark Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1403,7 +1431,8 @@ Version: 2.43.0
             <div class="MvstProducts__Card">
               <a class="MvstProducts__CardInner" href="pages/cmilkc.html">
                 <div class="MvstProducts__ImageWrap">
-                  <img class="MvstProducts__Image" src="assets/chmc.png" alt="Chyawanaprash Milk Chocolate Slab">
+                  <img class="MvstProducts__Image" src="assets/ch4.png" alt="Chyawanaprash Milk Chocolate Slab">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch4-1.png" alt="Chyawanaprash Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Milk Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1413,7 +1442,8 @@ Version: 2.43.0
             <div class="MvstProducts__Card">
               <a class="MvstProducts__CardInner" href="pages/bmilkc.html">
                 <div class="MvstProducts__ImageWrap">
-                  <img class="MvstProducts__Image" src="assets/brmc.png" alt="Brahmi Milk Chocolate Slab">
+                  <img class="MvstProducts__Image" src="assets/ch5.png" alt="Brahmi Milk Chocolate Slab">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch5-1.png" alt="Brahmi Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Brahmi Milk Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1685,7 +1715,8 @@ Version: 2.43.0
       /* ===== FAQ & FEEDBACK SECTION ===== */
       .FAQFeedbackSection {
         padding: 100px 0;
-        background-color: #f8f8fb; /* Light pearl background */
+        background-color: #f8f8fb;
+        /* Light pearl background */
       }
 
       .FAQFeedback__Container {
@@ -1694,7 +1725,8 @@ Version: 2.43.0
         padding: 0 20px;
         display: flex;
         gap: 80px;
-        align-items: flex-start; /* Ensure columns start from top */
+        align-items: flex-start;
+        /* Ensure columns start from top */
       }
 
       .FAQFeedback__Column {
@@ -1707,10 +1739,12 @@ Version: 2.43.0
         font-weight: 400;
         letter-spacing: 8px;
         color: #1c1c1c;
-        margin-bottom: 30px; /* Reduced gap */
+        margin-bottom: 30px;
+        /* Reduced gap */
         text-transform: uppercase;
         position: relative;
-        padding-bottom: 15px; /* Space for underline */
+        padding-bottom: 15px;
+        /* Space for underline */
       }
 
       .FAQFeedback__Title::after {
@@ -1732,7 +1766,8 @@ Version: 2.43.0
 
       .FAQ__Item {
         background: #fff;
-        border-radius: 24px; /* Perfectly match Feedback cards */
+        border-radius: 24px;
+        /* Perfectly match Feedback cards */
         border: 1px solid rgba(0, 0, 0, 0.05);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         overflow: hidden;
@@ -1814,7 +1849,8 @@ Version: 2.43.0
       .Feedback__Carousel {
         position: relative;
         overflow: visible;
-        padding: 0; /* Removed padding to align title baseline */
+        padding: 0;
+        /* Removed padding to align title baseline */
         min-height: 400px;
       }
 
@@ -1879,7 +1915,8 @@ Version: 2.43.0
       .Feedback__Rating svg {
         width: 18px;
         height: 18px;
-        fill: #ffb400; /* Gold */
+        fill: #ffb400;
+        /* Gold */
       }
 
       .Feedback__Text {
@@ -1920,7 +1957,7 @@ Version: 2.43.0
         justify-content: center;
         font-weight: 700;
         font-size: 16px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
 
       .Feedback__UserName {
@@ -1955,7 +1992,7 @@ Version: 2.43.0
         height: 36px;
         border-radius: 50%;
         background: #f8f8fb;
-        border: 1px solid rgba(0,0,0,0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1968,7 +2005,7 @@ Version: 2.43.0
         background: #1c1c1c;
         color: #fff;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
 
       .Feedback__InCardBtn svg {
@@ -1985,17 +2022,22 @@ Version: 2.43.0
           right: 20px;
           gap: 8px;
         }
+
         .Feedback__InCardBtn {
           width: 32px;
           height: 32px;
         }
+
         .Feedback__InCardBtn svg {
           width: 12px;
           height: 12px;
         }
+
         .Feedback__Card {
-          padding: 25px; /* Slightly reduced padding */
+          padding: 25px;
+          /* Slightly reduced padding */
         }
+
         .Feedback__Text {
           font-size: 16px;
         }
@@ -2010,6 +2052,7 @@ Version: 2.43.0
           flex-direction: column;
           gap: 60px;
         }
+
         .FAQFeedbackSection {
           padding: 60px 0;
         }
@@ -2197,7 +2240,8 @@ Version: 2.43.0
                 </svg>
               </div>
               <div class="FAQ__Answer">
-                <p>Once your order is shipped, you will receive an email with a tracking number and a link to track your package in real-time.</p>
+                <p>Once your order is shipped, you will receive an email with a tracking number and a link to track your
+                  package in real-time.</p>
               </div>
             </div>
             <div class="FAQ__Item">
@@ -2208,7 +2252,8 @@ Version: 2.43.0
                 </svg>
               </div>
               <div class="FAQ__Answer">
-                <p>We offer a 30-day return policy for most items. Products must be in their original packaging and unused condition.</p>
+                <p>We offer a 30-day return policy for most items. Products must be in their original packaging and
+                  unused condition.</p>
               </div>
             </div>
             <div class="FAQ__Item">
@@ -2219,7 +2264,8 @@ Version: 2.43.0
                 </svg>
               </div>
               <div class="FAQ__Answer">
-                <p>Currently, we ship within India. We are working on expanding our reach to international customers soon.</p>
+                <p>Currently, we ship within India. We are working on expanding our reach to international customers
+                  soon.</p>
               </div>
             </div>
             <div class="FAQ__Item">
@@ -2230,7 +2276,8 @@ Version: 2.43.0
                 </svg>
               </div>
               <div class="FAQ__Answer">
-                <p>Yes, all Raw Radicles products are made with 100% natural ingredients, with no artificial preservatives or colors.</p>
+                <p>Yes, all Raw Radicles products are made with 100% natural ingredients, with no artificial
+                  preservatives or colors.</p>
               </div>
             </div>
           </div>
@@ -2243,45 +2290,85 @@ Version: 2.43.0
             <div class="Feedback__Track" id="feedbackTrack">
               <div class="Feedback__Card">
                 <div class="Feedback__Rating">
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
                 </div>
-                <p class="Feedback__Text">"The Chyawanaprash chocolate is a game changer. Healthy and delicious at the same time!"</p>
+                <p class="Feedback__Text">"The Chyawanaprash chocolate is a game changer. Healthy and delicious at the
+                  same time!"</p>
                 <div class="Feedback__User">
                   <div class="Feedback__UserInitial">A</div>
                   <span class="Feedback__UserName">Aditi Sharma</span>
                 </div>
                 <div class="Feedback__InCardNav">
                   <button class="Feedback__InCardBtn" aria-label="Previous">
-                    <svg viewBox="0 0 14 14"><polyline points="9 1 3 7 9 13"/></svg>
+                    <svg viewBox="0 0 14 14">
+                      <polyline points="9 1 3 7 9 13" />
+                    </svg>
                   </button>
                   <button class="Feedback__InCardBtn" aria-label="Next">
-                    <svg viewBox="0 0 14 14"><polyline points="5 1 11 7 5 13"/></svg>
+                    <svg viewBox="0 0 14 14">
+                      <polyline points="5 1 11 7 5 13" />
+                    </svg>
                   </button>
                 </div>
               </div>
               <div class="Feedback__Card">
                 <div class="Feedback__Rating">
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
                 </div>
-                <p class="Feedback__Text">"Premium quality products and very prompt delivery. Highly impressed with the brand."</p>
+                <p class="Feedback__Text">"Premium quality products and very prompt delivery. Highly impressed with the
+                  brand."</p>
                 <div class="Feedback__User">
                   <div class="Feedback__UserInitial">R</div>
                   <span class="Feedback__UserName">Rohan Verma</span>
                 </div>
                 <div class="Feedback__InCardNav">
                   <button class="Feedback__InCardBtn" aria-label="Previous">
-                    <svg viewBox="0 0 14 14"><polyline points="9 1 3 7 9 13"/></svg>
+                    <svg viewBox="0 0 14 14">
+                      <polyline points="9 1 3 7 9 13" />
+                    </svg>
                   </button>
                   <button class="Feedback__InCardBtn" aria-label="Next">
-                    <svg viewBox="0 0 14 14"><polyline points="5 1 11 7 5 13"/></svg>
+                    <svg viewBox="0 0 14 14">
+                      <polyline points="5 1 11 7 5 13" />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -2295,13 +2382,13 @@ Version: 2.43.0
       (function () {
         // FAQ Accordion Logic
         var faqQuestions = document.querySelectorAll('.FAQ__Question');
-        faqQuestions.forEach(function(question) {
-          question.addEventListener('click', function() {
+        faqQuestions.forEach(function (question) {
+          question.addEventListener('click', function () {
             var item = this.parentElement;
             var isActive = item.classList.contains('is-active');
-            
+
             // Close all other items
-            document.querySelectorAll('.FAQ__Item').forEach(function(el) {
+            document.querySelectorAll('.FAQ__Item').forEach(function (el) {
               el.classList.remove('is-active');
             });
 
@@ -2320,11 +2407,11 @@ Version: 2.43.0
         var autoplayInterval;
 
         function updateFeedbackStack() {
-          fbCards.forEach(function(card, i) {
+          fbCards.forEach(function (card, i) {
             card.classList.remove('is-active', 'is-behind', 'is-far-behind');
-            
+
             var pos = (i - fbIndex + fbCards.length) % fbCards.length;
-            
+
             if (pos === 0) {
               card.classList.add('is-active');
             } else if (pos === 1) {
@@ -2357,14 +2444,14 @@ Version: 2.43.0
         if (fbTrack) {
           updateFeedbackStack();
           startAutoplay();
-          
+
           fbTrack.addEventListener('mouseenter', stopAutoplay);
           fbTrack.addEventListener('mouseleave', startAutoplay);
         }
 
         // In-card button listeners
-        document.querySelectorAll('.Feedback__InCardBtn').forEach(function(btn) {
-          btn.addEventListener('click', function(e) {
+        document.querySelectorAll('.Feedback__InCardBtn').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
             e.stopPropagation(); // Prevent card hover/click interference
             if (this.getAttribute('aria-label') === 'Next') {
               nextFeedback();
@@ -2375,43 +2462,43 @@ Version: 2.43.0
           });
         });
 
-        if (fbPrev) fbPrev.addEventListener('click', function() { 
-          prevFeedback(); 
+        if (fbPrev) fbPrev.addEventListener('click', function () {
+          prevFeedback();
           startAutoplay(); // Reset timer
         });
-        if (fbNext) fbNext.addEventListener('click', function() { 
-          nextFeedback(); 
+        if (fbNext) fbNext.addEventListener('click', function () {
+          nextFeedback();
           startAutoplay(); // Reset timer
         });
 
         // Existing Instagram logic
         var track = document.getElementById('instaTrack');
-          var prevBtn = document.getElementById('instaPrev');
-          var nextBtn = document.getElementById('instaNext');
-          var offset = 0;
-          var items = track ? track.children.length : 0;
+        var prevBtn = document.getElementById('instaPrev');
+        var nextBtn = document.getElementById('instaNext');
+        var offset = 0;
+        var items = track ? track.children.length : 0;
 
-          function getVisibleCount() {
-            if (window.innerWidth <= 480) return 2;
-            if (window.innerWidth <= 768) return 3;
-            if (window.innerWidth <= 1024) return 4;
-            return 6;
-          }
+        function getVisibleCount() {
+          if (window.innerWidth <= 480) return 2;
+          if (window.innerWidth <= 768) return 3;
+          if (window.innerWidth <= 1024) return 4;
+          return 6;
+        }
 
-          function slide(dir) {
-            var visible = getVisibleCount();
-            var maxOffset = items - visible;
-            offset += dir;
-            if (offset < 0) offset = maxOffset;
-            if (offset > maxOffset) offset = 0;
-            var pct = (offset / items) * 100;
-            track.style.transform = 'translateX(-' + pct + '%)';
-          }
+        function slide(dir) {
+          var visible = getVisibleCount();
+          var maxOffset = items - visible;
+          offset += dir;
+          if (offset < 0) offset = maxOffset;
+          if (offset > maxOffset) offset = 0;
+          var pct = (offset / items) * 100;
+          track.style.transform = 'translateX(-' + pct + '%)';
+        }
 
-          if (prevBtn) prevBtn.addEventListener('click', function () { slide(-1); });
-          if (nextBtn) nextBtn.addEventListener('click', function () { slide(1); });
-        })();
-      </script>
+        if (prevBtn) prevBtn.addEventListener('click', function () { slide(-1); });
+        if (nextBtn) nextBtn.addEventListener('click', function () { slide(1); });
+      })();
+    </script>
 
     <style>
       /* ===== SHOP ON SECTION ===== */
@@ -2519,22 +2606,59 @@ Version: 2.43.0
 
       /* Ultimate Packing & Shipping Animation */
       @keyframes ultimateBoxPack {
-        0% { transform: translateY(-20px); opacity: 0; }
-        15% { opacity: 1; }
-        35% { transform: translateY(8px); opacity: 1; }
-        100% { transform: translateY(8px); opacity: 1; }
+        0% {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+
+        15% {
+          opacity: 1;
+        }
+
+        35% {
+          transform: translateY(8px);
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(8px);
+          opacity: 1;
+        }
       }
 
       @keyframes ultimateGroupShip {
-        0%, 50% { transform: translateX(0); opacity: 1; }
-        85% { transform: translateX(60px); opacity: 0; }
-        100% { transform: translateX(60px); opacity: 0; }
+
+        0%,
+        50% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        85% {
+          transform: translateX(60px);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateX(60px);
+          opacity: 0;
+        }
       }
 
       @keyframes ultimateWheelSpin {
-        0%, 50% { transform: rotate(0deg); }
-        85% { transform: rotate(1080deg); }
-        100% { transform: rotate(1080deg); }
+
+        0%,
+        50% {
+          transform: rotate(0deg);
+        }
+
+        85% {
+          transform: rotate(1080deg);
+        }
+
+        100% {
+          transform: rotate(1080deg);
+        }
       }
 
       .ultimate-shipping-container {
@@ -2597,7 +2721,8 @@ Version: 2.43.0
               </a>
               <a href="#" class="ShopOnSection__Link">
                 <div class="ShopOnSection__IconCircle">
-                  <img src="assets/imart.png" alt="Instamart" class="ShopOnSection__IconSVG ShopOnSection__IconSVG--small">
+                  <img src="assets/imart.png" alt="Instamart"
+                    class="ShopOnSection__IconSVG ShopOnSection__IconSVG--small">
                 </div>
                 <span class="ShopOnSection__IconText">Instamart</span>
               </a>
@@ -2629,7 +2754,8 @@ Version: 2.43.0
 
             <h3 class="ShopOnSection__ColumnTitle">Free Shipping</h3>
             <div class="ultimate-shipping-container" style="margin: 0 auto 15px auto; max-width: 100%;">
-              <svg class="ShopOnSection__IconSVG" viewBox="0 0 40 24" fill="none" stroke="#1c1c1c" stroke-width="1.5" style="width: 100%; height: auto; max-width: 200px;">
+              <svg class="ShopOnSection__IconSVG" viewBox="0 0 40 24" fill="none" stroke="#1c1c1c" stroke-width="1.5"
+                style="width: 100%; height: auto; max-width: 200px;">
                 <!-- Root Mover Group (Animates X) -->
                 <g id="truck-mover">
                   <!-- Box Group (Animates Y) -->
