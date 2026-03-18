@@ -931,6 +931,7 @@ Version: 2.43.0
     </script>
   </div>
   <main id="main" role="main">
+    <!-- 
     <div class="shopify-section shopify-section--slideshow" id="shopify-section-template--16772990828800__slideshow">
       <section data-section-id="template--16772990828800__slideshow" data-section-type="slideshow"
         id="section-template--16772990828800__slideshow">
@@ -1152,6 +1153,110 @@ Version: 2.43.0
         }
       </style>
     </div>
+    -->
+
+    <!-- New Static Banner Selection -->
+    <div class="shopify-section shopify-section--static-banner">
+      <section class="StaticBanner">
+        <div class="StaticBanner__ImageContainer">
+          <img src="assets/RRbanner.png" alt="Raw Radicles Banner" class="StaticBanner__Image">
+        </div>
+        <div class="StaticBanner__Content">
+          <a href="pages/products.html" class="StaticBanner__Button">SHOP NOW</a>
+        </div>
+      </section>
+      <style>
+        .StaticBanner {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          line-height: 0;
+        }
+
+        .StaticBanner__Image {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .StaticBanner__Content {
+          position: absolute;
+          bottom: 15%;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 10;
+          text-align: center;
+          width: 100%;
+        }
+
+        .StaticBanner__Button {
+          opacity: 0;
+          display: inline-block;
+          padding: 25px 30px;
+          font-family: Montserrat, sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: none;
+          background-color: transparent;
+          border: 1px solid #ffffff;
+          color: #ffffff;
+          transition: all 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          text-decoration: none;
+          animation: fadeInUpBanner 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+          animation-delay: 0.8s;
+        }
+
+        .StaticBanner__Button::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: #ffffff;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+          z-index: -1;
+        }
+
+        .StaticBanner__Button:hover {
+          color: #000000 !important;
+          border-color: #ffffff !important;
+        }
+
+        .StaticBanner__Button:hover::before {
+          transform: scaleX(1);
+        }
+
+        @keyframes fadeInUpBanner {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          .StaticBanner__Button {
+            padding: 10px 25px;
+            font-size: 12px;
+          }
+
+          .StaticBanner__Content {
+            bottom: 10%;
+          }
+        }
+      </style>
+    </div>
     <div class="shopify-section shopify-section--bordered"
       id="shopify-section-template--16772990828800__featured-collections">
 
@@ -1215,7 +1320,8 @@ Version: 2.43.0
           margin-bottom: 20px;
           overflow: hidden;
           background: #f5f5f5;
-          position: relative; /* For secondary image positioning */
+          position: relative;
+          /* For secondary image positioning */
         }
 
         .MvstProducts__Image {
@@ -1399,7 +1505,8 @@ Version: 2.43.0
               <a class="MvstProducts__CardInner" href="pages/adarkc.html">
                 <div class="MvstProducts__ImageWrap">
                   <img class="MvstProducts__Image" src="assets/ch1.png" alt="Aphrodisiac Dark Chocolate Slab">
-                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch1-2.png" alt="Aphrodisiac Dark Chocolate Slab Hover">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch1-2.png"
+                    alt="Aphrodisiac Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Aphrodisiac Dark Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1410,7 +1517,8 @@ Version: 2.43.0
               <a class="MvstProducts__CardInner" href="pages/amilkc.html">
                 <div class="MvstProducts__ImageWrap">
                   <img class="MvstProducts__Image" src="assets/ch2.png" alt="Aphrodisiac Milk Chocolate Slab">
-                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch2-2.png" alt="Aphrodisiac Milk Chocolate Slab Hover">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch2-2.png"
+                    alt="Aphrodisiac Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Aphrodisiac Milk Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1421,7 +1529,8 @@ Version: 2.43.0
               <a class="MvstProducts__CardInner" href="pages/cdarkc.html">
                 <div class="MvstProducts__ImageWrap">
                   <img class="MvstProducts__Image" src="assets/ch3.png" alt="Chyawanaprash Dark Chocolate Slab">
-                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch3-2.png" alt="Chyawanaprash Dark Chocolate Slab Hover">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch3-2.png"
+                    alt="Chyawanaprash Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Dark Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1432,7 +1541,8 @@ Version: 2.43.0
               <a class="MvstProducts__CardInner" href="pages/cmilkc.html">
                 <div class="MvstProducts__ImageWrap">
                   <img class="MvstProducts__Image" src="assets/ch4.png" alt="Chyawanaprash Milk Chocolate Slab">
-                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch4-1.png" alt="Chyawanaprash Milk Chocolate Slab Hover">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch4-1.png"
+                    alt="Chyawanaprash Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Milk Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
@@ -1443,7 +1553,8 @@ Version: 2.43.0
               <a class="MvstProducts__CardInner" href="pages/bmilkc.html">
                 <div class="MvstProducts__ImageWrap">
                   <img class="MvstProducts__Image" src="assets/ch5.png" alt="Brahmi Milk Chocolate Slab">
-                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch5-1.png" alt="Brahmi Milk Chocolate Slab Hover">
+                  <img class="MvstProducts__Image MvstProducts__Image--secondary" src="assets/ch5-1.png"
+                    alt="Brahmi Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Brahmi Milk Chocolate Slab</h3>
                 <p class="MvstProducts__Price">From Rs. 250.00 INR</p>
