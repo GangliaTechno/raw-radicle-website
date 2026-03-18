@@ -11110,7 +11110,50 @@ shopify-payment-terms {
   text-align: center;
 }
 
-. {}
+/* Scrolling Marquee Bar */
+.ScrollingBar {
+  background-color: #1c1c1c !important;
+  color: #ffffff !important;
+  padding: 20px 0 !important;
+  margin: 0 !important;
+  margin-bottom: 50px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 4px !important;
+}
+
+.ScrollingBar__Content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueeScrolling 40s linear infinite;
+}
+
+.ScrollingBar__Item {
+  display: inline-block;
+  padding-right: 80px;
+}
+
+@keyframes marqueeScrolling {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media screen and (max-width: 768px) {
+  .ScrollingBar {
+    font-size: 16px !important;
+    padding: 10px 0 !important;
+    margin-bottom: 30px !important;
+    letter-spacing: 2px !important;
+  }
+  .ScrollingBar__Item {
+    padding-right: 40px !important;
+  }
+}
+
 
 /*# sourceMappingURL=/s/files/1/0013/2146/8022/t/45/assets/theme.css.map?v=24497905292329348561684244781 */
 
