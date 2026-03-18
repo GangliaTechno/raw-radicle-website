@@ -1895,9 +1895,9 @@ Version: 2.43.0
 
       .TestimonialsSection__Wrapper {
         position: relative;
-        max-width: 1400px;
+        max-width: 1440px;
         margin: 0 auto;
-        padding: 0 60px;
+        padding: 0 15px;
       }
 
       .TestimonialsSection__Track {
@@ -2111,6 +2111,71 @@ Version: 2.43.0
 
       .TestimonialsSection__ViewProductBtn:hover::before {
         transform: translateX(101%);
+      }
+
+      /* Product Info Row */
+      .TestimonialsSection__ProductInfo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .TestimonialsSection__ProductImg {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        object-fit: contain;
+        background: #f8f8fb;
+        flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0,0,0,0.03);
+      }
+
+      .TestimonialsSection__ProductText {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+      }
+
+      .TestimonialsSection__ProductName {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        color: #1c1c1c;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: 0.5px;
+      }
+
+      .TestimonialsSection__PriceRow {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .TestimonialsSection__CurrentPrice {
+        font-size: 11px;
+        font-weight: 700;
+        color: #1c1c1c;
+      }
+
+      .TestimonialsSection__OriginalPrice {
+        font-size: 10px;
+        color: #888;
+        text-decoration: line-through;
+      }
+
+      .TestimonialsSection__Discount {
+        font-size: 10px;
+        color: #2e7d32;
+        font-weight: 600;
+        margin-top: 2px;
       }
 
       /* Carousel Arrows */
@@ -2418,6 +2483,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch1.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Aphrodisiac Dark Slab</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
@@ -2438,6 +2514,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch2.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Aphrodisiac Milk Slab</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
@@ -2458,6 +2545,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch3.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Chyawanaprash Dark</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
@@ -2478,6 +2576,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch4.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Chyawanaprash Milk</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
@@ -2498,6 +2607,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch5.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Brahmi Milk Slab</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
@@ -2518,6 +2638,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch1.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Aphrodisiac Dark Slab</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
@@ -2538,6 +2669,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch2.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Aphrodisiac Milk Slab</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
@@ -2558,6 +2700,17 @@ Version: 2.43.0
               </div>
             </div>
             <div class="TestimonialsSection__CardContent">
+              <div class="TestimonialsSection__ProductInfo">
+                <img src="assets/ch3.png" alt="Product" class="TestimonialsSection__ProductImg">
+                <div class="TestimonialsSection__ProductText">
+                  <h4 class="TestimonialsSection__ProductName">Chyawanaprash Dark</h4>
+                  <div class="TestimonialsSection__PriceRow">
+                    <span class="TestimonialsSection__CurrentPrice">₹ 250</span>
+                    <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
+                  </div>
+                  <span class="TestimonialsSection__Discount">28% Off</span>
+                </div>
+              </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
             </div>
           </div>
