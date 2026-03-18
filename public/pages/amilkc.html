@@ -131,7 +131,7 @@
       --heading-font-weight: 500;
       --heading-font-style: normal;
 
-      --text-font-family: "Nunito Sans", sans-serif;
+      --text-font-family: Montserrat, sans-serif;
       --text-font-weight: 400;
       --text-font-style: normal;
 
@@ -156,13 +156,13 @@
       --button-text-color: #ffffff;
 
       --header-background: #ffffff;
-      --header-heading-color: #1c1b1b;
+      --header-heading-color: #1c1c1c;
       --header-light-text-color: #6a6a6a;
       --header-border-color: #dddddd;
 
-      --footer-background: #ffffff;
-      --footer-text-color: #6a6a6a;
-      --footer-heading-color: #1c1b1b;
+      --footer-background: #1c1c1c;
+      --footer-text-color: #ffffff;
+      --footer-heading-color: #ffffff;
       --footer-border-color: #e9e9e9;
 
       --navigation-background: #1c1b1b;
@@ -625,7 +625,7 @@
                 </li>
 
                 <li class="Linklist__Item">
-                  <a class="Linklist__Link Heading u-h6" href="./contact.html">Contact us/a>
+                  <a class="Linklist__Link Heading u-h6" href="./contact.html">Contact us</a>
                 </li>
               </ul>
             </nav>
@@ -688,71 +688,6 @@
     </form>
   </div>
 
-  </section>
-  <style>
-    #section-announcement {
-      background: #000000;
-      color: #ffffff;
-    }
-  </style>
-  <script>
-    document.documentElement.style.setProperty('--announcement-bar-height', document.getElementById('shopify-section-announcement').offsetHeight + 'px');
-  </script>
-  <style>
-    span.data_acsb_trigger {
-      position: absolute;
-      left: 50px;
-      cursor: pointer;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      font-family: var(--heading-font-family);
-      font-weight: var(--heading-font-weight);
-      font-style: var(--heading-font-style);
-      display: inline-flex;
-    }
-
-    @media screen and (max-width:1070px) {
-      span.text_content {
-        display: none;
-      }
-
-      span.data_acsb_trigger {
-        display: none;
-      }
-
-      .Drawer__Header span.data_acsb_trigger {
-        right: 15px;
-        top: 50%;
-        left: auto;
-        transform: translate(-50%, -50%);
-        display: block;
-        line-height: 0;
-      }
-    }
-
-    @media screen and (min-width:800px) {
-      .icon_content {
-        display: none;
-      }
-    }
-
-    label.icon_content {
-      display: inline-block;
-      line-height: 0;
-    }
-
-    label.icon_content img {
-      max-width: 18px;
-    }
-
-    svg.Layer_1 {
-      position: relative;
-      height: 17px;
-      width: 20px;
-      fill: #fff;
-    }
-  </style>
-  </div>
   <div class="shopify-section shopify-section--header" id="shopify-section-header">
     <div aria-hidden="true" class="Search" id="Search">
       <div class="Search__Inner">
@@ -803,6 +738,17 @@
   "isSticky": true
 }' data-section-type="header" id="section-header" role="banner">
       <div class="Header__Wrapper">
+        <div class="Header__FlexItem Header__FlexItem--logo">
+          <h1 class="Header__Logo">
+            <a class="Header__LogoLink" href="../index.html">
+              <img alt="MVST" class="Header__LogoImage Header__LogoImage--primary" height="296"
+                src="../assets/RR_Logo-1.png" width="600" />
+              <img alt="MVST" class="Header__LogoImage Header__LogoImage--transparent" height="296"
+                src="../assets/RR_Logo-1.png" srcset="../assets/RR_Logo-1.png" width="600" />
+            </a>
+          </h1>
+        </div>
+
         <div class="Header__FlexItem Header__FlexItem--fill notranslate">
           <button aria-expanded="false" aria-label="Open navigation"
             class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="open-drawer"
@@ -822,33 +768,27 @@
           </button>
           <nav aria-label="Main navigation" class="Header__MainNav hidden-pocket hidden-lap">
             <ul class="HorizontalList HorizontalList--spacingExtraLoose">
-              <li class="HorizontalList__Item ">
+              <li class="HorizontalList__Item">
                 <a class="Heading u-h6" href="../index.html">
                   Home
-                  <span class="Header__LinkSpacer">
-                    Home
-                  </span>
+                  <span class="Header__LinkSpacer"> Home </span>
                 </a>
               </li>
               <li class="HorizontalList__Item">
                 <a class="Heading u-h6" href="about.html">
                   About
-                  <span class="Header__LinkSpacer">
-                    About
-                  </span>
+                  <span class="Header__LinkSpacer"> About </span>
                 </a>
               </li>
               <li aria-haspopup="true" class="HorizontalList__Item is-active">
-                <a class="Heading u-h6" href="./products.html">
+                <a class="Heading u-h6" href="products.html">
                   Products
-                  <span class="Header__LinkSpacer">
-                    Products
-                  </span>
+                  <span class="Header__LinkSpacer"> Products </span>
                 </a>
                 <div aria-hidden="true" class="MegaMenu">
                   <div class="MegaMenu__Inner">
-                    <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="./products.html">
+                    <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         BALM
                       </a>
                       <ul class="Linklist">
@@ -859,35 +799,27 @@
                         </li>
 
                       </ul>
-                    </div>
+                    </div> -->
                     <div class="MegaMenu__Item MegaMenu__Item--fit">
                       <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         CHOCOLATE
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="cdarkc.html">
-                            CHYAWANAPRASH DARK
-                          </a>
+                          <a class="Link Link--secondary" href="cdarkc.html"> CHYAWANAPRASH DARK </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="cmilkc.html">
-                            CHYAWANAPRASH MILK
-                          </a>
+                          <a class="Link Link--secondary" href="cmilkc.html"> CHYAWANAPRASH MILK </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="adarkc.html">
-                            APHRODISIAC MILK
-                          </a>
+                          <a class="Link Link--secondary" href="amilkc.html"> APHRODISIAC MILK </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="amilkc.html">
-                            APHRODISIAC DARK
-                          </a>
+                          <a class="Link Link--secondary" href="adarkc.html"> APHRODISIAC DARK </a>
                         </li>
                       </ul>
                     </div>
-                    <div class="MegaMenu__Item MegaMenu__Item--fit">
+                    <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
                       <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         SHOTS
                       </a>
@@ -900,60 +832,53 @@
 
                       </ul>
                     </div>
-
                   </div>
                 </div>
               </li>
               <li class="HorizontalList__Item">
                 <a class="Heading u-h6" href="contact.html">
-                  Contact us
-                  <span class="Header__LinkSpacer">
-                    Contact us
-                  </span>
+                  Contact Us
+                  <span class="Header__LinkSpacer"> Contact Us </span>
                 </a>
               </li>
 
             </ul>
           </nav>
         </div>
-        <div class="Header__FlexItem Header__FlexItem--logo">
-          <div class="Header__Logo">
-            <a class="Header__LogoLink" href="../index.html">
-              <img alt="MVST" class="Header__LogoImage Header__LogoImage--primary" height="296"
-                src="../assets/RR_Logo-1.png" width="600" />
-            </a>
-          </div>
-        </div>
         <div class="Header__FlexItem Header__FlexItem--fill">
           <nav class="Header__SecondaryNav hidden-phone">
+
             <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
-              <div class="transcy-switcher-manual transcy-desktop hidden HorizontalList__Item">
-              </div>
-              <!-- <li class="HorizontalList__Item">
-          <a class="Heading Link Link--primary Text--subdued u-h8" href="account.html">
-           Account
-          </a>
-         </li> -->
-              <!-- <li class="HorizontalList__Item">
-          <a class="Heading Link Link--primary Text--subdued u-h8" data-action="toggle-search" href="search.html">
-           Search
-          </a>
-         </li> -->
-              <li class="HorizontalList__Item">
-                <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart"
-                  href="cart.html">
-                  Cart (
-                  <span class="Header__CartCount">
-                    0
-                  </span>
-                  )
-                </a>
+
+              <li class="HorizontalList__Item Header__SearchContainer">
+                <div class="Header__SearchForm">
+                  <input id="local-search-input" type="search" class="Header__SearchInput"
+                    placeholder="Search products..." autocomplete="off" aria-label="Search">
+
+                  <button type="button" class="Header__SearchButton"
+                    style="border:none; background:none; cursor:pointer;">
+                    <svg class="Icon Icon--search" role="presentation" viewBox="0 0 18 17"
+                      style="width: 16px; height: 16px;">
+                      <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
+                        transform="translate(1 1)">
+                        <path d="M16 16l-5.0752-5.0752"></path>
+                        <circle cx="6.4" cy="6.4" r="6.4"></circle>
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Search Results Container -->
+                <div id="search-results"></div>
               </li>
+
+
             </ul>
           </nav>
-          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
+
+          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable"
             data-action="toggle-search" href="search.html">
-            <span class="hidden-tablet-and-up">
+            <span class="">
               <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
                   transform="translate(1 1)">
@@ -976,57 +901,11 @@
               </svg>
             </span>
           </a>
-          <a aria-expanded="false" aria-label="Open cart"
-            class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="open-drawer"
-            data-drawer-id="sidebar-cart" href="cart.html">
-            <span class="hidden-tablet-and-up">
-              <svg class="Icon Icon--cart" role="presentation" viewbox="0 0 17 20">
-                <path
-                  d="M0 20V4.995l1 .006v.015l4-.002V4c0-2.484 1.274-4 3.5-4C10.518 0 12 1.48 12 4v1.012l5-.003v.985H1V19h15V6.005h1V20H0zM11 4.49C11 2.267 10.507 1 8.5 1 6.5 1 6 2.27 6 4.49V5l5-.002V4.49z"
-                  fill="currentColor">
-                </path>
-              </svg>
-            </span>
-            <span class="hidden-phone">
-              <svg class="Icon Icon--cart-desktop" role="presentation" viewbox="0 0 19 23">
-                <path
-                  d="M0 22.985V5.995L2 6v.03l17-.014v16.968H0zm17-15H2v13h15v-13zm-5-2.882c0-2.04-.493-3.203-2.5-3.203-2 0-2.5 1.164-2.5 3.203v.912H5V4.647C5 1.19 7.274 0 9.5 0 11.517 0 14 1.354 14 4.647v1.368h-2v-.912z"
-                  fill="currentColor">
-                </path>
-              </svg>
-            </span>
-            <span class="Header__CartDot">
-            </span>
-          </a>
+
         </div>
       </div>
     </header>
-    <style>
-      :root {
-        --use-sticky-header: 1;
-        --use-unsticky-header: 0;
-      }
-
-      .shopify-section--header {
-        position: -webkit-sticky;
-        position: sticky;
-      }
-
-      .Header__LogoImage {
-        max-width: 110px;
-      }
-
-      @media screen and (max-width: 640px) {
-        .Header__LogoImage {
-          max-width: 90px;
-        }
-      }
-
-      :root {
-        --header-is-not-transparent: 1;
-        --header-is-transparent: 0;
-      }
-    </style>
+    <link href="../css/custom-navbar.css" rel="stylesheet">
     <script>
       document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-header').offsetHeight + 'px');
     </script>
@@ -1579,225 +1458,193 @@
                                 surcharge.
                               </p>
                               <p>
-                                <!-- <a href="shipping.html" title="Shipping">
-               More Details
-              </a>
-             </p>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="Collapsible Collapsible--large">
-          <button aria-expanded="false" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible">
-           WARRANTY
-           <span class="Collapsible__Plus">
-           </span>
-          </button>
-          <div class="Collapsible__Inner">
-           <div class="Collapsible__Content">
-            <div class="Rte">
-             <p>
-              Lifetime Warranty
-             </p>
-             <p>
-              <a href="warranty-policy.html" title="Warranty">
-               More Details
-              </a>
-             </p>
-            </div>
-           </div>
-          </div>
-         </div> -->
-                              <div class="Collapsible Collapsible--large">
-                                <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
-                                  data-action="toggle-collapsible">
-                                  <span>
-                                    Reviews
-                                    <span class="text--light">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="Collapsible Collapsible--large">
+                          <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
+                            data-action="toggle-collapsible">
+                            <span>
+                              Reviews
+                              <span class="text--light">
+                                (9)
+                              </span>
+                            </span>
+                            <span class="Collapsible__Plus">
+                            </span>
+                          </button>
+                          <div class="Collapsible__Inner">
+                            <div class="Collapsible__Content">
+                              <div data-id="2665767829622" id="shopify-product-reviews">
+                                <style scoped="">
+                                  .spr-container {
+                                    padding: 24px;
+                                    border-color: #ECECEC;
+                                  }
 
-                                    </span>
-                                  </span>
-                                  <span class="Collapsible__Plus">
-                                  </span>
-                                </button>
-                                <div class="Collapsible__Inner">
-                                  <div class="Collapsible__Content">
-                                    <div data-id="2665767829622" id="shopify-product-reviews">
-                                      <style scoped="">
-                                        .spr-container {
-                                          padding: 24px;
-                                          border-color: #ECECEC;
-                                        }
-
-                                        .spr-review,
-                                        .spr-form {
-                                          border-color: #ECECEC;
-                                        }
-                                      </style>
-                                      <!-- <div class="spr-container">
-              <div class="spr-header">
-               <h2 class="spr-header-title">
-                Customer Reviews
-               </h2>
-               <div class="spr-summary rte">
-                <span aria-label="5.0 of 5 stars" class="spr-starrating spr-summary-starrating" role="img">
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                </span>
-                <span class="spr-summary-caption">
-                 <span class="spr-summary-actions-togglereviews">
-                  Based on 9 reviews
-                 </span>
-                </span>
-                <span class="spr-summary-actions">
-                 <a class="spr-summary-actions-newreview" href="trek-aluminum-suitcase-army-green.html" onclick="SPR.toggleForm(2665767829622);return false">
-                  Write a review
-                 </a>
-                </span>
-               </div>
-              </div>
-              <div class="spr-content">
-               <div class="spr-form" id="form_2665767829622" style="display: none">
-               </div>
-               <div class="spr-reviews" id="reviews_2665767829622">
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="Section Section--spacingNormal">
-         <header class="SectionHeader SectionHeader--center">
-          <h3 class="SectionHeader__Heading Heading u-h4">
-           Buy it with
-          </h3>
-         </header>
-         <div class="ProductItem ProductItem--horizontal">
-          <div class="ProductItem__Wrapper">
-           <a class="ProductItem__ImageWrapper" href="garment-duffel-bag.html">
-            <div class="AspectRatio AspectRatio--withFallback" style="max-width: 125px; padding-bottom: 100.0%; --aspect-ratio: 1.0"> -->
-                                      <!-- <img alt="MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag MVST" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="29101140148480" data-sizes="auto" data-src="//web.archive.org/web/20230604205108/https://cdn.shopify.com/s/files/1/0013/2146/8022/products/033A2808-0_{width}x.png?v=1644298857" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-             <span class="Image__Loader">
-             </span>
-             <noscript>
-              <img alt="MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag MVST" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/img_556.ext"/>
-              <img alt="MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag MVST" class="ProductItem__Image" src="../assets/033A2808-0_600x.png"/>
-             </noscript>
-            </div>
-           </a>
-           <div class="ProductItem__Info">
-            <h2 class="ProductItem__Title Heading">
-             <a href="garment-duffel-bag.html">
-              MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag
-             </a>
-            </h2>
-            <div class="ProductItem__PriceList Heading">
-             <span class="ProductItem__Price Price Price--highlight Text--subdued">
-              <span class="transcy-money">
-               $165.00
-              </span>
-             </span>
-             <span class="ProductItem__Price Price Price--compareAt Text--subdued">
-              <span class="transcy-money">
-               $185.00
-              </span>
-             </span>
-            </div>
-           </div>
-          </div>
-          <a class="ProductItem__ViewButton Button Button--secondary hidden-pocket" href="garment-duffel-bag.html">
-           View product
-          </a>
-         </div>
-        </div>
-       </div>
-      </div>
-     </section>
-     <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
-      <!-- Background of PhotoSwipe -->
-                                      <!--<div class="pswp__bg">
-      </div> -->
-                                      <!-- Slides wrapper with overflow:hidden. -->
-                                      <div class="pswp__scroll-wrap">
-                                        <!-- Container that holds slides. Do not remove as content is dynamically added -->
-                                        <div class="pswp__container">
-                                          <div class="pswp__item">
-                                          </div>
-                                          <div class="pswp__item">
-                                          </div>
-                                          <div class="pswp__item">
-                                          </div>
-                                        </div>
-                                        <!-- Main UI bar -->
-                                        <div class="pswp__ui pswp__ui--hidden">
-                                          <button class="pswp__button pswp__button--prev RoundButton"
-                                            data-animate-left="" title="Previous (left arrow)">
-                                            <svg class="Icon Icon--arrow-left" role="presentation" viewbox="0 0 11 21">
-                                              <polyline fill="none" points="10.5 0.5 0.5 10.5 10.5 20.5"
-                                                stroke="currentColor" stroke-width="1.25">
-                                              </polyline>
-                                            </svg>
-                                          </button>
-                                          <button
-                                            class="pswp__button pswp__button--close RoundButton RoundButton--large"
-                                            data-animate-bottom="" title="Close (Esc)">
-                                            <svg class="Icon Icon--close" role="presentation" viewbox="0 0 16 14">
-                                              <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd"
-                                                stroke="currentColor">
-                                              </path>
-                                            </svg>
-                                          </button>
-                                          <button class="pswp__button pswp__button--next RoundButton"
-                                            data-animate-right="" title="Next (right arrow)">
-                                            <svg class="Icon Icon--arrow-right" role="presentation" viewbox="0 0 11 21">
-                                              <polyline fill="none" points="0.5 0.5 10.5 10.5 0.5 20.5"
-                                                stroke="currentColor" stroke-width="1.25">
-                                              </polyline>
-                                            </svg>
-                                          </button>
-                                        </div>
-                                      </div>
+                                  .spr-review,
+                                  .spr-form {
+                                    border-color: #ECECEC;
+                                  }
+                                </style>
+                                <div class="spr-container">
+                                  <div class="spr-header">
+                                    <h2 class="spr-header-title">
+                                      Customer Reviews
+                                    </h2>
+                                    <div class="spr-summary rte">
+                                      <span aria-label="5.0 of 5 stars" class="spr-starrating spr-summary-starrating"
+                                        role="img">
+                                        <i aria-hidden="true" class="spr-icon spr-icon-star">
+                                        </i>
+                                        <i aria-hidden="true" class="spr-icon spr-icon-star">
+                                        </i>
+                                        <i aria-hidden="true" class="spr-icon spr-icon-star">
+                                        </i>
+                                        <i aria-hidden="true" class="spr-icon spr-icon-star">
+                                        </i>
+                                        <i aria-hidden="true" class="spr-icon spr-icon-star">
+                                        </i>
+                                      </span>
+                                      <span class="spr-summary-caption">
+                                        <span class="spr-summary-actions-togglereviews">
+                                          Based on 9 reviews
+                                        </span>
+                                      </span>
+                                      <span class="spr-summary-actions">
+                                        <a class="spr-summary-actions-newreview"
+                                          href="trek-aluminum-suitcase-army-green.html"
+                                          onclick="SPR.toggleForm(2665767829622);return false">
+                                          Write a review
+                                        </a>
+                                      </span>
                                     </div>
-                                    <script>
-                                      window.ShopifyXR = window.ShopifyXR || function () { (ShopifyXR.q = ShopifyXR.q || []).push(arguments) };
-                                      ShopifyXR('addModels', []);
-                                    </script>
                                   </div>
-                                  <div class="shopify-section shopify-section--bordered"
-                                    id="shopify-section-template--16772992401664__product-recommendations">
-                                    <section class="Section Section--spacingNormal"
-                                      data-section-id="template--16772992401664__product-recommendations"
-                                      data-section-settings='{
+                                  <div class="spr-content">
+                                    <div class="spr-form" id="form_2665767829622" style="display: none">
+                                    </div>
+                                    <div class="spr-reviews" id="reviews_2665767829622">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Section Section--spacingNormal">
+                        <header class="SectionHeader SectionHeader--center">
+                          <h3 class="SectionHeader__Heading Heading u-h4">
+                            Buy it with
+                          </h3>
+                        </header>
+                        <div class="ProductItem ProductItem--horizontal">
+                          <div class="ProductItem__Wrapper">
+                            <a class="ProductItem__ImageWrapper" href="garment-duffel-bag.html">
+                              <div class="AspectRatio AspectRatio--withFallback"
+                                style="max-width: 125px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
+                                <img alt="MVST Duffle Bag Garment Bag 2 in 1" class="ProductItem__Image"
+                                  src="../assets/033A2808-0_600x.png" />
+                              </div>
+                            </a>
+                            <div class="ProductItem__Info">
+                              <h2 class="ProductItem__Title Heading">
+                                <a href="garment-duffel-bag.html">
+                                  MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag
+                                </a>
+                              </h2>
+                              <div class="ProductItem__PriceList Heading">
+                                <span class="ProductItem__Price Price Price--highlight Text--subdued">
+                                  <span class="transcy-money">
+                                    $165.00
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <a class="ProductItem__ViewButton Button Button--secondary hidden-pocket"
+                            href="garment-duffel-bag.html">
+                            View product
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+                  <!-- Background of PhotoSwipe -->
+                  <div class="pswp__bg">
+                  </div>
+                  <!-- Slides wrapper with overflow:hidden. -->
+                  <div class="pswp__scroll-wrap">
+                    <!-- Container that holds slides. Do not remove as content is dynamically added -->
+                    <div class="pswp__container">
+                      <div class="pswp__item">
+                      </div>
+                      <div class="pswp__item">
+                      </div>
+                      <div class="pswp__item">
+                      </div>
+                    </div>
+                    <!-- Main UI bar -->
+                    <div class="pswp__ui pswp__ui--hidden">
+                      <button class="pswp__button pswp__button--prev RoundButton" data-animate-left=""
+                        title="Previous (left arrow)">
+                        <svg class="Icon Icon--arrow-left" role="presentation" viewbox="0 0 11 21">
+                          <polyline fill="none" points="10.5 0.5 0.5 10.5 10.5 20.5" stroke="currentColor"
+                            stroke-width="1.25">
+                          </polyline>
+                        </svg>
+                      </button>
+                      <button class="pswp__button pswp__button--close RoundButton RoundButton--large"
+                        data-animate-bottom="" title="Close (Esc)">
+                        <svg class="Icon Icon--close" role="presentation" viewbox="0 0 16 14">
+                          <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd" stroke="currentColor">
+                          </path>
+                        </svg>
+                      </button>
+                      <button class="pswp__button pswp__button--next RoundButton" data-animate-right=""
+                        title="Next (right arrow)">
+                        <svg class="Icon Icon--arrow-right" role="presentation" viewbox="0 0 11 21">
+                          <polyline fill="none" points="0.5 0.5 10.5 10.5 0.5 20.5" stroke="currentColor"
+                            stroke-width="1.25">
+                          </polyline>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script>
+                window.ShopifyXR = window.ShopifyXR || function () { (ShopifyXR.q = ShopifyXR.q || []).push(arguments) };
+                ShopifyXR('addModels', []);
+              </script>
+            </div>
+            <div class="shopify-section shopify-section--bordered"
+              id="shopify-section-template--16772992401664__product-recommendations">
+              <section class="Section Section--spacingNormal"
+                data-section-id="template--16772992401664__product-recommendations" data-section-settings='{
   "productId": 2665767829622,
   "useRecommendations": true,
   "recommendationsCount": 4
 }' data-section-type="product-recommendations">
-                                      <header class="SectionHeader SectionHeader--center">
-                                        <div class="Container">
-                                          <h3 class="SectionHeader__Heading Heading u-h3">
-                                            You may also like
-                                          </h3>
-                                        </div>
-                                      </header>
-                                      <div class="ProductRecommendations">
-                                        <style>
-                                          #shopify-section-template--16772992401664__product-recommendations {
-                                            display: none;
-                                          }
-                                        </style>
-                                      </div>
-                                    </section>
-                                  </div>
+                <header class="SectionHeader SectionHeader--center">
+                  <div class="Container">
+                    <h3 class="SectionHeader__Heading Heading u-h3">
+                      You may also like
+                    </h3>
+                  </div>
+                </header>
+                <div class="ProductRecommendations">
+                  <style>
+                    #shopify-section-template--16772992401664__product-recommendations {
+                      display: none;
+                    }
+                  </style>
+                </div>
+              </section>
+            </div>
   </main>
   <div class="shopify-section shopify-section--footer" id="shopify-section-footer">
     <footer class="Footer" data-section-id="footer" data-section-type="footer" id="section-footer" role="contentinfo">
@@ -2346,3 +2193,6 @@ playback timings (ms):
   PetaboxLoader3.datanode: 159.794 (4)
   load_resource: 165.953
 -->
+
+
+

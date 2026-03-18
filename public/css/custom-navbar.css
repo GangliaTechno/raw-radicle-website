@@ -1,0 +1,460 @@
+/* Custom Navbar — match mvstselect.com
+   Works WITH theme.css Header--logoLeft layout. */
+
+/* ===== HEADER SIZE & BACKGROUND ===== */
+.Header {
+    background-color: #EFEFEF !important;
+    height: 85px !important;
+    min-height: 85px !important;
+    max-height: 85px !important;
+    box-shadow: 0 -1px #e0e0e0 inset !important;
+}
+
+.Header__Wrapper {
+    height: 85px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    align-items: center !important;
+}
+
+/* ===== CENTER NAV LINKS =====
+   Give logo and search equal fixed widths so the nav
+   section (flex:1) naturally centers on the page. */
+
+.Header--logoLeft .Header__FlexItem--logo {
+    flex: 0 0 200px !important;
+    align-items: center !important;
+}
+
+.Header--logoLeft .Header__FlexItem--fill {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.Header--logoLeft .Header__FlexItem--fill:last-child {
+    flex: 0 0 200px !important;
+    justify-content: flex-end !important;
+}
+
+/* ===== OVERRIDE TRANSPARENT HEADER =====
+   theme.css forces white text for transparent headers.
+   We use a solid background, so keep text dark. */
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent {
+    background-color: #EFEFEF !important;
+}
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__Icon,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .HorizontalList__Item>.SelectButton,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .HorizontalList__Item>.Heading,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__LogoLink>.Heading,
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Text--subdued {
+    color: #1c1c1c !important;
+}
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__Icon svg {
+    filter: none !important;
+}
+
+/* Keep primary logo visible */
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__LogoImage--primary:not(:only-child) {
+    opacity: 1 !important;
+}
+
+.supports-sticky .Search[aria-hidden="true"]+.Header--transparent .Header__LogoImage--transparent {
+    opacity: 0 !important;
+}
+
+/* ===== NAV LINK TYPOGRAPHY ===== */
+.Header__MainNav .Heading,
+.Header__SecondaryNav .Heading,
+.Header__MainNav .u-h6,
+.Header__SecondaryNav .u-h6 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #1c1c1c !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.944px !important;
+}
+
+/* ===== HOVER UNDERLINE ===== */
+.HorizontalList__Item .Header__LinkSpacer:after {
+    border-bottom-color: #1c1c1c !important;
+}
+
+.Header--transparent .HorizontalList__Item.is-active .Header__LinkSpacer:after,
+.Header--transparent .HorizontalList__Item.is-expanded .Header__LinkSpacer:after,
+.Header--transparent .HorizontalList__Item:hover .Header__LinkSpacer:after {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+}
+
+/* ===== LOGO ===== */
+.Header__LogoImage {
+    max-width: 180px !important;
+    max-height: 110px !important;
+    height: auto !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* ===== MEGA MENU ===== */
+.MegaMenu {
+    background-color: #EFEFEF !important;
+}
+
+.MegaMenu__Title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.944px !important;
+    text-transform: uppercase !important;
+    color: #1c1c1c !important;
+}
+
+.MegaMenu .Link--secondary {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    color: #555 !important;
+    text-transform: uppercase !important;
+}
+
+.MegaMenu .Link--secondary:hover {
+    color: #1c1c1c !important;
+}
+
+/* ===== SEARCH BAR & RESULTS ===== */
+.Header__SearchContainer {
+    position: relative !important;
+}
+
+.Header__SearchForm {
+    display: flex !important;
+    align-items: center !important;
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 30px !important;
+    padding: 6px 15px !important;
+    width: 250px !important;
+    max-width: 100% !important;
+    transition: all 0.2s !important;
+    background: transparent !important;
+}
+
+/* Transparent state styles */
+.Header--transparent .Header__SearchForm {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.Header--transparent .Header__SearchForm:focus-within {
+    border-color: #ffffff !important;
+}
+
+.Header--transparent .Header__SearchInput {
+    color: #ffffff !important;
+}
+
+.Header--transparent .Header__SearchInput::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.Header--transparent .Header__SearchButton {
+    color: #ffffff !important;
+}
+
+/* Revert to dark when not transparent (scrolled) */
+.Header:not(.Header--transparent) .Header__SearchForm {
+    border-color: #e1e1e1 !important;
+}
+
+.Header:not(.Header--transparent) .Header__SearchForm:focus-within {
+    border-color: #1c1c1c !important;
+}
+
+.Header:not(.Header--transparent) .Header__SearchInput {
+    color: #1c1c1c !important;
+}
+
+.Header__SearchInput {
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    outline: none !important;
+    font-size: 11px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    color: #1c1b1b !important;
+}
+
+.Header__SearchInput::placeholder {
+    color: #999 !important;
+    text-transform: uppercase !important;
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+}
+
+.Header__SearchButton {
+    border: none !important;
+    background: none !important;
+    cursor: pointer !important;
+    color: inherit !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+#search-results {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ffffff !important;
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 0 0 8px 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    z-index: 100 !important;
+    display: none;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+    margin-top: 5px !important;
+}
+
+.search-result-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 15px !important;
+    border-bottom: 1px solid #f7f7f7 !important;
+    text-decoration: none !important;
+    transition: background 0.2s !important;
+    cursor: pointer !important;
+}
+
+.search-result-item:hover {
+    background-color: #f9f9f9 !important;
+}
+
+.search-result-image {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain !important;
+    margin-right: 12px !important;
+    border-radius: 4px !important;
+}
+
+.search-result-info {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.search-result-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+}
+
+.search-result-price {
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size: 12px !important;
+    color: #888 !important;
+}
+
+/* ===== SEARCH PAGE BODY INPUT ===== */
+.template-search .EmptyState__Action .Form__Input {
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 30px !important;
+    padding: 10px 20px !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+/* ===== TABLET ===== */
+@media screen and (max-width: 1140px) {
+    .Header--logoLeft .Header__FlexItem--logo {
+        flex: 0 0 auto !important;
+        min-width: 44px !important;
+    }
+
+    .Header--logoLeft .Header__FlexItem--fill:last-child {
+        flex: 0 0 auto !important;
+        min-width: 44px !important;
+    }
+
+    .Header__SearchForm {
+        width: 180px !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .Header__MainNav {
+        display: none !important;
+    }
+    
+    .Header__FlexItem--logo {
+        flex: 0 0 auto !important;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .Header__FlexItem--fill {
+        flex: 1 1 0% !important;
+        min-width: 0 !important;
+    }
+}
+
+/* ===== MOBILE ===== */
+@media screen and (max-width: 640px) {
+    .Header {
+        height: 63px !important;
+        min-height: 63px !important;
+        max-height: 63px !important;
+    }
+
+    .Header__Wrapper {
+        height: 63px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    .Header__FlexItem--logo {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        flex: none !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .Header__LogoImage {
+        max-width: 90px !important;
+    }
+
+    .Header__FlexItem--fill:first-child {
+        display: none !important; /* Completely remove from layout on mobile */
+    }
+
+    .Header__FlexItem--fill:last-child {
+        flex: 1 !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
+        padding-right: 5px !important;
+    }
+
+    .Header__Icon {
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .Header__Icon {
+        margin: 0 !important; /* Reset margins for grouped icons */
+    }
+
+    .Header__SearchForm {
+        display: none !important; /* Hide search bar input on small mobile, use search icon instead */
+    }
+}
+
+/* Fix product slider layout overlap and responsiveness */
+@media screen and (max-width: 480px) {
+    .MvstProducts__Card {
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+    .MvstProducts__Name {
+        min-height: 40px !important; /* Ensure enough space for titles */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .MvstProducts__Price {
+        position: relative !important;
+        margin-top: 10px !important;
+    }
+}
+
+/* Fix product slider layout overlap and responsiveness */
+@media screen and (max-width: 768px) {
+    .MvstProducts__Card {
+        width: 100% !important;
+        padding: 0 20px !important;
+        margin-bottom: 30px !important;
+    }
+    .MvstProducts__ImageWrap {
+        max-width: 300px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .MvstProducts__Name {
+        font-size: 14px !important;
+        min-height: auto !important;
+        margin-bottom: 8px !important;
+        padding: 0 10px !important;
+    }
+    .MvstProducts__Price {
+        position: relative !important;
+        margin-top: 5px !important;
+        font-size: 12px !important;
+    }
+    .MvstProducts__Slider {
+        width: 100% !important;
+    }
+}
+
+/* ===== GLOBAL FOOTER RESPONSIVENESS ===== */
+@media screen and (max-width: 640px) {
+    .Footer__Aside {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+
+    .Footer__Copyright {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Hide the pipes on mobile */
+    .Footer__Copyright {
+        color: transparent !important; /* Hide the literal "|" text */
+    }
+
+    .Footer__Copyright a,
+    .Footer__Copyright span {
+        color: #888 !important; /* Restore link color */
+        display: block !important;
+    }
+
+    .Footer__PaymentList {
+        justify-content: center !important;
+        margin-top: 10px !important;
+    }
+}
+
+/* Fix for search icon hidden state on some pages */
+.Header__Icon.hidden-desk {
+    display: inline-block !important;
+}
+
+@media screen and (min-width: 1141px) {
+    .Header__Icon.hidden-desk {
+        display: none !important;
+    }
+}

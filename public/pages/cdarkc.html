@@ -2,18 +2,10 @@
 <html class="no-js" lang="en">
 
 <head>
-  <script charset="utf-8" src="../js/bundle-playback.js" type="text/javascript">
-  </script>
-  <script charset="utf-8" src="../js/wombat.js" type="text/javascript">
-  </script>
-  <script>
-    window.RufflePlayer = window.RufflePlayer || {}; window.RufflePlayer.config = { "autoplay": "on", "unmuteOverlay": "hidden", "showSwfDownload": true };
-  </script>
-  <script src="../js/ruffle.js" type="text/javascript">
-  </script>
   <link href="../css/banner-styles.css" rel="stylesheet" type="text/css" />
   <link href="../css/iconochive.css" rel="stylesheet" type="text/css" />
-  <!-- End Wayback Rewrite JS Include -->
+  <script src="../js/fix-urls.js"></script>
+  <link href="../css/custom-navbar.css" rel="stylesheet" type="text/css" />
   <style>
     .Grid__Cell:has([href*="navidium"]) {
       display: none !important;
@@ -131,7 +123,7 @@
       --heading-font-weight: 500;
       --heading-font-style: normal;
 
-      --text-font-family: "Nunito Sans", sans-serif;
+      --text-font-family: Montserrat, sans-serif;
       --text-font-weight: 400;
       --text-font-style: normal;
 
@@ -156,13 +148,13 @@
       --button-text-color: #ffffff;
 
       --header-background: #ffffff;
-      --header-heading-color: #1c1b1b;
+      --header-heading-color: #1c1c1c;
       --header-light-text-color: #6a6a6a;
       --header-border-color: #dddddd;
 
-      --footer-background: #ffffff;
-      --footer-text-color: #6a6a6a;
-      --footer-heading-color: #1c1b1b;
+      --footer-background: #1c1c1c;
+      --footer-text-color: #ffffff;
+      --footer-heading-color: #ffffff;
       --footer-border-color: #e9e9e9;
 
       --navigation-background: #1c1b1b;
@@ -422,6 +414,7 @@
   </script>
   <script src="../js/sca_affiliate.js" type="text/javascript">
   </script>
+  <link href="../css/custom-navbar.css" rel="stylesheet" />
   <link href="../css/font-awesome.min.css" rel="stylesheet" />
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
@@ -573,9 +566,8 @@
                   <a class="Linklist__Link Heading u-h6" href="../index.html">Home</a>
                 </li>
                 <li class="Linklist__Item">
-                  <a class="Linklist__Link Heading u-h6" href="./about.html">About</a>
+                  <a class="Linklist__Link Heading u-h6" href="about.html">About</a>
                 </li>
-
                 <li class="Linklist__Item">
                   <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible"
                     aria-expanded="false">
@@ -585,37 +577,19 @@
                   <div class="Collapsible__Inner">
                     <div class="Collapsible__Content">
                       <div class="Linklist__SubItem">
-                        <p class="Linklist__SubHeading Heading u-h7">BALM</p>
-                        <ul class="Linklist">
-                          <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./balm.html">JATYADI</a>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div class="Linklist__SubItem"><br>
                         <p class="Linklist__SubHeading Heading u-h7">CHOCOLATE</p>
                         <ul class="Linklist">
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./cdarkc.html">CHYAWANAPRASH DARK</a>
+                            <a class="Link Link--secondary" href="cdarkc.html">CHYAWANAPRASH DARK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./cmilkc.html">CHYAWANAPRASH MILK</a>
+                            <a class="Link Link--secondary" href="cmilkc.html">CHYAWANAPRASH MILK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./amilkc.html">APHRODISIAC MILK</a>
+                            <a class="Link Link--secondary" href="amilkc.html">APHRODISIAC MILK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./adarkc.html">APHRODISIAC DARK</a>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div class="Linklist__SubItem"><br>
-                        <p class="Linklist__SubHeading Heading u-h7">SHOTS</p>
-                        <ul class="Linklist">
-                          <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./shots.html">MUSHTARISHTA</a>
+                            <a class="Link Link--secondary" href="adarkc.html">APHRODISIAC DARK</a>
                           </li>
                         </ul>
                       </div>
@@ -624,7 +598,7 @@
                 </li>
 
                 <li class="Linklist__Item">
-                  <a class="Linklist__Link Heading u-h6" href="./contact.html">Contact Us/a>
+                  <a class="Linklist__Link Heading u-h6" href="contact.html">Contact Us</a>
                 </li>
               </ul>
             </nav>
@@ -687,64 +661,6 @@
     </form>
   </div>
 
-  <script>
-    document.documentElement.style.setProperty('--announcement-bar-height', document.getElementById('shopify-section-announcement').offsetHeight + 'px');
-  </script>
-  <style>
-    span.data_acsb_trigger {
-      position: absolute;
-      left: 50px;
-      cursor: pointer;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      font-family: var(--heading-font-family);
-      font-weight: var(--heading-font-weight);
-      font-style: var(--heading-font-style);
-      display: inline-flex;
-    }
-
-    @media screen and (max-width:1070px) {
-      span.text_content {
-        display: none;
-      }
-
-      span.data_acsb_trigger {
-        display: none;
-      }
-
-      .Drawer__Header span.data_acsb_trigger {
-        right: 15px;
-        top: 50%;
-        left: auto;
-        transform: translate(-50%, -50%);
-        display: block;
-        line-height: 0;
-      }
-    }
-
-    @media screen and (min-width:800px) {
-      .icon_content {
-        display: none;
-      }
-    }
-
-    label.icon_content {
-      display: inline-block;
-      line-height: 0;
-    }
-
-    label.icon_content img {
-      max-width: 18px;
-    }
-
-    svg.Layer_1 {
-      position: relative;
-      height: 17px;
-      width: 20px;
-      fill: #fff;
-    }
-  </style>
-  </div>
   <div class="shopify-section shopify-section--header" id="shopify-section-header">
     <div aria-hidden="true" class="Search" id="Search">
       <div class="Search__Inner">
@@ -795,6 +711,17 @@
   "isSticky": true
 }' data-section-type="header" id="section-header" role="banner">
       <div class="Header__Wrapper">
+        <div class="Header__FlexItem Header__FlexItem--logo">
+          <h1 class="Header__Logo">
+            <a class="Header__LogoLink" href="../index.html">
+              <img alt="Raw Radicles" class="Header__LogoImage Header__LogoImage--primary" height="296"
+                src="../assets/RR_Logo-1.png" width="600" />
+              <img alt="Raw Radicles" class="Header__LogoImage Header__LogoImage--transparent" height="296"
+                src="../assets/RR_Logo-1.png" srcset="../assets/RR_Logo-1.png" width="600" />
+            </a>
+          </h1>
+        </div>
+
         <div class="Header__FlexItem Header__FlexItem--fill notranslate">
           <button aria-expanded="false" aria-label="Open navigation"
             class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="open-drawer"
@@ -814,7 +741,7 @@
           </button>
           <nav aria-label="Main navigation" class="Header__MainNav hidden-pocket hidden-lap">
             <ul class="HorizontalList HorizontalList--spacingExtraLoose">
-              <li class="HorizontalList__Item ">
+              <li class="HorizontalList__Item">
                 <a class="Heading u-h6" href="../index.html">
                   Home
                   <span class="Header__LinkSpacer">
@@ -822,7 +749,6 @@
                   </span>
                 </a>
               </li>
-
               <li class="HorizontalList__Item">
                 <a class="Heading u-h6" href="about.html">
                   About
@@ -832,7 +758,7 @@
                 </a>
               </li>
               <li aria-haspopup="true" class="HorizontalList__Item is-active">
-                <a class="Heading u-h6" href="./products.html">
+                <a class="Heading u-h6" href="products.html">
                   Products
                   <span class="Header__LinkSpacer">
                     Products
@@ -841,59 +767,32 @@
                 <div aria-hidden="true" class="MegaMenu">
                   <div class="MegaMenu__Inner">
                     <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="./products.html">
-                        BALM
-                      </a>
-                      <ul class="Linklist">
-                        <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./balm.html">
-                            JATYADI
-                          </a>
-                        </li>
-
-                      </ul>
-                    </div>
-                    <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="./products.html">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         CHOCOLATE
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./cdarkc.html">
+                          <a class="Link Link--secondary" href="cdarkc.html">
                             CHYAWANAPRASH DARK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./cmilkc.html">
+                          <a class="Link Link--secondary" href="cmilkc.html">
                             CHYAWANAPRASH MILK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./amilkc.html">
+                          <a class="Link Link--secondary" href="amilkc.html">
                             APHRODISIAC MILK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="./adarkc.html">
+                          <a class="Link Link--secondary" href="adarkc.html">
                             APHRODISIAC DARK
                           </a>
                         </li>
                       </ul>
                     </div>
-                    <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="./products.html">
-                        SHOTS
-                      </a>
-                      <ul class="Linklist">
-                        <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="shots.html">
-                            MUSHTARISHTA
-                          </a>
-                        </li>
-
-                      </ul>
-                    </div>
-
                   </div>
                 </div>
               </li>
@@ -905,48 +804,36 @@
                   </span>
                 </a>
               </li>
-
             </ul>
           </nav>
-        </div>
-        <div class="Header__FlexItem Header__FlexItem--logo">
-          <div class="Header__Logo">
-            <a class="Header__LogoLink" href="../index.html">
-              <img alt="MVST" class="Header__LogoImage Header__LogoImage--primary" height="296"
-                src="../assets/RR_Logo-1.png" srcset="../assets/RR_Logo-1.png" width="600" />
-            </a>
-          </div>
         </div>
         <div class="Header__FlexItem Header__FlexItem--fill">
           <nav class="Header__SecondaryNav hidden-phone">
             <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
-              <div class="transcy-switcher-manual transcy-desktop hidden HorizontalList__Item">
-              </div>
-              <li class="HorizontalList__Item">
-                <a class="Heading Link Link--primary Text--subdued u-h8" href="account.html">
-                  Account
-                </a>
-              </li>
-              <!-- <li class="HorizontalList__Item">
-          <a class="Heading Link Link--primary Text--subdued u-h8" data-action="toggle-search" href="search.html">
-           Search
-          </a>
-         </li> -->
-              <li class="HorizontalList__Item">
-                <a aria-label="Open cart" class="Heading u-h6" data-action="open-drawer" data-drawer-id="sidebar-cart"
-                  href="cart.html">
-                  Cart (
-                  <span class="Header__CartCount">
-                    0
-                  </span>
-                  )
-                </a>
+              <li class="HorizontalList__Item Header__SearchContainer">
+                <div class="Header__SearchForm">
+                  <input id="local-search-input" type="search" class="Header__SearchInput"
+                    placeholder="Search products..." autocomplete="off" aria-label="Search">
+                  <button type="button" class="Header__SearchButton"
+                    style="border:none; background:none; cursor:pointer;">
+                    <svg class="Icon Icon--search" role="presentation" viewBox="0 0 18 17"
+                      style="width: 16px; height: 16px;">
+                      <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
+                        transform="translate(1 1)">
+                        <path d="M16 16l-5.0752-5.0752"></path>
+                        <circle cx="6.4" cy="6.4" r="6.4"></circle>
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+                <div id="search-results"></div>
               </li>
             </ul>
           </nav>
-          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
+
+          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable"
             data-action="toggle-search" href="search.html">
-            <span class="hidden-tablet-and-up">
+            <span class="hidden-desk">
               <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
                   transform="translate(1 1)">
@@ -969,57 +856,9 @@
               </svg>
             </span>
           </a>
-          <a aria-expanded="false" aria-label="Open cart"
-            class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk" data-action="open-drawer"
-            data-drawer-id="sidebar-cart" href="cart.html">
-            <span class="hidden-tablet-and-up">
-              <svg class="Icon Icon--cart" role="presentation" viewbox="0 0 17 20">
-                <path
-                  d="M0 20V4.995l1 .006v.015l4-.002V4c0-2.484 1.274-4 3.5-4C10.518 0 12 1.48 12 4v1.012l5-.003v.985H1V19h15V6.005h1V20H0zM11 4.49C11 2.267 10.507 1 8.5 1 6.5 1 6 2.27 6 4.49V5l5-.002V4.49z"
-                  fill="currentColor">
-                </path>
-              </svg>
-            </span>
-            <span class="hidden-phone">
-              <svg class="Icon Icon--cart-desktop" role="presentation" viewbox="0 0 19 23">
-                <path
-                  d="M0 22.985V5.995L2 6v.03l17-.014v16.968H0zm17-15H2v13h15v-13zm-5-2.882c0-2.04-.493-3.203-2.5-3.203-2 0-2.5 1.164-2.5 3.203v.912H5V4.647C5 1.19 7.274 0 9.5 0 11.517 0 14 1.354 14 4.647v1.368h-2v-.912z"
-                  fill="currentColor">
-                </path>
-              </svg>
-            </span>
-            <span class="Header__CartDot">
-            </span>
-          </a>
         </div>
       </div>
     </header>
-    <style>
-      :root {
-        --use-sticky-header: 1;
-        --use-unsticky-header: 0;
-      }
-
-      .shopify-section--header {
-        position: -webkit-sticky;
-        position: sticky;
-      }
-
-      .Header__LogoImage {
-        max-width: 110px;
-      }
-
-      @media screen and (max-width: 640px) {
-        .Header__LogoImage {
-          max-width: 90px;
-        }
-      }
-
-      :root {
-        --header-is-not-transparent: 1;
-        --header-is-transparent: 0;
-      }
-    </style>
     <script>
       document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-header').offsetHeight + 'px');
     </script>
@@ -1173,7 +1012,7 @@
 
               <div class="Product__SlideItem Product__SlideItem--image Carousel__Cell" id="Media28982517072128">
                 <div class="AspectRatio AspectRatio--withFallback" style="padding-bottom: 100.0%; --aspect-ratio: 1.0;">
-                  <img alt="cdarkc class=" Image--lazyLoad Image--fadeIn" src="../assets/cdc3.jpg" />
+                  <img alt="cdarkc" class="Image--lazyLoad Image--fadeIn" src="../assets/cdc3.jpg" />
                 </div>
               </div>
 
@@ -2230,7 +2069,191 @@
           </ul>
         </div>
       </div>
-    </footer>
+
+    <style>
+      /* ===== SHOP ON SECTION ===== */
+      .ShopOnSection {
+        padding: 60px 0;
+        background-color: #f9f9f9;
+        border-top: 1px solid #e8e8e8;
+      }
+
+      .ShopOnSection__Title {
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 21px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #1c1c1c;
+        margin: 0 0 30px 0;
+      }
+
+      .ShopOnSection__Container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .ShopOnSection__Column {
+        flex: 1;
+        text-align: center;
+      }
+
+      .ShopOnSection__ColumnTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #1c1c1c;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .ShopOnSection__Grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .ShopOnSection__Link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #5c5c5c;
+        transition: color 0.3s ease;
+      }
+
+      .ShopOnSection__Link:hover {
+        color: #1c1c1c;
+      }
+
+      .ShopOnSection__IconCircle {
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .ShopOnSection__Link:hover .ShopOnSection__IconCircle {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .ShopOnSection__IconText {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .ShopOnSection__Description {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #5c5c5c;
+        max-width: 280px;
+        margin: 0 auto;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .ShopOnSection__IconSVG {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+
+      @media (max-width: 768px) {
+        .ShopOnSection__Container {
+          flex-direction: column;
+          gap: 50px;
+        }
+
+        .ShopOnSection__Column {
+          width: 100%;
+        }
+      }
+    </style>
+
+    <div class="shopify-section" id="shopify-section-shop-on">
+      <section class="ShopOnSection">
+        <h2 class="ShopOnSection__Title">SHOP ON</h2>
+
+        <div class="ShopOnSection__Container">
+          <!-- Quick Commerce -->
+          <div class="ShopOnSection__Column">
+            <h3 class="ShopOnSection__ColumnTitle">Quick Commerce</h3>
+            <div class="ShopOnSection__Grid">
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/bkit.png" alt="Blinkit" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Blinkit</span>
+              </a>
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/zep.png" alt="Zepto" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Zepto</span>
+              </a>
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/imart.png" alt="Instamart" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Instamart</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Ecommerce -->
+          <div class="ShopOnSection__Column">
+            <h3 class="ShopOnSection__ColumnTitle">Ecommerce</h3>
+            <div class="ShopOnSection__Grid">
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/azon.png" alt="Amazon" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Amazon</span>
+              </a>
+              <a href="#" class="ShopOnSection__Link">
+                <div class="ShopOnSection__IconCircle">
+                  <img src="../assets/fkart.png" alt="Flipkart" class="ShopOnSection__IconSVG">
+                </div>
+                <span class="ShopOnSection__IconText">Flipkart</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Free Shipping -->
+          <div class="ShopOnSection__Column">
+            <h3 class="ShopOnSection__ColumnTitle">Free Shipping</h3>
+            <div class="ShopOnSection__Grid">
+                <div class="ShopOnSection__Link">
+                    <div class="ShopOnSection__IconCircle">
+                        <svg class="ShopOnSection__IconSVG" viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.5">
+                            <path d="M1 3h15v13H1V3zM16 8l4 0l3 3l0 5l-7 0" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="5.5" cy="18.5" r="2.5" />
+                            <circle cx="18.5" cy="18.5" r="2.5" />
+                        </svg>
+                    </div>
+                    <span class="ShopOnSection__IconText">Free Shipping</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer id="section-footer" class="Footer Footer--withMargin" role="contentinfo" data-section-id="footer" data-section-type="footer">
   </div>
   </div>
   <!--Gorgias Chat Widget Start-->
@@ -2339,3 +2362,6 @@ playback timings (ms):
   PetaboxLoader3.datanode: 159.794 (4)
   load_resource: 165.953
 -->
+
+
+
