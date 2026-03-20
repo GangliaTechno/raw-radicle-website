@@ -1027,30 +1027,18 @@ label.icon_content img {
        </header>
        <div class="Popover__Content">
         <div class="Popover__ValueList" data-scrollable="">
-         <button class="Popover__Value is-selected Heading Link Link--primary u-h6" data-action="select-value" data-value="manual">
-          Featured
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="best-selling">
-          Best selling
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="title-ascending">
-          Alphabetically, A-Z
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="title-descending">
-          Alphabetically, Z-A
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="price-ascending">
-          Price, low to high
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="price-descending">
-          Price, high to low
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="created-ascending">
-          Date, old to new
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="created-descending">
-          Date, new to old
-         </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="title-ascending">
+           ALPHABETICALLY, A-Z
+          </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="title-descending">
+           ALPHABETICALLY, Z-A
+          </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="price-ascending">
+           PRICE, LOW TO HIGH
+          </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="price-descending">
+           PRICE, HIGH TO LOW
+          </button>
         </div>
        </div>
       </div>
@@ -1113,9 +1101,19 @@ label.icon_content img {
              <div class="Collapsible__Content">
               <ul class="Linklist">
                <li class="Linklist__Item">
-                <a class="Link Link--primary Text--subdued" href="#">
-                 Chocolates
-                </a>
+                <button type="button" class="Link Link--primary filter-category is-active" data-type="all" style="background: none; border: none; padding: 0; text-align: left; cursor: pointer;">
+                 All
+                </button>
+               </li>
+               <li class="Linklist__Item">
+                <button type="button" class="Link Link--primary filter-category" data-type="dark" style="background: none; border: none; padding: 0; text-align: left; cursor: pointer;">
+                 Dark Chocolate
+                </button>
+               </li>
+               <li class="Linklist__Item">
+                <button type="button" class="Link Link--primary filter-category" data-type="milk" style="background: none; border: none; padding: 0; text-align: left; cursor: pointer;">
+                 Milk Chocolate
+                </button>
                </li>
               </ul>
              </div>
@@ -1146,42 +1144,6 @@ label.icon_content img {
              </div>
             </div>
            </div> -->
-           <div class="Collapsible Collapsible--padded Collapsible--autoExpand" data-filter-index="2">
-            <button aria-expanded="false" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" type="button">
-             Price
-             <span class="Collapsible__Plus">
-             </span>
-            </button>
-            <div class="Collapsible__Inner">
-             <div class="Collapsible__Content">
-              <ul class="Linklist">
-               <price-range class="price-range">
-                <div class="price-range__range-group range-group" style="--range-min: 0.0%; --range-max: 100.0%">
-                 <input aria-label="From" class="range" max="565" min="0" type="range" value="0"/>
-                 <input aria-label="To" class="range" max="565" min="0" type="range" value="565"/>
-                </div>
-                <div class="price-range__input-group">
-                 <div class="price-range__input input-prefix text--xsmall">
-                  <span class="input-prefix__value text--subdued">
-                   $
-                  </span>
-                  <input aria-label="From" class="input-prefix__field" id="filter-v-price-gte" inputmode="numeric" max="565" min="0" name="filter.v.price.gte" placeholder="0" type="number"/>
-                 </div>
-                 <span class="price-range__delimiter text--small">
-                  -
-                 </span>
-                 <div class="price-range__input input-prefix text--xsmall">
-                  <span class="input-prefix__value text--subdued">
-                   $
-                  </span>
-                  <input aria-label="To" class="input-prefix__field" id="filter-v-price-lte" inputmode="numeric" max="565" min="0" name="filter.v.price.lte" placeholder="565" type="number"/>
-                 </div>
-                </div>
-               </price-range>
-              </ul>
-             </div>
-            </div>
-           </div>
            <input name="sort_by" type="hidden" value="manual"/>
           </form>
          </div>
@@ -1189,7 +1151,7 @@ label.icon_content img {
         <div class="CollectionInner__Products">
          <div class="ProductListWrapper">
           <div class="ProductList ProductList--grid Grid" data-desktop-count="3" data-mobile-count="2">
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
               <a class="ProductItem__ImageWrapper" href="bdarkc.html">
@@ -1220,7 +1182,7 @@ label.icon_content img {
              </div>
             </div>
            </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
               <a class="ProductItem__ImageWrapper" href="bmilkc.html">
@@ -1251,7 +1213,7 @@ label.icon_content img {
              </div>
             </div>
            </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
               <a class="ProductItem__ImageWrapper" href="cdarkc.html">
@@ -1282,7 +1244,7 @@ label.icon_content img {
              </div>
             </div>
            </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
               <a class="ProductItem__ImageWrapper" href="cmilkc.html">
@@ -1313,7 +1275,7 @@ label.icon_content img {
              </div>
             </div>
            </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
               <a class="ProductItem__ImageWrapper" href="adarkc.html">
@@ -1344,7 +1306,7 @@ label.icon_content img {
              </div>
             </div>
            </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
               <a class="ProductItem__ImageWrapper" href="amilkc.html">
