@@ -520,15 +520,6 @@ for (var attr in meta) {
                   </button>
                   <div class="Collapsible__Inner">
                     <div class="Collapsible__Content">
-                      <!-- <div class="Linklist__SubItem">
-                        <p class="Linklist__SubHeading Heading u-h7">BALM</p>
-                        <ul class="Linklist">
-                          <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="balm.html">JATYADI</a>
-                          </li>
-                        </ul>
-                      </div> -->
-
                       <div class="Linklist__SubItem">
                         <p class="Linklist__SubHeading Heading u-h7">CHOCOLATE</p>
                         <ul class="Linklist">
@@ -544,17 +535,14 @@ for (var attr in meta) {
                           <li class="Linklist__Item">
                             <a class="Link Link--secondary" href="adarkc.html">APHRODISIAC DARK</a>
                           </li>
-                        </ul>
-                      </div>
-
-                      <!-- <div class="Linklist__SubItem">
-                        <p class="Linklist__SubHeading Heading u-h7">SHOTS</p>
-                        <ul class="Linklist">
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="shots.html">MUSHTARISHTA</a>
+                            <a class="Link Link--secondary" href="bdarkc.html">BHRAMI DARK</a>
+                          </li>
+                          <li class="Linklist__Item">
+                            <a class="Link Link--secondary" href="bmilkc.html">BHRAMI MILK</a>
                           </li>
                         </ul>
-                      </div> -->
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -770,19 +758,6 @@ label.icon_content img {
                 </a>
                 <div aria-hidden="true" class="MegaMenu">
                   <div class="MegaMenu__Inner">
-                    <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
-                        BALM
-                      </a>
-                      <ul class="Linklist">
-                        <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="balm.html">
-                            JATYADI
-                          </a>
-                        </li>
-
-                      </ul>
-                    </div> -->
                     <div class="MegaMenu__Item MegaMenu__Item--fit">
                       <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
                         CHOCOLATE
@@ -808,21 +783,18 @@ label.icon_content img {
                             APHRODISIAC DARK
                           </a>
                         </li>
-                      </ul>
-                    </div>
-                    <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
-                        SHOTS
-                      </a>
-                      <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="shots.html">
-                            MUSHTARISHTA
+                          <a class="Link Link--secondary" href="bdarkc.html">
+                            BHRAMI DARK
                           </a>
                         </li>
-
+                        <li class="Linklist__Item">
+                          <a class="Link Link--secondary" href="bmilkc.html">
+                            BHRAMI MILK
+                          </a>
+                        </li>
                       </ul>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
               </li>
@@ -961,16 +933,6 @@ label.icon_content img {
              <ul class="Linklist">
               <li class="Linklist__Item">
                <a class="Link Link--primary Text--subdued" href="#">
-                Balm
-               </a>
-              </li>
-              <li class="Linklist__Item">
-               <a class="Link Link--primary Text--subdued" href="#">
-                Shots
-               </a>
-              </li>
-              <li class="Linklist__Item">
-               <a class="Link Link--primary Text--subdued" href="#">
                 Chocolate
                </a>
               </li>
@@ -1065,30 +1027,18 @@ label.icon_content img {
        </header>
        <div class="Popover__Content">
         <div class="Popover__ValueList" data-scrollable="">
-         <button class="Popover__Value is-selected Heading Link Link--primary u-h6" data-action="select-value" data-value="manual">
-          Featured
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="best-selling">
-          Best selling
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="title-ascending">
-          Alphabetically, A-Z
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="title-descending">
-          Alphabetically, Z-A
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="price-ascending">
-          Price, low to high
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="price-descending">
-          Price, high to low
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="created-ascending">
-          Date, old to new
-         </button>
-         <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value" data-value="created-descending">
-          Date, new to old
-         </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="title-ascending">
+           ALPHABETICALLY, A-Z
+          </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="title-descending">
+           ALPHABETICALLY, Z-A
+          </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="price-ascending">
+           PRICE, LOW TO HIGH
+          </button>
+          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value" data-value="price-descending">
+           PRICE, HIGH TO LOW
+          </button>
         </div>
        </div>
       </div>
@@ -1151,19 +1101,19 @@ label.icon_content img {
              <div class="Collapsible__Content">
               <ul class="Linklist">
                <li class="Linklist__Item">
-                <a class="Link Link--primary Text--subdued" href="#">
-                 Balm
-                </a>
+                <button type="button" class="Link Link--primary filter-category is-active" data-type="all" style="background: none; border: none; padding: 0; text-align: left; cursor: pointer;">
+                 All
+                </button>
                </li>
                <li class="Linklist__Item">
-                <a class="Link Link--primary Text--subdued" href="#">
-                 Shots
-                </a>
+                <button type="button" class="Link Link--primary filter-category" data-type="dark" style="background: none; border: none; padding: 0; text-align: left; cursor: pointer;">
+                 Dark Chocolate
+                </button>
                </li>
                <li class="Linklist__Item">
-                <a class="Link Link--primary Text--subdued" href="#">
-                 Chocolates
-                </a>
+                <button type="button" class="Link Link--primary filter-category" data-type="milk" style="background: none; border: none; padding: 0; text-align: left; cursor: pointer;">
+                 Milk Chocolate
+                </button>
                </li>
               </ul>
              </div>
@@ -1194,42 +1144,6 @@ label.icon_content img {
              </div>
             </div>
            </div> -->
-           <div class="Collapsible Collapsible--padded Collapsible--autoExpand" data-filter-index="2">
-            <button aria-expanded="false" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" type="button">
-             Price
-             <span class="Collapsible__Plus">
-             </span>
-            </button>
-            <div class="Collapsible__Inner">
-             <div class="Collapsible__Content">
-              <ul class="Linklist">
-               <price-range class="price-range">
-                <div class="price-range__range-group range-group" style="--range-min: 0.0%; --range-max: 100.0%">
-                 <input aria-label="From" class="range" max="565" min="0" type="range" value="0"/>
-                 <input aria-label="To" class="range" max="565" min="0" type="range" value="565"/>
-                </div>
-                <div class="price-range__input-group">
-                 <div class="price-range__input input-prefix text--xsmall">
-                  <span class="input-prefix__value text--subdued">
-                   $
-                  </span>
-                  <input aria-label="From" class="input-prefix__field" id="filter-v-price-gte" inputmode="numeric" max="565" min="0" name="filter.v.price.gte" placeholder="0" type="number"/>
-                 </div>
-                 <span class="price-range__delimiter text--small">
-                  -
-                 </span>
-                 <div class="price-range__input input-prefix text--xsmall">
-                  <span class="input-prefix__value text--subdued">
-                   $
-                  </span>
-                  <input aria-label="To" class="input-prefix__field" id="filter-v-price-lte" inputmode="numeric" max="565" min="0" name="filter.v.price.lte" placeholder="565" type="number"/>
-                 </div>
-                </div>
-               </price-range>
-              </ul>
-             </div>
-            </div>
-           </div>
            <input name="sort_by" type="hidden" value="manual"/>
           </form>
          </div>
@@ -1237,88 +1151,23 @@ label.icon_content img {
         <div class="CollectionInner__Products">
          <div class="ProductListWrapper">
           <div class="ProductList ProductList--grid Grid" data-desktop-count="3" data-mobile-count="2">
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
-              <a class="ProductItem__ImageWrapper" href="balm.html">
-               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 4000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                <img alt="Jatyadi" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="30536378810624" data-sizes="auto" data-src="../assets/jatyadi.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-                <span class="Image__Loader">
-                </span>
-                <noscript>
-                 <img alt="Jatyadi" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/jatyadi.png"/>
-                 <img alt="Jatyadi" class="ProductItem__Image" src="../assets/jatyadi.png"/>
-                </noscript>
-               </div>
-              </a>
-              <div class="ProductItem__Info ProductItem__Info--center">
-               <h2 class="ProductItem__Title Heading">
-                <a href="balm.html">
-                 Jatyadi
-                </a>
-               </h2>
-               <div class="ProductItem__PriceList Heading">
-                <span class="ProductItem__Price Price Text--subdued">
-                 Rs.
-                 <span class="transcy-money">
-                    ₹50.00
-                 </span>
-                </span>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
-            <div class="ProductItem">
-             <div class="ProductItem__Wrapper">
-              <a class="ProductItem__ImageWrapper" href="shots.html">
-               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 3278px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                <img alt="Shots" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="29044853440768" data-sizes="auto" data-src="../assets/shots1.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-                <span class="Image__Loader">
-                </span>
-                <noscript>
-                 <img alt="Shots" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/shots1.png"/>
-                 <img alt="Shots" class="ProductItem__Image" src="../assets/shots1.png"/>
-                </noscript>
-               </div>
-              </a>
-              <div class="ProductItem__Info ProductItem__Info--center">
-               <h2 class="ProductItem__Title Heading">
-                <a href="shots.html">
-                    Mushtarishta Shots
-                </a>
-               </h2>
-               <div class="ProductItem__PriceList Heading">
-                <span class="ProductItem__Price Price Text--subdued">
-                Rs.
-                 <span class="transcy-money">
-                    ₹150.00
-                 </span>
-                </span>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
-            <div class="ProductItem">
-             <div class="ProductItem__Wrapper">
-              <a class="ProductItem__ImageWrapper" href="adarkc.html">
+              <a class="ProductItem__ImageWrapper" href="bdarkc.html">
                <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                <img alt="Aphrodasiac DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982490628352" data-sizes="auto" data-src="../assets/aphdc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <img alt="Bhrami DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/bdark.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
-                 <img alt="Aphrodasiac DARK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/aphdc.png"/>
-                 <img alt="Aphrodasiac DARK Chocolate Slab" class="ProductItem__Image" src="../assets/aphdc.png"/>
+                 <img alt="Bhrami DARK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/bdark.png"/>
                 </noscript>
                </div>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
-                <a href="adarkc.html">
-                    Aphrodasiac DARK Chocolate Slab
+                <a href="bdarkc.html">
+                 BHRAMI DARK CHOCOLATE
                 </a>
                </h2>
                <div class="ProductItem__PriceList Heading">
@@ -1333,119 +1182,147 @@ label.icon_content img {
              </div>
             </div>
            </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
-            <div class="ProductItem">
-             <div class="ProductItem__Wrapper">
-              <a class="ProductItem__ImageWrapper" href="amilkc.html">
-               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                <img alt="Aphrodasiac MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982513434880" data-sizes="auto" data-src="../assets/aphmc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-                <span class="Image__Loader">
-                </span>
-                <noscript>
-                 <img alt="Aphrodasiac MILK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/aphmc.png"/>
-                 <img alt="Aphrodasiac MILK Chocolate Slab" class="ProductItem__Image" src="../assets/aphmc.png"/>
-                </noscript>
-               </div>
-              </a>
-              <div class="ProductItem__Info ProductItem__Info--center">
-               <h2 class="ProductItem__Title Heading">
-                <a href="amilkc.html">
-                Aphrodasiac MILK Chocolate Slab
-               </h2>
-               <div class="ProductItem__PriceList Heading">
-                <span class="ProductItem__Price Price Text--subdued">
-                 Rs.
-                 <span class="transcy-money">
-                    ₹250.00
-                 </span>
-                </span>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
-            <div class="ProductItem">
-             <div class="ProductItem__Wrapper">
-              <a class="ProductItem__ImageWrapper" href="cdarkc.html">
-               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982517006592" data-sizes="auto" data-src="../assets/chdc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-                <span class="Image__Loader">
-                </span>
-                <noscript>
-                 <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/chdc.png"/>
-                 <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image" src="../assets/chdc.png"/>
-                </noscript>
-               </div>
-              </a>
-              <div class="ProductItem__Info ProductItem__Info--center">
-               <h2 class="ProductItem__Title Heading">
-                <a href="cdarkc.html">
-                    Chyawanaprash DARK Chocolate Slab
-                </a>
-               </h2>
-               <div class="ProductItem__PriceList Heading">
-                <span class="ProductItem__Price Price Text--subdued">
-                 Rs.
-                 <span class="transcy-money">
-                    ₹250.00
-                 </span>
-                </span>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
-            <div class="ProductItem">
-             <div class="ProductItem__Wrapper">
-              <a class="ProductItem__ImageWrapper" href="cmilkc.html">
-               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="28982509207808" data-sizes="auto" data-src="../assets/chmc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-                <span class="Image__Loader">
-                </span>
-                <noscript>
-                 <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/chmc.png"/>
-                 <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image" src="../assets/chmc.png"/>
-                </noscript>
-               </div>
-              </a>
-              <div class="ProductItem__Info ProductItem__Info--center">
-               <h2 class="ProductItem__Title Heading">
-                <a href="cmilkc.html">
-                    Chyawanaprash MILK Chocolate Slab
-                </a>
-               </h2>
-               <div class="ProductItem__PriceList Heading">
-                <span class="ProductItem__Price Price Text--subdued">
-                 Rs.
-                 <span class="transcy-money">
-                    ₹250.00
-                 </span>
-                </span>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">
               <a class="ProductItem__ImageWrapper" href="bmilkc.html">
-               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 4000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="30486778773760" data-sizes="auto" data-src="../assets/brmc.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
+                <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/bmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
-                 <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/brmc.png"/>
-                 <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image" src="../assets/brmc.png"/>
+                 <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/bmilk.png"/>
                 </noscript>
                </div>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
                 <a href="bmilkc.html">
-                    Brahmi MILK Chocolate Slab
+                 BRAHMI MILK CHOCOLATE
+                </a>
+               </h2>
+               <div class="ProductItem__PriceList Heading">
+                <span class="ProductItem__Price Price Text--subdued">
+                 Rs.
+                 <span class="transcy-money">
+                    ₹250.00
+                 </span>
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
+            <div class="ProductItem">
+             <div class="ProductItem__Wrapper">
+              <a class="ProductItem__ImageWrapper" href="cdarkc.html">
+               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
+                <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/cdark.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <span class="Image__Loader">
+                </span>
+                <noscript>
+                 <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/cdark.png"/>
+                </noscript>
+               </div>
+              </a>
+              <div class="ProductItem__Info ProductItem__Info--center">
+               <h2 class="ProductItem__Title Heading">
+                <a href="cdarkc.html">
+                 CHYAWANAPRASH DARK CHOCOLATE
+                </a>
+               </h2>
+               <div class="ProductItem__PriceList Heading">
+                <span class="ProductItem__Price Price Text--subdued">
+                 Rs.
+                 <span class="transcy-money">
+                    ₹250.00
+                 </span>
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
+            <div class="ProductItem">
+             <div class="ProductItem__Wrapper">
+              <a class="ProductItem__ImageWrapper" href="cmilkc.html">
+               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
+                <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/cmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <span class="Image__Loader">
+                </span>
+                <noscript>
+                 <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/cmilk.png"/>
+                </noscript>
+               </div>
+              </a>
+              <div class="ProductItem__Info ProductItem__Info--center">
+               <h2 class="ProductItem__Title Heading">
+                <a href="cmilkc.html">
+                 CHYAWANAPRASH MILK CHOCOLATE
+                </a>
+               </h2>
+               <div class="ProductItem__PriceList Heading">
+                <span class="ProductItem__Price Price Text--subdued">
+                 Rs.
+                 <span class="transcy-money">
+                    ₹250.00
+                 </span>
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
+            <div class="ProductItem">
+             <div class="ProductItem__Wrapper">
+              <a class="ProductItem__ImageWrapper" href="adarkc.html">
+               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
+                <img alt="Aphrodisiac DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/adark.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <span class="Image__Loader">
+                </span>
+                <noscript>
+                 <img alt="Aphrodisiac DARK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/adark.png"/>
+                </noscript>
+               </div>
+              </a>
+              <div class="ProductItem__Info ProductItem__Info--center">
+               <h2 class="ProductItem__Title Heading">
+                <a href="adarkc.html">
+                 APHRODISIAC DARK CHOCOLATE
+                </a>
+               </h2>
+               <div class="ProductItem__PriceList Heading">
+                <span class="ProductItem__Price Price Text--subdued">
+                 Rs.
+                 <span class="transcy-money">
+                    ₹250.00
+                 </span>
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
+            <div class="ProductItem">
+             <div class="ProductItem__Wrapper">
+              <a class="ProductItem__ImageWrapper" href="amilkc.html">
+               <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
+                <img alt="Aphrodisiac MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/apmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <span class="Image__Loader">
+                </span>
+                <noscript>
+                 <img alt="Aphrodisiac MILK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/apmilk.png"/>
+                </noscript>
+               </div>
+              </a>
+              <div class="ProductItem__Info ProductItem__Info--center">
+               <h2 class="ProductItem__Title Heading">
+                <a href="amilkc.html">
+                 APHRODISIAC MILK CHOCOLATE
                 </a>
                </h2>
                <div class="ProductItem__PriceList Heading">
