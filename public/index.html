@@ -1743,7 +1743,8 @@ Version: 2.43.0
       <section class="VideoHero">
         <div class="VideoHero__VideoWrapper">
           <video class="VideoHero__Video" autoplay muted loop playsinline poster="assets/pure_chocolate_hero.png">
-            <source src="https://cdn.pixabay.com/video/2021/11/18/98283-647561752_large.mp4" type="video/mp4">
+            <source src="assets/ad1.mp4" type="video/mp4">
+            <!-- https://cdn.pixabay.com/video/2021/11/18/98283-647561752_large.mp4 -->
           </video>
           <div class="VideoHero__Overlay"></div>
         </div>
@@ -2175,7 +2176,10 @@ Version: 2.43.0
       }
 
       .TestimonialsSection__ViewProductBtn {
-        display: inline-block;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
         position: relative;
         overflow: hidden;
         font-family: 'Montserrat', sans-serif;
@@ -2242,7 +2246,7 @@ Version: 2.43.0
 
       .TestimonialsSection__ProductName {
         font-family: 'Montserrat', sans-serif;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: 600;
         color: #1c1c1c;
         margin: 0;
@@ -2265,19 +2269,19 @@ Version: 2.43.0
       }
 
       .TestimonialsSection__CurrentPrice {
-        font-size: 11px;
+        font-size: 14px;
         font-weight: 700;
         color: #1c1c1c;
       }
 
       .TestimonialsSection__OriginalPrice {
-        font-size: 10px;
+        font-size: 13px;
         color: #888;
         text-decoration: line-through;
       }
 
       .TestimonialsSection__Discount {
-        font-size: 10px;
+        font-size: 13px;
         color: #2e7d32;
         font-weight: 600;
         margin-top: 2px;
