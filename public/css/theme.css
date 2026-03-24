@@ -8626,7 +8626,10 @@ screen and (min-width: 1008px) and (hover: hover) {
 
 @media screen and (min-width: 1008px) {
   .Product__Wrapper {
-    max-width: calc(100% - 525px);
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    max-width: none !important;
     margin-left: 0;
   }
 }
@@ -8654,6 +8657,12 @@ screen and (min-width: 1008px) and (hover: hover) {
 .Product__Gallery {
   position: relative;
   margin-bottom: 28px;
+}
+
+@media screen and (min-width: 1008px) {
+  .Product__Gallery {
+    flex: 1 !important;
+  }
 }
 
 .Product__ViewInSpace {
@@ -8984,10 +8993,9 @@ screen and (min-width: 1008px) and (hover: hover) {
 
 @media screen and (min-width: 1008px) {
   .Product__InfoWrapper {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
+    position: relative !important;
+    height: auto !important;
+    flex: 0 0 525px !important;
   }
 
   .Product__Info {
@@ -9763,8 +9771,6 @@ shopify-payment-terms {
 .shopify-payment-button__more-options:hover:not([disabled]) {
   text-decoration: none;
 }
-
-@charset "UTF-8";
 
 #shopify-product-reviews {
   margin: 18px 0 28px !important;

@@ -1,0 +1,122 @@
+/* Product Gallery Overrides */
+@media screen and (min-width: 1140px) {
+  .Product__Gallery--withThumbnails {
+    display: flex !important;
+    flex-direction: row !important; /* Thumbnails on LEFT, Slideshow on RIGHT */
+    align-items: flex-start;
+  }
+
+  .Product__Slideshow {
+    flex: 1;
+    margin-left: 30px !important; /* Spacing between thumbnails and main image */
+    margin-right: 0 !important;
+    width: calc(100% - 110px) !important;
+    overflow: hidden;
+  }
+
+  /* Flickity watchCSS signal */
+  .Product__Slideshow::after {
+    display: none;
+    content: 'flickity';
+  }
+
+  .Product__Slideshow:not(.flickity-enabled) {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .Product__Slideshow:not(.flickity-enabled) .Product__SlideItem {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+  }
+
+  .Product__SlideshowNav--thumbnails {
+    width: 80px !important;
+    flex-shrink: 0;
+    display: block !important;
+    position: sticky !important;
+    top: 120px !important;
+  }
+
+  .Product__SlideshowNavImage {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+  }
+
+  .Product__SlideshowNavImage:hover,
+  .Product__SlideshowNavImage.is-selected {
+    border-color: #000 !important;
+    border-width: 1px;
+  }
+}
+
+/* Flickity Arrows styling and hover logic */
+.flickity-prev-next-button {
+  background: white !important;
+  color: #000 !important;
+  width: 60px !important;
+  height: 60px !important;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease, transform 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+  z-index: 100 !important; /* Ensure they are above images */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.flickity-prev-next-button:hover {
+  background: #fcfcfc !important;
+  transform: translateY(-50%) scale(1.05) !important;
+}
+
+.Product__Slideshow:hover .flickity-prev-next-button,
+.Product__Gallery:hover .flickity-prev-next-button {
+  opacity: 1 !important;
+}
+
+.flickity-prev-next-button.previous { left: 20px !important; }
+.flickity-prev-next-button.next { right: 20px !important; }
+
+.flickity-prev-next-button svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Market Buttons styling */
+.Marketplace .Button {
+  border-radius: 0 !important; /* Sharp edges */
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease !important;
+  border: 1px solid #1c1b1b !important;
+  background: transparent !important;
+  color: #1c1b1b !important;
+}
+
+.Marketplace .Button:hover {
+  color: white !important;
+  border-color: transparent !important;
+}
+
+/* Brand backgrounds on hover */
+.Marketplace .Button[data-brand="blinkit"]:hover { background-color: #F4B000 !important; }
+.Marketplace .Button[data-brand="zepto"]:hover { background-color: #5F31E1 !important; }
+.Marketplace .Button[data-brand="bigbasket"]:hover { background-color: #84C225 !important; }
+.Marketplace .Button[data-brand="swiggy"]:hover,
+.Marketplace .Button[data-brand="instamart"]:hover { background-color: #FF5200 !important; }
+.Marketplace .Button[data-brand="amazon"]:hover { background-color: #FF9900 !important; }
+.Marketplace .Button[data-brand="flipkart"]:hover { background-color: #2874F0 !important; }
+
+.Marketplace .Button img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.Marketplace .Button:hover img {
+  filter: grayscale(0%) brightness(1.2);
+}

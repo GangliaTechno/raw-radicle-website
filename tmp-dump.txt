@@ -1,0 +1,71 @@
+ProductForm__BuyButtons Marketplace">
+                    
+
+
+
+                    <div class="Marketplace__Grid" style="
+                   display:grid;
+                   grid-template-columns:1fr 1fr;
+                   gap:12px;
+                   margin-top:15px;
+                 ">
+
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full Button--blinkit"
+                        style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                  --hover-bg: #F8CB46; --hover-text: #fff;">
+                        BUY ON <img src="../assets/blinkit.png" alt="Blinkit" style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     "></a>
+
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full Button--zepto"
+                        style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                  --hover-bg: #FF3269; --hover-text: #fff;">
+                        BUY ON <img src="../assets/zepto.png" alt="Zepto" style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     "></a>
+
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full Button--amazon"
+                        style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;
+                   white-space:nowrap;
+                  --hover-bg: #FF9900; --hover-text: #fff;">
+                        BUY ON <img src="../assets/amazon.png" alt="Amazon" style="
+                       width:18px;
+                       height:18px;
+                       object-fit:contain;
+                       flex-shrink:0;
+                     "></a>
+
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full Button--instamart"
+                        style="
+                   border-radius:30px;
+                   display:flex;
+                   align-items:center;
+                   justify-content:center;
+                   gap:10px;
+                   padding:14px 16px;

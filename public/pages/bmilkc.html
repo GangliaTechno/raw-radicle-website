@@ -584,15 +584,15 @@
                   </button>
                   <div class="Collapsible__Inner">
                     <div class="Collapsible__Content">
-                      <div class="Linklist__SubItem">
+                      <!-- <div class="Linklist__SubItem">
                         <p class="Linklist__SubHeading Heading u-h7">BALM</p>
                         <ul class="Linklist">
                           <li class="Linklist__Item">
                             <a class="Link Link--secondary" href="./balm.html">JATYADI</a>
                           </li>
                         </ul>
-                      </div>
-
+                      </div> -->
+ 
                       <div class="Linklist__SubItem"><br>
                         <p class="Linklist__SubHeading Heading u-h7">CHOCOLATE</p>
                         <ul class="Linklist">
@@ -608,17 +608,23 @@
                           <li class="Linklist__Item">
                             <a class="Link Link--secondary" href="./adarkc.html">APHRODISIAC DARK</a>
                           </li>
+                          <li class="Linklist__Item">
+                            <a class="Link Link--secondary" href="./bdarkc.html">BRAHMI DARK</a>
+                          </li>
+                          <li class="Linklist__Item">
+                            <a class="Link Link--secondary" href="./bmilkc.html">BRAHMI MILK</a>
+                          </li>
                         </ul>
                       </div>
-
-                      <div class="Linklist__SubItem"><br>
+ 
+                      <!-- <div class="Linklist__SubItem"><br>
                         <p class="Linklist__SubHeading Heading u-h7">SHOTS</p>
                         <ul class="Linklist">
                           <li class="Linklist__Item">
                             <a class="Link Link--secondary" href="./shots.html">MUSHTARISHTA</a>
                           </li>
                         </ul>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </li>
@@ -831,6 +837,16 @@
                             APHRODISIAC DARK
                           </a>
                         </li>
+                        <li class="Linklist__Item">
+                          <a class="Link Link--secondary" href="bdarkc.html">
+                            BRAHMI DARK
+                          </a>
+                        </li>
+                        <li class="Linklist__Item">
+                          <a class="Link Link--secondary" href="bmilkc.html">
+                            BRAHMI MILK
+                          </a>
+                        </li>
                       </ul>
                     </div>
                     <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
@@ -922,6 +938,7 @@
       </div>
     </header>
     <link href="../css/custom-navbar.css" rel="stylesheet">
+    <link href="../css/product-ui.css" rel="stylesheet">
     <script>
       document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-header').offsetHeight + 'px');
     </script>
@@ -961,7 +978,7 @@
   "useAjaxCart": true
 }' data-section-type="product">
         <div class="Product__Wrapper">
-          <div class="Product__Gallery Product__Gallery--stack Product__Gallery--withDots">
+          <div class="Product__Gallery Product__Gallery--withThumbnails">
             <span class="Anchor" id="ProductGallery">
             </span>
             <div class="Product__ActionList hidden-lap-and-up">
@@ -1034,31 +1051,30 @@
                 </div>
               </div>
             </div>
-            <div class="Product__SlideshowNav Product__SlideshowNav--dots">
+            <div class="Product__SlideshowNav Product__SlideshowNav--thumbnails">
               <div class="Product__SlideshowNavScroller">
-                <a class="Product__SlideshowNavDot is-selected" data-focus-on-click="" data-offset="-25"
-                  href="#Media28982517006592">
+                <a class="Product__SlideshowNavImage is-selected" data-focus-on-click="" data-offset="-25" href="#Media28982517006592">
+                  <img src="../assets/bmc1.jpg" alt="Thumbnail 1">
                 </a>
-                <a class="Product__SlideshowNavDot" data-focus-on-click="" data-offset="-25"
-                  href="#Media28982517039360">
+                <a class="Product__SlideshowNavImage" data-focus-on-click="" data-offset="-25" href="#Media28982517039360">
+                  <img src="../assets/bmc2.jpg" alt="Thumbnail 2">
                 </a>
-                <a class="Product__SlideshowNavDot" data-focus-on-click="" data-offset="-25"
-                  href="#Media28982517072128">
+                <a class="Product__SlideshowNavImage" data-focus-on-click="" data-offset="-25" href="#Media28982517072128">
+                  <img src="../assets/bmc3.jpg" alt="Thumbnail 3">
                 </a>
-                <a class="Product__SlideshowNavDot" data-focus-on-click="" data-offset="-25"
-                  href="#Media29998526857472">
+                <a class="Product__SlideshowNavImage" data-focus-on-click="" data-offset="-25" href="#Media29998526857472">
+                  <img src="../assets/bmc4.jpg" alt="Thumbnail 4">
                 </a>
               </div>
             </div>
 
-            <div class="Product__Slideshow Product__Slideshow--zoomable Carousel" data-flickity-config='{
-          "prevNextButtons": false,
+            <div class="Product__Slideshow Product__Slideshow--zoomable Carousel" data-flickity='{
+          "prevNextButtons": true,
           "pageDots": false,
           "adaptiveHeight": true,
-          "watchCSS": true,
           "dragThreshold": 8,
           "initialIndex": 0,
-          "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
+          "arrowShape": {"x0": 30, "x1": 60, "y1": 50, "x2": 60, "y2": 45, "x3": 35}
         }'>
               <div class="Product__SlideItem Product__SlideItem--image Carousel__Cell is-selected"
                 id="Media28982517006592">
@@ -1265,19 +1281,6 @@
                   </div>
 
                   <div class="ProductForm__BuyButtons Marketplace">
-                    <style>
-                      /* Force rounded edges even on hover / focus */
-                      .Marketplace .Button,
-                      .Marketplace .Button:hover,
-                      .Marketplace .Button:focus,
-                      .Marketplace .Button:active,
-                      .Marketplace .Button::before,
-                      .Marketplace .Button::after,
-                      .Marketplace .Button:hover::before,
-                      .Marketplace .Button:hover::after {
-                        border-radius: 30px !important;
-                      }
-                    </style>
 
 
                     <div class="Marketplace__Grid" style="
@@ -1286,102 +1289,132 @@
                    gap:12px;
                    margin-top:15px;
                  ">
-
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="blinkit"
                         style="
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
                         <img src="../assets/blinkit.png" alt="Blinkit" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Blinkit
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                        BUY ON BLINKIT
                       </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="zepto"
                         style="
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
                         <img src="../assets/zepto.png" alt="Zepto" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Zepto
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                        BUY ON ZEPTO
                       </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        style="
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
-                        <img src="../assets/amazon.png" alt="Amazon" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Amazon
-                      </a>
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="bigbasket"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/bigbasket.png" alt="BigBasket" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON BIGBASKET
+                        </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        style="
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
-                        <img src="../assets/instamart.png" alt="Instamart" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Instamart
-                      </a>
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="swiggy"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/swiggy.png" alt="Swiggy" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON SWIGGY
+                        </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        style="
-                   grid-column:span 2;
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
-                        <img src="../assets/flipkart.png" alt="Flipkart" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Flipkart
-                      </a>
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="amazon"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/amazon.png" alt="Amazon" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON AMAZON
+                        </a>
+
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="instamart"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/instamart.png" alt="Instamart" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON INSTAMART
+                        </a>
+
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="flipkart"
+                          style="
+                    grid-column:span 2;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/flipkart.png" alt="Flipkart" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON FLIPKART
+                        </a>
 
                     </div>
                   </div>
@@ -2201,22 +2234,6 @@
         });
       });
     }
-
-    // 3. Fix Dots (Image Navigation)
-    const dots = document.querySelectorAll('.Product__SlideshowNavDot, .flickity-page-dots .dot');
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', function (e) {
-        e.preventDefault();
-        const slides = document.querySelectorAll('.Product__SlideItem');
-        slides.forEach(s => s.classList.remove('is-selected'));
-        dots.forEach(d => d.classList.remove('is-selected'));
-
-        slides[index].classList.add('is-selected');
-        this.classList.add('is-selected');
-        // Force scroll if layout is stacked
-        slides[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
-    });
   });
 </script>
 

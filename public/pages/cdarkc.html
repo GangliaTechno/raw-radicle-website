@@ -414,7 +414,8 @@
   </script>
   <script src="../js/sca_affiliate.js" type="text/javascript">
   </script>
-  <link href="../css/custom-navbar.css" rel="stylesheet" />
+  <link href="../css/custom-navbar.css" rel="stylesheet">
+  <link href="../css/product-ui.css" rel="stylesheet">
   <link href="../css/font-awesome.min.css" rel="stylesheet" />
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
@@ -507,7 +508,7 @@
   <!-- JSON-LD support -->
   <link href="https://web.archive.org/web/20230604205108/https://monorail-edge.shopifysvc.com/" rel="dns-prefetch" />
   <script id="evids-setup">
-    (function () { let t, e; function n() { t = { page_viewed: {}, collection_viewed: {}, product_viewed: {}, product_variant_viewed: {}, search_submitted: {}, product_added_to_cart: {}, checkout_started: {}, checkout_completed: {}, payment_info_submitted: {}, session_started: {} }, e = { wpm: {}, trekkie: {} } } function o(t) { return `${t || "sh"}-${function () { const t = "xxxx-4xxx-xxxx-xxxxxxxxxxxx"; let e = ""; try { const n = window.crypto, o = new Uint16Array(31); n.getRandomValues(o); let r = 0; e = t.replace(/[x]/g, (t => { const e = o[r] % 16; return r++, ("x" === t ? e : 3 & e | 8).toString(16) })).toUpperCase() } catch (n) { e = t.replace(/[x]/g, (t => { const e = 16 * Math.random() | 0; return ("x" === t ? e : 3 & e | 8).toString(16) })).toUpperCase() } return `${function () { let t = 0, e = 0; t = (new Date).getTime() >>> 0; try { e = performance.now() >>> 0 } catch (t) { e = 0 } const n = Math.abs(t + e).toString(16).toLowerCase(); return "00000000".substr(0, 8 - n.length) + n }()}-${e}` }()}` } function r(n, r) { if (!t[n] || "trekkie" !== (null == r ? void 0 : r.analyticsFramework) && "wpm" !== (null == r ? void 0 : r.analyticsFramework)) return o("shu"); const i = "string" == typeof (c = r.cacheKey) && c ? c : "default"; var c; const a = function (t, n, o) { const r = e[n]; return void 0 === r[t] && (r[t] = {}), void 0 === r[t][o] ? r[t][o] = 0 : r[t][o] += 1, r[t][o] }(n, r.analyticsFramework, i); return function (e, n, r) { const i = t[e]; if (void 0 === i[r]) { const t = o(); i[r] = [t] } else if (void 0 === i[r][n]) { const t = o(); i[r].push(t) } return i[r][n] }(n, a, i) } function i() { window.Shopify = window.Shopify || {}, n(), window.Shopify.evids = (t, e) => r(t, e) } i(); })();
+    (function () { let t, e; function n() { t = { page_viewed: {}, collection_viewed: {}, product_viewed: {}, product_variant_viewed: {}, search_submitted: {}, product_added_to_cart: {}, checkout_completed: {}, payment_info_submitted: {}, session_started: {} }, e = { wpm: {}, trekkie: {} } } function o(t) { return `${t || "sh"}-${function () { const t = "xxxx-4xxx-xxxx-xxxxxxxxxxxx"; let e = ""; try { const n = window.crypto, o = new Uint16Array(31); n.getRandomValues(o); let r = 0; e = t.replace(/[x]/g, (t => { const e = o[r] % 16; return r++, ("x" === t ? e : 3 & e | 8).toString(16) })).toUpperCase() } catch (n) { e = t.replace(/[x]/g, (t => { const e = 16 * Math.random() | 0; return ("x" === t ? e : 3 & e | 8).toString(16) })).toUpperCase() } return `${function () { let t = 0, e = 0; t = (new Date).getTime() >>> 0; try { e = performance.now() >>> 0 } catch (t) { e = 0 } const n = Math.abs(t + e).toString(16).toLowerCase(); return "00000000".substr(0, 8 - n.length) + n }()}-${e}` }()}` } function r(n, r) { if (!t[n] || "trekkie" !== (null == r ? void 0 : r.analyticsFramework) && "wpm" !== (null == r ? void 0 : r.analyticsFramework)) return o("shu"); const i = "string" == typeof (c = r.cacheKey) && c ? c : "default"; var c; const a = function (t, n, o) { const r = e[n]; return void 0 === r[t] && (r[t] = {}), void 0 === r[t][o] ? r[t][o] = 0 : r[t][o] += 1, r[t][o] }(n, r.analyticsFramework, i); return function (e, n, r) { const i = t[e]; if (void 0 === i[r]) { const t = o(); i[r] = [t] } else if (void 0 === i[r][n]) { const t = o(); i[r].push(t) } return i[r][n] }(n, a, i) } function i() { window.Shopify = window.Shopify || {}, n(), window.Shopify.evids = (t, e) => r(t, e) } i(); })();
   </script>
   <script>
     window.ShopifyAnalytics = window.ShopifyAnalytics || {};
@@ -566,7 +567,7 @@
                   <a class="Linklist__Link Heading u-h6" href="../index.html">Home</a>
                 </li>
                 <li class="Linklist__Item">
-                  <a class="Linklist__Link Heading u-h6" href="about.html">About</a>
+                  <a class="Linklist__Link Heading u-h6" href="./about.html">About</a>
                 </li>
                 <li class="Linklist__Item">
                   <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible"
@@ -590,6 +591,12 @@
                           </li>
                           <li class="Linklist__Item">
                             <a class="Link Link--secondary" href="adarkc.html">APHRODISIAC DARK</a>
+                          </li>
+                          <li class="Linklist__Item">
+                            <a class="Link Link--secondary" href="bdarkc.html">BRAHMI DARK</a>
+                          </li>
+                          <li class="Linklist__Item">
+                            <a class="Link Link--secondary" href="bmilkc.html">BRAHMI MILK</a>
                           </li>
                         </ul>
                       </div>
@@ -791,6 +798,16 @@
                             APHRODISIAC DARK
                           </a>
                         </li>
+                        <li class="Linklist__Item">
+                          <a class="Link Link--secondary" href="bdarkc.html">
+                            BRAHMI DARK
+                          </a>
+                        </li>
+                        <li class="Linklist__Item">
+                          <a class="Link Link--secondary" href="bmilkc.html">
+                            BRAHMI MILK
+                          </a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -898,7 +915,7 @@
   "useAjaxCart": true
 }' data-section-type="product">
         <div class="Product__Wrapper">
-          <div class="Product__Gallery Product__Gallery--stack Product__Gallery--withDots">
+          <div class="Product__Gallery Product__Gallery--withThumbnails Product__Gallery--stacked">
             <span class="Anchor" id="ProductGallery">
             </span>
             <div class="Product__ActionList hidden-lap-and-up">
@@ -971,31 +988,30 @@
                 </div>
               </div>
             </div>
-            <div class="Product__SlideshowNav Product__SlideshowNav--dots">
-              <div class="Product__SlideshowNavScroller">
-                <a class="Product__SlideshowNavDot is-selected" data-focus-on-click="" data-offset="-25"
-                  href="#Media28982517006592">
+            <div class="Product__SlideshowNav Product__SlideshowNav--thumbnails hidden-phone">
+              <div class="Product__SlideshowNavScroller hidden-phone">
+                <a class="Product__SlideshowNavImage is-selected" data-action="open-product-slideshow" href="#Media28982517006592">
+                  <img src="../assets/cdc1.jpg" alt="Thumbnail 1">
                 </a>
-                <a class="Product__SlideshowNavDot" data-focus-on-click="" data-offset="-25"
-                  href="#Media28982517039360">
+                <a class="Product__SlideshowNavImage" data-action="open-product-slideshow" href="#Media28982517039360">
+                  <img src="../assets/cdc2.jpg" alt="Thumbnail 2">
                 </a>
-                <a class="Product__SlideshowNavDot" data-focus-on-click="" data-offset="-25"
-                  href="#Media28982517072128">
+                <a class="Product__SlideshowNavImage" data-action="open-product-slideshow" href="#Media28982517072128">
+                  <img src="../assets/cdc3.jpg" alt="Thumbnail 3">
                 </a>
-                <a class="Product__SlideshowNavDot" data-focus-on-click="" data-offset="-25"
-                  href="#Media29998526857472">
+                <a class="Product__SlideshowNavImage" data-action="open-product-slideshow" href="#Media29998526857472">
+                  <img src="../assets/cdc4.jpg" alt="Thumbnail 4">
                 </a>
               </div>
             </div>
 
-            <div class="Product__Slideshow Product__Slideshow--zoomable Carousel" data-flickity-config='{
-          "prevNextButtons": false,
+            <div class="Product__Slideshow Product__Slideshow--zoomable Carousel" data-flickity='{
+          "prevNextButtons": true,
           "pageDots": false,
           "adaptiveHeight": true,
-          "watchCSS": true,
           "dragThreshold": 8,
           "initialIndex": 0,
-          "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
+          "arrowShape": {"x0": 30, "x1": 60, "y1": 50, "x2": 60, "y2": 45, "x3": 35}
         }'>
               <div class="Product__SlideItem Product__SlideItem--image Carousel__Cell is-selected"
                 id="Media28982517006592">
@@ -1224,9 +1240,8 @@
                    margin-top:15px;
                  ">
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="blinkit"
                         style="
-                   border-radius:30px;
                    display:flex;
                    align-items:center;
                    justify-content:center;
@@ -1240,12 +1255,11 @@
                        object-fit:contain;
                        flex-shrink:0;
                      ">
-                        Buy on Blinkit
+                        BUY ON BLINKIT
                       </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="zepto"
                         style="
-                   border-radius:30px;
                    display:flex;
                    align-items:center;
                    justify-content:center;
@@ -1259,66 +1273,99 @@
                        object-fit:contain;
                        flex-shrink:0;
                      ">
-                        Buy on Zepto
+                        BUY ON ZEPTO
                       </a>
+                                          <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="bigbasket"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/bigbasket.png" alt="BigBasket" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON BIGBASKET
+                        </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        style="
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
-                        <img src="../assets/amazon.png" alt="Amazon" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Amazon
-                      </a>
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="swiggy"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/swiggy.png" alt="Swiggy" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON SWIGGY
+                        </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        style="
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
-                        <img src="../assets/instamart.png" alt="Instamart" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Instamart
-                      </a>
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="amazon"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/amazon.png" alt="Amazon" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON AMAZON
+                        </a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        style="
-                   grid-column:span 2;
-                   border-radius:30px;
-                   display:flex;
-                   align-items:center;
-                   justify-content:center;
-                   gap:10px;
-                   padding:14px 16px;
-                   white-space:nowrap;
-                 ">
-                        <img src="../assets/flipkart.png" alt="Flipkart" style="
-                       width:18px;
-                       height:18px;
-                       object-fit:contain;
-                       flex-shrink:0;
-                     ">
-                        Buy on Flipkart
-                      </a>
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="instamart"
+                          style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/instamart.png" alt="Instamart" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON INSTAMART
+                        </a>
+
+                        <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full" data-brand="flipkart"
+                          style="
+                    grid-column:span 2;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    gap:10px;
+                    padding:14px 16px;
+                    white-space:nowrap;
+                  ">
+                          <img src="../assets/flipkart.png" alt="Flipkart" style="
+                        width:18px;
+                        height:18px;
+                        object-fit:contain;
+                        flex-shrink:0;
+                      ">
+                          BUY ON FLIPKART
+                        </a>
+            
 
                     </div>
                   </div>
@@ -2322,22 +2369,6 @@
         });
       });
     }
-
-    // 3. Fix Dots (Image Navigation)
-    const dots = document.querySelectorAll('.Product__SlideshowNavDot, .flickity-page-dots .dot');
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', function (e) {
-        e.preventDefault();
-        const slides = document.querySelectorAll('.Product__SlideItem');
-        slides.forEach(s => s.classList.remove('is-selected'));
-        dots.forEach(d => d.classList.remove('is-selected'));
-
-        slides[index].classList.add('is-selected');
-        this.classList.add('is-selected');
-        // Force scroll if layout is stacked
-        slides[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
-    });
   });
 </script>
 
