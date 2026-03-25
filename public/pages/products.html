@@ -13,9 +13,106 @@
   <link href="../css/banner-styles.css" rel="stylesheet" type="text/css"/>
   <link href="../css/iconochive.css" rel="stylesheet" type="text/css"/>
   <!-- End Wayback Rewrite JS Include -->
-  <style>
-   .Grid__Cell:has([href*="navidium"]) { display: none !important; }
-  </style>
+   <style>
+    .Grid__Cell:has([href*="navidium"]) { display: none !important; }
+
+    /* MVST Style Product Hover and Button */
+    .ProductItem__Wrapper {
+      position: relative;
+    }
+
+    .ProductItem__ImageWrapper {
+      position: relative;
+      display: block;
+      overflow: hidden;
+    }
+
+    .ProductItem__Image {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s ease !important;
+    }
+
+    .ProductItem__Image--secondary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s ease;
+      z-index: 1;
+    }
+
+    .ProductItem:hover .ProductItem__Image:not(.ProductItem__Image--secondary) {
+      transform: scale(1.08);
+      opacity: 0;
+    }
+
+    .ProductItem:hover .ProductItem__Image--secondary {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    .ProductItem__ShopBtn {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 55px;
+      transform: translateY(100%);
+      opacity: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: transparent;
+      border: none;
+      border-top: 1px solid rgba(28, 28, 28, 0.05);
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: 10;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ProductItem:hover .ProductItem__ShopBtn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ProductItem__ShopBtn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1c1c1c;
+      transform: scaleX(1);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: -1;
+    }
+
+    .ProductItem__ShopBtn:hover {
+      color: #1c1c1c !important;
+      background: transparent;
+    }
+
+    .ProductItem__ShopBtn:hover::before {
+      transform: scaleX(0);
+    }
+   </style>
   <script>
    1==location.pathname.includes("products/navidium-shipping")&&(location.href="/")
   </script>
@@ -1157,12 +1254,14 @@ label.icon_content img {
               <a class="ProductItem__ImageWrapper" href="bdarkc.html">
                <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
                 <img alt="Bhrami DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/bdark.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <img alt="Bhrami DARK Chocolate Slab Hover" class="ProductItem__Image ProductItem__Image--secondary" src="../assets/choco/bdark-1.png"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
                  <img alt="Bhrami DARK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/bdark.png"/>
                 </noscript>
                </div>
+               <button class="ProductItem__ShopBtn">Details</button>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
@@ -1188,12 +1287,14 @@ label.icon_content img {
               <a class="ProductItem__ImageWrapper" href="bmilkc.html">
                <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
                 <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/bmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <img alt="Brahmi MILK Chocolate Slab Hover" class="ProductItem__Image ProductItem__Image--secondary" src="../assets/choco/bmilk-1.png"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
                  <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/bmilk.png"/>
                 </noscript>
                </div>
+               <button class="ProductItem__ShopBtn">Details</button>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
@@ -1219,12 +1320,14 @@ label.icon_content img {
               <a class="ProductItem__ImageWrapper" href="cdarkc.html">
                <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
                 <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/cdark.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <img alt="Chyawanaprash DARK Chocolate Slab Hover" class="ProductItem__Image ProductItem__Image--secondary" src="../assets/choco/cdark-1.png"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
                  <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/cdark.png"/>
                 </noscript>
                </div>
+               <button class="ProductItem__ShopBtn">Details</button>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
@@ -1250,12 +1353,14 @@ label.icon_content img {
               <a class="ProductItem__ImageWrapper" href="cmilkc.html">
                <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
                 <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/cmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <img alt="Chyawanaprash MILK Chocolate Slab Hover" class="ProductItem__Image ProductItem__Image--secondary" src="../assets/choco/cmilk-1.png"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
                  <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/cmilk.png"/>
                 </noscript>
                </div>
+               <button class="ProductItem__ShopBtn">Details</button>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
@@ -1281,12 +1386,14 @@ label.icon_content img {
               <a class="ProductItem__ImageWrapper" href="adarkc.html">
                <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
                 <img alt="Aphrodisiac DARK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/adark.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <img alt="Aphrodisiac DARK Chocolate Slab Hover" class="ProductItem__Image ProductItem__Image--secondary" src="../assets/choco/adark-1.png"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
                  <img alt="Aphrodisiac DARK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/adark.png"/>
                 </noscript>
                </div>
+               <button class="ProductItem__ShopBtn">Details</button>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
@@ -1312,12 +1419,14 @@ label.icon_content img {
               <a class="ProductItem__ImageWrapper" href="amilkc.html">
                <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
                 <img alt="Aphrodisiac MILK Chocolate Slab" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto" data-src="../assets/choco/apmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]"/>
+                <img alt="Aphrodisiac MILK Chocolate Slab Hover" class="ProductItem__Image ProductItem__Image--secondary" src="../assets/choco/apmilk-1.png"/>
                 <span class="Image__Loader">
                 </span>
                 <noscript>
                  <img alt="Aphrodisiac MILK Chocolate Slab" class="ProductItem__Image" src="../assets/choco/apmilk.png"/>
                 </noscript>
                </div>
+               <button class="ProductItem__ShopBtn">Details</button>
               </a>
               <div class="ProductItem__Info ProductItem__Info--center">
                <h2 class="ProductItem__Title Heading">
