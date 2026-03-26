@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const products = [
     { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹250.00", image: "assets/chdc.png" },
     { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹250.00", image: "assets/chmc.png" },
-    { title: "Aphrodisiac Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "assets/aphdc.png" },
-    { title: "Aphrodisiac Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "assets/aphmc.png" },
+    { title: "Ashwagandha Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "assets/aphdc.png" },
+    { title: "Ashwagandha Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "assets/aphmc.png" },
     { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹250.00", image: "assets/brmc.png" }
   ];
 
