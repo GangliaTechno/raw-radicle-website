@@ -92,31 +92,43 @@
   text-transform: uppercase !important;
   font-weight: 600 !important;
   letter-spacing: 0.1em;
-  transition: all 0.3s ease !important;
-  border: 1px solid #1c1b1b !important;
-  background: transparent !important;
+  transition: background-position 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease, border-color 0.3s ease !important;
+  border: 1px solid #d1d1d1 !important;
+  background-color: transparent !important;
+  background-size: 200% 100% !important;
+  background-image: linear-gradient(to right, transparent 50%, var(--brand-color, #1c1b1b) 50%) !important;
+  background-position: 0 0 !important;
   color: #1c1b1b !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+}
+
+.Marketplace .Button::before,
+.Marketplace .Button::after {
+  display: none !important;
+  content: none !important;
 }
 
 .Marketplace .Button:hover {
+  background-position: -100% 0 !important;
   color: white !important;
   border-color: transparent !important;
 }
 
-/* Brand backgrounds on hover */
-.Marketplace .Button[data-brand="blinkit"]:hover { background-color: #F4B000 !important; }
-.Marketplace .Button[data-brand="zepto"]:hover { background-color: #5F31E1 !important; }
-.Marketplace .Button[data-brand="bigbasket"]:hover { background-color: #84C225 !important; }
-.Marketplace .Button[data-brand="swiggy"]:hover,
-.Marketplace .Button[data-brand="instamart"]:hover { background-color: #FF5200 !important; }
-.Marketplace .Button[data-brand="amazon"]:hover { background-color: #FF9900 !important; }
-.Marketplace .Button[data-brand="flipkart"]:hover { background-color: #2874F0 !important; }
+/* Brand colors */
+.Marketplace .Button[data-brand="blinkit"] { --brand-color: #F8CB46 !important; }
+.Marketplace .Button[data-brand="zepto"] { --brand-color: #FF3269 !important; }
+.Marketplace .Button[data-brand="instamart"] { --brand-color: #FC8019 !important; }
+.Marketplace .Button[data-brand="amazon"] { --brand-color: #FF9900 !important; }
+.Marketplace .Button[data-brand="flipkart"] { --brand-color: #2874F0 !important; }
 
 .Marketplace .Button img {
   filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  transition: filter 0.3s ease, transform 0.3s ease !important;
 }
 
 .Marketplace .Button:hover img {
-  filter: grayscale(0%) brightness(1.2);
+  filter: grayscale(0%) brightness(1.2) !important;
+  transform: scale(1.1) !important;
 }
