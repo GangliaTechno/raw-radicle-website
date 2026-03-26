@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   const products = [
-    { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹250.00", image: "assets/chdc.png" },
-    { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹250.00", image: "assets/chmc.png" },
-    { title: "Ashwagandha Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "assets/aphdc.png" },
-    { title: "Ashwagandha Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "assets/aphmc.png" },
-    { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹250.00", image: "assets/brmc.png" }
+    { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹250.00", image: "assets/cdark/cdark.png" },
+    { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹250.00", image: "assets/cmilk/cmilk.png" },
+    { title: "Ashwagandha Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "assets/adark/adark.png" },
+    { title: "Ashwagandha Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "assets/amilk/amilk.png" },
+    { title: "Brahmi Dark Chocolate", url: "pages/bdarkc.html", price: "₹250.00", image: "assets/bdark/bdark.png" },
+    { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹250.00", image: "assets/bmilk/bmilk.png" }
   ];
 
   const searchInput = document.getElementById('local-search-input');
@@ -32,10 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
           let adjustedImg = product.image;
 
           if (isSubPage) {
-            // If we are in 'pages/', we don't need 'pages/' prefix for URLs within the same folder
+            // Subpages are in 'pages/', so URLs to other pages in 'pages/' need 'pages/' removed
+            // and root-relative assets need to go up one level.
             adjustedUrl = adjustedUrl.replace('pages/', '');
-            // Image is in '../assets/'
             adjustedImg = '../' + adjustedImg;
+          } else {
+            // We are on root index.html. URLs to subpages are correct as 'pages/...'
+            // and assets are correct as 'assets/...'
           }
 
           const item = document.createElement('a');

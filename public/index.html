@@ -3982,78 +3982,7 @@ Version: 2.43.0
         }, 2000);
       });
     </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-
-        // Product Database
-        const products = [
-          // { title: "Jatyadi Balm", url: "balm.html", price: "₹50.00", image: "../assets/jatyadi.png" },
-          // { title: "Mushtarista Shots", url: "shots.html", price: "₹150.00", image: "../assets/shots.png" },
-          { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹250.00", image: "../assets/chdc.png" },
-          { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹250.00", image: "../assets/chmc.png" },
-          { title: "Ashwagandha Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "../assets/aphdc.png" },
-          { title: "Ashwagandha Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "../assets/aphmc.png" },
-          { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹250.00", image: "../assets/brmc.png" }
-        ];
-
-        const searchInput = document.getElementById('local-search-input');
-        const resultsContainer = document.getElementById('search-results');
-
-        // Search Filter Function
-        if (searchInput) {
-          searchInput.addEventListener('input', function (e) {
-            const query = e.target.value.toLowerCase().trim();
-            resultsContainer.innerHTML = '';
-
-            if (query.length === 0) {
-              resultsContainer.style.display = 'none';
-              return;
-            }
-
-            // Filter products
-            const matches = products.filter(product =>
-              product.title.toLowerCase().includes(query)
-            );
-
-            // Display Results
-            if (matches.length > 0) {
-              matches.forEach(product => {
-                const item = document.createElement('a');
-                item.href = product.url;
-                item.className = 'search-result-item';
-
-                item.innerHTML = `
-              <img src="${product.image}" class="search-result-image" alt="${product.title}">
-              <div class="search-result-info">
-                <span class="search-result-title">${product.title}</span>
-                <span class="search-result-price">${product.price}</span>
-              </div>
-            `;
-                resultsContainer.appendChild(item);
-              });
-              resultsContainer.style.display = 'block';
-            } else {
-              resultsContainer.innerHTML = '<div style="padding:20px; text-align:center; color:#888; font-size:14px;">No products found</div>';
-              resultsContainer.style.display = 'block';
-            }
-          });
-
-          // Hide results when clicking outside
-          document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
-              resultsContainer.style.display = 'none';
-            }
-          });
-
-          // Show results when focusing back on input (if there's a query)
-          searchInput.addEventListener('focus', function () {
-            if (this.value.trim().length > 0) {
-              resultsContainer.style.display = 'block';
-            }
-          });
-        }
-      });
-    </script>
+    <script src="js/search-logic.js"></script>
     <script src="js/cart.js"></script>
 </body>
 <style>
