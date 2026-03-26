@@ -102,6 +102,18 @@
   position: relative !important;
   z-index: 1 !important;
   overflow: hidden !important;
+  height: 70px !important; /* Reduced height further */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* Centered layout */
+  padding: 0 16px !important;
+  gap: 12px !important;
+}
+
+.Marketplace .buy-on-text {
+  /* No min-width to allow perfect centering */
+  text-align: left;
+  display: inline-block;
 }
 
 .Marketplace .Button::before,
