@@ -587,10 +587,16 @@
                             <a class="Link Link--secondary" href="./cmilkc.html">CHYAWANAPRASH MILK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./amilkc.html">APHRODISIAC MILK</a>
+                            <a class="Link Link--secondary" href="./amilkc.html">ASHWAGANDHA MILK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./adarkc.html">APHRODISIAC DARK</a>
+                            <a class="Link Link--secondary" href="./adarkc.html">ASHWAGANDHA DARK</a>
+                          </li>
+                          <li class="Linklist__Item">
+                            <a class="Link Link--secondary" href="./bdarkc.html">BRAHMI DARK</a>
+                          </li>
+                          <li class="Linklist__Item">
+                            <a class="Link Link--secondary" href="./bmilkc.html">BRAHMI MILK</a>
                           </li>
                         </ul>
                       </div>
@@ -785,12 +791,22 @@
                         </li>
                         <li class="Linklist__Item">
                           <a class="Link Link--secondary" href="./amilkc.html">
-                            APHRODISIAC MILK
+                            ASHWAGANDHA MILK
                           </a>
                         </li>
                         <li class="Linklist__Item">
                           <a class="Link Link--secondary" href="./adarkc.html">
-                            APHRODISIAC DARK
+                            ASHWAGANDHA DARK
+                          </a>
+                        </li>
+                        <li class="Linklist__Item">
+                          <a class="Link Link--secondary" href="./bdarkc.html">
+                            BRAHMI DARK
+                          </a>
+                        </li>
+                        <li class="Linklist__Item">
+                          <a class="Link Link--secondary" href="./bmilkc.html">
+                            BRAHMI MILK
                           </a>
                         </li>
                       </ul>
@@ -1295,10 +1311,10 @@
                     <a href="./cmilkc.html" class="Link Link--primary">Chyawanprash Milk</a>
                   </li>
                   <li class="Linklist__Item">
-                    <a href="./adarkc.html" class="Link Link--primary">Aphrodisiac Dark</a>
+                    <a href="./adarkc.html" class="Link Link--primary">Ashwagandha Dark</a>
                   </li>
                   <li class="Linklist__Item">
-                    <a href="./amilkc.html" class="Link Link--primary">Aphrodisiac Milk</a>
+                    <a href="./amilkc.html" class="Link Link--primary">Ashwagandha Milk</a>
                   </li>
                 </ul>
               </div>
@@ -1633,46 +1649,7 @@
         </footer>
       </div>
     </div>
-    <script>
-      // Search functionality
-      const searchInput = document.getElementById('local-search-input');
-      const searchResults = document.getElementById('search-results');
-
-      if (searchInput && searchResults) {
-        searchInput.addEventListener('input', function () {
-          const query = this.value.toLowerCase();
-          if (query.length < 2) {
-            searchResults.style.display = 'none';
-            return;
-          }
-
-          // Mock search results for demonstration
-          const products = [
-            { name: 'Chyawanprash Dark', url: './cdarkc.html' },
-            { name: 'Chyawanprash Milk', url: './cmilkc.html' },
-            { name: 'Aphrodisiac Dark', url: './adarkc.html' },
-            { name: 'Aphrodisiac Milk', url: './amilkc.html' }
-          ];
-
-          const filtered = products.filter(p => p.name.toLowerCase().includes(query));
-
-          if (filtered.length > 0) {
-            searchResults.innerHTML = filtered.map(p => `<a href="${p.url}" class="search-result-item">${p.name}</a>`).join('');
-            searchResults.style.display = 'block';
-          } else {
-            searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
-            searchResults.style.display = 'block';
-          }
-        });
-
-        // Close search results when clicking outside
-        document.addEventListener('click', function (e) {
-          if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-            searchResults.style.display = 'none';
-          }
-        });
-      }
-    </script>
+    <script src="../js/search-logic.js"></script>
     <script src="../js/theme.js" defer></script>
     <script src="../js/custom.js" defer></script>
 </body>
