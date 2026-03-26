@@ -124,11 +124,9 @@
 .Marketplace .Button[data-brand="flipkart"] { --brand-color: #2874F0 !important; }
 
 .Marketplace .Button img {
-  filter: grayscale(100%);
-  transition: filter 0.3s ease, transform 0.3s ease !important;
+  transition: transform 0.3s ease !important;
 }
 
 .Marketplace .Button:hover img {
-  filter: grayscale(0%) brightness(1.2) !important;
   transform: scale(1.1) !important;
 }
