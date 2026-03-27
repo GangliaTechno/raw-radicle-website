@@ -365,7 +365,30 @@
     }
 
     .Header__SearchForm {
-        display: none !important; /* Hide search bar input on small mobile, use search icon instead */
+        display: none !important;
+    }
+
+    .is-search-visible .Header__SearchForm {
+        display: flex !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: #EFEFEF !important;
+        padding: 10px 15px !important;
+        border-bottom: 1px solid #e1e1e1 !important;
+        border-radius: 0 !important;
+        z-index: 100 !important;
+    }
+
+    .is-search-visible #search-results {
+        top: calc(100% + 45px) !important; /* Below the expanded search form */
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
     }
 }
 

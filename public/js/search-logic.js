@@ -75,4 +75,24 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  // Mobile Search Toggle Logic
+  const searchToggles = document.querySelectorAll('[data-action="toggle-search"]');
+  const header = document.getElementById('section-header');
+
+  searchToggles.forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (header) {
+        header.classList.toggle('is-search-visible');
+        
+        // If we just showed the search, focus the input
+        if (header.classList.contains('is-search-visible')) {
+          if (searchInput) {
+            setTimeout(() => searchInput.focus(), 100);
+          }
+        }
+      }
+    });
+  });
 });
