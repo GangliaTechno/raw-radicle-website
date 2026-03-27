@@ -9,21 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   const searchInputs = document.querySelectorAll('#local-search-input, .Search__Input');
-  const resultsContainers = document.querySelectorAll('#search-results, .Search__Results');
+  const resultsContainers = document.querySelectorAll('#search-results, #search-results-list');
+  const mainResultsOverlay = document.querySelectorAll('.Search__Results');
 
-  if (searchInputs.length > 0 && resultsContainers.length > 0) {
+  if (searchInputs.length > 0) {
     const isSubPage = window.location.pathname.includes('/pages/');
 
     searchInputs.forEach((searchInput, index) => {
-      // Find the corresponding results container
-      // If we have multiple, we might need a better way to pair them, 
-      // but usually there's only one desktop and one mobile overlay.
-      const resultsContainer = resultsContainers[index] || resultsContainers[0];
+      const resultsContainer = document.getElementById('search-results-list') || resultsContainers[0];
+      const resultsOverlay = document.querySelector('.Search__Results') || mainResultsOverlay[0];
 
-      // Intercept and handle search to prevent theme.js conflicts
       const handleSearch = function (e) {
-        // If it's an Enter key, let theme.js handle it if it wants (it might go to /search)
-        // but our submit listener on the form already prevents default.
         if (e.keyCode !== 13) {
           e.stopImmediatePropagation();
         }
@@ -33,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
           resultsContainer.innerHTML = '';
 
           if (query.length === 0) {
-            resultsContainer.style.display = 'none';
+            if (resultsOverlay) resultsOverlay.style.display = 'none';
             return;
           }
 
@@ -63,20 +59,25 @@ document.addEventListener('DOMContentLoaded', function () {
               `;
               resultsContainer.appendChild(item);
             });
-            resultsContainer.style.display = 'block';
+            if (resultsOverlay) {
+              resultsOverlay.style.display = 'flex';
+              resultsOverlay.classList.add('Search__Results--active');
+            }
           } else {
             resultsContainer.innerHTML = '<div style="padding:20px; text-align:center; color:#888; font-size:14px;">No products found</div>';
-            resultsContainer.style.display = 'block';
+            if (resultsOverlay) {
+              resultsOverlay.style.display = 'flex';
+              resultsOverlay.classList.add('Search__Results--active');
+            }
           }
         }
       };
 
       const searchEvents = ['input', 'keyup', 'keydown'];
       searchEvents.forEach(eventType => {
-        searchInput.addEventListener(eventType, handleSearch, true); // Use capture phase to precede theme.js
+        searchInput.addEventListener(eventType, handleSearch, true);
       });
 
-      // Special handling for mobile overlay search form
       const searchForm = searchInput.closest('form');
       if (searchForm) {
         searchForm.addEventListener('submit', function (e) {
@@ -84,23 +85,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
 
-      // Hide results when clicking outside
       document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
-          resultsContainer.style.display = 'none';
+        if (!searchInput.contains(e.target) && resultsOverlay && !resultsOverlay.contains(e.target)) {
+          // Close the whole search overlay if clicking outside the input/results area
+          // but theme.js might handle the main drawer closing.
+          // For now just hide results if they were visible.
+           // resultsOverlay.style.display = 'none';
         }
       });
 
-      // Show results when focusing back on input (if there's a query)
       searchInput.addEventListener('focus', function () {
-        if (this.value.trim().length > 0) {
-          resultsContainer.style.display = 'block';
+        if (this.value.trim().length > 0 && resultsOverlay) {
+          resultsOverlay.style.display = 'flex';
         }
       });
     });
   }
 
-  // Mobile Search Toggle Logic
+  // Mobile Search Toggle Logic (already updated in previous version, mostly keeping identical)
   const searchToggles = document.querySelectorAll('[data-action="toggle-search"]');
   const closeSearchButtons = document.querySelectorAll('[data-action="close-search"]');
   const header = document.getElementById('section-header');
@@ -114,6 +116,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (mobileInput) {
           setTimeout(() => mobileInput.focus(), 100);
         }
+      } else {
+        // Clear query on close
+        const mobileInput = document.getElementById('mobile-local-search-input') || document.querySelector('.Search__Input');
+        const resultsOverlay = document.querySelector('.Search__Results');
+        if (mobileInput) mobileInput.value = '';
+        if (resultsOverlay) resultsOverlay.style.display = 'none';
       }
     }
     
@@ -137,3 +145,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
