@@ -727,7 +727,7 @@ Version: 2.43.0
               </span>
             </div>
             <input aria-label="Search..." autocapitalize="off" autocomplete="off" autocorrect="off" autofocus=""
-              class="Search__Input Heading" name="q" placeholder="Search..." type="search" />
+              class="Search__Input Heading" name="q" placeholder="Search..." type="search" id="mobile-local-search-input" />
             <input name="type" type="hidden" value="product" />
           </form>
           <button aria-label="Close search" class="Search__Close Link Link--primary" data-action="close-search">
@@ -737,7 +737,7 @@ Version: 2.43.0
             </svg>
           </button>
         </div>
-        <div aria-hidden="true" class="Search__Results">
+        <div aria-hidden="true" class="Search__Results" id="mobile-search-results">
         </div>
       </div>
     </div>
@@ -914,7 +914,7 @@ Version: 2.43.0
           </button>
 
           <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
-            data-action="toggle-search" href="pages/search.html">
+            data-action="toggle-search" href="#">
             <span class="hidden-tablet-and-up">
               <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
