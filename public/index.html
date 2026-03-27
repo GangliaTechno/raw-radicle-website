@@ -1167,7 +1167,6 @@ Version: 2.43.0
           position: relative;
           width: 100%;
           overflow: hidden;
-          line-height: 0;
         }
 
         .StaticBanner__Image {
@@ -1178,7 +1177,7 @@ Version: 2.43.0
 
         .StaticBanner__Content {
           position: absolute;
-          bottom: 15%;
+          bottom: 12%;
           left: 50%;
           transform: translateX(-50%);
           z-index: 10;
@@ -1189,15 +1188,17 @@ Version: 2.43.0
         .StaticBanner__Button {
           opacity: 0;
           display: inline-block;
-          padding: 25px 30px;
+          padding: 15px 45px;
+          min-width: 150px;
+          line-height: normal;
           font-family: Montserrat, sans-serif;
           font-size: 14px;
           font-weight: 500;
-          letter-spacing: 0.1em;
-          text-transform: none;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
           background-color: transparent;
           border: 1px solid #ffffff;
-          color: #ffffff;
+          color: #ffffff !important;
           transition: all 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
           position: relative;
           overflow: hidden;
@@ -1244,8 +1245,11 @@ Version: 2.43.0
 
         @media screen and (max-width: 768px) {
           .StaticBanner__Button {
-            padding: 10px 25px;
-            font-size: 12px;
+            padding: 4px 12px !important;
+            font-size: 8px !important;
+            min-width: 0 !important;
+            letter-spacing: 0.15em !important;
+            font-weight: 400;
           }
 
           .StaticBanner__Content {
