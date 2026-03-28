@@ -8118,9 +8118,24 @@ body:not(.features--show-image-zooming) .Image--lazyLoaded.Image--zoomOut {
   flex-shrink: 0;
 }
 
+.MegaMenu__Item--push {
+  max-width: 180px;
+}
+
+.MegaMenu__Item--push .MegaMenu__Push img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
 .MegaMenu__Title {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.2px;
+  color: #1c1b1b;
 }
 
 .MegaMenu__Push {
@@ -8128,6 +8143,20 @@ body:not(.features--show-image-zooming) .Image--lazyLoaded.Image--zoomOut {
   text-align: center;
   vertical-align: top;
   width: 100%;
+}
+
+.MegaMenu .Link--secondary,
+.MegaMenu__PushHeading {
+  font-size: 14px !important;
+  color: #555555 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 400;
+}
+
+.MegaMenu__PushHeading {
+  margin-top: 15px;
+  display: block;
 }
 
 .MegaMenu__Push--shrink {
