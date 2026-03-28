@@ -1,6 +1,13 @@
 /* Custom Navbar — match mvstselect.com
    Works WITH theme.css Header--logoLeft layout. */
 
+/* ===== STICKY HEADER CONTAINER ===== */
+.shopify-section--header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+}
+
 /* ===== HEADER SIZE & BACKGROUND ===== */
 .Header {
     background-color: #EFEFEF !important;

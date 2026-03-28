@@ -1105,14 +1105,47 @@
         }
 
         @media (max-width: 640px) {
-          .contact-form {
-            grid-template-columns: 1fr;
+          #main .contact-hero h1 {
+            font-size: 18.878px !important; /* Matched to MVST mobile */
+            letter-spacing: 3px !important;
           }
-          .contact-form .form-group.full-width {
-            grid-column: span 1;
+
+          #main .contact-intro {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
           }
-          .submit-btn {
-            grid-column: span 1;
+
+          #main .contact-intro p {
+            margin-bottom: 28px !important; /* Matched to MVST mobile */
+          }
+
+          #main .contact-container {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+
+          #main .contact-form {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+
+          #main .contact-form .form-group.full-width {
+            grid-column: span 1 !important;
+          }
+
+          #main .submit-btn {
+            grid-column: span 1 !important;
+            width: 100% !important;
+          }
+
+          .info-grid {
+            grid-template-columns: 1fr !important;
+            gap: 30px !important;
+          }
+
+          .contact-info-section {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
           }
         }
       </style>
