@@ -14,7 +14,7 @@
     height: 85px !important;
     min-height: 85px !important;
     max-height: 85px !important;
-    box-shadow: 0 -1px #e0e0e0 inset !important;
+    box-shadow: none !important;
 }
 
 .Header__Wrapper {
