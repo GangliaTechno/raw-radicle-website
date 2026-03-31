@@ -91,6 +91,9 @@ Version: 2.43.0
     Raw Radicles: Home Page Products Collectons
   </title>
   <style>
+    body {
+      background-color: #EFEFEF !important;
+    }
     .transcy-switcher-item-primary .transcy-flag {
       border: none !important;
     }
@@ -837,6 +840,31 @@ Version: 2.43.0
                         </li>
                       </ul>
                     </div>
+
+                    <div class="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
+                      <div class="MegaMenu__Push">
+                        <a href="pages/cdarkc.html" class="MegaMenu__PushImageWrapper">
+                          <img src="assets/choco/cdark.png" alt="Chyawanaprash Dark">
+                        </a>
+                        <p class="MegaMenu__PushHeading Heading u-h6">CHYAWANAPRASH DARK</p>
+                      </div>
+                    </div>
+                    <div class="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
+                      <div class="MegaMenu__Push">
+                        <a href="pages/adarkc.html" class="MegaMenu__PushImageWrapper">
+                          <img src="assets/choco/adark.png" alt="Ashwagandha Dark">
+                        </a>
+                        <p class="MegaMenu__PushHeading Heading u-h6">ASHWAGANDHA DARK</p>
+                      </div>
+                    </div>
+                    <div class="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
+                      <div class="MegaMenu__Push">
+                        <a href="pages/bdarkc.html" class="MegaMenu__PushImageWrapper">
+                          <img src="assets/choco/bdark.png" alt="Brahmi Dark">
+                        </a>
+                        <p class="MegaMenu__PushHeading Heading u-h6">BRAHMI DARK</p>
+                      </div>
+                    </div>
                     <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
                       <a class="MegaMenu__Title Heading Text--subdued u-h7" href="pages/products.html">
                         SHOTS
@@ -1167,7 +1195,6 @@ Version: 2.43.0
           position: relative;
           width: 100%;
           overflow: hidden;
-          line-height: 0;
         }
 
         .StaticBanner__Image {
@@ -1178,7 +1205,7 @@ Version: 2.43.0
 
         .StaticBanner__Content {
           position: absolute;
-          bottom: 15%;
+          bottom: 12%;
           left: 50%;
           transform: translateX(-50%);
           z-index: 10;
@@ -1189,15 +1216,17 @@ Version: 2.43.0
         .StaticBanner__Button {
           opacity: 0;
           display: inline-block;
-          padding: 25px 30px;
+          padding: 15px 45px;
+          min-width: 150px;
+          line-height: normal;
           font-family: Montserrat, sans-serif;
           font-size: 14px;
           font-weight: 500;
-          letter-spacing: 0.1em;
-          text-transform: none;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
           background-color: transparent;
           border: 1px solid #ffffff;
-          color: #ffffff;
+          color: #ffffff !important;
           transition: all 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
           position: relative;
           overflow: hidden;
@@ -1244,8 +1273,11 @@ Version: 2.43.0
 
         @media screen and (max-width: 768px) {
           .StaticBanner__Button {
-            padding: 10px 25px;
-            font-size: 12px;
+            padding: 4px 12px !important;
+            font-size: 8px !important;
+            min-width: 0 !important;
+            letter-spacing: 0.15em !important;
+            font-weight: 400;
           }
 
           .StaticBanner__Content {
@@ -1260,13 +1292,17 @@ Version: 2.43.0
       <style>
         /* ===== MVST-STYLE PRODUCT SECTION ===== */
         .MvstProducts {
-          padding: 80px 0 60px;
-          background-color: #f5f5f5;
+          padding: 40px 0 60px;
+        }
+
+        .ScrollingBar {
+          background-color: #1c1c1c !important;
+          color: #ffffff !important;
         }
 
         .MvstProducts__Header {
           text-align: center;
-          margin-bottom: 50px;
+          margin-bottom: 10px;
         }
 
         .MvstProducts__Title {
@@ -1282,8 +1318,8 @@ Version: 2.43.0
         /* Carousel Container */
         .MvstProducts__Carousel {
           max-width: 100%;
-          margin: 0 auto;
-          padding: 0;
+          background-color: #EFEFEF;
+          padding-top: 20px;
           position: relative;
           overflow: hidden;
         }
@@ -1318,7 +1354,7 @@ Version: 2.43.0
           justify-content: center;
           margin-bottom: 20px;
           overflow: hidden;
-          background: #f5f5f5;
+          background: #EFEFEF;
           position: relative;
           /* For secondary image positioning */
         }
@@ -1803,7 +1839,7 @@ Version: 2.43.0
       /* ===== INSTAGRAM SECTION (MVST STYLE) ===== */
       .InstaSection {
         padding: 150px 0 64px 0;
-        background-color: #f5f5f5;
+        background-color: #EFEFEF;
       }
 
       .InstaSection__Title {
@@ -1965,7 +2001,7 @@ Version: 2.43.0
       /* ===== TESTIMONIALS VIDEO CAROUSEL SECTION ===== */
       .TestimonialsSection {
         padding: 50px 0;
-        background-color: #f5f5f5;
+        background-color: #EFEFEF;
         overflow: hidden;
       }
 
@@ -2988,10 +3024,11 @@ Version: 2.43.0
     </script>
 
     <style>
+      body { background-color: #EFEFEF; }
       /* ===== SHOP ON SECTION ===== */
       .ShopOnSection {
         padding: 60px 0;
-        background-color: #ffffff;
+        background-color: #EFEFEF;
         
       }
 
@@ -3160,7 +3197,7 @@ Version: 2.43.0
       </section>
     </div>
     <!-- FAQ Section -->
-    <section class="shopify-section" id="shopify-section-faq" style="background: #f5f4f0; padding: 80px 0;">
+    <section class="shopify-section" id="shopify-section-faq" style="background: #EFEFEF; padding: 80px 0;">
       <div class="Container">
         <div class="SectionHeader SectionHeader--center" style="margin-bottom: 48px;">
           <p class="SectionHeader__Subheading"

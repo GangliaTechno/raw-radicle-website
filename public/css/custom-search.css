@@ -6,8 +6,8 @@
   left: 0;
   width: 100%;
   height: calc(100vh - var(--header-height, 80px));
-  background: white;
-  z-index: 10; /* Lower than header */
+  background: #efefef;
+  z-index: 999; /* Above background content */
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -17,7 +17,7 @@
 /* Ensure header is always on top of search overlay */
 #section-header {
   position: relative;
-  z-index: 100 !important;
+  z-index: 1000 !important; /* Above search overlay */
 }
 
 .Header.is-sticky #section-header {
@@ -122,28 +122,60 @@
 
 /* Mobile Layout */
 @media screen and (max-width: 800px) {
+  #Search {
+    background-color: #efefef !important; /* Solid background on mobile */
+  }
+
+  .Search__Inner {
+    padding: 20px 15px;
+  }
+
+  .Search__Form {
+    margin: 0 15px;
+  }
+
+  .Search__Input {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+  }
+
   .Search__Results {
     flex-direction: column;
+    margin-top: 25px;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .Search__Results::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   .Search__Suggestions {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     overflow-x: auto;
     white-space: nowrap;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
   }
 
   .Search__SuggestionItem {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 15px;
+    margin-bottom: 0;
+    font-size: 13px;
   }
 
   .Search__ResultItems {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+  }
+
+  .search-result-image {
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -181,7 +213,7 @@
 }
 
 .search-result-item:hover {
-  background: #f9f9f9;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .search-result-image {
@@ -189,7 +221,7 @@
   height: 70px;
   object-fit: contain;
   margin-right: 20px;
-  background: white;
+  background: transparent;
 }
 
 .search-result-info {
@@ -210,7 +242,7 @@
 
 /* Specific styling to match the screenshot */
 #Search {
-  background-color: #f5f5f5; /* Off-white background */
+  background-color: #efefef; /* Match navbar background */
   height: auto;
   max-height: 80vh;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
