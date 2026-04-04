@@ -94,6 +94,7 @@ Version: 2.43.0
     body {
       background-color: #EFEFEF !important;
     }
+
     .transcy-switcher-item-primary .transcy-flag {
       border: none !important;
     }
@@ -243,6 +244,7 @@ Version: 2.43.0
 
 
   <link href="css/theme.css" rel="stylesheet" />
+  <link href="css/features.css" rel="stylesheet" />
   <link href="css/custom-search.css" rel="stylesheet" />
   <script>
     // This allows to expose several variables to the global scope, to be used in scripts
@@ -718,7 +720,8 @@ Version: 2.43.0
           </div>
           <form action="" class="Search__Form" name="GET" role="search">
             <input aria-label="Search..." autocapitalize="off" autocomplete="off" autocorrect="off" autofocus=""
-              class="Search__Input Heading" name="q" placeholder="SEARCH FOR..." type="search" id="mobile-local-search-input" />
+              class="Search__Input Heading" name="q" placeholder="SEARCH FOR..." type="search"
+              id="mobile-local-search-input" />
             <input name="type" type="hidden" value="product" />
           </form>
           <button aria-label="Close search" class="Search__Close" data-action="close-search">
@@ -728,7 +731,7 @@ Version: 2.43.0
             </svg>
           </button>
         </div>
-        
+
         <div class="Search__Results" id="mobile-search-results">
           <div class="Search__Suggestions">
             <h3 class="Search__SectionTitle">Suggestions</h3>
@@ -922,8 +925,8 @@ Version: 2.43.0
             </span>
           </button>
 
-          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable"
-            data-action="toggle-search" href="#">
+          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable" data-action="toggle-search"
+            href="#">
             <span class="hidden-tablet-and-up">
               <svg class="Icon Icon--search" role="presentation" viewbox="0 0 18 17">
                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
@@ -3024,12 +3027,15 @@ Version: 2.43.0
     </script>
 
     <style>
-      body { background-color: #EFEFEF; }
+      body {
+        background-color: #EFEFEF;
+      }
+
       /* ===== SHOP ON SECTION ===== */
       .ShopOnSection {
         padding: 60px 0;
         background-color: #EFEFEF;
-        
+
       }
 
       .ShopOnSection__Title {
@@ -3308,6 +3314,9 @@ Version: 2.43.0
     </section>
     <!-- End FAQ Section -->
   </main>
+
+
+
   <div class="shopify-section shopify-section--footer" id="shopify-section-footer">
     <footer class="Footer" data-section-id="footer" data-section-type="footer" id="section-footer" role="contentinfo">
       <div class="Container">
