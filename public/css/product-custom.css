@@ -1,0 +1,71 @@
+/* ===== PRODUCT PAGE ENHANCEMENTS ===== */
+
+.ProductMeta__Rating {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.Rating__Stars {
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.Rating__StarIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 3px;
+}
+
+.Rating__ScoreText {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1C1C1C;
+  margin-left: 6px;
+  letter-spacing: 0.05em;
+  line-height:1;
+}
+
+/* Updated Price Styling for Pixel-Perfection */
+.ProductMeta__Price.Price--large {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px !important;
+  letter-spacing: 0.22em !important;
+  color: rgba(28, 28, 28, 0.65) !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+
+/* Ensure ProductMeta__PriceList does not override our new class */
+.ProductMeta__PriceList {
+  margin-top: 0 !important;
+  line-height: 1;
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 640px) {
+  .ProductMeta__Rating {
+    margin-top: 15px;
+    margin-bottom: 6px;
+  }
+  
+  .Rating__StarIcon {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .Rating__ScoreText {
+    font-size: 13px;
+  }
+  
+  .ProductMeta__Price.Price--large {
+    font-size: 14px !important;
+    letter-spacing: 0.15em !important;
+  }
+}
