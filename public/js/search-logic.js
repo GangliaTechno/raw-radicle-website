@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   const products = [
-    { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹250.00", image: "assets/cdark/cdark.png" },
-    { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹250.00", image: "assets/cmilk/cmilk.png" },
-    { title: "Ashwagandha Dark Chocolate", url: "pages/adarkc.html", price: "₹250.00", image: "assets/adark/adark.png" },
-    { title: "Ashwagandha Milk Chocolate", url: "pages/amilkc.html", price: "₹250.00", image: "assets/amilk/amilk.png" },
-    { title: "Brahmi Dark Chocolate", url: "pages/bdarkc.html", price: "₹250.00", image: "assets/bdark/bdark.png" },
-    { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹250.00", image: "assets/bmilk/bmilk.png" }
+    { title: "Chyawanaprash Dark Chocolate", url: "pages/cdarkc.html", price: "₹300.00", image: "assets/cdark/cdark.png" },
+    { title: "Chyawanaprash Milk Chocolate", url: "pages/cmilkc.html", price: "₹300.00", image: "assets/cmilk/cmilk.png" },
+    { title: "Ashwagandha Dark Chocolate", url: "pages/adarkc.html", price: "₹300.00", image: "assets/adark/adark.png" },
+    { title: "Ashwagandha Milk Chocolate", url: "pages/amilkc.html", price: "₹300.00", image: "assets/amilk/amilk.png" },
+    { title: "Brahmi Dark Chocolate", url: "pages/bdarkc.html", price: "₹300.00", image: "assets/bdark/bdark.png" },
+    { title: "Brahmi Milk Chocolate", url: "pages/bmilkc.html", price: "₹300.00", image: "assets/bmilk/bmilk.png" }
   ];
 
   const searchInputs = document.querySelectorAll('#local-search-input, .Search__Input');
