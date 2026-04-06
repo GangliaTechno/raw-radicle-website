@@ -1,0 +1,580 @@
+/* ===== PRODUCT REVIEWS - MVST SELECT PIXEL-PERFECT ===== */
+
+.ReviewSection {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 50px 30px 60px;
+  font-family: 'Nunito Sans', 'Montserrat', sans-serif;
+  background-color: #efefef;
+}
+
+/* --- Header --- */
+.ReviewSection__Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+}
+
+.ReviewSection__HeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ReviewSection__Stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.ReviewSection__Stars svg {
+  width: 22px;
+  height: 22px;
+  fill: #000;
+}
+
+.ReviewSection__Count {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ReviewSection__Count svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+}
+
+.ReviewSection__HeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ReviewSection__WriteBtn {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #000;
+  background: transparent;
+  border: 1px solid #e8e8e8;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 10px 24px;
+  transition: all 0.2s ease;
+}
+
+.ReviewSection__WriteBtn:hover {
+  background: #f4f4f4;
+  border-color: #d0d0d0;
+}
+
+.ReviewSection__FilterBtn {
+  background: transparent;
+  border: 1px solid #e8e8e8;
+  cursor: pointer;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.ReviewSection__FilterBtn:hover {
+  background: #f4f4f4;
+  border-color: #d0d0d0;
+}
+
+.ReviewSection__FilterBtn svg {
+  width: 18px;
+  height: 18px;
+  stroke: #000;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+/* --- Review Cards --- */
+.ReviewCard {
+  background: #ffffff;
+  border: 0px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 6px 14px -4px;
+  margin-bottom: 20px;
+  padding: 24px;
+  display: block;
+}
+
+.ReviewCard__Inner {
+  display: flex;
+  gap: 24px;
+}
+
+.ReviewCard__Content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ReviewCard__AuthorRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.ReviewCard__Author {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0;
+}
+
+.ReviewCard__Verified {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #969696;
+}
+
+.ReviewCard__Verified svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ReviewCard__Date {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #969696;
+  margin-bottom: 8px;
+}
+
+.ReviewCard__Stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 0;
+}
+
+.ReviewCard__Stars svg {
+  width: 16px;
+  height: 16px;
+  fill: #000;
+}
+
+.ReviewCard__Stars svg.star--empty {
+  fill: #d0d0d0;
+}
+
+.ReviewCard__Body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.55;
+  margin-bottom: 0;
+  padding-top: 20px;
+}
+
+/* Variant */
+.ReviewCard__Variant {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eeeeee;
+}
+
+.ReviewCard__VariantImg {
+  width: 36px;
+  height: 46px;
+  object-fit: contain;
+  background: transparent;
+  padding: 3px;
+}
+
+.ReviewCard__VariantName {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0;
+}
+
+.ReviewCard__Media {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.ReviewCard__Photo {
+  width: 225px;
+  height: 215px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+/* --- Multi-Step Review Modal (MVST Loox Style) --- */
+.ReviewModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.ReviewModal__Overlay.is-active {
+  display: flex;
+}
+
+.ReviewModal {
+  background: #fafafa;
+  width: 90%;
+  max-width: 580px;
+  min-height: 450px;
+  border-radius: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.ReviewModal__Close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 10;
+}
+
+.ReviewModal__Close svg {
+  width: 18px;
+  height: 18px;
+  stroke: #000;
+  stroke-width: 2.5;
+}
+
+/* Steps */
+.ReviewModal__Step {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 50px 40px;
+  text-align: center;
+  flex: 1;
+}
+
+.ReviewModal__Step.is-active {
+  display: flex;
+}
+
+.ReviewModal__StepTitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  margin: 0 0 30px;
+  letter-spacing: 0;
+}
+
+/* Step 1: Star Rating */
+.ReviewModal__RatingStars {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.ReviewModal__RatingStars svg {
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.2;
+  cursor: pointer;
+  transition: fill 0.15s ease;
+}
+
+.ReviewModal__RatingStars svg.star--active {
+  fill: #000;
+  stroke: #000;
+}
+
+.ReviewModal__RatingStars svg:hover {
+  fill: #000;
+}
+
+.ReviewModal__RatingLabels {
+  display: flex;
+  justify-content: space-between;
+  width: 260px;
+  margin-top: 4px;
+}
+
+.ReviewModal__RatingLabels span {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #969696;
+}
+
+/* Step 2: Photo Upload */
+.ReviewModal__UploadArea {
+  width: 120px;
+  height: 100px;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: border-color 0.2s;
+}
+
+.ReviewModal__UploadArea:hover {
+  border-color: #999;
+}
+
+.ReviewModal__UploadArea svg {
+  width: 40px;
+  height: 40px;
+  stroke: #bbb;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* Step 3: Text Review */
+.ReviewModal__Textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 15px;
+  color: #000;
+  background: #fff;
+  outline: none;
+  resize: vertical;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.ReviewModal__Textarea:focus {
+  border-color: #000;
+}
+
+/* Step 4: Details */
+.ReviewModal__InputGroup {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.ReviewModal__InputLabel {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.ReviewModal__Input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 15px;
+  color: #000;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.ReviewModal__Input:focus {
+  border-color: #000;
+}
+
+/* Buttons */
+.ReviewModal__ContinueBtn {
+  width: 100%;
+  padding: 14px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.ReviewModal__ContinueBtn:hover {
+  background: #333;
+}
+
+.ReviewModal__SkipBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #969696;
+  margin-top: 14px;
+  text-decoration: underline;
+  padding: 4px 0;
+}
+
+.ReviewModal__SkipBtn:hover {
+  color: #000;
+}
+
+/* Success */
+.ReviewModal__Success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 50px;
+  text-align: center;
+  flex: 1;
+}
+
+.ReviewModal__Success.is-active {
+  display: flex;
+}
+
+.ReviewModal__Success svg {
+  width: 56px;
+  height: 56px;
+  stroke: #2ecc71;
+  margin-bottom: 20px;
+}
+
+.ReviewModal__Success h3 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  margin: 0 0 8px;
+}
+
+.ReviewModal__Success p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: #969696;
+}
+
+/* --- Sort Dropdown --- */
+.ReviewSection__SortDropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  z-index: 100;
+  min-width: 160px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.ReviewSection__SortDropdown.is-active {
+  display: block;
+}
+
+.ReviewSection__SortOption {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ReviewSection__SortOption:hover {
+  background: #f5f5f5;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .ReviewSection {
+    padding: 30px 16px 40px;
+  }
+
+  .ReviewSection__Header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .ReviewSection__HeaderRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .ReviewCard {
+    padding: 18px;
+  }
+
+  .ReviewCard__Inner {
+    flex-direction: column;
+  }
+
+  .ReviewCard__Photo {
+    width: 100%;
+    height: 200px;
+  }
+
+  .ReviewModal {
+    width: 95%;
+    min-height: auto;
+  }
+
+  .ReviewModal__Step {
+    padding: 50px 24px 30px;
+  }
+}
