@@ -77,8 +77,9 @@
 }
 
 .ReviewSection__WriteBtn:hover {
-  background: #f4f4f4;
-  border-color: #d0d0d0;
+  background: #1c1c1b;
+  color: #fff;
+  border-color: #1c1c1b;
 }
 
 .ReviewSection__FilterBtn {
@@ -93,8 +94,12 @@
 }
 
 .ReviewSection__FilterBtn:hover {
-  background: #f4f4f4;
-  border-color: #d0d0d0;
+  background: #1c1c1b;
+  border-color: #1c1c1b;
+}
+
+.ReviewSection__FilterBtn:hover svg {
+  stroke: #ffffff;
 }
 
 .ReviewSection__FilterBtn svg {
@@ -227,6 +232,32 @@
   height: 215px;
   object-fit: cover;
   border-radius: 2px;
+}
+
+.ReviewSection__Footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ReviewSection__ShowMoreBtn {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #282828;
+  background: transparent;
+  border: 1px solid #e8e8e8;
+  padding: 6px 12px;
+  display: inline-block;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.ReviewSection__ShowMoreBtn:hover {
+  background: #282828;
+  color: #ffffff;
+  border-color: #282828;
 }
 
 /* --- Multi-Step Review Modal (MVST Loox Style) --- */
