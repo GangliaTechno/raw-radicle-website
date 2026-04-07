@@ -4,7 +4,7 @@
   max-width: 1080px;
   margin: 0 auto;
   padding: 50px 30px 60px;
-  font-family: 'Nunito Sans', 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   background-color: #efefef;
 }
 
@@ -36,11 +36,11 @@
 }
 
 .ReviewSection__Count {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
   color: #000;
-  letter-spacing: 0;
+  letter-spacing: 0.02em !important;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -62,10 +62,10 @@
 }
 
 .ReviewSection__WriteBtn {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
   text-transform: none;
   color: #000;
   background: transparent;
@@ -139,18 +139,18 @@
 }
 
 .ReviewCard__Author {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
   color: #000;
-  letter-spacing: 0;
+  letter-spacing: 0.02em !important;
 }
 
 .ReviewCard__Verified {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   font-weight: 400;
   color: #969696;
@@ -162,7 +162,7 @@
 }
 
 .ReviewCard__Date {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   font-weight: 400;
   color: #969696;
@@ -187,11 +187,11 @@
 }
 
 .ReviewCard__Body {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #000;
-  line-height: 1.55;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #1c1c1b !important;
+  line-height: 1.6 !important;
   margin-bottom: 0;
   padding-top: 20px;
 }
@@ -215,7 +215,7 @@
 }
 
 .ReviewCard__VariantName {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   font-weight: 400;
   color: #000;
@@ -240,7 +240,7 @@
 }
 
 .ReviewSection__ShowMoreBtn {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0;
@@ -327,7 +327,7 @@
 }
 
 .ReviewModal__StepTitle {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 20px;
   font-weight: 400;
   color: #000;
@@ -369,7 +369,7 @@
 }
 
 .ReviewModal__RatingLabels span {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 13px;
   font-weight: 400;
   color: #969696;
@@ -408,7 +408,7 @@
   padding: 14px 16px;
   border: 1px solid #ddd;
   border-radius: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 15px;
   color: #000;
   background: #fff;
@@ -431,7 +431,7 @@
 }
 
 .ReviewModal__InputLabel {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 13px;
   font-weight: 600;
   color: #000;
@@ -444,7 +444,7 @@
   padding: 12px 14px;
   border: 1px solid #ddd;
   border-radius: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 15px;
   color: #000;
   background: #fff;
@@ -465,7 +465,7 @@
   color: #fff;
   border: none;
   border-radius: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -483,7 +483,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   font-weight: 400;
   color: #969696;
@@ -519,7 +519,7 @@
 }
 
 .ReviewModal__Success h3 {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 20px;
   font-weight: 400;
   color: #000;
@@ -527,7 +527,7 @@
 }
 
 .ReviewModal__Success p {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   color: #969696;
 }
@@ -558,7 +558,7 @@
   padding: 10px 16px;
   border: none;
   background: none;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 14px;
   font-weight: 400;
   color: #000;
