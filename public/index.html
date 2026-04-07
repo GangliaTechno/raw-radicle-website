@@ -101,54 +101,11 @@ Version: 2.43.0
   </style>
 
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    @font-face {
-      font-family: Montserrat;
-      font-weight: 500;
-      font-style: normal;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/montserrat/montserrat_n5.e72d00d31ae5399d260a80ec70322c62c1819762.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=50dc1f030078670c5c66cb7af39fbc2d5da0cbc8fb575dcc7f70bbf637b6475c") format("woff2"),
-        url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/montserrat/montserrat_n5.18a018b6c83e89030c5d70a6d4c02c969f228500.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=360ae72f3b4275ef8a90990751ea13ca167d0b0b2ffb6e5eed6eac66ba0b32ae") format("woff");
-    }
-
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 400;
-      font-style: normal;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n4.2b61d9dcf54d8ac8282cfd1ebb6964c79a7efcd1.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=feedf556f8ea3b33d640daa5eca051017bc5a11ebf52218db3f92d9caa028677") format("woff2"),
-        url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n4.420cbf408f643f8ff8fd948b99c10dade8b6af79.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=c3491c6f772bce342deb8840a4aeeea881dd1040f48208a38a79d9f30645f446") format("woff");
-    }
-
-
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 700;
-      font-style: normal;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n7.5bd4fb9346d13afb61b3d78f8a1e9f31b128b3d9.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=74d8064d0f8334c9b2d5f694029794fe822ae433c9e74494d1c8d9b598d14a25") format("woff2"),
-        url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n7.2bcf0f11aa6af91c784a857ef004bcca8c2d324d.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=743c6c519888871ef25e20200b3d28578a8ebbc1cc1d0ffc73bbddb9477d0a0f") format("woff");
-    }
-
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 400;
-      font-style: italic;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i4.e88a2041a6cfbeacffb96db0e8efdfaaa38ddc5c.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=bf6f25e54cea0234006014ccc211ebfd3ddaf1b9d0b28dece7553f8cf232e755") format("woff2"),
-        url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i4.2c3733ccdf579e6e89e929a950e6a93484fdf6b4.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=170438091b3d44ce74a3c31dbdb9360c081538638af29d5be5951f761fb95617") format("woff");
-    }
-
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 700;
-      font-style: italic;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i7.975ea93f521412ef99ca1e2e434d8ca6a5cf77e7.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=97acf5eada0aee2df1fe53f42ecda952eaea1bed852f727bf0682fb3b3317961") format("woff2"),
-        url("https://web.archive.org/web/20230605094357im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i7.83b70272d04b71e88f25fc6834dc9b88e4ba4e95.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=03cd209daba8d81dacc663254ac21f4f2921d9097dedf666abf30febc52d96a2") format("woff");
-    }
-
-
     :root {
       --heading-font-family: Montserrat, sans-serif;
       --heading-font-weight: 500;
@@ -1306,17 +1263,28 @@ Version: 2.43.0
 
         .MvstProducts__Header {
           text-align: center;
-          margin-bottom: 10px;
+          margin-bottom: 30px !important;
+          position: relative;
+        }
+
+        .MvstProducts__Header::before {
+          content: "";
+          display: block;
+          width: 60px;
+          height: 1px;
+          background: #1c1c1c;
+          margin: 0 auto 20px;
         }
 
         .MvstProducts__Title {
-          font-family: 'Montserrat', sans-serif;
-          font-size: 25.2px;
-          font-weight: 500;
-          letter-spacing: 4.536px;
+          font-family: 'Montserrat', sans-serif !important;
+          font-size: 26px !important;
+          font-weight: 400 !important;
+          letter-spacing: 0.35em !important;
           text-transform: uppercase;
           color: #1c1c1c;
           margin: 0;
+          line-height: 1.2;
         }
 
         /* Carousel Container */
@@ -1391,26 +1359,25 @@ Version: 2.43.0
         }
 
         .MvstProducts__Name {
-          font-family: 'Montserrat', sans-serif;
-          font-size: 10.8px;
-          font-weight: 500;
-          letter-spacing: 1.944px;
+          font-family: 'Montserrat', sans-serif !important;
+          font-size: 11.5px !important;
+          font-weight: 600 !important;
+          letter-spacing: 0.18em !important;
           text-transform: uppercase;
           color: #1C1C1C;
-          margin: 0 0 8px 0;
-          line-height: 1.7;
-          /* Match 18.36px at 10.8px font size */
+          margin: 0 0 6px 0 !important;
+          line-height: 1.5;
         }
 
         .MvstProducts__Price {
-          font-family: 'Montserrat', sans-serif;
-          font-size: 10.8px;
-          font-weight: 500;
-          letter-spacing: 1.944px;
+          font-family: 'Montserrat', sans-serif !important;
+          font-size: 10px !important;
+          font-weight: 500 !important;
+          letter-spacing: 0.12em !important;
           text-transform: uppercase;
-          color: rgba(28, 28, 28, 0.65);
+          color: rgba(28, 28, 28, 0.5) !important;
           margin: 0;
-          line-height: 1.7;
+          line-height: 1.5;
         }
 
         /* Prev/Next Arrows */
