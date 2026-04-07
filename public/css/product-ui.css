@@ -172,7 +172,7 @@
 
 .ProductMeta__Title {
   font-family: 'Montserrat', sans-serif !important;
-  font-weight: 500 !important;
+  font-weight: 530 !important;
   letter-spacing: 0.25em !important;
   font-size: 22px !important;
   margin-bottom: 8px !important;
@@ -223,9 +223,27 @@
 .ProductMeta .ProductMeta__Price.Price--large {
   font-family: 'Montserrat', sans-serif !important;
   font-size: 16.2px !important;
-  letter-spacing: 0.2em !important;
+  letter-spacing: 0.1em !important;
   font-weight: 500 !important;
-  color: #555555 !important;
+  color: #1c1c1b !important;
+}
+
+.Price__TaxNotice {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: #777777 !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  margin-left: 6px !important;
+}
+
+.Price__TaxNotice {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: #777777 !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  margin-left: 6px !important;
 }
 
 .ProductMeta {
@@ -244,20 +262,20 @@
 /* Product Benefit Badges */
 .ProductBadge {
   display: inline-block !important;
-  padding: 8px 18px !important;
+  padding: 8px 15px !important;
   font-family: 'Montserrat', sans-serif !important;
-  font-size: 13px !important;
+  font-size: 10px !important;
   font-weight: 500 !important;
-  text-transform: uppercase !important;
+  /* text-transform: uppercase !important; */
   color: #ffffff !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.11em !important;
   margin-top: 5px !important;
-  margin-bottom: 30px !important;
+  margin-bottom: 15px !important;
   /* border-radius: 2px !important; */
 }
 
 .ProductBadge--royalGreen {
-  background-color: #1a472a !important;
+  background-color: #1cc858 !important;
   /* Royal Green */
 }
 
@@ -267,6 +285,6 @@
 }
 
 .ProductBadge--royalRed {
-  background-color: #960018 !important;
+  background-color: #fd143b !important;
   /* Royal Red */
 }
