@@ -141,23 +141,23 @@
 
 /* Brand colors */
 .Marketplace .Button[data-brand="blinkit"] {
-  --brand-color: #F8CB46 !important;
+  --brand-color: #1c1c1c !important;
 }
 
 .Marketplace .Button[data-brand="zepto"] {
-  --brand-color: #FF3269 !important;
+  --brand-color: #1c1c1c !important;
 }
 
 .Marketplace .Button[data-brand="instamart"] {
-  --brand-color: #FC8019 !important;
+  --brand-color: #1c1c1c !important;
 }
 
 .Marketplace .Button[data-brand="amazon"] {
-  --brand-color: #FF9900 !important;
+  --brand-color: #1c1c1c !important;
 }
 
 .Marketplace .Button[data-brand="flipkart"] {
-  --brand-color: #2874F0 !important;
+  --brand-color: #1c1c1c !important;
 }
 
 .Marketplace .Button img {
@@ -264,31 +264,38 @@
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background-color: #E32924 !important; /* Exact reference bright red */
+  background-color: #E32924 !important;
+  /* Exact reference bright red */
   color: #FFFFFF !important;
   padding: 8px 20px !important;
   font-family: 'Montserrat', sans-serif !important;
-  font-size: 10.5px !important; /* Slightly smaller for single line fit */
+  font-size: 10.5px !important;
+  /* Slightly smaller for single line fit */
   font-weight: 500 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.1em !important; /* Slightly tighter for single line fit */
+  letter-spacing: 0.1em !important;
+  /* Slightly tighter for single line fit */
   margin-top: 5px !important;
   margin-bottom: 24px !important;
-  border-radius: 0 !important; /* Sharp corners exactly like reference */
+  border-radius: 0 !important;
+  /* Sharp corners exactly like reference */
   line-height: 1 !important;
-  white-space: nowrap !important; /* FORCE SINGLE LINE */
+  white-space: nowrap !important;
+  /* FORCE SINGLE LINE */
   max-width: 100% !important;
 }
 
-.ProductBadge b, 
+.ProductBadge b,
 .ProductBadge strong {
-  font-weight: 700 !important; /* Bold branding part */
+  font-weight: 700 !important;
+  /* Bold branding part */
   margin-right: 4px;
 }
 
 /* --- Redesigned Features Collapsible (Premium Editorial) --- */
 .Product__Tabs .Collapsible__Content {
-  padding-right: 20px !important; /* Overriding default 80px padding to allow expansion till minus symbol */
+  padding-right: 20px !important;
+  /* Overriding default 80px padding to allow expansion till minus symbol */
 }
 
 .FeaturesList {
@@ -299,7 +306,8 @@
 
 .FeatureItem {
   margin-bottom: 24px !important;
-  padding-left: 0 !important; /* Precise alignment under header */
+  padding-left: 0 !important;
+  /* Precise alignment under header */
 }
 
 .FeatureTitle {
@@ -312,6 +320,16 @@
   color: #1c1c1c !important;
   letter-spacing: 0.05em !important;
   line-height: 1.4 !important;
+  white-space: nowrap !important;
+  /* FORCE SINGLE LINE */
+}
+
+/* Explicitly remove anyBullets/markers */
+.FeaturesList li::before,
+.FeatureItem::before,
+.FeatureTitle::before {
+  content: none !important;
+  display: none !important;
 }
 
 .FeatureDescription {
