@@ -259,32 +259,29 @@
   margin-bottom: 40px !important;
 }
 
-/* Product Benefit Badges */
+/* --- Premium MVST Product Badge (Reference Match) --- */
 .ProductBadge {
-  display: inline-block !important;
-  padding: 8px 15px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #E32924 !important; /* Exact reference bright red */
+  color: #FFFFFF !important;
+  padding: 8px 20px !important;
   font-family: 'Montserrat', sans-serif !important;
-  font-size: 10px !important;
+  font-size: 10.5px !important; /* Slightly smaller for single line fit */
   font-weight: 500 !important;
-  /* text-transform: uppercase !important; */
-  color: #ffffff !important;
-  letter-spacing: 0.11em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important; /* Slightly tighter for single line fit */
   margin-top: 5px !important;
-  margin-bottom: 15px !important;
-  /* border-radius: 2px !important; */
+  margin-bottom: 24px !important;
+  border-radius: 0 !important; /* Sharp corners exactly like reference */
+  line-height: 1 !important;
+  white-space: nowrap !important; /* FORCE SINGLE LINE */
+  max-width: 100% !important;
 }
 
-.ProductBadge--royalGreen {
-  background-color: #1cc858 !important;
-  /* Royal Green */
-}
-
-.ProductBadge--royalBlue {
-  background-color: #002366 !important;
-  /* Royal Blue */
-}
-
-.ProductBadge--royalRed {
-  background-color: #fd143b !important;
-  /* Royal Red */
+.ProductBadge b, 
+.ProductBadge strong {
+  font-weight: 700 !important; /* Bold branding part */
+  margin-right: 4px;
 }
