@@ -11,6 +11,10 @@
   </script>
   <script src="../js/ruffle.js" type="text/javascript">
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link href="../css/banner-styles.css" rel="stylesheet" type="text/css">
   <link href="../css/iconochive.css" rel="stylesheet" type="text/css">
   <!-- End Wayback Rewrite JS Include -->
@@ -97,7 +101,6 @@
         url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n4.420cbf408f643f8ff8fd948b99c10dade8b6af79.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=c3491c6f772bce342deb8840a4aeeea881dd1040f48208a38a79d9f30645f446") format("woff");
     }
 
-
     @font-face {
       font-family: "Nunito Sans";
       font-weight: 700;
@@ -124,7 +127,6 @@
       src: url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i7.975ea93f521412ef99ca1e2e434d8ca6a5cf77e7.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=97acf5eada0aee2df1fe53f42ecda952eaea1bed852f727bf0682fb3b3317961") format("woff2"),
         url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i7.83b70272d04b71e88f25fc6834dc9b88e4ba4e95.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=03cd209daba8d81dacc663254ac21f4f2921d9097dedf666abf30febc52d96a2") format("woff");
     }
-
 
     :root {
       --heading-font-family: Montserrat, sans-serif;
@@ -428,7 +430,6 @@
 
     window.appStart = function () {
 
-
       window.productPageHandle = function () {
         var productName = "TREK Aluminum Suitcase Army Green";
         var productId = "2665767829622";
@@ -445,7 +446,6 @@
           productCategory: productCollection,
         });
       };
-
 
       productPageHandle()
 
@@ -531,6 +531,10 @@
     };
   </script>
   <link href="../css/custom-search.css" rel="stylesheet">
+  <link href="../css/features.css" rel="stylesheet">
+  <link href="../css/reviews.css" rel="stylesheet">
+  <link href="../css/product-custom.css" rel="stylesheet">
+
 </head>
 
 <body
@@ -694,9 +698,8 @@
     </form>
   </div>
 
-
   <div class="shopify-section shopify-section--header" id="shopify-section-header">
-            <div aria-hidden="true" class="Search" id="Search">
+    <div aria-hidden="true" class="Search" id="Search">
       <div class="Search__Inner">
         <div class="Search__SearchBar">
           <div class="Search__Icon">
@@ -712,7 +715,8 @@
           </div>
           <form action="" class="Search__Form" name="GET" role="search">
             <input aria-label="Search..." autocapitalize="off" autocomplete="off" autocorrect="off" autofocus=""
-              class="Search__Input Heading" name="q" placeholder="SEARCH FOR..." type="search" id="mobile-local-search-input" />
+              class="Search__Input Heading" name="q" placeholder="SEARCH FOR..." type="search"
+              id="mobile-local-search-input" />
             <input name="type" type="hidden" value="product" />
           </form>
           <button aria-label="Close search" class="Search__Close" data-action="close-search">
@@ -722,7 +726,7 @@
             </svg>
           </button>
         </div>
-        
+
         <div class="Search__Results" id="mobile-search-results">
           <div class="Search__Suggestions">
             <h3 class="Search__SectionTitle">Suggestions</h3>
@@ -893,7 +897,6 @@
 
               <!-- Removed redundant static search bar per MVST design -->
 
-
             </ul>
           </nav>
 
@@ -914,8 +917,8 @@
             </span>
           </button>
 
-          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable"
-            data-action="toggle-search" href="#">
+          <a aria-label="Search" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable" data-action="toggle-search"
+            href="#">
             <span class="hidden-tablet-and-up">
               <svg class="Icon Icon--search" role="presentation" viewBox="0 0 18 17">
                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="square"
@@ -1001,61 +1004,7 @@
                   </svg>
                 </button>
               </div>
-              <div class="Product__ActionItem hidden-lap-and-up">
-                <button aria-expanded="false" class="RoundButton RoundButton--small RoundButton--flat"
-                  data-action="toggle-social-share" data-animate-bottom="">
-                  <span class="RoundButton__PrimaryState">
-                    <svg class="Icon Icon--share" role="presentation" viewBox="0 0 24 24">
-                      <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5">
-                        <path d="M8.6,10.2 L15.4,6.8">
-                        </path>
-                        <path d="M8.6,13.7 L15.4,17.1">
-                        </path>
-                        <circle cx="5" cy="12" r="4" stroke-linecap="square">
-                        </circle>
-                        <circle cx="19" cy="5" r="4" stroke-linecap="square">
-                        </circle>
-                        <circle cx="19" cy="19" r="4" stroke-linecap="square">
-                        </circle>
-                      </g>
-                    </svg>
-                  </span>
-                  <span class="RoundButton__SecondaryState">
-                    <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
-                      <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd" stroke="currentColor">
-                      </path>
-                    </svg>
-                  </span>
-                </button>
-                <div aria-hidden="true" class="Product__ShareList">
-                  <a class="Product__ShareItem" href="trek-aluminum-suitcase-army-green.html" rel="noopener"
-                    target="_blank">
-                    <svg class="Icon Icon--facebook" viewBox="0 0 9 17">
-                      <path
-                        d="M5.842 17V9.246h2.653l.398-3.023h-3.05v-1.93c0-.874.246-1.47 1.526-1.47H9V.118C8.718.082 7.75 0 6.623 0 4.27 0 2.66 1.408 2.66 3.994v2.23H0v3.022h2.66V17h3.182z">
-                      </path>
-                    </svg>
-                    Facebook
-                  </a>
-                  <a class="Product__ShareItem" href="" rel="noopener" target="_blank">
-                    <svg class="Icon Icon--pinterest" role="presentation" viewBox="0 0 32 32">
-                      <path
-                        d="M16 0q3.25 0 6.208 1.271t5.104 3.417 3.417 5.104T32 16q0 4.333-2.146 8.021t-5.833 5.833T16 32q-2.375 0-4.542-.625 1.208-1.958 1.625-3.458l1.125-4.375q.417.792 1.542 1.396t2.375.604q2.5 0 4.479-1.438t3.063-3.937 1.083-5.625q0-3.708-2.854-6.437t-7.271-2.729q-2.708 0-4.958.917T8.042 8.689t-2.104 3.208-.729 3.479q0 2.167.812 3.792t2.438 2.292q.292.125.5.021t.292-.396q.292-1.042.333-1.292.167-.458-.208-.875-1.083-1.208-1.083-3.125 0-3.167 2.188-5.437t5.729-2.271q3.125 0 4.875 1.708t1.75 4.458q0 2.292-.625 4.229t-1.792 3.104-2.667 1.167q-1.25 0-2.042-.917t-.5-2.167q.167-.583.438-1.5t.458-1.563.354-1.396.167-1.25q0-1.042-.542-1.708t-1.583-.667q-1.292 0-2.167 1.188t-.875 2.979q0 .667.104 1.292t.229.917l.125.292q-1.708 7.417-2.083 8.708-.333 1.583-.25 3.708-4.292-1.917-6.938-5.875T0 16Q0 9.375 4.687 4.688T15.999.001z">
-                      </path>
-                    </svg>
-                    Pinterest
-                  </a>
-                  <a class="Product__ShareItem" href="trek-aluminum-suitcase-army-green.html" rel="noopener"
-                    target="_blank">
-                    <svg class="Icon Icon--twitter" role="presentation" viewBox="0 0 32 26">
-                      <path
-                        d="M32 3.077c-1.1748.525-2.4433.8748-3.768 1.031 1.356-.8123 2.3932-2.0995 2.887-3.6305-1.2686.7498-2.6746 1.2997-4.168 1.5934C25.751.796 24.045.0025 22.158.0025c-3.6242 0-6.561 2.937-6.561 6.5612 0 .5124.0562 1.0123.1686 1.4935C10.3104 7.7822 5.474 5.1702 2.237 1.196c-.5624.9687-.8873 2.0997-.8873 3.2994 0 2.2746 1.156 4.2867 2.9182 5.4615-1.075-.0314-2.0872-.3313-2.9745-.8187v.0812c0 3.1806 2.262 5.8363 5.2677 6.4362-.55.15-1.131.2312-1.731.2312-.4248 0-.831-.0438-1.2372-.1188.8374 2.6057 3.262 4.5054 6.13 4.5616-2.2495 1.7622-5.074 2.812-8.1546 2.812-.531 0-1.0498-.0313-1.5684-.0938 2.912 1.8684 6.3613 2.9494 10.0668 2.9494 12.0726 0 18.6776-10.0043 18.6776-18.6776 0-.2874-.0063-.5686-.0188-.8498C30.0066 5.5514 31.119 4.3954 32 3.077z">
-                      </path>
-                    </svg>
-                    Twitter
-                  </a>
-                </div>
-              </div>
+
             </div>
             <div class="Product__SlideshowNav Product__SlideshowNav--thumbnails">
               <div class="Product__SlideshowNavScroller">
@@ -1152,7 +1101,7 @@
 
                     </h2>
                     <h1 class="ProductMeta__Title Heading u-h2">
-                      Brahmi DARK Chocolate Slab
+                      SMART SIN <br><span class="u-h5" style="white-space: nowrap;">55% DARK CHOCOLATE WITH BRAHMI HERBS</span>
                     </h1>
                     <p class="ProductMeta__Sku Heading Text--subdued u-h6">
                       SKU:
@@ -1160,112 +1109,43 @@
                         CB-BR-MK-60G
                       </span>
                     </p>
+                    <div class="ProductMeta__Rating">
+                      <div class="Rating__Stars">
+                        <svg class="Rating__StarIcon" viewBox="0 0 20 20" fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 1L13 7L19 8L15 13L16 19L10 16L4 19L5 13L1 8L7 7L10 1Z" />
+                        </svg>
+                        <svg class="Rating__StarIcon" viewBox="0 0 20 20" fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 1L13 7L19 8L15 13L16 19L10 16L4 19L5 13L1 8L7 7L10 1Z" />
+                        </svg>
+                        <svg class="Rating__StarIcon" viewBox="0 0 20 20" fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 1L13 7L19 8L15 13L16 19L10 16L4 19L5 13L1 8L7 7L10 1Z" />
+                        </svg>
+                        <svg class="Rating__StarIcon" viewBox="0 0 20 20" fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 1L13 7L19 8L15 13L16 19L10 16L4 19L5 13L1 8L7 7L10 1Z" />
+                        </svg>
+                        <svg class="Rating__StarIcon" viewBox="0 0 20 20" fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 1L13 7L19 8L15 13L16 19L10 16L4 19L5 13L1 8L7 7L10 1Z" />
+                        </svg>
+                      </div>
+                      <span class="Rating__ScoreText">5.0 (3 REVIEWS)</span>
+                    </div>
                     <div class="ProductMeta__PriceList Heading">
-                      <span class="ProductMeta__Price Price Text--subdued u-h4">
-                        <span class="transcy-money">
-                          ₹250.00
-                        </span>
+                      <span class="ProductMeta__Price Price Price--large">
+                        MRP ₹ 300.00<span class="Price__TaxNotice">(inclusive of all taxes)</span>
                       </span>
                     </div>
-
+                    <div class="ProductBadge"><b>BRAHMI DARK:</b> FOCUS, MEMORY & MENTAL CLARITY</div>
 
                   </div>
-                  <div class="ProductMeta__Description">
-                    <div class="Rte">
-                      Focus and calm
-                      <br>
-                      <br>
 
+              </div>
 
-
-                      <br>
-                    </div>
-                  </div>
-                  <div class="ProductMeta__ShareButtons hidden-pocket">
-                    <span class="ProductMeta__ShareTitle Heading Text--subdued u-h7">
-                      Share
-                    </span>
-                    <div class="ProductMeta__ShareList Text--subdued">
-                      <a aria-label="Facebook" class="ProductMeta__ShareItem" href="bmilkc.html" rel="noopener"
-                        target="_blank">
-                        <svg class="Icon Icon--facebook" viewBox="0 0 9 17">
-                          <path
-                            d="M5.842 17V9.246h2.653l.398-3.023h-3.05v-1.93c0-.874.246-1.47 1.526-1.47H9V.118C8.718.082 7.75 0 6.623 0 4.27 0 2.66 1.408 2.66 3.994v2.23H0v3.022h2.66V17h3.182z">
-                          </path>
-                        </svg>
-                      </a>
-                      <a aria-label="Twitter" class="ProductMeta__ShareItem" href="bmilkc.html" rel="noopener"
-                        target="_blank">
-                        <svg class="Icon Icon--twitter" role="presentation" viewBox="0 0 32 26">
-                          <path
-                            d="M32 3.077c-1.1748.525-2.4433.8748-3.768 1.031 1.356-.8123 2.3932-2.0995 2.887-3.6305-1.2686.7498-2.6746 1.2997-4.168 1.5934C25.751.796 24.045.0025 22.158.0025c-3.6242 0-6.561 2.937-6.561 6.5612 0 .5124.0562 1.0123.1686 1.4935C10.3104 7.7822 5.474 5.1702 2.237 1.196c-.5624.9687-.8873 2.0997-.8873 3.2994 0 2.2746 1.156 4.2867 2.9182 5.4615-1.075-.0314-2.0872-.3313-2.9745-.8187v.0812c0 3.1806 2.262 5.8363 5.2677 6.4362-.55.15-1.131.2312-1.731.2312-.4248 0-.831-.0438-1.2372-.1188.8374 2.6057 3.262 4.5054 6.13 4.5616-2.2495 1.7622-5.074 2.812-8.1546 2.812-.531 0-1.0498-.0313-1.5684-.0938 2.912 1.8684 6.3613 2.9494 10.0668 2.9494 12.0726 0 18.6776-10.0043 18.6776-18.6776 0-.2874-.0063-.5686-.0188-.8498C30.0066 5.5514 31.119 4.3954 32 3.077z">
-                          </path>
-                        </svg>
-                      </a>
-                      <a aria-label="Pinterest" class="ProductMeta__ShareItem" href="" rel="noopener" target="_blank">
-                        <svg class="Icon Icon--pinterest" role="presentation" viewBox="0 0 32 32">
-                          <path
-                            d="M16 0q3.25 0 6.208 1.271t5.104 3.417 3.417 5.104T32 16q0 4.333-2.146 8.021t-5.833 5.833T16 32q-2.375 0-4.542-.625 1.208-1.958 1.625-3.458l1.125-4.375q.417.792 1.542 1.396t2.375.604q2.5 0 4.479-1.438t3.063-3.937 1.083-5.625q0-3.708-2.854-6.437t-7.271-2.729q-2.708 0-4.958.917T8.042 8.689t-2.104 3.208-.729 3.479q0 2.167.812 3.792t2.438 2.292q.292.125.5.021t.292-.396q.292-1.042.333-1.292.167-.458-.208-.875-1.083-1.208-1.083-3.125 0-3.167 2.188-5.437t5.729-2.271q3.125 0 4.875 1.708t1.75 4.458q0 2.292-.625 4.229t-1.792 3.104-2.667 1.167q-1.25 0-2.042-.917t-.5-2.167q.167-.583.438-1.5t.458-1.563.354-1.396.167-1.25q0-1.042-.542-1.708t-1.583-.667q-1.292 0-2.167 1.188t-.875 2.979q0 .667.104 1.292t.229.917l.125.292q-1.708 7.417-2.083 8.708-.333 1.583-.25 3.708-4.292-1.917-6.938-5.875T0 16Q0 9.375 4.687 4.688T15.999.001z">
-                          </path>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="ProductForm__Variants">
-                    <div class="ProductForm__Option">
-                      <button aria-controls="popover-2665767829622-template--16772992401664__main-size"
-                        aria-expanded="false" class="ProductForm__Item" type="button">
-                        <span class="ProductForm__OptionName">
-                          Size:
-                          <span class="ProductForm__SelectedValue">Unit</span>
-                        </span>
-                        <svg class="Icon Icon--select-arrow" role="presentation" viewBox="0 0 19 12">
-                          <polyline fill="none" fill-rule="evenodd" points="17 2 9.5 10 2 2" stroke="currentColor"
-                            stroke-linecap="square" stroke-width="2"></polyline>
-                        </svg>
-                      </button>
-                    </div>
-
-                    <div class="no-js ProductForm__Option">
-                      <div class="Select Select--primary">
-                        <svg class="Icon Icon--select-arrow" role="presentation" viewBox="0 0 19 12">
-                          <polyline fill="none" fill-rule="evenodd" points="17 2 9.5 10 2 2" stroke="currentColor"
-                            stroke-linecap="square" stroke-width="2"></polyline>
-                        </svg>
-                        <select id="product-select-2665767829622" name="id" title="Variant">
-                          <option data-sku="01AL01GR20" selected="selected" value="22630685147254">Unit - ₹250.00
-                          </option>
-                          <option data-sku="01AL01GR24" value="22630685180022">Pack - ₹250.00</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="Product__OffScreen">
-                    <div aria-hidden="true" class="OptionSelector Popover Popover--withMinWidth"
-                      id="popover-2665767829622-template--16772992401664__main-size">
-                      <header class="Popover__Header">
-                        <button class="Popover__Close Icon-Wrapper--clickable" data-action="close-popover"
-                          type="button">
-                          <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
-                            <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd" stroke="currentColor"></path>
-                          </svg>
-                        </button>
-                        <span class="Popover__Title Heading u-h4">Size</span>
-                      </header>
-                      <div class="Popover__Content">
-                        <div class="Popover__ValueList" data-scrollable="">
-                          <button class="Popover__Value is-selected Heading Link Link--primary u-h6"
-                            data-action="select-value" data-option-position="1" data-value="Unit" type="button">Unit -
-                            ₹250.00</button>
-                          <button class="Popover__Value Heading Link Link--primary u-h6" data-action="select-value"
-                            data-option-position="1" data-value="Pack" type="button">Pack - ₹250.00</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="ProductForm__QuantitySelector">
+              <!-- <div class="ProductForm__QuantitySelector">
                     <span class="ProductForm__Label">Quantity:</span>
                     <div class="QuantitySelector QuantitySelector--large">
                       <button class="QuantitySelector__Button Link Link--secondary" data-action="decrease-quantity"
@@ -1287,141 +1167,179 @@
                         </svg>
                       </button>
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="ProductForm__BuyButtons Marketplace">
+              <div class="ProductForm__BuyButtons Marketplace">
 
+                <div class="Marketplace__Grid"
+                  style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px;">
 
-                    <div class="Marketplace__Grid"
-                      style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px;">
+                  <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                    data-brand="blinkit"
+                    style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
+                      class="buy-on-text">BUY ON</span><img src="../assets/blinkit.png" alt="Blinkit"
+                      style="width:42px; height:42px; object-fit:contain; flex-shrink:0;"></a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        data-brand="blinkit"
-                        style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
-                          class="buy-on-text">BUY ON</span><img src="../assets/blinkit.png" alt="Blinkit"
-                          style="width:42px; height:42px; object-fit:contain; flex-shrink:0;"></a>
+                  <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                    data-brand="zepto"
+                    style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
+                      class="buy-on-text">BUY ON</span><img src="../assets/zepto.png" alt="Zepto"
+                      style="width:42px; height:42px; object-fit:contain; flex-shrink:0;"></a>
 
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        data-brand="zepto"
-                        style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
-                          class="buy-on-text">BUY ON</span><img src="../assets/zepto.png" alt="Zepto"
-                          style="width:42px; height:42px; object-fit:contain; flex-shrink:0;"></a>
+                  <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                    data-brand="amazon"
+                    style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
+                      class="buy-on-text">BUY ON</span><img src="../assets/amazon.png" alt="Amazon"
+                      style="width:70px; height:40px; object-fit:contain; flex-shrink:0;"></a>
 
+                  <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                    data-brand="instamart"
+                    style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
+                      class="buy-on-text">BUY ON</span><img src="../assets/instamart.png" alt="Instamart"
+                      style="width:85px; height:40px; object-fit:contain; flex-shrink:0;"></a>
 
+                  <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
+                    data-brand="flipkart"
+                    style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap; grid-column: span 2;"><span
+                      class="buy-on-text">BUY ON</span><img src="../assets/flipkart.png" alt="Flipkart"
+                      style="width:90px; height:45px; object-fit:contain; flex-shrink:0;"></a>
 
-
-
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        data-brand="amazon"
-                        style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
-                          class="buy-on-text">BUY ON</span><img src="../assets/amazon.png" alt="Amazon"
-                          style="width:70px; height:40px; object-fit:contain; flex-shrink:0;"></a>
-
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        data-brand="instamart"
-                        style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap;"><span
-                          class="buy-on-text">BUY ON</span><img src="../assets/instamart.png" alt="Instamart"
-                          style="width:85px; height:40px; object-fit:contain; flex-shrink:0;"></a>
-
-                      <a href="" target="_blank" class="ProductForm__AddToCart Button Button--secondary Button--full"
-                        data-brand="flipkart"
-                        style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 16px; white-space: nowrap; grid-column: span 2;"><span
-                          class="buy-on-text">BUY ON</span><img src="../assets/flipkart.png" alt="Flipkart"
-                          style="width:90px; height:45px; object-fit:contain; flex-shrink:0;"></a>
-
+                </div>
+              </div>
+              <div class="Product__Aside">
+                <span class="Anchor" id="ProductAside">
+                </span>
+                <div class="Product__Tabs">
+                  <div class="Collapsible Collapsible--large">
+                    <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
+                      data-action="toggle-collapsible">
+                      FEATURES
+                      <span class="Collapsible__Plus">
+                      </span>
+                    </button>
+                    <div class="Collapsible__Inner">
+                      <div class="Collapsible__Content">
+                        <div class="Rte">
+                          <div class="FeaturesList">
+                            <div class="FeatureItem">
+                              <strong class="FeatureTitle">THE "INTELLECTUAL" INDULGENCE</strong>
+                              <span class="FeatureDescription">The Smart Sin Dark edition is designed for those who
+                                demand more from their snacks. By pairing the intense, antioxidant-rich profile of 55%
+                                Dark Chocolate with the cognitive-enhancing "Wisdom of Brahmi," we’ve created a bar that
+                                fuels focus and satisfies the palate—entirely without guilt.</span>
+                            </div>
+                            <div class="FeatureItem">
+                              <strong class="FeatureTitle">15% BRAHMI GHRITA (THE COGNITIVE GOLD)</strong>
+                              <span class="FeatureDescription">At the heart of this bar is a 15% concentration of Brahmi
+                                Ghrita, a traditional Ayurvedic preparation where herbs are infused into Cow Ghee for
+                                maximum absorption. Includes memory-enhancing Brahmi, concentration-boosting
+                                Shankhapushpi & Vacha, and metabolic-supporting Trikatu.</span>
+                            </div>
+                            <div class="FeatureItem">
+                              <strong class="FeatureTitle">SOPHISTICATED 55% DARK COCOA BASE</strong>
+                              <span class="FeatureDescription">Our dark chocolate base is crafted for a smooth,
+                                bittersweet experience. The natural acidity and deep notes of the cocoa mass elegantly
+                                mask the herbal profile of the Ghrita, resulting in a rich, velvety finish that
+                                lingers.</span>
+                            </div>
+                            <div class="FeatureItem">
+                              <strong class="FeatureTitle">COMMAND ATTENTION WITH "GOLD & TEXTURED RED"</strong>
+                              <span class="FeatureDescription">Dressed in a striking Gold and Textured Red wrapper, this
+                                bar symbolizes the "Agni" (fire) of the intellect. The vibrant red aesthetic is designed
+                                to stand out, signaling energy, focus, and superior quality.</span>
+                            </div>
+                            <div class="FeatureItem">
+                              <strong class="FeatureTitle">PRECISION CRAFTING IN MANIPAL</strong>
+                              <span class="FeatureDescription">Each 60g slab is produced by Cacobean Chocolate Factory
+                                at the Advanced Research Center (MUTBI), Manipal. Our process ensures that the
+                                heat-sensitive Ayurvedic compounds remain potent.</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="Product__Aside">
-                    <span class="Anchor" id="ProductAside">
-                    </span>
-                    <div class="Product__Tabs">
-                      <div class="Collapsible Collapsible--large">
-                        <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
-                          data-action="toggle-collapsible">
-                          Features
-                          <span class="Collapsible__Plus">
-                          </span>
-                        </button>
-                        <div class="Collapsible__Inner">
-                          <div class="Collapsible__Content">
-                            <div class="Rte">
-                              <p>
-                                - Focus and calm
-                                <br>
-                                - Ayurvedic
-                                <br>
-                                <!-- - Zipper-less closure
-              <br/>
-              - Dual TSA-approved combination locks
-              <br/>
-              - Removable ultra smooth 360° spinner wheels
-              <br/>
-              - Slow-release handles
-              <br/>
-              - Interior pocketed panel
-              <br/>
-              <span>
-               - Anti-
-              </span>
-              <span>
-               microbial fabric
-              </span>
-              <br/>
-              - Aluminum telescoping handle-->
-                              </p>
-                            </div>
-                          </div>
+                  <div class="Collapsible Collapsible--large">
+                    <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
+                      data-action="toggle-collapsible">
+                      SPECIFICATIONS
+                      <span class="Collapsible__Plus">
+                      </span>
+                    </button>
+                    <div class="Collapsible__Inner">
+                      <div class="Collapsible__Content">
+                        <div class="Rte">
+                          <p>
+                            - Unit
+                            <br>
+
+                          <table style="width: 100%; border-collapse: collapse; font-family: 'Montserrat', sans-serif;">
+                            <thead>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <th style="text-align: left; padding: 12px 0; font-size: 15px; color: #1c1c1c; font-weight: 700;">Attribute</th>
+                                <th style="text-align: left; padding: 12px 0; font-size: 15px; color: #1c1c1c; font-weight: 700;">Specification</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c; width: 40%;">Brand</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">Raw Radicles</td>
+                              </tr>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c;">Series</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">Smart Sin</td>
+                              </tr>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c;">Chocolate Type</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">55% Dark Chocolate</td>
+                              </tr>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c;">Functional Core</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">15% Brahmi Ghrita (Bacopa monnieri)</td>
+                              </tr>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c;">Net Weight</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">60g</td>
+                              </tr>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c;">Dietary Info</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">Contains Soy; May contain traces of Milk</td>
+                              </tr>
+                              <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c;">Storage Temp</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">18°C – 24°C</td>
+                              </tr>
+                              <tr>
+                                <td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c;">Manufacturing Hub</td>
+                                <td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">MUTBI, Manipal, Karnataka</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </p>
+
+                          <p></p>
                         </div>
                       </div>
-                      <div class="Collapsible Collapsible--large">
-                        <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
-                          data-action="toggle-collapsible">
-                          Specifications
-                          <span class="Collapsible__Plus">
-                          </span>
-                        </button>
-                        <div class="Collapsible__Inner">
-                          <div class="Collapsible__Content">
-                            <div class="Rte">
-                              <p>
-                                - Unit
-                                <br>
-
-                                <strong>
-                                  Qty.
-                                </strong>
-                                60 G
-                                <br>
-                                <strong>
-                                  Weight
-                                </strong>
-                                60 G
-                              </p>
-
-                              <p></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="Collapsible Collapsible--large">
-                        <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
-                          data-action="toggle-collapsible">
-                          SHIPPING &amp; RETURNS
-                          <span class="Collapsible__Plus">
-                          </span>
-                        </button>
-                        <div class="Collapsible__Inner">
-                          <div class="Collapsible__Content">
-                            <div class="Rte">
-                              <p>
-                                We offer free standard shipping on all contiguous product. Transit times are displayed
-                                at checkout when selecting shipping options.&nbsp;60 day free returns and return
-                                shipping for
-                                these two regions. We also ship to the rest of the world for a reasonable shipping
-                                surcharge.
-                              </p>
-                              <p>
-                                <!-- <a href="shipping.html" title="Shipping">
+                    </div>
+                  </div>
+                    <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
+                      data-action="toggle-collapsible">
+                      Quality & Safety Certified
+                      <span class="Collapsible__Plus">
+                      </span>
+                    </button>
+                    <div class="Collapsible__Inner">
+                      <div class="Collapsible__Content">
+                        <div class="Rte">
+                          <p>
+                            We offer free standard shipping on all contiguous product. Transit times are displayed
+                            at checkout when selecting shipping options.&nbsp;60 day free returns and return
+                            shipping for
+                            these two regions. We also ship to the rest of the world for a reasonable shipping
+                            surcharge.
+                          </p>
+                          <p>
+                            <!-- <a href="shipping.html" title="Shipping">
                More Details
               </a>
              </p>
@@ -1450,198 +1368,91 @@
            </div>
           </div>
          </div> -->
-                              </p>
-                              <div class="Collapsible Collapsible--large">
-                                <button aria-expanded="false" class="Collapsible__Button Heading u-h6"
-                                  data-action="toggle-collapsible">
-                                  <span>
-                                    Reviews
-                                    <span class="text--light">
-                                      (9)
-                                    </span>
-                                  </span>
-                                  <span class="Collapsible__Plus">
-                                  </span>
-                                </button>
-                                <div class="Collapsible__Inner">
-                                  <div class="Collapsible__Content">
-                                    <div data-id="2665767829622" id="shopify-product-reviews">
-                                      <style scoped="">
-                                        .spr-container {
-                                          padding: 24px;
-                                          border-color: #ECECEC;
-                                        }
-
-                                        .spr-review,
-                                        .spr-form {
-                                          border-color: #ECECEC;
-                                        }
-                                      </style>
-                                      <!-- <div class="spr-container">
-              <div class="spr-header">
-               <h2 class="spr-header-title">
-                Customer Reviews
-               </h2>
-               <div class="spr-summary rte">
-                <span aria-label="5.0 of 5 stars" class="spr-starrating spr-summary-starrating" role="img">
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                 <i aria-hidden="true" class="spr-icon spr-icon-star">
-                 </i>
-                </span>
-                <span class="spr-summary-caption">
-                 <span class="spr-summary-actions-togglereviews">
-                  Based on 9 reviews
-                 </span>
-                </span>
-                <span class="spr-summary-actions">
-                 <a class="spr-summary-actions-newreview" href="trek-aluminum-suitcase-army-green.html" onclick="SPR.toggleForm(2665767829622);return false">
-                  Write a review
-                 </a>
-                </span>
-               </div>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="spr-content">
-               <div class="spr-form" id="form_2665767829622" style="display: none">
-               </div>
-               <div class="spr-reviews" id="reviews_2665767829622">
-               </div>
-              </div>
-             </div>
             </div>
-           </div>
           </div>
-         </div>
         </div>
-        <div class="Section Section--spacingNormal">
-         <header class="SectionHeader SectionHeader--center">
-          <h3 class="SectionHeader__Heading Heading u-h4">
-           Buy it with
-          </h3>
-         </header>
-         <div class="ProductItem ProductItem--horizontal">
-          <div class="ProductItem__Wrapper">
-           <a class="ProductItem__ImageWrapper" href="garment-duffel-bag.html">
-            <div class="AspectRatio AspectRatio--withFallback" style="max-width: 125px; padding-bottom: 100.0%; --aspect-ratio: 1.0"> -->
-                                      <!-- <img alt="MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag MVST" class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-media-id="29101140148480" data-sizes="auto" data-src="//web.archive.org/web/20230604205108/https://cdn.shopify.com/s/files/1/0013/2146/8022/products/033A2808-0_{width}x.png?v=1644298857" data-widths="[200,400,600,700,800,900,1000,1200]"/>
-             <span class="Image__Loader">
-             </span>
-             <noscript>
-              <img alt="MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag MVST" class="ProductItem__Image ProductItem__Image--alternate" src="../assets/img_556.ext"/>
-              <img alt="MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag MVST" class="ProductItem__Image" src="../assets/033A2808-0_600x.png"/>
-             </noscript>
-            </div>
-           </a>
-           <div class="ProductItem__Info">
-            <h2 class="ProductItem__Title Heading">
-             <a href="garment-duffel-bag.html">
-              MVST Duffle Bag Garment Bag 2 in 1 | Garment Weekender Bag
-             </a>
-            </h2>
-            <div class="ProductItem__PriceList Heading">
-             <span class="ProductItem__Price Price Price--highlight Text--subdued">
-              <span class="transcy-money">
-               $165.00
-              </span>
-             </span>
-             <span class="ProductItem__Price Price Price--compareAt Text--subdued">
-              <span class="transcy-money">
-               $185.00
-              </span>
-             </span>
-            </div>
-           </div>
-          </div>
-          <a class="ProductItem__ViewButton Button Button--secondary hidden-pocket" href="garment-duffel-bag.html">
-           View product
-          </a>
-         </div>
-        </div>
-       </div>
       </div>
-     </section>
+    </section>
      <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
       <!-- Background of PhotoSwipe -->
-                                      <!--<div class="pswp__bg">
+                                  <!--<div class="pswp__bg">
       </div> -->
-                                      <!-- Slides wrapper with overflow:hidden. -->
-                                      <div class="pswp__scroll-wrap">
-                                        <!-- Container that holds slides. Do not remove as content is dynamically added -->
-                                        <div class="pswp__container">
-                                          <div class="pswp__item">
-                                          </div>
-                                          <div class="pswp__item">
-                                          </div>
-                                          <div class="pswp__item">
-                                          </div>
-                                        </div>
-                                        <!-- Main UI bar -->
-                                        <div class="pswp__ui pswp__ui--hidden">
-                                          <button class="pswp__button pswp__button--prev RoundButton"
-                                            data-animate-left="" title="Previous (left arrow)">
-                                            <svg class="Icon Icon--arrow-left" role="presentation" viewBox="0 0 11 21">
-                                              <polyline fill="none" points="10.5 0.5 0.5 10.5 10.5 20.5"
-                                                stroke="currentColor" stroke-width="1.25">
-                                              </polyline>
-                                            </svg>
-                                          </button>
-                                          <button
-                                            class="pswp__button pswp__button--close RoundButton RoundButton--large"
-                                            data-animate-bottom="" title="Close (Esc)">
-                                            <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
-                                              <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd"
-                                                stroke="currentColor">
-                                              </path>
-                                            </svg>
-                                          </button>
-                                          <button class="pswp__button pswp__button--next RoundButton"
-                                            data-animate-right="" title="Next (right arrow)">
-                                            <svg class="Icon Icon--arrow-right" role="presentation" viewBox="0 0 11 21">
-                                              <polyline fill="none" points="0.5 0.5 10.5 10.5 0.5 20.5"
-                                                stroke="currentColor" stroke-width="1.25">
-                                              </polyline>
-                                            </svg>
-                                          </button>
-                                        </div>
+                                  <!-- Slides wrapper with overflow:hidden. -->
+                                  <div class="pswp__scroll-wrap">
+                                    <!-- Container that holds slides. Do not remove as content is dynamically added -->
+                                    <div class="pswp__container">
+                                      <div class="pswp__item">
+                                      </div>
+                                      <div class="pswp__item">
+                                      </div>
+                                      <div class="pswp__item">
                                       </div>
                                     </div>
-                                    <script>
-                                      window.ShopifyXR = window.ShopifyXR || function () { (ShopifyXR.q = ShopifyXR.q || []).push(arguments) };
-                                      ShopifyXR('addModels', []);
-                                    </script>
+                                    <!-- Main UI bar -->
+                                    <div class="pswp__ui pswp__ui--hidden">
+                                      <button class="pswp__button pswp__button--prev RoundButton" data-animate-left=""
+                                        title="Previous (left arrow)">
+                                        <svg class="Icon Icon--arrow-left" role="presentation" viewBox="0 0 11 21">
+                                          <polyline fill="none" points="10.5 0.5 0.5 10.5 10.5 20.5"
+                                            stroke="currentColor" stroke-width="1.25">
+                                          </polyline>
+                                        </svg>
+                                      </button>
+                                      <button class="pswp__button pswp__button--close RoundButton RoundButton--large"
+                                        data-animate-bottom="" title="Close (Esc)">
+                                        <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
+                                          <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd"
+                                            stroke="currentColor">
+                                          </path>
+                                        </svg>
+                                      </button>
+                                      <button class="pswp__button pswp__button--next RoundButton" data-animate-right=""
+                                        title="Next (right arrow)">
+                                        <svg class="Icon Icon--arrow-right" role="presentation" viewBox="0 0 11 21">
+                                          <polyline fill="none" points="0.5 0.5 10.5 10.5 0.5 20.5"
+                                            stroke="currentColor" stroke-width="1.25">
+                                          </polyline>
+                                        </svg>
+                                      </button>
+                                    </div>
                                   </div>
-                                  <div class="shopify-section shopify-section--bordered"
-                                    id="shopify-section-template--16772992401664__product-recommendations">
-                                    <section class="Section Section--spacingNormal"
-                                      data-section-id="template--16772992401664__product-recommendations"
-                                      data-section-settings="{
+                                </div>
+                                <script>
+                                  window.ShopifyXR = window.ShopifyXR || function () { (ShopifyXR.q = ShopifyXR.q || []).push(arguments) };
+                                  ShopifyXR('addModels', []);
+                                </script>
+                              </div>
+                              <div class="shopify-section shopify-section--bordered"
+                                id="shopify-section-template--16772992401664__product-recommendations">
+                                <section class="Section Section--spacingNormal"
+                                  data-section-id="template--16772992401664__product-recommendations"
+                                  data-section-settings="{
   &quot;productId&quot;: 2665767829622,
   &quot;useRecommendations&quot;: true,
   &quot;recommendationsCount&quot;: 4
 }" data-section-type="product-recommendations">
-                                      <header class="SectionHeader SectionHeader--center">
-                                        <div class="Container">
-                                          <h3 class="SectionHeader__Heading Heading u-h3">
-                                            You may also like
-                                          </h3>
-                                        </div>
-                                      </header>
-                                      <div class="ProductRecommendations">
-                                        <style>
-                                          #shopify-section-template--16772992401664__product-recommendations {
-                                            display: none;
-                                          }
-                                        </style>
-                                      </div>
-                                    </section>
+                                  <header class="SectionHeader SectionHeader--center">
+                                    <div class="Container">
+                                      <h3 class="SectionHeader__Heading Heading u-h3">
+                                        You may also like
+                                      </h3>
+                                    </div>
+                                  </header>
+                                  <div class="ProductRecommendations">
+                                    <style>
+                                      #shopify-section-template--16772992401664__product-recommendations {
+                                        display: none;
+                                      }
+                                    </style>
                                   </div>
-                                </div>
+                                </section>
                               </div>
                             </div>
                           </div>
@@ -1649,14 +1460,717 @@
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
+              </form>
             </div>
           </div>
         </div>
-      </section>
     </div>
+    </section>
+    </div>
+
+
+
+
+
+
   </main>
+
+
+
+
+  <section class="ProductFeatures Section">
+    <div class="Container">
+      <header class="ProductFeatures__Header">
+        <h2 class="ProductFeatures__Heading">FEATURES</h2>
+      </header>
+
+      <div class="ProductFeatures__Grid">
+        <div class="ProductFeatures__Item">
+          <div class="ProductFeatures__ImageWrapper">
+            <img class="ProductFeatures__Image" src="../assets/br1.png" alt="Ancient Herbs">
+          </div>
+          <h3 class="ProductFeatures__Title">ANCIENT HERBS</h3>
+          <p class="ProductFeatures__Description">Infused with authentic Ayurvedic herbs like Brahmi, and Amla for
+            targeted wellness.</p>
+        </div>
+        <div class="ProductFeatures__Item">
+          <div class="ProductFeatures__ImageWrapper">
+            <img class="ProductFeatures__Image" src="../assets/features/choco-2.png" alt="PURE COCOA">
+          </div>
+          <h3 class="ProductFeatures__Title">PURE COCOA</h3>
+          <p class="ProductFeatures__Description">Hand-selected premium cocoa for a rich, velvety texture and deep,
+            satisfying chocolate experience.</p>
+        </div>
+        <div class="ProductFeatures__Item">
+          <div class="ProductFeatures__ImageWrapper">
+            <img class="ProductFeatures__Image" src="../assets/features/choco-3.png" alt="ARTISAN CRAFTED">
+          </div>
+          <h3 class="ProductFeatures__Title">ARTISAN CRAFTED</h3>
+          <p class="ProductFeatures__Description">Small-batch production ensures maximum potency of herbs and artisanal
+            quality in every bite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="ProductLuxurySection">
+    <div class="ProductLuxurySection__ImageSide">
+      <img class="ProductLuxurySection__Image" src="../assets/features/luxury-chocolate.png" alt="Elite Craftsmanship">
+    </div>
+    <div class="ProductLuxurySection__TextSide">
+      <span class="ProductLuxurySection__Subtitle">ELITE CRAFTSMANSHIP</span>
+      <h2 class="ProductLuxurySection__Title">REFINED ELEGANCE AND LUXURY</h2>
+      <p class="ProductLuxurySection__Description">Meticulously handcrafted to exceed high expectations.</p>
+    </div>
+  </section>
+
+
+
+  <div class="shopify-section shopify-section--bordered" id="shopify-section-related-products">
+
+    <style>
+      /* ===== RELATED PRODUCTS SECTION ===== */
+      .MvstProducts {
+        padding: 40px 0 60px;
+      }
+
+      .ScrollingBar {
+        background-color: #1c1c1c !important;
+        color: #ffffff !important;
+      }
+
+      .MvstProducts__Header {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .MvstProducts__Title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25.2px;
+        font-weight: 500;
+        letter-spacing: 4.536px;
+        text-transform: uppercase;
+        color: #1c1c1c;
+        margin: 0;
+      }
+
+      /* Carousel Container */
+      .MvstProducts__Carousel {
+        max-width: 100%;
+        background-color: #EFEFEF;
+        padding-top: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Let Flickity handle slide clipping + wrapAround for seamless loop */
+
+      /* Product Card */
+      .MvstProducts__Card {
+        width: 20%;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .MvstProducts__CardInner {
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        padding: 0 8px;
+      }
+
+      .MvstProducts__CardInner:hover .MvstProducts__Image {
+        transform: scale(1.05);
+      }
+
+      .MvstProducts__ImageWrap {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        overflow: hidden;
+        background: #EFEFEF;
+        position: relative;
+        /* For secondary image positioning */
+      }
+
+      .MvstProducts__Image {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .MvstProducts__Image--secondary {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        pointer-events: none;
+      }
+
+      .MvstProducts__CardInner:hover .MvstProducts__Image--secondary {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+
+      .MvstProducts__CardInner:hover .MvstProducts__Image:not(.MvstProducts__Image--secondary) {
+        opacity: 0;
+        transform: scale(1.05);
+      }
+
+      .MvstProducts__Name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10.8px;
+        font-weight: 500;
+        letter-spacing: 1.944px;
+        text-transform: uppercase;
+        color: #1C1C1C;
+        margin: 0 0 8px 0;
+        line-height: 1.7;
+        /* Match 18.36px at 10.8px font size */
+      }
+
+      .MvstProducts__Price {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10.8px;
+        font-weight: 500;
+        letter-spacing: 1.944px;
+        text-transform: uppercase;
+        color: rgba(28, 28, 28, 0.65);
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      /* Prev/Next Arrows */
+      .MvstProducts__Arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-70%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #fff;
+        border: none;
+        box-shadow: rgba(28, 28, 28, 0.15) 0px 2px 10px 0px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, box-shadow 0.2s ease;
+      }
+
+      .MvstProducts__Carousel:hover .MvstProducts__Arrow {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .MvstProducts__Arrow:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .MvstProducts__Arrow--prev {
+        left: 15px;
+      }
+
+      .MvstProducts__Arrow--next {
+        right: 15px;
+      }
+
+      .MvstProducts__Arrow svg {
+        width: 14px;
+        height: 14px;
+        stroke: #1c1c1c;
+        fill: none;
+        stroke-width: 2;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .MvstProducts__Card {
+          width: 25%;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .MvstProducts__Card {
+          width: 33.33%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .MvstProducts__Title {
+          font-size: 22px;
+          letter-spacing: 5px;
+        }
+
+        .MvstProducts__Card {
+          width: 50%;
+          padding: 0 10px;
+        }
+
+        .MvstProducts__Carousel {
+          padding: 0 35px;
+        }
+
+        .MvstProducts {
+          padding: 50px 0 40px;
+        }
+      }
+    </style>
+
+    <section class="MvstProducts">
+      <div class="MvstProducts__Header">
+        <h2 class="MvstProducts__Title">RELATED PRODUCTS</h2>
+      </div>
+
+      <div class="MvstProducts__Carousel">
+        <div class="MvstProducts__Slider" data-flickity='{
+            "cellAlign": "center",
+            "contain": false,
+            "wrapAround": true,
+            "prevNextButtons": false,
+            "pageDots": false,
+            "groupCells": false,
+            "freeScroll": false,
+            "autoPlay": 4000,
+            "pauseAutoPlayOnHover": true,
+            "imagesLoaded": true,
+            "percentPosition": true
+          }'>
+
+          <!-- Set 1 -->
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="adarkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/adark.png" alt="Ashwagandha Dark Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/adark-1.png"
+                  alt="Ashwagandha Dark Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Ashwagandha Dark Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="amilkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/apmilk.png" alt="Ashwagandha Milk Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/apmilk-1.png"
+                  alt="Ashwagandha Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Ashwagandha Milk Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="cdarkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/cdark.png"
+                  alt="Chyawanaprash Dark Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/cdark-1.png"
+                  alt="Chyawanaprash Dark Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Chyawanaprash Dark Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="cmilkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/cmilk.png"
+                  alt="Chyawanaprash Milk Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/cmilk-1.png"
+                  alt="Chyawanaprash Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Chyawanaprash Milk Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="bdarkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/bdark.png" alt="Brahmi Dark Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/bdark-1.png"
+                  alt="Brahmi Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Brahmi Dark Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="bmilkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/bmilk.png" alt="Brahmi Milk Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/bmilk-1.png"
+                  alt="Brahmi Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Brahmi Milk Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <!-- Set 2 (Duplicates for Slider Stability) -->
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="adarkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/adark.png" alt="Ashwagandha Dark Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/adark-1.png"
+                  alt="Ashwagandha Dark Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Ashwagandha Dark Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="amilkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/apmilk.png" alt="Ashwagandha Milk Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/apmilk-1.png"
+                  alt="Ashwagandha Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Ashwagandha Milk Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="cdarkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/cdark.png"
+                  alt="Chyawanaprash Dark Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/cdark-1.png"
+                  alt="Chyawanaprash Dark Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Chyawanaprash Dark Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="cmilkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/cmilk.png"
+                  alt="Chyawanaprash Milk Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/cmilk-1.png"
+                  alt="Chyawanaprash Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Chyawanaprash Milk Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="bdarkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/bdark.png" alt="Brahmi Dark Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/bdark-1.png"
+                  alt="Brahmi Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Brahmi Dark Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+          <div class="MvstProducts__Card">
+            <a class="MvstProducts__CardInner" href="bmilkc.html">
+              <div class="MvstProducts__ImageWrap">
+                <img class="MvstProducts__Image" src="../assets/choco/bmilk.png" alt="Brahmi Milk Chocolate Slab">
+                <img class="MvstProducts__Image MvstProducts__Image--secondary" src="../assets/choco/bmilk-1.png"
+                  alt="Brahmi Milk Chocolate Slab Hover">
+              </div>
+              <h3 class="MvstProducts__Name">Brahmi Milk Chocolate Slab</h3>
+              <p class="MvstProducts__Price">From Rs. 300.00 INR</p>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Prev/Next Arrows -->
+        <button class="MvstProducts__Arrow MvstProducts__Arrow--prev" aria-label="Previous">
+          <svg viewBox="0 0 14 14">
+            <polyline points="10 1 4 7 10 13"></polyline>
+          </svg>
+        </button>
+        <button class="MvstProducts__Arrow MvstProducts__Arrow--next" aria-label="Next">
+          <svg viewBox="0 0 14 14">
+            <polyline points="4 1 10 7 4 13"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Arrow button JS (Flickity API) -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var sliderEl = document.querySelector('.MvstProducts__Slider');
+        // Wait for Flickity to initialize
+        var checkFlickity = setInterval(function () {
+          if (sliderEl && sliderEl.classList.contains('flickity-enabled')) {
+            var flkty = Flickity.data(sliderEl);
+            document.querySelector('.MvstProducts__Arrow--prev').addEventListener('click', function (e) {
+              e.preventDefault();
+              flkty.previous();
+            });
+            document.querySelector('.MvstProducts__Arrow--next').addEventListener('click', function (e) {
+              e.preventDefault();
+              flkty.next();
+            });
+            clearInterval(checkFlickity);
+          }
+        }, 200);
+      });
+    </script>
+  </div>
+
+  <!-- ===== PRODUCT REVIEWS SECTION ===== -->
+  <section class="ReviewSection" id="product-reviews">
+    <div class="ReviewSection__Header">
+      <div class="ReviewSection__HeaderLeft">
+        <div class="ReviewSection__Stars"><svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg><svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg><svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg><svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg><svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg></div>
+        <span class="ReviewSection__Count">
+          <span class="ReviewSection__CountNum">3 Reviews</span>
+          <svg viewBox="0 0 12 12">
+            <polyline points="2 4 6 8 10 4"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="ReviewSection__HeaderRight" style="position:relative;">
+        <button class="ReviewSection__WriteBtn">Write a review</button>
+        <button class="ReviewSection__FilterBtn" aria-label="Sort reviews">
+          <svg viewBox="0 0 24 24">
+            <line x1="21" y1="4" x2="14" y2="4" />
+            <line x1="10" y1="4" x2="3" y2="4" />
+            <line x1="21" y1="12" x2="12" y2="12" />
+            <line x1="8" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="20" x2="16" y2="20" />
+            <line x1="12" y1="20" x2="3" y2="20" />
+            <circle cx="12" cy="4" r="2" />
+            <circle cx="10" cy="12" r="2" />
+            <circle cx="14" cy="20" r="2" />
+          </svg>
+        </button>
+        <div class="ReviewSection__SortDropdown">
+          <button class="ReviewSection__SortOption" data-sort="newest">Newest</button>
+          <button class="ReviewSection__SortOption" data-sort="highest">Highest Rating</button>
+          <button class="ReviewSection__SortOption" data-sort="lowest">Lowest Rating</button>
+        </div>
+      </div>
+    </div>
+    <div class="ReviewSection__List">
+      <div class="ReviewCard">
+        <div class="ReviewCard__Inner">
+          <div class="ReviewCard__Content">
+            <div class="ReviewCard__AuthorRow">
+              <span class="ReviewCard__Author">Vikram T.</span>
+              <span class="ReviewCard__Verified"><svg viewBox="0 0 24 24" fill="#1c1c1c">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg> Verified</span>
+            </div>
+            <div class="ReviewCard__Date">3/18/2026</div>
+            <div class="ReviewCard__Stars"><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg></div>
+            <div class="ReviewCard__Body">The Brahmi-infused dark chocolate is my new study companion. I genuinely feel
+              more focused after having a square. The flavor profile is sophisticated.</div>
+          </div>
+        </div>
+        <div class="ReviewCard__Variant">
+          <img class="ReviewCard__VariantImg" src="../assets/choco/bdark.png" alt="Brahmi Dark Chocolate Slab">
+          <span class="ReviewCard__VariantName">Brahmi Dark Chocolate Slab</span>
+        </div>
+      </div>
+      <div class="ReviewCard">
+        <div class="ReviewCard__Inner">
+          <div class="ReviewCard__Content">
+            <div class="ReviewCard__AuthorRow">
+              <span class="ReviewCard__Author">Ananya P.</span>
+              <span class="ReviewCard__Verified"><svg viewBox="0 0 24 24" fill="#1c1c1c">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg> Verified</span>
+            </div>
+            <div class="ReviewCard__Date">3/1/2026</div>
+            <div class="ReviewCard__Stars"><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg></div>
+            <div class="ReviewCard__Body">As a software developer, I need sustained focus. This chocolate has become my
+              afternoon brain-booster. The 55% dark cocoa base pairs beautifully with the herbal notes.</div>
+          </div>
+        </div>
+        <div class="ReviewCard__Variant">
+          <img class="ReviewCard__VariantImg" src="../assets/choco/bdark.png" alt="Brahmi Dark Chocolate Slab">
+          <span class="ReviewCard__VariantName">Brahmi Dark Chocolate Slab</span>
+        </div>
+      </div>
+      <div class="ReviewCard">
+        <div class="ReviewCard__Inner">
+          <div class="ReviewCard__Content">
+            <div class="ReviewCard__AuthorRow">
+              <span class="ReviewCard__Author">Deepak N.</span>
+              <span class="ReviewCard__Verified"><svg viewBox="0 0 24 24" fill="#1c1c1c">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg> Verified</span>
+            </div>
+            <div class="ReviewCard__Date">2/14/2026</div>
+            <div class="ReviewCard__Stars"><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg><svg viewBox="0 0 24 24" class="star--empty">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg></div>
+            <div class="ReviewCard__Body">Interesting concept and solid execution. The chocolate itself is excellent
+              quality. The Brahmi benefits are a nice bonus on top of a genuinely delicious treat.</div>
+          </div>
+        </div>
+        <div class="ReviewCard__Variant">
+          <img class="ReviewCard__VariantImg" src="../assets/choco/bdark.png" alt="Brahmi Dark Chocolate Slab">
+          <span class="ReviewCard__VariantName">Brahmi Dark Chocolate Slab</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ReviewSection__Footer">
+      <button class="ReviewSection__ShowMoreBtn">Show more reviews</button>
+    </div>
+  </section>
+
+  <!-- Write a Review Modal (MVST Multi-Step) -->
+  <div class="ReviewModal__Overlay">
+    <div class="ReviewModal">
+      <button class="ReviewModal__Close" aria-label="Close">
+        <svg viewBox="0 0 24 24">
+          <path d="M18 6L6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <!-- Step 1: Rating -->
+      <div class="ReviewModal__Step is-active" data-step="1">
+        <h2 class="ReviewModal__StepTitle">How would you rate this item?</h2>
+        <div class="ReviewModal__RatingStars">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+        </div>
+        <div class="ReviewModal__RatingLabels">
+          <span>Dislike it</span>
+          <span>Love it!</span>
+        </div>
+      </div>
+
+      <!-- Step 2: Photo -->
+      <div class="ReviewModal__Step" data-step="2">
+        <h2 class="ReviewModal__StepTitle">Add a photo or video</h2>
+        <div class="ReviewModal__UploadArea">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <path d="M21 15l-5-5L5 21" />
+          </svg>
+        </div>
+        <button class="ReviewModal__ContinueBtn" data-action="photo-continue">CONTINUE</button>
+        <button class="ReviewModal__SkipBtn" data-action="photo-skip">Skip</button>
+      </div>
+
+      <!-- Step 3: Review Text -->
+      <div class="ReviewModal__Step" data-step="3">
+        <h2 class="ReviewModal__StepTitle">Tell us more!</h2>
+        <textarea class="ReviewModal__Textarea" placeholder="Share your experience with this product..."></textarea>
+        <button class="ReviewModal__ContinueBtn" data-action="text-continue">CONTINUE</button>
+        <button class="ReviewModal__SkipBtn" data-action="text-skip">Skip</button>
+      </div>
+
+      <!-- Step 4: Details -->
+      <div class="ReviewModal__Step" data-step="4">
+        <h2 class="ReviewModal__StepTitle">Please enter your details:</h2>
+        <div class="ReviewModal__InputGroup">
+          <label class="ReviewModal__InputLabel">Name</label>
+          <input class="ReviewModal__Input" type="text" name="reviewer_name" placeholder="Your name" required>
+        </div>
+        <div class="ReviewModal__InputGroup">
+          <label class="ReviewModal__InputLabel">Email</label>
+          <input class="ReviewModal__Input" type="email" name="reviewer_email" placeholder="your@email.com">
+        </div>
+        <button class="ReviewModal__ContinueBtn" data-action="submit-review">DONE</button>
+      </div>
+
+      <!-- Success -->
+      <div class="ReviewModal__Success">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        <h3>Thank you!</h3>
+        <p>Your review has been submitted successfully.</p>
+      </div>
+    </div>
+  </div>
+  <!-- END PRODUCT REVIEWS SECTION -->
+
+
+
   <div class="shopify-section shopify-section--footer" id="shopify-section-footer">
     <footer class="Footer" data-section-id="footer" data-section-type="footer" id="section-footer" role="contentinfo">
       <div class="Container">
@@ -1667,7 +2181,7 @@
             </h2>
             <div class="Footer__Content Rte">
               <p>
-                A Medical Product Company
+                A premium wellness company
               </p>
             </div>
             <div class="logo-wrapper" style="text-align:left;">
@@ -1792,7 +2306,6 @@
             <button class="Form__Submit Button Button--primary" type="submit">
               Subscribe
             </button>
-
 
           </div>
         </div>
@@ -2168,12 +2681,7 @@
     });
   </script>
 
-
-
-
-
-
-
+  <script src="../js/reviews.js"></script>
 </body>
 
 </html><!--

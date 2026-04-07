@@ -1,0 +1,241 @@
+:root {
+  --mvst-light: #f5f5f5;
+  --mvst-dark: #1c1c1c;
+  --prestige-text: #1c1c1c;
+}
+
+/* Hard-Reset for Blue Glow & System Artifacts */
+#preact-border-shadow-host, [id*="preact"], .md-overlay, .PageOverlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  z-index: -9999 !important;
+}
+
+.about-page-wrapper {
+  background-color: #ffffff;
+  color: var(--prestige-text);
+  filter: none !important;
+  font-family: Montserrat, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Precise Site Header Integration - Pulling Hero up into the void */
+.PrestigeHero {
+  background-color: #1c1b1b;
+  color: #ffffff;
+  padding: 155px 10% 70px; /* Reduced top/bottom padding to shorten height */
+  margin-top: -85px; /* Pull background up to meet the very top of view */
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.PrestigeHero__Heading {
+  font-size: 28.8px !important;
+  letter-spacing: 5.184px !important;
+  line-height: 37.44px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 21.44px;
+}
+
+.PrestigeHero__Subtext {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 23.1px;
+  opacity: 1;
+  letter-spacing: normal;
+}
+
+/* 2. Symmetric 50/50 Grid with Horizontal Focus - Height-Capped */
+.FeatureText {
+  display: grid;
+  width: 100%;
+  margin: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.FeatureText--imageLeft {
+  grid-template-columns: 50% 50%;
+}
+
+.FeatureText--imageRight {
+  grid-template-columns: 50% 50%;
+}
+
+/* Alternating Segment Backgrounds */
+.bg--light { background-color: var(--mvst-light); color: var(--prestige-text); }
+.bg--dark { background-color: var(--mvst-dark); color: #ffffff; }
+
+.FeatureText__ImageWrapper {
+  width: 100%;
+  padding: 0; /* Removing extra padding to restore architectural symmetry */
+  line-height: 0;
+  display: flex;
+}
+
+.FeatureText__ImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.FeatureText__Content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 60px 8%; 
+  text-align: left !important;
+  max-width: none !important; /* Overriding system-wide 430px constraint */
+}
+
+/* High-End Scale on Large Monitors */
+@media screen and (min-width: 1440px) {
+  .FeatureText__Content {
+    padding: 80px 10%; 
+  }
+}
+
+.FeatureText__Inner {
+  max-width: 650px; /* Widened from 480px to fix 'mobile' feel */
+  width: 100%;
+}
+
+/* 3. Typography refinements - Left Aligned */
+.SectionHeader {
+  text-align: left !important;
+}
+
+.PrestigeHero .SectionHeader {
+  text-align: center !important;
+}
+
+.SectionHeader__SubHeading {
+  font-size: 11px !important;
+  letter-spacing: 2.2px !important;
+  text-transform: uppercase;
+  font-weight: 700 !important; /* Thick solid weight */
+  margin-bottom: 24px;
+  line-height: 1.2;
+  color: #000;
+  display: block;
+}
+
+.SectionHeader__Heading {
+  font-size: 24px !important; /* Larger display heading */
+  letter-spacing: 4px !important;
+  text-transform: uppercase;
+  font-weight: 400 !important; /* Thin/Regular weight for contrast */
+  margin-bottom: 28px;
+  line-height: 1.3;
+  color: #000;
+}
+
+.Rte {
+  font-size: 16px !important; /* Generous readable layout */
+  line-height: 1.7;
+  font-weight: 400;
+  color: #1c1c1c;
+}
+
+.Rte p {
+  margin-bottom: 20px;
+}
+
+/* Ensure typography adapts perfectly inside dark blocks */
+.bg--dark .SectionHeader__SubHeading,
+.bg--dark .SectionHeader__Heading,
+.bg--dark .Rte,
+.bg--dark .Rte p,
+.PrestigeHero .SectionHeader__Heading,
+.PrestigeHero .PrestigeHero__Subtext {
+  color: #ffffff !important;
+}
+
+/* Values Grid - Standardized to Prestige Style */
+.Grid--luxury {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin: 0;
+  background: var(--mvst-light);
+  border-top: 1px solid #eaeaea;
+}
+
+.GridItem--luxury {
+  padding: 80px 60px; /* generous padding like main sections */
+  text-align: left;
+  border-right: 1px solid #eaeaea;
+}
+
+.GridItem--luxury:last-child { 
+  border-right: none; 
+}
+
+/* Ensure text elements perfectly match the site's main header sections (no size overrides) */
+.GridItem--luxury .SectionHeader {
+  text-align: left !important;
+}
+
+/* Inherit font sizes perfectly, just ensure color contrast is solid */
+.GridItem--luxury .SectionHeader__SubHeading {
+  color: var(--prestige-text);
+  /* Sizes inherited exactly from global .SectionHeader__SubHeading */
+}
+
+.GridItem--luxury .SectionHeader__Heading {
+  color: var(--prestige-text);
+  /* Sizes inherited exactly from global .SectionHeader__Heading */
+}
+
+.GridItem--luxury .Rte p {
+  color: var(--prestige-text);
+  /* Inherits exactly from global .Rte */
+}
+
+/* Responsive adjustments - Protecting Desktop View */
+@media screen and (max-width: 767px) {
+  .FeatureText {
+    display: block;
+  }
+  .FeatureText__ImageWrapper,
+  .FeatureText__Content {
+    width: 100vw;
+  }
+  .FeatureText__Content {
+    padding: 60px 24px;
+    justify-content: center;
+    text-align: center !important;
+  }
+  .SectionHeader {
+    text-align: center !important;
+  }
+  .Grid--luxury {
+    grid-template-columns: 1fr;
+  }
+  .GridItem--luxury {
+    padding: 50px 24px;
+    border-bottom: 1px solid #eaeaea; /* gentle separation on mobile */
+  }
+  .GridItem--luxury:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Reveal Animation */
+[data-scroll-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+[data-scroll-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
