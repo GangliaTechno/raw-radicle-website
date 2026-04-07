@@ -285,3 +285,39 @@
   font-weight: 700 !important; /* Bold branding part */
   margin-right: 4px;
 }
+
+/* --- Redesigned Features Collapsible (Premium Editorial) --- */
+.Product__Tabs .Collapsible__Content {
+  padding-right: 20px !important; /* Overriding default 80px padding to allow expansion till minus symbol */
+}
+
+.FeaturesList {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+.FeatureItem {
+  margin-bottom: 24px !important;
+  padding-left: 0 !important; /* Precise alignment under header */
+}
+
+.FeatureTitle {
+  display: block !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  margin-bottom: 6px !important;
+  text-transform: uppercase !important;
+  color: #1c1c1c !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.4 !important;
+}
+
+.FeatureDescription {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #4a4a4a !important;
+  display: block !important;
+}
