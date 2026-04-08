@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Raw Radicles</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f4f4;
+      --sidebar-bg: #1c1b1b;
+      --sidebar-text: #ffffff;
+      --sidebar-accent: rgba(255,255,255,0.08);
+      --sidebar-active: rgba(255,255,255,0.15);
+      --header-bg: #ffffff;
+      --card-bg: #ffffff;
+      --text: #1c1c1c;
+      --text-light: #6a6a6a;
+      --border: #e5e5e5;
+      --accent: #1c1b1b;
+      --accent-hover: #333;
+      --danger: #f94c43;
+      --success: #27ae60;
+      --warning: #f6a429;
+      --font: 'Montserrat', sans-serif;
+      --sidebar-width: 260px;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* ──── SIDEBAR ──── */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--sidebar-bg);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      z-index: 200;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-logo {
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sidebar-logo img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .sidebar-logo-text {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .sidebar-section-label {
+      padding: 20px 24px 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .sidebar-nav { padding: 0 12px; }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 6px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.75);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+
+    .sidebar-item:hover {
+      background: var(--sidebar-accent);
+      color: #ffffff;
+    }
+
+    .sidebar-item.active {
+      background: var(--sidebar-active);
+      color: #ffffff;
+    }
+
+    .sidebar-item svg {
+      width: 16px; height: 16px;
+      opacity: 0.85;
+      flex-shrink: 0;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 16px 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sidebar-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: var(--sidebar-accent);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .sidebar-username {
+      font-size: 12px;
+      font-weight: 500;
+      color: #ffffff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sidebar-role {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ──── MAIN CONTENT ──── */
+    .main-wrapper {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .top-bar-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .top-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 4px;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--bg); }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-danger:hover { opacity: 0.9; }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-success:hover { opacity: 0.9; }
+    .btn-sm { padding: 6px 12px; font-size: 11px; }
+
+    .page-content {
+      padding: 32px;
+      flex: 1;
+    }
+
+    /* ──── PANELS (tabs) ──── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ──── STATS GRID ──── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .stat-card.blue::before { background: #3b82f6; }
+    .stat-card.green::before { background: var(--success); }
+    .stat-card.orange::before { background: var(--warning); }
+    .stat-card.purple::before { background: #8b5cf6; }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .stat-sub {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 6px;
+    }
+
+    /* ──── SECTION HEADER ──── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    /* ──── PRODUCT CARDS ──── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      height: 200px;
+      background: #f8f8f8;
+      overflow: hidden;
+    }
+
+    .product-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover .product-image-wrap img {
+      transform: scale(1.03);
+    }
+
+    .product-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      gap: 10px;
+    }
+
+    .product-card:hover .product-image-overlay { opacity: 1; }
+
+    .img-change-btn {
+      background: rgba(255,255,255,0.95);
+      border: none;
+      border-radius: 4px;
+      padding: 8px 14px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+      transition: background 0.15s;
+    }
+
+    .img-change-btn:hover { background: #fff; }
+
+    .product-card-body { padding: 18px; }
+
+    .product-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .product-price .original {
+      font-size: 12px;
+      color: var(--text-light);
+      text-decoration: line-through;
+      margin-left: 8px;
+      font-weight: 400;
+    }
+
+    .product-desc {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge-success { background: #dcfce7; color: #15803d; }
+    .badge-warning { background: #fef9c3; color: #92400e; }
+    .badge-info { background: #dbeafe; color: #1d4ed8; }
+
+    /* ──── MODAL ──── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: #ffffff;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.25s;
+    }
+
+    .modal-backdrop.open .modal { transform: scale(1) translateY(0); }
+
+    .modal-header {
+      padding: 22px 24px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-light);
+      padding: 4px;
+      transition: color 0.15s;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body { padding: 24px; }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* Form inside modal */
+    .form-group { margin-bottom: 18px; }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 7px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: var(--font);
+      font-size: 13px;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus { border-color: var(--accent); }
+
+    .form-control[type="file"] { padding: 8px; cursor: pointer; }
+
+    textarea.form-control {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* ──── IMAGE UPLOAD DROP ZONE ──── */
+    .dropzone {
+      border: 2px dashed var(--border);
+      border-radius: 6px;
+      padding: 28px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--accent);
+      background: #f8f8f8;
+    }
+
+    .dropzone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .dropzone-icon { font-size: 28px; margin-bottom: 8px; }
+    .dropzone-label { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .dropzone-sub { font-size: 11px; color: var(--text-light); }
+
+    .image-preview {
+      margin-top: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      display: none;
+      position: relative;
+    }
+
+    .image-preview img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preview-remove {
+      position: absolute;
+      top: 8px; right: 8px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    /* ──── TOAST NOTIFICATION ──── */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      background: var(--text);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideIn 0.3s ease;
+      min-width: 240px;
+    }
+
+    .toast.success { background: var(--success); }
+    .toast.error { background: var(--danger); }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to   { transform: translateX(0);    opacity: 1; }
+    }
+
+    @keyframes slideOut {
+      from { transform: translateX(0);    opacity: 1; }
+      to   { transform: translateX(110%); opacity: 0; }
+    }
+
+    /* ──── TABLE ──── */
+    .table-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: #fafafa;
+      padding: 12px 16px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 14px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafafa; }
+
+    /* ──── ACTIVITY FEED ──── */
+    .activity-list { list-style: none; }
+
+    .activity-item {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .activity-item:last-child { border-bottom: none; }
+
+    .activity-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .activity-text { font-size: 13px; color: var(--text); line-height: 1.5; }
+    .activity-time { font-size: 11px; color: var(--text-light); margin-top: 3px; }
+
+    /* ──── CHANGED BADGE ──── */
+    .modified-badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: var(--warning);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 3px;
+    }
+
+    /* ──── RESPONSIVE ──── */
+    @media (max-width: 900px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .main-wrapper { margin-left: 0; }
+      .mobile-menu-btn { display: flex !important; }
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      padding: 4px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+    }
+
+    .empty-state-icon { font-size: 40px; margin-bottom: 14px; }
+    .empty-state-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .empty-state-text { font-size: 13px; }
+  </style>
+</head>
+
+<body>
+  <!-- ──── SIDEBAR ──── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/RR_Logo-1.png" alt="Raw Radicles">
+      <span class="sidebar-logo-text">Admin</span>
+    </div>
+
+    <div class="sidebar-section-label">Management</div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-item active" data-panel="dashboard" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a class="sidebar-item" data-panel="products" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Products
+      </a>
+      <a class="sidebar-item" data-panel="users" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Users
+      </a>
+    </nav>
+
+    <div class="sidebar-section-label">Site</div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-item" href="index.html" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        View Site
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebar-avatar">A</div>
+        <div>
+          <div class="sidebar-username" id="sidebar-name">Admin</div>
+          <div class="sidebar-role">Administrator</div>
+        </div>
+      </div>
+      <a class="sidebar-item" href="#" id="logout-btn" style="color: rgba(255,100,100,0.8);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- ──── MAIN ──── -->
+  <div class="main-wrapper">
+    <header class="top-bar">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="top-bar-title" id="top-bar-title">Dashboard</span>
+      </div>
+      <div class="top-bar-actions">
+        <span style="font-size:12px; color:var(--text-light);" id="admin-email-display"></span>
+        <a href="index.html" class="btn btn-outline btn-sm" target="_blank">View Site</a>
+      </div>
+    </header>
+
+    <div class="page-content">
+
+      <!-- ═══ DASHBOARD PANEL ═══ -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="stat-label">Total Products</div>
+            <div class="stat-value" id="stat-products">6</div>
+            <div class="stat-sub">Artisanal chocolates</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-label">Registered Users</div>
+            <div class="stat-value" id="stat-users">1</div>
+            <div class="stat-sub">Including admins</div>
+          </div>
+          <div class="stat-card orange">
+            <div class="stat-label">Modified Products</div>
+            <div class="stat-value" id="stat-modified">0</div>
+            <div class="stat-sub">Changes live on site</div>
+          </div>
+          <div class="stat-card purple">
+            <div class="stat-label">Admin Session</div>
+            <div class="stat-value" style="font-size:16px;">Active</div>
+            <div class="stat-sub" id="stat-session-time">Logged in now</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+          <div class="table-wrapper" style="padding:20px;">
+            <div class="section-header" style="margin-bottom:14px;">
+              <span class="section-title">Quick Links</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <a href="#" class="btn btn-outline" data-panel="products" style="justify-content:flex-start;">
+                📦 Manage Products
+              </a>
+              <a href="#" class="btn btn-outline" data-panel="users" style="justify-content:flex-start;">
+                👥 Manage Users
+              </a>
+              <a href="index.html" target="_blank" class="btn btn-outline" style="justify-content:flex-start;">
+                🌐 View Live Site
+              </a>
+            </div>
+          </div>
+
+          <div class="table-wrapper" style="padding:20px;">
+            <div class="section-header" style="margin-bottom:14px;">
+              <span class="section-title">Recent Activity</span>
+            </div>
+            <ul class="activity-list" id="activity-feed">
+              <li class="activity-item">
+                <div class="activity-dot" style="background:#3b82f6;"></div>
+                <div>
+                  <div class="activity-text">Admin logged in</div>
+                  <div class="activity-time" id="login-time">Just now</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PRODUCTS PANEL ═══ -->
+      <div class="panel" id="panel-products">
+        <div class="section-header">
+          <span class="section-title">All Products</span>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-outline btn-sm" onclick="resetAllProducts()">Reset All</button>
+          </div>
+        </div>
+        <p style="font-size:12px; color:var(--text-light); margin-bottom:20px;">
+          Click <strong>Edit</strong> on any product card to update its name, price, description, and images. Changes are reflected instantly on the live site for all users.
+        </p>
+        <div class="products-grid" id="products-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- ═══ USERS PANEL ═══ -->
+      <div class="panel" id="panel-users">
+        <div class="section-header">
+          <span class="section-title">Registered Users</span>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Joined</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /page-content -->
+  </div><!-- /main-wrapper -->
+
+  <!-- ══════════════ EDIT PRODUCT MODAL ══════════════ -->
+  <div class="modal-backdrop" id="edit-modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <span class="modal-title" id="modal-title">Edit Product</span>
+        <button class="modal-close" id="modal-close-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-product-id">
+
+        <div class="form-group">
+          <label class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="edit-name" placeholder="e.g. Brahmi Milk Chocolate">
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Price (₹)</label>
+            <input type="number" class="form-control" id="edit-price" placeholder="300">
+          </div>
+          <div class="form-group">
+            <label class="form-label">MRP (₹) — Optional</label>
+            <input type="number" class="form-control" id="edit-mrp" placeholder="350">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Short Description</label>
+          <textarea class="form-control" id="edit-desc" placeholder="Describe this product…"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Product Image</label>
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="image-file-input" accept="image/*">
+            <div class="dropzone-icon">🖼️</div>
+            <div class="dropzone-label">Click or drag image here</div>
+            <div class="dropzone-sub">PNG, JPG, WEBP — max 5MB</div>
+          </div>
+          <div class="image-preview" id="image-preview">
+            <img id="preview-img" src="" alt="Preview">
+            <button class="preview-remove" id="preview-remove">✕ Remove</button>
+          </div>
+          <div style="margin-top:10px; font-size:11px; color:var(--text-light);">
+            Or paste an image URL:
+          </div>
+          <input type="url" class="form-control" id="edit-image-url" placeholder="https://…" style="margin-top:6px;">
+        </div>
+
+        <div style="background:#f8f8f8; border-radius:4px; padding:12px; font-size:11px; color:var(--text-light); margin-top:4px;">
+          💡 Changes will be applied sitewide and visible to all users immediately.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="modal-cancel-btn">Cancel</button>
+        <button class="btn btn-success" id="modal-save-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    // ─── Auth Guard ─────────────────────────────────────────────
+    if (!RRAuth.isLoggedIn() || !RRAuth.isAdmin()) {
+      window.location.href = 'login.html';
+    }
+
+    const currentUser = RRAuth.getUser();
+
+    // ─── Populate User Info ──────────────────────────────────────
+    document.getElementById('sidebar-name').textContent = currentUser.firstName + ' ' + currentUser.lastName;
+    document.getElementById('sidebar-avatar').textContent = currentUser.firstName[0].toUpperCase();
+    document.getElementById('admin-email-display').textContent = currentUser.email;
+    document.getElementById('login-time').textContent = new Date().toLocaleTimeString();
+
+    // ─── Product Data ────────────────────────────────────────────
+    const PRODUCTS = [
+      {
+        id: 'bmilkc',
+        name: 'Brahmi Milk Chocolate',
+        price: 300,
+        mrp: 350,
+        description: 'A creamy milk chocolate infused with Brahmi (Bacopa monnieri), the revered Ayurvedic herb known for enhancing memory, focus, and cognitive clarity.',
+        image: '../assets/bmilk/bm1.jpg',
+        page: 'pages/bmilkc.html',
+        badge: 'bestseller'
+      },
+      {
+        id: 'bdarkc',
+        name: 'Brahmi Dark Chocolate',
+        price: 300,
+        mrp: 350,
+        description: 'An intense dark chocolate enriched with Brahmi extract, combining the antioxidant power of dark cocoa with the cognitive benefits of Ayurveda.',
+        image: '../assets/bdark/bd1.jpg',
+        page: 'pages/bdarkc.html',
+        badge: null
+      },
+      {
+        id: 'amilkc',
+        name: 'Ashwagandha Milk Chocolate',
+        price: 300,
+        mrp: 350,
+        description: 'Silky milk chocolate blended with Ashwagandha Atibaladi — the ancient stress-buster root that brings calm, resilience, and balance to modern life.',
+        image: '../assets/amilk/am1.jpg',
+        page: 'pages/amilkc.html',
+        badge: 'new'
+      },
+      {
+        id: 'adarkc',
+        name: 'Ashwagandha Dark Chocolate',
+        price: 300,
+        mrp: 350,
+        description: 'Bold dark chocolate meets the adaptogenic might of Ashwagandha. A sophisticated bar designed for those who seek calm without compromise.',
+        image: '../assets/adark/ad1.jpg',
+        page: 'pages/adarkc.html',
+        badge: null
+      },
+      {
+        id: 'cmilkc',
+        name: 'Chyawanaprash Milk Chocolate',
+        price: 300,
+        mrp: 350,
+        description: 'The legendary Chyawanaprash formula — 40+ herbs — reimagined in a luxurious milk chocolate. Immunity meets indulgence in every square.',
+        image: '../assets/cmilk/cm1.jpg',
+        page: 'pages/cmilkc.html',
+        badge: null
+      },
+      {
+        id: 'cdarkc',
+        name: 'Chyawanaprash Dark Chocolate',
+        price: 300,
+        mrp: 350,
+        description: 'A powerful union of the Chyawanaprash complex and rich dark chocolate. The deepest expression of Ayurvedic wellness through artisanal chocolate.',
+        image: '../assets/cdark/cd1.jpg',
+        page: 'pages/cdarkc.html',
+        badge: null
+      }
+    ];
+
+    // Merge with saved overrides
+    function getMergedProducts() {
+      const overrides = RRAuth.getProductOverrides();
+      return PRODUCTS.map(p => ({ ...p, ...(overrides[p.id] || {}) }));
+    }
+
+    // ─── Render Products Grid ────────────────────────────────────
+    function renderProducts() {
+      const overrides = RRAuth.getProductOverrides();
+      const grid = document.getElementById('products-grid');
+      const products = getMergedProducts();
+
+      grid.innerHTML = products.map(p => {
+        const isModified = !!overrides[p.id];
+        const badgeHtml = p.badge ? `<span class="badge badge-info" style="position:absolute;top:10px;right:10px;">${p.badge}</span>` : '';
+        const modifiedBadge = isModified ? `<span class="modified-badge">Modified</span>` : '';
+        const imageDisplay = p.imageDataUrl || p.image;
+
+        return `
+          <div class="product-card" id="card-${p.id}">
+            <div class="product-image-wrap">
+              <img src="${imageDisplay}" alt="${p.name}" onerror="this.src='assets/RR_Logo-1.png'" id="img-${p.id}">
+              ${badgeHtml}
+              ${modifiedBadge}
+              <div class="product-image-overlay">
+                <button class="img-change-btn" onclick="openEditModal('${p.id}', true)">🖼️ Change Image</button>
+              </div>
+            </div>
+            <div class="product-card-body">
+              <div class="product-name" id="pname-${p.id}">${p.name}</div>
+              <div class="product-price" id="pprice-${p.id}">
+                ₹${p.price.toFixed(2)}
+                ${p.mrp ? `<span class="original">MRP ₹${p.mrp.toFixed(2)}</span>` : ''}
+              </div>
+              <div class="product-desc" id="pdesc-${p.id}">${p.description}</div>
+              <div class="product-card-actions">
+                <button class="btn btn-primary btn-sm" onclick="openEditModal('${p.id}')">Edit Details</button>
+                <a href="${p.page}" target="_blank" class="btn btn-outline btn-sm">View Page</a>
+                ${isModified ? `<button class="btn btn-sm" style="background:#fff0f0;color:var(--danger);border:1px solid #fecaca;" onclick="resetProduct('${p.id}')">Reset</button>` : ''}
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+
+      // Update stats
+      document.getElementById('stat-modified').textContent = Object.keys(overrides).length;
+    }
+
+    // ─── Edit Modal ──────────────────────────────────────────────
+    let currentImageDataUrl = null;
+
+    function openEditModal(productId, focusImage = false) {
+      const products = getMergedProducts();
+      const p = products.find(x => x.id === productId);
+      if (!p) return;
+
+      document.getElementById('edit-product-id').value = productId;
+      document.getElementById('modal-title').textContent = 'Edit: ' + p.name;
+      document.getElementById('edit-name').value = p.name;
+      document.getElementById('edit-price').value = p.price;
+      document.getElementById('edit-mrp').value = p.mrp || '';
+      document.getElementById('edit-desc').value = p.description;
+      document.getElementById('edit-image-url').value = p.imageUrl || '';
+      currentImageDataUrl = p.imageDataUrl || null;
+
+      // Show preview if there's an existing override image
+      const preview = document.getElementById('image-preview');
+      const previewImg = document.getElementById('preview-img');
+      if (p.imageDataUrl) {
+        previewImg.src = p.imageDataUrl;
+        preview.style.display = 'block';
+      } else if (p.imageUrl) {
+        previewImg.src = p.imageUrl;
+        preview.style.display = 'block';
+      } else {
+        preview.style.display = 'none';
+        currentImageDataUrl = null;
+      }
+
+      document.getElementById('edit-modal').classList.add('open');
+
+      if (focusImage) {
+        setTimeout(() => document.getElementById('dropzone').scrollIntoView({ behavior: 'smooth' }), 300);
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('edit-modal').classList.remove('open');
+      document.getElementById('image-file-input').value = '';
+      currentImageDataUrl = null;
+    }
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+    document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
+    document.getElementById('edit-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // ─── Image file handler ──────────────────────────────────────
+    document.getElementById('image-file-input').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (file.size > 5 * 1024 * 1024) { showToast('Image too large (max 5MB)', 'error'); return; }
+
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        currentImageDataUrl = ev.target.result;
+        const preview = document.getElementById('image-preview');
+        document.getElementById('preview-img').src = currentImageDataUrl;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Drag-and-drop
+    const dropzone = document.getElementById('dropzone');
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          currentImageDataUrl = ev.target.result;
+          document.getElementById('preview-img').src = currentImageDataUrl;
+          document.getElementById('image-preview').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById('preview-remove').addEventListener('click', function() {
+      currentImageDataUrl = null;
+      document.getElementById('image-preview').style.display = 'none';
+      document.getElementById('image-file-input').value = '';
+      document.getElementById('edit-image-url').value = '';
+    });
+
+    // Image URL live preview
+    document.getElementById('edit-image-url').addEventListener('input', function() {
+      const url = this.value.trim();
+      if (url) {
+        const preview = document.getElementById('image-preview');
+        document.getElementById('preview-img').src = url;
+        preview.style.display = 'block';
+        currentImageDataUrl = null;
+      }
+    });
+
+    // ─── Save Product ────────────────────────────────────────────
+    document.getElementById('modal-save-btn').addEventListener('click', function() {
+      const productId = document.getElementById('edit-product-id').value;
+      const name = document.getElementById('edit-name').value.trim();
+      const price = parseFloat(document.getElementById('edit-price').value);
+      const mrp = parseFloat(document.getElementById('edit-mrp').value) || null;
+      const description = document.getElementById('edit-desc').value.trim();
+      const imageUrl = document.getElementById('edit-image-url').value.trim();
+
+      if (!name || isNaN(price)) {
+        showToast('Please fill in the required fields.', 'error');
+        return;
+      }
+
+      const updateData = { name, price, mrp, description };
+      if (currentImageDataUrl) updateData.imageDataUrl = currentImageDataUrl;
+      else if (imageUrl) updateData.imageUrl = imageUrl;
+
+      RRAuth.saveProductOverride(productId, updateData);
+
+      // Add activity entry
+      addActivity(`Product "${name}" was updated`);
+
+      closeModal();
+      renderProducts();
+      updateDashboardStats();
+      showToast(`"${name}" updated successfully!`, 'success');
+    });
+
+    // ─── Reset Product ───────────────────────────────────────────
+    function resetProduct(productId) {
+      if (!confirm('Reset this product to its original data?')) return;
+      const overrides = RRAuth.getProductOverrides();
+      delete overrides[productId];
+      localStorage.setItem('rr_product_overrides', JSON.stringify(overrides));
+      renderProducts();
+      updateDashboardStats();
+      showToast('Product reset to defaults.', 'success');
+    }
+
+    function resetAllProducts() {
+      if (!confirm('Reset ALL products to their original data?')) return;
+      localStorage.removeItem('rr_product_overrides');
+      renderProducts();
+      updateDashboardStats();
+      showToast('All products reset.', 'success');
+    }
+
+    // ─── Users Panel ─────────────────────────────────────────────
+    function renderUsers() {
+      const users = RRAuth.getAllUsers();
+      const tbody = document.getElementById('users-table-body');
+      document.getElementById('stat-users').textContent = users.length;
+
+      tbody.innerHTML = users.map(u => `
+        <tr>
+          <td><strong>${u.firstName} ${u.lastName}</strong></td>
+          <td>${u.email}</td>
+          <td>
+            <span class="badge ${u.role === 'admin' ? 'badge-warning' : 'badge-success'}">
+              ${u.role}
+            </span>
+          </td>
+          <td style="color:var(--text-light); font-size:12px;">${new Date(u.createdAt).toLocaleDateString()}</td>
+        </tr>
+      `).join('');
+    }
+
+    // ─── Dashboard Stats ─────────────────────────────────────────
+    function updateDashboardStats() {
+      const overrides = RRAuth.getProductOverrides();
+      document.getElementById('stat-modified').textContent = Object.keys(overrides).length;
+      renderUsers();
+    }
+
+    // ─── Activity Feed ───────────────────────────────────────────
+    function addActivity(text) {
+      const feed = document.getElementById('activity-feed');
+      const li = document.createElement('li');
+      li.className = 'activity-item';
+      li.innerHTML = `
+        <div class="activity-dot"></div>
+        <div>
+          <div class="activity-text">${text}</div>
+          <div class="activity-time">${new Date().toLocaleTimeString()}</div>
+        </div>
+      `;
+      feed.insertBefore(li, feed.firstChild);
+      // Keep max 6 items
+      while (feed.children.length > 6) feed.removeChild(feed.lastChild);
+    }
+
+    // ─── Navigation ──────────────────────────────────────────────
+    document.querySelectorAll('[data-panel]').forEach(el => {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        const panelId = this.dataset.panel;
+
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+
+        document.getElementById('panel-' + panelId).classList.add('active');
+        document.querySelectorAll(`[data-panel="${panelId}"]`).forEach(el => el.classList.add('active'));
+
+        const titles = { dashboard: 'Dashboard', products: 'Products', users: 'Users' };
+        document.getElementById('top-bar-title').textContent = titles[panelId] || panelId;
+
+        // Close mobile sidebar
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    // ─── Mobile Menu ─────────────────────────────────────────────
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('open');
+    });
+
+    // ─── Logout ──────────────────────────────────────────────────
+    document.getElementById('logout-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      RRAuth.logout();
+    });
+
+    // ─── Toast System ────────────────────────────────────────────
+    function showToast(message, type = 'default') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast ' + type;
+      toast.innerHTML = `
+        ${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease forwards';
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    // ─── Keyboard shortcuts ───────────────────────────────────────
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ─── Initialize ───────────────────────────────────────────────
+    renderProducts();
+    renderUsers();
+    updateDashboardStats();
+  </script>
+</body>
+</html>
