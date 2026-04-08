@@ -141,23 +141,23 @@
 
 /* Brand colors */
 .Marketplace .Button[data-brand="blinkit"] {
-  --brand-color: #1c1c1c !important;
+  --brand-color: #6a6a6a !important;
 }
 
 .Marketplace .Button[data-brand="zepto"] {
-  --brand-color: #1c1c1c !important;
+  --brand-color: #6a6a6a !important;
 }
 
 .Marketplace .Button[data-brand="instamart"] {
-  --brand-color: #1c1c1c !important;
+  --brand-color: #6a6a6a !important;
 }
 
 .Marketplace .Button[data-brand="amazon"] {
-  --brand-color: #1c1c1c !important;
+  --brand-color: #6a6a6a !important;
 }
 
 .Marketplace .Button[data-brand="flipkart"] {
-  --brand-color: #1c1c1c !important;
+  --brand-color: #6a6a6a !important;
 }
 
 .Marketplace .Button img {
@@ -200,6 +200,7 @@
 }
 
 .ProductMeta__Rating {
+  margin-top: 32px !important;
   margin-bottom: 12px !important;
   display: flex !important;
   align-items: center !important;
@@ -215,7 +216,7 @@
 }
 
 .ProductMeta__PriceList {
-  margin-top: 12px !important;
+  margin-top: 48px !important;
   margin-bottom: 24px !important;
 }
 
@@ -276,7 +277,7 @@
   letter-spacing: 0.1em !important;
   /* Slightly tighter for single line fit */
   margin-top: 5px !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 6px !important;
   border-radius: 0 !important;
   /* Sharp corners exactly like reference */
   line-height: 1 !important;
