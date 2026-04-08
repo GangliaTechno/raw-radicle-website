@@ -1,134 +1,22 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
 <head>
-  <script charset="utf-8" src="../js/bundle-playback.js" type="text/javascript">
-  </script>
-  <script charset="utf-8" src="../js/wombat.js" type="text/javascript">
-  </script>
-  <script>
-    window.RufflePlayer = window.RufflePlayer || {}; window.RufflePlayer.config = { "autoplay": "on", "unmuteOverlay": "hidden", "showSwfDownload": true };
-  </script>
-  <script src="../js/ruffle.js" type="text/javascript">
-  </script>
-  <link href="../css/banner-styles.css" rel="stylesheet" type="text/css" />
-  <link href="../css/iconochive.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <title>Login | Raw Radicles</title>
+  <meta name="description" content="Login to your Raw Radicles account.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- End Wayback Rewrite JS Include -->
-  <style>
-    .Grid__Cell:has([href*="navidium"]) {
-      display: none !important;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    /* Standardized Navbar Typography */
-    .Header__MainNav .HorizontalList__Item a {
-      font-family: 'Montserrat', sans-serif !important;
-      font-size: 11px !important;
-      font-weight: 500 !important;
-      letter-spacing: 0.2em !important;
-      text-transform: uppercase !important;
-    }
-  </style>
-  <script>
-    1 == location.pathname.includes("products/navidium-shipping") && (location.href = "/")
-  </script>
-  <script>
-      (function () {
-        const configElement = document.getElementById("elevar-dl-listener-config");
-
-        if (!configElement) {
-          console.error("Elevar Data Layer Listener: Config element not found");
-          return;
-        }
-
-        const config = JSON.parse(configElement.textContent);
-
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = config.data_layer_listener_script;
-
-        script.onerror = function () {
-          console.error("Elevar Data Layer Listener: JS script failed to load");
-        };
-        script.onload = function () {
-          if (!window.ElevarGtmSuiteListener) {
-            console.error(
-              "Elevar Data Layer Listener: `ElevarGtmSuiteListener` is not defined"
-            );
-            return;
-          }
-
-          window.ElevarGtmSuiteListener.handlers.listen({ ssUrl: config.ss_url });
-        };
-
-        const headScripts = document.head.getElementsByTagName("script");
-
-        if (headScripts[0]) {
-          document.head.insertBefore(script, headScripts[0]);
-        } else {
-          document.head.appendChild(script);
-        }
-      })();
-  </script>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-  </script>
-  <!-- End Google Tag Manager -->
-  <meta charset="utf-8" />
-  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-  <meta content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0"
-    name="viewport" />
-  <meta content="" name="theme-color" />
-  <title>
-    About Us
-  </title>
-  <style>
-    .transcy-switcher-item-primary .transcy-flag {
-      border: none !important;
-    }
-  </style>
+  <link href="css/theme.css" rel="stylesheet">
+  <link href="css/features.css" rel="stylesheet">
+  <link href="css/custom-search.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
 
   <style>
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 400;
-      font-style: normal;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n4.2b61d9dcf54d8ac8282cfd1ebb6964c79a7efcd1.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=feedf556f8ea3b33d640daa5eca051017bc5a11ebf52218db3f92d9caa028677") format("woff2"),
-        url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n4.420cbf408f643f8ff8fd948b99c10dade8b6af79.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=c3491c6f772bce342deb8840a4aeeea881dd1040f48208a38a79d9f30645f446") format("woff");
-    }
-
-
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 700;
-      font-style: normal;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n7.5bd4fb9346d13afb61b3d78f8a1e9f31b128b3d9.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=74d8064d0f8334c9b2d5f694029794fe822ae433c9e74494d1c8d9b598d14a25") format("woff2"),
-        url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_n7.2bcf0f11aa6af91c784a857ef004bcca8c2d324d.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=743c6c519888871ef25e20200b3d28578a8ebbc1cc1d0ffc73bbddb9477d0a0f") format("woff");
-    }
-
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 400;
-      font-style: italic;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i4.e88a2041a6cfbeacffb96db0e8efdfaaa38ddc5c.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=bf6f25e54cea0234006014ccc211ebfd3ddaf1b9d0b28dece7553f8cf232e755") format("woff2"),
-        url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i4.2c3733ccdf579e6e89e929a950e6a93484fdf6b4.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=170438091b3d44ce74a3c31dbdb9360c081538638af29d5be5951f761fb95617") format("woff");
-    }
-
-    @font-face {
-      font-family: "Nunito Sans";
-      font-weight: 700;
-      font-style: italic;
-      font-display: fallback;
-      src: url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i7.975ea93f521412ef99ca1e2e434d8ca6a5cf77e7.woff2?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=97acf5eada0aee2df1fe53f42ecda952eaea1bed852f727bf0682fb3b3317961") format("woff2"),
-        url("https://web.archive.org/web/20230604205108im_/https://fonts.shopifycdn.com/nunito_sans/nunitosans_i7.83b70272d04b71e88f25fc6834dc9b88e4ba4e95.woff?h1=bXZzdHNlbGVjdC5jb20&h2=bXZzLXRyYXZlbC5hY2NvdW50Lm15c2hvcGlmeS5jb20&h3=YWNjb3VudC5tdnN0c2VsZWN0LmNvbQ&hmac=03cd209daba8d81dacc663254ac21f4f2921d9097dedf666abf30febc52d96a2") format("woff");
-    }
-
 
     :root {
       --heading-font-family: Montserrat, sans-serif;
@@ -189,378 +77,171 @@
       --product-sale-price-color-rgb: 249, 76, 67;
       --product-star-rating: #f6a429;
 
-      /* Shopify related variables */
       --payment-terms-background-color: #efefef;
 
-      /* Products */
-
-      --horizontal-spacing-four-products-per-row: 60px;
-      --horizontal-spacing-two-products-per-row: 60px;
-
-      --vertical-spacing-four-products-per-row: 60px;
-      --vertical-spacing-two-products-per-row: 75px;
-
-      /* Animation */
       --drawer-transition-timing: cubic-bezier(0.645, 0.045, 0.355, 1);
       --header-base-height: 80px;
-      /* We set a default for browsers that do not support CSS variables */
-
-      /* Cursors */
-      --cursor-zoom-in-svg: url(//web.archive.org/web/20230604205108im_/https://cdn.shopify.com/s/files/1/0013/2146/8022/t/45/assets/cursor-zoom-in.svg?v=170532930330058140181684244781);
-      --cursor-zoom-in-2x-svg: url(//web.archive.org/web/20230604205108im_/https://cdn.shopify.com/s/files/1/0013/2146/8022/t/45/assets/cursor-zoom-in-2x.svg?v=56685658183649387561684244781);
-    }
-  </style>
-  <script>
-    function uet_report_conversion() { window.uetq = window.uetq || []; window.uetq.push('event', 'PRODUCT_PURCHASE', { "ecomm_prodid": "REPLACE_WITH_PRODUCT_ID", "ecomm_pagetype": "PURCHASE", "revenue_value": 1, "currency": "USD" }); }
-  </script>
-  <script>
-    window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.start');
-  </script>
-
-  <script>
-    var Shopify = Shopify || {};
-    Shopify.shop = "mvs-travel.myshopify.com";
-    Shopify.locale = "en";
-    Shopify.currency = { "active": "USD", "rate": "1.0" };
-    Shopify.country = "US";
-    Shopify.theme = { "name": "MVST 1.9", "id": 136928231680, "theme_store_id": 855, "role": "main" };
-    Shopify.theme.handle = "null";
-    Shopify.theme.style = { "id": null, "handle": null };
-    Shopify.cdnHost = "cdn.shopify.com";
-    Shopify.routes = Shopify.routes || {};
-    Shopify.routes.root = "/";
-  </script>
-  <script type="module">
-    !function (o) { (o.Shopify = o.Shopify || {}).modules = !0 }(window);
-  </script>
-  <script>
-    !function (o) { function n() { var o = []; function n() { o.push(Array.prototype.slice.apply(arguments)) } return n.q = o, n } var t = o.Shopify = o.Shopify || {}; t.loadFeatures = n(), t.autoloadFeatures = n() }(window);
-  </script>
-  <script>
-    window.ShopifyPay = window.ShopifyPay || {};
-    window.ShopifyPay.apiHost = "shop.app\/pay";
-  </script>
-  <script id="__st">
-    var __st = { "a": 1321468022, "offset": -25200, "reqid": "45569d69-e770-45ba-809b-64ec559a556e", "pageurl": "mvstselect.com\/products\/trek-aluminum-suitcase-army-green", "u": "4de74ac4e25b", "p": "product", "rtyp": "product", "rid": 2665767829622 };
-  </script>
-  <script>
-    window.ShopifyPaypalV4VisibilityTracking = true;
-  </script>
-  <script crossorigin="anonymous" data-source-attribution="shopify.loadfeatures" defer="defer" integrity=""
-    src="../js/script_540.ext">
-    </script>
-  <script crossorigin="anonymous" defer="defer" src="../js/script_541.ext">
-  </script>
-  <script crossorigin="anonymous" data-source-attribution="shopify.dynamic-checkout" defer="defer" integrity=""
-    src="../js/script_542.ext">
-    </script>
-  <style id="shopify-dynamic-checkout">
-    .shopify-payment-button__button--hidden {
-      visibility: hidden;
     }
 
-    .shopify-payment-button__button {
-      border-radius: 4px;
-      border: none;
-      box-shadow: 0 0 0 0 transparent;
-      color: white;
-      cursor: pointer;
-      display: block;
-      font-size: 1em;
-      font-weight: 500;
-      line-height: 1;
-      text-align: center;
-      width: 100%;
-      transition: background 0.2s ease-in-out;
-    }
+    body { background-color: #efefef !important; }
 
-    .shopify-payment-button__button[disabled] {
-      opacity: 0.6;
-      cursor: default;
-    }
-
-    .shopify-payment-button__button--unbranded {
-      background-color: #1990c6;
-      padding: 1em 2em;
-    }
-
-    .shopify-payment-button__button--unbranded:hover:not([disabled]) {
-      background-color: #136f99;
-    }
-
-    .shopify-payment-button__more-options {
-      background: transparent;
-      border: 0 none;
-      cursor: pointer;
-      display: block;
-      font-size: 1em;
-      margin-top: 1em;
-      text-align: center;
-      width: 100%;
-    }
-
-    .shopify-payment-button__more-options:hover:not([disabled]) {
-      text-decoration: underline;
-    }
-
-    .shopify-payment-button__more-options[disabled] {
-      opacity: 0.6;
-      cursor: default;
-    }
-
-    .shopify-payment-button__button--branded {
+    /* ── Login Form Section ── */
+    .login-page-wrapper {
+      min-height: calc(100vh - 80px - 300px);
       display: flex;
-      flex-direction: column;
-      min-height: 44px;
-      position: relative;
-      z-index: 1;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      background: #efefef;
     }
 
-    .shopify-payment-button__button--branded .shopify-cleanslate {
-      flex: 1 !important;
-      display: flex !important;
-      flex-direction: column !important;
+    .auth-container {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .auth-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19.8px;
+      font-weight: 500;
+      letter-spacing: 3.564px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #1c1c1c;
+      margin-bottom: 18px;
+    }
+
+    .auth-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #1c1c1c;
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .auth-subtitle a { color: #5562b5; text-decoration: none; }
+    .auth-subtitle a:hover { text-decoration: underline; }
+
+    .auth-form { display: flex; flex-direction: column; }
+
+    .form-field { position: relative; width: 100%; }
+    .form-field + .form-field { margin-top: 12px; }
+
+    .form-input {
+      width: 100%;
+      background: transparent;
+      border: 0.8px solid #cfcfcf;
+      border-radius: 0;
+      padding: 14px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #1c1c1c;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-input::placeholder { color: rgba(28,28,28,0.5); }
+    .form-input:focus { border-color: #1c1c1c; }
+
+    .field-password-wrapper { position: relative; }
+    .field-password-wrapper .form-input { padding-right: 160px; }
+
+    .forgot-link {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: rgba(28,28,28,0.65);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .forgot-link:hover { text-decoration: underline; }
+
+    .auth-btn {
+      margin-top: 12px;
+      width: 100%;
+      background: #1c1c1c;
+      color: #ffffff;
+      border: none;
+      border-radius: 0;
+      padding: 14px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .auth-btn:hover { opacity: 0.88; }
+    .auth-btn.loading { opacity: 0.7; cursor: not-allowed; }
+
+    .auth-footer {
+      margin-top: 22px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: rgba(28,28,28,0.65);
+    }
+    .auth-footer a { color: rgba(28,28,28,0.75); text-decoration: none; font-weight: 500; }
+    .auth-footer a:hover { text-decoration: underline; }
+
+    .form-message {
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      display: none;
+    }
+    .form-message.error { background:#fff0f0; border:1px solid #f94c43; color:#c0392b; display:block; }
+    .form-message.success { background:#f0fff4; border:1px solid #27ae60; color:#1e8449; display:block; }
+
+    .admin-notice {
+      margin-top: 20px;
+      padding: 12px 16px;
+      background: #f8f4ff;
+      border: 1px solid #c9b8ff;
+      font-size: 12px;
+      color: #5b21b6;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      display: none;
+    }
+  
+    /* Standardized Navbar Typography */
+    .Header__MainNav .HorizontalList__Item a {
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.2em !important;
+      text-transform: uppercase !important;
     }
   </style>
-  <style id="shopify-dynamic-checkout-cart">
-    @media screen and (min-width: 750px) {
-      #dynamic-checkout-cart {
-        min-height: 50px;
-      }
-    }
 
-    @media screen and (max-width: 750px) {
-      #dynamic-checkout-cart {
-        min-height: 120px;
-      }
-    }
-  </style>
   <script>
-    window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');
-  </script>
-  <link href="../css/theme.css" rel="stylesheet" />
-  <script>
-    // This allows to expose several variables to the global scope, to be used in scripts
-    window.theme = {
-      pageType: "product",
-      moneyFormat: "\u003cspan class=transcy-money\u003e${{amount}}\u003c\/span\u003e",
-      moneyWithCurrencyFormat: "\u003cspan class=transcy-money\u003e${{amount}} USD\u003c\/span\u003e",
-      currencyCodeEnabled: false,
-      productImageSize: "natural",
-      searchMode: "product",
-      showPageTransition: false,
-      showElementStaggering: true,
-      showImageZooming: true
-    };
-
-    window.routes = {
-      rootUrl: "\/",
-      rootUrlWithoutSlash: '',
-      cartUrl: "\/cart",
-      cartAddUrl: "\/cart\/add",
-      cartChangeUrl: "\/cart\/change",
-      searchUrl: "\/search",
-      productRecommendationsUrl: "\/recommendations\/products"
-    };
-
-    window.languages = {
-      cartAddNote: "Add Order Note",
-      cartEditNote: "Edit Order Note",
-      productImageLoadingError: "This image could not be loaded. Please try to reload the page.",
-      productFormAddToCart: "Add to cart",
-      productFormUnavailable: "Unavailable",
-      productFormSoldOut: "Sold Out",
-      shippingEstimatorOneResult: "1 option available:",
-      shippingEstimatorMoreResults: "{{count}} options available:",
-      shippingEstimatorNoResults: "No shipping could be found"
-    };
-
-    window.lazySizesConfig = {
-      loadHidden: false,
-      hFac: 0.5,
-      expFactor: 2,
-      ricTimeout: 150,
-      lazyClass: 'Image--lazyLoad',
-      loadingClass: 'Image--lazyLoading',
-      loadedClass: 'Image--lazyLoaded'
-    };
-
-    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    document.documentElement.className = document.documentElement.className.replace('no-js','js');
     document.documentElement.style.setProperty('--window-height', window.innerHeight + 'px');
-
-    // We do a quick detection of some features (we could use Modernizr but for so little...)
-    (function () {
-      document.documentElement.className += ((window.CSS && window.CSS.supports('(position: sticky) or (position: -webkit-sticky)')) ? ' supports-sticky' : ' no-supports-sticky');
-      document.documentElement.className += (window.matchMedia('(-moz-touch-enabled: 1), (hover: none)')).matches ? ' no-supports-hover' : ' supports-hover';
+    (function(){
+      document.documentElement.className += ((window.CSS&&window.CSS.supports('(position: sticky) or (position: -webkit-sticky)'))?'  supports-sticky':' no-supports-sticky');
+      document.documentElement.className += (window.matchMedia('(-moz-touch-enabled: 1), (hover: none)')).matches?' no-supports-hover':' supports-hover';
     }());
   </script>
-  <script async="" src="../js/lazysizes.min.js">
-  </script>
-  <script defer="" src="../js/libs.min.js">
-  </script>
-  <script defer="" src="../js/theme.js">
-  </script>
-  <script defer="" src="../js/custom.js">
-  </script>
-  <script>
-    (function () {
-      window.onpageshow = function () {
-        if (window.theme.showPageTransition) {
-          var pageTransition = document.querySelector('.PageTransition');
-
-          if (pageTransition) {
-            pageTransition.style.visibility = 'visible';
-            pageTransition.style.opacity = '0';
-          }
-        }
-
-        // When the page is loaded from the cache, we have to reload the cart content
-        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
-          bubbles: true
-        }));
-      };
-    })();
-  </script>
-  <script>
-    var scaaffCheck = false;
-  </script>
-  <script src="../js/sca_affiliate.js" type="text/javascript">
-  </script>
-  <link href="../css/font-awesome.min.css" rel="stylesheet" />
-  <script type="text/javascript">
-    window.dataLayer = window.dataLayer || [];
-
-    window.appStart = function () {
-
-
-      window.productPageHandle = function () {
-        var productName = "TREK Aluminum Suitcase Army Green";
-        var productId = "2665767829622";
-        var productPrice = "395.00";
-        var productBrand = "MVST";
-        var productCollection = "All Luggage Collections"
-
-        window.dataLayer.push({
-          event: 'analyzify_productDetail',
-          productName: productName,
-          productId: productId,
-          productPrice: productPrice,
-          productBrand: productBrand,
-          productCategory: productCollection,
-        });
-      };
-
-
-      productPageHandle()
-
-    }
-
-    appStart();
-  </script>
-  <script defer="defer" src="../js/timesact.js">
-  </script>
-  <!-- BEGIN app block: shopify://apps/transcy-ai-language-translate/blocks/switcher_embed_block/bce4f1c0-c18c-43b0-b0b2-a1aefaa44573 -->
-  <!-- BEGIN app snippet: fa_translate_core -->
-  <!-- END app snippet -->
-  <!-- END app app block -->
-  <!-- BEGIN app block: shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507 -->
-  <script>
-    !function () { if (!window.klaviyo) { window._klOnsite = window._klOnsite || []; try { window.klaviyo = new Proxy({}, { get: function (n, i) { return "push" === i ? function () { var n; (n = window._klOnsite).push.apply(n, arguments) } : function () { for (var n = arguments.length, o = new Array(n), w = 0; w < n; w++)o[w] = arguments[w]; var t = "function" == typeof o[o.length - 1] ? o.pop() : void 0, e = new Promise((function (n) { window._klOnsite.push([i].concat(o, [function (i) { t && t(i), n(i) }])) })); return e } } }) } catch (n) { window.klaviyo = window.klaviyo || [], window.klaviyo.push = function () { var n; (n = window._klOnsite).push.apply(n, arguments) } } } }();
-  </script>
-  <!-- END app app block -->
-  <!-- BEGIN app block: shopify://apps/seo-manager/blocks/seomanager/c54c366f-d4bb-4d52-8d2f-dd61ce8e7e12 -->
-  <!-- BEGIN app snippet: SEOManager -->
-  <meta content="3.14.0" name="seomanager" />
-  <script>
-    function sm_htmldecode(str) {
-      var txt = document.createElement('textarea');
-      txt.innerHTML = str;
-      return txt.value;
-    }
-
-    var venntov_title = sm_htmldecode("About us| Raw Radicles");
-    var venntov_description = sm_htmldecode("");
-
-    document.title = venntov_title;
-
-    if (document.querySelector('meta[name="description"]') == null) {
-      var venntov_desc = document.createElement('meta');
-      venntov_desc.name = "description";
-      venntov_desc.content = venntov_description;
-      var venntov_head = document.head;
-      venntov_head.appendChild(venntov_desc);
-    } else {
-      document.querySelector('meta[name="description"]').setAttribute("content", venntov_description);
-    }
-  </script>
-  <script>
-    var venntov_robotVals = "index, follow";
-    if (venntov_robotVals !== "") {
-      document.querySelectorAll("[name='robots']").forEach(e => e.remove());
-      var venntov_robotMeta = document.createElement('meta');
-      venntov_robotMeta.name = "robots";
-      venntov_robotMeta.content = venntov_robotVals;
-      var venntov_head = document.head;
-      venntov_head.appendChild(venntov_robotMeta);
-    }
-  </script>
-  <script>
-    var venntov_googleVals = "";
-    if (venntov_googleVals !== "") {
-      document.querySelectorAll("[name='google']").forEach(e => e.remove());
-      var venntov_googleMeta = document.createElement('meta');
-      venntov_googleMeta.name = "google";
-      venntov_googleMeta.content = venntov_googleVals;
-      var venntov_head = document.head;
-      venntov_head.appendChild(venntov_googleMeta);
-    }
-  </script>
-  <!-- JSON-LD support -->
-  <!-- END app snippet -->
-  <!-- END app app block -->
-  <link href="https://web.archive.org/web/20230604205108/https://monorail-edge.shopifysvc.com/" rel="dns-prefetch" />
-  <script id="evids-setup">
-    (function () { let t, e; function n() { t = { page_viewed: {}, collection_viewed: {}, product_viewed: {}, product_variant_viewed: {}, search_submitted: {}, product_added_to_cart: {}, checkout_started: {}, checkout_completed: {}, payment_info_submitted: {}, session_started: {} }, e = { wpm: {}, trekkie: {} } } function o(t) { return `${t || "sh"}-${function () { const t = "xxxx-4xxx-xxxx-xxxxxxxxxxxx"; let e = ""; try { const n = window.crypto, o = new Uint16Array(31); n.getRandomValues(o); let r = 0; e = t.replace(/[x]/g, (t => { const e = o[r] % 16; return r++, ("x" === t ? e : 3 & e | 8).toString(16) })).toUpperCase() } catch (n) { e = t.replace(/[x]/g, (t => { const e = 16 * Math.random() | 0; return ("x" === t ? e : 3 & e | 8).toString(16) })).toUpperCase() } return `${function () { let t = 0, e = 0; t = (new Date).getTime() >>> 0; try { e = performance.now() >>> 0 } catch (t) { e = 0 } const n = Math.abs(t + e).toString(16).toLowerCase(); return "00000000".substr(0, 8 - n.length) + n }()}-${e}` }()}` } function r(n, r) { if (!t[n] || "trekkie" !== (null == r ? void 0 : r.analyticsFramework) && "wpm" !== (null == r ? void 0 : r.analyticsFramework)) return o("shu"); const i = "string" == typeof (c = r.cacheKey) && c ? c : "default"; var c; const a = function (t, n, o) { const r = e[n]; return void 0 === r[t] && (r[t] = {}), void 0 === r[t][o] ? r[t][o] = 0 : r[t][o] += 1, r[t][o] }(n, r.analyticsFramework, i); return function (e, n, r) { const i = t[e]; if (void 0 === i[r]) { const t = o(); i[r] = [t] } else if (void 0 === i[r][n]) { const t = o(); i[r].push(t) } return i[r][n] }(n, a, i) } function i() { window.Shopify = window.Shopify || {}, n(), window.Shopify.evids = (t, e) => r(t, e) } i(); })();
-  </script>
-  <script>
-    window.ShopifyAnalytics = window.ShopifyAnalytics || {};
-    window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
-    window.ShopifyAnalytics.meta.currency = 'USD';
-    var meta = { "product": { "id": 2665767829622, "gid": "gid:\/\/shopify\/Product\/2665767829622", "vendor": "MVST", "type": "Luggage", "variants": [{ "id": 22630685147254, "price": 39500, "name": "TREK Aluminum Suitcase Army Green - Carry-On", "public_title": "Carry-On", "sku": "01AL01GR20" }, { "id": 22630685180022, "price": 48500, "name": "TREK Aluminum Suitcase Army Green - Medium", "public_title": "Medium", "sku": "01AL01GR24" }, { "id": 42269388669184, "price": 56500, "name": "TREK Aluminum Suitcase Army Green - Large", "public_title": "Large", "sku": "01AL01GR28" }] }, "page": { "pageType": "product", "resourceType": "product", "resourceId": 2665767829622 } };
-    for (var attr in meta) {
-      window.ShopifyAnalytics.meta[attr] = meta[attr];
-    }
-  </script>
-  <script>
-    window.ShopifyAnalytics.merchantGoogleAnalytics = function () {
-      ga('set', 'userId', 'USER_ID'); // Set the user ID using signed-in user_id.
-    };
-  </script>
-  <link href="../css/custom-search.css" rel="stylesheet">
-  <link href="../css/features.css" rel="stylesheet">
-
+  <script async src="js/lazysizes.min.js"></script>
+  <script defer src="js/libs.min.js"></script>
+  <script defer src="js/theme.js"></script>
 </head>
 
-<body
-  class="prestige--v4 features--heading-small features--heading-uppercase features--show-button-transition features--show-image-zooming features--show-element-staggering template-product">
-  <!-- Google Tag Manager (noscript) -->
+<body class="prestige--v4 features--heading-small features--heading-uppercase features--show-button-transition features--show-element-staggering template-page">
 
-  <!-- End Google Tag Manager (noscript) -->
-  <svg class="u-visually-hidden">
-    <lineargradient id="rating-star-gradient-half">
-      <stop offset="50%" stop-color="var(--product-star-rating)">
-      </stop>
-      <stop offset="50%" stop-color="var(--text-color-light)">
-      </stop>
-    </lineargradient>
-  </svg>
+  <span class="LoadingBar"></span>
+  <div class="PageOverlay"></div>
 
-  <span class="LoadingBar">
-  </span>
-  <div class="PageOverlay">
-  </div>
-  <div class="shopify-section" id="shopify-section-popup">
-  </div>
   <div class="shopify-section" id="shopify-section-sidebar-menu">
     <section aria-hidden="true" class="SidebarMenu Drawer Drawer--small Drawer--fromLeft" data-section-id="sidebar-menu"
       data-section-type="sidebar-menu" id="sidebar-menu">
@@ -579,12 +260,11 @@
             <nav aria-label="Sidebar navigation" class="Collapsible">
               <ul class="Linklist Linklist--spacingLoose">
                 <li class="Linklist__Item">
-                  <a class="Linklist__Link Heading u-h6" href="../index.html">Home</a>
+                  <a class="Linklist__Link Heading u-h6" href="index.html">Home</a>
                 </li>
                 <li class="Linklist__Item">
-                  <a class="Linklist__Link Heading u-h6" href="./about.html">About</a>
+                  <a class="Linklist__Link Heading u-h6" href="pages/about.html">About</a>
                 </li>
-
                 <li class="Linklist__Item">
                   <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible"
                     aria-expanded="false">
@@ -597,40 +277,40 @@
                         <p class="Linklist__SubHeading Heading u-h7">BALM</p>
                         <ul class="Linklist">
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./balm.html">JATYADI</a>
+                            <a class="Link Link--secondary" href="pages/balm.html">JATYADI</a>
                           </li>
                         </ul>
                       </div> -->
 
-                      <div class="Linklist__SubItem"><br>
+                      <div class="Linklist__SubItem">
                         <p class="Linklist__SubHeading Heading u-h7">CHOCOLATE</p>
                         <ul class="Linklist">
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./cdarkc.html">CHYAWANAPRASH DARK</a>
+                            <a class="Link Link--secondary" href="pages/cdarkc.html">CHYAWANAPRASH DARK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./cmilkc.html">CHYAWANAPRASH MILK</a>
+                            <a class="Link Link--secondary" href="pages/cmilkc.html">CHYAWANAPRASH MILK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./amilkc.html">ASHWAGANDHA MILK</a>
+                            <a class="Link Link--secondary" href="pages/amilkc.html">ASHWAGANDHA MILK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./adarkc.html">ASHWAGANDHA DARK</a>
+                            <a class="Link Link--secondary" href="pages/adarkc.html">ASHWAGANDHA DARK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./bdarkc.html">BRAHMI DARK</a>
+                            <a class="Link Link--secondary" href="pages/bdarkc.html">BRAHMI DARK</a>
                           </li>
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./bmilkc.html">BRAHMI MILK</a>
+                            <a class="Link Link--secondary" href="pages/bmilkc.html">BRAHMI MILK</a>
                           </li>
                         </ul>
                       </div>
 
-                      <!-- <div class="Linklist__SubItem"><br>
+                      <!-- <div class="Linklist__SubItem">
                         <p class="Linklist__SubHeading Heading u-h7">SHOTS</p>
                         <ul class="Linklist">
                           <li class="Linklist__Item">
-                            <a class="Link Link--secondary" href="./shots.html">MUSHTARISHTA</a>
+                            <a class="Link Link--secondary" href="pages/shots.html">MUSHTARISHTA</a>
                           </li>
                         </ul>
                       </div> -->
@@ -639,7 +319,7 @@
                 </li>
 
                 <li class="Linklist__Item">
-                  <a class="Linklist__Link Heading u-h6" href="./contact.html">Contact Us</a>
+                  <a class="Linklist__Link Heading u-h6" href="pages/contact.html">Contact Us</a>
                 </li>
               </ul>
             </nav>
@@ -701,7 +381,6 @@
       </div>
     </form>
   </div>
-
   <div class="shopify-section shopify-section--header" id="shopify-section-header">
     <div aria-hidden="true" class="Search" id="Search">
       <div class="Search__Inner">
@@ -735,10 +414,10 @@
           <div class="Search__Suggestions">
             <h3 class="Search__SectionTitle">Suggestions</h3>
             <div id="search-suggestions-list">
-              <a href="adarkc.html" class="Search__SuggestionItem">Ashwagandha Dark</a>
-              <a href="amilkc.html" class="Search__SuggestionItem">Ashwagandha Milk</a>
-              <a href="cdarkc.html" class="Search__SuggestionItem">Chyawanaprash Dark</a>
-              <a href="cmilkc.html" class="Search__SuggestionItem">Chyawanaprash Milk</a>
+              <a href="pages/adarkc.html" class="Search__SuggestionItem">Ashwagandha Dark</a>
+              <a href="pages/amilkc.html" class="Search__SuggestionItem">Ashwagandha Milk</a>
+              <a href="pages/cdarkc.html" class="Search__SuggestionItem">Chyawanaprash Dark</a>
+              <a href="pages/cmilkc.html" class="Search__SuggestionItem">Chyawanaprash Milk</a>
             </div>
           </div>
           <div class="Search__ResultItems" id="search-results-list">
@@ -747,19 +426,19 @@
         </div>
       </div>
     </div>
-    <header class="Header Header--logoLeft" data-section-id="header" data-section-settings='{
+    <header class="Header Header--logoLeft Header--transparent" data-section-id="header" data-section-settings='{
   "navigationStyle": "logoLeft",
-  "hasTransparentHeader": false,
+  "hasTransparentHeader": true,
   "isSticky": true
 }' data-section-type="header" id="section-header" role="banner">
       <div class="Header__Wrapper">
         <div class="Header__FlexItem Header__FlexItem--logo">
           <h1 class="Header__Logo">
-            <a class="Header__LogoLink" href="../index.html">
+            <a class="Header__LogoLink" href="index.html">
               <img alt="MVST" class="Header__LogoImage Header__LogoImage--primary" height="296"
-                src="../assets/RR_Logo-1.png" width="600" />
+                src="assets/RR_Logo-1.png" width="600" />
               <img alt="MVST" class="Header__LogoImage Header__LogoImage--transparent" height="296"
-                src="../assets/RR_Logo-1.png" srcset="../assets/RR_Logo-1.png" width="600" />
+                src="assets/RR_Logo-1.png" srcset="assets/RR_Logo-1.png" width="600" />
             </a>
           </h1>
         </div>
@@ -767,16 +446,16 @@
         <div class="Header__FlexItem Header__FlexItem--fill notranslate">
           <nav aria-label="Main navigation" class="Header__MainNav hidden-pocket hidden-lap">
             <ul class="HorizontalList HorizontalList--spacingExtraLoose">
-              <li class="HorizontalList__Item">
-                <a class="Heading u-h6" href="../index.html">
+              <li class="HorizontalList__Item is-active">
+                <a class="Heading u-h6" href="index.html">
                   Home
                   <span class="Header__LinkSpacer">
                     Home
                   </span>
                 </a>
               </li>
-              <li class="HorizontalList__Item is-active">
-                <a class="Heading u-h6" href="about.html">
+              <li class="HorizontalList__Item">
+                <a class="Heading u-h6" href="pages/about.html">
                   About
                   <span class="Header__LinkSpacer">
                     About
@@ -784,7 +463,7 @@
                 </a>
               </li>
               <li aria-haspopup="true" class="HorizontalList__Item">
-                <a class="Heading u-h6" href="products.html">
+                <a class="Heading u-h6" href="pages/products.html">
                   Products
                   <span class="Header__LinkSpacer">
                     Products
@@ -793,12 +472,12 @@
                 <div aria-hidden="true" class="MegaMenu">
                   <div class="MegaMenu__Inner">
                     <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="pages/products.html">
                         BALM
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="balm.html">
+                          <a class="Link Link--secondary" href="pages/balm.html">
                             JATYADI
                           </a>
                         </li>
@@ -806,37 +485,37 @@
                       </ul>
                     </div> -->
                     <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="pages/products.html">
                         CHOCOLATE
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="cdarkc.html">
+                          <a class="Link Link--secondary" href="pages/cdarkc.html">
                             CHYAWANAPRASH DARK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="cmilkc.html">
+                          <a class="Link Link--secondary" href="pages/cmilkc.html">
                             CHYAWANAPRASH MILK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="amilkc.html">
+                          <a class="Link Link--secondary" href="pages/amilkc.html">
                             ASHWAGANDHA MILK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="adarkc.html">
+                          <a class="Link Link--secondary" href="pages/adarkc.html">
                             ASHWAGANDHA DARK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="bdarkc.html">
+                          <a class="Link Link--secondary" href="pages/bdarkc.html">
                             BRAHMI DARK
                           </a>
                         </li>
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="bmilkc.html">
+                          <a class="Link Link--secondary" href="pages/bmilkc.html">
                             BRAHMI MILK
                           </a>
                         </li>
@@ -845,35 +524,35 @@
 
                     <div class="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
                       <div class="MegaMenu__Push">
-                        <a href="cdarkc.html" class="MegaMenu__PushImageWrapper">
-                          <img src="../assets/choco/cdark.png" alt="Chyawanaprash Dark">
+                        <a href="pages/cdarkc.html" class="MegaMenu__PushImageWrapper">
+                          <img src="assets/choco/cdark.png" alt="Chyawanaprash Dark">
                         </a>
                         <p class="MegaMenu__PushHeading Heading u-h6">CHYAWANAPRASH DARK</p>
                       </div>
                     </div>
                     <div class="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
                       <div class="MegaMenu__Push">
-                        <a href="adarkc.html" class="MegaMenu__PushImageWrapper">
-                          <img src="../assets/choco/adark.png" alt="Ashwagandha Dark">
+                        <a href="pages/adarkc.html" class="MegaMenu__PushImageWrapper">
+                          <img src="assets/choco/adark.png" alt="Ashwagandha Dark">
                         </a>
                         <p class="MegaMenu__PushHeading Heading u-h6">ASHWAGANDHA DARK</p>
                       </div>
                     </div>
                     <div class="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
                       <div class="MegaMenu__Push">
-                        <a href="bdarkc.html" class="MegaMenu__PushImageWrapper">
-                          <img src="../assets/choco/bdark.png" alt="Brahmi Dark">
+                        <a href="pages/bdarkc.html" class="MegaMenu__PushImageWrapper">
+                          <img src="assets/choco/bdark.png" alt="Brahmi Dark">
                         </a>
                         <p class="MegaMenu__PushHeading Heading u-h6">BRAHMI DARK</p>
                       </div>
                     </div>
                     <!-- <div class="MegaMenu__Item MegaMenu__Item--fit">
-                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="products.html">
+                      <a class="MegaMenu__Title Heading Text--subdued u-h7" href="pages/products.html">
                         SHOTS
                       </a>
                       <ul class="Linklist">
                         <li class="Linklist__Item">
-                          <a class="Link Link--secondary" href="shots.html">
+                          <a class="Link Link--secondary" href="pages/shots.html">
                             MUSHTARISHTA
                           </a>
                         </li>
@@ -884,7 +563,7 @@
                 </div>
               </li>
               <li class="HorizontalList__Item">
-                <a class="Heading u-h6" href="contact.html">
+                <a class="Heading u-h6" href="pages/contact.html">
                   Contact Us
                   <span class="Header__LinkSpacer">
                     Contact Us
@@ -895,8 +574,10 @@
             </ul>
           </nav>
         </div>
+
         <div class="Header__FlexItem Header__FlexItem--fill">
           <nav class="Header__SecondaryNav hidden-phone">
+
             <ul class="HorizontalList HorizontalList--spacingLoose hidden-pocket hidden-lap">
 
               <!-- Removed redundant static search bar per MVST design -->
@@ -947,189 +628,72 @@
               </svg>
             </span>
           </a>
+
+          <!-- Account / Login Icon -->
+          <a id="header-account-link"
+             href="login.html"
+             aria-label="Account"
+             title="Login / My Account"
+             class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable"
+             style="position:relative; display:inline-flex; align-items:center; justify-content:center;">
+            <svg role="presentation" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round"
+                 style="width:20px;height:20px;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span id="header-admin-badge" style="
+              display:none;
+              position:absolute; top:-5px; right:-8px;
+              background:#1c1b1b; color:#fff;
+              font-size:7px; font-weight:700;
+              letter-spacing:0.5px; text-transform:uppercase;
+              padding:2px 4px; border-radius:3px; line-height:1.4;
+              font-family:'Montserrat',sans-serif;
+            ">Admin</span>
+          </a>
         </div>
       </div>
     </header>
-    <link href="../css/custom-navbar.css" rel="stylesheet">
+    <link href="css/custom-navbar.css" rel="stylesheet">
     <script>
       document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-header').offsetHeight + 'px');
     </script>
   </div>
-  <link rel="stylesheet" href="../css/about-story.css?v=1.6">
 
-  <style>
-    /* Immediate Glow Nuke */
-    #preact-border-shadow-host {
-      display: none !important;
-    }
-  </style>
-  
-</head>
+  <!-- ══ LOGIN FORM ══ -->
+  <main id="main" role="main">
+    <div class="login-page-wrapper">
+      <div class="auth-container">
+        <h1 class="auth-title">Login</h1>
+        <p class="auth-subtitle">Enter your email and <a href="#">password</a> to <a href="#">login:</a></p>
 
-  <body class="about-page" style="margin: 0; padding: 0;">
-    <main id="main" role="main" class="about-page-wrapper">
-      <!-- Section 1: Prestige Dark Hero - Matching Second Image Top -->
-      <header class="PrestigeHero">
-        <div class="SectionHeader" data-scroll-reveal>
-          <h1 class="PrestigeHero__Heading">About Us</h1>
-          <p class="PrestigeHero__Subtext">A premium wellness company.</p>
-        </div>
-      </header>
+        <div class="form-message" id="login-message"></div>
 
-      <!-- Block 1 (Matching Screenshot 1): Image Left, Text Right (Light Gray) -->
-      <section class="FeatureText FeatureText--imageLeft bg--light">
-        <div class="FeatureText__ImageWrapper">
-          <img src="../assets/adark/adark-2.png" alt="Our Origin">
-        </div>
-        <div class="FeatureText__Content" data-scroll-reveal>
-          <div class="FeatureText__Inner">
-            <header class="SectionHeader">
-              <h3 class="SectionHeader__SubHeading">Our Origin</h3>
-              <h2 class="SectionHeader__Heading">A Realization That Sparked a Movement</h2>
-              <div class="Rte">
-                <p>One evening, <strong>Dr. Dasharathraj K Shetty</strong>, a thought leader in technology management
-                  and an influential mentor, faced an unexpected moment of reflection.</p>
-                <p>His 10-year-old son, unwell with a mild fever and digestive issues, needed a remedy. As always, Dr.
-                  Shetty turned to his trusted medical advisor, <strong>Dr. Manu Sudhi</strong>—the Chairman of
-                  Dashapatmaja Solutions Pvt. Ltd., a PhD scholar, and a rare expert in both Modern Medicine (MBBS, MD
-                  Emergency Medicine) and Ayurveda (BAMS), coming from a fourth-generation Ayurvedic family.</p>
-                <p>Following Dr. Manu’s prescription, Dr. Shetty prepared a traditional Ayurvedic powder. However, as he
-                  handed it to his son, he was met with unexpected resistance: <i>“Papa, Ayurveda is boring! It looks
-                    old and tastes bad. Why can’t I have something better?”</i></p>
-                <p>Dr. Shetty was left speechless. He looked at the old glass jar with its formula that had stood the
-                  test of time but failed the modern age. The science of Ayurveda was timeless, but its delivery had
-                  stayed stuck in the past.</p>
-              </div>
-            </header>
+        <form class="auth-form" id="login-form" novalidate>
+          <div class="form-field">
+            <input type="email" id="login-email" class="form-input" placeholder="E-mail" autocomplete="email" required>
           </div>
-        </div>
-      </section>
-
-      <!-- Block 2 (Matching Screenshot 2): Text Left (Black), Image Right -->
-      <section class="FeatureText FeatureText--imageRight bg--dark">
-        <div class="FeatureText__Content" data-scroll-reveal>
-          <div class="FeatureText__Inner">
-            <header class="SectionHeader">
-              <h3 class="SectionHeader__SubHeading">Our Philosophy</h3>
-              <h2 class="SectionHeader__Heading">Elevating Every Journey</h2>
-              <div class="Rte">
-                <p>Determined to bridge this gap, Dr. Shetty united a team of visionaries. He teamed up with <strong>Dr.
-                    Manu Sudhi</strong>, whose dual expertise provided the medical foundation for modernized Ayurveda.
-                </p>
-                <p>They were joined by <strong>Mr. Shreepathi</strong>, a seasoned CEO with experience scaling
-                  world-class companies, <strong>Namesh Malarout</strong>, a results-oriented strategist with an eye for
-                  innovation, and <strong>Ms. Anusha Pai</strong>, an award-winning creative who understood how to
-                  translate ancient values into a modern visual language.</p>
-                <p>Together, they vowed to create wellness that is <strong>portable, powerful, and premium.</strong></p>
-              </div>
-            </header>
-          </div>
-        </div>
-        <div class="FeatureText__ImageWrapper">
-          <img src="../assets/pure_chocolate_hero.png" alt="Our Philosophy">
-        </div>
-      </section>
-
-      <!-- Block 3: The Addition (Image Left, Gray Text Right) -->
-      <section class="FeatureText FeatureText--imageLeft bg--light">
-        <div class="FeatureText__ImageWrapper">
-          <img src="../assets/bmilk/bmilk-3.png" alt="Identity">
-        </div>
-        <div class="FeatureText__Content" data-scroll-reveal>
-          <div class="FeatureText__Inner">
-            <header class="SectionHeader">
-              <h3 class="SectionHeader__SubHeading">The Final Piece</h3>
-              <h2 class="SectionHeader__Heading">Authenticity in Product</h2>
-              <div class="Rte">
-                <p>The journey reached its zenith with <strong>Dr. Vishnu</strong>, a fourth-generation practitioner.
-                  His years of researching modernized, authentic formulations provided the final piece of the puzzle.
-                </p>
-                <p>He focused on "Rawness"—eliminating the need for artificial preservatives and weird pastes,
-                  redefining Ayurveda as a form of luxury wellness that fits seamlessly into modern life without
-                  compromising core principles.</p>
-                <p>We believe in wellness reborn—science that honors the past while embracing the future.</p>
-              </div>
-            </header>
-          </div>
-        </div>
-      </section>
-
-      <!-- Site Standards Grid -->
-      <section class="Grid--luxury" data-scroll-reveal>
-        <div class="GridItem--luxury">
-          <header class="SectionHeader">
-            <h3 class="SectionHeader__SubHeading">Small-Batch</h3>
-            <h2 class="SectionHeader__Heading">Quality Production</h2>
-            <div class="Rte">
-              <p>Prioritizing potency over mass production, ensuring every formulation meets
-                our elite standards.</p>
+          <div class="form-field">
+            <div class="field-password-wrapper">
+              <input type="password" id="login-password" class="form-input" placeholder="Password" autocomplete="current-password" required>
+              <a href="#" class="forgot-link" id="forgot-btn">Forgot your password?</a>
             </div>
-          </header>
-        </div>
-        <div class="GridItem--luxury">
-          <header class="SectionHeader">
-            <h3 class="SectionHeader__SubHeading">Modern</h3>
-            <h2 class="SectionHeader__Heading">Accessibility</h2>
-            <div class="Rte">
-              <p>Portable and easy to use. No more complicated preparations—just pure Ayurvedic
-                power.</p>
-            </div>
-          </header>
-        </div>
-        <div class="GridItem--luxury">
-          <header class="SectionHeader">
-            <h3 class="SectionHeader__SubHeading">Pure</h3>
-            <h2 class="SectionHeader__Heading">Integrity</h2>
-            <div class="Rte">
-              <p>100% natural. No synthetic additives or artificial preservatives. Reborn for
-                today.</p>
-            </div>
-          </header>
-        </div>
-      </section>
-
-      <!-- Final Symbolism - Prestige Styled -->
-      <section class="FeatureText FeatureText--imageRight bg--light">
-        <div class="FeatureText__Content" data-scroll-reveal>
-          <div class="FeatureText__Inner">
-            <header class="SectionHeader">
-              <h3 class="SectionHeader__SubHeading">Our Spirit</h3>
-              <h2 class="SectionHeader__Heading">The Lion and the Sun</h2>
-              <div class="Rte">
-                <p>The Sitting Lion represents strength and calm resilience. The Sun symbolizes energy and
-                  enlightenment—a new dawn for global wellness.</p>
-                <div style="margin-top: 60px;">
-                  <div class="SectionHeader__Heading"
-                    style="letter-spacing: 0.5em; font-size: 18px !important; margin: 0;">JAI HIND</div>
-                </div>
-              </div>
-            </header>
           </div>
+          <button type="submit" class="auth-btn" id="login-btn">Login</button>
+        </form>
+
+        <p class="auth-footer">Don't have an account? <a href="register.html">Sign up</a></p>
+        <div class="admin-notice" id="admin-notice">
+          🔑 Admin credentials: <strong>admin@rawradicles.com</strong> / <strong>admin123</strong>
         </div>
-        <div class="FeatureText__ImageWrapper">
-          <img src="../assets/RR_Logo-1.png" alt="Lion and Sun"
-            style="width: 100%; max-width: 400px; height: auto; object-fit: contain; margin: auto;">
-        </div>
-      </section>
+      </div>
+    </div>
+  </main>
 
-      <script>
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-            }
-          });
-        }, {
-          threshold: 0.15,
-          rootMargin: "0px"
-        });
-
-        document.querySelectorAll('[data-scroll-reveal]').forEach(el => observer.observe(el));
-      </script>
-    </main>
-
-
-    <div class="shopify-section shopify-section--footer" id="shopify-section-footer">
+  <!-- ══ FOOTER ══ -->
+  <div class="shopify-section shopify-section--footer" id="shopify-section-footer">
     <footer class="Footer" data-section-id="footer" data-section-type="footer" id="section-footer" role="contentinfo">
       <div class="Container">
         <div class="Footer__Inner">
@@ -1143,8 +707,8 @@
               </p>
             </div>
             <div class="logo-wrapper" style="text-align:left;">
-              <a href="../index.html">
-                <img src="../assets/RR_Logo-09.png" alt="Raw Radicles Logo"
+              <a href="index.html">
+                <img src="assets/RR_Logo-09.png" alt="Raw Radicles Logo"
                   style="display:block;max-width:120px;height:auto;">
               </a>
             </div>
@@ -1570,111 +1134,57 @@
       </div>
     </footer>
 
-    <!--Gorgias Chat Widget Start-->
-    <script id="gorgias-chat-widget-install-v2" src="../js/gorgias-chat-bundle-loader.js">
-    </script>
-    <script id="gorgias-chat-shopify-install">
-      !function (_) { _.SHOPIFY_PERMANENT_DOMAIN = "mvs-travel.myshopify.com", _.SHOPIFY_CUSTOMER_ID = "", _.SHOPIFY_CUSTOMER_EMAIL = "" }(window || {});
-    </script>
-    <!-- navidium script start -->
-    <script>
-      let nvdShop = 'mvs-travel.myshopify.com';
-      let nvdShopCurrency = '${{amount}} USD';
-      let nvdControls = {
-        cartCounter: '.title-ajax__cart .text-bold',
-        subtotal_item: '.Cart__Total.Heading span,.Cart__Checkout span:last-child',
-        CheckoutBtns: '[name="checkout"],[name="checkout"] *',
-        clickTriggers: '[name="add"],[name="add"] *,.CartItem__Remove,.CartItem__Remove *,.QuantitySelector__Button,.QuantitySelector__Button *,.QuantitySelector__CurrentQuantity,.ProductForm__AddToCart,.ProductForm__AddToCart *',
-        changeTrigger: 'chage_triggers',
-        cursourControl: '.nvd-mini',
-        forceTrigger: true
-      }
-    </script>
-    <script src="../js/nvd-js-asset.js">
-    </script>
-    <script src="../js/navidium.js" type="text/javascript">
-    </script>
-    <link href="../css/navidium.css" media="all" rel="stylesheet" type="text/css" />
-    <div class="nvdModalContainer" id="nvdModalx">
-      <div class="nvdImageHolder" id="nvdImagHolderx">
-        <img id="nvdLearnImage" src="../assets/Modal.png" />
-      </div>
-    </div>
-
-    <script src="../js/search-logic.js"></script>
-    <script src="../js/cart.js"></script>
-  </body>
-  <style>
-    .locale-selectors__content {
-      justify-content: center;
-      display: none !important;
-    }
-  </style>
+    <script defer src="js/custom.js"></script>
+  <script src="js/search-logic.js"></script>
+  <script src="js/auth.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // 1. Fix Quantity Buttons
-      document.addEventListener('click', function (e) {
-        const btn = e.target.closest('[data-action="increase-quantity"], [data-action="decrease-quantity"]');
-        if (!btn) return;
-        const input = btn.parentElement.querySelector('.QuantitySelector__CurrentQuantity');
-        let val = parseInt(input.value) || 1;
-        input.value = btn.getAttribute('data-action') === 'increase-quantity' ? val + 1 : (val > 1 ? val - 1 : 1);
-      });
+    // Show admin hint after 5s
+    setTimeout(() => { document.getElementById('admin-notice').style.display = 'block'; }, 5000);
 
-      // 2. Fix Size Selector (Popover)
-      const sizeBtn = document.querySelector('[aria-controls*="main-size"]');
-      const popover = document.querySelector('#popover-2665767829622-template--16772992401664__main-size');
-      if (sizeBtn && popover) {
-        sizeBtn.addEventListener('click', () => popover.setAttribute('aria-hidden', 'false'));
-        popover.querySelector('[data-action="close-popover"]').addEventListener('click', () => popover.setAttribute('aria-hidden', 'true'));
-
-        popover.querySelectorAll('.Popover__Value').forEach(val => {
-          val.addEventListener('click', function () {
-            document.querySelector('.ProductForm__SelectedValue').textContent = this.getAttribute('data-value');
-            popover.setAttribute('aria-hidden', 'true');
-            // Sync with hidden select
-            document.querySelector('#product-select-2665767829622').value = (this.textContent.trim() === 'Unit' ? '22630685147254' : '22630685180022');
-          });
-        });
-      }
-
-      // 3. Fix Dots (Image Navigation)
-      const dots = document.querySelectorAll('.Product__SlideshowNavDot, .flickity-page-dots .dot');
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', function (e) {
-          e.preventDefault();
-          const slides = document.querySelectorAll('.Product__SlideItem');
-          slides.forEach(s => s.classList.remove('is-selected'));
-          dots.forEach(d => d.classList.remove('is-selected'));
-
-          slides[index].classList.add('is-selected');
-          this.classList.add('is-selected');
-          // Force scroll if layout is stacked
-          slides[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-      });
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+      const btn = document.getElementById('login-btn');
+      const msg = document.getElementById('login-message');
+      if (!email || !password) { showMsg(msg,'error','Please fill in all fields.'); return; }
+      btn.classList.add('loading'); btn.textContent = 'Logging in…';
+      try {
+        const r = await RRAuth.login(email, password);
+        if (r.success) {
+          showMsg(msg,'success','Login successful! Redirecting…');
+          setTimeout(() => { window.location.href = r.user.role==='admin' ? 'admin.html' : 'index.html'; }, 800);
+        } else {
+          showMsg(msg,'error', r.message||'Invalid email or password.');
+          btn.classList.remove('loading'); btn.textContent='Login';
+        }
+      } catch(e) { showMsg(msg,'error','Something went wrong.'); btn.classList.remove('loading'); btn.textContent='Login'; }
     });
+
+    document.getElementById('forgot-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const msg = document.getElementById('login-message');
+      showMsg(msg, email ? 'success' : 'error', email ? `Reset link sent to ${email} (demo).` : 'Enter your email first.');
+    });
+
+    function showMsg(el,type,text){ el.className='form-message '+type; el.textContent=text; }
+
+    // Auth-aware account icon
+    (function(){
+      try {
+        var user = RRAuth.getUser();
+        var link = document.getElementById('header-account-link');
+        var badge = document.getElementById('header-admin-badge');
+        if (user && user.role==='admin') { link.href='admin.html'; link.title='Admin Dashboard'; if(badge) badge.style.display='block'; }
+      } catch(e){}
+    })();
+
+    // Redirect if already logged in
+    if (RRAuth.isLoggedIn()) {
+      var u = RRAuth.getUser();
+      window.location.href = (u && u.role==='admin') ? 'admin.html' : 'index.html';
+    }
   </script>
-
+</body>
 </html>
-<!--
-     FILE ARCHIVED ON 20:51:08 Jun 04, 2023 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 09:06:38 Jan 08, 2026.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
--->
-<!--
-playback timings (ms):
-  captures_list: 0.671
-  exclusion.robots: 0.075
-  exclusion.robots.policy: 0.064
-  esindex: 0.011
-  cdx.remote: 21.104
-  LoadShardBlock: 223.271 (3)
-  PetaboxLoader3.resolve: 133.518 (3)
-  PetaboxLoader3.datanode: 159.794 (4)
-  load_resource: 165.953
--->
-

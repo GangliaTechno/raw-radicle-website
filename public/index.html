@@ -908,6 +908,31 @@ Version: 2.43.0
               </svg>
             </span>
           </a>
+
+          <!-- Account / Login Icon -->
+          <a id="header-account-link"
+             href="login.html"
+             aria-label="Account"
+             title="Login / My Account"
+             class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable"
+             style="position:relative; display:inline-flex; align-items:center; justify-content:center;">
+            <svg role="presentation" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round"
+                 style="width:20px;height:20px;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span id="header-admin-badge" style="
+              display:none;
+              position:absolute; top:-5px; right:-8px;
+              background:#1c1b1b; color:#fff;
+              font-size:7px; font-weight:700;
+              letter-spacing:0.5px; text-transform:uppercase;
+              padding:2px 4px; border-radius:3px; line-height:1.4;
+              font-family:'Montserrat',sans-serif;
+            ">Admin</span>
+          </a>
         </div>
       </div>
     </header>
@@ -1923,6 +1948,104 @@ Version: 2.43.0
         color: #fff;
       }
 
+      /* ===== EXPERTS SECTION ===== */
+      .ExpertsSection {
+        padding: 80px 0 10px 0;
+        background-color: #EFEFEF;
+      }
+
+      .ExpertsSection__Title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 32px;
+        font-weight: 400;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        color: #1c1c1c;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .ExpertsSection__Wrapper {
+        width: 100%;
+        max-width: 100%;
+        margin: 5px;
+        padding: 0 25px;
+        box-sizing: border-box;
+      }
+
+      .ExpertsSection__Grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        justify-content: center;
+      }
+
+      .ExpertCard {
+        flex: 0 0 calc((100% - 15px) / 6);
+        min-width: 160px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .ExpertCard:hover {
+        transform: translateY(-5px);
+      }
+
+      .ExpertCard__ImageWrapper {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: 4px; /* Optional slight rounding for premium feel */
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .ExpertCard__Image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .ExpertCard__Name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #1c1c1c;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .ExpertCard__Role {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: #6a6a6a;
+        display: block;
+      }
+
+      @media (max-width: 1200px) {
+        .ExpertCard {
+          flex: 0 0 calc((100% - 10px) / 3);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .ExpertCard {
+          flex: 0 0 calc((100% - 5px) / 2);
+        }
+        .ExpertsSection__Title {
+          font-size: 24px;
+          letter-spacing: 4px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .ExpertCard {
+          flex: 0 0 100%;
+        }
+      }
+
       .InstaSection__Arrow:hover svg {
         stroke: #fff;
       }
@@ -2417,6 +2540,68 @@ Version: 2.43.0
         }
       }
     </style>
+
+    <section class="ExpertsSection">
+      <div class="ExpertsSection__Wrapper">
+        <h2 class="ExpertsSection__Title">Meet the Experts Behind Raw Radicles</h2>
+        
+        <div class="ExpertsSection__Grid">
+          <!-- Expert 1 -->
+          <div class="ExpertCard">
+            <div class="ExpertCard__ImageWrapper">
+              <img class="ExpertCard__Image" src="assets/experts/doctor1.png" alt="Dr. Nozer Sheriar">
+            </div>
+            <span class="ExpertCard__Name">Dr. Nozer Sheriar</span>
+            <span class="ExpertCard__Role">Gynaecologist</span>
+          </div>
+
+          <!-- Expert 2 -->
+          <div class="ExpertCard">
+            <div class="ExpertCard__ImageWrapper">
+              <img class="ExpertCard__Image" src="assets/experts/doctor2.png" alt="Dr. Anjali Desai">
+            </div>
+            <span class="ExpertCard__Name">Dr. Anjali Desai</span>
+            <span class="ExpertCard__Role">Ayurvedic Specialist</span>
+          </div>
+
+          <!-- Expert 3 -->
+          <div class="ExpertCard">
+            <div class="ExpertCard__ImageWrapper">
+              <img class="ExpertCard__Image" src="assets/experts/doctor3.png" alt="Dr. Rohan Mehra">
+            </div>
+            <span class="ExpertCard__Name">Dr. Rohan Mehra</span>
+            <span class="ExpertCard__Role">Nutritionist</span>
+          </div>
+
+          <!-- Expert 4 -->
+          <div class="ExpertCard">
+            <div class="ExpertCard__ImageWrapper">
+              <img class="ExpertCard__Image" src="assets/experts/doctor4.png" alt="Dr. Sarah Khan">
+            </div>
+            <span class="ExpertCard__Name">Dr. Sarah Khan</span>
+            <span class="ExpertCard__Role">Dermatologist</span>
+          </div>
+
+          <!-- Expert 5 -->
+          <div class="ExpertCard">
+            <div class="ExpertCard__ImageWrapper">
+              <img class="ExpertCard__Image" src="assets/experts/doctor5.png" alt="Dr. Vikram Singh">
+            </div>
+            <span class="ExpertCard__Name">Dr. Vikram Singh</span>
+            <span class="ExpertCard__Role">Wellness Expert</span>
+          </div>
+
+          <!-- Expert 6 -->
+          <div class="ExpertCard">
+            <div class="ExpertCard__ImageWrapper">
+              <img class="ExpertCard__Image" src="assets/experts/doctor6.png" alt="Dr. Priya Sharma">
+            </div>
+            <span class="ExpertCard__Name">Dr. Priya Sharma</span>
+            <span class="ExpertCard__Role">Holistic Health Consultant</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="shopify-section shopify-section--bordered" id="shopify-section-instagram">
       <section class="InstaSection">
@@ -3979,6 +4164,27 @@ Version: 2.43.0
     </script>
     <script src="js/search-logic.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+      // Update account icon based on session
+      (function() {
+        try {
+          var user = RRAuth.getUser();
+          var link  = document.getElementById('header-account-link');
+          var badge = document.getElementById('header-admin-badge');
+          if (!link) return;
+          if (user && user.role === 'admin') {
+            link.href  = 'admin.html';
+            link.title = 'Admin Dashboard';
+            if (badge) badge.style.display = 'block';
+          } else if (user) {
+            link.href  = 'login.html';
+            link.title = 'My Account — ' + user.firstName;
+          }
+          // else default href="login.html" stays
+        } catch(e) {}
+      })();
+    </script>
 </body>
 <style>
   .locale-selectors__content {
