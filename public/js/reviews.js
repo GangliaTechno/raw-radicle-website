@@ -157,14 +157,35 @@
         var textarea = document.querySelector('.ReviewModal__Textarea');
         var body = textarea ? textarea.value.trim() : '';
 
-        // Add the review
-        addNewReview(name, selectedRating, body, uploadedPhotoDataUrl);
+        // Get product ID from URL
+        var productId = window.location.pathname.split('/').pop().replace('.html', '');
 
-        // Show success
-        steps.forEach(function(s) { s.classList.remove('is-active'); });
-        if (successEl) successEl.classList.add('is-active');
-
-        setTimeout(function() { closeModal(); }, 2000);
+        // Submit the review to the server
+        fetch('/api/reviews/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            productId: productId,
+            review: {
+              name: name,
+              rating: selectedRating,
+              body: body,
+              photo: uploadedPhotoDataUrl
+            }
+          })
+        }).then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data.success) {
+              // Show success
+              steps.forEach(function(s) { s.classList.remove('is-active'); });
+              if (successEl) successEl.classList.add('is-active');
+              setTimeout(function() { closeModal(); }, 2000);
+            }
+          })
+          .catch(function(err) {
+            console.error('Failed to submit review:', err);
+            alert('Something went wrong. Please try again.');
+          });
       });
     }
   }

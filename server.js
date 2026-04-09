@@ -15,6 +15,39 @@ app.use(express.urlencoded({ limit: "20mb", extended: true }));
 
 // --- CMS API Endpoints ---
 
+// Product CMS API
+app.get("/api/product-cms/:id", (req, res) => {
+  console.log("==> HIT GET /api/product-cms/ ID:", req.params.id);
+  const { id } = req.params;
+  const filePath = path.join(__dirname, "products_cms.json");
+  if (!fs.existsSync(filePath)) {
+    console.log("  File not found, returning empty object");
+    return res.json({});
+  }
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    console.log("  Data found for ID:", !!data[id]);
+    res.json(data[id] || {});
+  } catch (e) {
+    console.log("  Error parsing JSON:", e.message);
+    res.json({});
+  }
+});
+
+app.post("/api/product-cms/:id", (req, res) => {
+  const { id } = req.params;
+  const filePath = path.join(__dirname, "products_cms.json");
+  let data = {};
+  if (fs.existsSync(filePath)) {
+    try {
+      data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    } catch (e) {}
+  }
+  data[id] = req.body;
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+  res.json({ success: true });
+});
+
 // Products API
 app.get("/api/products", (req, res) => {
   const filePath = path.join(__dirname, "products.json");
@@ -55,6 +88,85 @@ app.post("/api/homepage", (req, res) => {
   const data = req.body;
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
   res.json({ success: true, message: "Home page updated successfully" });
+});
+
+// Review Management API
+app.post("/api/reviews/submit", (req, res) => {
+  const { productId, review } = req.body;
+  const filePath = path.join(__dirname, "pending_reviews.json");
+  let data = {};
+  if (fs.existsSync(filePath)) {
+    try {
+      const content = fs.readFileSync(filePath, "utf8");
+      if (content.trim()) data = JSON.parse(content);
+    } catch (e) {}
+  }
+  if (!data[productId]) data[productId] = [];
+  data[productId].push({ ...review, id: Date.now(), submittedAt: new Date().toISOString() });
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+  res.json({ success: true, message: "Review submitted for approval" });
+});
+
+app.get("/api/reviews/pending", (req, res) => {
+  const filePath = path.join(__dirname, "pending_reviews.json");
+  if (!fs.existsSync(filePath)) return res.json({});
+  try {
+    const data = fs.readFileSync(filePath, "utf8");
+    res.json(data ? JSON.parse(data) : {});
+  } catch (e) {
+    res.json({});
+  }
+});
+
+app.post("/api/reviews/approve", (req, res) => {
+  const { productId, reviewId } = req.body;
+  const pendingFile = path.join(__dirname, "pending_reviews.json");
+  const cmsFile = path.join(__dirname, "products_cms.json");
+
+  try {
+    let pending = JSON.parse(fs.readFileSync(pendingFile, "utf8"));
+    let cms = JSON.parse(fs.readFileSync(cmsFile, "utf8"));
+
+    if (pending[productId]) {
+      const reviewIdx = pending[productId].findIndex(r => r.id == reviewId);
+      if (reviewIdx > -1) {
+        const review = pending[productId].splice(reviewIdx, 1)[0];
+        if (!cms[productId]) cms[productId] = {};
+        if (!cms[productId].reviews) cms[productId].reviews = [];
+        cms[productId].reviews.push(review);
+        
+        fs.writeFileSync(pendingFile, JSON.stringify(pending, null, 2), "utf8");
+        fs.writeFileSync(cmsFile, JSON.stringify(cms, null, 2), "utf8");
+        return res.json({ success: true });
+      }
+    }
+    res.status(404).json({ error: "Review not found" });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.delete("/api/reviews/:type/:productId/:reviewId", (req, res) => {
+  const { type, productId, reviewId } = req.params;
+  const fileName = type === "pending" ? "pending_reviews.json" : "products_cms.json";
+  const filePath = path.join(__dirname, fileName);
+
+  try {
+    let data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    if (type === "pending") {
+      if (data[productId]) {
+        data[productId] = data[productId].filter(r => r.id != reviewId);
+      }
+    } else {
+      if (data[productId] && data[productId].reviews) {
+        data[productId].reviews = data[productId].reviews.filter(r => r.id != reviewId);
+      }
+    }
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+    res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 // Image Upload API
