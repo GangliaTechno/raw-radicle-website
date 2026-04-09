@@ -1,0 +1,217 @@
+{
+  "adarkc": {
+    "name": "WRATH RELIEF <br><span class=\"u-h5\" style=\"white-space: nowrap;\">55% DARK CHOCOLATE WITH ASHWAGANDHA HERBS</span>",
+    "badge": "<b>ASHWAGANDHA DARK:</b> STRENGTH, STAMINA & CALM",
+    "gallery": [
+      "../assets/adark/adark.png",
+      "../assets/adark/adark.png",
+      "../assets/adark/adark-2.png",
+      "../assets/adark/adark-3.png"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/features/choco-1.png",
+        "title": "ANCIENT HERBS",
+        "text": "Infused with authentic Ayurvedic herbs like Ashwagandha, Brahmi, and\r\n            Amla for targeted wellness."
+      },
+      {
+        "icon": "../assets/features/choco-2.png",
+        "title": "PURE COCOA",
+        "text": "Hand-selected premium cocoa for a rich, velvety texture and deep,\r\n            satisfying chocolate experience."
+      },
+      {
+        "icon": "../assets/features/choco-3.png",
+        "title": "ARTISAN CRAFTED",
+        "text": "Small-batch production ensures maximum potency of herbs and artisanal\r\n            quality in every bite."
+      }
+    ]
+  },
+  "amilkc": {
+    "name": "WRATH RELIEF <br><span class=\"u-h5\" style=\"white-space: nowrap;\">35% MILK CHOCOLATE WITH ASHWAGANDHA HERBS</span>",
+    "badge": "<b>ASHWAGANDHA MILK:</b> STRENGTH, STAMINA & CALM",
+    "gallery": [
+      "../assets/amilk/amilk.png",
+      "../assets/amilk/amilk-1.png",
+      "../assets/amilk/amilk-2.png",
+      "../assets/amilk/amilk-3.png"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/features/choco-1.png",
+        "title": "ANCIENT HERBS",
+        "text": "Infused with authentic Ayurvedic herbs like Ashwagandha, Brahmi, and\r\n            Amla for targeted wellness."
+      },
+      {
+        "icon": "../assets/features/choco-2.png",
+        "title": "PURE COCOA",
+        "text": "Hand-selected premium cocoa for a rich, velvety texture and deep,\r\n            satisfying chocolate experience."
+      },
+      {
+        "icon": "../assets/features/choco-3.png",
+        "title": "ARTISAN CRAFTED",
+        "text": "Small-batch production ensures maximum potency of herbs and artisanal\r\n            quality in every bite."
+      }
+    ]
+  },
+  "bdarkc": {
+    "name": "SMART SIN <br><span class=\"u-h5\" style=\"white-space: nowrap;\">55% DARK CHOCOLATE WITH BRAHMI HERBS</span>",
+    "badge": "<b>BRAHMI DARK:</b> FOCUS, MEMORY & MENTAL CLARITY",
+    "gallery": [
+      "../assets/bdark/bdark.png",
+      "../assets/bdark/bdark-2.png",
+      "../assets/bdark/bdark-3.png"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/br1.png",
+        "title": "ANCIENT HERBS",
+        "text": "Infused with authentic Ayurvedic herbs like Brahmi, and Amla for\r\n            targeted wellness."
+      },
+      {
+        "icon": "../assets/features/choco-2.png",
+        "title": "PURE COCOA",
+        "text": "Hand-selected premium cocoa for a rich, velvety texture and deep,\r\n            satisfying chocolate experience."
+      },
+      {
+        "icon": "../assets/features/choco-3.png",
+        "title": "ARTISAN CRAFTED",
+        "text": "Small-batch production ensures maximum potency of herbs and artisanal\r\n            quality in every bite."
+      }
+    ]
+  },
+  "bmilkc": {
+    "name": "SMART SIN <br><span class=\"u-h5\" style=\"white-space: nowrap;\">35% MILK CHOCOLATE WITH BRAHMI HERBS</span>",
+    "badge": "<b>BRAHMI MILK:</b> FOCUS, MEMORY & MENTAL CLARITY",
+    "gallery": [
+      "../assets/bmilk/bmilk.png",
+      "../assets/bmilk/bmilk-1.png",
+      "../assets/bmilk/bmilk-2.png",
+      "../assets/bmilk/bmilk-3.png"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/br1.png",
+        "title": "ANCIENT HERBS",
+        "text": "Infused with authentic Ayurvedic herbs like Brahmi, and\r\n            Amla for targeted wellness."
+      },
+      {
+        "icon": "../assets/features/choco-2.png",
+        "title": "PURE COCOA",
+        "text": "Hand-selected premium cocoa for a rich, velvety texture and deep,\r\n            satisfying chocolate experience."
+      },
+      {
+        "icon": "../assets/features/choco-3.png",
+        "title": "ARTISAN CRAFTED",
+        "text": "Small-batch production ensures maximum potency of herbs and artisanal\r\n            quality in every bite."
+      }
+    ]
+  },
+  "cdarkc": {
+    "name": "HOLY SIN <br><span class=\"u-h5\" style=\"white-space: nowrap;\">55% DARK CHOCOLATE WITH CHYAWANPRASH HERBS</span>",
+    "badge": "<b>CHYAWANPRASH DARK:</b> IMMUNITY & VITALITY",
+    "gallery": [
+      "../assets/cdark/cdark.png",
+      "../assets/cdark/cdark.png",
+      "../assets/cdark/cdark-2.png",
+      "../assets/cdark/cdark-3.png"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/cp1.png",
+        "title": "ANCIENT HERBS",
+        "text": "Infused with authentic Ayurvedic herbs like Chyawanaprash for targeted\r\n            wellness."
+      },
+      {
+        "icon": "../assets/features/choco-2.png",
+        "title": "PURE COCOA",
+        "text": "Hand-selected premium cocoa for a rich, velvety texture and deep,\r\n            satisfying chocolate experience."
+      },
+      {
+        "icon": "../assets/features/choco-3.png",
+        "title": "ARTISAN CRAFTED",
+        "text": "Small-batch production ensures maximum potency of herbs and artisanal\r\n            quality in every bite."
+      }
+    ]
+  },
+  "cmilkc": {
+    "name": "HOLY SIN <br><span class=\"u-h5\" style=\"white-space: nowrap;\">35% MILK CHOCOLATE WITH CHYAWANPRASH HERBS</span>",
+    "badge": "<b>CHYAWANPRASH MILK:</b> IMMUNITY & VITALITY",
+    "gallery": [
+      "../assets/cmilk/cmilk.png",
+      "../assets/cmilk/cmilk-1.png",
+      "../assets/cmilk/cmilk-2.png",
+      "../assets/cmilk/cmilk-3.png"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/cp1.png",
+        "title": "ANCIENT HERBS",
+        "text": "Infused with authentic Ayurvedic herbs like Chyawanaprash for targeted\r\n            wellness."
+      },
+      {
+        "icon": "../assets/features/choco-2.png",
+        "title": "PURE COCOA",
+        "text": "Hand-selected premium cocoa for a rich, velvety texture and deep,\r\n            satisfying chocolate experience."
+      },
+      {
+        "icon": "../assets/features/choco-3.png",
+        "title": "ARTISAN CRAFTED",
+        "text": "Small-batch production ensures maximum potency of herbs and artisanal\r\n            quality in every bite."
+      }
+    ]
+  },
+  "balm": {
+    "name": "Jatyadi Balm",
+    "badge": "<b>JATYADI BALM:</b> SKIN REPAIR AND&nbsp;<b>PROTECTION</b>",
+    "gallery": [
+      "../assets/j.jpg",
+      "../assets/j1.jpg",
+      "../assets/j2.jpg",
+      "../assets/j3.jpg"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/features/balm-1.png",
+        "title": "HEALING HERBS",
+        "text": "Traditional Ayurvedic formula with Neem and Tulsi for deep skin repair and natural healing."
+      },
+      {
+        "icon": "../assets/features/balm-2.png",
+        "title": "100% NATURAL",
+        "text": "Zero chemicals or artificial preservatives. Just pure, nature-derived ingredients for healthy skin."
+      },
+      {
+        "icon": "../assets/features/balm-3.png",
+        "title": "SOOTHING RELIEF",
+        "text": "Provides an immediate soothing effect on wounds, rashes, and burns, creating a protective barrier."
+      }
+    ]
+  },
+  "shots": {
+    "name": "Mushtarishta Shots",
+    "badge": "<b>MUSHTARISHTA SHOTS:</b> STRENGTH AND&nbsp;<b>RECOVERY</b>",
+    "gallery": [
+      "../assets/s.jpg",
+      "../assets/s1.jpg",
+      "../assets/s2.jpg",
+      "../assets/s3.jpg"
+    ],
+    "internalFeatures": [
+      {
+        "icon": "../assets/features/shot-1.png",
+        "title": "INSTANT VITALITY",
+        "text": "Concentrated herbal shots designed for fast absorption and immediate digestive wellness."
+      },
+      {
+        "icon": "../assets/features/shot-2.png",
+        "title": "TRADITIONAL CRAFT",
+        "text": "Crafted through traditional fermentation processes to enhance the potency of metabolic support."
+      },
+      {
+        "icon": "../assets/features/shot-3.png",
+        "title": "EASY WELLNESS",
+        "text": "Convenient, travel-friendly packaging makes it easy to maintain your health routine anywhere."
+      }
+    ]
+  }
+}

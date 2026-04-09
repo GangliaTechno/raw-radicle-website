@@ -918,12 +918,14 @@
         </p>
         
         <div class="cms-section">
+          <!--
           <div class="cms-card">
             <div class="cms-card-header">Hero Slideshow (Top Slider)</div>
             <div class="cms-card-body" id="hero-slides-list">
-              <!-- Populated by JS -->
+              Populated by JS
             </div>
           </div>
+          -->
 
           <div class="cms-card">
             <div class="cms-card-header">Static Banner</div>
@@ -1237,31 +1239,33 @@
       homePageData = await RRAuth.getHomePageData();
 
       // 1. Render Hero Slides
-      heroList.innerHTML = homePageData.hero.slides.map((slide, i) => `
-        <div class="cms-row" data-type="hero" data-index="${i}">
-          <div class="cms-thumb-container">
-            <img src="${slide.image}" class="cms-thumb" onerror="this.src='assets/RR_Logo-1.png'">
-            <span class="cms-thumb-label">Current Slide</span>
-          </div>
-          <div class="cms-inputs">
-            <div class="cms-full">
-              <label class="cms-label">Title</label>
-              <input type="text" class="form-control cms-title" value="${slide.title}">
+      if (heroList) {
+        heroList.innerHTML = homePageData.hero.slides.map((slide, i) => `
+          <div class="cms-row" data-type="hero" data-index="${i}">
+            <div class="cms-thumb-container">
+              <img src="${slide.image}" class="cms-thumb" onerror="this.src='assets/RR_Logo-1.png'">
+              <span class="cms-thumb-label">Current Slide</span>
             </div>
-            <div>
-              <label class="cms-label">Image URL</label>
-              <div style="display:flex; gap:5px;">
-                <input type="text" class="form-control cms-image" id="hero-img-${i}" value="${slide.image}" oninput="updateCMSPreview(this)">
-                <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('hero-img-${i}')">📁</button>
+            <div class="cms-inputs">
+              <div class="cms-full">
+                <label class="cms-label">Title</label>
+                <input type="text" class="form-control cms-title" value="${slide.title}">
+              </div>
+              <div>
+                <label class="cms-label">Image URL</label>
+                <div style="display:flex; gap:5px;">
+                  <input type="text" class="form-control cms-image" id="hero-img-${i}" value="${slide.image}" oninput="updateCMSPreview(this)">
+                  <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('hero-img-${i}')">📁</button>
+                </div>
+              </div>
+              <div>
+                <label class="cms-label">Link</label>
+                <input type="text" class="form-control cms-link" value="${slide.link}">
               </div>
             </div>
-            <div>
-              <label class="cms-label">Link</label>
-              <input type="text" class="form-control cms-link" value="${slide.link}">
-            </div>
           </div>
-        </div>
-      `).join('');
+        `).join('');
+      }
 
       // 2. Render Static Banner
       const sb = homePageData.staticBanner || { image: '', link: '' };
@@ -1300,7 +1304,10 @@
           <div class="cms-inputs">
             <div class="cms-full">
               <label class="cms-label">Video MP4 URL</label>
-              <input type="text" class="form-control cms-vh-url" value="${vh.url}">
+              <div style="display:flex; gap:5px;">
+                <input type="text" class="form-control cms-vh-url" id="vh-url-input" value="${vh.url}">
+                <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('vh-url-input')">📁</button>
+              </div>
             </div>
             <div>
               <label class="cms-label">Heading</label>
@@ -1324,7 +1331,10 @@
            <div class="cms-inputs">
              <div class="cms-full">
                <label class="cms-label">Video MP4 URL</label>
-               <input type="text" class="form-control cms-video-url" value="${vid.url}">
+               <div style="display:flex; gap:5px;">
+                 <input type="text" class="form-control cms-video-url" id="vid-url-${i}" value="${vid.url}">
+                 <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('vid-url-${i}')">📁</button>
+               </div>
              </div>
              <div>
                <label class="cms-label">Product Name</label>
@@ -1336,7 +1346,10 @@
              </div>
              <div>
                <label class="cms-label">Product Thumb URL</label>
-               <input type="text" class="form-control cms-video-img" value="${vid.productImg}" oninput="updateCMSPreview(this)">
+               <div style="display:flex; gap:5px;">
+                 <input type="text" class="form-control cms-video-img" id="vid-img-${i}" value="${vid.productImg}" oninput="updateCMSPreview(this)">
+                 <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('vid-img-${i}')">📁</button>
+               </div>
              </div>
            </div>
         </div>
@@ -1439,13 +1452,15 @@
     async function saveHomePage() {
       // Collect Hero Data
       const heroRows = document.querySelectorAll('[data-type="hero"]');
-      homePageData.hero.slides = Array.from(heroRows).map((row, i) => ({
-        index: i,
-        title: row.querySelector('.cms-title').value,
-        image: row.querySelector('.cms-image').value,
-        link: row.querySelector('.cms-link').value,
-        subtitle: homePageData.hero.slides[i] ? homePageData.hero.slides[i].subtitle : ''
-      }));
+      if (heroRows.length > 0) {
+        homePageData.hero.slides = Array.from(heroRows).map((row, i) => ({
+          index: i,
+          title: row.querySelector('.cms-title').value,
+          image: row.querySelector('.cms-image').value,
+          link: row.querySelector('.cms-link').value,
+          subtitle: homePageData.hero.slides[i] ? homePageData.hero.slides[i].subtitle : ''
+        }));
+      }
 
       // Collect Static Banner
       homePageData.staticBanner = {
@@ -1628,6 +1643,6 @@
   </script>
 
   <!-- Global hidden file input for CMS uploads -->
-  <input type="file" id="global-cms-file-input" hidden accept="image/*" onchange="handleGlobalCMSUpload(this)">
+  <input type="file" id="global-cms-file-input" hidden accept="image/*,video/*" onchange="handleGlobalCMSUpload(this)">
 </body>
 </html>
