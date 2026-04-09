@@ -130,7 +130,7 @@
                 if (prodName) prodName.textContent = vid.productName;
                 if (price) {
                     const numericPrice = parseFloat(vid.price) || 0;
-                    price.textContent = 'MRP ₹ ' + numericPrice.toFixed(2) + ' INR';
+                    price.textContent = '₹ ' + Math.round(numericPrice);
                 }
                 if (img) img.src = vid.productImg;
             }

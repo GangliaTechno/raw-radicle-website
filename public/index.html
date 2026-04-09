@@ -1393,19 +1393,42 @@ Version: 2.43.0
         .TestimonialsSection__CurrentPrice {
           font-family: 'Montserrat', sans-serif !important;
           font-size: 11px !important;
-          font-weight: 500 !important;
-          letter-spacing: 0.18em !important;
+          font-weight: 600 !important;
+          letter-spacing: 0.05em !important;
           text-transform: uppercase !important;
-          color: rgba(28, 28, 28, 0.65) !important;
+          color: #1C1C1C !important;
           white-space: nowrap !important;
-          margin-right: 12px !important;
+        }
+
+        .TestimonialsSection__OriginalPrice {
+          font-family: 'Montserrat', sans-serif !important;
+          font-size: 10px !important;
+          font-weight: 400 !important;
+          color: rgba(28, 28, 28, 0.4) !important;
+          text-decoration: line-through !important;
+          margin-left: 8px !important;
+        }
+
+        .TestimonialsSection__PriceRow {
+          display: flex !important;
+          align-items: baseline !important;
+          margin-bottom: 4px !important;
+        }
+
+        .TestimonialsSection__Discount {
+          font-family: 'Montserrat', sans-serif !important;
+          font-size: 9px !important;
+          font-weight: 700 !important;
+          color: #2D8A39 !important; /* Premium Green */
+          text-transform: uppercase !important;
+          letter-spacing: 0.05em !important;
         }
 
         .MvstProducts__Price {
           font-family: 'Montserrat', sans-serif !important;
           font-size: 11px !important;
           font-weight: 500 !important;
-          letter-spacing: 0.18em !important;
+          letter-spacing: 0.15em !important;
           text-transform: uppercase !important;
           color: rgba(28, 28, 28, 0.65) !important;
           margin: 0 !important;
@@ -1565,7 +1588,7 @@ Version: 2.43.0
                     alt="Ashwagandha Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="adarkc" data-cms-key="name">Ashwagandha Dark Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="adarkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="adarkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -1577,7 +1600,7 @@ Version: 2.43.0
                     alt="Ashwagandha Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="amilkc" data-cms-key="name">Ashwagandha Milk Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="amilkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="amilkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -1589,7 +1612,7 @@ Version: 2.43.0
                     alt="Chyawanaprash Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Dark Chocolate Slab</h3>
-                <p class="MvstProducts__Price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price">₹ 300</p>
               </a>
             </div>
 
@@ -1601,7 +1624,7 @@ Version: 2.43.0
                     alt="Chyawanaprash Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Milk Chocolate Slab</h3>
-                <p class="MvstProducts__Price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price">₹ 300</p>
               </a>
             </div>
 
@@ -1613,7 +1636,7 @@ Version: 2.43.0
                     alt="Brahmi Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="bdarkc" data-cms-key="name">Brahmi Dark Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="bdarkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="bdarkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -1625,7 +1648,7 @@ Version: 2.43.0
                     alt="Brahmi Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="bmilkc" data-cms-key="name">Brahmi Milk Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="bmilkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="bmilkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -1638,7 +1661,7 @@ Version: 2.43.0
                     alt="Ashwagandha Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="adarkc" data-cms-key="name">Ashwagandha Dark Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="adarkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="adarkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -1650,7 +1673,7 @@ Version: 2.43.0
                     alt="Ashwagandha Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="amilkc" data-cms-key="name">Ashwagandha Milk Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="amilkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="amilkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -1662,7 +1685,7 @@ Version: 2.43.0
                     alt="Chyawanaprash Dark Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Dark Chocolate Slab</h3>
-                <p class="MvstProducts__Price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price">₹ 300</p>
               </a>
             </div>
 
@@ -1674,7 +1697,7 @@ Version: 2.43.0
                     alt="Chyawanaprash Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name">Chyawanaprash Milk Chocolate Slab</h3>
-                <p class="MvstProducts__Price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price">₹ 300</p>
               </a>
             </div>
 
@@ -1686,7 +1709,7 @@ Version: 2.43.0
                     alt="Brahmi Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="bdarkc" data-cms-key="name">Brahmi Dark Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="bdarkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="bdarkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -1698,7 +1721,7 @@ Version: 2.43.0
                     alt="Brahmi Milk Chocolate Slab Hover">
                 </div>
                 <h3 class="MvstProducts__Name" data-cms-product-id="bmilkc" data-cms-key="name">Brahmi Milk Chocolate Slab</h3>
-                <p class="MvstProducts__Price" data-cms-product-id="bmilkc" data-cms-key="price">MRP ₹ 300.00 INR</p>
+                <p class="MvstProducts__Price" data-cms-product-id="bmilkc" data-cms-key="price">₹ 300</p>
               </a>
             </div>
 
@@ -2815,10 +2838,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName" data-cms-home-key="testimonials.videos.0.productName">Ashwagandha Dark Slab</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice" data-cms-home-key="testimonials.videos.0.price">MRP ₹ 300.00 INR</span>
+                    <span class="TestimonialsSection__CurrentPrice" data-cms-home-key="testimonials.videos.0.price">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice" data-cms-home-key="testimonials.videos.0.originalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
@@ -2855,10 +2878,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName" data-cms-home-key="testimonials.videos.1.productName">Ashwagandha Milk Slab</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice" data-cms-home-key="testimonials.videos.1.price">MRP ₹ 300.00 INR</span>
+                    <span class="TestimonialsSection__CurrentPrice" data-cms-home-key="testimonials.videos.1.price">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice" data-cms-home-key="testimonials.videos.1.originalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
@@ -2895,10 +2918,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName" data-cms-home-key="testimonials.videos.2.productName">Chyawanaprash Dark</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice" data-cms-home-key="testimonials.videos.2.price">MRP ₹ 300.00 INR</span>
+                    <span class="TestimonialsSection__CurrentPrice" data-cms-home-key="testimonials.videos.2.price">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice" data-cms-home-key="testimonials.videos.2.originalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
@@ -2936,10 +2959,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName">Chyawanaprash Milk</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice">MRP ₹ 300.00 INR</span>
+                    <span class="TestimonialsSection__CurrentPrice">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
@@ -2977,10 +3000,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName">Brahmi Milk Slab</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice">MRP MRP ₹ 300.00 INR INR</span>
+                    <span class="TestimonialsSection__CurrentPrice">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
@@ -3018,10 +3041,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName">Brahmi Dark Slab</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice">MRP MRP ₹ 300.00 INR INR</span>
+                    <span class="TestimonialsSection__CurrentPrice">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
@@ -3059,10 +3082,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName">Ashwagandha Milk Slab</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice">MRP ₹ 250.00 INR</span>
+                    <span class="TestimonialsSection__CurrentPrice">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>
@@ -3100,10 +3123,10 @@ Version: 2.43.0
                 <div class="TestimonialsSection__ProductText">
                   <h4 class="TestimonialsSection__ProductName">Chyawanaprash Dark</h4>
                   <div class="TestimonialsSection__PriceRow">
-                    <span class="TestimonialsSection__CurrentPrice">MRP ₹ 250.00 INR</span>
+                    <span class="TestimonialsSection__CurrentPrice">₹ 300</span>
                     <span class="TestimonialsSection__OriginalPrice">₹ 350</span>
                   </div>
-                  <span class="TestimonialsSection__Discount">28% Off</span>
+                  <span class="TestimonialsSection__Discount">14% Off</span>
                 </div>
               </div>
               <a href="#" class="TestimonialsSection__ViewProductBtn">View Product</a>

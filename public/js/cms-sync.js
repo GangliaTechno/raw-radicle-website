@@ -74,7 +74,7 @@ const CMSSync = (() => {
         } else if (path.includes('.price')) {
           const priceValue = parseFloat(value);
           if (!isNaN(priceValue)) {
-            el.textContent = `MRP ₹ ${priceValue.toFixed(2)} INR`;
+            el.textContent = `₹ ${Math.round(priceValue)}`;
           }
         } else {
           el.textContent = value;
