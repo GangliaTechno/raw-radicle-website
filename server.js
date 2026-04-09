@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 
@@ -9,8 +10,80 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "20mb" }));
+app.use(express.urlencoded({ limit: "20mb", extended: true }));
+
+// --- CMS API Endpoints ---
+
+// Products API
+app.get("/api/products", (req, res) => {
+  const filePath = path.join(__dirname, "products.json");
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: "Products file not found" });
+  }
+  try {
+    const data = fs.readFileSync(filePath, "utf8");
+    res.json(JSON.parse(data));
+  } catch (e) {
+    res.status(500).json({ error: "Failed to parse products.json" });
+  }
+});
+
+app.post("/api/products", (req, res) => {
+  const filePath = path.join(__dirname, "products.json");
+  const data = req.body;
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+  res.json({ success: true, message: "Products updated successfully" });
+});
+
+// Home Page API
+app.get("/api/homepage", (req, res) => {
+  const filePath = path.join(__dirname, "homepage.json");
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: "Home page file not found" });
+  }
+  try {
+    const data = fs.readFileSync(filePath, "utf8");
+    res.json(JSON.parse(data));
+  } catch (e) {
+    res.status(500).json({ error: "Failed to parse homepage.json" });
+  }
+});
+
+app.post("/api/homepage", (req, res) => {
+  const filePath = path.join(__dirname, "homepage.json");
+  const data = req.body;
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+  res.json({ success: true, message: "Home page updated successfully" });
+});
+
+// Image Upload API
+app.post("/api/upload", (req, res) => {
+  const { fileName, base64Data } = req.body;
+  
+  if (!fileName || !base64Data) {
+    return res.status(400).json({ success: false, error: "Missing file data" });
+  }
+
+  try {
+    const uploadDir = path.join(__dirname, "public", "assets", "uploads");
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    // Strip base64 prefix if present
+    const base64Image = base64Data.split(";base64,").pop();
+    const filePath = path.join(uploadDir, fileName);
+    
+    fs.writeFileSync(filePath, base64Image, { encoding: "base64" });
+    
+    const relativePath = `assets/uploads/${fileName}`;
+    res.json({ success: true, url: relativePath });
+  } catch (err) {
+    console.error("Upload failed:", err);
+    res.status(500).json({ success: false, error: "Upload failed" });
+  }
+});
 
 // Middleware to fix Wayback Machine URLs before processing
 app.use((req, res, next) => {
@@ -180,6 +253,8 @@ app.post("/api/order", async (req, res) => {
     });
   }
 });
+
+// --- End of CMS API Endpoints ---
 
 // Start server
 app.listen(PORT, () => {
