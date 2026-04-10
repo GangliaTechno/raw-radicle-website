@@ -152,7 +152,30 @@
       line-height: 1.5 !important;
       display: inline-block !important;
       margin-top: 2px !important;
+      margin-bottom: 25px !important;
     }
+
+    /* Fix for dynamic images visibility and hover collision */
+    .ProductItem__Image:not(.ProductItem__Image--secondary) {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transition: opacity 0.5s ease;
+    }
+
+    .ProductItem:hover .ProductItem__Image:not(.ProductItem__Image--secondary) {
+      opacity: 0 !important;
+    }
+
+    .ProductItem__Image--secondary {
+      opacity: 0 !important;
+      transition: opacity 0.5s ease;
+    }
+
+    .ProductItem:hover .ProductItem__Image--secondary {
+      opacity: 1 !important;
+    }
+
+
   </style>
   <script>
     1 == location.pathname.includes("products/navidium-shipping") && (location.href = "/")
@@ -1336,210 +1359,62 @@ Version: 2.43.0
             <div class="CollectionInner__Products">
               <div class="ProductListWrapper">
                 <div class="ProductList ProductList--grid Grid" data-desktop-count="3" data-mobile-count="2">
-                  <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
-                    <div class="ProductItem">
-                      <div class="ProductItem__Wrapper">
-                        <a class="ProductItem__ImageWrapper" href="bdarkc.html">
-                          <div class="AspectRatio AspectRatio--withFallback"
-                            style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                            <img alt="Bhrami DARK Chocolate Slab"
-                              class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto"
-                              data-src="../assets/choco/bdark.png" data-widths="[200,400,600,700,800,900,1000,1200]" />
-                            <img alt="Bhrami DARK Chocolate Slab Hover"
-                              class="ProductItem__Image ProductItem__Image--secondary"
-                              src="../assets/choco/bdark-1.png" />
-                            <span class="Image__Loader">
-                            </span>
-                            <noscript>
-                              <img alt="Bhrami DARK Chocolate Slab" class="ProductItem__Image"
-                                src="../assets/choco/bdark.png" />
-                            </noscript>
-                          </div>
-                          <button class="ProductItem__ShopBtn">Details</button>
-                        </a>
-                        <div class="ProductItem__Info ProductItem__Info--center">
-                          <h2 class="ProductItem__Title Heading">
-                            <a href="bdarkc.html">
-                              BHRAMI DARK CHOCOLATE
-                            </a>
-                          </h2>
-                          <div class="ProductItem__PriceList Heading">
-                            <span class="ProductItem__Price Price Text--subdued">From Rs. 300.00 INR</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div id="dynamic-product-list" style="display: contents;">
+                    <!-- Products will be loaded here dynamically -->
                   </div>
-                  <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
-                    <div class="ProductItem">
-                      <div class="ProductItem__Wrapper">
-                        <a class="ProductItem__ImageWrapper" href="bmilkc.html">
-                          <div class="AspectRatio AspectRatio--withFallback"
-                            style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                            <img alt="Brahmi MILK Chocolate Slab"
-                              class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto"
-                              data-src="../assets/choco/bmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]" />
-                            <img alt="Brahmi MILK Chocolate Slab Hover"
-                              class="ProductItem__Image ProductItem__Image--secondary"
-                              src="../assets/choco/bmilk-1.png" />
-                            <span class="Image__Loader">
-                            </span>
-                            <noscript>
-                              <img alt="Brahmi MILK Chocolate Slab" class="ProductItem__Image"
-                                src="../assets/choco/bmilk.png" />
-                            </noscript>
-                          </div>
-                          <button class="ProductItem__ShopBtn">Details</button>
-                        </a>
-                        <div class="ProductItem__Info ProductItem__Info--center">
-                          <h2 class="ProductItem__Title Heading">
-                            <a href="bmilkc.html">
-                              BRAHMI MILK CHOCOLATE
-                            </a>
-                          </h2>
-                          <div class="ProductItem__PriceList Heading">
-                            <span class="ProductItem__Price Price Text--subdued">From Rs. 300.00 INR</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
-                    <div class="ProductItem">
-                      <div class="ProductItem__Wrapper">
-                        <a class="ProductItem__ImageWrapper" href="cdarkc.html">
-                          <div class="AspectRatio AspectRatio--withFallback"
-                            style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                            <img alt="Chyawanaprash DARK Chocolate Slab"
-                              class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto"
-                              data-src="../assets/choco/cdark.png" data-widths="[200,400,600,700,800,900,1000,1200]" />
-                            <img alt="Chyawanaprash DARK Chocolate Slab Hover"
-                              class="ProductItem__Image ProductItem__Image--secondary"
-                              src="../assets/choco/cdark-1.png" />
-                            <span class="Image__Loader">
-                            </span>
-                            <noscript>
-                              <img alt="Chyawanaprash DARK Chocolate Slab" class="ProductItem__Image"
-                                src="../assets/choco/cdark.png" />
-                            </noscript>
-                          </div>
-                          <button class="ProductItem__ShopBtn">Details</button>
-                        </a>
-                        <div class="ProductItem__Info ProductItem__Info--center">
-                          <h2 class="ProductItem__Title Heading">
-                            <a href="cdarkc.html">
-                              CHYAWANAPRASH DARK CHOCOLATE
-                            </a>
-                          </h2>
-                          <div class="ProductItem__PriceList Heading">
-                            <span class="ProductItem__Price Price Text--subdued">From Rs. 300.00 INR</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
-                    <div class="ProductItem">
-                      <div class="ProductItem__Wrapper">
-                        <a class="ProductItem__ImageWrapper" href="cmilkc.html">
-                          <div class="AspectRatio AspectRatio--withFallback"
-                            style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                            <img alt="Chyawanaprash MILK Chocolate Slab"
-                              class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto"
-                              data-src="../assets/choco/cmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]" />
-                            <img alt="Chyawanaprash MILK Chocolate Slab Hover"
-                              class="ProductItem__Image ProductItem__Image--secondary"
-                              src="../assets/choco/cmilk-1.png" />
-                            <span class="Image__Loader">
-                            </span>
-                            <noscript>
-                              <img alt="Chyawanaprash MILK Chocolate Slab" class="ProductItem__Image"
-                                src="../assets/choco/cmilk.png" />
-                            </noscript>
-                          </div>
-                          <button class="ProductItem__ShopBtn">Details</button>
-                        </a>
-                        <div class="ProductItem__Info ProductItem__Info--center">
-                          <h2 class="ProductItem__Title Heading">
-                            <a href="cmilkc.html">
-                              CHYAWANAPRASH MILK CHOCOLATE
-                            </a>
-                          </h2>
-                          <div class="ProductItem__PriceList Heading">
-                            <span class="ProductItem__Price Price Text--subdued">From Rs. 300.00 INR</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="dark">
-                    <div class="ProductItem">
-                      <div class="ProductItem__Wrapper">
-                        <a class="ProductItem__ImageWrapper" href="adarkc.html">
-                          <div class="AspectRatio AspectRatio--withFallback"
-                            style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                            <img alt="Ashwagandha DARK Chocolate Slab"
-                              class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto"
-                              data-src="../assets/choco/adark.png" data-widths="[200,400,600,700,800,900,1000,1200]" />
-                            <img alt="Ashwagandha DARK Chocolate Slab Hover"
-                              class="ProductItem__Image ProductItem__Image--secondary"
-                              src="../assets/choco/adark-1.png" />
-                            <span class="Image__Loader">
-                            </span>
-                            <noscript>
-                              <img alt="Ashwagandha DARK Chocolate Slab" class="ProductItem__Image"
-                                src="../assets/choco/adark.png" />
-                            </noscript>
-                          </div>
-                          <button class="ProductItem__ShopBtn">Details</button>
-                        </a>
-                        <div class="ProductItem__Info ProductItem__Info--center">
-                          <h2 class="ProductItem__Title Heading">
-                            <a href="adarkc.html">
-                              ASHWAGANDHA DARK CHOCOLATE
-                            </a>
-                          </h2>
-                          <div class="ProductItem__PriceList Heading">
-                            <span class="ProductItem__Price Price Text--subdued">From Rs. 300.00 INR</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="milk">
-                    <div class="ProductItem">
-                      <div class="ProductItem__Wrapper">
-                        <a class="ProductItem__ImageWrapper" href="amilkc.html">
-                          <div class="AspectRatio AspectRatio--withFallback"
-                            style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
-                            <img alt="Ashwagandha MILK Chocolate Slab"
-                              class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-sizes="auto"
-                              data-src="../assets/choco/apmilk.png" data-widths="[200,400,600,700,800,900,1000,1200]" />
-                            <img alt="Ashwagandha MILK Chocolate Slab Hover"
-                              class="ProductItem__Image ProductItem__Image--secondary"
-                              src="../assets/choco/apmilk-1.png" />
-                            <span class="Image__Loader">
-                            </span>
-                            <noscript>
-                              <img alt="Ashwagandha MILK Chocolate Slab" class="ProductItem__Image"
-                                src="../assets/choco/apmilk.png" />
-                            </noscript>
-                          </div>
-                          <button class="ProductItem__ShopBtn">Details</button>
-                        </a>
-                        <div class="ProductItem__Info ProductItem__Info--center">
-                          <h2 class="ProductItem__Title Heading">
-                            <a href="amilkc.html">
-                              ASHWAGANDHA MILK CHOCOLATE
-                            </a>
-                          </h2>
-                          <div class="ProductItem__PriceList Heading">
-                            <span class="ProductItem__Price Price Text--subdued">From Rs. 300.00 INR</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
+                  <script>
+                    async function loadProducts() {
+                      try {
+                        const response = await fetch('/api/products');
+                        const products = await response.json();
+                        const container = document.getElementById('dynamic-product-list');
+                        
+                        container.innerHTML = Object.values(products).map(p => {
+                          const type = p.name.toLowerCase().includes('dark') ? 'dark' : 'milk';
+                          const imgPath = p.image.startsWith('assets') ? '../' + p.image : p.image;
+                          const hoverPath = p.hoverImage && p.hoverImage.startsWith('assets') ? '../' + p.hoverImage : (p.hoverImage || imgPath);
+                          const pagePath = p.page.startsWith('pages/') ? p.page.split('/')[1] : p.page;
+
+                          return `
+                            <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk" data-type="${type}">
+                              <div class="ProductItem" style="visibility: visible; opacity: 1;">
+                                <div class="ProductItem__Wrapper">
+                                  <a class="ProductItem__ImageWrapper" href="${pagePath}">
+                                    <div class="AspectRatio AspectRatio--withFallback" style="max-width: 2000px; padding-bottom: 100.0%; --aspect-ratio: 1.0">
+                                      <img alt="${p.name}" class="ProductItem__Image" src="${imgPath}" />
+                                      <img alt="${p.name} Hover" class="ProductItem__Image ProductItem__Image--secondary" src="${hoverPath}" />
+                                      <span class="Image__Loader"></span>
+                                      <noscript>
+                                        <img alt="${p.name}" class="ProductItem__Image" src="${imgPath}" />
+                                      </noscript>
+                                    </div>
+                                    <button class="ProductItem__ShopBtn">Details</button>
+                                  </a>
+                                  <div class="ProductItem__Info ProductItem__Info--center">
+                                    <h2 class="ProductItem__Title Heading">
+                                      <a href="${pagePath}">${p.name.toUpperCase()}</a>
+                                    </h2>
+                                    <div class="ProductItem__PriceList Heading">
+                                      <span class="ProductItem__Price Price Text--subdued">MRP ₹ ${parseFloat(p.price).toFixed(2)} INR</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          `;
+                        }).join('');
+
+                        // Re-initialize filtering and sorting logic from custom.js
+                        if (window.initProductsLogic) {
+                          window.initProductsLogic();
+                        }
+                      } catch (error) {
+                        console.error('Error loading products:', error);
+                      }
+                    }
+                    loadProducts();
+                  </script>
                   <!-- <div class="Grid__Cell 1/2--phone 1/2--tablet-and-up 1/3--desk">
             <div class="ProductItem">
              <div class="ProductItem__Wrapper">

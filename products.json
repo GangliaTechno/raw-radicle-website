@@ -1,0 +1,68 @@
+{
+  "bmilkc": {
+    "id": "bmilkc",
+    "name": "Brahmi Milk Chocolate",
+    "price": 300,
+    "mrp": 350,
+    "description": "A creamy milk chocolate infused with Brahmi (Bacopa monnieri), the revered Ayurvedic herb known for enhancing memory, focus, and cognitive clarity.",
+    "image": "assets/choco/bmilk.png",
+    "hoverImage": "assets/choco/bmilk-1.png",
+    "page": "pages/bmilkc.html",
+    "badge": "bestseller"
+  },
+  "bdarkc": {
+    "id": "bdarkc",
+    "name": "Brahmi Dark Chocolate",
+    "price": 300,
+    "mrp": 350,
+    "description": "An intense dark chocolate enriched with Brahmi extract, combining the antioxidant power of dark cocoa with the cognitive benefits of Ayurveda.",
+    "image": "assets/choco/bdark.png",
+    "hoverImage": "assets/choco/bdark-1.png",
+    "page": "pages/bdarkc.html",
+    "badge": null
+  },
+  "amilkc": {
+    "id": "amilkc",
+    "name": "Ashwagandha Milk Chocolate",
+    "price": 300,
+    "mrp": 350,
+    "description": "Silky milk chocolate blended with Ashwagandha Atibaladi — the ancient stress-buster root that brings calm, resilience, and balance to modern life.",
+    "image": "assets/choco/apmilk.png",
+    "hoverImage": "assets/choco/apmilk-1.png",
+    "page": "pages/amilkc.html",
+    "badge": "new"
+  },
+  "adarkc": {
+    "id": "adarkc",
+    "name": "Ashwagandha Dark Chocolate",
+    "price": 300,
+    "mrp": 350,
+    "description": "Bold dark chocolate meets the adaptogenic might of Ashwagandha. A sophisticated bar designed for those who seek calm without compromise.",
+    "image": "assets/choco/adark.png",
+    "hoverImage": "assets/choco/adark-1.png",
+    "page": "pages/adarkc.html",
+    "badge": null
+  },
+  "cmilkc": {
+    "id": "cmilkc",
+    "name": "Chyawanaprash Milk Chocolate",
+    "price": 300,
+    "mrp": 350,
+    "description": "The legendary Chyawanaprash formula — 40+ herbs — reimagined in a luxurious milk chocolate. Immunity meets indulgence in every square.",
+    "image": "assets/choco/cmilk.png",
+    "hoverImage": "assets/choco/cmilk-1.png",
+    "page": "pages/cmilkc.html",
+    "badge": null
+  },
+  "cdarkc": {
+    "id": "cdarkc",
+    "name": "Chyawanaprash Dark Chocolate",
+    "price": 300,
+    "mrp": 350,
+    "description": "A powerful union of the Chyawanaprash complex and rich dark chocolate. The deepest expression of Ayurvedic wellness through artisanal chocolate.",
+    "image": "assets/choco/cdark.png",
+    "hoverImage": "assets/choco/cdark-1.png",
+    "page": "pages/cdarkc.html",
+    "badge": null
+  }
+}

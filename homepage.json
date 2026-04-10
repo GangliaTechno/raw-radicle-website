@@ -1,0 +1,159 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "index": 0,
+        "title": "Experience the Power of Dark",
+        "image": "assets/banner1.jpg",
+        "link": "pages/cdarkc.html",
+        "subtitle": "CHYAWANAPRASH"
+      }
+    ]
+  },
+  "staticBanner": {
+    "image": "assets/RRbanner.png",
+    "link": "pages/products.html"
+  },
+  "videoHero": {
+    "url": "assets/uploads/1775732688489-ad1.mp4",
+    "title": "Savor the richness of artisanal Ayurvedic chocolate",
+    "subtitle": "PURE CHOCOLATE INDULGENCE"
+  },
+  "experts": [
+    {
+      "name": "Dr. Nozer Sheriar",
+      "role": "Gynaecologist",
+      "image": "assets/experts/doctor1.png"
+    },
+    {
+      "name": "Dr. Anjali Desai",
+      "role": "Ayurvedic Specialist",
+      "image": "assets/experts/doctor2.png"
+    },
+    {
+      "name": "Dr. Rohan Mehra",
+      "role": "Nutritionist",
+      "image": "assets/experts/doctor3.png"
+    },
+    {
+      "name": "Dr. Sarah Khan",
+      "role": "Dermatologist",
+      "image": "assets/experts/doctor4.png"
+    },
+    {
+      "name": "Dr. Vikram Singh",
+      "role": "Wellness Expert",
+      "image": "assets/experts/doctor5.png"
+    },
+    {
+      "name": "Dr. Priya Sharma",
+      "role": "Holistic Health Consultant",
+      "image": "assets/experts/doctor6.png"
+    }
+  ],
+  "testimonials": {
+    "videos": [
+      {
+        "id": "v1",
+        "url": "assets/video/video-1.mp4",
+        "productName": "Ashwagandha Dark Slab",
+        "price": "300",
+        "productImg": "assets/choco/adark.png",
+        "originalPrice": 350
+      },
+      {
+        "id": "v2",
+        "url": "assets/video/video-2.mp4",
+        "productName": "Ashwagandha Milk Slab",
+        "price": "300",
+        "productImg": "assets/choco/apmilk.png",
+        "originalPrice": 350
+      },
+      {
+        "id": "v3",
+        "url": "assets/video/video-3.mp4",
+        "productName": "Chyawanaprash Dark",
+        "price": "300",
+        "productImg": "assets/choco/cdark.png",
+        "originalPrice": 350
+      },
+      {
+        "id": "v4",
+        "url": "assets/video/video-4.mp4",
+        "productName": "Chyawanaprash Milk",
+        "price": "300",
+        "productImg": "assets/choco/cmilk.png",
+        "originalPrice": 350
+      },
+      {
+        "id": "v5",
+        "url": "assets/video/video-5.mp4",
+        "productName": "Brahmi Milk Slab",
+        "price": "300",
+        "productImg": "assets/choco/bmilk.png",
+        "originalPrice": 350
+      },
+      {
+        "id": "v6",
+        "url": "assets/video/video-6.mp4",
+        "productName": "Brahmi Dark Slab",
+        "price": "300",
+        "productImg": "assets/choco/bdark.png",
+        "originalPrice": 350
+      }
+    ]
+  },
+  "shopOn": {
+    "quickCommerce": [
+      {
+        "name": "Blinkit",
+        "logo": "assets/bkit.png",
+        "link": "#"
+      },
+      {
+        "name": "Zepto",
+        "logo": "assets/zep.png",
+        "link": "#"
+      },
+      {
+        "name": "Instamart",
+        "logo": "assets/imart.png",
+        "link": "#"
+      }
+    ],
+    "ecommerce": [
+      {
+        "name": "Amazon",
+        "logo": "assets/azon.png",
+        "link": "#"
+      },
+      {
+        "name": "Flipkart",
+        "logo": "assets/fkart.png",
+        "link": "#"
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What Ayurvedic ingredients are in your chocolates?",
+      "answer": "Our chocolates are infused with whole Ayurvedic herbs – Ashwagandha, Brahmi, and Chyawanaprash. Each herb is carefully selected for its health benefits and blended with high-quality cacao to create a delicious, functional chocolate experience."
+    },
+    {
+      "question": "Are your chocolates vegan & gluten-free?",
+      "answer": "Our Dark Chocolate slabs are 100% vegan. Our Milk Chocolate slabs contain dairy. None of our products contain gluten, making them suitable for most dietary needs."
+    },
+    {
+      "question": "How much chocolate should I eat per day?",
+      "answer": "We recommend enjoying 2–3 squares (approximately 15–20g) per day as part of a balanced diet. This is enough to experience the benefits of the Ayurvedic herbs without overindulging."
+    },
+    {
+      "question": "What is the shelf life of your products?",
+      "answer": "All Raw Radicles chocolate slabs have a shelf life of 9 months from the date of manufacture. Store in a cool, dry place away from direct sunlight for best results."
+    },
+    {
+      "question": "Where are your products available?",
+      "answer": "Our products are available on Blinkit, Zepto, Amazon, Swiggy Instamart, and Flipkart. You can also find us in select health stores across India."
+    }
+  ]
+}

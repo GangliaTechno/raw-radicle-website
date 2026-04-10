@@ -55,17 +55,19 @@
     }
 
     .sidebar-logo {
-      padding: 28px 24px 20px;
+      padding: 30px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
+      text-align: center;
+      gap: 16px;
+      text-decoration: none;
     }
 
     .sidebar-logo img {
-      height: 36px;
-      width: auto;
-      filter: brightness(0) invert(1);
+      max-width: 140px;
+      height: auto;
     }
 
     .sidebar-logo-text {
@@ -587,6 +589,27 @@
       cursor: pointer;
     }
 
+    /* ──── PRODUCT CMS STYLES ──── */
+    .cms-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .cms-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .cms-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .cms-review-item { border-bottom: 1px solid var(--border); padding: 15px 0; }
+    .cms-review-item:last-child { border-bottom: none; }
+    .review-meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 11px; color: var(--text-light); }
+    .review-body { font-size: 13px; margin-bottom: 10px; line-height: 1.5; }
+    .review-actions { display: flex; gap: 10px; }
+    .review-tabs button.active { background: var(--sidebar-bg); color: #fff; }
+
+    .cms-section-item { border: 1px solid var(--border); border-radius: 6px; padding: 15px; margin-bottom: 15px; position: relative; }
+    .cms-item-delete { position: absolute; top: 10px; right: 10px; color: var(--danger); cursor: pointer; }
+
+    .gallery-item { text-align: center; }
+    .gallery-preview { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; margin-bottom: 8px; border: 1px solid var(--border); }
+    
+    .feature-hi-row { display: grid; grid-template-columns: 120px 1fr; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed var(--border); }
+    .feature-hi-row:last-child { border-bottom: none; }
+    .feature-hi-thumb { width:120px; height:80px; object-fit:cover; border-radius:4px; }
+
     /* ──── TOAST NOTIFICATION ──── */
     .toast-container {
       position: fixed;
@@ -725,16 +748,30 @@
     .empty-state-icon { font-size: 40px; margin-bottom: 14px; }
     .empty-state-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
     .empty-state-text { font-size: 13px; }
+
+    /* ──── CMS HOME PAGE STYLES ──── */
+    .cms-section { margin-bottom: 32px; }
+    .cms-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
+    .cms-card-header { padding: 12px 16px; background: #fafafa; border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+    .cms-card-body { padding: 16px; }
+    .cms-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px dashed #f0f0f0; }
+    .cms-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .cms-thumb-container { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+    .cms-thumb { width: 120px; height: 80px; object-fit: contain; border-radius: 4px; background: #eee; border: 1px solid var(--border); }
+    .cms-thumb-label { font-size: 9px; color: var(--text-light); text-transform: uppercase; font-weight: 700; }
+    .cms-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cms-full { grid-column: span 2; }
+    .cms-label { display: block; font-size: 10px; font-weight: 600; color: var(--text-light); margin-bottom: 4px; text-transform: uppercase; }
   </style>
 </head>
 
 <body>
   <!-- ──── SIDEBAR ──── -->
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
+    <a href="index.html" class="sidebar-logo">
       <img src="assets/RR_Logo-1.png" alt="Raw Radicles">
-      <span class="sidebar-logo-text">Admin</span>
-    </div>
+      <span class="sidebar-logo-text">ADMIN</span>
+    </a>
 
     <div class="sidebar-section-label">Management</div>
     <nav class="sidebar-nav">
@@ -745,6 +782,14 @@
       <a class="sidebar-item" data-panel="products" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         Products
+      </a>
+      <a class="sidebar-item" data-panel="home-page" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home Page
+      </a>
+      <a class="sidebar-item" data-panel="product-cms" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Product CMS
       </a>
       <a class="sidebar-item" data-panel="users" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
@@ -889,6 +934,160 @@
         </div>
       </div>
 
+      <!-- ═══ HOME PAGE PANEL ═══ -->
+      <div class="panel" id="panel-home-page">
+        <div class="section-header">
+          <span class="section-title">Home Page Content</span>
+          <button class="btn btn-success btn-sm" onclick="saveHomePage()">Save Home Changes</button>
+        </div>
+        <p style="font-size:12px; color:var(--text-light); margin-bottom:20px;">
+          Update hero banners, testimonial videos, and site-wide promotional content. Changes will be visible to all visitors.
+        </p>
+        
+        <div class="cms-section">
+          <!--
+          <div class="cms-card">
+            <div class="cms-card-header">Hero Slideshow (Top Slider)</div>
+            <div class="cms-card-body" id="hero-slides-list">
+              Populated by JS
+            </div>
+          </div>
+          -->
+
+          <div class="cms-card">
+            <div class="cms-card-header">Static Banner</div>
+            <div class="cms-card-body" id="static-banner-cms">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="cms-card">
+            <div class="cms-card-header">Video Ad Section</div>
+            <div class="cms-card-body" id="video-hero-cms">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="cms-card">
+            <div class="cms-card-header">Testimonial Videos</div>
+            <div class="cms-card-body" id="testimonial-videos-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="cms-card">
+            <div class="cms-card-header">Meet the Experts</div>
+            <div class="cms-card-body" id="experts-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="cms-card">
+            <div class="cms-card-header">Shop On Section</div>
+            <div class="cms-card-body" id="shop-on-cms">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="cms-card">
+            <div class="cms-card-header">Frequently Asked Questions</div>
+            <div class="cms-card-body" id="faqs-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PRODUCT CMS PANEL ═══ -->
+      <div class="panel" id="panel-product-cms">
+        <div class="section-header">
+          <h2 class="section-title">Individual Product CMS</h2>
+          <p class="section-subtitle">Manage granular content for specific product pages</p>
+        </div>
+
+        <div class="card" style="margin-bottom:24px;">
+          <div style="display:flex; align-items:center; gap:15px; padding:20px;">
+            <label style="font-size:13px; font-weight:600; color:var(--text-light);">Select Product to Manage:</label>
+            <select id="cms-product-selector" class="form-control" style="max-width:300px;" onchange="loadProductCMS()">
+              <option value="">-- Choose a Product --</option>
+              <!-- Populated dynamically -->
+            </select>
+            <button class="btn btn-primary" onclick="saveProductCMS()" id="save-product-cms-btn" disabled>Save All Changes</button>
+          </div>
+        </div>
+
+        <div id="product-cms-editor" style="display:none;">
+          <!-- Section 1: Gallery -->
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <span class="section-title" style="font-size:14px;">1. Product Gallery (4 Images)</span>
+            </div>
+            <div class="card-body">
+              <div id="cms-gallery-list" class="cms-grid-4"></div>
+            </div>
+          </div>
+
+          <!-- Section 2: Basic Info -->
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <span class="section-title" style="font-size:14px;">2. Descriptive Content & Badges</span>
+            </div>
+            <div class="card-body">
+              <div id="cms-basic-info" class="cms-form-grid"></div>
+            </div>
+          </div>
+
+          <!-- Section 3: Collapsible Details -->
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <span class="section-title" style="font-size:14px;">3. Features, Specs & Certifications</span>
+            </div>
+            <div class="card-body">
+              <div id="cms-details-sections"></div>
+            </div>
+          </div>
+
+          <!-- Section 4: Feature Grid -->
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <span class="section-title" style="font-size:14px;">4. Feature Section Highlight</span>
+            </div>
+            <div class="card-body">
+              <div id="cms-feature-highlights"></div>
+            </div>
+          </div>
+
+          <!-- Section 5: Related Products -->
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <span class="section-title" style="font-size:14px;">5. Related Product Suggestions</span>
+            </div>
+            <div class="card-body">
+              <div id="cms-related-products" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <!-- Section 6: Review Moderation -->
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <span class="section-title" style="font-size:14px;">6. Review Moderation</span>
+            </div>
+            <div class="card-body">
+              <div class="review-tabs" style="margin-bottom:15px; display:flex; gap:10px;">
+                <button class="btn btn-outline btn-sm active" onclick="switchReviewTab('approved')">Approved Reviews</button>
+                <button class="btn btn-outline btn-sm" onclick="switchReviewTab('pending')" id="pending-reviews-count-btn">Pending Reviews (0)</button>
+              </div>
+              <div id="cms-reviews-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="product-cms-placeholder" style="padding:100px 0; text-align:center; color:var(--text-light);">
+          <div style="font-size:48px; margin-bottom:20px;">👈</div>
+          <p>Select a product from the dropdown to begin editing its dedicated page content.</p>
+        </div>
+      </div>
+
     </div><!-- /page-content -->
   </div><!-- /main-wrapper -->
 
@@ -925,22 +1124,31 @@
           <textarea class="form-control" id="edit-desc" placeholder="Describe this product…"></textarea>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Product Image</label>
-          <div class="dropzone" id="dropzone">
-            <input type="file" id="image-file-input" accept="image/*">
-            <div class="dropzone-icon">🖼️</div>
-            <div class="dropzone-label">Click or drag image here</div>
-            <div class="dropzone-sub">PNG, JPG, WEBP — max 5MB</div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Primary Image</label>
+            <div class="dropzone" onclick="document.getElementById('file-main').click()">
+              <input type="file" id="file-main" hidden accept="image/*" onchange="handleModalUpload(this, 'edit-image-url', 'preview-img')">
+              <div class="dropzone-icon">🖼️</div>
+              <div class="dropzone-label">Click to Upload</div>
+            </div>
+            <input type="text" class="form-control" id="edit-image-url" placeholder="URL will appear here..." style="margin-top:6px;">
+            <div class="image-preview" id="image-preview" style="display:block; margin-top:10px;">
+              <img id="preview-img" src="" style="max-height:100px; object-fit:contain;">
+            </div>
           </div>
-          <div class="image-preview" id="image-preview">
-            <img id="preview-img" src="" alt="Preview">
-            <button class="preview-remove" id="preview-remove">✕ Remove</button>
+          <div class="form-group">
+            <label class="form-label">Hover Image (Secondary)</label>
+            <div class="dropzone" onclick="document.getElementById('file-hover').click()">
+              <input type="file" id="file-hover" hidden accept="image/*" onchange="handleModalUpload(this, 'edit-hover-url', 'preview-hover-img')">
+              <div class="dropzone-icon">✨</div>
+              <div class="dropzone-label">Click to Upload</div>
+            </div>
+            <input type="text" class="form-control" id="edit-hover-url" placeholder="URL will appear here..." style="margin-top:6px;">
+            <div class="image-preview" id="image-hover-preview" style="display:block; margin-top:10px;">
+              <img id="preview-hover-img" src="" style="max-height:100px; object-fit:contain;">
+            </div>
           </div>
-          <div style="margin-top:10px; font-size:11px; color:var(--text-light);">
-            Or paste an image URL:
-          </div>
-          <input type="url" class="form-control" id="edit-image-url" placeholder="https://…" style="margin-top:6px;">
         </div>
 
         <div style="background:#f8f8f8; border-radius:4px; padding:12px; font-size:11px; color:var(--text-light); margin-top:4px;">
@@ -975,124 +1183,55 @@
     document.getElementById('admin-email-display').textContent = currentUser.email;
     document.getElementById('login-time').textContent = new Date().toLocaleTimeString();
 
-    // ─── Product Data ────────────────────────────────────────────
-    const PRODUCTS = [
-      {
-        id: 'bmilkc',
-        name: 'Brahmi Milk Chocolate',
-        price: 300,
-        mrp: 350,
-        description: 'A creamy milk chocolate infused with Brahmi (Bacopa monnieri), the revered Ayurvedic herb known for enhancing memory, focus, and cognitive clarity.',
-        image: '../assets/bmilk/bm1.jpg',
-        page: 'pages/bmilkc.html',
-        badge: 'bestseller'
-      },
-      {
-        id: 'bdarkc',
-        name: 'Brahmi Dark Chocolate',
-        price: 300,
-        mrp: 350,
-        description: 'An intense dark chocolate enriched with Brahmi extract, combining the antioxidant power of dark cocoa with the cognitive benefits of Ayurveda.',
-        image: '../assets/bdark/bd1.jpg',
-        page: 'pages/bdarkc.html',
-        badge: null
-      },
-      {
-        id: 'amilkc',
-        name: 'Ashwagandha Milk Chocolate',
-        price: 300,
-        mrp: 350,
-        description: 'Silky milk chocolate blended with Ashwagandha Atibaladi — the ancient stress-buster root that brings calm, resilience, and balance to modern life.',
-        image: '../assets/amilk/am1.jpg',
-        page: 'pages/amilkc.html',
-        badge: 'new'
-      },
-      {
-        id: 'adarkc',
-        name: 'Ashwagandha Dark Chocolate',
-        price: 300,
-        mrp: 350,
-        description: 'Bold dark chocolate meets the adaptogenic might of Ashwagandha. A sophisticated bar designed for those who seek calm without compromise.',
-        image: '../assets/adark/ad1.jpg',
-        page: 'pages/adarkc.html',
-        badge: null
-      },
-      {
-        id: 'cmilkc',
-        name: 'Chyawanaprash Milk Chocolate',
-        price: 300,
-        mrp: 350,
-        description: 'The legendary Chyawanaprash formula — 40+ herbs — reimagined in a luxurious milk chocolate. Immunity meets indulgence in every square.',
-        image: '../assets/cmilk/cm1.jpg',
-        page: 'pages/cmilkc.html',
-        badge: null
-      },
-      {
-        id: 'cdarkc',
-        name: 'Chyawanaprash Dark Chocolate',
-        price: 300,
-        mrp: 350,
-        description: 'A powerful union of the Chyawanaprash complex and rich dark chocolate. The deepest expression of Ayurvedic wellness through artisanal chocolate.',
-        image: '../assets/cdark/cd1.jpg',
-        page: 'pages/cdarkc.html',
-        badge: null
-      }
-    ];
+    // ─── Data State ─────────────────────────────────────────────
+    let productsData = {};
+    let homePageData = {};
 
-    // Merge with saved overrides
-    function getMergedProducts() {
-      const overrides = RRAuth.getProductOverrides();
-      return PRODUCTS.map(p => ({ ...p, ...(overrides[p.id] || {}) }));
+    // ─── Dashboard Stats ─────────────────────────────────────────
+    async function updateDashboardStats() {
+      const products = await RRAuth.getProducts();
+      const users = RRAuth.getAllUsers();
+      
+      document.getElementById('stat-products').textContent = Object.keys(products).length;
+      document.getElementById('stat-users').textContent = users.length;
+      
+      // Calculate changes (assuming original counts if needed, but for now just show total)
+      document.getElementById('stat-modified').textContent = Object.keys(products).length;
     }
 
     // ─── Render Products Grid ────────────────────────────────────
-    function renderProducts() {
-      const overrides = RRAuth.getProductOverrides();
+    async function renderProducts() {
       const grid = document.getElementById('products-grid');
-      const products = getMergedProducts();
+      productsData = await RRAuth.getProducts();
 
-      grid.innerHTML = products.map(p => {
-        const isModified = !!overrides[p.id];
-        const badgeHtml = p.badge ? `<span class="badge badge-info" style="position:absolute;top:10px;right:10px;">${p.badge}</span>` : '';
-        const modifiedBadge = isModified ? `<span class="modified-badge">Modified</span>` : '';
-        const imageDisplay = p.imageDataUrl || p.image;
-
+      grid.innerHTML = Object.values(productsData).map(p => {
         return `
           <div class="product-card" id="card-${p.id}">
             <div class="product-image-wrap">
-              <img src="${imageDisplay}" alt="${p.name}" onerror="this.src='assets/RR_Logo-1.png'" id="img-${p.id}">
-              ${badgeHtml}
-              ${modifiedBadge}
+              <img src="${p.image}" alt="${p.name}" onerror="this.src='assets/RR_Logo-1.png'" id="img-${p.id}">
               <div class="product-image-overlay">
-                <button class="img-change-btn" onclick="openEditModal('${p.id}', true)">🖼️ Change Image</button>
+                <button class="img-change-btn" onclick="openEditModal('${p.id}')">📝 Edit Details</button>
               </div>
             </div>
             <div class="product-card-body">
               <div class="product-name" id="pname-${p.id}">${p.name}</div>
               <div class="product-price" id="pprice-${p.id}">
-                ₹${p.price.toFixed(2)}
-                ${p.mrp ? `<span class="original">MRP ₹${p.mrp.toFixed(2)}</span>` : ''}
+                MRP ₹${parseFloat(p.price).toFixed(2)} INR
+                ${p.mrp ? `<span class="original">MRP ₹${parseFloat(p.mrp).toFixed(2)}</span>` : ''}
               </div>
               <div class="product-desc" id="pdesc-${p.id}">${p.description}</div>
               <div class="product-card-actions">
                 <button class="btn btn-primary btn-sm" onclick="openEditModal('${p.id}')">Edit Details</button>
                 <a href="${p.page}" target="_blank" class="btn btn-outline btn-sm">View Page</a>
-                ${isModified ? `<button class="btn btn-sm" style="background:#fff0f0;color:var(--danger);border:1px solid #fecaca;" onclick="resetProduct('${p.id}')">Reset</button>` : ''}
               </div>
             </div>
           </div>`;
       }).join('');
-
-      // Update stats
-      document.getElementById('stat-modified').textContent = Object.keys(overrides).length;
     }
 
     // ─── Edit Modal ──────────────────────────────────────────────
-    let currentImageDataUrl = null;
-
-    function openEditModal(productId, focusImage = false) {
-      const products = getMergedProducts();
-      const p = products.find(x => x.id === productId);
+    function openEditModal(productId) {
+      const p = productsData[productId];
       if (!p) return;
 
       document.getElementById('edit-product-id').value = productId;
@@ -1101,149 +1240,430 @@
       document.getElementById('edit-price').value = p.price;
       document.getElementById('edit-mrp').value = p.mrp || '';
       document.getElementById('edit-desc').value = p.description;
-      document.getElementById('edit-image-url').value = p.imageUrl || '';
-      currentImageDataUrl = p.imageDataUrl || null;
-
-      // Show preview if there's an existing override image
-      const preview = document.getElementById('image-preview');
-      const previewImg = document.getElementById('preview-img');
-      if (p.imageDataUrl) {
-        previewImg.src = p.imageDataUrl;
-        preview.style.display = 'block';
-      } else if (p.imageUrl) {
-        previewImg.src = p.imageUrl;
-        preview.style.display = 'block';
-      } else {
-        preview.style.display = 'none';
-        currentImageDataUrl = null;
-      }
+      document.getElementById('edit-image-url').value = p.image;
+      document.getElementById('edit-hover-url').value = p.hoverImage || '';
+      
+      document.getElementById('preview-img').src = p.image;
+      document.getElementById('preview-hover-img').src = p.hoverImage || '';
 
       document.getElementById('edit-modal').classList.add('open');
-
-      if (focusImage) {
-        setTimeout(() => document.getElementById('dropzone').scrollIntoView({ behavior: 'smooth' }), 300);
-      }
     }
 
     function closeModal() {
       document.getElementById('edit-modal').classList.remove('open');
-      document.getElementById('image-file-input').value = '';
-      currentImageDataUrl = null;
     }
 
     document.getElementById('modal-close-btn').addEventListener('click', closeModal);
     document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
-    document.getElementById('edit-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
-
-    // ─── Image file handler ──────────────────────────────────────
-    document.getElementById('image-file-input').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      if (file.size > 5 * 1024 * 1024) { showToast('Image too large (max 5MB)', 'error'); return; }
-
-      const reader = new FileReader();
-      reader.onload = function(ev) {
-        currentImageDataUrl = ev.target.result;
-        const preview = document.getElementById('image-preview');
-        document.getElementById('preview-img').src = currentImageDataUrl;
-        preview.style.display = 'block';
-      };
-      reader.readAsDataURL(file);
-    });
-
-    // Drag-and-drop
-    const dropzone = document.getElementById('dropzone');
-    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-    dropzone.addEventListener('drop', e => {
-      e.preventDefault();
-      dropzone.classList.remove('dragover');
-      const file = e.dataTransfer.files[0];
-      if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = ev => {
-          currentImageDataUrl = ev.target.result;
-          document.getElementById('preview-img').src = currentImageDataUrl;
-          document.getElementById('image-preview').style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    document.getElementById('preview-remove').addEventListener('click', function() {
-      currentImageDataUrl = null;
-      document.getElementById('image-preview').style.display = 'none';
-      document.getElementById('image-file-input').value = '';
-      document.getElementById('edit-image-url').value = '';
-    });
-
-    // Image URL live preview
-    document.getElementById('edit-image-url').addEventListener('input', function() {
-      const url = this.value.trim();
-      if (url) {
-        const preview = document.getElementById('image-preview');
-        document.getElementById('preview-img').src = url;
-        preview.style.display = 'block';
-        currentImageDataUrl = null;
-      }
-    });
 
     // ─── Save Product ────────────────────────────────────────────
-    document.getElementById('modal-save-btn').addEventListener('click', function() {
-      const productId = document.getElementById('edit-product-id').value;
+    document.getElementById('modal-save-btn').addEventListener('click', async function() {
+      const id = document.getElementById('edit-product-id').value;
       const name = document.getElementById('edit-name').value.trim();
       const price = parseFloat(document.getElementById('edit-price').value);
       const mrp = parseFloat(document.getElementById('edit-mrp').value) || null;
       const description = document.getElementById('edit-desc').value.trim();
-      const imageUrl = document.getElementById('edit-image-url').value.trim();
+      const image = document.getElementById('edit-image-url').value.trim();
+      const hoverImage = document.getElementById('edit-hover-url').value.trim();
 
       if (!name || isNaN(price)) {
         showToast('Please fill in the required fields.', 'error');
         return;
       }
 
-      const updateData = { name, price, mrp, description };
-      if (currentImageDataUrl) updateData.imageDataUrl = currentImageDataUrl;
-      else if (imageUrl) updateData.imageUrl = imageUrl;
-
-      RRAuth.saveProductOverride(productId, updateData);
-
-      // Add activity entry
-      addActivity(`Product "${name}" was updated`);
-
-      closeModal();
-      renderProducts();
-      updateDashboardStats();
-      showToast(`"${name}" updated successfully!`, 'success');
+      productsData[id] = { ...productsData[id], name, price, mrp, description, image, hoverImage };
+      
+      const res = await RRAuth.saveProducts(productsData);
+      if (res.success) {
+        addActivity(`Product "${name}" was updated`);
+        closeModal();
+        renderProducts();
+        showToast(`"${name}" updated successfully!`, 'success');
+      } else {
+        showToast('Failed to save changes.', 'error');
+      }
     });
 
-    // ─── Reset Product ───────────────────────────────────────────
-    function resetProduct(productId) {
-      if (!confirm('Reset this product to its original data?')) return;
-      const overrides = RRAuth.getProductOverrides();
-      delete overrides[productId];
-      localStorage.setItem('rr_product_overrides', JSON.stringify(overrides));
-      renderProducts();
-      updateDashboardStats();
-      showToast('Product reset to defaults.', 'success');
+    // Helper for previewing and uploading images
+    function updateCMSPreview(input) {
+      const row = input.closest('.cms-row');
+      if (!row) return;
+      const thumb = row.querySelector('.cms-thumb');
+      if (thumb) thumb.src = input.value;
     }
 
-    function resetAllProducts() {
-      if (!confirm('Reset ALL products to their original data?')) return;
-      localStorage.removeItem('rr_product_overrides');
-      renderProducts();
-      updateDashboardStats();
-      showToast('All products reset.', 'success');
+    async function handleFileUpload(input, targetUrlInputId) {
+      const file = input.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const base64Data = e.target.result;
+        const fileName = `${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
+        
+        showToast('Uploading...', 'info');
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fileName, base64Data })
+        }).then(r => r.json());
+
+        if (res.success) {
+          document.getElementById(targetUrlInputId).value = res.url;
+          // Trigger preview update if needed
+          const event = new Event('input');
+          document.getElementById(targetUrlInputId).dispatchEvent(event);
+          showToast('Uploaded successfully!', 'success');
+        } else {
+          showToast('Upload failed: ' + res.error, 'error');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Modal specialized upload helper
+    async function handleModalUpload(input, targetId, previewId) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const base64Data = e.target.result;
+        const fileName = `product-${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fileName, base64Data })
+        }).then(r => r.json());
+        if (res.success) {
+          document.getElementById(targetId).value = res.url;
+          document.getElementById(previewId).src = res.url;
+          showToast('Image uploaded!', 'success');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ─── Home Page Management ────────────────────────────────────
+    async function renderHomePage() {
+      const heroList = document.getElementById('hero-slides-list');
+      const staticBannerCms = document.getElementById('static-banner-cms');
+      const videoHeroCms = document.getElementById('video-hero-cms');
+      const videoList = document.getElementById('testimonial-videos-list');
+      const expertsList = document.getElementById('experts-list');
+      const shopOnCms = document.getElementById('shop-on-cms');
+      const faqsList = document.getElementById('faqs-list');
+      
+      homePageData = await RRAuth.getHomePageData();
+
+      // 1. Render Hero Slides
+      if (heroList) {
+        heroList.innerHTML = homePageData.hero.slides.map((slide, i) => `
+          <div class="cms-row" data-type="hero" data-index="${i}">
+            <div class="cms-thumb-container">
+              <img src="${slide.image}" class="cms-thumb" onerror="this.src='assets/RR_Logo-1.png'">
+              <span class="cms-thumb-label">Current Slide</span>
+            </div>
+            <div class="cms-inputs">
+              <div class="cms-full">
+                <label class="cms-label">Title</label>
+                <input type="text" class="form-control cms-title" value="${slide.title}">
+              </div>
+              <div>
+                <label class="cms-label">Image URL</label>
+                <div style="display:flex; gap:5px;">
+                  <input type="text" class="form-control cms-image" id="hero-img-${i}" value="${slide.image}" oninput="updateCMSPreview(this)">
+                  <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('hero-img-${i}')">📁</button>
+                </div>
+              </div>
+              <div>
+                <label class="cms-label">Link</label>
+                <input type="text" class="form-control cms-link" value="${slide.link}">
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 2. Render Static Banner
+      const sb = homePageData.staticBanner || { image: '', link: '' };
+      staticBannerCms.innerHTML = `
+        <div class="cms-row" id="cms-static-banner-row">
+          <div class="cms-thumb-container">
+            <img src="${sb.image}" class="cms-thumb" onerror="this.src='assets/RR_Logo-1.png'">
+            <span class="cms-thumb-label">Banner Image</span>
+          </div>
+          <div class="cms-inputs">
+            <div>
+              <label class="cms-label">Banner Image URL</label>
+              <div style="display:flex; gap:5px;">
+                <input type="text" class="form-control cms-sb-image" id="sb-image-input" value="${sb.image}" oninput="updateCMSPreview(this)">
+                <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('sb-image-input')">📁</button>
+              </div>
+            </div>
+            <div>
+              <label class="cms-label">Call to Action Link</label>
+              <input type="text" class="form-control cms-sb-link" value="${sb.link}">
+            </div>
+          </div>
+        </div>
+      `;
+
+      // 3. Render Video Hero
+      const vh = homePageData.videoHero || { url: '', title: '', subtitle: '' };
+      videoHeroCms.innerHTML = `
+        <div class="cms-row" id="cms-video-hero-row">
+          <div class="cms-thumb-container">
+            <div style="width:120px; height:80px; background:#000; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+              <span style="font-size:20px;">🎥</span>
+            </div>
+            <span class="cms-thumb-label">Ad Video</span>
+          </div>
+          <div class="cms-inputs">
+            <div class="cms-full">
+              <label class="cms-label">Video MP4 URL</label>
+              <div style="display:flex; gap:5px;">
+                <input type="text" class="form-control cms-vh-url" id="vh-url-input" value="${vh.url}">
+                <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('vh-url-input')">📁</button>
+              </div>
+            </div>
+            <div>
+              <label class="cms-label">Heading</label>
+              <input type="text" class="form-control cms-vh-title" value="${vh.title}">
+            </div>
+            <div>
+              <label class="cms-label">Subheading</label>
+              <input type="text" class="form-control cms-vh-subtitle" value="${vh.subtitle}">
+            </div>
+          </div>
+        </div>
+      `;
+
+      // 4. Render Testimonials
+      videoList.innerHTML = homePageData.testimonials.videos.map((vid, i) => `
+        <div class="cms-row" data-type="video" data-index="${i}">
+           <div class="cms-thumb-container">
+             <img src="${vid.productImg}" class="cms-thumb">
+             <span class="cms-thumb-label">Product Image</span>
+           </div>
+           <div class="cms-inputs">
+             <div class="cms-full">
+               <label class="cms-label">Video MP4 URL</label>
+               <div style="display:flex; gap:5px;">
+                 <input type="text" class="form-control cms-video-url" id="vid-url-${i}" value="${vid.url}">
+                 <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('vid-url-${i}')">📁</button>
+               </div>
+             </div>
+             <div>
+               <label class="cms-label">Product Name</label>
+               <input type="text" class="form-control cms-video-prod" value="${vid.productName}">
+             </div>
+             <div>
+               <label class="cms-label">Sale Price</label>
+               <input type="text" class="form-control cms-video-price" value="${vid.price}">
+             </div>
+             <div>
+               <label class="cms-label">Product Thumb URL</label>
+               <div style="display:flex; gap:5px;">
+                 <input type="text" class="form-control cms-video-img" id="vid-img-${i}" value="${vid.productImg}" oninput="updateCMSPreview(this)">
+                 <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('vid-img-${i}')">📁</button>
+               </div>
+             </div>
+           </div>
+        </div>
+      `).join('');
+
+      // 5. Render Experts
+      expertsList.innerHTML = (homePageData.experts || []).map((exp, i) => `
+        <div class="cms-row" data-type="expert" data-index="${i}">
+          <div class="cms-thumb-container">
+            <img src="${exp.image}" class="cms-thumb">
+            <span class="cms-thumb-label">Expert Photo</span>
+          </div>
+          <div class="cms-inputs">
+            <div class="cms-full">
+              <label class="cms-label">Expert Name</label>
+              <input type="text" class="form-control cms-exp-name" value="${exp.name}">
+            </div>
+            <div>
+              <label class="cms-label">Role/Specialty</label>
+              <input type="text" class="form-control cms-exp-role" value="${exp.role}">
+            </div>
+            <div>
+              <label class="cms-label">Image URL</label>
+              <div style="display:flex; gap:5px;">
+                <input type="text" class="form-control cms-exp-image" id="exp-img-${i}" value="${exp.image}" oninput="updateCMSPreview(this)">
+                <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('exp-img-${i}')">📁</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('') + `
+        <button class="btn btn-outline btn-sm" onclick="addExpert()" style="width:100%; margin-top:10px;">+ Add Expert</button>
+      `;
+
+      // 6. Render Shop On
+      const so = homePageData.shopOn || { quickCommerce: [], ecommerce: [] };
+      shopOnCms.innerHTML = `
+        <div style="font-size:11px; font-weight:700; margin-bottom:10px;">Quick Commerce</div>
+        <div id="shop-on-quick-list">
+          ${so.quickCommerce.map((item, i) => `
+            <div class="cms-row" data-type="shop-quick" data-index="${i}">
+              <div class="cms-thumb-container">
+                <img src="${item.logo}" class="cms-thumb">
+              </div>
+              <div class="cms-inputs">
+                <div><label class="cms-label">Name</label><input type="text" class="form-control cms-so-name" value="${item.name}"></div>
+                <div>
+                  <label class="cms-label">Logo URL</label>
+                  <div style="display:flex; gap:5px;">
+                    <input type="text" class="form-control cms-so-logo" id="so-q-logo-${i}" value="${item.logo}" oninput="updateCMSPreview(this)">
+                    <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('so-q-logo-${i}')">📁</button>
+                  </div>
+                </div>
+                <div class="cms-full"><label class="cms-label">Link</label><input type="text" class="form-control cms-so-link" value="${item.link}"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="font-size:11px; font-weight:700; margin: 20px 0 10px;">Ecommerce</div>
+        <div id="shop-on-ecom-list">
+          ${so.ecommerce.map((item, i) => `
+            <div class="cms-row" data-type="shop-ecom" data-index="${i}">
+              <div class="cms-thumb-container">
+                <img src="${item.logo}" class="cms-thumb">
+              </div>
+              <div class="cms-inputs">
+                <div><label class="cms-label">Name</label><input type="text" class="form-control cms-so-name" value="${item.name}"></div>
+                <div>
+                  <label class="cms-label">Logo URL</label>
+                  <div style="display:flex; gap:5px;">
+                    <input type="text" class="form-control cms-so-logo" id="so-e-logo-${i}" value="${item.logo}" oninput="updateCMSPreview(this)">
+                    <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('so-e-logo-${i}')">📁</button>
+                  </div>
+                </div>
+                <div class="cms-full"><label class="cms-label">Link</label><input type="text" class="form-control cms-so-link" value="${item.link}"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      // 7. Render FAQs
+      faqsList.innerHTML = (homePageData.faqs || []).map((faq, i) => `
+        <div class="cms-row" data-type="faq" data-index="${i}" style="display:block;">
+          <div class="form-group">
+            <label class="cms-label">Question</label>
+            <input type="text" class="form-control cms-faq-q" value="${faq.question}">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="cms-label">Answer</label>
+            <textarea class="form-control cms-faq-a">${faq.answer}</textarea>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="removeFAQ(${i})" style="margin-top:10px;">Remove FAQ</button>
+        </div>
+      `).join('') + `
+        <button class="btn btn-outline btn-sm" onclick="addFAQ()" style="width:100%; margin-top:20px;">+ Add FAQ</button>
+      `;
+    }
+
+    async function saveHomePage() {
+      // Collect Hero Data
+      const heroRows = document.querySelectorAll('[data-type="hero"]');
+      if (heroRows.length > 0) {
+        homePageData.hero.slides = Array.from(heroRows).map((row, i) => ({
+          index: i,
+          title: row.querySelector('.cms-title').value,
+          image: row.querySelector('.cms-image').value,
+          link: row.querySelector('.cms-link').value,
+          subtitle: homePageData.hero.slides[i] ? homePageData.hero.slides[i].subtitle : ''
+        }));
+      }
+
+      // Collect Static Banner
+      homePageData.staticBanner = {
+        image: document.querySelector('.cms-sb-image').value,
+        link: document.querySelector('.cms-sb-link').value
+      };
+
+      // Collect Video Hero
+      homePageData.videoHero = {
+        url: document.querySelector('.cms-vh-url').value,
+        title: document.querySelector('.cms-vh-title').value,
+        subtitle: document.querySelector('.cms-vh-subtitle').value
+      };
+
+      // Collect Testimonials
+      const videoRows = document.querySelectorAll('[data-type="video"]');
+      homePageData.testimonials.videos = Array.from(videoRows).map((row, i) => ({
+        id: homePageData.testimonials.videos[i] ? homePageData.testimonials.videos[i].id : 'v'+(i+1),
+        url: row.querySelector('.cms-video-url').value,
+        productName: row.querySelector('.cms-video-prod').value,
+        price: row.querySelector('.cms-video-price').value,
+        productImg: row.querySelector('.cms-video-img').value,
+        originalPrice: homePageData.testimonials.videos[i] ? homePageData.testimonials.videos[i].originalPrice : ''
+      }));
+
+      // Collect Experts
+      const expertRows = document.querySelectorAll('[data-type="expert"]');
+      homePageData.experts = Array.from(expertRows).map(row => ({
+        name: row.querySelector('.cms-exp-name').value,
+        role: row.querySelector('.cms-exp-role').value,
+        image: row.querySelector('.cms-exp-image').value
+      }));
+
+      // Collect Shop On
+      homePageData.shopOn = {
+        quickCommerce: Array.from(document.querySelectorAll('[data-type="shop-quick"]')).map(row => ({
+          name: row.querySelector('.cms-so-name').value,
+          logo: row.querySelector('.cms-so-logo').value,
+          link: row.querySelector('.cms-so-link').value
+        })),
+        ecommerce: Array.from(document.querySelectorAll('[data-type="shop-ecom"]')).map(row => ({
+          name: row.querySelector('.cms-so-name').value,
+          logo: row.querySelector('.cms-so-logo').value,
+          link: row.querySelector('.cms-so-link').value
+        }))
+      };
+
+      // Collect FAQs
+      const faqRows = document.querySelectorAll('[data-type="faq"]');
+      homePageData.faqs = Array.from(faqRows).map(row => ({
+        question: row.querySelector('.cms-faq-q').value,
+        answer: row.querySelector('.cms-faq-a').value
+      }));
+
+      const res = await RRAuth.saveHomePageData(homePageData);
+      if (res.success) {
+        showToast('Home page content updated!', 'success');
+        addActivity('Home page content was updated');
+        renderHomePage();
+      } else {
+        showToast('Failed to save home page data.', 'error');
+      }
+    }
+
+    // List Management Helpers
+    function addExpert() {
+      if (!homePageData.experts) homePageData.experts = [];
+      homePageData.experts.push({ name: 'New Expert', role: 'Role', image: 'assets/RR_Logo-1.png' });
+      renderHomePage();
+    }
+
+    function removeFAQ(index) {
+      homePageData.faqs.splice(index, 1);
+      renderHomePage();
+    }
+
+    function addFAQ() {
+      if (!homePageData.faqs) homePageData.faqs = [];
+      homePageData.faqs.push({ question: 'New Question', answer: 'Answer here' });
+      renderHomePage();
     }
 
     // ─── Users Panel ─────────────────────────────────────────────
     function renderUsers() {
       const users = RRAuth.getAllUsers();
       const tbody = document.getElementById('users-table-body');
-      document.getElementById('stat-users').textContent = users.length;
-
       tbody.innerHTML = users.map(u => `
         <tr>
           <td><strong>${u.firstName} ${u.lastName}</strong></td>
@@ -1256,13 +1676,6 @@
           <td style="color:var(--text-light); font-size:12px;">${new Date(u.createdAt).toLocaleDateString()}</td>
         </tr>
       `).join('');
-    }
-
-    // ─── Dashboard Stats ─────────────────────────────────────────
-    function updateDashboardStats() {
-      const overrides = RRAuth.getProductOverrides();
-      document.getElementById('stat-modified').textContent = Object.keys(overrides).length;
-      renderUsers();
     }
 
     // ─── Activity Feed ───────────────────────────────────────────
@@ -1278,8 +1691,6 @@
         </div>
       `;
       feed.insertBefore(li, feed.firstChild);
-      // Keep max 6 items
-      while (feed.children.length > 6) feed.removeChild(feed.lastChild);
     }
 
     // ─── Navigation ──────────────────────────────────────────────
@@ -1294,13 +1705,438 @@
         document.getElementById('panel-' + panelId).classList.add('active');
         document.querySelectorAll(`[data-panel="${panelId}"]`).forEach(el => el.classList.add('active'));
 
-        const titles = { dashboard: 'Dashboard', products: 'Products', users: 'Users' };
+        const titles = { dashboard: 'Dashboard', products: 'Products', users: 'Users', 'home-page': 'Home Page' };
         document.getElementById('top-bar-title').textContent = titles[panelId] || panelId;
 
-        // Close mobile sidebar
+        if (panelId === 'home-page') renderHomePage();
+        if (panelId === 'products') renderProducts();
+        if (panelId === 'users') renderUsers();
+        if (panelId === 'product-cms') initProductCMSPanel();
+
         document.getElementById('sidebar').classList.remove('open');
       });
     });
+
+    let currentProductCMS = {};
+    let currentProductId = '';
+    let currentReviewTab = 'approved';
+
+    async function initProductCMSPanel() {
+      const selector = document.getElementById('cms-product-selector');
+      if (!selector) return;
+      
+      const products = await RRAuth.getProducts();
+      selector.innerHTML = '<option value="">-- Choose a Product --</option>' + 
+        Object.keys(products).map(id => `<option value="${id}">${products[id].name}</option>`).join('');
+      
+      document.getElementById('product-cms-editor').style.display = 'none';
+      document.getElementById('product-cms-placeholder').style.display = 'block';
+      document.getElementById('save-product-cms-btn').disabled = true;
+    }
+
+    async function loadProductCMS() {
+      try {
+        const id = document.getElementById('cms-product-selector').value;
+        if (!id) {
+          document.getElementById('product-cms-editor').style.display = 'none';
+          document.getElementById('product-cms-placeholder').style.display = 'block';
+          return;
+        }
+
+        currentProductId = id;
+        console.log('Fetching CMS data for:', id);
+        const res = await fetch(`/api/product-cms/${id}`);
+        currentProductCMS = await res.json();
+        console.log('Received CMS data:', currentProductCMS);
+
+        // Initialize defaults if empty
+        if (!currentProductCMS.gallery) currentProductCMS.gallery = ['', '', '', ''];
+        if (!currentProductCMS.basicInfo) currentProductCMS.basicInfo = { title: '', subtitle: '', price: '', mrp: '', badge: '', marketplaces: [] };
+        if (!currentProductCMS.details) currentProductCMS.details = { features: [], specs: [], quality: '' };
+        if (!currentProductCMS.featureGrid) currentProductCMS.featureGrid = [
+          { image: '', title: '', description: '' },
+          { image: '', title: '', description: '' },
+          { image: '', title: '', description: '' }
+        ];
+        if (!currentProductCMS.related) currentProductCMS.related = [
+          { image: '', hoverImage: '', title: '', price: '' },
+          { image: '', hoverImage: '', title: '', price: '' }
+        ];
+        if (!currentProductCMS.reviews) currentProductCMS.reviews = [];
+
+        renderProductCMSEditor();
+        document.getElementById('product-cms-editor').style.display = 'block';
+        document.getElementById('product-cms-placeholder').style.display = 'none';
+        document.getElementById('save-product-cms-btn').disabled = false;
+        
+        updatePendingReviewsCount();
+      } catch (err) {
+        console.error('Error in loadProductCMS:', err);
+        showToast('Error loading product data. Check console for details.', 'error');
+        // Show the editor anyway to allow manual data entry or debug
+        document.getElementById('product-cms-editor').style.display = 'block';
+        document.getElementById('product-cms-placeholder').style.display = 'none';
+      }
+    }
+
+    function renderProductCMSEditor() {
+      try {
+        // 1. Gallery
+        const galleryList = document.getElementById('cms-gallery-list');
+        galleryList.innerHTML = currentProductCMS.gallery.map((img, i) => `
+          <div class="gallery-item">
+            <img src="${img || 'assets/RR_Logo-1.png'}" class="gallery-preview" id="cms-gallery-prev-${i}">
+            <div style="display:flex; gap:5px;">
+              <input type="text" class="form-control cms-gallery-input" id="cms-gallery-url-${i}" value="${img}" style="font-size:10px;">
+              <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload('cms-gallery-url-${i}', 'cms-gallery-prev-${i}')">📁</button>
+            </div>
+          </div>
+        `).join('');
+
+        // 2. Basic Info
+        const bi = currentProductCMS.basicInfo;
+        const basicInfoContainer = document.getElementById('cms-basic-info');
+        
+        // Split title logic: Main Heading | Product Line
+        let mainTitle = '';
+        let suffixTitle = '';
+        const titleStr = bi.title || '';
+        if (titleStr.toLowerCase().includes('<br>')) {
+          const parts = titleStr.split(/<br\s*\/?>/i);
+          mainTitle = parts[0].replace(/<[^>]*>?/gm, '').trim();
+          suffixTitle = parts[1].replace(/<[^>]*>?/gm, '').trim();
+        } else {
+          mainTitle = titleStr.replace(/<[^>]*>?/gm, '').trim();
+        }
+
+        basicInfoContainer.innerHTML = `
+          <div class="form-group">
+            <label class="cms-label">Main Title Heading (e.g. SMART SIN)</label>
+            <input type="text" id="ci-title-main" class="form-control" placeholder="Product Name">
+          </div>
+          <div class="form-group">
+            <label class="cms-label">Product Line / Suffix (e.g. 35% MILK...)</label>
+            <input type="text" id="ci-title-suffix" class="form-control" placeholder="Series Details">
+          </div>
+          <div class="form-group">
+            <label class="cms-label">Sub-title (Heading 2)</label>
+            <input type="text" id="ci-subtitle" class="form-control">
+          </div>
+          <div class="form-group"><label class="cms-label">Product Badge Text</label><input type="text" id="ci-badge" class="form-control" value="${bi.badge}"></div>
+          <div class="form-group"><label class="cms-label">Price (₹)</label><input type="number" id="ci-price" class="form-control" value="${bi.price}"></div>
+          <div class="form-group"><label class="cms-label">MRP (₹)</label><input type="number" id="ci-mrp" class="form-control" value="${bi.mrp}"></div>
+        `;
+        
+        document.getElementById('ci-title-main').value = mainTitle;
+        document.getElementById('ci-title-suffix').value = suffixTitle;
+        document.getElementById('ci-subtitle').value = bi.subtitle || '';
+
+        // 3. Details (Structured Features & Specs)
+        const featuresHtml = currentProductCMS.details.features.map((f, i) => `
+          <div class="cms-dynamic-item" data-type="feature">
+            <input type="text" class="form-control f-title" placeholder="Feature Title" value="${f.title}">
+            <textarea class="form-control f-desc" placeholder="Feature Description">${f.desc}</textarea>
+            <button class="btn btn-danger btn-sm" onclick="removeCMSItem(this)">Remove</button>
+          </div>
+        `).join('') || '<p style="font-size:12px; color:var(--text-light);">No features added.</p>';
+
+        const specsHtml = currentProductCMS.details.specs.map((s, i) => `
+          <div class="cms-dynamic-item" data-type="spec">
+            <input type="text" class="form-control s-title" placeholder="Label (e.g. Weight)" value="${s.title}">
+            <input type="text" class="form-control s-desc" placeholder="Value (e.g. 60g)" value="${s.desc}">
+            <button class="btn btn-danger btn-sm" onclick="removeCMSItem(this)">Remove</button>
+          </div>
+        `).join('') || '<p style="font-size:12px; color:var(--text-light);">No specifications added.</p>';
+
+        document.getElementById('cms-details-sections').innerHTML = `
+          <div class="cms-section-item">
+            <label class="cms-label">Collapsible Features</label>
+            <div id="cms-features-list">${featuresHtml}</div>
+            <button class="btn btn-outline btn-sm" style="margin-top:10px;" onclick="addCMSItem('feature')">+ Add Feature</button>
+          </div>
+          <div class="cms-section-item">
+            <label class="cms-label">Specifications</label>
+            <div id="cms-specs-list">${specsHtml}</div>
+            <button class="btn btn-outline btn-sm" style="margin-top:10px;" onclick="addCMSItem('spec')">+ Add Specification</button>
+          </div>
+          <div class="cms-section-item">
+            <label class="cms-label">Quality & Safety Certified</label>
+            <textarea id="ci-quality" class="form-control" style="min-height:80px;">${currentProductCMS.details.quality || ''}</textarea>
+          </div>
+        `;
+
+        // 4. Feature Section
+        const fixPath = (u) => (u || '').startsWith('../') ? u.substring(3) : u;
+        document.getElementById('cms-feature-highlights').innerHTML = currentProductCMS.featureGrid.map((f, i) => `
+          <div class="feature-hi-row">
+            <div style="text-align:center;">
+              <img src="${fixPath(f.image) || 'assets/RR_Logo-1.png'}" class="feature-hi-thumb" id="ci-feat-prev-${i}">
+              <button class="btn btn-outline btn-sm" style="margin-top:5px;" onclick="triggerCMSUpload('ci-feat-img-${i}', 'ci-feat-prev-${i}')">Upload Image</button>
+              <input type="hidden" id="ci-feat-img-${i}" value="${f.image}">
+            </div>
+            <div>
+              <input type="text" class="form-control ci-feat-title" placeholder="Feature Title" value="${f.title}" style="margin-bottom:8px;">
+              <textarea class="form-control ci-feat-desc" placeholder="Feature Description" style="min-height:60px;">${f.description}</textarea>
+            </div>
+          </div>
+        `).join('');
+
+        // 5. Related Products (Dynamic Slots)
+        document.getElementById('cms-related-products').innerHTML = `
+          <div id="cms-related-list" class="cms-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; width: 100% !important;">
+            ${currentProductCMS.related.map((r, i) => `
+              <div class="cms-section-item rel-item" style="border: 1px solid var(--border); background: #fff; padding: 18px; position:relative; box-shadow: 0 2px 10px rgba(0,0,0,0.03); width: 100%;">
+                <button class="btn btn-danger btn-sm" style="position:absolute; top:8px; right:8px; padding: 2px 6px;" onclick="removeCMSItem(this)">×</button>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:12px;">
+                  <div>
+                    <label class="cms-label" style="font-size:9px; text-transform:uppercase;">Preview Image</label>
+                    <img src="${fixPath(r.image) || 'assets/RR_Logo-1.png'}" style="width:100%; height:90px; object-fit:contain; border: 1px solid #eee; border-radius:4px; margin-bottom:4px;" id="ci-rel-prev-${i}">
+                    <input type="text" class="form-control rel-img" value="${r.image}" style="font-size:10px;" onchange="document.getElementById('ci-rel-prev-${i}').src=this.value">
+                    <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload(this.previousElementSibling, 'ci-rel-prev-${i}')">📁</button>
+                  </div>
+                  <div>
+                    <label class="cms-label" style="font-size:9px; text-transform:uppercase;">Hover Image</label>
+                    <img src="${fixPath(r.hoverImage) || 'assets/RR_Logo-1.png'}" style="width:100%; height:85px; object-fit:contain; border: 1px solid #eee; border-radius:4px; margin-bottom:4px;" id="ci-rel-hover-prev-${i}">
+                    <input type="text" class="form-control rel-hover" value="${r.hoverImage}" style="font-size:10px;" onchange="document.getElementById('ci-rel-hover-prev-${i}').src=this.value">
+                    <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload(this.previousElementSibling, 'ci-rel-hover-prev-${i}')">📁</button>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                  <input type="text" class="form-control rel-title" placeholder="Product Title" value="${r.title}">
+                  <input type="text" class="form-control rel-price" placeholder="Price (e.g. MRP ₹ 300.00)" value="${r.price}">
+                  <input type="text" class="form-control rel-link" placeholder="Page Link (e.g. adarkc.html)" value="${r.link || ''}" style="grid-column: span 2;">
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          <button class="btn btn-outline btn-sm" style="width:100%; margin-top:10px;" onclick="addCMSItem('related')">+ Add Related Product Slot</button>
+        `;
+
+        // 6. Marketplaces
+        const mpList = document.getElementById('cms-marketplaces-list');
+        if (mpList) {
+          mpList.innerHTML = (bi.marketplaces || []).map((m, i) => `
+            <div class="cms-dynamic-item mp-item" style="grid-template-columns: 100px 1fr 2fr auto;">
+              <img src="${m.logo}" style="height:30px; object-fit:contain;">
+              <span>${m.name}</span>
+              <input type="text" class="form-control mp-link" placeholder="Buy Link" value="${m.link}">
+              <button class="btn btn-danger btn-sm" onclick="removeCMSItem(this)">×</button>
+            </div>
+          `).join('') || '<p style="font-size:12px; color:var(--text-light);">No marketplaces.</p>';
+        }
+
+        renderReviewsTab();
+      } catch (err) {
+        console.error('Error in renderProductCMSEditor:', err);
+        showToast('Rendering error. Check console.', 'warning');
+      }
+    }
+
+    // Helper functions for dynamic lists
+    function addCMSItem(type) {
+      if (type === 'feature') {
+        const div = document.createElement('div');
+        div.className = 'cms-dynamic-item';
+        div.dataset.type = 'feature';
+        div.innerHTML = `
+          <input type="text" class="form-control f-title" placeholder="Feature Title">
+          <textarea class="form-control f-desc" placeholder="Feature Description"></textarea>
+          <button class="btn btn-danger btn-sm" onclick="removeCMSItem(this)">Remove</button>
+        `;
+        document.getElementById('cms-features-list').appendChild(div);
+      } else if (type === 'spec') {
+        const div = document.createElement('div');
+        div.className = 'cms-dynamic-item';
+        div.dataset.type = 'spec';
+        div.innerHTML = `
+          <input type="text" class="form-control s-title" placeholder="Label">
+          <input type="text" class="form-control s-desc" placeholder="Value">
+          <button class="btn btn-danger btn-sm" onclick="removeCMSItem(this)">Remove</button>
+        `;
+        document.getElementById('cms-specs-list').appendChild(div);
+      } else if (type === 'related') {
+        const container = document.getElementById('cms-related-list');
+        const i = container.children.length;
+        const div = document.createElement('div');
+        div.className = 'cms-section-item rel-item';
+        div.style = "border: 1px dashed var(--border-color); padding: 15px; margin-bottom: 15px; position:relative;";
+        div.innerHTML = `
+          <button class="btn btn-danger btn-sm" style="position:absolute; top:5px; right:5px;" onclick="removeCMSItem(this)">×</button>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+            <div>
+              <label class="cms-label">Preview Image</label>
+              <img src="assets/RR_Logo-1.png" style="width:100%; height:80px; object-fit:contain;" id="ci-rel-prev-${i}">
+              <input type="text" class="form-control rel-img" placeholder="URL" style="font-size:10px;" onchange="document.getElementById('ci-rel-prev-${i}').src=this.value">
+              <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload(this.previousElementSibling, 'ci-rel-prev-${i}')">📁</button>
+            </div>
+            <div>
+              <label class="cms-label">Hover Image</label>
+              <img src="assets/RR_Logo-1.png" style="width:100%; height:80px; object-fit:contain;" id="ci-rel-hover-prev-${i}">
+              <input type="text" class="form-control rel-hover" placeholder="URL" style="font-size:10px;" onchange="document.getElementById('ci-rel-hover-prev-${i}').src=this.value">
+              <button class="btn btn-outline btn-sm" onclick="triggerCMSUpload(this.previousElementSibling, 'ci-rel-hover-prev-${i}')">📁</button>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+            <input type="text" class="form-control rel-title" placeholder="Product Title">
+            <input type="text" class="form-control rel-price" placeholder="Price (e.g. MRP ₹ 300.00)">
+            <input type="text" class="form-control rel-link" placeholder="Page Link (e.g. adarkc.html)" style="grid-column: span 2;">
+          </div>
+        `;
+        container.appendChild(div);
+      }
+    }
+
+    function removeCMSItem(btn) {
+      btn.closest('.cms-dynamic-item, .rel-item').remove();
+    }
+
+    async function updatePendingReviewsCount() {
+      const res = await fetch('/api/reviews/pending');
+      const pending = await res.json();
+      const count = (pending[currentProductId] || []).length;
+      document.getElementById('pending-reviews-count-btn').textContent = `Pending Reviews (${count})`;
+    }
+
+    async function switchReviewTab(tab) {
+      currentReviewTab = tab;
+      document.querySelectorAll('.review-tabs button').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      renderReviewsTab();
+    }
+
+    async function renderReviewsTab() {
+      try {
+        const list = document.getElementById('cms-reviews-list');
+        if (!list) return;
+
+        if (currentReviewTab === 'approved') {
+          list.innerHTML = (currentProductCMS.reviews || []).map((rev, i) => `
+            <div class="cms-review-item">
+              <div class="review-meta">
+                <span><strong>${rev.name || 'Anonymous'}</strong> • ${rev.rating || 5} Stars</span>
+                <span>${rev.date || ''}</span>
+              </div>
+              <div class="review-body">${rev.body || ''}</div>
+              <div class="review-actions">
+                <button class="btn btn-danger btn-sm" onclick="deleteReview('approved', '${rev.id}')">Delete</button>
+              </div>
+            </div>
+          `).join('') || '<p style="text-align:center; color:var(--text-light); padding:20px;">No approved reviews.</p>';
+        } else {
+          const res = await fetch('/api/reviews/pending');
+          const pendingAll = await res.json();
+          const pending = (pendingAll && pendingAll[currentProductId]) || [];
+          list.innerHTML = pending.map((rev, i) => `
+            <div class="cms-review-item">
+              <div class="review-meta">
+                <span><strong>${rev.name || rev.email || 'Anonymous'}</strong> • ${rev.rating || 5} Stars</span>
+                <span>${rev.submittedAt ? new Date(rev.submittedAt).toLocaleDateString() : ''}</span>
+              </div>
+              <div class="review-body">${rev.body || ''}</div>
+              <div class="review-actions">
+                <button class="btn btn-primary btn-sm" onclick="approveReview('${rev.id}')">Approve</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteReview('pending', '${rev.id}')">Reject</button>
+              </div>
+            </div>
+          `).join('') || '<p style="text-align:center; color:var(--text-light); padding:20px;">No pending reviews.</p>';
+        }
+      } catch (err) {
+        console.error('Error in renderReviewsTab:', err);
+        document.getElementById('cms-reviews-list').innerHTML = '<p style="color:red; text-align:center; padding:10px;">Failed to load reviews.</p>';
+      }
+    }
+
+    async function approveReview(reviewId) {
+      const res = await fetch('/api/reviews/approve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId: currentProductId, reviewId })
+      }).then(r => r.json());
+      if (res.success) {
+        showToast('Review approved!', 'success');
+        loadProductCMS();
+      }
+    }
+
+    async function deleteReview(type, reviewId) {
+      if (!confirm('Are you sure you want to delete this review?')) return;
+      const res = await fetch(`/api/reviews/${type}/${currentProductId}/${reviewId}`, { method: 'DELETE' }).then(r => r.json());
+      if (res.success) {
+        showToast('Review deleted.', 'warning');
+        loadProductCMS();
+      }
+    }
+    async function saveProductCMS() {
+      const marketplaces = Array.from(document.querySelectorAll('.mp-item')).map(row => ({
+        name: row.querySelector('span').textContent,
+        logo: row.querySelector('img').src,
+        link: row.querySelector('.mp-link').value
+      }));
+
+      // Reconstruct Title from two fields
+      const titleMain = document.getElementById('ci-title-main').value.trim();
+      const titleSuffix = document.getElementById('ci-title-suffix').value.trim();
+      let formattedTitle = titleMain;
+      if (titleSuffix) {
+        formattedTitle = `${titleMain} <br><span class="u-h5" style="white-space: nowrap;">${titleSuffix}</span>`;
+      }
+
+      const bi = {
+        title: formattedTitle,
+        subtitle: document.getElementById('ci-subtitle').value,
+        price: document.getElementById('ci-price').value,
+        mrp: document.getElementById('ci-mrp').value,
+        badge: document.getElementById('ci-badge').value,
+        marketplaces
+      };
+
+      const gallery = Array.from(document.querySelectorAll('.cms-gallery-input')).map(i => i.value);
+      
+      const features = Array.from(document.querySelectorAll('#cms-features-list .cms-dynamic-item')).map(row => ({
+        title: row.querySelector('.f-title').value,
+        desc: row.querySelector('.f-desc').value
+      }));
+      
+      const specs = Array.from(document.querySelectorAll('#cms-specs-list .cms-dynamic-item')).map(row => ({
+        title: row.querySelector('.s-title').value,
+        desc: row.querySelector('.s-desc').value
+      }));
+
+      const featureGrid = Array.from(document.querySelectorAll('.feature-hi-row')).map((row, i) => ({
+        image: document.getElementById(`ci-feat-img-${i}`).value,
+        title: row.querySelector('.ci-feat-title').value,
+        description: row.querySelector('.ci-feat-desc').value
+      }));
+
+      const related = Array.from(document.querySelectorAll('#cms-related-list .rel-item')).map(row => ({
+        image: row.querySelector('.rel-img').value,
+        hoverImage: row.querySelector('.rel-hover').value,
+        title: row.querySelector('.rel-title').value,
+        price: row.querySelector('.rel-price').value,
+        link: row.querySelector('.rel-link').value
+      }));
+
+      const payload = {
+        ...currentProductCMS,
+        gallery,
+        basicInfo: bi,
+        details: { features, specs, quality: document.getElementById('ci-quality').value },
+        featureGrid,
+        related,
+        updatedAt: new Date().toISOString()
+      };
+
+      const res = await fetch(`/api/product-cms/${currentProductId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(r => r.json());
+
+      if (res.success) {
+        showToast('Product CMS updated successfully!', 'success');
+        addActivity(`Updated CMS for ${currentProductId}`);
+      }
+    }
 
     // ─── Mobile Menu ─────────────────────────────────────────────
     document.getElementById('mobile-menu-btn').addEventListener('click', () => {
@@ -1329,15 +2165,48 @@
       }, 3200);
     }
 
-    // ─── Keyboard shortcuts ───────────────────────────────────────
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // ─── Initialize ───────────────────────────────────────────────
+    // Initialize ───────────────────────────────────────────────────
     renderProducts();
-    renderUsers();
     updateDashboardStats();
+    // Global upload trigger for CMS rows
+    let currentUploadTargetId = null;
+    async function handleGlobalCMSUpload(input) {
+      if (!currentUploadTargetId) return;
+      const file = input.files[0];
+      if (!file) return;
+      
+      const targetInput = document.getElementById(currentUploadTargetId);
+      const previewId = targetInput.getAttribute('data-preview');
+      
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const base64Data = e.target.result;
+        const fileName = `cms-${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fileName, base64Data })
+        }).then(r => r.json());
+        
+        if (res.success) {
+          targetInput.value = res.url;
+          if (previewId && document.getElementById(previewId)) {
+            document.getElementById(previewId).src = res.url;
+          }
+          showToast('Image uploaded!', 'success');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+    
+    function triggerCMSUpload(targetId, previewId) {
+      currentUploadTargetId = targetId;
+      document.getElementById(targetId).setAttribute('data-preview', previewId);
+      document.getElementById('global-cms-file-input').click();
+    }
   </script>
+
+  <!-- Global hidden file input for CMS uploads -->
+  <input type="file" id="global-cms-file-input" hidden accept="image/*,video/*" onchange="handleGlobalCMSUpload(this)">
 </body>
 </html>

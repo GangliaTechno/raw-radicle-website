@@ -102,22 +102,67 @@ const RRAuth = (() => {
     });
   };
 
-  // ─── Product Overrides ────────────────────────────────────────────────
-  const getProductOverrides = () => {
+  // ─── Product Data (Server API) ──────────────────────────────────────────
+  const getProducts = async () => {
     try {
-      return JSON.parse(localStorage.getItem(PRODUCTS_KEY) || '{}');
-    } catch { return {}; }
+      const response = await fetch('/api/products');
+      return await response.json();
+    } catch (err) {
+      console.error('Failed to fetch products:', err);
+      return {};
+    }
   };
 
-  const saveProductOverride = (productId, data) => {
-    const overrides = getProductOverrides();
-    overrides[productId] = { ...overrides[productId], ...data, updatedAt: new Date().toISOString() };
-    localStorage.setItem(PRODUCTS_KEY, JSON.stringify(overrides));
-    return overrides[productId];
+  const saveProducts = async (products) => {
+    try {
+      const response = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(products)
+      });
+      return await response.json();
+    } catch (err) {
+      console.error('Failed to save products:', err);
+      return { success: false };
+    }
   };
 
-  const getProductOverride = (productId) => {
-    return getProductOverrides()[productId] || null;
+  // ─── Home Page Data (Server API) ────────────────────────────────────────
+  const getHomePageData = async () => {
+    try {
+      const response = await fetch('/api/homepage');
+      return await response.json();
+    } catch (err) {
+      console.error('Failed to fetch homepage data:', err);
+      return {};
+    }
+  };
+
+  const saveHomePageData = async (data) => {
+    try {
+      const response = await fetch('/api/homepage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      return await response.json();
+    } catch (err) {
+      console.error('Failed to save homepage data:', err);
+      return { success: false };
+    }
+  };
+
+  // ─── Legacy Overrides (Now proxies to API or returns local if needed) ───
+  // Note: These are simplified for the migration. Callers should move to getProducts()
+  const getProductOverrides = () => {
+    console.warn('RRAuth.getProductOverrides is deprecated. Use getProducts instead.');
+    return {}; // Return empty to avoid crashes while we update callers
+  };
+
+  const saveProductOverride = async (productId, data) => {
+    const products = await getProducts();
+    products[productId] = { ...products[productId], ...data, updatedAt: new Date().toISOString() };
+    return await saveProducts(products);
   };
 
   // ─── All registered users (admin only) ───────────────────────────────
@@ -129,7 +174,11 @@ const RRAuth = (() => {
   // Initialize
   _seedUsers();
 
-  return { login, register, logout, isLoggedIn, isAdmin, getUser, getAllUsers, getProductOverrides, saveProductOverride, getProductOverride };
+  return { 
+    login, register, logout, isLoggedIn, isAdmin, getUser, getAllUsers,
+    getProducts, saveProducts, getHomePageData, saveHomePageData,
+    getProductOverrides, saveProductOverride // Deprecated legacy support
+  };
 })();
 
 // Make globally available
