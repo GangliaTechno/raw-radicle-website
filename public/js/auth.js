@@ -8,26 +8,43 @@ const RRAuth = (() => {
   const SESSION_KEY = 'rr_session';
   const PRODUCTS_KEY = 'rr_product_overrides';
 
-  // ─── Seed default users if none exist ────────────────────────────────
-  const _seedUsers = () => {
-    if (!localStorage.getItem(USERS_KEY)) {
-      const defaultUsers = [
-        {
-          id: 'admin-001',
-          firstName: 'Admin',
-          lastName: 'User',
-          email: 'admin@rawradicles.com',
-          password: 'admin123',
+  // ─── Ensure Admins exist in LocalStorage ─────────────────────────────
+  const _ensureAdmins = () => {
+    let users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+    const adminEmails = [
+      { email: 'admin@rawradicles.com', firstName: 'Admin', lastName: 'User' },
+      { email: 'dsplmanipal@gmail.com', firstName: 'DSPL', lastName: 'Admin' },
+      { email: 'director@dashapatmaja.in', firstName: 'Director', lastName: 'Admin' },
+      { email: 'info@rawradicles.com', firstName: 'Info', lastName: 'Admin' }
+    ];
+
+    let updated = false;
+    adminEmails.forEach((admin, index) => {
+      const existingIdx = users.findIndex(u => u.email.toLowerCase() === admin.email.toLowerCase());
+      if (existingIdx === -1) {
+        users.push({
+          id: `admin-${100 + index}`,
+          firstName: admin.firstName,
+          lastName: admin.lastName,
+          email: admin.email,
+          password: 'admin123', // Default password for new admins
           role: 'admin',
           createdAt: new Date().toISOString()
-        }
-      ];
-      localStorage.setItem(USERS_KEY, JSON.stringify(defaultUsers));
+        });
+        updated = true;
+      } else if (users[existingIdx].role !== 'admin') {
+        users[existingIdx].role = 'admin';
+        updated = true;
+      }
+    });
+
+    if (updated || !localStorage.getItem(USERS_KEY)) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
     }
   };
 
   const _getUsers = () => {
-    _seedUsers();
+    _ensureAdmins();
     return JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
   };
 
@@ -47,7 +64,14 @@ const RRAuth = (() => {
 
   const isAdmin = () => {
     const u = getUser();
-    return u && u.role === 'admin';
+    if (!u) return false;
+    const adminEmails = [
+      'admin@rawradicles.com',
+      'dsplmanipal@gmail.com',
+      'director@dashapatmaja.in',
+      'info@rawradicles.com'
+    ];
+    return u.role === 'admin' || adminEmails.includes(u.email.toLowerCase());
   };
 
   const _setSession = (user) => {
@@ -172,7 +196,7 @@ const RRAuth = (() => {
   };
 
   // Initialize
-  _seedUsers();
+  _ensureAdmins();
 
   return { 
     login, register, logout, isLoggedIn, isAdmin, getUser, getAllUsers,
