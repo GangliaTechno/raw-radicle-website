@@ -7,27 +7,6 @@
         "image": "assets/banner1.jpg",
         "link": "pages/cdarkc.html",
         "subtitle": "CHYAWANAPRASH"
-      },
-      {
-        "index": 1,
-        "title": "Mushtarista Digestive Shots",
-        "image": "assets/banner3.jpg",
-        "link": "pages/shots.html",
-        "subtitle": "NEW"
-      },
-      {
-        "index": 2,
-        "title": "Herbal Balms",
-        "image": "assets/banner.jpg",
-        "link": "pages/balm.html",
-        "subtitle": "NEW"
-      },
-      {
-        "index": 3,
-        "title": "The Shots and The Balms",
-        "image": "assets/banner4.jpg",
-        "link": "pages/balm.html",
-        "subtitle": "FEATURED"
       }
     ]
   },

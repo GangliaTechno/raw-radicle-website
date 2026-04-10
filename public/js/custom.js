@@ -7,14 +7,17 @@ let top = _____WB$wombat$assign$function_____("top");
 let parent = _____WB$wombat$assign$function_____("parent");
 let frames = _____WB$wombat$assign$function_____("frames");
 let opens = _____WB$wombat$assign$function_____("opens");
-document.addEventListener('DOMContentLoaded', function() {
+function initProductsLogic() {
   const filterButtons = document.querySelectorAll('.filter-category');
   const productsContainer = document.querySelector('.ProductList--grid');
   const sortButtons = document.querySelectorAll('[data-action="sort-value"]');
 
+  if (!productsContainer) return;
+
   // Filter Logic
   filterButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
+    // Remove existing listener to avoid duplicates if re-initted
+    button.onclick = function(e) {
       e.preventDefault();
       const category = this.getAttribute('data-type');
       filterButtons.forEach(btn => {
@@ -29,25 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
           product.style.display = 'none';
         }
       });
-    });
+    };
   });
 
   // Sort Logic
   sortButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.onclick = function(e) {
       e.preventDefault();
       const sortBy = this.getAttribute('data-value');
       
-      // Update UI state
       sortButtons.forEach(btn => btn.classList.toggle('is-selected', btn === this));
       
-      // Update label in the toolbar if possible
-      const sortLabel = document.querySelector('.CollectionToolbar__Item--sort');
-      if (sortLabel) {
-        // We could update the text here but user didn't explicitly ask for it
-      }
-
-      // Perform Sort
       const items = Array.from(productsContainer.querySelectorAll('.Grid__Cell[data-type]'));
       items.sort((a, b) => {
         if (sortBy.includes('title')) {
@@ -55,24 +50,28 @@ document.addEventListener('DOMContentLoaded', function() {
           const valB = b.querySelector('.ProductItem__Title a').textContent.trim().toLowerCase();
           return sortBy === 'title-ascending' ? valA.localeCompare(valB) : valB.localeCompare(valA);
         } else if (sortBy.includes('price')) {
-          const priceA = parseFloat(a.querySelector('.transcy-money').textContent.replace(/[^\d.]/g, '')) || 0;
-          const priceB = parseFloat(b.querySelector('.transcy-money').textContent.replace(/[^\d.]/g, '')) || 0;
+          // Extract price from the new format "MRP ₹ 300.00 INR"
+          const getPrice = (el) => {
+            const text = el.querySelector('.ProductItem__Price').textContent;
+            const match = text.match(/₹\s*([\d.]+)/);
+            return match ? parseFloat(match[1]) : 0;
+          };
+          const priceA = getPrice(a);
+          const priceB = getPrice(b);
           return sortBy === 'price-ascending' ? priceA - priceB : priceB - priceA;
         }
         return 0;
       });
 
-      // Re-append items
       items.forEach(item => productsContainer.appendChild(item));
-
-      // Close popover
       const popover = document.getElementById('collection-sort-popover');
-      if (popover) {
-        popover.setAttribute('aria-hidden', 'true');
-      }
-    });
+      if (popover) popover.setAttribute('aria-hidden', 'true');
+    };
   });
-});
+}
+
+window.initProductsLogic = initProductsLogic;
+document.addEventListener('DOMContentLoaded', initProductsLogic);
 //# sourceMappingURL=/s/files/1/0013/2146/8022/t/45/assets/custom.js.map?v=183944157590872491501684244781
 
 }

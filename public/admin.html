@@ -55,17 +55,19 @@
     }
 
     .sidebar-logo {
-      padding: 28px 24px 20px;
+      padding: 30px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
+      text-align: center;
+      gap: 16px;
+      text-decoration: none;
     }
 
     .sidebar-logo img {
-      height: 36px;
-      width: auto;
-      filter: brightness(0) invert(1);
+      max-width: 140px;
+      height: auto;
     }
 
     .sidebar-logo-text {
@@ -766,10 +768,10 @@
 <body>
   <!-- ──── SIDEBAR ──── -->
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
+    <a href="index.html" class="sidebar-logo">
       <img src="assets/RR_Logo-1.png" alt="Raw Radicles">
-      <span class="sidebar-logo-text">Admin</span>
-    </div>
+      <span class="sidebar-logo-text">ADMIN</span>
+    </a>
 
     <div class="sidebar-section-label">Management</div>
     <nav class="sidebar-nav">
@@ -1214,7 +1216,7 @@
             <div class="product-card-body">
               <div class="product-name" id="pname-${p.id}">${p.name}</div>
               <div class="product-price" id="pprice-${p.id}">
-                ₹${parseFloat(p.price).toFixed(2)}
+                MRP ₹${parseFloat(p.price).toFixed(2)} INR
                 ${p.mrp ? `<span class="original">MRP ₹${parseFloat(p.mrp).toFixed(2)}</span>` : ''}
               </div>
               <div class="product-desc" id="pdesc-${p.id}">${p.description}</div>

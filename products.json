@@ -64,27 +64,5 @@
     "hoverImage": "assets/choco/cdark-1.png",
     "page": "pages/cdarkc.html",
     "badge": null
-  },
-  "balm": {
-    "id": "balm",
-    "name": "Jatyadi Balm",
-    "price": 50,
-    "mrp": 50,
-    "description": "Traditional Ayurvedic balm for skin repair and protection.",
-    "image": "assets/j2.jpg",
-    "hoverImage": "assets/j3.jpg",
-    "page": "pages/balm.html",
-    "badge": "Ayurveda"
-  },
-  "shots": {
-    "id": "shots",
-    "name": "Mushtarishta Shots",
-    "price": 150,
-    "mrp": 150,
-    "description": "Herbal shots for strength and recovery.",
-    "image": "assets/shot-1.png",
-    "hoverImage": "assets/shot-2.png",
-    "page": "pages/shots.html",
-    "badge": "Wellness"
   }
 }
