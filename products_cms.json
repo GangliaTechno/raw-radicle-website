@@ -7,38 +7,71 @@
       "../assets/amilk/amilk-3.png"
     ],
     "basicInfo": {
-      "title": "WRATH RELIEF <br><span class=\"u-h5\" style=\"white-space: nowrap;\">35% MILK CHOCOLATE WITH ASHWAGANDHA HERBS</span>",
+      "title": "WRATH RELIEF SYNC TEST <br><span class=\"u-h5\" style=\"white-space: nowrap;\">35% MILK CHOCOLATE WITH ASHWAGANDHA HERBS</span>",
       "subtitle": "",
       "price": "300.00",
       "mrp": "300.00",
       "badge": "<b>ASHWAGANDHA MILK:</b> STRENGTH, STAMINA & CALM",
-      "marketplaces": [
-        { "name": "Blinkit", "logo": "../assets/blinkit.png", "link": "" },
-        { "name": "Zepto", "logo": "../assets/zepto.png", "link": "" },
-        { "name": "Amazon", "logo": "../assets/amazon.png", "link": "" },
-        { "name": "Instamart", "logo": "../assets/instamart.png", "link": "" },
-        { "name": "Flipkart", "logo": "../assets/flipkart.png", "link": "" }
-      ]
+      "marketplaces": []
     },
     "details": {
       "features": [
-        { "title": "THE POWER OF \"ANCIENT CALM\"", "desc": "In a world that never stops, Wrath Relief offers the \"Pleasure of a Pause.\" By infusing premium milk chocolate with the stress-relieving properties of Ashwagandha, this bar is designed to help you unwind and reclaim your inner peace." },
-        { "title": "20% ASHWAGANDHA ATIBALADI BLEND", "desc": "A functional wellness snack using a potent 20% concentration of an Atibaladi formulation. Includes Ashwagandha for stress management, Atibala for vitality, and a traditional infusion of Ghee and Honey for maximum absorption." },
-        { "title": "CREAMY 35% MILK CHOCOLATE", "desc": "The 80% chocolate base is crafted with 35% cocoa and rich milk solids. This luscious texture masks the earthy notes of Ashwagandha for a smooth, malt-like flavor profile." },
-        { "title": "\"GOLD & TEXTURED BLUE\" AESTHETICS", "desc": "Wrath Relief features a deep blue packaging chosen to evoke tranquility and relaxation—the perfect evening treat. It’s not just a snack; it’s a lifestyle upgrade for the modern soul." },
-        { "title": "SCIENCE-BACKED AYURVEDIC HERITAGE", "desc": "Developed at the Advanced Research Center (MUTBI) in Manipal, combining modern research with ancient wisdom to ensure every bar delivers both taste and function." }
+        {
+          "title": "THE POWER OF ",
+          "desc": "In a world that never stops, Wrath Relief offers the \"Pleasure of a Pause.\" By infusing premium milk chocolate with the stress-relieving properties of Ashwagandha, this bar is designed to help you unwind and reclaim your inner peace."
+        },
+        {
+          "title": "20% ASHWAGANDHA ATIBALADI BLEND",
+          "desc": "A functional wellness snack using a potent 20% concentration of an Atibaladi formulation. Includes Ashwagandha for stress management, Atibala for vitality, and a traditional infusion of Ghee and Honey for maximum absorption."
+        },
+        {
+          "title": "CREAMY 35% MILK CHOCOLATE",
+          "desc": "The 80% chocolate base is crafted with 35% cocoa and rich milk solids. This luscious texture masks the earthy notes of Ashwagandha for a smooth, malt-like flavor profile."
+        },
+        {
+          "title": "",
+          "desc": "Wrath Relief features a deep blue packaging chosen to evoke tranquility and relaxation—the perfect evening treat. It’s not just a snack; it’s a lifestyle upgrade for the modern soul."
+        },
+        {
+          "title": "SCIENCE-BACKED AYURVEDIC HERITAGE",
+          "desc": "Developed at the Advanced Research Center (MUTBI) in Manipal, combining modern research with ancient wisdom to ensure every bar delivers both taste and function."
+        }
       ],
       "specs": [
-        { "title": "Brand", "desc": "Raw Radicles" },
-        { "title": "Series", "desc": "Wrath Relief" },
-        { "title": "Weight", "desc": "60g" },
-        { "title": "Primary Herb", "desc": "Ashwagandha (Withania somnifera)" },
-        { "title": "Chocolate Base", "desc": "35% Milk Chocolate" },
-        { "title": "Allergens", "desc": "Contains Milk and Soy" },
-        { "title": "Storage", "desc": "18°C – 24°C (Cool & Dry)" },
-        { "title": "Origin", "desc": "Manipal, Karnataka" }
+        {
+          "title": "Brand",
+          "desc": "Raw Radicles"
+        },
+        {
+          "title": "Series",
+          "desc": "Wrath Relief"
+        },
+        {
+          "title": "Weight",
+          "desc": "60g"
+        },
+        {
+          "title": "Primary Herb",
+          "desc": "Ashwagandha (Withania somnifera)"
+        },
+        {
+          "title": "Chocolate Base",
+          "desc": "35% Milk Chocolate"
+        },
+        {
+          "title": "Allergens",
+          "desc": "Contains Milk and Soy"
+        },
+        {
+          "title": "Storage",
+          "desc": "18°C – 24°C (Cool & Dry)"
+        },
+        {
+          "title": "Origin",
+          "desc": "Manipal, Karnataka"
+        }
       ],
-      "quality": "<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options.&nbsp;60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>"
+      "quality": "<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options. 60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>"
     },
     "featureGrid": [
       {
@@ -58,13 +91,93 @@
       }
     ],
     "related": [
-      { "image": "../assets/choco/adark.png", "hoverImage": "../assets/choco/adark.png", "title": "ASHWAGANDHA DARK", "price": "MRP &#8377; 300.00", "link": "adarkc.html" },
-      { "image": "../assets/choco/bmilk.png", "hoverImage": "../assets/choco/bmilk.png", "title": "BRAHMI MILK", "price": "MRP &#8377; 300.00", "link": "bmilkc.html" },
-      { "image": "../assets/choco/bdark.png", "hoverImage": "../assets/choco/bdark.png", "title": "BRAHMI DARK", "price": "MRP &#8377; 300.00", "link": "bdarkc.html" },
-      { "image": "../assets/choco/cmilk.png", "hoverImage": "../assets/choco/cmilk.png", "title": "CHYAWANAPRASH MILK", "price": "MRP &#8377; 300.00", "link": "cmilkc.html" },
-      { "image": "../assets/choco/cdark.png", "hoverImage": "../assets/choco/cdark.png", "title": "CHYAWANAPRASH DARK", "price": "MRP &#8377; 300.00", "link": "cdarkc.html" }
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "RELATED SYNC TEST",
+        "price": "MRP ₹ 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cmilkc.html"
+      },
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cmilkc.html"
+      }
     ],
-    "reviews": []
+    "reviews": [],
+    "updatedAt": "2026-04-10T05:13:50.230Z"
   },
   "adarkc": {
     "gallery": [
@@ -80,30 +193,89 @@
       "mrp": "300.00",
       "badge": "<b>ASHWAGANDHA DARK:</b> STRENGTH, STAMINA & CALM",
       "marketplaces": [
-        { "name": "Blinkit", "logo": "../assets/blinkit.png", "link": "" },
-        { "name": "Zepto", "logo": "../assets/zepto.png", "link": "" },
-        { "name": "Amazon", "logo": "../assets/amazon.png", "link": "" },
-        { "name": "Instamart", "logo": "../assets/instamart.png", "link": "" },
-        { "name": "Flipkart", "logo": "../assets/flipkart.png", "link": "" }
+        {
+          "name": "Blinkit",
+          "logo": "../assets/blinkit.png",
+          "link": ""
+        },
+        {
+          "name": "Zepto",
+          "logo": "../assets/zepto.png",
+          "link": ""
+        },
+        {
+          "name": "Amazon",
+          "logo": "../assets/amazon.png",
+          "link": ""
+        },
+        {
+          "name": "Instamart",
+          "logo": "../assets/instamart.png",
+          "link": ""
+        },
+        {
+          "name": "Flipkart",
+          "logo": "../assets/flipkart.png",
+          "link": ""
+        }
       ]
     },
     "details": {
       "features": [
-        { "title": "THE POWER OF \"ANCIENT CALM\"", "desc": "In a world that never stops, Wrath Relief offers the \"Pleasure of a Pause.\" By infusing premium dark chocolate with the stress-relieving properties of Ashwagandha, this bar is designed to help you unwind and reclaim your inner peace." },
-        { "title": "20% ASHWAGANDHA ATIBALADI BLEND", "desc": "A functional wellness snack using a potent 20% concentration of an Atibaladi formulation. Includes Ashwagandha for stress management, Atibala for vitality, and a traditional infusion of Ghee and Honey for maximum absorption." },
-        { "title": "INTENSE 55% DARK COCOA", "desc": "The 80% chocolate base is crafted with 55% cocoa solids. This rich texture masks the earthy notes of Ashwagandha for a bold, bittersweet flavor profile." },
-        { "title": "\"GOLD & TEXTURED BLUE\" AESTHETICS", "desc": "Wrath Relief features a deep blue packaging chosen to evoke tranquility and relaxation—the perfect evening treat. It’s not just a snack; it’s a lifestyle upgrade for the modern soul." },
-        { "title": "SCIENCE-BACKED AYURVEDIC HERITAGE", "desc": "Developed at the Advanced Research Center (MUTBI) in Manipal, combining modern research with ancient wisdom to ensure every bar delivers both taste and function." }
+        {
+          "title": "THE POWER OF \"ANCIENT CALM\"",
+          "desc": "In a world that never stops, Wrath Relief offers the \"Pleasure of a Pause.\" By infusing premium dark chocolate with the stress-relieving properties of Ashwagandha, this bar is designed to help you unwind and reclaim your inner peace."
+        },
+        {
+          "title": "20% ASHWAGANDHA ATIBALADI BLEND",
+          "desc": "A functional wellness snack using a potent 20% concentration of an Atibaladi formulation. Includes Ashwagandha for stress management, Atibala for vitality, and a traditional infusion of Ghee and Honey for maximum absorption."
+        },
+        {
+          "title": "INTENSE 55% DARK COCOA",
+          "desc": "The 80% chocolate base is crafted with 55% cocoa solids. This rich texture masks the earthy notes of Ashwagandha for a bold, bittersweet flavor profile."
+        },
+        {
+          "title": "\"GOLD & TEXTURED BLUE\" AESTHETICS",
+          "desc": "Wrath Relief features a deep blue packaging chosen to evoke tranquility and relaxation—the perfect evening treat. It’s not just a snack; it’s a lifestyle upgrade for the modern soul."
+        },
+        {
+          "title": "SCIENCE-BACKED AYURVEDIC HERITAGE",
+          "desc": "Developed at the Advanced Research Center (MUTBI) in Manipal, combining modern research with ancient wisdom to ensure every bar delivers both taste and function."
+        }
       ],
       "specs": [
-        { "title": "Brand", "desc": "Raw Radicles" },
-        { "title": "Series", "desc": "Wrath Relief" },
-        { "title": "Weight", "desc": "60g" },
-        { "title": "Primary Herb", "desc": "Ashwagandha (Withania somnifera)" },
-        { "title": "Chocolate Base", "desc": "55% Dark Chocolate" },
-        { "title": "Allergens", "desc": "Contains Soy; May contain Milk" },
-        { "title": "Storage", "desc": "18°C – 24°C (Cool & Dry)" },
-        { "title": "Origin", "desc": "Manipal, Karnataka" }
+        {
+          "title": "Brand",
+          "desc": "Raw Radicles"
+        },
+        {
+          "title": "Series",
+          "desc": "Wrath Relief"
+        },
+        {
+          "title": "Weight",
+          "desc": "60g"
+        },
+        {
+          "title": "Primary Herb",
+          "desc": "Ashwagandha (Withania somnifera)"
+        },
+        {
+          "title": "Chocolate Base",
+          "desc": "55% Dark Chocolate"
+        },
+        {
+          "title": "Allergens",
+          "desc": "Contains Soy. May contain Milk traces."
+        },
+        {
+          "title": "Storage",
+          "desc": "18°C – 24°C (Cool & Dry)"
+        },
+        {
+          "title": "Origin",
+          "desc": "Manipal, Karnataka"
+        }
       ],
       "quality": "<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options.&nbsp;60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>"
     },
@@ -125,11 +297,90 @@
       }
     ],
     "related": [
-      { "image": "../assets/choco/amilk.png", "hoverImage": "../assets/choco/amilk.png", "title": "ASHWAGANDHA MILK", "price": "MRP &#8377; 300.00", "link": "amilkc.html" },
-      { "image": "../assets/choco/bmilk.png", "hoverImage": "../assets/choco/bmilk.png", "title": "BRAHMI MILK", "price": "MRP &#8377; 300.00", "link": "bmilkc.html" },
-      { "image": "../assets/choco/bdark.png", "hoverImage": "../assets/choco/bdark.png", "title": "BRAHMI DARK", "price": "MRP &#8377; 300.00", "link": "bdarkc.html" },
-      { "image": "../assets/choco/cmilk.png", "hoverImage": "../assets/choco/cmilk.png", "title": "CHYAWANAPRASH MILK", "price": "MRP &#8377; 300.00", "link": "cmilkc.html" },
-      { "image": "../assets/choco/cdark.png", "hoverImage": "../assets/choco/cdark.png", "title": "CHYAWANAPRASH DARK", "price": "MRP &#8377; 300.00", "link": "cdarkc.html" }
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      },
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      }
     ],
     "reviews": []
   },
@@ -145,257 +396,613 @@
       "subtitle": "",
       "price": "300.00",
       "mrp": "300.00",
-      "badge": "<b>BRAHMI MILK:</b> FOCUS, MEMORY & MENTAL CLARITY",
-      "marketplaces": [
-        { "name": "Blinkit", "logo": "../assets/blinkit.png", "link": "" },
-        { "name": "Zepto", "logo": "../assets/zepto.png", "link": "" },
-        { "name": "Amazon", "logo": "../assets/amazon.png", "link": "" },
-        { "name": "Instamart", "logo": "../assets/instamart.png", "link": "" },
-        { "name": "Flipkart", "logo": "../assets/flipkart.png", "link": "" }
-      ]
+      "badge": "<b>BRAHMI MILK:</b> FOCUS, MEMORY & CONCENTRATION",
+      "marketplaces": []
     },
     "details": {
       "features": [
-        { "title": "THE \"INTELLECTUAL\" INDULGENCE", "desc": "Smart Sin is not just a chocolate; it's a cognitive-enhancing functional snack. By pairing creamy 35% Milk Chocolate with the memory-boosting power of Brahmi, we've created a treat that helps you stay sharp while satisfying your sweet tooth." },
-        { "title": "15% BRAHMI GHRITA INFUSION", "desc": "Uses traditional Ayurvedic preparation of Brahmi Ghrita (herbalized Ghee) for superior bioavailability of the active compounds. Includes Brahmi, Shankhapushpi, Vacha, and Trikatu for comprehensive brain support." },
-        { "title": "SMOOTH 35% MILK CHOCOLATE", "desc": "The 60g bar is crafted with 35% cocoa solids and rich milk components to create a velvety texture that perfectly balances the earthy notes of the herbalized Ghrita." },
-        { "title": "\"GOLD & TEXTURED RED\" DESIGN", "desc": "Wrapped in a vibrant Gold and Textured Red packaging that symbolizes mental energy and clarity. A premium aesthetic that fits into your high-performance lifestyle." },
-        { "title": "FORMULATED AT MUTBI, MANIPAL", "desc": "Developed using advanced research methods to ensure the stability and potency of the Ayurvedic ingredients within the chocolate matrix." }
+        {
+          "title": "THE PLEASURE OF A PAUSE",
+          "desc": "Unlock your mind's potential with Smart Sin. A perfect blend of rich milk chocolate and the cognitive-enhancing power of Brahmi, crafted for those who seek sharp focus."
+        },
+        {
+          "title": "BRAHMI NOOTROPIC BLEND",
+          "desc": "Infused with high-quality Brahmi extracts known for improving memory, increasing concentration, and reducing mental fatigue."
+        },
+        {
+          "title": "RICH MILK CHOCOLATE",
+          "desc": "A smooth 35% milk chocolate base that provides a creamy, delightful escape while your brain stays sharp."
+        },
+        {
+          "title": "PREMIUM INGREDIENTS",
+          "desc": "Only the finest cocoa and Ayurvedic herbs, blended in small batches to preserve potency and flavor."
+        },
+        {
+          "title": "RESEARCH DRIVEN",
+          "desc": "Formulated based on traditional Ayurvedic principles supported by modern nutritional science."
+        }
       ],
       "specs": [
-        { "title": "Brand", "desc": "Raw Radicles" },
-        { "title": "Series", "desc": "Smart Sin" },
-        { "title": "Weight", "desc": "60g" },
-        { "title": "Functional Core", "desc": "15% Brahmi Ghrita (Bacopa monnieri)" },
-        { "title": "Chocolate Base", "desc": "35% Milk Chocolate" },
-        { "title": "Allergens", "desc": "Contains Milk and Soy" },
-        { "title": "Storage", "desc": "18°C – 24°C (Cool & Dry)" },
-        { "title": "Origin", "desc": "Manipal, Karnataka" }
+        {
+          "title": "Brand",
+          "desc": "Raw Radicles"
+        },
+        {
+          "title": "Series",
+          "desc": "Smart Sin"
+        },
+        {
+          "title": "Weight",
+          "desc": "60g"
+        },
+        {
+          "title": "Primary Herb",
+          "desc": "Brahmi (Bacopa monnieri)"
+        },
+        {
+          "title": "Chocolate Base",
+          "desc": "35% Milk Chocolate"
+        },
+        {
+          "title": "Allergens",
+          "desc": "Contains Milk and Soy"
+        },
+        {
+          "title": "Storage",
+          "desc": "18°C – 24°C"
+        }
       ],
-      "quality": "<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options.&nbsp;60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>"
+      "quality": "<p>Quality assured and tested for purity. Handcrafted in our artisan facility.</p>"
     },
     "featureGrid": [
       {
-        "image": "../assets/br1.png",
-        "title": "ANCIENT HERBS",
-        "description": "Infused with authentic Ayurvedic herbs like Brahmi, and Amla for targeted wellness."
+        "image": "../assets/features/choco-1.png",
+        "title": "COGNITIVE BOOST",
+        "description": "Brahmi is nature's brain tonic, enhancing neuro-processing."
       },
       {
         "image": "../assets/features/choco-2.png",
-        "title": "PURE COCOA",
-        "description": "Hand-selected premium cocoa for a rich, velvety texture and deep, satisfying chocolate experience."
+        "title": "VELVETY TEXTURE",
+        "description": "Meticulously conched for the smoothest mouthfeel."
       },
       {
         "image": "../assets/features/choco-3.png",
-        "title": "ARTISAN CRAFTED",
-        "description": "Small-batch production ensures maximum potency of herbs and artisanal quality in every bite."
+        "title": "GUILT-FREE",
+        "description": "A mindful indulgence for the busy professional."
       }
     ],
     "related": [
-      { "image": "../assets/choco/amilk.png", "hoverImage": "../assets/choco/amilk.png", "title": "ASHWAGANDHA MILK", "price": "MRP &#8377; 300.00", "link": "amilkc.html" },
-      { "image": "../assets/choco/adark.png", "hoverImage": "../assets/choco/adark.png", "title": "ASHWAGANDHA DARK", "price": "MRP &#8377; 300.00", "link": "adarkc.html" },
-      { "image": "../assets/choco/bdark.png", "hoverImage": "../assets/choco/bdark.png", "title": "BRAHMI DARK", "price": "MRP &#8377; 300.00", "link": "bdarkc.html" },
-      { "image": "../assets/choco/cmilk.png", "hoverImage": "../assets/choco/cmilk.png", "title": "CHYAWANAPRASH MILK", "price": "MRP &#8377; 300.00", "link": "cmilkc.html" },
-      { "image": "../assets/choco/cdark.png", "hoverImage": "../assets/choco/cdark.png", "title": "CHYAWANAPRASH DARK", "price": "MRP &#8377; 300.00", "link": "cdarkc.html" }
+      {
+        "image": "../assets/choco/adark.png",
+        "hoverImage": "../assets/choco/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/choco/apmilk.png",
+        "hoverImage": "../assets/choco/apmilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/choco/bdark.png",
+        "hoverImage": "../assets/choco/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/choco/bmilk.png",
+        "hoverImage": "../assets/choco/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/choco/cdark.png",
+        "hoverImage": "../assets/choco/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/choco/cmilk.png",
+        "hoverImage": "../assets/choco/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cmilkc.html"
+      },
+      {
+        "image": "../assets/choco/adark.png",
+        "hoverImage": "../assets/choco/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/choco/apmilk.png",
+        "hoverImage": "../assets/choco/apmilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/choco/bdark.png",
+        "hoverImage": "../assets/choco/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/choco/bmilk.png",
+        "hoverImage": "../assets/choco/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/choco/cdark.png",
+        "hoverImage": "../assets/choco/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/choco/cmilk.png",
+        "hoverImage": "../assets/choco/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP ₹ 300.00",
+        "link": "cmilkc.html"
+      }
     ],
-    "reviews": []
+    "reviews": [],
+    "updatedAt": "2026-04-10T05:06:49.566Z"
   },
   "bdarkc": {
     "gallery": [
       "../assets/bdark/bdark.png",
-      "../assets/bdark/bdark-1.png",
-      "../assets/bdark/bdark-2.png",
-      "../assets/bdark/bdark-3.png"
+      "../assets/bdark/bdark-1.png"
     ],
     "basicInfo": {
       "title": "SMART SIN <br><span class=\"u-h5\" style=\"white-space: nowrap;\">55% DARK CHOCOLATE WITH BRAHMI HERBS</span>",
       "subtitle": "",
       "price": "300.00",
       "mrp": "300.00",
-      "badge": "<b>BRAHMI DARK:</b> FOCUS, MEMORY & MENTAL CLARITY",
+      "badge": "<b>BRAHMI DARK:</b> COGNITIVE CLARITY & INSIGHT",
       "marketplaces": [
-        { "name": "Blinkit", "logo": "../assets/blinkit.png", "link": "" },
-        { "name": "Zepto", "logo": "../assets/zepto.png", "link": "" },
-        { "name": "Amazon", "logo": "../assets/amazon.png", "link": "" },
-        { "name": "Instamart", "logo": "../assets/instamart.png", "link": "" },
-        { "name": "Flipkart", "logo": "../assets/flipkart.png", "link": "" }
+        {
+          "name": "Blinkit",
+          "logo": "../assets/blinkit.png",
+          "link": ""
+        },
+        {
+          "name": "Zepto",
+          "logo": "../assets/zepto.png",
+          "link": ""
+        },
+        {
+          "name": "Amazon",
+          "logo": "../assets/amazon.png",
+          "link": ""
+        },
+        {
+          "name": "Instamart",
+          "logo": "../assets/instamart.png",
+          "link": ""
+        },
+        {
+          "name": "Flipkart",
+          "logo": "../assets/flipkart.png",
+          "link": ""
+        }
       ]
     },
     "details": {
       "features": [
-        { "title": "THE \"INTELLECTUAL\" INDULGENCE", "desc": "The Smart Sin Dark edition is designed for those who demand more from their snacks. By pairing the intense, antioxidant-rich profile of 55% Dark Chocolate with the cognitive-enhancing \"Wisdom of Brahmi,\" we’ve created a bar that fuels focus and satisfies the palate—entirely without guilt." },
-        { "title": "15% BRAHMI GHRITA (THE COGNITIVE GOLD)", "desc": "At the heart of this bar is a 15% concentration of Brahmi Ghrita, a traditional Ayurvedic preparation where herbs are infused into Cow Ghee for maximum absorption. Includes memory-enhancing Brahmi, concentration-boosting Shankhapushpi & Vacha, and metabolic-supporting Trikatu." },
-        { "title": "SOPHISTICATED 55% DARK COCOA BASE", "desc": "Our dark chocolate base is crafted for a smooth, bittersweet experience. The natural acidity and deep notes of the cocoa mass elegantly mask the herbal profile of the Ghrita, resulting in a rich, velvety finish that lingers." },
-        { "title": "COMMAND ATTENTION WITH \"GOLD & TEXTURED RED\"", "desc": "Dressed in a striking Gold and Textured Red wrapper, this bar symbolizes the \"Agni\" (fire) of the intellect. The vibrant red aesthetic is designed to stand out, signaling energy, focus, and superior quality." },
-        { "title": "PRECISION CRAFTING IN MANIPAL", "desc": "Each 60g slab is produced by Cacobean Chocolate Factory at the Advanced Research Center (MUTBI), Manipal. Our process ensures that the heat-sensitive Ayurvedic compounds remain potent." }
+        {
+          "title": "DEEP DARK FOCUS",
+          "desc": "Elevate your cognitive experience with Smart Sin Dark. The 55% cocoa base perfectly complements the neuro-enhancing properties of Brahmi."
+        },
+        {
+          "title": "CLARITY BOOSTER",
+          "desc": "Specifically formulated to assist with mental clarity, pattern recognition, and long-term cognitive health."
+        }
       ],
       "specs": [
-        { "title": "Brand", "desc": "Raw Radicles" },
-        { "title": "Series", "desc": "Smart Sin" },
-        { "title": "Chocolate Type", "desc": "55% Dark Chocolate" },
-        { "title": "Functional Core", "desc": "15% Brahmi Ghrita (Bacopa monnieri)" },
-        { "title": "Net Weight", "desc": "60g" },
-        { "title": "Dietary Info", "desc": "Contains Soy; May contain traces of Milk" },
-        { "title": "Storage Temp", "desc": "18°C – 24°C" },
-        { "title": "Manufacturing Hub", "desc": "MUTBI, Manipal, Karnataka" }
+        {
+          "title": "Brand",
+          "desc": "Raw Radicles"
+        },
+        {
+          "title": "Series",
+          "desc": "Smart Sin"
+        },
+        {
+          "title": "Chocolate Base",
+          "desc": "55% Dark Chocolate"
+        }
       ],
-      "quality": "<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options.&nbsp;60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>"
+      "quality": "<p>Finest vegan-friendly dark chocolate blended with traditional Ayurvedic wisdom.</p>"
     },
-    "featureGrid": [
-      {
-        "image": "../assets/br1.png",
-        "title": "ANCIENT HERBS",
-        "description": "Infused with authentic Ayurvedic herbs like Brahmi, and Amla for targeted wellness."
-      },
-      {
-        "image": "../assets/features/choco-2.png",
-        "title": "PURE COCOA",
-        "description": "Hand-selected premium cocoa for a rich, velvety texture and deep, satisfying chocolate experience."
-      },
-      {
-        "image": "../assets/features/choco-3.png",
-        "title": "ARTISAN CRAFTED",
-        "description": "Small-batch production ensures maximum potency of herbs and artisanal quality in every bite."
-      }
-    ],
     "related": [
-      { "image": "../assets/choco/amilk.png", "hoverImage": "../assets/choco/amilk.png", "title": "ASHWAGANDHA MILK", "price": "MRP &#8377; 300.00", "link": "amilkc.html" },
-      { "image": "../assets/choco/adark.png", "hoverImage": "../assets/choco/adark.png", "title": "ASHWAGANDHA DARK", "price": "MRP &#8377; 300.00", "link": "adarkc.html" },
-      { "image": "../assets/choco/bmilk.png", "hoverImage": "../assets/choco/bmilk.png", "title": "BRAHMI MILK", "price": "MRP &#8377; 300.00", "link": "bmilkc.html" },
-      { "image": "../assets/choco/cmilk.png", "hoverImage": "../assets/choco/cmilk.png", "title": "CHYAWANAPRASH MILK", "price": "MRP &#8377; 300.00", "link": "cmilkc.html" },
-      { "image": "../assets/choco/cdark.png", "hoverImage": "../assets/choco/cdark.png", "title": "CHYAWANAPRASH DARK", "price": "MRP &#8377; 300.00", "link": "cdarkc.html" }
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      },
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      }
     ],
     "reviews": []
   },
   "cmilkc": {
     "gallery": [
       "../assets/cmilk/cmilk.png",
-      "../assets/cmilk/cmilk-1.png",
-      "../assets/cmilk/cmilk-2.png",
-      "../assets/cmilk/cmilk-3.png"
+      "../assets/cmilk/cmilk-1.png"
     ],
     "basicInfo": {
-      "title": "HOLY SIN <br><span class=\"u-h5\" style=\"white-space: nowrap;\">35% MILK CHOCOLATE WITH CHYAWANPRASH HERBS</span>",
+      "title": "IMMUNE INVIGORATE <br><span class=\"u-h5\" style=\"white-space: nowrap;\">35% MILK CHOCOLATE WITH CHYAWANAPRASH HERBS</span>",
       "subtitle": "",
       "price": "300.00",
       "mrp": "300.00",
-      "badge": "<b>CHYAWANPRASH MILK:</b> IMMUNITY & VITALITY",
+      "badge": "<b>CHYAWANAPRASH MILK:</b> VITALITY & IMMUNE SUPPORT",
       "marketplaces": [
-        { "name": "Blinkit", "logo": "../assets/blinkit.png", "link": "" },
-        { "name": "Zepto", "logo": "../assets/zepto.png", "link": "" },
-        { "name": "Amazon", "logo": "../assets/amazon.png", "link": "" },
-        { "name": "Instamart", "logo": "../assets/instamart.png", "link": "" },
-        { "name": "Flipkart", "logo": "../assets/flipkart.png", "link": "" }
+        {
+          "name": "Blinkit",
+          "logo": "../assets/blinkit.png",
+          "link": ""
+        },
+        {
+          "name": "Zepto",
+          "logo": "../assets/zepto.png",
+          "link": ""
+        },
+        {
+          "name": "Amazon",
+          "logo": "../assets/amazon.png",
+          "link": ""
+        },
+        {
+          "name": "Instamart",
+          "logo": "../assets/instamart.png",
+          "link": ""
+        },
+        {
+          "name": "Flipkart",
+          "logo": "../assets/flipkart.png",
+          "link": ""
+        }
       ]
     },
     "details": {
       "features": [
-        { "title": "THE PERFECT FUSION: ANCIENT HERBS MEET MODERN LUXURY", "desc": "Experience the \"Holy Sin\"—the unapologetic combination of indulgent 35% Milk Chocolate and the time-honored wellness of Ayurvedic Chyawanprash. It’s the ultimate guilt-free pleasure that bridges the gap between traditional health and contemporary taste." },
-        { "title": "RICH 35% MILK CHOCOLATE BASE", "desc": "Crafted with a premium milk chocolate slab, our recipe uses high-quality cocoa butter and milk solids to ensure a velvety, smooth melt-in-your-mouth texture that balances the bold notes of the herbal infusion." },
-        { "title": "25% PURE CHYAWANPRASH INFUSION", "desc": "Unlike \"flavored\" chocolates, we incorporate a significant 25% of authentic Chyawanprash. This includes the potent benefits of Amla (Natural Vitamin C), Honey & Ghee (Natural sweetness and healthy fats), and Pippali & Traditional Herbs (Supports immunity and vitality)." },
-        { "title": "ARTISAN \"RAW RADICLES\" QUALITY", "desc": "Produced at the Cacobean Chocolate Factory, our bars are crafted with precision. We use natural vanilla flavor and high-grade emulsifiers to ensure a consistent, premium snap and gloss in every 60g bar." },
-        { "title": "CLEAN & TRANSPARENT INGREDIENTS", "desc": "We believe in full transparency. Our labels clearly list all ingredients—from the cocoa mass to the specific Ayurvedic herbs—ensuring you know exactly what you are consuming. Contains Milk and Soy. Gluten-free ingredients." },
-        { "title": "PREMIUM \"GOLD & GREEN\" PACKAGING", "desc": "Designed to reflect the product's identity, the packaging features a striking Gold and Textured Green aesthetic. It’s not just a chocolate bar; it’s a premium gift for the health-conscious connoisseur." }
+        {
+          "title": "IMMUNITY IN EVERY BITE",
+          "desc": "Indulge in wellness with Immune Invigorate. Combining the age-old recipes of Chyawanaprash with premium milk chocolate for a delicious health boost."
+        }
       ],
       "specs": [
-        { "title": "Weight", "desc": "60g" },
-        { "title": "Chocolate Type", "desc": "35% Milk Chocolate" },
-        { "title": "Core Benefit", "desc": "Immunity-boosting Chyawanprash herbs" },
-        { "title": "Storage", "desc": "Cool, dry place (18°C - 24°C)" },
-        { "title": "Origin", "desc": "Manipal, Karnataka (India)" },
-        { "title": "Brand", "desc": "Raw Radicles" }
+        {
+          "title": "Brand",
+          "desc": "Raw Radicles"
+        },
+        {
+          "title": "Primary Herb",
+          "desc": "Amla & 40+ Herbs (Chyawanaprash)"
+        }
       ],
-      "quality": "<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options. &nbsp;60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>"
+      "quality": "<p>A balanced fusion of traditional Rasyana and modern confectionery.</p>"
     },
-    "featureGrid": [
-      {
-        "image": "../assets/cp1.png",
-        "title": "ANCIENT HERBS",
-        "description": "Infused with authentic Ayurvedic herbs like Chyawanaprash for targeted wellness."
-      },
-      {
-        "image": "../assets/features/choco-2.png",
-        "title": "PURE COCOA",
-        "description": "Hand-selected premium cocoa for a rich, velvety texture and deep, satisfying chocolate experience."
-      },
-      {
-        "image": "../assets/features/choco-3.png",
-        "title": "ARTISAN CRAFTED",
-        "description": "Small-batch production ensures maximum potency of herbs and artisanal quality in every bite."
-      }
-    ],
     "related": [
-      { "image": "../assets/choco/amilk.png", "hoverImage": "../assets/choco/amilk.png", "title": "ASHWAGANDHA MILK", "price": "MRP &#8377; 300.00", "link": "amilkc.html" },
-      { "image": "../assets/choco/adark.png", "hoverImage": "../assets/choco/adark.png", "title": "ASHWAGANDHA DARK", "price": "MRP &#8377; 300.00", "link": "adarkc.html" },
-      { "image": "../assets/choco/bmilk.png", "hoverImage": "../assets/choco/bmilk.png", "title": "BRAHMI MILK", "price": "MRP &#8377; 300.00", "link": "bmilkc.html" },
-      { "image": "../assets/choco/bdark.png", "hoverImage": "../assets/choco/bdark.png", "title": "BRAHMI DARK", "price": "MRP &#8377; 300.00", "link": "bdarkc.html" },
-      { "image": "../assets/choco/cdark.png", "hoverImage": "../assets/choco/cdark.png", "title": "CHYAWANAPRASH DARK", "price": "MRP &#8377; 300.00", "link": "cdarkc.html" }
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      },
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      }
     ],
     "reviews": []
   },
   "cdarkc": {
     "gallery": [
       "../assets/cdark/cdark.png",
-      "../assets/cdark/cdark.png",
-      "../assets/cdark/cdark-2.png",
-      "../assets/cdark/cdark-3.png"
+      "../assets/cdark/cdark-1.png"
     ],
     "basicInfo": {
-      "title": "HOLY SIN <br><span class=\"u-h5\" style=\"white-space: nowrap;\">55% DARK CHOCOLATE WITH CHYAWANPRASH HERBS</span>",
+      "title": "IMMUNE INVIGORATE <br><span class=\"u-h5\" style=\"white-space: nowrap;\">55% DARK CHOCOLATE WITH CHYAWANAPRASH HERBS</span>",
       "subtitle": "",
       "price": "300.00",
       "mrp": "300.00",
-      "badge": "<b>CHYAWANPRASH DARK:</b> IMMUNITY & VITALITY",
+      "badge": "<b>CHYAWANAPRASH DARK:</b> DEFENSE & REJUVENATION",
       "marketplaces": [
-        { "name": "Blinkit", "logo": "../assets/blinkit.png", "link": "" },
-        { "name": "Zepto", "logo": "../assets/zepto.png", "link": "" },
-        { "name": "Amazon", "logo": "../assets/amazon.png", "link": "" },
-        { "name": "Instamart", "logo": "../assets/instamart.png", "link": "" },
-        { "name": "Flipkart", "logo": "../assets/flipkart.png", "link": "" }
+        {
+          "name": "Blinkit",
+          "logo": "../assets/blinkit.png",
+          "link": ""
+        },
+        {
+          "name": "Zepto",
+          "logo": "../assets/zepto.png",
+          "link": ""
+        },
+        {
+          "name": "Amazon",
+          "logo": "../assets/amazon.png",
+          "link": ""
+        },
+        {
+          "name": "Instamart",
+          "logo": "../assets/instamart.png",
+          "link": ""
+        },
+        {
+          "name": "Flipkart",
+          "logo": "../assets/flipkart.png",
+          "link": ""
+        }
       ]
     },
     "details": {
       "features": [
-        { "title": "THE BOLD \"HOLY SIN\" EXPERIENCE", "desc": "Indulge in the intense, bittersweet world of 55% Dark Chocolate fused with the potent power of ancient Ayurvedic herbs. This bar is for those who seek the \"Sin of Pleasure\" through rich cocoa and the \"Holiness\" of immunity-boosting Chyawanprash—all in one bite." },
-        { "title": "PREMIUM 55% DARK COCOA BASE", "desc": "Crafted for the sophisticated palate, our dark chocolate slab features a 55% cocoa solids composition. It offers a deep, complex flavor profile with a smooth finish, perfectly complementing the earthy, spicy undertones of the herbal infusion." },
-        { "title": "25% PURE AYURVEDIC CHYAWANPRASH", "desc": "We don't just flavor our chocolate; we fortify it. Each bar contains 25% authentic Chyawanprash, bringing you the functional benefits of Amla (Antioxidant powerhouse), Traditional Herbs (Supports wellness), and Ghee/Honey (Traditional vitality)." },
-        { "title": "VEGAN-FRIENDLY DARK SELECTION", "desc": "Our Dark Chocolate formulation is naturally focused on cocoa mass and cocoa butter. While it is processed in a facility that handles milk, the 55% Dark variant is the ideal choice for those looking for a more intense, plant-forward indulgence." },
-        { "title": "ARTISAN MANIPAL CRAFTSMANSHIP", "desc": "Produced at the Cacobean Chocolate Factory within the Advanced Research Center (MUTBI), Manipal. Our process ensures that the heat-sensitive properties of the Chyawanprash herbs are preserved during the chocolate tempering process." },
-        { "title": "LUXURY \"GOLD & TEXTURED GREEN\" BRANDING", "desc": "The packaging reflects the duality of the product—Gold for the premium \"sinful\" chocolate and Textured Green for the \"holy\" herbal roots. It is a standout addition to any premium e-commerce shelf or gift hamper." }
+        {
+          "title": "POWERFUL DEFENSE",
+          "desc": "A sophisticated blend of 55% dark chocolate and Chyawanaprash herbs, designed to support your immune system with every bite."
+        }
       ],
       "specs": [
-        { "title": "Weight", "desc": "60g" },
-        { "title": "Cocoa Content", "desc": "55% Dark Chocolate" },
-        { "title": "Chyawanprash Content", "desc": "25%" },
-        { "title": "Dietary Info", "desc": "Contains Soy; May contain traces of Milk" },
-        { "title": "Storage Temperature", "desc": "18°C – 24°C" },
-        { "title": "Manufacturing Location", "desc": "MUTBI, Manipal, Karnataka" }
+        {
+          "title": "Brand",
+          "desc": "Raw Radicles"
+        },
+        {
+          "title": "Chocolate Base",
+          "desc": "55% Dark Chocolate"
+        }
       ],
-      "quality": "<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options.&nbsp;60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>"
+      "quality": "<p>Experience the ancient power of Amla in a premium dark chocolate bar.</p>"
     },
-    "featureGrid": [
-      {
-        "image": "../assets/cp1.png",
-        "title": "ANCIENT HERBS",
-        "description": "Infused with authentic Ayurvedic herbs like Chyawanaprash for targeted wellness."
-      },
-      {
-        "image": "../assets/features/choco-2.png",
-        "title": "PURE COCOA",
-        "description": "Hand-selected premium cocoa for a rich, velvety texture and deep, satisfying chocolate experience."
-      },
-      {
-        "image": "../assets/features/choco-3.png",
-        "title": "ARTISAN CRAFTED",
-        "description": "Small-batch production ensures maximum potency of herbs and artisanal quality in every bite."
-      }
-    ],
     "related": [
-      { "image": "../assets/choco/amilk.png", "hoverImage": "../assets/choco/amilk.png", "title": "ASHWAGANDHA MILK", "price": "MRP &#8377; 300.00", "link": "amilkc.html" },
-      { "image": "../assets/choco/adark.png", "hoverImage": "../assets/choco/adark.png", "title": "ASHWAGANDHA DARK", "price": "MRP &#8377; 300.00", "link": "adarkc.html" },
-      { "image": "../assets/choco/bmilk.png", "hoverImage": "../assets/choco/bmilk.png", "title": "BRAHMI MILK", "price": "MRP &#8377; 300.00", "link": "bmilkc.html" },
-      { "image": "../assets/choco/bdark.png", "hoverImage": "../assets/choco/bdark.png", "title": "BRAHMI DARK", "price": "MRP &#8377; 300.00", "link": "bdarkc.html" },
-      { "image": "../assets/choco/cmilk.png", "hoverImage": "../assets/choco/cmilk.png", "title": "CHYAWANAPRASH MILK", "price": "MRP &#8377; 300.00", "link": "cmilkc.html" }
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      },
+      {
+        "image": "../assets/adark/adark.png",
+        "hoverImage": "../assets/adark/adark-1.png",
+        "title": "ASHWAGANDHA DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "adarkc.html"
+      },
+      {
+        "image": "../assets/amilk/amilk.png",
+        "hoverImage": "../assets/amilk/amilk-1.png",
+        "title": "ASHWAGANDHA MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "amilkc.html"
+      },
+      {
+        "image": "../assets/bdark/bdark.png",
+        "hoverImage": "../assets/bdark/bdark-1.png",
+        "title": "BRAHMI DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bdarkc.html"
+      },
+      {
+        "image": "../assets/bmilk/bmilk.png",
+        "hoverImage": "../assets/bmilk/bmilk-1.png",
+        "title": "BRAHMI MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "bmilkc.html"
+      },
+      {
+        "image": "../assets/cdark/cdark.png",
+        "hoverImage": "../assets/cdark/cdark-1.png",
+        "title": "CHYAWANAPRASH DARK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cdarkc.html"
+      },
+      {
+        "image": "../assets/cmilk/cmilk.png",
+        "hoverImage": "../assets/cmilk/cmilk-1.png",
+        "title": "CHYAWANAPRASH MILK CHOCOLATE SLAB",
+        "price": "MRP &#8377; 300.00",
+        "link": "cmilkc.html"
+      }
     ],
     "reviews": []
   }
