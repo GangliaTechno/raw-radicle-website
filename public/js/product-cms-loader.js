@@ -44,29 +44,29 @@
 
     // 2. Basic Info
     const bi = cms.basicInfo || {};
-    if (bi.title) {
+    if (bi.title && bi.title.trim()) {
       const titleEl = document.querySelector('.ProductMeta__Title');
-      if (titleEl) {
-        titleEl.innerHTML = bi.title;
-      }
+      if (titleEl) titleEl.innerHTML = bi.title;
     }
-    if (bi.subtitle) {
+    if (bi.subtitle && bi.subtitle.trim()) {
       const subtitleEl = document.querySelector('.ProductMeta__Title .u-h5');
       if (subtitleEl) subtitleEl.innerHTML = bi.subtitle;
     }
-    if (bi.price) {
+    if (bi.price && bi.price.trim()) {
       const priceEl = document.querySelector('.ProductMeta__Price .Price');
       if (priceEl) {
-        // Simple regex to extract current currency or just use MRP text
         const currentHtml = priceEl.innerHTML;
-        if (currentHtml.includes('MRP')) {
-           priceEl.innerHTML = `MRP &#8377; ${parseFloat(bi.price).toFixed(2)}<span class="Price__TaxNotice">${bi.taxNotice || '(inclusive of all taxes)'}</span>`;
-        } else {
-           priceEl.textContent = '₹' + parseFloat(bi.price).toFixed(2);
+        const numericPrice = parseFloat(bi.price.replace(/[^0-9.]/g, ''));
+        if (!isNaN(numericPrice)) {
+          if (currentHtml.includes('MRP')) {
+            priceEl.innerHTML = `MRP &#8377; ${numericPrice.toFixed(2)}<span class="Price__TaxNotice">${bi.taxNotice || '(inclusive of all taxes)'}</span>`;
+          } else {
+            priceEl.textContent = '₹' + numericPrice.toFixed(2);
+          }
         }
       }
     }
-    if (bi.badge) {
+    if (bi.badge && bi.badge.trim()) {
       const badgeEl = document.querySelector('.ProductBadge');
       if (badgeEl) badgeEl.innerHTML = bi.badge;
     }
@@ -74,45 +74,43 @@
     // 3. Details (Collapsibles)
     const details = cms.details || {};
     if (details.features && details.features.length > 0) {
-      // Target the first features collapsible inner content
       const featureItems = document.querySelectorAll('.Collapsible__Content .FeaturesList, .Collapsible__Content .Collapsible__ContentInner');
       if (featureItems.length > 0) {
-        // Try to find specifically the FeaturesList structure or falling back to simple list
         const featuresListEl = document.querySelector('.FeaturesList');
         if (featuresListEl) {
-          featuresListEl.innerHTML = details.features.map(f => `
+          featuresListEl.innerHTML = details.features.map(f => {
+            if (!f.title && !f.desc) return '';
+            return `
             <div class="FeatureItem">
-              <strong class="FeatureTitle">${f.title}</strong>
-              <span class="FeatureDescription">${f.desc}</span>
+              <strong class="FeatureTitle">${f.title || ''}</strong>
+              <span class="FeatureDescription">${f.desc || ''}</span>
             </div>
-          `).join('');
+          `}).join('');
         } else {
-          featureItems[0].innerHTML = details.features.map(f => `<strong>${f.title}</strong><br>${f.desc}`).join('<br><br>');
+          featureItems[0].innerHTML = details.features.map(f => `<strong>${f.title || ''}</strong><br>${f.desc || ''}`).join('<br><br>');
         }
       }
     }
     
     if (details.specs && details.specs.length > 0) {
       const specsContent = document.querySelectorAll('.Collapsible__Content .Rte, .Collapsible__Content .Collapsible__ContentInner');
-      // Specs usually have a table or list. Let's look for the table or just inject a list.
       const specsTable = document.querySelector('.Collapsible__Content table');
       if (specsTable) {
         specsTable.innerHTML = `
           <thead><tr style="border-bottom: 1px solid #e0e0e0;"><th style="text-align: left; padding: 12px 0; font-size: 15px; color: #1c1c1c; font-weight: 700;">Attribute</th><th style="text-align: left; padding: 12px 0; font-size: 15px; color: #1c1c1c; font-weight: 700;">Specification</th></tr></thead>
-          <tbody>${details.specs.map(s => `<tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c; width: 40%;">${s.title}</td><td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">${s.desc}</td></tr>`).join('')}</tbody>
+          <tbody>${details.specs.map(s => `<tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 15px 0; font-size: 15px; font-weight: 700; color: #1c1c1c; width: 40%;">${s.title || ''}</td><td style="padding: 15px 0; font-size: 15px; color: #1c1c1c;">${s.desc || ''}</td></tr>`).join('')}</tbody>
         `;
       } else if (specsContent.length > 1) {
-        // Try to find the second collapsible content inner
         const specsInner = document.querySelector('.Collapsible--large:nth-of-type(2) .Collapsible__ContentInner');
         if (specsInner) {
-          specsInner.innerHTML = details.specs.map(s => `<strong>${s.title}</strong>: ${s.desc}`).join('<br>');
+          specsInner.innerHTML = details.specs.map(s => `<strong>${s.title || ''}</strong>: ${s.desc || ''}`).join('<br>');
         } else {
-          specsContent[1].innerHTML = details.specs.map(s => `<strong>${s.title}</strong>: ${s.desc}`).join('<br>');
+          specsContent[1].innerHTML = details.specs.map(s => `<strong>${s.title || ''}</strong>: ${s.desc || ''}`).join('<br>');
         }
       }
     }
 
-    if (details.quality) {
+    if (details.quality && details.quality.trim()) {
       const collapsibles = document.querySelectorAll('.Collapsible');
       collapsibles.forEach(col => {
         const btn = col.querySelector('.Collapsible__Button');
@@ -129,11 +127,11 @@
       cms.featureGrid.forEach((f, i) => {
         if (!f || !gridItems[i]) return;
         const img = gridItems[i].querySelector('.ProductFeatures__Image');
-        if (img && f.image) img.src = f.image;
+        if (img && f.image && f.image.trim()) img.src = f.image;
         const title = gridItems[i].querySelector('.ProductFeatures__Title');
-        if (title && f.title) title.textContent = f.title;
+        if (title && f.title && f.title.trim()) title.textContent = f.title;
         const desc = gridItems[i].querySelector('.ProductFeatures__Description');
-        if (desc && f.description) desc.textContent = f.description;
+        if (desc && f.description && f.description.trim()) desc.textContent = f.description;
       });
     }
 
@@ -154,11 +152,11 @@
           const price = card.querySelector('.MvstProducts__Price');
           const link = card.querySelector('a');
 
-          if (img && r.image) img.src = r.image;
-          if (hoverImg && r.hoverImage) hoverImg.src = r.hoverImage;
-          if (title && r.title) title.textContent = r.title;
-          if (price && r.price) price.textContent = r.price;
-          if (link && r.link) link.href = r.link;
+          if (img && r.image && r.image.trim()) img.src = r.image;
+          if (hoverImg && r.hoverImage && r.hoverImage.trim()) hoverImg.src = r.hoverImage;
+          if (title && r.title && r.title.trim()) title.textContent = r.title;
+          if (price && r.price && r.price.trim()) price.textContent = r.price;
+          if (link && r.link && r.link.trim()) link.href = r.link;
         });
       }
     }
