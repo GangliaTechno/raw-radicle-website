@@ -170,7 +170,14 @@
               name: name,
               rating: selectedRating,
               body: body,
-              photo: uploadedPhotoDataUrl
+              photo: uploadedPhotoDataUrl,
+              variant: (window.location.pathname.includes('adarkc') ? 'Ashwagandha Dark Chocolate Slab' :
+                        window.location.pathname.includes('amilkc') ? 'Ashwagandha Milk Chocolate Slab' :
+                        window.location.pathname.includes('bdarkc') ? 'Brahmi Dark Chocolate Slab' :
+                        window.location.pathname.includes('bmilkc') ? 'Brahmi Milk Chocolate Slab' :
+                        window.location.pathname.includes('cdarkc') ? 'Chyawanaprash Dark Chocolate Slab' :
+                        window.location.pathname.includes('cmilkc') ? 'Chyawanaprash Milk Chocolate Slab' :
+                        document.querySelector('.ProductMeta__Title')?.innerText.replace(/\s+/g, ' ').trim() || '')
             }
           })
         }).then(function(res) { return res.json(); })

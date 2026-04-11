@@ -20,13 +20,13 @@
       const cms = await res.json();
       if (!cms || Object.keys(cms).length === 0) return;
 
-      applyCMSData(cms);
+      applyCMSData(cms, productId);
     } catch (e) {
       console.error('Failed to load product CMS:', e);
     }
   }
 
-  function applyCMSData(cms) {
+  function applyCMSData(cms, productId) {
     // 1. Gallery
     if (cms.gallery && cms.gallery.length > 0) {
       const thumbs = document.querySelectorAll('.Product__SlideshowNavScroller img');
@@ -163,23 +163,30 @@
 
     // 6. Reviews
     if (cms.reviews && cms.reviews.length > 0) {
-      renderReviews(cms.reviews);
+      const PRODUCT_NAMES = {
+        'amilkc': 'Ashwagandha Milk Chocolate Slab',
+        'adarkc': 'Ashwagandha Dark Chocolate Slab',
+        'bmilkc': 'Brahmi Milk Chocolate Slab',
+        'bdarkc': 'Brahmi Dark Chocolate Slab',
+        'cmilkc': 'Chyawanaprash Milk Chocolate Slab',
+        'cdarkc': 'Chyawanaprash Dark Chocolate Slab'
+      };
+
+      const productInfo = {
+        title: PRODUCT_NAMES[productId] || (bi.title ? bi.title.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() : ''),
+        image: (cms.gallery && cms.gallery[0]) ? cms.gallery[0] : ''
+      };
+      renderReviews(cms.reviews, productInfo);
     }
   }
 
-  function renderReviews(reviews) {
+  function renderReviews(reviews, productInfo) {
     const list = document.querySelector('.ReviewSection__List');
     if (!list) return;
 
     // Check if we already have injected CMS reviews to avoid duplicates
     if (list.dataset.cmsLoaded) return;
 
-    // We might want to clear existing static reviews or prepend CMS ones.
-    // User said "Keep All the data and contents... of all the section do not change existing".
-    // However, for Reviews, it usually means show the approved ones.
-    // I'll prepend the CMS ones if they are not already there.
-    
-    // For now, let's just clear static and show CMS ones as it is a "Management" system.
     list.innerHTML = reviews.map(rev => `
       <div class="ReviewCard">
         <div class="ReviewCard__Inner">
@@ -188,10 +195,14 @@
               <span class="ReviewCard__Author">${rev.name}</span>
               <span class="ReviewCard__Verified"><svg viewBox="0 0 24 24" fill="#1c1c1c"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Verified</span>
             </div>
-            <div class="ReviewCard__Date">${rev.date || new Date().toLocaleDateString()}</div>
+            <div class="ReviewCard__Date">${rev.date || new Date(rev.submittedAt).toLocaleDateString() || new Date().toLocaleDateString()}</div>
             <div class="ReviewCard__Stars">${generateStars(rev.rating)}</div>
             <div class="ReviewCard__Body">${rev.body}</div>
           </div>
+        </div>
+        <div class="ReviewCard__Variant">
+          <img class="ReviewCard__VariantImg" src="${productInfo.image}" alt="${productInfo.title}">
+          <span class="ReviewCard__VariantName">${rev.variant || productInfo.title}</span>
         </div>
       </div>
     `).join('');
@@ -200,6 +211,13 @@
     
     const countEl = document.querySelector('.ReviewSection__CountNum');
     if (countEl) countEl.textContent = reviews.length + ' Reviews';
+
+    // Update the top-level rating summary if it exists (e.g., "5.0 (3 REVIEWS)")
+    const scoreTextEl = document.querySelector('.Rating__ScoreText');
+    if (scoreTextEl) {
+      const plural = reviews.length === 1 ? 'REVIEW' : 'REVIEWS';
+      scoreTextEl.textContent = `5.0 (${reviews.length} ${plural})`;
+    }
   }
 
   function generateStars(rating) {
