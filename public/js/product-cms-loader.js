@@ -211,6 +211,13 @@
     
     const countEl = document.querySelector('.ReviewSection__CountNum');
     if (countEl) countEl.textContent = reviews.length + ' Reviews';
+
+    // Update the top-level rating summary if it exists (e.g., "5.0 (3 REVIEWS)")
+    const scoreTextEl = document.querySelector('.Rating__ScoreText');
+    if (scoreTextEl) {
+      const plural = reviews.length === 1 ? 'REVIEW' : 'REVIEWS';
+      scoreTextEl.textContent = `5.0 (${reviews.length} ${plural})`;
+    }
   }
 
   function generateStars(rating) {
