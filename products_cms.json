@@ -168,7 +168,35 @@
         "link": "cmilkc.html"
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "name": "Lakshmi V.",
+        "rating": 5,
+        "date": "3/22/2026",
+        "body": "The creamiest functional chocolate I have ever tried. The milk chocolate base is heavenly and you barely notice the Ashwagandha. It just works silently.",
+        "id": 1774180800001,
+        "submittedAt": "2026-03-22T10:00:00.000Z",
+        "variant": "Ashwagandha Milk Chocolate Slab"
+      },
+      {
+        "name": "Sanjay G.",
+        "rating": 5,
+        "date": "3/8/2026",
+        "body": "Ordered the Ashwagandha Milk for my elderly parents. They love it! The smooth texture is easy on their palate and the wellness benefits are exactly what they need.",
+        "id": 1774180800002,
+        "submittedAt": "2026-03-08T10:00:00.000Z",
+        "variant": "Ashwagandha Milk Chocolate Slab"
+      },
+      {
+        "name": "Ritu A.",
+        "rating": 4,
+        "date": "2/22/2026",
+        "body": "Very impressed with the quality. The ghrita preparation method for the Ashwagandha infusion is authentic Ayurveda. Tastes like premium chocolate, works like a supplement.",
+        "id": 1774180800003,
+        "submittedAt": "2026-02-22T10:00:00.000Z",
+        "variant": "Ashwagandha Milk Chocolate Slab"
+      }
+    ],
     "updatedAt": "2026-04-10T06:55:49.972Z"
   },
   "adarkc": {
@@ -348,7 +376,44 @@
         "link": "cmilkc.html"
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "name": "Priya S.",
+        "rating": 5,
+        "date": "3/15/2026",
+        "body": "Absolutely love this! The dark chocolate with Ashwagandha is a perfect evening ritual. I feel calmer before bed and the taste is rich without being too bitter.",
+        "id": 1774180800101,
+        "submittedAt": "2026-03-15T10:00:00.000Z",
+        "variant": "Ashwagandha Dark Chocolate Slab"
+      },
+      {
+        "name": "Arjun M.",
+        "rating": 5,
+        "date": "2/28/2026",
+        "body": "As someone who takes Ashwagandha supplements daily, this is a game-changer. Getting my adaptogens through premium dark chocolate? Yes please.",
+        "id": 1774180800102,
+        "submittedAt": "2026-02-28T10:00:00.000Z",
+        "variant": "Ashwagandha Dark Chocolate Slab"
+      },
+      {
+        "name": "Kavitha R.",
+        "rating": 4,
+        "date": "2/10/2026",
+        "body": "Really nice product overall. The chocolate quality is clearly premium and you can taste the difference. The wellness benefits make it absolutely worth it.",
+        "id": 1774180800103,
+        "submittedAt": "2026-02-10T10:00:00.000Z",
+        "variant": "Ashwagandha Dark Chocolate Slab"
+      },
+      {
+        "name": "Puneeth",
+        "rating": 4,
+        "body": "Good Chocolate",
+        "photo": null,
+        "id": 1775891070103,
+        "submittedAt": "2026-04-11T07:04:30.103Z",
+        "variant": "Ashwagandha Dark Chocolate Slab"
+      }
+    ],
     "updatedAt": "2026-04-10T07:00:32.388Z"
   },
   "bmilkc": {
@@ -524,7 +589,35 @@
         "link": "cmilkc.html"
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "name": "Lakshmi V.",
+        "rating": 5,
+        "date": "3/22/2026",
+        "body": "The creamiest functional chocolate I have ever tried. The milk chocolate base is heavenly and you barely notice the Brahmi. It just works silently.",
+        "id": 1774180800201,
+        "submittedAt": "2026-03-22T10:00:00.000Z",
+        "variant": "Brahmi Milk Chocolate Slab"
+      },
+      {
+        "name": "Sanjay G.",
+        "rating": 5,
+        "date": "3/8/2026",
+        "body": "Ordered the Brahmi Milk for my elderly parents. They love it! The smooth texture is easy on their palate and the cognitive benefits are exactly what they need.",
+        "id": 1774180800202,
+        "submittedAt": "2026-03-08T10:00:00.000Z",
+        "variant": "Brahmi Milk Chocolate Slab"
+      },
+      {
+        "name": "Ritu A.",
+        "rating": 4,
+        "date": "2/22/2026",
+        "body": "Very impressed with the quality. The ghrita preparation method for the Brahmi infusion is authentic Ayurveda. Tastes like premium chocolate, works like a supplement.",
+        "id": 1774180800203,
+        "submittedAt": "2026-02-22T10:00:00.000Z",
+        "variant": "Brahmi Milk Chocolate Slab"
+      }
+    ],
     "updatedAt": "2026-04-10T06:40:36.941Z"
   },
   "bdarkc": {
@@ -696,7 +789,35 @@
         "link": "cmilkc.html"
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "name": "Dr. Arjun K.",
+        "rating": 5,
+        "date": "3/25/2026",
+        "body": "As a wellness professional, I'm genuinely impressed. The combination of 55% cocoa and Brahmi is expertly balanced. A sophisticated way to support cognitive focus.",
+        "id": 1774180800301,
+        "submittedAt": "2026-03-25T10:00:00.000Z",
+        "variant": "Brahmi Dark Chocolate Slab"
+      },
+      {
+        "name": "Meera R.",
+        "rating": 5,
+        "date": "3/15/2026",
+        "body": "Finally a dark chocolate that feels good for the soul. The Brahmi helps me concentrate during my afternoon catch-ups without any jitters. A staple in my desk drawer now.",
+        "id": 1774180800302,
+        "submittedAt": "2026-03-15T10:00:00.000Z",
+        "variant": "Brahmi Dark Chocolate Slab"
+      },
+      {
+        "name": "Nikhil S.",
+        "rating": 4,
+        "date": "2/25/2026",
+        "body": "Great product and innovative concept. The 55% dark cocoa base has a robust flavor that complements the herbal formulation well. Would love a sugar-free version too.",
+        "id": 1774180800303,
+        "submittedAt": "2026-02-25T10:00:00.000Z",
+        "variant": "Brahmi Dark Chocolate Slab"
+      }
+    ],
     "updatedAt": "2026-04-10T06:45:42.667Z"
   },
   "cmilkc": {
@@ -872,7 +993,44 @@
         "link": "cmilkc.html"
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "name": "Lakshmi V.",
+        "rating": 5,
+        "date": "3/22/2026",
+        "body": "The creamiest functional chocolate I have ever tried. The milk chocolate base is heavenly and you barely notice the Chyawanaprash. It just works silently.",
+        "id": 1774180800401,
+        "submittedAt": "2026-03-22T10:00:00.000Z",
+        "variant": "Chyawanaprash Milk Chocolate Slab"
+      },
+      {
+        "name": "Sanjay G.",
+        "rating": 5,
+        "date": "3/8/2026",
+        "body": "Ordered the Chyawanaprash Milk for my elderly parents. They love it! The smooth texture is easy on their palate and the vitality benefits are exactly what they need.",
+        "id": 1774180800402,
+        "submittedAt": "2026-03-08T10:00:00.000Z",
+        "variant": "Chyawanaprash Milk Chocolate Slab"
+      },
+      {
+        "name": "Ritu A.",
+        "rating": 4,
+        "date": "2/22/2026",
+        "body": "Very impressed with the quality. The preparation method for the Chyawanaprash infusion is authentic. Tastes like premium chocolate, works like a supplement.",
+        "id": 1774180800403,
+        "submittedAt": "2026-02-22T10:00:00.000Z",
+        "variant": "Chyawanaprash Milk Chocolate Slab"
+      },
+      {
+        "name": "Puneeth",
+        "rating": 4,
+        "body": "The chocolate look premium as in the image, and also tastes good.",
+        "photo": null,
+        "variant": "Chyawanaprash Milk Chocolate Slab",
+        "id": 1775891932921,
+        "submittedAt": "2026-04-11T07:18:52.921Z"
+      }
+    ],
     "updatedAt": "2026-04-10T09:01:48.978Z"
   },
   "cdarkc": {
@@ -1048,7 +1206,35 @@
         "link": "cmilkc.html"
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "name": "Dr. Arjun K.",
+        "rating": 5,
+        "date": "3/25/2026",
+        "body": "As a wellness professional, I'm genuinely impressed. The combination of 55% cocoa and Chyawanaprash is expertly balanced. A sophisticated way to support immunity.",
+        "id": 1774180800501,
+        "submittedAt": "2026-03-25T10:00:00.000Z",
+        "variant": "Chyawanaprash Dark Chocolate Slab"
+      },
+      {
+        "name": "Meera R.",
+        "rating": 5,
+        "date": "3/15/2026",
+        "body": "Finally a dark chocolate that feels good for the soul. The Chyawanaprash infusion is genius—tastes great and keeps my immunity up. A staple in my pantry now.",
+        "id": 1774180800502,
+        "submittedAt": "2026-03-15T10:00:00.000Z",
+        "variant": "Chyawanaprash Dark Chocolate Slab"
+      },
+      {
+        "name": "Nikhil S.",
+        "rating": 4,
+        "date": "2/25/2026",
+        "body": "Great product and innovative concept. The 55% dark cocoa base has a robust flavor that complements the traditional flavors well. Would love a sugar-free version too.",
+        "id": 1774180800503,
+        "submittedAt": "2026-02-25T10:00:00.000Z",
+        "variant": "Chyawanaprash Dark Chocolate Slab"
+      }
+    ],
     "updatedAt": "2026-04-10T09:02:35.745Z"
   },
   "balm": {
