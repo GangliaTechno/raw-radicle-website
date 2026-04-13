@@ -17,11 +17,6 @@ function initProductsLogic() {
 
   if (!productsContainer) return;
 
-  // Helper to close all popovers
-  function closePopovers() {
-    document.querySelectorAll('.Popover').forEach(p => p.setAttribute('aria-hidden', 'true'));
-    document.querySelectorAll('[aria-controls]').forEach(b => b.setAttribute('aria-expanded', 'false'));
-  }
 
   // Sidebar Filter Logic (Existing)
   sidebarFilters.forEach(button => {
@@ -109,20 +104,42 @@ function initProductsLogic() {
     };
   });
 
+  // Helper to close all popovers
+  function closePopovers() {
+    document.querySelectorAll('.Popover').forEach(p => {
+      p.setAttribute('aria-hidden', 'true');
+      p.style.display = 'none';
+      p.style.visibility = 'hidden';
+      p.style.opacity = '0';
+    });
+    document.querySelectorAll('[aria-controls]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  }
+
+  // Position Helper
+  function positionPopover(trigger, popover) {
+    // We must show the popover first to get its actual width (offsetWidth)
+    popover.style.display = 'block';
+    popover.style.visibility = 'visible';
+    popover.style.opacity = '1';
+    
+    const rect = trigger.getBoundingClientRect();
+    const popoverWidth = popover.offsetWidth || 300; // Fallback if still 0
+    
+    popover.style.position = 'fixed';
+    popover.style.top = rect.bottom + 'px'; // Fixed position is viewport relative, no scrollY needed
+    popover.style.left = (rect.right - popoverWidth) + 'px';
+    popover.style.zIndex = '2147483647';
+  }
+
   // Toolbar Category Dropdown Logic
   if (categoryTrigger && categoryPopover) {
     categoryTrigger.onclick = function(e) {
+      e.stopPropagation();
       e.preventDefault();
       const isExpanded = this.getAttribute('aria-expanded') === 'true';
       closePopovers();
       if (!isExpanded) {
-        // Simple fixed positioning relative to button
-        const rect = this.getBoundingClientRect();
-        categoryPopover.style.position = 'fixed';
-        categoryPopover.style.top = rect.bottom + 'px';
-        categoryPopover.style.left = (rect.right - categoryPopover.offsetWidth) + 'px';
-        categoryPopover.style.zIndex = '1000';
-        
+        positionPopover(this, categoryPopover);
         this.setAttribute('aria-expanded', 'true');
         categoryPopover.setAttribute('aria-hidden', 'false');
       }
@@ -130,35 +147,41 @@ function initProductsLogic() {
   }
 
   // Sort Trigger Logic
-  if (sortTrigger && sortPopover) {
-    sortTrigger.onclick = function(e) {
+  const sortTriggerNode = document.querySelector('.CollectionToolbar__Item--sort');
+  const sortPopoverNode = document.getElementById('collection-sort-popover');
+  if (sortTriggerNode && sortPopoverNode) {
+    sortTriggerNode.onclick = function(e) {
+      e.stopPropagation();
       e.preventDefault();
       const isExpanded = this.getAttribute('aria-expanded') === 'true';
       closePopovers();
       if (!isExpanded) {
-        const rect = this.getBoundingClientRect();
-        sortPopover.style.position = 'fixed';
-        sortPopover.style.top = rect.bottom + 'px';
-        sortPopover.style.left = (rect.right - sortPopover.offsetWidth) + 'px';
-        sortPopover.style.zIndex = '1000';
-
+        positionPopover(this, sortPopoverNode);
         this.setAttribute('aria-expanded', 'true');
-        sortPopover.setAttribute('aria-hidden', 'false');
+        sortPopoverNode.setAttribute('aria-hidden', 'false');
       }
     };
   }
 
-  // Close popovers on click outside
+  // Close popovers on click outside (Capturing phase)
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('.CollectionToolbar__Item') && !e.target.closest('.Popover')) {
+    const popover = e.target.closest('.Popover');
+    const trigger = e.target.closest('.CollectionToolbar__Item--category') || e.target.closest('.CollectionToolbar__Item--sort');
+    
+    if (!popover && !trigger) {
       closePopovers();
     }
-  });
+  }, true);
+
+  // Fallback: Close on scroll or resize to prevent alignment issues
+  window.addEventListener('scroll', closePopovers, { passive: true });
+  window.addEventListener('resize', closePopovers, { passive: true });
 
   // Close buttons in popovers
   document.querySelectorAll('.Popover__Close').forEach(btn => {
     btn.onclick = function(e) {
       e.preventDefault();
+      e.stopPropagation();
       closePopovers();
     };
   });
