@@ -8,19 +8,22 @@ let parent = _____WB$wombat$assign$function_____("parent");
 let frames = _____WB$wombat$assign$function_____("frames");
 let opens = _____WB$wombat$assign$function_____("opens");
 function initProductsLogic() {
-  const filterButtons = document.querySelectorAll('.filter-category');
+  const sidebarFilters = document.querySelectorAll('.CollectionInner__Sidebar .filter-category');
   const productsContainer = document.querySelector('.ProductList--grid');
   const sortButtons = document.querySelectorAll('[data-action="sort-value"]');
+  const categoryTrigger = document.querySelector('.CollectionToolbar__Item--category');
+  const categoryPopover = document.getElementById('collection-category-popover');
+  const categoryFilters = document.querySelectorAll('[data-action="filter-category"]');
 
   if (!productsContainer) return;
 
-  // Filter Logic
-  filterButtons.forEach(button => {
-    // Remove existing listener to avoid duplicates if re-initted
+
+  // Sidebar Filter Logic (Existing)
+  sidebarFilters.forEach(button => {
     button.onclick = function(e) {
       e.preventDefault();
       const category = this.getAttribute('data-type');
-      filterButtons.forEach(btn => {
+      sidebarFilters.forEach(btn => {
         btn.classList.toggle('is-active', btn === this);
         btn.style.color = (btn === this) ? 'var(--text-color)' : 'var(--text-color-light)';
       });
@@ -35,7 +38,35 @@ function initProductsLogic() {
     };
   });
 
-  // Sort Logic
+
+
+  categoryFilters.forEach(button => {
+    button.onclick = function(e) {
+      e.preventDefault();
+      const value = this.getAttribute('data-value').toLowerCase();
+      
+      categoryFilters.forEach(btn => btn.classList.toggle('is-selected', btn === this));
+      
+      const products = productsContainer.querySelectorAll('.Grid__Cell');
+      products.forEach(product => {
+        const titleElement = product.querySelector('.ProductItem__Title');
+        if (!titleElement) return;
+        const title = titleElement.textContent.toLowerCase();
+        
+        if (value === 'all') {
+          product.style.display = '';
+        } else {
+          const keywords = value.split(' ');
+          const matches = keywords.every(kw => title.includes(kw));
+          product.style.display = matches ? '' : 'none';
+        }
+      });
+
+      closePopovers();
+    };
+  });
+
+  // Sort Logic (Existing)
   sortButtons.forEach(button => {
     button.onclick = function(e) {
       e.preventDefault();
@@ -43,16 +74,21 @@ function initProductsLogic() {
       
       sortButtons.forEach(btn => btn.classList.toggle('is-selected', btn === this));
       
-      const items = Array.from(productsContainer.querySelectorAll('.Grid__Cell[data-type]'));
+      const items = Array.from(productsContainer.querySelectorAll('.Grid__Cell'));
       items.sort((a, b) => {
+        const titleA = a.querySelector('.ProductItem__Title a');
+        const titleB = b.querySelector('.ProductItem__Title a');
+        if (!titleA || !titleB) return 0;
+
         if (sortBy.includes('title')) {
-          const valA = a.querySelector('.ProductItem__Title a').textContent.trim().toLowerCase();
-          const valB = b.querySelector('.ProductItem__Title a').textContent.trim().toLowerCase();
+          const valA = titleA.textContent.trim().toLowerCase();
+          const valB = titleB.textContent.trim().toLowerCase();
           return sortBy === 'title-ascending' ? valA.localeCompare(valB) : valB.localeCompare(valA);
         } else if (sortBy.includes('price')) {
-          // Extract price from the new format "MRP ₹ 300.00 INR"
           const getPrice = (el) => {
-            const text = el.querySelector('.ProductItem__Price').textContent;
+            const priceEl = el.querySelector('.ProductItem__Price');
+            if (!priceEl) return 0;
+            const text = priceEl.textContent;
             const match = text.match(/₹\s*([\d.]+)/);
             return match ? parseFloat(match[1]) : 0;
           };
@@ -64,8 +100,89 @@ function initProductsLogic() {
       });
 
       items.forEach(item => productsContainer.appendChild(item));
-      const popover = document.getElementById('collection-sort-popover');
-      if (popover) popover.setAttribute('aria-hidden', 'true');
+      closePopovers();
+    };
+  });
+
+  // Helper to close all popovers
+  function closePopovers() {
+    document.querySelectorAll('.Popover').forEach(p => {
+      p.setAttribute('aria-hidden', 'true');
+      p.style.display = 'none';
+      p.style.visibility = 'hidden';
+      p.style.opacity = '0';
+    });
+    document.querySelectorAll('[aria-controls]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  }
+
+  // Position Helper
+  function positionPopover(trigger, popover) {
+    // We must show the popover first to get its actual width (offsetWidth)
+    popover.style.display = 'block';
+    popover.style.visibility = 'visible';
+    popover.style.opacity = '1';
+    
+    const rect = trigger.getBoundingClientRect();
+    const popoverWidth = popover.offsetWidth || 300; // Fallback if still 0
+    
+    popover.style.position = 'fixed';
+    popover.style.top = rect.bottom + 'px'; // Fixed position is viewport relative, no scrollY needed
+    popover.style.left = (rect.right - popoverWidth) + 'px';
+    popover.style.zIndex = '2147483647';
+  }
+
+  // Toolbar Category Dropdown Logic
+  if (categoryTrigger && categoryPopover) {
+    categoryTrigger.onclick = function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      closePopovers();
+      if (!isExpanded) {
+        positionPopover(this, categoryPopover);
+        this.setAttribute('aria-expanded', 'true');
+        categoryPopover.setAttribute('aria-hidden', 'false');
+      }
+    };
+  }
+
+  // Sort Trigger Logic
+  const sortTriggerNode = document.querySelector('.CollectionToolbar__Item--sort');
+  const sortPopoverNode = document.getElementById('collection-sort-popover');
+  if (sortTriggerNode && sortPopoverNode) {
+    sortTriggerNode.onclick = function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      closePopovers();
+      if (!isExpanded) {
+        positionPopover(this, sortPopoverNode);
+        this.setAttribute('aria-expanded', 'true');
+        sortPopoverNode.setAttribute('aria-hidden', 'false');
+      }
+    };
+  }
+
+  // Close popovers on click outside (Capturing phase)
+  document.addEventListener('click', function(e) {
+    const popover = e.target.closest('.Popover');
+    const trigger = e.target.closest('.CollectionToolbar__Item--category') || e.target.closest('.CollectionToolbar__Item--sort');
+    
+    if (!popover && !trigger) {
+      closePopovers();
+    }
+  }, true);
+
+  // Fallback: Close on scroll or resize to prevent alignment issues
+  window.addEventListener('scroll', closePopovers, { passive: true });
+  window.addEventListener('resize', closePopovers, { passive: true });
+
+  // Close buttons in popovers
+  document.querySelectorAll('.Popover__Close').forEach(btn => {
+    btn.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closePopovers();
     };
   });
 }
