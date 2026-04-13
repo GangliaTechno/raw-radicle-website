@@ -1227,39 +1227,7 @@ Version: 2.43.0
             </div>
           </div>
         </div>
-        <div aria-hidden="true" class="Popover" id="collection-sort-popover">
-          <header class="Popover__Header">
-            <button aria-label="Close" class="Popover__Close Icon-Wrapper--clickable" data-action="close-popover">
-              <svg class="Icon Icon--close" role="presentation" viewbox="0 0 16 14">
-                <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd" stroke="currentColor">
-                </path>
-              </svg>
-            </button>
-            <span class="Popover__Title Heading u-h4">
-              Sort
-            </span>
-          </header>
-          <div class="Popover__Content">
-            <div class="Popover__ValueList" data-scrollable="">
-              <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
-                data-value="title-ascending">
-                ALPHABETICALLY, A-Z
-              </button>
-              <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
-                data-value="title-descending">
-                ALPHABETICALLY, Z-A
-              </button>
-              <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
-                data-value="price-ascending">
-                PRICE, LOW TO HIGH
-              </button>
-              <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
-                data-value="price-descending">
-                PRICE, HIGH TO LOW
-              </button>
-            </div>
-          </div>
-        </div>
+
         <div class="CollectionMain">
           <div class="CollectionToolbar CollectionToolbar--top CollectionToolbar--reverse">
             <div class="CollectionToolbar__Group">
@@ -1267,6 +1235,15 @@ Version: 2.43.0
                 class="CollectionToolbar__Item CollectionToolbar__Item--filter Heading Text--subdued u-h6 hidden-lap-and-up"
                 data-action="open-drawer" data-drawer-id="collection-filter-drawer">
                 Filter
+              </button>
+              <button aria-controls="collection-category-popover" aria-expanded="false" aria-haspopup="true"
+                class="CollectionToolbar__Item CollectionToolbar__Item--category Heading Text--subdued u-h6">
+                By Category
+                <svg class="Icon Icon--select-arrow" role="presentation" viewbox="0 0 19 12">
+                  <polyline fill="none" fill-rule="evenodd" points="17 2 9.5 10 2 2" stroke="currentColor"
+                    stroke-linecap="square" stroke-width="2">
+                  </polyline>
+                </svg>
               </button>
               <button aria-controls="collection-sort-popover" aria-expanded="false" aria-haspopup="true"
                 aria-label="Show sort by"
@@ -1278,6 +1255,69 @@ Version: 2.43.0
                   </polyline>
                 </svg>
               </button>
+
+              <div aria-hidden="true" class="Popover Popover--positionBottom Popover--alignRight" id="collection-category-popover" tabindex="-1">
+                <header class="Popover__Header">
+                  <button aria-label="Close" class="Popover__Close Icon-Wrapper--clickable" data-action="close-popover">
+                    <svg class="Icon Icon--close" role="presentation" viewbox="0 0 16 14">
+                      <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd" stroke="currentColor">
+                      </path>
+                    </svg>
+                  </button>
+                  <span class="Popover__Title Heading u-h4">
+                    Category
+                  </span>
+                </header>
+                <div class="Popover__Content">
+                  <div class="Popover__ValueList" data-scrollable="">
+                    <button class="Popover__Value Heading Link Link--primary u-h6 is-selected" data-action="filter-category" data-value="all">ALL</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="ashwagandha">ASHWAGANDHA</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="chyawanaprash">CHYAWANAPRASH</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="brahmi">BRAHMI</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="ashwagandha milk">ASHWAGANDHA MILK</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="ashwagandha dark">ASHWAGANDHA DARK</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="chyawanaprash milk">CHYAWANAPRASH MILK</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="chyawanaprash dark">CHYAWANAPRASH DARK</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="brahmi milk">BRAHMI MILK</button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="filter-category" data-value="brahmi dark">BRAHMI DARK</button>
+                  </div>
+                </div>
+              </div>
+
+              <div aria-hidden="true" class="Popover Popover--positionBottom Popover--alignRight" id="collection-sort-popover" tabindex="-1">
+                <header class="Popover__Header">
+                  <button aria-label="Close" class="Popover__Close Icon-Wrapper--clickable" data-action="close-popover">
+                    <svg class="Icon Icon--close" role="presentation" viewbox="0 0 16 14">
+                      <path d="M15 0L1 14m14 0L1 0" fill="none" fill-rule="evenodd" stroke="currentColor">
+                      </path>
+                    </svg>
+                  </button>
+                  <span class="Popover__Title Heading u-h4">
+                    Sort
+                  </span>
+                </header>
+                <div class="Popover__Content">
+                  <div class="Popover__ValueList" data-scrollable="">
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
+                      data-value="title-ascending">
+                      ALPHABETICALLY, A-Z
+                    </button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
+                      data-value="title-descending">
+                      ALPHABETICALLY, Z-A
+                    </button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
+                      data-value="price-ascending">
+                      PRICE, LOW TO HIGH
+                    </button>
+                    <button class="Popover__Value Heading Link Link--primary u-h6" data-action="sort-value"
+                      data-value="price-descending">
+                      PRICE, HIGH TO LOW
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div class="CollectionToolbar__Item CollectionToolbar__Item--layout">
               <div class="CollectionToolbar__LayoutSwitch hidden-tablet-and-up">
@@ -1807,6 +1847,8 @@ Version: 2.43.0
                     </section>
                   </div>
   </main>
+    </main>
+</body>
 
 
 
