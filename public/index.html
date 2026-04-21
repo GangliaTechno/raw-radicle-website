@@ -2648,7 +2648,7 @@ Version: 2.43.0
 
         <div class="InstaSection__Wrapper">
           <div class="InstaSection__Carousel">
-            <div class="InstaSection__Track" id="instaTrack">
+            <div class="InstaSection__Track" id="instaTrack" data-cms-home-key="instagram">
 
               <div class="InstaSection__Item">
                 <a href="https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz" target="_blank" rel="noopener">
@@ -3186,6 +3186,7 @@ Version: 2.43.0
         var nextBtn = document.getElementById('instaNext');
         var offset = 0;
         var items = track ? track.children.length : 0;
+        // The above is just for initial state; slide() re-calculates it.
 
         function getVisibleCount() {
           if (window.innerWidth <= 480) return 2;
@@ -3196,12 +3197,15 @@ Version: 2.43.0
 
         function slide(dir) {
           if (!track) return;
+          var items = track.children.length; // Calculate dynamically
           var visible = getVisibleCount();
-          var maxOffset = items - visible;
+          var maxOffset = Math.max(0, items - visible); // Calculate dynamically
+          
           offset += dir;
           if (offset < 0) offset = maxOffset;
           if (offset > maxOffset) offset = 0;
-          var pct = (offset / items) * 100;
+          
+          var pct = (offset / visible) * 100;
           track.style.transform = 'translateX(-' + pct + '%)';
         }
 

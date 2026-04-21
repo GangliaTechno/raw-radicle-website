@@ -61,27 +61,69 @@ const CMSSync = (() => {
       const value = path.split('.').reduce((acc, part) => acc && acc[part], homeData);
 
       if (value !== undefined && value !== null) {
-        const type = el.getAttribute('data-cms-type');
-        if (type === 'html') {
-          el.innerHTML = value;
-        } else if (el.tagName === 'IMG' || el.tagName === 'VIDEO' || el.tagName === 'SOURCE') {
-          el.src = value;
-          if (el.tagName === 'VIDEO') el.load();
-        } else if (el.tagName === 'A') {
-          el.href = value;
-        } else if (el.hasAttribute('data-cms-is-bg')) {
-          el.style.backgroundImage = `url(${value})`;
-        } else if (path.includes('.price')) {
-          const priceValue = parseFloat(value);
-          if (!isNaN(priceValue)) {
-            el.textContent = `₹ ${Math.round(priceValue)}`;
-          }
+        if (path === 'instagram') {
+          renderInstagram(el, value);
         } else {
-          el.textContent = value;
+          const type = el.getAttribute('data-cms-type');
+          if (type === 'html') {
+            el.innerHTML = value;
+          } else if (el.tagName === 'IMG' || el.tagName === 'VIDEO' || el.tagName === 'SOURCE') {
+            el.src = value;
+            if (el.tagName === 'VIDEO') el.load();
+          } else if (el.tagName === 'A') {
+            el.href = value;
+          } else if (el.hasAttribute('data-cms-is-bg')) {
+            el.style.backgroundImage = `url(${value})`;
+          } else if (path.includes('.price')) {
+            const priceValue = parseFloat(value);
+            if (!isNaN(priceValue)) {
+              el.textContent = `₹ ${Math.round(priceValue)}`;
+            }
+          } else {
+            el.textContent = value;
+          }
         }
       }
     });
   };
+
+  const renderInstagram = (container, data) => {
+    const posts = data.posts || [];
+    const profileUrl = data.profileUrl || 'https://www.instagram.com/rawradicles';
+    const placeholders = [
+      'assets/instagram/choco1.png',
+      'assets/instagram/choco2.png',
+      'assets/instagram/choco3.png',
+      'assets/instagram/choco4.png',
+      'assets/instagram/choco5.png',
+      'assets/instagram/choco6.png',
+      'assets/instagram/choco7.png',
+      'assets/instagram/choco8.webp'
+    ];
+
+    let html = '';
+    for (let i = 0; i < 8; i++) {
+      const post = posts[i];
+      const imgSrc = post ? post.imageUrl : placeholders[i % placeholders.length];
+      const link = post ? post.link : profileUrl;
+
+      html += `
+        <div class="InstaSection__Item">
+          <a href="${link}" target="_blank" rel="noopener">
+            <img class="InstaSection__Image" src="${imgSrc}" alt="Raw Radicles Instagram">
+            <div class="InstaSection__Overlay"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#fff"
+                  stroke-width="1.5" />
+                <circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="1.5" />
+                <circle cx="17.5" cy="6.5" r="1.2" fill="#fff" />
+              </svg></div>
+          </a>
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+  };
+
 
   const init = async () => {
     console.log('CMS Sync: Initializing...');

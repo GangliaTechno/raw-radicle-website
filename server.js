@@ -90,6 +90,46 @@ app.post("/api/homepage", (req, res) => {
   res.json({ success: true, message: "Home page updated successfully" });
 });
 
+// Instagram API
+app.get("/api/instagram/posts", (req, res) => {
+  const filePath = path.join(__dirname, "homepage.json");
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    res.json(data.instagram || { posts: [], profileUrl: "" });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to fetch instagram posts" });
+  }
+});
+
+app.post("/api/instagram/refresh", async (req, res) => {
+  // This is a placeholder for actual Instagram scraping or API call.
+  // For now, we will simulate adding a mock post to show the "replacement" logic.
+  const filePath = path.join(__dirname, "homepage.json");
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    if (!data.instagram) data.instagram = { posts: [], profileUrl: "" };
+    
+    // Mock new post
+    const newPost = {
+      id: "mock_" + Date.now(),
+      imageUrl: "https://picsum.photos/600/600?random=" + Math.floor(Math.random() * 1000),
+      link: data.instagram.profileUrl,
+      timestamp: new Date().toISOString()
+    };
+    
+    data.instagram.posts.unshift(newPost);
+    if (data.instagram.posts.length > 8) {
+      data.instagram.posts = data.instagram.posts.slice(0, 8);
+    }
+    
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+    res.json({ success: true, message: "Instagram feed refreshed (Simulated)", post: newPost });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to refresh instagram feed" });
+  }
+});
+
+
 // Review Management API
 app.post("/api/reviews/submit", (req, res) => {
   const { productId, review } = req.body;
