@@ -2315,11 +2315,37 @@ Version: 2.43.0
       }
 
       .TestimonialsSection__ActionBtn svg {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         stroke: currentColor;
+        stroke-width: 1.5;
         fill: none;
-        stroke-width: 2;
+        transition: all 0.3s ease;
+      }
+
+      .TestimonialsSection__ActionBtn.is-active {
+        background: rgba(255, 68, 68, 0.4);
+        border: 1px solid rgba(255, 68, 68, 0.6);
+        color: #ff4444;
+      }
+
+      .TestimonialsSection__ActionBtn.is-active svg {
+        fill: currentColor;
+      }
+
+      /* Mute button toggling */
+      .TestimonialsSection__ActionBtn--mute .unmute-icon {
+        display: none;
+      }
+      .TestimonialsSection__ActionBtn--mute.is-unmuted .mute-icon {
+        display: none;
+      }
+      .TestimonialsSection__ActionBtn--mute.is-unmuted .unmute-icon {
+        display: block;
+      }
+      .TestimonialsSection__ActionBtn--mute.is-unmuted {
+        background: rgba(255, 255, 255, 0.4);
+        color: #fff;
       }
 
       /* View Product Button */
@@ -2828,14 +2854,15 @@ Version: 2.43.0
                   <span>1.2K Views</span>
                 </div>
                 <div class="TestimonialsSection__Actions">
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg></button>
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
-                    </svg></button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--like" aria-label="Like">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--mute" aria-label="Toggle Sound">
+                    <svg viewBox="0 0 16 16" class="mute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285Zm3.933 3.632a.75.75 0 0 1 1.06 0L13.5 6.64l1.16-1.16a.75.75 0 1 1 1.06 1.06l-1.16 1.16 1.16 1.16a.75.75 0 1 1-1.06 1.06l-1.16-1.16-1.16 1.16a.75.75 0 1 1-1.06-1.06l1.16-1.16-1.16-1.16a.75.75 0 0 1 0-1.06Z"/></svg>
+                    <svg viewBox="0 0 16 16" class="unmute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285ZM12.78 3.22a.75.75 0 0 1 1.06 0 5.5 5.5 0 0 1 0 7.78.75.75 0 0 1-1.06-1.06 4 4 0 0 0 0-5.66.75.75 0 0 1 0-1.06ZM10.3 5.7a.75.75 0 0 1 1.06 0 2 2 0 0 1 0 2.828.75.75 0 1 1-1.06-1.06.5.5 0 0 0 0-.708.75.75 0 0 1 0-1.06Z"/></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -2868,14 +2895,15 @@ Version: 2.43.0
                   <span>2.5K Views</span>
                 </div>
                 <div class="TestimonialsSection__Actions">
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg></button>
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
-                    </svg></button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--like" aria-label="Like">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--mute" aria-label="Toggle Sound">
+                    <svg viewBox="0 0 16 16" class="mute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285Zm3.933 3.632a.75.75 0 0 1 1.06 0L13.5 6.64l1.16-1.16a.75.75 0 1 1 1.06 1.06l-1.16 1.16 1.16 1.16a.75.75 0 1 1-1.06 1.06l-1.16-1.16-1.16 1.16a.75.75 0 1 1-1.06-1.06l1.16-1.16-1.16-1.16a.75.75 0 0 1 0-1.06Z"/></svg>
+                    <svg viewBox="0 0 16 16" class="unmute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285ZM12.78 3.22a.75.75 0 0 1 1.06 0 5.5 5.5 0 0 1 0 7.78.75.75 0 0 1-1.06-1.06 4 4 0 0 0 0-5.66.75.75 0 0 1 0-1.06ZM10.3 5.7a.75.75 0 0 1 1.06 0 2 2 0 0 1 0 2.828.75.75 0 1 1-1.06-1.06.5.5 0 0 0 0-.708.75.75 0 0 1 0-1.06Z"/></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -2908,14 +2936,15 @@ Version: 2.43.0
                   <span>950 Views</span>
                 </div>
                 <div class="TestimonialsSection__Actions">
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg></button>
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
-                    </svg></button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--like" aria-label="Like">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--mute" aria-label="Toggle Sound">
+                    <svg viewBox="0 0 16 16" class="mute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285Zm3.933 3.632a.75.75 0 0 1 1.06 0L13.5 6.64l1.16-1.16a.75.75 0 1 1 1.06 1.06l-1.16 1.16 1.16 1.16a.75.75 0 1 1-1.06 1.06l-1.16-1.16-1.16 1.16a.75.75 0 1 1-1.06-1.06l1.16-1.16-1.16-1.16a.75.75 0 0 1 0-1.06Z"/></svg>
+                    <svg viewBox="0 0 16 16" class="unmute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285ZM12.78 3.22a.75.75 0 0 1 1.06 0 5.5 5.5 0 0 1 0 7.78.75.75 0 0 1-1.06-1.06 4 4 0 0 0 0-5.66.75.75 0 0 1 0-1.06ZM10.3 5.7a.75.75 0 0 1 1.06 0 2 2 0 0 1 0 2.828.75.75 0 1 1-1.06-1.06.5.5 0 0 0 0-.708.75.75 0 0 1 0-1.06Z"/></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -2949,14 +2978,15 @@ Version: 2.43.0
                   <span>3.1K Views</span>
                 </div>
                 <div class="TestimonialsSection__Actions">
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg></button>
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
-                    </svg></button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--like" aria-label="Like">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--mute" aria-label="Toggle Sound">
+                    <svg viewBox="0 0 16 16" class="mute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285Zm3.933 3.632a.75.75 0 0 1 1.06 0L13.5 6.64l1.16-1.16a.75.75 0 1 1 1.06 1.06l-1.16 1.16 1.16 1.16a.75.75 0 1 1-1.06 1.06l-1.16-1.16-1.16 1.16a.75.75 0 1 1-1.06-1.06l1.16-1.16-1.16-1.16a.75.75 0 0 1 0-1.06Z"/></svg>
+                    <svg viewBox="0 0 16 16" class="unmute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285ZM12.78 3.22a.75.75 0 0 1 1.06 0 5.5 5.5 0 0 1 0 7.78.75.75 0 0 1-1.06-1.06 4 4 0 0 0 0-5.66.75.75 0 0 1 0-1.06ZM10.3 5.7a.75.75 0 0 1 1.06 0 2 2 0 0 1 0 2.828.75.75 0 1 1-1.06-1.06.5.5 0 0 0 0-.708.75.75 0 0 1 0-1.06Z"/></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -2990,14 +3020,15 @@ Version: 2.43.0
                   <span>1.8K Views</span>
                 </div>
                 <div class="TestimonialsSection__Actions">
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg></button>
-                  <button class="TestimonialsSection__ActionBtn"><svg viewBox="0 0 24 24">
-                      <path
-                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
-                    </svg></button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--like" aria-label="Like">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </button>
+                  <button class="TestimonialsSection__ActionBtn TestimonialsSection__ActionBtn--mute" aria-label="Toggle Sound">
+                    <svg viewBox="0 0 16 16" class="mute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285Zm3.933 3.632a.75.75 0 0 1 1.06 0L13.5 6.64l1.16-1.16a.75.75 0 1 1 1.06 1.06l-1.16 1.16 1.16 1.16a.75.75 0 1 1-1.06 1.06l-1.16-1.16-1.16 1.16a.75.75 0 1 1-1.06-1.06l1.16-1.16-1.16-1.16a.75.75 0 0 1 0-1.06Z"/></svg>
+                    <svg viewBox="0 0 16 16" class="unmute-icon"><path d="M7.347 1.848a.5.5 0 0 1 .153.385v11.534a.5.5 0 0 1-.84.364L3.483 11H1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2.483L6.66 2.133a.5.5 0 0 1 .687-.285ZM12.78 3.22a.75.75 0 0 1 1.06 0 5.5 5.5 0 0 1 0 7.78.75.75 0 0 1-1.06-1.06 4 4 0 0 0 0-5.66.75.75 0 0 1 0-1.06ZM10.3 5.7a.75.75 0 0 1 1.06 0 2 2 0 0 1 0 2.828.75.75 0 1 1-1.06-1.06.5.5 0 0 0 0-.708.75.75 0 0 1 0-1.06Z"/></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -3178,6 +3209,26 @@ Version: 2.43.0
         // Ensure videos autoplay properly
         document.querySelectorAll('.TestimonialsSection__Video').forEach(video => {
           video.play().catch(e => console.log('Autoplay prevented:', e));
+        });
+
+        // Testimonials Interactivity (Like & Mute)
+        document.addEventListener('click', e => {
+          // Like toggle
+          const btnLike = e.target.closest('.TestimonialsSection__ActionBtn--like');
+          if (btnLike) {
+            btnLike.classList.toggle('is-active');
+          }
+
+          // Mute toggle
+          const btnMute = e.target.closest('.TestimonialsSection__ActionBtn--mute');
+          if (btnMute) {
+            const card = btnMute.closest('.TestimonialsSection__Card');
+            const video = card.querySelector('video');
+            if (video) {
+              video.muted = !video.muted;
+              btnMute.classList.toggle('is-unmuted', !video.muted);
+            }
+          }
         });
 
         // Instagram Slider Logic

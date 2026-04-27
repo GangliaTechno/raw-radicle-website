@@ -763,6 +763,37 @@
     .cms-full { grid-column: span 2; }
     .cms-label { display: block; font-size: 10px; font-weight: 600; color: var(--text-light); margin-bottom: 4px; text-transform: uppercase; }
     .size-hint { font-size: 10px; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+
+    /* Review Scoring & Highlighting */
+    .review-score-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    .score-good { background: #dcfce7; color: #15803d; }
+    .score-bad { background: #fee2e2; color: #991b1b; }
+    .score-neutral { background: #f3f4f6; color: #4b5563; }
+
+    .highlight-toxic {
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 0 2px;
+      border-radius: 2px;
+      font-weight: 600;
+      text-decoration: underline wavy #ef4444;
+    }
+    .highlight-repeat {
+      background: #fef9c3;
+      color: #854d0e;
+      padding: 0 2px;
+      border-radius: 2px;
+      font-weight: 600;
+      border-bottom: 2px dashed #facc15;
+    }
   </style>
 </head>
 
@@ -2025,41 +2056,75 @@
       renderReviewsTab();
     }
 
+    function highlightReviewBody(text) {
+      if (!text) return '';
+      let highlighted = text;
+      
+      const toxicWords = ["scam", "fake", "bad", "worst", "hate", "stupid", "idiot", "fraud", "toxic", "garbage", "trash"];
+      
+      // Highlight toxic words
+      toxicWords.forEach(word => {
+        const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+        highlighted = highlighted.replace(regex, '<span class="highlight-toxic">$1</span>');
+      });
+
+      // Highlight repeated words (consecutive)
+      highlighted = highlighted.replace(/\b(\w+)(\s+)(\1)\b/gi, '<span class="highlight-repeat">$1</span>$2<span class="highlight-repeat">$3</span>');
+      
+      return highlighted;
+    }
+
     async function renderReviewsTab() {
       try {
         const list = document.getElementById('cms-reviews-list');
         if (!list) return;
 
         if (currentReviewTab === 'approved') {
-          list.innerHTML = (currentProductCMS.reviews || []).map((rev, i) => `
-            <div class="cms-review-item">
-              <div class="review-meta">
-                <span><strong>${rev.name || 'Anonymous'}</strong> • ${rev.rating || 5} Stars</span>
-                <span>${rev.date || ''}</span>
+          list.innerHTML = (currentProductCMS.reviews || []).map((rev, i) => {
+            const score = rev.score !== undefined ? rev.score : 'N/A';
+            const scoreClass = score >= 1 ? 'score-good' : (score < 0 ? 'score-bad' : 'score-neutral');
+            
+            return `
+              <div class="cms-review-item">
+                <div class="review-meta">
+                  <span>
+                    <strong>${rev.name || 'Anonymous'}</strong> • ${rev.rating || 5} Stars
+                    <span class="review-score-badge ${scoreClass}">Score: ${score} / 1</span>
+                  </span>
+                  <span>${rev.date || ''}</span>
+                </div>
+                <div class="review-body">${highlightReviewBody(rev.body)}</div>
+                <div class="review-actions">
+                  <button class="btn btn-danger btn-sm" onclick="deleteReview('approved', '${rev.id}')">Delete</button>
+                </div>
               </div>
-              <div class="review-body">${rev.body || ''}</div>
-              <div class="review-actions">
-                <button class="btn btn-danger btn-sm" onclick="deleteReview('approved', '${rev.id}')">Delete</button>
-              </div>
-            </div>
-          `).join('') || '<p style="text-align:center; color:var(--text-light); padding:20px;">No approved reviews.</p>';
+            `;
+          }).join('') || '<p style="text-align:center; color:var(--text-light); padding:20px;">No approved reviews.</p>';
         } else {
           const res = await fetch('/api/reviews/pending');
           const pendingAll = await res.json();
           const pending = (pendingAll && pendingAll[currentProductId]) || [];
-          list.innerHTML = pending.map((rev, i) => `
-            <div class="cms-review-item">
-              <div class="review-meta">
-                <span><strong>${rev.name || rev.email || 'Anonymous'}</strong> • ${rev.rating || 5} Stars</span>
-                <span>${rev.submittedAt ? new Date(rev.submittedAt).toLocaleDateString() : ''}</span>
+          list.innerHTML = pending.map((rev, i) => {
+            const score = rev.score !== undefined ? rev.score : 0;
+            const scoreClass = score >= 1 ? 'score-good' : (score < 0 ? 'score-bad' : 'score-neutral');
+            
+            return `
+              <div class="cms-review-item">
+                <div class="review-meta">
+                  <span>
+                    <strong>${rev.name || rev.email || 'Anonymous'}</strong> • ${rev.rating || 5} Stars
+                    <span class="review-score-badge ${scoreClass}">Score: ${score} / 1</span>
+                  </span>
+                  <span>${rev.submittedAt ? new Date(rev.submittedAt).toLocaleDateString() : ''}</span>
+                </div>
+                <div class="review-body">${highlightReviewBody(rev.body)}</div>
+                <div class="review-actions">
+                  <button class="btn btn-primary btn-sm" onclick="approveReview('${rev.id}')">Approve</button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteReview('pending', '${rev.id}')">Reject</button>
+                </div>
               </div>
-              <div class="review-body">${rev.body || ''}</div>
-              <div class="review-actions">
-                <button class="btn btn-primary btn-sm" onclick="approveReview('${rev.id}')">Approve</button>
-                <button class="btn btn-danger btn-sm" onclick="deleteReview('pending', '${rev.id}')">Reject</button>
-              </div>
-            </div>
-          `).join('') || '<p style="text-align:center; color:var(--text-light); padding:20px;">No pending reviews.</p>';
+            `;
+          }).join('') || '<p style="text-align:center; color:var(--text-light); padding:20px;">No pending reviews.</p>';
         }
       } catch (err) {
         console.error('Error in renderReviewsTab:', err);
