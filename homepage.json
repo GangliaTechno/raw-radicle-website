@@ -155,5 +155,9 @@
       "question": "Where are your products available?",
       "answer": "Our products are available on Blinkit, Zepto, Amazon, Swiggy Instamart, and Flipkart. You can also find us in select health stores across India."
     }
-  ]
+  ],
+  "instagram": {
+    "profileUrl": "https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz",
+    "posts": []
+  }
 }

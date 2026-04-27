@@ -90,9 +90,139 @@ app.post("/api/homepage", (req, res) => {
   res.json({ success: true, message: "Home page updated successfully" });
 });
 
+// Instagram API
+app.get("/api/instagram/posts", (req, res) => {
+  const filePath = path.join(__dirname, "homepage.json");
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    res.json(data.instagram || { posts: [], profileUrl: "" });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to fetch instagram posts" });
+  }
+});
+
+app.post("/api/instagram/refresh", async (req, res) => {
+  // This is a placeholder for actual Instagram scraping or API call.
+  // For now, we will simulate adding a mock post to show the "replacement" logic.
+  const filePath = path.join(__dirname, "homepage.json");
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    if (!data.instagram) data.instagram = { posts: [], profileUrl: "" };
+    
+    // Mock new post
+    const newPost = {
+      id: "mock_" + Date.now(),
+      imageUrl: "https://picsum.photos/600/600?random=" + Math.floor(Math.random() * 1000),
+      link: data.instagram.profileUrl,
+      timestamp: new Date().toISOString()
+    };
+    
+    data.instagram.posts.unshift(newPost);
+    if (data.instagram.posts.length > 8) {
+      data.instagram.posts = data.instagram.posts.slice(0, 8);
+    }
+    
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+    res.json({ success: true, message: "Instagram feed refreshed (Simulated)", post: newPost });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to refresh instagram feed" });
+  }
+});
+
+
+// --- Review Scoring & Moderation Helpers ---
+const TOXIC_WORDS = ["scam", "fake", "bad", "worst", "hate", "stupid", "idiot", "fraud", "toxic", "garbage", "trash"];
+
+function detectSpam(text) {
+  if (!text) return false;
+  // Rule: links like http/https
+  const hasLinks = /https?:\/\/[^\s]+/gi.test(text);
+  if (hasLinks) return true;
+  
+  // Rule: repeated words
+  // Check for immediate repetitions like "very very"
+  if (/\b(\w+)\s+\1\b/gi.test(text)) return true;
+  
+  // Check for excessive word repetition (e.g. "spam" 4+ times)
+  const words = text.toLowerCase().split(/\s+/);
+  const wordCounts = {};
+  for (const word of words) {
+    if (word.length > 3) {
+      wordCounts[word] = (wordCounts[word] || 0) + 1;
+      if (wordCounts[word] > 3) return true;
+    }
+  }
+  return false;
+}
+
+function detectToxicity(text) {
+  if (!text) return false;
+  const lowercaseText = text.toLowerCase();
+  return TOXIC_WORDS.some(word => lowercaseText.includes(word));
+}
+
+function calculateReviewScore(review) {
+  let score = 0;
+  let flags = [];
+
+  // +2 → Verified purchase
+  if (review.is_verified) score += 2;
+  
+  // +1 → Review length > 50 characters
+  if (review.body && review.body.length > 50) score += 1;
+  
+  // -2 → Spam indicators
+  if (detectSpam(review.body)) {
+    score -= 2;
+    flags.push("spam");
+  }
+  
+  // -3 → Toxic words
+  if (detectToxicity(review.body)) {
+    score -= 3;
+    flags.push("toxic");
+  }
+
+  return { score, flags };
+}
+
+function updateReviewStatus(score, threshold = 1) {
+  return score >= threshold ? "approved" : "pending";
+}
+
 // Review Management API
 app.post("/api/reviews/submit", (req, res) => {
   const { productId, review } = req.body;
+  
+  // Calculate Score and Moderation Fields
+  const { score, flags } = calculateReviewScore(review);
+  const status = updateReviewStatus(score);
+  
+  const updatedReview = { 
+    ...review, 
+    id: Date.now(), 
+    submittedAt: new Date().toISOString(),
+    score,
+    flags,
+    status
+  };
+
+  if (status === "approved") {
+    // Save to CMS (Approved)
+    const cmsFile = path.join(__dirname, "products_cms.json");
+    try {
+      let cms = JSON.parse(fs.readFileSync(cmsFile, "utf8"));
+      if (!cms[productId]) cms[productId] = {};
+      if (!cms[productId].reviews) cms[productId].reviews = [];
+      cms[productId].reviews.push(updatedReview);
+      fs.writeFileSync(cmsFile, JSON.stringify(cms, null, 2), "utf8");
+      return res.json({ success: true, message: "Review approved and published automatically", status: "approved" });
+    } catch (e) {
+      console.error("Auto-approval failed:", e);
+    }
+  }
+
+  // Save to Pending
   const filePath = path.join(__dirname, "pending_reviews.json");
   let data = {};
   if (fs.existsSync(filePath)) {
@@ -102,9 +232,9 @@ app.post("/api/reviews/submit", (req, res) => {
     } catch (e) {}
   }
   if (!data[productId]) data[productId] = [];
-  data[productId].push({ ...review, id: Date.now(), submittedAt: new Date().toISOString() });
+  data[productId].push(updatedReview);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-  res.json({ success: true, message: "Review submitted for approval" });
+  res.json({ success: true, message: "Review submitted for moderation", status: "pending" });
 });
 
 app.get("/api/reviews/pending", (req, res) => {
@@ -131,6 +261,7 @@ app.post("/api/reviews/approve", (req, res) => {
       const reviewIdx = pending[productId].findIndex(r => r.id == reviewId);
       if (reviewIdx > -1) {
         const review = pending[productId].splice(reviewIdx, 1)[0];
+        review.status = "approved"; // Update status on manual approval
         if (!cms[productId]) cms[productId] = {};
         if (!cms[productId].reviews) cms[productId].reviews = [];
         cms[productId].reviews.push(review);
