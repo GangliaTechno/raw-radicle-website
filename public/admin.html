@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,24 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #f4f4f4;
       --sidebar-bg: #1c1b1b;
       --sidebar-text: #ffffff;
-      --sidebar-accent: rgba(255,255,255,0.08);
-      --sidebar-active: rgba(255,255,255,0.15);
+      --sidebar-accent: rgba(255, 255, 255, 0.08);
+      --sidebar-active: rgba(255, 255, 255, 0.15);
       --header-bg: #ffffff;
       --card-bg: #ffffff;
       --text: #1c1c1c;
@@ -48,7 +56,9 @@
       display: flex;
       flex-direction: column;
       position: fixed;
-      top: 0; left: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
       z-index: 200;
       overflow-y: auto;
       transition: transform 0.3s ease;
@@ -56,7 +66,7 @@
 
     .sidebar-logo {
       padding: 30px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -84,10 +94,12 @@
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
 
-    .sidebar-nav { padding: 0 12px; }
+    .sidebar-nav {
+      padding: 0 12px;
+    }
 
     .sidebar-item {
       display: flex;
@@ -97,7 +109,7 @@
       border-radius: 6px;
       margin-bottom: 2px;
       cursor: pointer;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255, 255, 255, 0.75);
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.3px;
@@ -116,7 +128,8 @@
     }
 
     .sidebar-item svg {
-      width: 16px; height: 16px;
+      width: 16px;
+      height: 16px;
       opacity: 0.85;
       flex-shrink: 0;
     }
@@ -124,7 +137,7 @@
     .sidebar-footer {
       margin-top: auto;
       padding: 16px 12px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .sidebar-user {
@@ -138,9 +151,10 @@
     }
 
     .sidebar-avatar {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -161,7 +175,7 @@
 
     .sidebar-role {
       font-size: 10px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -216,15 +230,47 @@
       text-decoration: none;
     }
 
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-hover); }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-outline:hover { background: var(--bg); }
-    .btn-danger { background: var(--danger); color: #fff; }
-    .btn-danger:hover { opacity: 0.9; }
-    .btn-success { background: var(--success); color: #fff; }
-    .btn-success:hover { opacity: 0.9; }
-    .btn-sm { padding: 6px 12px; font-size: 11px; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      opacity: 0.9;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .btn-success:hover {
+      opacity: 0.9;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 11px;
+    }
 
     .page-content {
       padding: 32px;
@@ -232,8 +278,13 @@
     }
 
     /* ──── PANELS (tabs) ──── */
-    .panel { display: none; }
-    .panel.active { display: block; }
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
 
     /* ──── STATS GRID ──── */
     .stats-grid {
@@ -255,14 +306,27 @@
     .stat-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 3px;
     }
 
-    .stat-card.blue::before { background: #3b82f6; }
-    .stat-card.green::before { background: var(--success); }
-    .stat-card.orange::before { background: var(--warning); }
-    .stat-card.purple::before { background: #8b5cf6; }
+    .stat-card.blue::before {
+      background: #3b82f6;
+    }
+
+    .stat-card.green::before {
+      background: var(--success);
+    }
+
+    .stat-card.orange::before {
+      background: var(--warning);
+    }
+
+    .stat-card.purple::before {
+      background: #8b5cf6;
+    }
 
     .stat-label {
       font-size: 11px;
@@ -317,7 +381,7 @@
     }
 
     .product-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       transform: translateY(-1px);
     }
 
@@ -342,7 +406,7 @@
     .product-image-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0, 0, 0, 0.45);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -351,10 +415,12 @@
       gap: 10px;
     }
 
-    .product-card:hover .product-image-overlay { opacity: 1; }
+    .product-card:hover .product-image-overlay {
+      opacity: 1;
+    }
 
     .img-change-btn {
-      background: rgba(255,255,255,0.95);
+      background: rgba(255, 255, 255, 0.95);
       border: none;
       border-radius: 4px;
       padding: 8px 14px;
@@ -366,9 +432,13 @@
       transition: background 0.15s;
     }
 
-    .img-change-btn:hover { background: #fff; }
+    .img-change-btn:hover {
+      background: #fff;
+    }
 
-    .product-card-body { padding: 18px; }
+    .product-card-body {
+      padding: 18px;
+    }
 
     .product-name {
       font-size: 13px;
@@ -420,15 +490,26 @@
       text-transform: uppercase;
     }
 
-    .badge-success { background: #dcfce7; color: #15803d; }
-    .badge-warning { background: #fef9c3; color: #92400e; }
-    .badge-info { background: #dbeafe; color: #1d4ed8; }
+    .badge-success {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .badge-warning {
+      background: #fef9c3;
+      color: #92400e;
+    }
+
+    .badge-info {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
 
     /* ──── MODAL ──── */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       z-index: 500;
       display: flex;
       align-items: center;
@@ -455,7 +536,9 @@
       transition: transform 0.25s;
     }
 
-    .modal-backdrop.open .modal { transform: scale(1) translateY(0); }
+    .modal-backdrop.open .modal {
+      transform: scale(1) translateY(0);
+    }
 
     .modal-header {
       padding: 22px 24px 18px;
@@ -481,9 +564,14 @@
       transition: color 0.15s;
     }
 
-    .modal-close:hover { color: var(--text); }
+    .modal-close:hover {
+      color: var(--text);
+    }
 
-    .modal-body { padding: 24px; }
+    .modal-body {
+      padding: 24px;
+    }
+
     .modal-footer {
       padding: 16px 24px;
       border-top: 1px solid var(--border);
@@ -493,7 +581,9 @@
     }
 
     /* Form inside modal */
-    .form-group { margin-bottom: 18px; }
+    .form-group {
+      margin-bottom: 18px;
+    }
 
     .form-label {
       display: block;
@@ -518,9 +608,14 @@
       transition: border-color 0.2s;
     }
 
-    .form-control:focus { border-color: var(--accent); }
+    .form-control:focus {
+      border-color: var(--accent);
+    }
 
-    .form-control[type="file"] { padding: 8px; cursor: pointer; }
+    .form-control[type="file"] {
+      padding: 8px;
+      cursor: pointer;
+    }
 
     textarea.form-control {
       min-height: 90px;
@@ -544,7 +639,8 @@
       position: relative;
     }
 
-    .dropzone:hover, .dropzone.dragover {
+    .dropzone:hover,
+    .dropzone.dragover {
       border-color: var(--accent);
       background: #f8f8f8;
     }
@@ -558,9 +654,22 @@
       cursor: pointer;
     }
 
-    .dropzone-icon { font-size: 28px; margin-bottom: 8px; }
-    .dropzone-label { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-    .dropzone-sub { font-size: 11px; color: var(--text-light); }
+    .dropzone-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .dropzone-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .dropzone-sub {
+      font-size: 11px;
+      color: var(--text-light);
+    }
 
     .image-preview {
       margin-top: 12px;
@@ -579,8 +688,9 @@
 
     .preview-remove {
       position: absolute;
-      top: 8px; right: 8px;
-      background: rgba(0,0,0,0.6);
+      top: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.6);
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -590,25 +700,105 @@
     }
 
     /* ──── PRODUCT CMS STYLES ──── */
-    .cms-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-    .cms-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .cms-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    .cms-review-item { border-bottom: 1px solid var(--border); padding: 15px 0; }
-    .cms-review-item:last-child { border-bottom: none; }
-    .review-meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 11px; color: var(--text-light); }
-    .review-body { font-size: 13px; margin-bottom: 10px; line-height: 1.5; }
-    .review-actions { display: flex; gap: 10px; }
-    .review-tabs button.active { background: var(--sidebar-bg); color: #fff; }
+    .cms-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
 
-    .cms-section-item { border: 1px solid var(--border); border-radius: 6px; padding: 15px; margin-bottom: 15px; position: relative; }
-    .cms-item-delete { position: absolute; top: 10px; right: 10px; color: var(--danger); cursor: pointer; }
+    .cms-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
 
-    .gallery-item { text-align: center; }
-    .gallery-preview { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; margin-bottom: 8px; border: 1px solid var(--border); }
-    
-    .feature-hi-row { display: grid; grid-template-columns: 120px 1fr; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed var(--border); }
-    .feature-hi-row:last-child { border-bottom: none; }
-    .feature-hi-thumb { width:120px; height:80px; object-fit:cover; border-radius:4px; }
+    .cms-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .cms-review-item {
+      border-bottom: 1px solid var(--border);
+      padding: 15px 0;
+    }
+
+    .cms-review-item:last-child {
+      border-bottom: none;
+    }
+
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    .review-body {
+      font-size: 13px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .review-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .review-tabs button.active {
+      background: var(--sidebar-bg);
+      color: #fff;
+    }
+
+    .cms-section-item {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .cms-item-delete {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: var(--danger);
+      cursor: pointer;
+    }
+
+    .gallery-item {
+      text-align: center;
+    }
+
+    .gallery-preview {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .feature-hi-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .feature-hi-row:last-child {
+      border-bottom: none;
+    }
+
+    .feature-hi-thumb {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
 
     /* ──── TOAST NOTIFICATION ──── */
     .toast-container {
@@ -628,7 +818,7 @@
       border-radius: 6px;
       font-size: 13px;
       font-weight: 500;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -636,17 +826,36 @@
       min-width: 240px;
     }
 
-    .toast.success { background: var(--success); }
-    .toast.error { background: var(--danger); }
+    .toast.success {
+      background: var(--success);
+    }
+
+    .toast.error {
+      background: var(--danger);
+    }
 
     @keyframes slideIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to   { transform: translateX(0);    opacity: 1; }
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
     @keyframes slideOut {
-      from { transform: translateX(0);    opacity: 1; }
-      to   { transform: translateX(110%); opacity: 0; }
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateX(110%);
+        opacity: 0;
+      }
     }
 
     /* ──── TABLE ──── */
@@ -681,11 +890,18 @@
       vertical-align: middle;
     }
 
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: #fafafa; }
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #fafafa;
+    }
 
     /* ──── ACTIVITY FEED ──── */
-    .activity-list { list-style: none; }
+    .activity-list {
+      list-style: none;
+    }
 
     .activity-item {
       display: flex;
@@ -694,23 +910,36 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .activity-item:last-child { border-bottom: none; }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
 
     .activity-dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--accent);
       margin-top: 5px;
       flex-shrink: 0;
     }
 
-    .activity-text { font-size: 13px; color: var(--text); line-height: 1.5; }
-    .activity-time { font-size: 11px; color: var(--text-light); margin-top: 3px; }
+    .activity-text {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .activity-time {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 3px;
+    }
 
     /* ──── CHANGED BADGE ──── */
     .modified-badge {
       position: absolute;
-      top: 10px; left: 10px;
+      top: 10px;
+      left: 10px;
       background: var(--warning);
       color: #fff;
       font-size: 9px;
@@ -723,10 +952,21 @@
 
     /* ──── RESPONSIVE ──── */
     @media (max-width: 900px) {
-      .sidebar { transform: translateX(-100%); }
-      .sidebar.open { transform: translateX(0); }
-      .main-wrapper { margin-left: 0; }
-      .mobile-menu-btn { display: flex !important; }
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main-wrapper {
+        margin-left: 0;
+      }
+
+      .mobile-menu-btn {
+        display: flex !important;
+      }
     }
 
     .mobile-menu-btn {
@@ -745,24 +985,114 @@
       color: var(--text-light);
     }
 
-    .empty-state-icon { font-size: 40px; margin-bottom: 14px; }
-    .empty-state-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-    .empty-state-text { font-size: 13px; }
+    .empty-state-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+    }
+
+    .empty-state-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .empty-state-text {
+      font-size: 13px;
+    }
 
     /* ──── CMS HOME PAGE STYLES ──── */
-    .cms-section { margin-bottom: 32px; }
-    .cms-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
-    .cms-card-header { padding: 12px 16px; background: #fafafa; border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
-    .cms-card-body { padding: 16px; }
-    .cms-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px dashed #f0f0f0; }
-    .cms-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .cms-thumb-container { display: flex; flex-direction: column; gap: 8px; align-items: center; }
-    .cms-thumb { width: 120px; height: 80px; object-fit: contain; border-radius: 4px; background: #eee; border: 1px solid var(--border); }
-    .cms-thumb-label { font-size: 9px; color: var(--text-light); text-transform: uppercase; font-weight: 700; }
-    .cms-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .cms-full { grid-column: span 2; }
-    .cms-label { display: block; font-size: 10px; font-weight: 600; color: var(--text-light); margin-bottom: 4px; text-transform: uppercase; }
-    .size-hint { font-size: 10px; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+    .cms-section {
+      margin-bottom: 32px;
+    }
+
+    .cms-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .cms-card-header {
+      padding: 12px 16px;
+      background: #fafafa;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cms-card-body {
+      padding: 16px;
+    }
+
+    .cms-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px dashed #f0f0f0;
+    }
+
+    .cms-row:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .cms-thumb-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .cms-thumb {
+      width: 120px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #eee;
+      border: 1px solid var(--border);
+    }
+
+    .cms-thumb-label {
+      font-size: 9px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .cms-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .cms-full {
+      grid-column: span 2;
+    }
+
+    .cms-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .size-hint {
+      font-size: 10px;
+      color: var(--text-light);
+      margin-top: 4px;
+      font-weight: 500;
+    }
 
     /* Review Scoring & Highlighting */
     .review-score-badge {
@@ -774,9 +1104,21 @@
       font-weight: 700;
       margin-left: 8px;
     }
-    .score-good { background: #dcfce7; color: #15803d; }
-    .score-bad { background: #fee2e2; color: #991b1b; }
-    .score-neutral { background: #f3f4f6; color: #4b5563; }
+
+    .score-good {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .score-bad {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .score-neutral {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
 
     .highlight-toxic {
       background: #fee2e2;
@@ -786,6 +1128,7 @@
       font-weight: 600;
       text-decoration: underline wavy #ef4444;
     }
+
     .highlight-repeat {
       background: #fef9c3;
       color: #854d0e;
@@ -808,23 +1151,43 @@
     <div class="sidebar-section-label">Management</div>
     <nav class="sidebar-nav">
       <a class="sidebar-item active" data-panel="dashboard" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
+        </svg>
         Dashboard
       </a>
       <a class="sidebar-item" data-panel="products" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
         Products
       </a>
       <a class="sidebar-item" data-panel="home-page" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
         Home Page
       </a>
       <a class="sidebar-item" data-panel="product-cms" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+          <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+        </svg>
         Product CMS
       </a>
       <a class="sidebar-item" data-panel="users" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 00-3-3.87" />
+          <path d="M16 3.13a4 4 0 010 7.75" />
+        </svg>
         Users
       </a>
     </nav>
@@ -832,7 +1195,10 @@
     <div class="sidebar-section-label">Site</div>
     <nav class="sidebar-nav">
       <a class="sidebar-item" href="index.html" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
         View Site
       </a>
     </nav>
@@ -846,7 +1212,11 @@
         </div>
       </div>
       <a class="sidebar-item" href="#" id="logout-btn" style="color: rgba(255,100,100,0.8);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" y1="12" x2="9" y2="12" />
+        </svg>
         Logout
       </a>
     </div>
@@ -857,7 +1227,11 @@
     <header class="top-bar">
       <div style="display:flex; align-items:center; gap:14px;">
         <button class="mobile-menu-btn" id="mobile-menu-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
         </button>
         <span class="top-bar-title" id="top-bar-title">Dashboard</span>
       </div>
@@ -938,7 +1312,8 @@
           </div>
         </div>
         <p style="font-size:12px; color:var(--text-light); margin-bottom:20px;">
-          Click <strong>Edit</strong> on any product card to update its name, price, description, and images. Changes are reflected instantly on the live site for all users.
+          Click <strong>Edit</strong> on any product card to update its name, price, description, and images. Changes
+          are reflected instantly on the live site for all users.
         </p>
         <div class="products-grid" id="products-grid">
           <!-- Populated by JS -->
@@ -973,9 +1348,10 @@
           <button class="btn btn-success btn-sm" onclick="saveHomePage()">Save Home Changes</button>
         </div>
         <p style="font-size:12px; color:var(--text-light); margin-bottom:20px;">
-          Update hero banners, testimonial videos, and site-wide promotional content. Changes will be visible to all visitors.
+          Update hero banners, testimonial videos, and site-wide promotional content. Changes will be visible to all
+          visitors.
         </p>
-        
+
         <div class="cms-section">
           <!--
           <div class="cms-card">
@@ -1044,7 +1420,8 @@
               <option value="">-- Choose a Product --</option>
               <!-- Populated dynamically -->
             </select>
-            <button class="btn btn-primary" onclick="saveProductCMS()" id="save-product-cms-btn" disabled>Save All Changes</button>
+            <button class="btn btn-primary" onclick="saveProductCMS()" id="save-product-cms-btn" disabled>Save All
+              Changes</button>
           </div>
         </div>
 
@@ -1106,8 +1483,10 @@
             </div>
             <div class="card-body">
               <div class="review-tabs" style="margin-bottom:15px; display:flex; gap:10px;">
-                <button class="btn btn-outline btn-sm active" onclick="switchReviewTab('approved')">Approved Reviews</button>
-                <button class="btn btn-outline btn-sm" onclick="switchReviewTab('pending')" id="pending-reviews-count-btn">Pending Reviews (0)</button>
+                <button class="btn btn-outline btn-sm active" onclick="switchReviewTab('approved')">Approved
+                  Reviews</button>
+                <button class="btn btn-outline btn-sm" onclick="switchReviewTab('pending')"
+                  id="pending-reviews-count-btn">Pending Reviews (0)</button>
               </div>
               <div id="cms-reviews-list"></div>
             </div>
@@ -1129,7 +1508,10 @@
       <div class="modal-header">
         <span class="modal-title" id="modal-title">Edit Product</span>
         <button class="modal-close" id="modal-close-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
         </button>
       </div>
       <div class="modal-body">
@@ -1160,11 +1542,13 @@
           <div class="form-group">
             <label class="form-label">Primary Image</label>
             <div class="dropzone" onclick="document.getElementById('file-main').click()">
-              <input type="file" id="file-main" hidden accept="image/*" onchange="handleModalUpload(this, 'edit-image-url', 'preview-img')">
+              <input type="file" id="file-main" hidden accept="image/*"
+                onchange="handleModalUpload(this, 'edit-image-url', 'preview-img')">
               <div class="dropzone-label">Click to Upload</div>
               <div class="size-hint">Required: 2048 x 2048 px (Square)</div>
             </div>
-            <input type="text" class="form-control" id="edit-image-url" placeholder="URL will appear here..." style="margin-top:6px;">
+            <input type="text" class="form-control" id="edit-image-url" placeholder="URL will appear here..."
+              style="margin-top:6px;">
             <div class="image-preview" id="image-preview" style="display:block; margin-top:10px;">
               <img id="preview-img" src="" style="max-height:100px; object-fit:contain;">
             </div>
@@ -1172,25 +1556,30 @@
           <div class="form-group">
             <label class="form-label">Hover Image (Secondary)</label>
             <div class="dropzone" onclick="document.getElementById('file-hover').click()">
-              <input type="file" id="file-hover" hidden accept="image/*" onchange="handleModalUpload(this, 'edit-hover-url', 'preview-hover-img')">
+              <input type="file" id="file-hover" hidden accept="image/*"
+                onchange="handleModalUpload(this, 'edit-hover-url', 'preview-hover-img')">
               <div class="dropzone-label">Click to Upload</div>
               <div class="size-hint">Required: 2048 x 2048 px (Square)</div>
             </div>
-            <input type="text" class="form-control" id="edit-hover-url" placeholder="URL will appear here..." style="margin-top:6px;">
+            <input type="text" class="form-control" id="edit-hover-url" placeholder="URL will appear here..."
+              style="margin-top:6px;">
             <div class="image-preview" id="image-hover-preview" style="display:block; margin-top:10px;">
               <img id="preview-hover-img" src="" style="max-height:100px; object-fit:contain;">
             </div>
           </div>
         </div>
 
-        <div style="background:#f8f8f8; border-radius:4px; padding:12px; font-size:11px; color:var(--text-light); margin-top:4px;">
+        <div
+          style="background:#f8f8f8; border-radius:4px; padding:12px; font-size:11px; color:var(--text-light); margin-top:4px;">
           💡 Changes will be applied sitewide and visible to all users immediately.
         </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-outline" id="modal-cancel-btn">Cancel</button>
         <button class="btn btn-success" id="modal-save-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
           Save Changes
         </button>
       </div>
@@ -1223,10 +1612,10 @@
     async function updateDashboardStats() {
       const products = await RRAuth.getProducts();
       const users = RRAuth.getAllUsers();
-      
+
       document.getElementById('stat-products').textContent = Object.keys(products).length;
       document.getElementById('stat-users').textContent = users.length;
-      
+
       // Calculate changes (assuming original counts if needed, but for now just show total)
       document.getElementById('stat-modified').textContent = Object.keys(products).length;
     }
@@ -1274,7 +1663,7 @@
       document.getElementById('edit-desc').value = p.description;
       document.getElementById('edit-image-url').value = p.image;
       document.getElementById('edit-hover-url').value = p.hoverImage || '';
-      
+
       document.getElementById('preview-img').src = p.image;
       document.getElementById('preview-hover-img').src = p.hoverImage || '';
 
@@ -1289,7 +1678,7 @@
     document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
 
     // ─── Save Product ────────────────────────────────────────────
-    document.getElementById('modal-save-btn').addEventListener('click', async function() {
+    document.getElementById('modal-save-btn').addEventListener('click', async function () {
       const id = document.getElementById('edit-product-id').value;
       const name = document.getElementById('edit-name').value.trim();
       const price = parseFloat(document.getElementById('edit-price').value);
@@ -1304,7 +1693,7 @@
       }
 
       productsData[id] = { ...productsData[id], name, price, mrp, description, image, hoverImage };
-      
+
       const res = await RRAuth.saveProducts(productsData);
       if (res.success) {
         addActivity(`Product "${name}" was updated`);
@@ -1332,7 +1721,7 @@
       reader.onload = async (e) => {
         const base64Data = e.target.result;
         const fileName = `${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
-        
+
         showToast('Uploading...', 'info');
         const res = await fetch('/api/upload', {
           method: 'POST',
@@ -1384,7 +1773,7 @@
       const expertsList = document.getElementById('experts-list');
       const shopOnCms = document.getElementById('shop-on-cms');
       const faqsList = document.getElementById('faqs-list');
-      
+
       homePageData = await RRAuth.getHomePageData();
 
       // 1. Render Hero Slides
@@ -1640,7 +2029,7 @@
       // Collect Testimonials
       const videoRows = document.querySelectorAll('[data-type="video"]');
       homePageData.testimonials.videos = Array.from(videoRows).map((row, i) => ({
-        id: homePageData.testimonials.videos[i] ? homePageData.testimonials.videos[i].id : 'v'+(i+1),
+        id: homePageData.testimonials.videos[i] ? homePageData.testimonials.videos[i].id : 'v' + (i + 1),
         url: row.querySelector('.cms-video-url').value,
         productName: row.querySelector('.cms-video-prod').value,
         price: row.querySelector('.cms-video-price').value,
@@ -1740,7 +2129,7 @@
 
     // ─── Navigation ──────────────────────────────────────────────
     document.querySelectorAll('[data-panel]').forEach(el => {
-      el.addEventListener('click', function(e) {
+      el.addEventListener('click', function (e) {
         e.preventDefault();
         const panelId = this.dataset.panel;
 
@@ -1769,11 +2158,11 @@
     async function initProductCMSPanel() {
       const selector = document.getElementById('cms-product-selector');
       if (!selector) return;
-      
+
       const products = await RRAuth.getProducts();
-      selector.innerHTML = '<option value="">-- Choose a Product --</option>' + 
+      selector.innerHTML = '<option value="">-- Choose a Product --</option>' +
         Object.keys(products).map(id => `<option value="${id}">${products[id].name}</option>`).join('');
-      
+
       document.getElementById('product-cms-editor').style.display = 'none';
       document.getElementById('product-cms-placeholder').style.display = 'block';
       document.getElementById('save-product-cms-btn').disabled = true;
@@ -1813,7 +2202,7 @@
         document.getElementById('product-cms-editor').style.display = 'block';
         document.getElementById('product-cms-placeholder').style.display = 'none';
         document.getElementById('save-product-cms-btn').disabled = false;
-        
+
         updatePendingReviewsCount();
       } catch (err) {
         console.error('Error in loadProductCMS:', err);
@@ -1843,7 +2232,7 @@
         // 2. Basic Info
         const bi = currentProductCMS.basicInfo;
         const basicInfoContainer = document.getElementById('cms-basic-info');
-        
+
         // Split title logic: Main Heading | Product Line
         let mainTitle = '';
         let suffixTitle = '';
@@ -1873,7 +2262,7 @@
           <div class="form-group"><label class="cms-label">Price (₹)</label><input type="number" id="ci-price" class="form-control" value="${bi.price}"></div>
           <div class="form-group"><label class="cms-label">MRP (₹)</label><input type="number" id="ci-mrp" class="form-control" value="${bi.mrp}"></div>
         `;
-        
+
         document.getElementById('ci-title-main').value = mainTitle;
         document.getElementById('ci-title-suffix').value = suffixTitle;
         document.getElementById('ci-subtitle').value = bi.subtitle || '';
@@ -2059,9 +2448,9 @@
     function highlightReviewBody(text) {
       if (!text) return '';
       let highlighted = text;
-      
+
       const toxicWords = ["scam", "fake", "bad", "worst", "hate", "stupid", "idiot", "fraud", "toxic", "garbage", "trash"];
-      
+
       // Highlight toxic words
       toxicWords.forEach(word => {
         const regex = new RegExp(`\\b(${word})\\b`, 'gi');
@@ -2070,7 +2459,7 @@
 
       // Highlight repeated words (consecutive)
       highlighted = highlighted.replace(/\b(\w+)(\s+)(\1)\b/gi, '<span class="highlight-repeat">$1</span>$2<span class="highlight-repeat">$3</span>');
-      
+
       return highlighted;
     }
 
@@ -2083,7 +2472,7 @@
           list.innerHTML = (currentProductCMS.reviews || []).map((rev, i) => {
             const score = rev.score !== undefined ? rev.score : 'N/A';
             const scoreClass = score >= 1 ? 'score-good' : (score < 0 ? 'score-bad' : 'score-neutral');
-            
+
             return `
               <div class="cms-review-item">
                 <div class="review-meta">
@@ -2107,7 +2496,7 @@
           list.innerHTML = pending.map((rev, i) => {
             const score = rev.score !== undefined ? rev.score : 0;
             const scoreClass = score >= 1 ? 'score-good' : (score < 0 ? 'score-bad' : 'score-neutral');
-            
+
             return `
               <div class="cms-review-item">
                 <div class="review-meta">
@@ -2177,12 +2566,12 @@
       };
 
       const gallery = Array.from(document.querySelectorAll('.cms-gallery-input')).map(i => i.value);
-      
+
       const features = Array.from(document.querySelectorAll('#cms-features-list .cms-dynamic-item')).map(row => ({
         title: row.querySelector('.f-title').value,
         desc: row.querySelector('.f-desc').value
       }));
-      
+
       const specs = Array.from(document.querySelectorAll('#cms-specs-list .cms-dynamic-item')).map(row => ({
         title: row.querySelector('.s-title').value,
         desc: row.querySelector('.s-desc').value
@@ -2230,7 +2619,7 @@
     });
 
     // ─── Logout ──────────────────────────────────────────────────
-    document.getElementById('logout-btn').addEventListener('click', function(e) {
+    document.getElementById('logout-btn').addEventListener('click', function (e) {
       e.preventDefault();
       RRAuth.logout();
     });
@@ -2260,10 +2649,10 @@
       if (!currentUploadTargetId) return;
       const file = input.files[0];
       if (!file) return;
-      
+
       const targetInput = document.getElementById(currentUploadTargetId);
       const previewId = targetInput.getAttribute('data-preview');
-      
+
       const reader = new FileReader();
       reader.onload = async (e) => {
         const base64Data = e.target.result;
@@ -2273,7 +2662,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ fileName, base64Data })
         }).then(r => r.json());
-        
+
         if (res.success) {
           targetInput.value = res.url;
           if (previewId && document.getElementById(previewId)) {
@@ -2284,7 +2673,7 @@
       };
       reader.readAsDataURL(file);
     }
-    
+
     function triggerCMSUpload(targetId, previewId) {
       currentUploadTargetId = targetId;
       document.getElementById(targetId).setAttribute('data-preview', previewId);
@@ -2295,4 +2684,5 @@
   <!-- Global hidden file input for CMS uploads -->
   <input type="file" id="global-cms-file-input" hidden accept="image/*,video/*" onchange="handleGlobalCMSUpload(this)">
 </body>
+
 </html>
