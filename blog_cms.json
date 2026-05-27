@@ -1,0 +1,29 @@
+{
+  "blogs": [
+    {
+      "id": "blog-chyawanaprash",
+      "category": "Ingredients",
+      "title": "Why chyawanaprash and dark chocolate belong together",
+      "excerpt": "A look at how deep cacao notes pair with the warm, spiced complexity of a classic ayurvedic blend.",
+      "image": "assets/chocolate.jpg",
+      "body": "Dark chocolate has a natural bitterness that makes it a beautiful canvas for layered flavors. Chyawanaprash brings warmth, spice, and fruit-forward depth, so the final bite feels more rounded than ordinary chocolate.\n\nThe best way to enjoy it is slowly. Let the chocolate soften, notice the cacao first, then the herbal notes that arrive after. It is a small pause with a lot of character."
+    },
+    {
+      "id": "blog-ashwagandha",
+      "category": "Rituals",
+      "title": "A calmer snack break with ashwagandha chocolate",
+      "excerpt": "Build a small afternoon ritual around flavor, pause, and a square of chocolate that feels considered.",
+      "image": "assets/bentogrid.webp",
+      "body": "Snack breaks often happen on autopilot. A square of ashwagandha chocolate invites a different rhythm: sit down, breathe, taste, and give the day one quiet minute.\n\nPair it with warm milk, herbal tea, or just a glass of water. The point is not ceremony for ceremony's sake, but a simple repeatable habit that feels good."
+    },
+    {
+      "id": "blog-brahmi",
+      "category": "Wellness",
+      "title": "Brahmi, focus, and the art of slow chocolate",
+      "excerpt": "How to turn a simple treat into a more attentive moment during busy workdays.",
+      "image": "assets/pure_chocolate_hero.png",
+      "body": "Brahmi has long been associated with clarity and attention. In chocolate, it becomes approachable: a familiar treat with an herbal edge that makes you pay attention to the bite.\n\nTry keeping one bar for focused work sessions. One piece before a task can mark the start of a cleaner, calmer block of time."
+    }
+  ],
+  "updatedAt": "2026-05-24T00:00:00.000Z"
+}

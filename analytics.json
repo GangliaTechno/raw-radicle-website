@@ -1,0 +1,21 @@
+{
+  "daily": {
+    "2026-05-23": {
+      "pageViews": 3,
+      "clicks": 0,
+      "totalTime": 374,
+      "sessions": 0
+    }
+  },
+  "pages": {
+    "/": {
+      "views": 1,
+      "totalTime": 6
+    },
+    "/index.html": {
+      "views": 2,
+      "totalTime": 368
+    }
+  },
+  "clicks": {}
+}
