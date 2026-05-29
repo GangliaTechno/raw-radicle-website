@@ -69,7 +69,7 @@ export default function ShopNow({ shopOn = defaultShopOn }) {
         .rr-shop-buy{margin-top:12px;border:1px solid #1c1c1c;background:#1c1c1c;color:#fff;font-family:Montserrat,Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:9px 12px;text-decoration:none}
         .rr-shop-buy:hover{background:#fff;color:#1c1c1c}
         @media(max-width:900px){.rr-shop-now-wrap{grid-template-columns:1fr;gap:58px;max-width:420px}.rr-shop-now-title{font-size:24px;letter-spacing:8px}.rr-shop-column-title{margin-bottom:32px}}
-        @media(max-width:560px){.rr-shop-now{padding:58px 16px}.rr-shop-grid,.rr-shop-grid[data-count="2"]{grid-template-columns:repeat(2,74px);gap:36px 50px;max-width:none}}
+        @media(max-width:560px){.rr-shop-now{padding:58px 16px}.rr-shop-grid{grid-template-columns:repeat(3,74px);gap:28px}.rr-shop-grid[data-count="2"]{grid-template-columns:repeat(2,74px);gap:36px 50px;max-width:none}}
       `}</style>
       <h2 id="rr-shop-now-title" className="rr-shop-now-title">
         {data.title || 'SHOP ON'}

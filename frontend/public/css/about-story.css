@@ -34,6 +34,20 @@
   z-index: 1;
 }
 
+@media screen and (max-width: 768px) {
+  .PrestigeHero {
+    padding: 100px 5% 50px;
+    margin-top: -65px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .PrestigeHero {
+    padding: 60px 15px 35px;
+    margin-top: -63px;
+  }
+}
+
 .PrestigeHero__Heading {
   font-size: 28.8px !important;
   letter-spacing: 5.184px !important;
@@ -43,12 +57,42 @@
   margin-bottom: 21.44px;
 }
 
+@media screen and (max-width: 768px) {
+  .PrestigeHero__Heading {
+    font-size: 22px !important;
+    letter-spacing: 3px !important;
+    line-height: 28px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .PrestigeHero__Heading {
+    font-size: 18px !important;
+    letter-spacing: 2px !important;
+    line-height: 24px;
+  }
+}
+
 .PrestigeHero__Subtext {
   font-size: 14px;
   font-weight: 500;
   line-height: 23.1px;
   opacity: 1;
   letter-spacing: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .PrestigeHero__Subtext {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .PrestigeHero__Subtext {
+    font-size: 11px;
+    line-height: 18px;
+  }
 }
 
 /* 2. Symmetric 50/50 Grid with Horizontal Focus - Height-Capped */
@@ -102,9 +146,33 @@
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .FeatureText__Content {
+    padding: 50px 6%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .FeatureText__Content {
+    padding: 40px 5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .FeatureText__Content {
+    padding: 25px 15px;
+  }
+}
+
 .FeatureText__Inner {
   max-width: 650px; /* Widened from 480px to fix 'mobile' feel */
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .FeatureText__Inner {
+    max-width: 100%;
+  }
 }
 
 /* 3. Typography refinements - Left Aligned */
@@ -127,6 +195,22 @@
   display: block;
 }
 
+@media screen and (max-width: 768px) {
+  .SectionHeader__SubHeading {
+    font-size: 9px !important;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .SectionHeader__SubHeading {
+    font-size: 8px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 12px;
+  }
+}
+
 .SectionHeader__Heading {
   font-size: 24px !important; /* Larger display heading */
   letter-spacing: 4px !important;
@@ -137,6 +221,29 @@
   color: #000;
 }
 
+@media screen and (max-width: 1024px) {
+  .SectionHeader__Heading {
+    font-size: 22px !important;
+    letter-spacing: 2.5px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .SectionHeader__Heading {
+    font-size: 18px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .SectionHeader__Heading {
+    font-size: 16px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 15px;
+  }
+}
+
 .Rte {
   font-size: 16px !important; /* Generous readable layout */
   line-height: 1.7;
@@ -144,8 +251,34 @@
   color: #1c1c1c;
 }
 
+@media screen and (max-width: 768px) {
+  .Rte {
+    font-size: 15px !important;
+    line-height: 1.6;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Rte {
+    font-size: 14px !important;
+    line-height: 1.5;
+  }
+}
+
 .Rte p {
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .Rte p {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Rte p {
+    margin-bottom: 12px;
+  }
 }
 
 /* Ensure typography adapts perfectly inside dark blocks */
@@ -168,14 +301,52 @@
   border-top: 1px solid #eaeaea;
 }
 
+@media screen and (max-width: 1024px) {
+  .Grid--luxury {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Grid--luxury {
+    grid-template-columns: 1fr;
+  }
+}
+
 .GridItem--luxury {
   padding: 80px 60px; /* generous padding like main sections */
   text-align: left;
   border-right: 1px solid #eaeaea;
 }
 
+@media screen and (max-width: 1024px) {
+  .GridItem--luxury {
+    padding: 50px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .GridItem--luxury {
+    padding: 40px 25px;
+    border-right: none;
+    border-bottom: 1px solid #eaeaea;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .GridItem--luxury {
+    padding: 25px 15px;
+  }
+}
+
 .GridItem--luxury:last-child { 
-  border-right: none; 
+  border-right: none;
+}
+
+@media screen and (max-width: 768px) {
+  .GridItem--luxury:last-child {
+    border-bottom: none;
+  }
 }
 
 /* Ensure text elements perfectly match the site's main header sections (no size overrides) */

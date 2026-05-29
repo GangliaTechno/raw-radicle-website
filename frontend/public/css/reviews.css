@@ -8,6 +8,18 @@
   background-color: #efefef;
 }
 
+@media screen and (max-width: 768px) {
+  .ReviewSection {
+    padding: 40px 20px 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewSection {
+    padding: 25px 15px 40px;
+  }
+}
+
 /* --- Header --- */
 .ReviewSection__Header {
   display: flex;
@@ -15,12 +27,34 @@
   justify-content: space-between;
   padding-bottom: 20px;
   margin-bottom: 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .ReviewSection__Header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewSection__Header {
+    padding-bottom: 15px;
+  }
 }
 
 .ReviewSection__HeaderLeft {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewSection__HeaderLeft {
+    gap: 8px;
+  }
 }
 
 .ReviewSection__Stars {
@@ -35,6 +69,13 @@
   fill: #000;
 }
 
+@media screen and (max-width: 480px) {
+  .ReviewSection__Stars svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 .ReviewSection__Count {
   font-family: 'Montserrat', sans-serif !important;
   font-size: 15px !important;
@@ -45,6 +86,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewSection__Count {
+    font-size: 13px !important;
+  }
 }
 
 .ReviewSection__Count svg {
@@ -59,6 +106,19 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .ReviewSection__HeaderRight {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewSection__HeaderRight {
+    gap: 8px;
+  }
 }
 
 .ReviewSection__WriteBtn {
@@ -74,6 +134,20 @@
   cursor: pointer;
   padding: 10px 24px;
   transition: all 0.2s ease;
+  flex: 1;
+}
+
+@media screen and (min-width: 769px) {
+  .ReviewSection__WriteBtn {
+    flex: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewSection__WriteBtn {
+    font-size: 12px !important;
+    padding: 8px 12px;
+  }
 }
 
 .ReviewSection__WriteBtn:hover {
@@ -93,6 +167,12 @@
   border-radius: 2px;
 }
 
+@media screen and (max-width: 480px) {
+  .ReviewSection__FilterBtn {
+    padding: 8px 10px;
+  }
+}
+
 .ReviewSection__FilterBtn:hover {
   background: #1c1c1b;
   border-color: #1c1c1b;
@@ -110,6 +190,13 @@
   stroke-width: 1.8;
 }
 
+@media screen and (max-width: 480px) {
+  .ReviewSection__FilterBtn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 /* --- Review Cards --- */
 .ReviewCard {
   background: #ffffff;
@@ -121,9 +208,23 @@
   display: block;
 }
 
+@media screen and (max-width: 480px) {
+  .ReviewCard {
+    padding: 16px;
+    margin-bottom: 15px;
+  }
+}
+
 .ReviewCard__Inner {
   display: flex;
   gap: 24px;
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewCard__Inner {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 .ReviewCard__Content {
@@ -136,6 +237,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 0;
+  flex-wrap: wrap;
 }
 
 .ReviewCard__Author {
@@ -146,8 +248,87 @@
   letter-spacing: 0.02em !important;
 }
 
+@media screen and (max-width: 480px) {
+  .ReviewCard__Author {
+    font-size: 14px !important;
+  }
+}
+
 .ReviewCard__Verified {
   display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px;
+  font-weight: 400;
+  color: #969696;
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewCard__Verified {
+    font-size: 12px;
+  }
+}
+
+.ReviewCard__Verified svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ReviewCard__Date {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px;
+  font-weight: 400;
+  color: #969696;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewCard__Date {
+    font-size: 12px;
+  }
+}
+
+.ReviewCard__Stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 0;
+}
+
+.ReviewCard__Stars svg {
+  width: 16px;
+  height: 16px;
+  fill: #000;
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewCard__Stars svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.ReviewCard__Stars svg.star--empty {
+  fill: #d0d0d0;
+}
+
+.ReviewCard__Body {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #1c1c1b !important;
+  line-height: 1.6 !important;
+  margin-bottom: 0;
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .ReviewCard__Body {
+    font-size: 14px !important;
+    padding-top: 12px;
+  }
+}
   align-items: center;
   gap: 4px;
   font-family: 'Montserrat', sans-serif !important;

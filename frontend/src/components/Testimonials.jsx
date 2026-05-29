@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const defaultVideos = [
   { id: 'v1', url: '/assets/video/video-1.mp4', productId: 'adarkc', productName: 'Ashwagandha Dark Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: '/assets/choco/adark.png', views: '1.2K Views' },
@@ -55,6 +55,7 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
   const videoRefs = useRef({})
   const [unmuted, setUnmuted] = useState({})
   const [liked, setLiked] = useState({})
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
     Object.values(videoRefs.current).forEach((video) => {
@@ -64,9 +65,33 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
     })
   }, [list])
 
-  const scroll = (direction) => {
-    trackRef.current?.scrollBy({ left: trackRef.current.clientWidth * 0.8 * direction, behavior: 'smooth' })
-  }
+  const scroll = useCallback((direction) => {
+    const track = trackRef.current
+    if (!track) return
+
+    const maxScrollLeft = track.scrollWidth - track.clientWidth
+    if (direction > 0 && track.scrollLeft >= maxScrollLeft - 8) {
+      track.scrollTo({ left: 0, behavior: 'smooth' })
+      return
+    }
+
+    if (direction < 0 && track.scrollLeft <= 8) {
+      track.scrollTo({ left: maxScrollLeft, behavior: 'smooth' })
+      return
+    }
+
+    track.scrollBy({ left: track.clientWidth * 0.8 * direction, behavior: 'smooth' })
+  }, [])
+
+  useEffect(() => {
+    if (isPaused || list.length <= 1) return undefined
+
+    const timer = window.setInterval(() => {
+      scroll(1)
+    }, 3500)
+
+    return () => window.clearInterval(timer)
+  }, [isPaused, list.length, scroll])
 
   const toggleMute = (id) => {
     const video = videoRefs.current[id]
@@ -113,6 +138,10 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
       </h2>
       <div
         className="rrx-testimonials-wrap"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={() => setIsPaused(false)}
         onKeyDown={(event) => {
           if (event.key === 'ArrowRight') scroll(1)
           if (event.key === 'ArrowLeft') scroll(-1)

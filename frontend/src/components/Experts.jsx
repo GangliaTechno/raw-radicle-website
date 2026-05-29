@@ -33,9 +33,9 @@ export default function Experts({ experts = defaultExperts, title = 'Meet the Ex
         .rrx-expert-name{display:block;font-family:Montserrat,Arial,sans-serif;font-size:16px;font-weight:700;color:#202020;margin:0 0 12px;line-height:1.25}
         .rrx-expert-role{display:block;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:400;color:#7f7f7f;line-height:1.35}
         @media(max-width:1400px){.rrx-expert-photo,.rrx-expert-fallback{height:330px}.rrx-experts-grid{gap:8px}}
-        @media(max-width:1200px){.rrx-experts-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.rrx-experts-title{font-size:24px;letter-spacing:4px}.rrx-expert-photo,.rrx-expert-fallback{height:360px}}
-        @media(max-width:720px){.rrx-experts{padding:64px 18px 78px}.rrx-experts-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.rrx-expert-photo,.rrx-expert-fallback{height:320px}}
-        @media(max-width:480px){.rrx-experts-grid{grid-template-columns:1fr}}
+        @media(max-width:1200px){.rrx-experts-title{font-size:24px;letter-spacing:4px}.rrx-experts-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,36vw);grid-template-columns:none;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;padding:0 24px 18px;scroll-padding:24px;scroll-snap-type:x mandatory;scrollbar-color:#1c1c1c33 transparent;scrollbar-width:thin;-webkit-overflow-scrolling:touch}.rrx-experts-grid::-webkit-scrollbar{height:4px}.rrx-experts-grid::-webkit-scrollbar-track{background:linear-gradient(90deg,transparent 0,transparent calc(50% - 58px),rgba(28,28,28,.12) calc(50% - 58px),rgba(28,28,28,.12) calc(50% + 58px),transparent calc(50% + 58px),transparent 100%)}.rrx-experts-grid::-webkit-scrollbar-thumb{background:#1c1c1c66;border-radius:999px}.rrx-expert-card{scroll-snap-align:start}.rrx-expert-photo,.rrx-expert-fallback{height:360px}}
+        @media(max-width:720px){.rrx-experts{padding:64px 0 78px}.rrx-experts-grid{grid-auto-columns:minmax(238px,72vw);gap:14px;padding:0 18px 16px;scroll-padding:18px}.rrx-expert-photo,.rrx-expert-fallback{height:320px}}
+        @media(max-width:480px){.rrx-experts-grid{grid-auto-columns:minmax(230px,82vw)}}
       `}</style>
       <h2 id="rrx-experts-title" className="rrx-experts-title">
         {title}

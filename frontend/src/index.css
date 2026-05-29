@@ -1158,20 +1158,21 @@ textarea {
 .StaticBanner {
   position: relative;
   width: 100%;
-  height: 850px; /* Taller premium desktop height */
+  aspect-ratio: 2.25 / 1;
+  height: auto;
   overflow: hidden;
   background-color: #efefef;
 }
 
 @media screen and (max-width: 1200px) {
   .StaticBanner {
-    height: 680px; /* Taller tablet/laptop height */
+    height: auto;
   }
 }
 
 @media screen and (max-width: 768px) {
   .StaticBanner {
-    height: 520px; /* Taller mobile height */
+    height: auto;
   }
 }
 
@@ -1202,15 +1203,15 @@ textarea {
 .StaticBanner__Image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
-  transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: none;
   transform: scale(1);
 }
 
 .StaticBanner__Slide.is-active .StaticBanner__Image {
-  transform: scale(1.04);
+  transform: none;
 }
 
 /* Shop Now Button Overlay */
@@ -1358,9 +1359,9 @@ textarea {
    All Our Chocolates (MvstProducts) Styles
    ========================================== */
 .MvstProducts {
-  --cards-visible: 5;
+  --cards-visible: 2.12;
   --card-gap: 28px;
-  --slider-padding: 60px;
+  --slider-padding: 0px;
   --card-width: calc((100vw - (2 * var(--slider-padding)) - ((var(--cards-visible) - 1) * var(--card-gap))) / var(--cards-visible));
   padding: 130px 0 80px; /* Generous padding after banner */
   max-width: 100%;
@@ -1371,18 +1372,18 @@ textarea {
 
 @media screen and (max-width: 1024px) {
   .MvstProducts {
-    --cards-visible: 3;
+    --cards-visible: 2.05;
     --card-gap: 24px;
-    --slider-padding: 40px;
+    --slider-padding: 0px;
     padding: 100px 0 60px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .MvstProducts {
-    --cards-visible: 2;
+    --cards-visible: 1.9;
     --card-gap: 20px;
-    --slider-padding: 24px;
+    --slider-padding: 0px;
     padding: 80px 0 50px;
   }
 }
@@ -1642,7 +1643,8 @@ textarea {
 
 .VideoHero__Video {
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .VideoHero__Overlay {
@@ -1970,7 +1972,7 @@ body {
 
 .MvstProducts {
   --card-width: min(
-    320px,
+    460px,
     calc((100vw - (2 * var(--slider-padding)) - ((var(--cards-visible) - 1) * var(--card-gap))) / var(--cards-visible))
   );
 }
@@ -2039,7 +2041,9 @@ body {
   }
 
   .StaticBanner {
-    height: clamp(460px, 66vw, 640px) !important;
+    aspect-ratio: 2.25 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
 
   .VideoHero {
@@ -2116,7 +2120,9 @@ body {
   }
 
   .StaticBanner {
-    height: clamp(430px, 118vw, 560px) !important;
+    aspect-ratio: 2.25 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
 
   .StaticBanner__Content {
@@ -2138,15 +2144,16 @@ body {
   }
 
   .MvstProducts {
-    --cards-visible: 1.35;
+    --cards-visible: 1.9;
     --card-gap: 18px;
-    --slider-padding: 18px;
+    --slider-padding: 0px;
     padding: 62px 0 44px !important;
   }
 
   .MvstProducts__Slider {
     padding-bottom: 36px !important;
     padding-top: 28px !important;
+    touch-action: pan-y !important;
   }
 
   .MvstProducts__Carousel .MvstProducts__Arrow,
@@ -2160,8 +2167,9 @@ body {
   }
 
   .VideoHero {
-    height: 68svh !important;
-    min-height: 460px !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
 
   .VideoHero__Heading {
@@ -2197,6 +2205,11 @@ body {
   .rr-shop-grid[data-count="2"] {
     gap: 30px 34px !important;
     grid-template-columns: repeat(2, minmax(72px, 1fr)) !important;
+  }
+
+  .rr-shop-grid[data-count="3"] {
+    gap: 24px !important;
+    grid-template-columns: repeat(3, minmax(72px, 1fr)) !important;
   }
 
   .rr-products-toolbar {
@@ -2365,13 +2378,15 @@ body {
   }
 
   .StaticBanner {
-    height: 410px !important;
+    aspect-ratio: 2.25 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
 
   .MvstProducts {
-    --cards-visible: 1.08;
+    --cards-visible: 1.65;
     --card-gap: 14px;
-    --slider-padding: 14px;
+    --slider-padding: 0px;
   }
 
   .rr-collection-redesign .ProductList[data-mobile-count="2"],
@@ -2401,6 +2416,10 @@ body {
   .rr-shop-grid,
   .rr-shop-grid[data-count="2"] {
     gap: 28px 18px !important;
+  }
+
+  .rr-shop-grid[data-count="3"] {
+    gap: 18px !important;
   }
 
   .rrx-instagram-row .rrx-instagram-item {
@@ -2685,6 +2704,31 @@ body {
   }
 }
 
+/* Home page tablet logo centering correction. */
+@media screen and (min-width: 641px) and (max-width: 1000px) {
+  body.rr-logo-scroll-home .Header__Wrapper {
+    justify-content: flex-end !important;
+  }
+
+  body.rr-logo-scroll-home .Header__FlexItem--logo {
+    left: 50vw !important;
+    margin: 0 !important;
+    right: auto !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  body.rr-logo-scroll-home .Header__Logo,
+  body.rr-logo-scroll-home .Header__LogoLink {
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+  }
+
+  body.rr-logo-scroll-home .Header__LogoImage--transparent {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 640px) {
   body.rr-logo-scroll-home .Header__LogoImage,
   body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
@@ -2698,6 +2742,31 @@ body {
   body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
     max-height: 44px !important;
     max-width: min(150px, 54vw) !important;
+  }
+}
+
+/* Home page mobile-only logo centering correction. */
+@media screen and (max-width: 640px) {
+  body.rr-logo-scroll-home .Header__Wrapper {
+    justify-content: flex-end !important;
+  }
+
+  body.rr-logo-scroll-home .Header__FlexItem--logo {
+    left: 50vw !important;
+    margin: 0 !important;
+    right: auto !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  body.rr-logo-scroll-home .Header__Logo,
+  body.rr-logo-scroll-home .Header__LogoLink {
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+  }
+
+  body.rr-logo-scroll-home .Header__LogoImage--transparent {
+    display: none !important;
   }
 }
 
@@ -2723,5 +2792,146 @@ body {
 @media screen and (max-width: 1000px) {
   .shopify-section--header {
     height: 68px !important;
+  }
+}
+
+/* Touch interaction layer: keep hover behavior for laptop/desktop only. */
+@media screen and (max-width: 1000px), (hover: none) {
+  .rr-product-card:hover,
+  .rr-button:hover,
+  .rr-shop-buttons a:hover,
+  .rr-toolbar button:hover,
+  .rr-tabs button:hover,
+  .StaticBanner__Button:hover,
+  .StaticBanner__Arrow:hover,
+  .MvstProducts__Arrow:hover,
+  .MvstProducts__ViewAllBtn:hover,
+  .MvstProducts__CardInner:hover .MvstProducts__Image,
+  .rrx-expert-card:hover,
+  .rrx-testimonial-card:hover,
+  .rrx-round:hover,
+  .rrx-buy:hover,
+  .rrx-arrow:hover,
+  .rrx-instagram-item:hover .rrx-instagram-img,
+  .rrx-follow:hover,
+  .rrx-instagram-arrow:hover,
+  .rr-shop-tile[href]:hover,
+  .rr-shop-buy:hover,
+  .rr-blog-featured:hover .rr-blog-featured-media img,
+  .rr-blog-card:hover,
+  .rr-blog-card:hover .rr-blog-card-image img,
+  .rr-contact-submit:hover,
+  .rr-product-market-link:hover,
+  .rr-product-review-write:hover,
+  .rr-product-review-filter:hover {
+    box-shadow: inherit !important;
+    color: inherit !important;
+    transform: none !important;
+  }
+
+  .MvstProducts__CardInner:hover .MvstProducts__Image:not(.MvstProducts__Image--secondary),
+  .MvstProducts__CardInner:hover .MvstProducts__Image--secondary,
+  body.template-product .MvstProducts__CardInner:hover .MvstProducts__Image,
+  body.template-product .MvstProducts__CardInner:hover .MvstProducts__Image--secondary {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .MvstProducts__CardInner:hover .MvstProducts__Image--secondary {
+    opacity: 0 !important;
+  }
+
+  .MvstProducts__CardInner:hover .MvstProducts__Name {
+    color: #1c1c1c !important;
+  }
+
+  .rrx-video-wrap:hover .rrx-overlay,
+  .rrx-video-wrap:focus-within .rrx-overlay,
+  .rrx-instagram-item:hover .rrx-instagram-overlay,
+  .rrx-instagram-item:focus-visible .rrx-instagram-overlay {
+    opacity: 1 !important;
+  }
+
+  .rrx-overlay,
+  .rrx-instagram-overlay {
+    opacity: 1 !important;
+  }
+
+  .rrx-round:active,
+  .rrx-buy:active,
+  .rrx-arrow:active,
+  .rrx-instagram-arrow:active,
+  .rrx-follow:active,
+  .rr-shop-tile[href]:active,
+  .rr-shop-buy:active,
+  .StaticBanner__Button:active,
+  .StaticBanner__Arrow:active,
+  .MvstProducts__Arrow:active,
+  .MvstProducts__ViewAllBtn:active,
+  .rr-contact-submit:active,
+  .rr-product-market-link:active,
+  .rr-product-review-write:active,
+  .rr-product-review-filter:active {
+    opacity: 0.82 !important;
+    transform: scale(0.98) !important;
+  }
+
+  .StaticBanner__Arrow:active,
+  .MvstProducts__Arrow:active,
+  .rrx-arrow:active,
+  .rrx-instagram-arrow:active {
+    background: #1c1c1c !important;
+    color: #fff !important;
+    opacity: 1 !important;
+    transform: translateY(calc(-50% - 2px)) scale(0.98) !important;
+  }
+
+  .StaticBanner__Button:hover,
+  .rrx-buy:hover,
+  .rr-shop-buy:hover,
+  .rr-contact-submit:hover {
+    background: #1c1c1c !important;
+    border-color: #1c1c1c !important;
+    color: #fff !important;
+  }
+
+  .MvstProducts__ViewAllBtn:hover {
+    background: transparent !important;
+    color: #1c1c1c !important;
+  }
+
+  .StaticBanner__Arrow:hover,
+  .MvstProducts__Arrow:hover,
+  .rrx-arrow:hover,
+  .rrx-instagram-arrow:hover {
+    background: #fff !important;
+    color: #1c1c1c !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .rrx-round:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+  }
+
+  .rrx-round.is-active:hover {
+    background: rgba(255, 68, 68, 0.4) !important;
+    color: #ff4444 !important;
+  }
+
+  .rrx-follow:hover {
+    background: #1c1c1c !important;
+    border-color: #1c1c1c !important;
+    color: #fff !important;
+  }
+
+  .rr-product-market-link:hover {
+    background: transparent !important;
+    border-color: #d1d1d1 !important;
+  }
+
+  .rr-product-review-write:hover,
+  .rr-product-review-filter:hover {
+    background: #f3f3f3 !important;
   }
 }

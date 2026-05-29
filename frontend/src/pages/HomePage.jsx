@@ -46,9 +46,17 @@ export function HomePage() {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [productSlideStep, setProductSlideStep] = useState(0)
+  const [productCenterOffset, setProductCenterOffset] = useState(0)
   const [transitionEnabled, setTransitionEnabled] = useState(true)
   const lastClickTime = useRef(0)
   const productAutoplayRef = useRef(null)
+  const productSwipeRef = useRef({
+    pointerId: null,
+    startX: 0,
+    startY: 0,
+    isSwiping: false,
+    didSwipe: false,
+  })
 
   // Measure the exact card width + gap so transforms move by one product.
   useEffect(() => {
@@ -61,7 +69,11 @@ export function HomePage() {
 
       const styles = window.getComputedStyle(slider)
       const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0
-      setProductSlideStep(firstCard.getBoundingClientRect().width + gap)
+      const cardRect = firstCard.getBoundingClientRect()
+      const carouselRect = slider.parentElement?.getBoundingClientRect()
+
+      setProductSlideStep(cardRect.width + gap)
+      setProductCenterOffset(firstCard.offsetLeft - (((carouselRect?.width || window.innerWidth) - cardRect.width) / 2))
     }
 
     measureProductSlide()
@@ -150,6 +162,65 @@ export function HomePage() {
     if (productList.length > 0) {
       resetProductAutoplay()
     }
+  }
+
+  const handleProductPointerDown = (event) => {
+    if (window.innerWidth > 1000 || productList.length <= 1) return
+
+    productSwipeRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      isSwiping: true,
+      didSwipe: false,
+    }
+
+    productSliderRef.current?.setPointerCapture?.(event.pointerId)
+
+    if (productAutoplayRef.current) {
+      clearInterval(productAutoplayRef.current)
+    }
+  }
+
+  const handleProductPointerUp = (event) => {
+    const swipe = productSwipeRef.current
+    if (!swipe.isSwiping || swipe.pointerId !== event.pointerId) return
+
+    const deltaX = event.clientX - swipe.startX
+    const deltaY = event.clientY - swipe.startY
+    const isHorizontalSwipe = Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2
+
+    productSwipeRef.current.isSwiping = false
+    productSliderRef.current?.releasePointerCapture?.(event.pointerId)
+
+    if (isHorizontalSwipe) {
+      productSwipeRef.current.didSwipe = true
+      scrollProducts(deltaX < 0 ? 1 : -1)
+      return
+    }
+
+    if (productList.length > 0) {
+      resetProductAutoplay()
+    }
+  }
+
+  const handleProductPointerCancel = (event) => {
+    if (productSwipeRef.current.pointerId !== event.pointerId) return
+
+    productSwipeRef.current.isSwiping = false
+    productSliderRef.current?.releasePointerCapture?.(event.pointerId)
+
+    if (productList.length > 0) {
+      resetProductAutoplay()
+    }
+  }
+
+  const handleProductClickCapture = (event) => {
+    if (!productSwipeRef.current.didSwipe) return
+
+    event.preventDefault()
+    event.stopPropagation()
+    productSwipeRef.current.didSwipe = false
   }
 
   const visibleProductIndex = productList.length > 0 && currentIndex === 0 ? productList.length : currentIndex
@@ -252,8 +323,12 @@ export function HomePage() {
               className="MvstProducts__Slider"
               ref={productSliderRef}
               onTransitionEnd={handleTransitionEnd}
+              onPointerDown={handleProductPointerDown}
+              onPointerUp={handleProductPointerUp}
+              onPointerCancel={handleProductPointerCancel}
+              onClickCapture={handleProductClickCapture}
               style={{
-                transform: `translate3d(-${visibleProductIndex * productSlideStep}px, 0, 0)`,
+                transform: `translate3d(-${(visibleProductIndex * productSlideStep) + productCenterOffset}px, 0, 0)`,
                 transition: transitionEnabled ? 'transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none',
               }}
             >

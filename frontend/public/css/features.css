@@ -6,6 +6,18 @@
   border-top: 1px solid var(--border-color);
 }
 
+@media screen and (max-width: 768px) {
+  .ProductFeatures {
+    padding: 50px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductFeatures {
+    padding: 30px 0;
+  }
+}
+
 .ProductFeatures .Container {
   padding: 0 20px;
   max-width: 100%;
@@ -29,6 +41,18 @@
   text-align: left;
 }
 
+@media screen and (max-width: 768px) {
+  .ProductFeatures__Header {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductFeatures__Header {
+    margin-bottom: 20px;
+  }
+}
+
 .ProductFeatures__Heading {
   font-family: 'Montserrat', sans-serif !important;
   font-weight: 500;
@@ -40,10 +64,30 @@
   opacity: 1;
 }
 
+@media screen and (max-width: 768px) {
+  .ProductFeatures__Heading {
+    font-size: 18px;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductFeatures__Heading {
+    font-size: 16px;
+  }
+}
+
 .ProductFeatures__Grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
+}
+
+@media screen and (min-width: 641px) {
+  .ProductFeatures__Grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -87,12 +131,40 @@
   color: var(--text-color);
 }
 
+@media screen and (max-width: 768px) {
+  .ProductFeatures__Title {
+    font-size: 16px;
+    margin: 0 0 15px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductFeatures__Title {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+  }
+}
+
 .ProductFeatures__Description {
   font-size: 15px;
   line-height: 1.8;
   color: var(--text-color-light);
   margin: 0;
   opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .ProductFeatures__Description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductFeatures__Description {
+    font-size: 13px;
+    line-height: 1.5;
+  }
 }
 
 /* Product Luxury Craftsmanship Section */
@@ -143,6 +215,18 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .ProductLuxurySection__TextSide {
+    padding: 40px 25px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductLuxurySection__TextSide {
+    padding: 30px 15px;
+  }
+}
+
 .ProductLuxurySection__Subtitle {
   font-family: var(--heading-font-family);
   font-size: 10px;
@@ -150,6 +234,13 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 25px;
+}
+
+@media screen and (max-width: 480px) {
+  .ProductLuxurySection__Subtitle {
+    font-size: 8px;
+    margin-bottom: 15px;
+  }
 }
 
 .ProductLuxurySection__Title {
@@ -169,10 +260,37 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .ProductLuxurySection__Title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductLuxurySection__Title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+}
+
 .ProductLuxurySection__Description {
   font-size: 14px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.7);
   max-width: 400px;
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .ProductLuxurySection__Description {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ProductLuxurySection__Description {
+    font-size: 12px;
+    line-height: 1.6;
+  }
 }

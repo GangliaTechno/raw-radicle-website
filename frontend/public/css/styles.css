@@ -57,30 +57,118 @@ a {
   background-color: #fff; /*font-family:"Georgia","Times New Roman",serif*/
   overflow: visible;
 }
+
+@media screen and (max-width: 1024px) {
+  #positionHome {
+    width: 90%;
+    max-width: 450px;
+    margin: 40px auto 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #positionHome {
+    width: 95%;
+    margin: 30px auto 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #positionHome {
+    width: 100%;
+    padding: 0 15px;
+    margin: 20px 0 10px;
+  }
+}
+
 #searchHome {
   text-align: center;
   margin-bottom: 110px;
   width: 450px;
   position: relative;
 }
+
+@media screen and (max-width: 1024px) {
+  #searchHome {
+    width: 90%;
+    max-width: 450px;
+    margin: 0 auto 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #searchHome {
+    width: 95%;
+    margin: 0 auto 60px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #searchHome {
+    width: 100%;
+    margin: 0 0 40px;
+    padding: 0 15px;
+  }
+}
+
 #searchHome input[type="text"] {
   font-family: "Arial", "Helvetica", sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   width: 440px;
 }
+
+@media screen and (max-width: 1024px) {
+  #searchHome input[type="text"] {
+    width: calc(100% - 10px);
+    max-width: 440px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #searchHome input[type="text"] {
+    font-size: 1em;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #searchHome input[type="text"] {
+    font-size: 0.875em;
+    width: 100%;
+  }
+}
+
 #searchHome button {
   font-family: "Lucida Sans", "Lucida Grande", "Arial", sans-serif;
   font-size: 1em;
   display: block;
   margin: 5px auto;
 }
+
 #searchAdvHome {
   position: absolute;
   left: 460px;
   top: 8px;
   font-size: 0.75em;
   white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+  #searchAdvHome {
+    position: static;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.65em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #searchAdvHome {
+    font-size: 0.6em;
+    margin-top: 8px;
+  }
 }
 #introHome {
   margin-bottom: 15px;
@@ -143,6 +231,13 @@ body.wb_embedded {
 #error {
   min-height: 230px;
 }
+
+@media screen and (max-width: 768px) {
+  #error {
+    min-height: 200px;
+  }
+}
+
 #error h2 {
   font-size: 1.5em;
   margin: 0;
@@ -151,6 +246,19 @@ body.wb_embedded {
   line-height: normal;
   color: #ee1c24;
 }
+
+@media screen and (max-width: 768px) {
+  #error h2 {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #error h2 {
+    font-size: 1em;
+  }
+}
+
 #error h2.blue {
   color: #00aef0 !important;
 }
@@ -158,6 +266,19 @@ body.wb_embedded {
   font-size: 1em;
   line-height: 1.5em;
 }
+
+@media screen and (max-width: 768px) {
+  #error p {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #error p {
+    font-size: 0.85em;
+  }
+}
+
 #error p.target {
   white-space: pre-line;
   word-break: break-all;
@@ -168,13 +289,35 @@ body.wb_embedded {
   width: 780px;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 1024px) {
+  #errorBorder {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #errorBorder {
+    width: 95%;
+  }
+}
+
 #error p.code {
   font-family: "Andale Mono", "Lucida Console", "Courier New", monospace;
   margin: 0 0 1.5em 0;
+  word-break: break-all;
+  overflow-x: auto;
 }
 #error p.shift {
   padding-left: 35px;
 }
+
+@media screen and (max-width: 768px) {
+  #error p.shift {
+    padding-left: 15px;
+  }
+}
+
 #error .red {
   color: #ee1c24;
 }
@@ -183,6 +326,19 @@ body.wb_embedded {
   font-size: 0.75em;
   margin: 0 0 1.5em 450px;
   white-space: nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+  #error p.impatient {
+    margin: 0 0 1.5em 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #error p.impatient {
+    font-size: 0.65em;
+  }
 }
 
 #livewebInfo {
