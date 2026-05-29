@@ -56,7 +56,8 @@ function AppLayout() {
     const animateLogo = () => {
       const distance = targetProgress - currentProgress
 
-      currentProgress += distance * 0.1
+      const smoothFactor = window.innerWidth <= 1000 ? 0.16 : 0.1
+      currentProgress += distance * smoothFactor
 
       if (Math.abs(distance) < 0.001) {
         currentProgress = targetProgress

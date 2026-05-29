@@ -59,6 +59,8 @@ export function HomePage() {
   }
 
   const handleBannerPointerDown = (event) => {
+    if (window.innerWidth > 768) return
+    if (event.target instanceof HTMLElement && event.target.closest('button, a')) return
     if (bannerImages.length <= 1) return
 
     bannerSwipeRef.current = {
@@ -72,6 +74,7 @@ export function HomePage() {
   }
 
   const handleBannerPointerUp = (event) => {
+    if (window.innerWidth > 768) return
     const swipe = bannerSwipeRef.current
     if (!swipe.isSwiping || swipe.pointerId !== event.pointerId) return
 
@@ -91,6 +94,7 @@ export function HomePage() {
   }
 
   const handleBannerPointerCancel = (event) => {
+    if (window.innerWidth > 768) return
     if (bannerSwipeRef.current.pointerId !== event.pointerId) return
 
     bannerSwipeRef.current.isSwiping = false
@@ -330,6 +334,26 @@ export function HomePage() {
               SHOP NOW
             </Link>
           </div>
+          <button
+            type="button"
+            className="StaticBanner__Arrow StaticBanner__Arrow--prev"
+            aria-label="Previous banner"
+            onClick={goToPreviousBanner}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: '20px', height: '20px' }}>
+              <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="StaticBanner__Arrow StaticBanner__Arrow--next"
+            aria-label="Next banner"
+            onClick={goToNextBanner}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: '20px', height: '20px' }}>
+              <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
           <div className="StaticBanner__Dots StaticBanner__Dots--desktop" aria-label="Banner navigation">
             {bannerImages.map((_, idx) => (
               <button

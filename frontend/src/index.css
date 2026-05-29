@@ -1361,8 +1361,7 @@ textarea {
     font-size: 11px;
   }
   .StaticBanner__Arrow {
-    width: 38px;
-    height: 38px;
+    display: none !important;
   }
   .StaticBanner__Arrow--prev {
     left: 12px;
@@ -2932,7 +2931,7 @@ body {
       translate(-50%, calc(-50% + var(--rr-mobile-logo-translate, 0px)))
       scale(var(--rr-mobile-logo-scale, 1)) !important;
     transform-origin: center top !important;
-    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.24s cubic-bezier(0.2, 0.9, 0.3, 1) !important;
     will-change: transform !important;
   }
 
@@ -2996,15 +2995,19 @@ body {
   }
 
   .rrx-video-wrap:hover .rrx-overlay,
-  .rrx-video-wrap:focus-within .rrx-overlay,
-  .rrx-instagram-item:hover .rrx-instagram-overlay,
-  .rrx-instagram-item:focus-visible .rrx-instagram-overlay {
+  .rrx-video-wrap:focus-within .rrx-overlay {
     opacity: 1 !important;
   }
 
-  .rrx-overlay,
-  .rrx-instagram-overlay {
+  .rrx-overlay {
     opacity: 1 !important;
+  }
+
+  .rrx-instagram-overlay,
+  .rrx-instagram-item:hover .rrx-instagram-overlay,
+  .rrx-instagram-item:focus-visible .rrx-instagram-overlay {
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .rrx-round:active,
