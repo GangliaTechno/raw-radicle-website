@@ -15,10 +15,10 @@ export function BlogPage() {
     <main className="rr-blog-page" id="main" role="main">
       <style>{`
         .rr-blog-page{background:#efefef;color:#1c1c1c}
-        .rr-blog-hero{padding:86px 28px 72px;text-align:center;border-bottom:1px solid rgba(0,0,0,.1)}
+        .rr-blog-hero{padding:86px 28px 72px;text-align:center;border-bottom:1px solid rgba(0,0,0,.1);background:#000}
         .rr-blog-eyebrow{font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.32em;text-transform:uppercase;color:#b08850;margin:0 0 18px}
-        .rr-blog-title{font-family:Montserrat,Arial,sans-serif;font-size:clamp(36px,5vw,76px);font-weight:400;letter-spacing:.04em;line-height:1.04;text-transform:uppercase;max-width:920px;margin:0 auto 22px}
-        .rr-blog-intro{font-family:Montserrat,Arial,sans-serif;font-size:15px;line-height:1.8;color:#5f5f5f;max-width:620px;margin:0 auto}
+        .rr-blog-title{font-family:Montserrat,Arial,sans-serif;font-size:clamp(36px,5vw,76px);font-weight:400;letter-spacing:.04em;line-height:1.04;text-transform:uppercase;max-width:920px;margin:0 auto 22px;color:#fff}
+        .rr-blog-intro{font-family:Montserrat,Arial,sans-serif;font-size:15px;line-height:1.8;color:#fff;max-width:620px;margin:0 auto}
         .rr-blog-featured{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(380px,.88fr);gap:24px;max-width:1320px;margin:0 auto;padding:70px 34px 46px}
         .rr-blog-featured-media{display:block;background:#111;min-height:520px;overflow:hidden;border-radius:8px}
         .rr-blog-featured-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;border-radius:inherit}

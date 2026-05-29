@@ -1097,18 +1097,102 @@ textarea {
 .rr-auth-page {
   display: grid;
   min-height: calc(100svh - 85px);
-  padding: 24px;
+  padding: 40px 24px;
   place-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/assets/Login_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .rr-auth-card {
   max-width: 420px;
   width: 100%;
+  background: rgba(255, 255, 255, 0.70);
+  padding: 42px 36px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-sizing: border-box;
 }
 
 .rr-auth-card img {
-  justify-self: center;
+  align-self: center;
   max-width: 130px;
+  margin-bottom: 8px;
+  justify-self: center;
+}
+
+.rr-auth-card h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1c1c1c;
+  text-align: center;
+  margin: 0 0 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.rr-auth-card input {
+  padding: 13px 16px;
+  border-radius: 8px;
+  border: 1px solid #d2d2d2;
+  background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #1c1c1c;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rr-auth-card input:focus {
+  border-color: #1c1c1c;
+}
+
+.rr-auth-card .rr-button {
+  padding: 13px 18px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: #1c1c1c;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.rr-auth-card .rr-button:hover {
+  background: #2a2a2a;
+}
+
+.rr-auth-card p {
+  text-align: center;
+  font-size: 14px;
+  margin: 0;
+  color: #2e7d32;
+}
+
+.rr-auth-card a {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  text-decoration: underline;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.rr-auth-card a:hover {
+  color: #1c1c1c;
 }
 
 .rr-split {
