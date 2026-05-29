@@ -33,12 +33,15 @@ function AppLayout() {
 
     const applyLogoProgress = (progress) => {
       const easedProgress = progress * progress * (3 - 2 * progress)
+      const isCompactHeader = window.innerWidth <= 1000
       const scale = 1.75 - easedProgress * 0.75
       const translate = isHome
         ? 46 + easedProgress * 9
         : shouldLowerInnerLogo
           ? 32 - easedProgress * 32
           : 0
+      const mobileScale = isCompactHeader ? 1.5 - easedProgress * 0.5 : 1
+      const mobileTranslate = isCompactHeader ? 8 - easedProgress * 8 : 0
 
       document.documentElement.style.setProperty(
         '--rr-home-logo-progress',
@@ -46,14 +49,16 @@ function AppLayout() {
       )
       document.documentElement.style.setProperty('--rr-home-logo-scale', scale.toFixed(3))
       document.documentElement.style.setProperty('--rr-home-logo-translate', `${translate}px`)
+      document.documentElement.style.setProperty('--rr-mobile-logo-scale', mobileScale.toFixed(3))
+      document.documentElement.style.setProperty('--rr-mobile-logo-translate', `${mobileTranslate}px`)
     }
 
     const animateLogo = () => {
       const distance = targetProgress - currentProgress
 
-      currentProgress += distance * 0.16
+      currentProgress += distance * 0.1
 
-      if (Math.abs(distance) < 0.002) {
+      if (Math.abs(distance) < 0.001) {
         currentProgress = targetProgress
         applyLogoProgress(currentProgress)
         scrollFrameId = null
@@ -87,6 +92,8 @@ function AppLayout() {
       document.documentElement.style.removeProperty('--rr-home-logo-progress')
       document.documentElement.style.removeProperty('--rr-home-logo-scale')
       document.documentElement.style.removeProperty('--rr-home-logo-translate')
+      document.documentElement.style.removeProperty('--rr-mobile-logo-scale')
+      document.documentElement.style.removeProperty('--rr-mobile-logo-translate')
     }
   }, [location.pathname])
 

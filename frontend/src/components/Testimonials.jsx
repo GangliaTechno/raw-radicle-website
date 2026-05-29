@@ -131,7 +131,7 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
         .rrx-arrow:hover{background:#1c1c1c;color:#fff}.rrx-prev{left:8px}.rrx-next{right:8px}
         .rrx-testimonials button:focus-visible,.rrx-testimonial-card:focus-visible,.rrx-testimonials-track:focus-visible{outline:3px solid #b08850;outline-offset:3px}
         @media(max-width:768px){.rrx-testimonials{padding:40px 0}.rrx-testimonials-title{font-size:24px;letter-spacing:4px;margin-bottom:30px}.rrx-testimonial-card{flex-basis:215px;min-width:215px}.rrx-testimonials-wrap{padding:0 20px}}
-        @media(max-width:480px){.rrx-testimonial-card{flex-basis:240px;min-width:240px}.rrx-arrow{width:34px;height:34px}}
+        @media(max-width:480px){.rrx-testimonials-wrap{padding:0}.rrx-testimonials-track{gap:16px;padding:10px calc((100vw - 240px)/2) 30px;scroll-padding:calc((100vw - 240px)/2)}.rrx-testimonial-card{flex-basis:240px;min-width:240px;scroll-snap-align:center}.rrx-arrow{width:34px;height:34px}}
       `}</style>
       <h2 id="rrx-testimonials-title" className="rrx-testimonials-title">
         {title}

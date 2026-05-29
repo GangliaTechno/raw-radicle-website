@@ -14,6 +14,12 @@ export function HomePage() {
 
   // States
   const [bannerIndex, setBannerIndex] = useState(0)
+  const bannerSwipeRef = useRef({
+    pointerId: null,
+    startX: 0,
+    startY: 0,
+    isSwiping: false,
+  })
   const [selectedVideoUrl] = useState(() => {
     const videos = [
       'assets/uploads/cms-1776053796791-newad.mp4',
@@ -40,9 +46,56 @@ export function HomePage() {
   useEffect(() => {
     const timer = setInterval(() => {
       setBannerIndex((prev) => (prev + 1) % bannerImages.length)
-    }, 4500)
+    }, 7000)
     return () => clearInterval(timer)
   }, [bannerIndex, bannerImages.length])
+
+  const goToPreviousBanner = () => {
+    setBannerIndex((prev) => (prev - 1 + bannerImages.length) % bannerImages.length)
+  }
+
+  const goToNextBanner = () => {
+    setBannerIndex((prev) => (prev + 1) % bannerImages.length)
+  }
+
+  const handleBannerPointerDown = (event) => {
+    if (bannerImages.length <= 1) return
+
+    bannerSwipeRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      isSwiping: true,
+    }
+
+    event.currentTarget.setPointerCapture?.(event.pointerId)
+  }
+
+  const handleBannerPointerUp = (event) => {
+    const swipe = bannerSwipeRef.current
+    if (!swipe.isSwiping || swipe.pointerId !== event.pointerId) return
+
+    const deltaX = event.clientX - swipe.startX
+    const deltaY = event.clientY - swipe.startY
+    const isHorizontalSwipe = Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2
+
+    bannerSwipeRef.current.isSwiping = false
+    event.currentTarget.releasePointerCapture?.(event.pointerId)
+
+    if (!isHorizontalSwipe) return
+    if (deltaX < 0) {
+      goToNextBanner()
+    } else {
+      goToPreviousBanner()
+    }
+  }
+
+  const handleBannerPointerCancel = (event) => {
+    if (bannerSwipeRef.current.pointerId !== event.pointerId) return
+
+    bannerSwipeRef.current.isSwiping = false
+    event.currentTarget.releasePointerCapture?.(event.pointerId)
+  }
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [productSlideStep, setProductSlideStep] = useState(0)
@@ -247,7 +300,12 @@ export function HomePage() {
     <>
       {/* 1. Static Banner Slideshow */}
       <div className="shopify-section shopify-section--static-banner">
-        <section className="StaticBanner">
+        <section
+          className="StaticBanner"
+          onPointerDown={handleBannerPointerDown}
+          onPointerUp={handleBannerPointerUp}
+          onPointerCancel={handleBannerPointerCancel}
+        >
           <div className="StaticBanner__Viewport">
             <div
               className="StaticBanner__Track"
@@ -272,27 +330,7 @@ export function HomePage() {
               SHOP NOW
             </Link>
           </div>
-          <button
-            type="button"
-            className="StaticBanner__Arrow StaticBanner__Arrow--prev"
-            aria-label="Previous banner"
-            onClick={() => setBannerIndex((prev) => (prev - 1 + bannerImages.length) % bannerImages.length)}
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: '20px', height: '20px' }}>
-              <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            className="StaticBanner__Arrow StaticBanner__Arrow--next"
-            aria-label="Next banner"
-            onClick={() => setBannerIndex((prev) => (prev + 1) % bannerImages.length)}
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: '20px', height: '20px' }}>
-              <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-          <div className="StaticBanner__Dots" aria-label="Banner navigation">
+          <div className="StaticBanner__Dots StaticBanner__Dots--desktop" aria-label="Banner navigation">
             {bannerImages.map((_, idx) => (
               <button
                 type="button"
@@ -304,6 +342,17 @@ export function HomePage() {
             ))}
           </div>
         </section>
+        <div className="StaticBanner__Dots StaticBanner__Dots--mobile" aria-label="Banner navigation">
+          {bannerImages.map((_, idx) => (
+            <button
+              type="button"
+              className={`StaticBanner__Dot ${idx === bannerIndex ? 'is-active' : ''}`}
+              aria-label={`Show banner ${idx + 1}`}
+              key={idx}
+              onClick={() => setBannerIndex(idx)}
+            />
+          ))}
+        </div>
       </div>
 
       {/* 2. All Our Chocolates Product Slider */}
