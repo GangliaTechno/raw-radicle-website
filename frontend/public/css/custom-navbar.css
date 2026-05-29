@@ -656,3 +656,7 @@ body.rr-logo-scroll-home .Header__LogoImage,
     text-underline-offset: 6px !important;
     text-decoration-thickness: 1px !important;
 }
+
+.SidebarMenu .Collapsible__Button.Collapsible__Button--split {
+    padding: 0 !important;
+}

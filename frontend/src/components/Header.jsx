@@ -77,16 +77,89 @@ export function Header({ onSearch }) {
                     <li className="Linklist__Item" key={item.label}>
                       {item.hasMegaMenu ? (
                         <>
-                          <button
-                            className={`Collapsible__Button Heading u-h6 ${isNavItemActive(item) ? 'is-active' : ''}`}
-                            type="button"
+                          <div
+                            className={`Collapsible__Button Collapsible__Button--split Heading u-h6 ${isNavItemActive(item) ? 'is-active' : ''}`}
                             aria-expanded={productsExpanded}
-                            onClick={() => setProductsExpanded(!productsExpanded)}
-                            style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: '12px 0' }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              width: '100%',
+                              border: 'none',
+                              background: 'none',
+                            }}
                           >
-                            {item.label}
-                            <span className="Collapsible__Plus" />
-                          </button>
+                            <Link
+                              to={item.href}
+                              onClick={() => setMenuOpen(false)}
+                              style={{
+                                flexGrow: 1,
+                                color: 'inherit',
+                                textDecoration: 'none',
+                                display: 'flex',
+                                alignItems: 'center',
+                                alignSelf: 'stretch',
+                                padding: '14px 2px',
+                              }}
+                            >
+                              {item.label}
+                            </Link>
+                            <button
+                              type="button"
+                              aria-expanded={productsExpanded}
+                              onClick={() => setProductsExpanded(!productsExpanded)}
+                              style={{
+                                background: 'none',
+                                border: 'none',
+                                padding: '14px 15px',
+                                alignSelf: 'stretch',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                cursor: 'pointer',
+                                color: 'inherit',
+                                minWidth: '44px',
+                              }}
+                              aria-label="Toggle products list"
+                            >
+                              <span
+                                style={{
+                                  position: 'relative',
+                                  display: 'block',
+                                  width: '11px',
+                                  height: '11px',
+                                }}
+                              >
+                                {/* Horizontal line */}
+                                <span
+                                  style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    width: '11px',
+                                    height: '1px',
+                                    backgroundColor: 'currentColor',
+                                    transform: `translate(-50%, -50%) rotate(${productsExpanded ? '90deg' : '-90deg'})`,
+                                    opacity: productsExpanded ? 0 : 1,
+                                    transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out',
+                                  }}
+                                />
+                                {/* Vertical line */}
+                                <span
+                                  style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    width: '1px',
+                                    height: '11px',
+                                    backgroundColor: 'currentColor',
+                                    transform: `translate(-50%, -50%) rotate(${productsExpanded ? '90deg' : '-90deg'})`,
+                                    transition: 'transform 0.4s ease-in-out',
+                                  }}
+                                />
+                              </span>
+                            </button>
+                          </div>
                           <div
                             className="Collapsible__Inner"
                             style={{

@@ -36,14 +36,14 @@
 
 @media screen and (max-width: 768px) {
   .PrestigeHero {
-    padding: 100px 5% 50px;
+    padding: 135px 5% 50px;
     margin-top: -65px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .PrestigeHero {
-    padding: 60px 15px 35px;
+    padding: 115px 15px 35px;
     margin-top: -63px;
   }
 }

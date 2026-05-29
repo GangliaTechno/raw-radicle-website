@@ -2681,6 +2681,10 @@ body {
     width: 100% !important;
   }
 
+  .SidebarMenu .Collapsible__Button.Collapsible__Button--split {
+    padding: 0 !important;
+  }
+
   .SidebarMenu .Collapsible__Content {
     padding: 0 0 14px 14px !important;
   }

@@ -235,7 +235,7 @@ export function ProductPage() {
   const gallery = useMemo(() => (cms.gallery?.length ? cms.gallery : product?.gallery || []), [cms.gallery, product?.gallery])
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [expandedTabs, setExpandedTabs] = useState({
-    features: true,
+    features: false,
     specs: false,
     quality: false,
   })
@@ -489,9 +489,205 @@ export function ProductPage() {
         .rr-product-related{background:transparent;padding:84px 0 72px;overflow:hidden}.rr-product-related .MvstProducts{padding:0}.rr-product-related .MvstProducts__Title{font-size:28px}.rr-product-related .MvstProducts__Carousel{max-width:100%;margin:0}.rr-product-related .MvstProducts__Slider{padding-top:42px;padding-bottom:50px}
         .rr-product-review-section{background:#efefef;padding:0 34px 90px}.rr-product-review-shell{max-width:1020px;margin:0 auto}.rr-product-review-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 20px}.rr-product-review-summary{display:flex;align-items:center;gap:16px;font-family:Montserrat,Arial,sans-serif;font-size:16px;font-weight:500;color:#111}.rr-review-stars{display:inline-flex;gap:4px;font-size:20px;line-height:1;color:#d0d0d0}.rr-review-stars .is-filled{color:#000}.rr-product-review-count{display:inline-flex;align-items:center;gap:6px}.rr-product-review-count:after{content:'';display:block;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.rr-product-review-actions{display:flex;align-items:center;gap:12px}.rr-product-review-write,.rr-product-review-filter{height:46px;border:1px solid #e1e1e1;border-radius:8px;background:#f3f3f3;color:#111;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.02em;cursor:pointer}.rr-product-review-write{padding:0 26px}.rr-product-review-filter{width:46px;display:flex;align-items:center;justify-content:center}.rr-product-review-write:hover,.rr-product-review-filter:hover{background:#fff}.rr-product-review-write:focus-visible,.rr-product-review-filter:focus-visible{outline:3px solid #b08850;outline-offset:3px}.rr-product-review-list{display:grid;gap:20px}.rr-product-review-card{background:#fff;border-radius:8px;padding:25px 24px 28px;box-shadow:0 8px 22px rgba(0,0,0,.08);font-family:Montserrat,Arial,sans-serif}.rr-product-review-author{display:flex;align-items:center;gap:8px;margin:0 0 5px}.rr-product-review-author strong{font-size:17px;font-weight:800;color:#111}.rr-product-review-verified{display:inline-flex;align-items:center;gap:5px;font-size:14px;color:#9a9a9a}.rr-product-review-check{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;background:#161616;color:#fff;font-size:9px;font-weight:800;line-height:1}.rr-product-review-date{font-size:15px;color:#9a9a9a;margin:0 0 11px}.rr-product-review-card .rr-review-stars{font-size:15px;gap:2px;margin:0 0 20px}.rr-product-review-text{font-size:15px;line-height:1.65;color:#333;margin:0 0 18px}.rr-product-review-product{display:flex;align-items:center;gap:18px;border:1px solid #ececec;border-radius:8px;padding:18px 12px;margin-top:16px}.rr-product-review-product img{width:30px;height:30px;object-fit:contain;display:block}.rr-product-review-product span{font-size:14px;color:#333}
         .rr-review-modal-backdrop{position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.48);display:flex;align-items:center;justify-content:center;padding:20px}.rr-review-modal{width:min(520px,100%);background:#fff;border-radius:10px;box-shadow:0 24px 80px rgba(0,0,0,.28);padding:28px;font-family:Montserrat,Arial,sans-serif}.rr-review-modal-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 22px}.rr-review-modal-header h2{font-size:20px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0;color:#111}.rr-review-modal-close{width:36px;height:36px;border:1px solid #e1e1e1;background:#fff;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}.rr-review-form{display:grid;gap:16px}.rr-review-field{display:grid;gap:8px}.rr-review-field span{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#555}.rr-review-input,.rr-review-select,.rr-review-textarea{width:100%;border:1px solid #d8d8d8;border-radius:6px;background:#fff;padding:13px 14px;font-family:Montserrat,Arial,sans-serif;font-size:14px;color:#111;box-sizing:border-box}.rr-review-textarea{min-height:130px;resize:vertical}.rr-review-submit{height:48px;border:1px solid #111;border-radius:6px;background:#111;color:#fff;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}.rr-review-modal-close:focus-visible,.rr-review-input:focus-visible,.rr-review-select:focus-visible,.rr-review-textarea:focus-visible,.rr-review-submit:focus-visible{outline:3px solid #b08850;outline-offset:3px}
-        @media(max-width:1050px){.rr-product-hero{grid-template-columns:1fr}.rr-product-gallery{position:static;gap:28px}.rr-product-info-panel{padding:0}.rr-product-accordions{margin-left:0}.rr-product-luxury-copy{padding:54px 42px}}
-        @media(max-width:1050px){.rr-product-feature-grid{gap:22px}.rr-product-feature-card img{height:320px}}
-        @media(max-width:760px){.rr-product-shell{padding:54px 18px 44px}.rr-product-gallery{grid-template-columns:1fr}.rr-product-thumbs{display:flex;overflow-x:auto;gap:12px}.rr-product-thumb{flex:0 0 76px;width:76px}.rr-product-main-image{min-height:360px;padding:0}.rr-product-main-image img{max-width:100%;max-height:390px}.rr-product-title{font-size:22px;letter-spacing:.22em}.rr-product-subtitle{font-size:11px;letter-spacing:.12em;white-space:normal}.rr-product-tagline{width:auto;white-space:normal}.rr-product-market-grid{grid-template-columns:1fr;margin-bottom:48px}.rr-product-market-link.is-wide{grid-column:auto}.rr-product-feature-grid,.rr-product-luxury{grid-template-columns:1fr}.rr-product-feature-band{padding:0 18px 56px}.rr-product-related{padding:62px 0 54px}.rr-product-related .MvstProducts__Title{font-size:22px}.rr-product-review-section{padding:0 18px 64px}.rr-product-review-top{align-items:flex-start;flex-direction:column}.rr-product-review-actions{width:100%}.rr-product-review-write{flex:1}.rr-product-review-card{padding:22px 18px}.rr-product-section-heading{font-size:22px;margin-bottom:28px}.rr-product-feature-card img{height:280px;margin-bottom:22px}.rr-product-feature-card h3{font-size:16px;margin-bottom:14px}.rr-product-feature-card p{font-size:14px;line-height:1.75}.rr-product-luxury-image{aspect-ratio:4/3}.rr-product-luxury-copy{padding:42px 24px}.rr-product-luxury-copy h2{font-size:24px}}
+        .rr-product-main-image, .rr-product-main-image img { border-radius: 12px; }
+        .rr-product-thumb { border-radius: 8px; }
+        .rr-product-thumb img { border-radius: 6px; }
+        .MvstProducts__ImageWrap, .MvstProducts__Image { border-radius: 8px; }
+        .rr-product-feature-card img { border-radius: 8px; }
+        .rr-product-luxury-image, .rr-product-luxury-image img { border-radius: 8px; }
+        @media(max-width:1050px) {
+          .rr-product-hero {
+            grid-template-columns: 1fr;
+          }
+          .rr-product-gallery {
+            position: static;
+            display: flex !important;
+            flex-direction: column-reverse !important;
+            gap: 28px !important;
+            align-items: center !important;
+          }
+          .rr-product-thumbs {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            width: 100% !important;
+            padding-top: 0 !important;
+          }
+          .rr-product-thumb {
+            width: 76px !important;
+            flex: 0 0 76px !important;
+            aspect-ratio: 1 !important;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+          }
+          .rr-product-thumb img {
+            border-radius: 6px !important;
+          }
+          .rr-product-main-image {
+            min-height: auto !important;
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 0 !important;
+          }
+          .rr-product-main-image img {
+            max-width: 100% !important;
+            max-height: 480px !important;
+            border-radius: 12px !important;
+            object-fit: contain !important;
+          }
+          .rr-product-info-panel {
+            padding: 0;
+          }
+          .rr-product-accordions {
+            margin-left: 0;
+          }
+          .rr-product-luxury-copy {
+            padding: 54px 42px;
+          }
+          .rr-product-feature-grid {
+            gap: 22px;
+          }
+          .rr-product-feature-card img {
+            height: 320px;
+            border-radius: 8px !important;
+          }
+          .rr-product-luxury-image img {
+            border-radius: 8px !important;
+          }
+          .MvstProducts__ImageWrap, .MvstProducts__Image {
+            border-radius: 8px !important;
+          }
+          .rr-product-market-link {
+            min-height: 52px !important;
+          }
+        }
+        @media(max-width:760px) {
+          .rr-product-shell {
+            padding: 54px 18px 44px;
+          }
+          .rr-product-gallery {
+            display: flex !important;
+            flex-direction: column-reverse !important;
+            gap: 20px !important;
+            align-items: center !important;
+          }
+          .rr-product-thumbs {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            width: 100% !important;
+            overflow-x: visible !important;
+          }
+          .rr-product-thumb {
+            flex: 0 0 68px !important;
+            width: 68px !important;
+            border-radius: 8px !important;
+          }
+          .rr-product-thumb img {
+            border-radius: 6px !important;
+          }
+          .rr-product-main-image {
+            min-height: auto !important;
+            padding: 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+          .rr-product-main-image img {
+            max-width: 90% !important;
+            max-height: 360px !important;
+            border-radius: 12px !important;
+          }
+          .rr-product-title {
+            font-size: 22px;
+            letter-spacing: .22em;
+          }
+          .rr-product-subtitle {
+            font-size: 11px;
+            letter-spacing: .12em;
+            white-space: normal;
+          }
+          .rr-product-tagline {
+            width: auto;
+            white-space: normal;
+          }
+          .rr-product-market-grid {
+            grid-template-columns: 1fr;
+            margin-bottom: 48px;
+          }
+          .rr-product-market-link.is-wide {
+            grid-column: auto;
+          }
+          .rr-product-feature-grid, .rr-product-luxury {
+            grid-template-columns: 1fr;
+          }
+          .rr-product-feature-band {
+            padding: 0 18px 56px;
+          }
+          .rr-product-related {
+            padding: 62px 0 54px;
+          }
+          .rr-product-related .MvstProducts__Title {
+            font-size: 22px;
+          }
+          .rr-product-review-section {
+            padding: 0 18px 64px;
+          }
+          .rr-product-review-top {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+          .rr-product-review-actions {
+            width: 100%;
+          }
+          .rr-product-review-write {
+            flex: 1;
+          }
+          .rr-product-review-card {
+            padding: 22px 18px;
+          }
+          .rr-product-section-heading {
+            font-size: 22px;
+            margin-bottom: 28px;
+          }
+          .rr-product-feature-card img {
+            height: 280px;
+            margin-bottom: 22px;
+            border-radius: 8px !important;
+          }
+          .rr-product-feature-card h3 {
+            font-size: 16px;
+            margin-bottom: 14px;
+          }
+          .rr-product-feature-card p {
+            font-size: 14px;
+            line-height: 1.75;
+          }
+          .rr-product-luxury-image {
+            aspect-ratio: 4/3;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+          }
+          .rr-product-luxury-image img {
+            border-radius: 8px !important;
+          }
+          .rr-product-luxury-copy {
+            padding: 42px 24px;
+          }
+          .rr-product-luxury-copy h2 {
+            font-size: 24px;
+          }
+          .MvstProducts__ImageWrap, .MvstProducts__Image {
+            border-radius: 8px !important;
+          }
+          .rr-product-market-link {
+            min-height: 52px !important;
+          }
+        }
       `}</style>
 
       <section className="rr-product-shell" aria-labelledby="rr-product-title">
