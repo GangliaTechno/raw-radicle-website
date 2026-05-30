@@ -81,8 +81,11 @@ export function ProductsPage() {
         .rr-collection-redesign .ProductItem__LabelList,.rr-collection-redesign .ProductItem__ShopBtn,.rr-collection-redesign .ProductItem__DescriptionText{display:none!important}
         .rr-collection-redesign .ProductItem__ImageWrapper{display:block;max-width:430px;margin:0 auto 48px;text-decoration:none;border-radius:12px !important;overflow:hidden !important}
         .rr-collection-redesign .ProductItem__ImageWrapper .AspectRatio{aspect-ratio:1/1.03;padding-bottom:0!important;background:transparent!important;max-width:none!important}
-        .rr-collection-redesign .ProductItem__Image{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:contain!important;display:block;border-radius:12px !important}
-        .rr-collection-redesign .ProductItem__Image--secondary{opacity:0}
+        .rr-collection-redesign .ProductItem__Image{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:contain!important;display:block;border-radius:12px !important;opacity:1!important;transform:scale(1)!important;transform-origin:center;transition:opacity 0.35s cubic-bezier(.37,0,.13,1), transform 0.4s cubic-bezier(.22,1,.36,1), filter 0.35s cubic-bezier(.37,0,.13,1) !important;will-change:opacity,transform,filter}
+        .rr-collection-redesign .ProductItem__Image:not(.ProductItem__Image--secondary){filter:blur(0)!important}
+        .rr-collection-redesign .ProductItem__Image--secondary{opacity:0!important;filter:blur(3px)!important;transform:scale(1.012)!important}
+        .rr-collection-redesign .ProductItem__ImageWrapper:hover .ProductItem__Image:not(.ProductItem__Image--secondary),.rr-collection-redesign .ProductItem__ImageWrapper:focus-visible .ProductItem__Image:not(.ProductItem__Image--secondary){opacity:0!important;filter:blur(3px)!important;transform:scale(1.012)!important}
+        .rr-collection-redesign .ProductItem__ImageWrapper:hover .ProductItem__Image--secondary,.rr-collection-redesign .ProductItem__ImageWrapper:focus-visible .ProductItem__Image--secondary{opacity:1!important;filter:blur(0)!important;transform:scale(1)!important}
         .rr-collection-redesign .ProductItem__Info{padding:0;text-align:center}
         .rr-collection-redesign .ProductItem__Title{font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;line-height:1.4;margin:0 0 14px;color:#1f1f1f}
         .rr-collection-redesign .ProductItem__Title a{color:inherit;text-decoration:none}

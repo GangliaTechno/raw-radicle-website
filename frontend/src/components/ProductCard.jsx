@@ -31,7 +31,7 @@ export function ProductCard({ product }) {
               {product.description || ''}
             </p>
             <div className="ProductItem__PriceList Heading">
-              <span className="ProductItem__Price Price Text--subdued">MRP ₹ {parseFloat(product.price).toFixed(2)} INR</span>
+              <span className="ProductItem__Price Price Text--subdued">MRP ₹ {parseFloat(product.price).toFixed(2)} (inclusive of all taxes)</span>
             </div>
           </div>
         </div>

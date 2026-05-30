@@ -593,15 +593,7 @@ body.rr-home-logo-scroll .Header__LogoImage,
 .rr-home-logo-scroll .Header__LogoImage {
     position: relative !important;
     z-index: 5 !important;
-    filter:
-        drop-shadow(1.45px 0.15px 0 #f5f4f0)
-        drop-shadow(-0.95px 0.05px 0 #f5f4f0)
-        drop-shadow(0.15px 1.45px 0 #f5f4f0)
-        drop-shadow(0.05px -0.95px 0 #f5f4f0)
-        drop-shadow(1.05px 1.05px 0 #f5f4f0)
-        drop-shadow(-0.65px 1px 0 #f5f4f0)
-        drop-shadow(1px -0.65px 0 #f5f4f0)
-        drop-shadow(-0.65px -0.65px 0 #f5f4f0) !important;
+    filter: none !important;
     transform: translateY(var(--rr-home-logo-translate, 0px)) scale(var(--rr-home-logo-scale, 1.75)) !important;
     transform-origin: left center !important;
     transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;

@@ -15,7 +15,7 @@ export function AboutPage() {
       </header>
 
       {/* Block 1: Image Left, Text Right (Light Gray background) */}
-      <section className="FeatureText FeatureText--imageLeft bg--light">
+      <section className="FeatureText FeatureText--imageLeft bg--light" id="origin">
         <div className="FeatureText__ImageWrapper">
           <img src={asset('assets/adark/adark-2.png')} alt="Our Origin" />
         </div>
@@ -52,7 +52,7 @@ export function AboutPage() {
       </section>
 
       {/* Block 2: Text Left, Image Right (Dark background) */}
-      <section className="FeatureText FeatureText--imageRight bg--dark">
+      <section className="FeatureText FeatureText--imageRight bg--dark" id="philosophy">
         <div className="FeatureText__Content">
           <div className="FeatureText__Inner">
             <header className="SectionHeader">
@@ -111,7 +111,7 @@ export function AboutPage() {
       </section>
 
       {/* Site Standards Grid Section */}
-      <section className="Grid--luxury">
+      <section className="Grid--luxury" id="quality">
         <div className="GridItem--luxury">
           <header className="SectionHeader">
             <h3 className="SectionHeader__SubHeading">Small-Batch</h3>
@@ -142,7 +142,7 @@ export function AboutPage() {
       </section>
 
       {/* Block 4: Final Symbolism - Image Right */}
-      <section className="FeatureText FeatureText--imageRight bg--light">
+      <section className="FeatureText FeatureText--imageRight bg--light" id="spirit">
         <div className="FeatureText__Content">
           <div className="FeatureText__Inner">
             <header className="SectionHeader">

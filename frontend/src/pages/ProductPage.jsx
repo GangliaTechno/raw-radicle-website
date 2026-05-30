@@ -7,11 +7,11 @@ import { useProducts } from '../hooks/useProducts.js'
 import { asset } from '../utils/assets.js'
 
 const defaultMarketplaces = [
-  { name: 'Blinkit', link: 'https://blinkit.com/', logo: 'assets/bkit.png' },
+  { name: 'Flipkart', link: 'https://www.flipkart.com/', logo: 'assets/fkart.png' },
   { name: 'Zepto', link: 'https://www.zeptonow.com/', logo: 'assets/zep.png' },
   { name: 'Amazon', link: 'https://www.amazon.in/', logo: 'assets/azon.png' },
   { name: 'Instamart', link: 'https://www.swiggy.com/instamart', logo: 'assets/imart.png' },
-  { name: 'Flipkart', link: 'https://www.flipkart.com/', logo: 'assets/fkart.png' },
+  { name: 'Blinkit', link: 'https://blinkit.com/', logo: 'assets/bkit.png' },
 ]
 
 const featureFallbacks = [
@@ -301,8 +301,8 @@ export function ProductPage() {
         return {
           id: item.title || item.link,
           name: item.title,
-          price: Number.parseFloat(String(item.price || '').replace(/[^\d.]/g, '')) || displayProduct?.price,
-          mrp: Number.parseFloat(String(item.price || '').replace(/[^\d.]/g, '')) || displayProduct?.mrp,
+          price: Number.parseFloat(String(item.price || '').replace(/Rs\./i, '').replace(/[^\d.]/g, '')) || displayProduct?.price,
+          mrp: Number.parseFloat(String(item.price || '').replace(/Rs\./i, '').replace(/[^\d.]/g, '')) || displayProduct?.mrp,
           image: item.image,
           hoverImage: item.hoverImage || item.image,
           badge: 'Related',
@@ -468,7 +468,7 @@ export function ProductPage() {
         .rr-product-section-label{display:none}
         .rr-product-market-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 80px;padding-top:24px;border-top:1px solid #d4d4d4}
         .rr-product-market-link{display:flex;align-items:center;justify-content:center;gap:14px;min-height:70px;border:1px solid #d1d1d1;border-radius:12px;background:transparent;color:#1c1c1c;text-decoration:none;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .22s ease,border-color .22s ease,transform .22s ease}
-        .rr-product-market-link:hover{background:#fff;border-color:#aaa;transform:translateY(-1px)}
+        .rr-product-market-link:hover{background:transparent;border-color:#1c1c1c;color:#fff;transform:translateY(-1px)}
         .rr-product-market-link img{max-width:82px;max-height:32px;object-fit:contain;display:block}
         .rr-product-market-link.is-wide{grid-column:span 2}
         .rr-product-accordions{border-top:1px solid #cfcfcf;margin-left:50px}
@@ -487,7 +487,7 @@ export function ProductPage() {
         .rr-product-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;max-width:1520px;margin:0 auto}.rr-product-feature-card{text-align:left;background:transparent;padding:0;border:0}.rr-product-feature-card img{width:100%;height:480px;object-fit:cover;margin:0 0 30px;display:block;border-radius:6px}.rr-product-feature-card h3{font-family:Montserrat,Arial,sans-serif;font-size:19px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:0 0 24px;color:#242424}.rr-product-feature-card p{font-family:Montserrat,Arial,sans-serif;font-size:16px;line-height:1.95;color:#8b8b8b;margin:0;max-width:510px}
         .rr-product-luxury{display:grid;grid-template-columns:1fr 1fr;background:#1c1c1c;color:#fff}.rr-product-luxury-image{aspect-ratio:16/10;min-height:0;background:#111}.rr-product-luxury-image img{width:100%;height:100%;object-fit:cover;display:block}.rr-product-luxury-copy{display:flex;flex-direction:column;justify-content:center;padding:56px 64px}.rr-product-luxury-kicker{font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#b08850;margin:0 0 18px}.rr-product-luxury-copy h2{font-family:Montserrat,Arial,sans-serif;font-size:30px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;margin:0 0 22px}.rr-product-luxury-copy p{font-family:Montserrat,Arial,sans-serif;font-size:15px;line-height:1.8;color:#dedede;max-width:520px;margin:0}
         .rr-product-related{background:transparent;padding:84px 0 72px;overflow:hidden}.rr-product-related .MvstProducts{padding:0}.rr-product-related .MvstProducts__Title{font-size:28px}.rr-product-related .MvstProducts__Carousel{max-width:100%;margin:0}.rr-product-related .MvstProducts__Slider{padding-top:42px;padding-bottom:50px}
-        .rr-product-review-section{background:#efefef;padding:0 34px 90px}.rr-product-review-shell{max-width:1020px;margin:0 auto}.rr-product-review-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 20px}.rr-product-review-summary{display:flex;align-items:center;gap:16px;font-family:Montserrat,Arial,sans-serif;font-size:16px;font-weight:500;color:#111}.rr-review-stars{display:inline-flex;gap:4px;font-size:20px;line-height:1;color:#d0d0d0}.rr-review-stars .is-filled{color:#000}.rr-product-review-count{display:inline-flex;align-items:center;gap:6px}.rr-product-review-count:after{content:'';display:block;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.rr-product-review-actions{display:flex;align-items:center;gap:12px}.rr-product-review-write,.rr-product-review-filter{height:46px;border:1px solid #e1e1e1;border-radius:8px;background:#f3f3f3;color:#111;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.02em;cursor:pointer}.rr-product-review-write{padding:0 26px}.rr-product-review-filter{width:46px;display:flex;align-items:center;justify-content:center}.rr-product-review-write:hover,.rr-product-review-filter:hover{background:#fff}.rr-product-review-write:focus-visible,.rr-product-review-filter:focus-visible{outline:3px solid #b08850;outline-offset:3px}.rr-product-review-list{display:grid;gap:20px}.rr-product-review-card{background:#fff;border-radius:8px;padding:25px 24px 28px;box-shadow:0 8px 22px rgba(0,0,0,.08);font-family:Montserrat,Arial,sans-serif}.rr-product-review-author{display:flex;align-items:center;gap:8px;margin:0 0 5px}.rr-product-review-author strong{font-size:17px;font-weight:800;color:#111}.rr-product-review-verified{display:inline-flex;align-items:center;gap:5px;font-size:14px;color:#9a9a9a}.rr-product-review-check{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;background:#161616;color:#fff;font-size:9px;font-weight:800;line-height:1}.rr-product-review-date{font-size:15px;color:#9a9a9a;margin:0 0 11px}.rr-product-review-card .rr-review-stars{font-size:15px;gap:2px;margin:0 0 20px}.rr-product-review-text{font-size:15px;line-height:1.65;color:#333;margin:0 0 18px}.rr-product-review-product{display:flex;align-items:center;gap:18px;border:1px solid #ececec;border-radius:8px;padding:18px 12px;margin-top:16px}.rr-product-review-product img{width:30px;height:30px;object-fit:contain;display:block}.rr-product-review-product span{font-size:14px;color:#333}
+        .rr-product-review-section{background:#efefef;padding:0 34px 90px}.rr-product-review-shell{max-width:1020px;margin:0 auto}.rr-product-review-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 20px}.rr-product-review-summary{display:flex;align-items:center;gap:16px;font-family:Montserrat,Arial,sans-serif;font-size:16px;font-weight:500;color:#111}.rr-review-stars{display:inline-flex;gap:4px;font-size:20px;line-height:1;color:#d0d0d0}.rr-review-stars .is-filled{color:#000}.rr-product-review-count{display:inline-flex;align-items:center;gap:6px}.rr-product-review-count:after{content:'';display:block;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.rr-product-review-actions{display:flex;align-items:center;gap:12px}.rr-product-review-write,.rr-product-review-filter{height:46px;border:1px solid #e1e1e1;border-radius:8px;background:#f3f3f3;color:#111;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.02em;cursor:pointer}.rr-product-review-write{padding:0 26px}.rr-product-review-filter{width:46px;display:flex;align-items:center;justify-content:center}.rr-product-review-write:hover,.rr-product-review-filter:hover{background:#fff}.rr-product-review-write:hover{color:#fff;border-color:#1c1c1c}.rr-product-review-write:focus-visible,.rr-product-review-filter:focus-visible{outline:3px solid #b08850;outline-offset:3px}.rr-product-review-list{display:grid;gap:20px}.rr-product-review-card{background:#fff;border-radius:8px;padding:25px 24px 28px;box-shadow:0 8px 22px rgba(0,0,0,.08);font-family:Montserrat,Arial,sans-serif}.rr-product-review-author{display:flex;align-items:center;gap:8px;margin:0 0 5px}.rr-product-review-author strong{font-size:17px;font-weight:800;color:#111}.rr-product-review-verified{display:inline-flex;align-items:center;gap:5px;font-size:14px;color:#9a9a9a}.rr-product-review-check{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;background:#161616;color:#fff;font-size:9px;font-weight:800;line-height:1}.rr-product-review-date{font-size:15px;color:#9a9a9a;margin:0 0 11px}.rr-product-review-card .rr-review-stars{font-size:15px;gap:2px;margin:0 0 20px}.rr-product-review-text{font-size:15px;line-height:1.65;color:#333;margin:0 0 18px}.rr-product-review-product{display:flex;align-items:center;gap:18px;border:1px solid #ececec;border-radius:8px;padding:18px 12px;margin-top:16px}.rr-product-review-product img{width:30px;height:30px;object-fit:contain;display:block}.rr-product-review-product span{font-size:14px;color:#333}
         .rr-review-modal-backdrop{position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.48);display:flex;align-items:center;justify-content:center;padding:20px}.rr-review-modal{width:min(520px,100%);background:#fff;border-radius:10px;box-shadow:0 24px 80px rgba(0,0,0,.28);padding:28px;font-family:Montserrat,Arial,sans-serif}.rr-review-modal-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 22px}.rr-review-modal-header h2{font-size:20px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0;color:#111}.rr-review-modal-close{width:36px;height:36px;border:1px solid #e1e1e1;background:#fff;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}.rr-review-form{display:grid;gap:16px}.rr-review-field{display:grid;gap:8px}.rr-review-field span{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#555}.rr-review-input,.rr-review-select,.rr-review-textarea{width:100%;border:1px solid #d8d8d8;border-radius:6px;background:#fff;padding:13px 14px;font-family:Montserrat,Arial,sans-serif;font-size:14px;color:#111;box-sizing:border-box}.rr-review-textarea{min-height:130px;resize:vertical}.rr-review-submit{height:48px;border:1px solid #111;border-radius:6px;background:#111;color:#fff;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}.rr-review-modal-close:focus-visible,.rr-review-input:focus-visible,.rr-review-select:focus-visible,.rr-review-textarea:focus-visible,.rr-review-submit:focus-visible{outline:3px solid #b08850;outline-offset:3px}
         .rr-product-main-image, .rr-product-main-image img { border-radius: 12px; }
         .rr-product-thumb { border-radius: 8px; }
@@ -688,6 +688,29 @@ export function ProductPage() {
             min-height: 52px !important;
           }
         }
+        /* Final product-page sharp-edge override. */
+        .rr-product-thumb,
+        .rr-product-thumb img,
+        .rr-product-main-image,
+        .rr-product-main-image img,
+        .rr-product-market-link,
+        .rr-product-feature-card img,
+        .rr-product-luxury-image,
+        .rr-product-luxury-image img,
+        .MvstProducts__ImageWrap,
+        .MvstProducts__Image,
+        .rr-product-review-write,
+        .rr-product-review-filter,
+        .rr-product-review-card,
+        .rr-product-review-product,
+        .rr-review-modal,
+        .rr-review-modal-close,
+        .rr-review-input,
+        .rr-review-select,
+        .rr-review-textarea,
+        .rr-review-submit {
+          border-radius: 0 !important;
+        }
       `}</style>
 
       <section className="rr-product-shell" aria-labelledby="rr-product-title">
@@ -847,7 +870,7 @@ export function ProductPage() {
                       <img className="MvstProducts__Image MvstProducts__Image--secondary" src={asset(item.hoverImage || item.image)} alt={`${item.name} Hover`} loading="lazy" />
                     </div>
                     <h3 className="MvstProducts__Name">{item.name.toUpperCase()}</h3>
-                    <p className="MvstProducts__Price">Rs. {item.price}</p>
+                    <p className="MvstProducts__Price">MRP ₹ {parseFloat(item.price).toFixed(2)} (inclusive of all taxes)</p>
                   </Link>
                 </div>
               ))}

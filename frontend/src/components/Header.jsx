@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { fallbackBlogs } from '../data/blogs.js'
 import { asset } from '../utils/assets.js'
 
 export function Header({ onSearch }) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [productsExpanded, setProductsExpanded] = useState(false)
+  const [expandedMenus, setExpandedMenus] = useState({})
   const location = useLocation()
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export function Header({ onSearch }) {
       label: 'Products',
       href: '/products',
       hasMegaMenu: true,
+      menuTitle: 'CHOCOLATE',
       subItems: [
         { label: 'CHYAWANAPRASH DARK', href: '/cdarkc' },
         { label: 'CHYAWANAPRASH MILK', href: '/cmilkc' },
@@ -33,9 +35,45 @@ export function Header({ onSearch }) {
         { label: 'BRAHMI DARK', href: '/bdarkc' },
         { label: 'BRAHMI MILK', href: '/bmilkc' },
       ],
+      pushItems: [
+        { label: 'CHYAWANAPRASH DARK', href: '/cdarkc', image: 'assets/choco/cdark.png', alt: 'Chyawanaprash Dark' },
+        { label: 'ASHWAGANDHA DARK', href: '/adarkc', image: 'assets/choco/adark.png', alt: 'Ashwagandha Dark' },
+        { label: 'BRAHMI DARK', href: '/bdarkc', image: 'assets/choco/bdark.png', alt: 'Brahmi Dark' },
+      ],
     },
-    { label: 'Blog', href: '/blog' },
-    { label: 'About', href: '/about' },
+    {
+      label: 'Blog',
+      href: '/blog',
+      hasMegaMenu: true,
+      menuTitle: 'JOURNAL',
+      subItems: fallbackBlogs.map((blog) => ({
+        label: blog.title,
+        href: `/blog#${blog.id}`,
+      })),
+      pushItems: fallbackBlogs.slice(0, 3).map((blog) => ({
+        label: blog.category,
+        href: `/blog#${blog.id}`,
+        image: blog.image,
+        alt: blog.title,
+      })),
+    },
+    {
+      label: 'About',
+      href: '/about',
+      hasMegaMenu: true,
+      menuTitle: 'ABOUT RAW RADICLES',
+      subItems: [
+        { label: 'Our Origin', href: '/about#origin' },
+        { label: 'Our Philosophy', href: '/about#philosophy' },
+        { label: 'Quality Production', href: '/about#quality' },
+        { label: 'Our Spirit', href: '/about#spirit' },
+      ],
+      pushItems: [
+        { label: 'OUR ORIGIN', href: '/about#origin', image: 'assets/about/origin_story.png', alt: 'Our Origin' },
+        { label: 'OUR PHILOSOPHY', href: '/about#philosophy', image: 'assets/pure_chocolate_hero.png', alt: 'Our Philosophy' },
+        { label: 'OUR SPIRIT', href: '/about#spirit', image: 'assets/about/lion_sun_detail.png', alt: 'Our Spirit' },
+      ],
+    },
     { label: 'Contact Us', href: '/contact' },
   ]
 
@@ -44,6 +82,9 @@ export function Header({ onSearch }) {
     if (item.href === '/') return location.pathname === '/'
     if (item.href === '/products') return productPaths.includes(location.pathname)
     return location.pathname === item.href || location.pathname.startsWith(`${item.href}/`)
+  }
+  const toggleExpandedMenu = (label) => {
+    setExpandedMenus((current) => ({ ...current, [label]: !current[label] }))
   }
 
   return (
@@ -76,10 +117,13 @@ export function Header({ onSearch }) {
                   {navItems.map((item) => (
                     <li className="Linklist__Item" key={item.label}>
                       {item.hasMegaMenu ? (
-                        <>
+                        (() => {
+                          const isExpanded = !!expandedMenus[item.label]
+                          return (
+                        <div>
                           <div
                             className={`Collapsible__Button Collapsible__Button--split Heading u-h6 ${isNavItemActive(item) ? 'is-active' : ''}`}
-                            aria-expanded={productsExpanded}
+                            aria-expanded={isExpanded}
                             style={{
                               display: 'flex',
                               alignItems: 'center',
@@ -106,8 +150,8 @@ export function Header({ onSearch }) {
                             </Link>
                             <button
                               type="button"
-                              aria-expanded={productsExpanded}
-                              onClick={() => setProductsExpanded(!productsExpanded)}
+                              aria-expanded={isExpanded}
+                              onClick={() => toggleExpandedMenu(item.label)}
                               style={{
                                 background: 'none',
                                 border: 'none',
@@ -120,7 +164,7 @@ export function Header({ onSearch }) {
                                 color: 'inherit',
                                 minWidth: '44px',
                               }}
-                              aria-label="Toggle products list"
+                              aria-label={`Toggle ${item.label} list`}
                             >
                               <span
                                 style={{
@@ -139,8 +183,8 @@ export function Header({ onSearch }) {
                                     width: '11px',
                                     height: '1px',
                                     backgroundColor: 'currentColor',
-                                    transform: `translate(-50%, -50%) rotate(${productsExpanded ? '90deg' : '-90deg'})`,
-                                    opacity: productsExpanded ? 0 : 1,
+                                    transform: `translate(-50%, -50%) rotate(${isExpanded ? '90deg' : '-90deg'})`,
+                                    opacity: isExpanded ? 0 : 1,
                                     transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out',
                                   }}
                                 />
@@ -153,7 +197,7 @@ export function Header({ onSearch }) {
                                     width: '1px',
                                     height: '11px',
                                     backgroundColor: 'currentColor',
-                                    transform: `translate(-50%, -50%) rotate(${productsExpanded ? '90deg' : '-90deg'})`,
+                                    transform: `translate(-50%, -50%) rotate(${isExpanded ? '90deg' : '-90deg'})`,
                                     transition: 'transform 0.4s ease-in-out',
                                   }}
                                 />
@@ -163,14 +207,14 @@ export function Header({ onSearch }) {
                           <div
                             className="Collapsible__Inner"
                             style={{
-                              height: productsExpanded ? 'auto' : '0px',
+                              height: isExpanded ? 'auto' : '0px',
                               overflow: 'hidden',
                               transition: 'height 0.3s ease',
                             }}
                           >
                             <div className="Collapsible__Content" style={{ paddingLeft: '15px' }}>
                               <div className="Linklist__SubItem">
-                                <p className="Linklist__SubHeading Heading u-h7">CHOCOLATE</p>
+                                <p className="Linklist__SubHeading Heading u-h7">{item.menuTitle}</p>
                                 <ul className="Linklist">
                                   {item.subItems.map((sub) => (
                                     <li className="Linklist__Item" key={sub.label}>
@@ -187,7 +231,9 @@ export function Header({ onSearch }) {
                               </div>
                             </div>
                           </div>
-                        </>
+                        </div>
+                          )
+                        })()
                       ) : (
                         <Link
                           className={`Linklist__Link Heading u-h6 ${isNavItemActive(item) ? 'is-active' : ''}`}
@@ -275,8 +321,8 @@ export function Header({ onSearch }) {
                           <div aria-hidden="true" className="MegaMenu MegaMenu--products">
                             <div className="MegaMenu__Inner">
                               <div className="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--productsList">
-                                <Link className="MegaMenu__Title Heading Text--subdued u-h7" to="/products" onClick={handleLinkClick}>
-                                  CHOCOLATE
+                                <Link className="MegaMenu__Title Heading Text--subdued u-h7" to={item.href} onClick={handleLinkClick}>
+                                  {item.menuTitle}
                                 </Link>
                                 <ul className="Linklist">
                                   {item.subItems.map((sub) => (
@@ -288,30 +334,16 @@ export function Header({ onSearch }) {
                                   ))}
                                 </ul>
                               </div>
-                              <div className="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
-                                <div className="MegaMenu__Push">
-                                  <Link to="/cdarkc" className="MegaMenu__PushImageWrapper" onClick={handleLinkClick}>
-                                    <img src={asset('assets/choco/cdark.png')} alt="Chyawanaprash Dark" />
-                                  </Link>
-                                  <p className="MegaMenu__PushHeading Heading u-h6">CHYAWANAPRASH DARK</p>
+                              {item.pushItems.map((push) => (
+                                <div className="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket" key={push.label}>
+                                  <div className="MegaMenu__Push">
+                                    <Link to={push.href} className="MegaMenu__PushImageWrapper" onClick={handleLinkClick}>
+                                      <img src={asset(push.image)} alt={push.alt} />
+                                    </Link>
+                                    <p className="MegaMenu__PushHeading Heading u-h6">{push.label}</p>
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
-                                <div className="MegaMenu__Push">
-                                  <Link to="/adarkc" className="MegaMenu__PushImageWrapper" onClick={handleLinkClick}>
-                                    <img src={asset('assets/choco/adark.png')} alt="Ashwagandha Dark" />
-                                  </Link>
-                                  <p className="MegaMenu__PushHeading Heading u-h6">ASHWAGANDHA DARK</p>
-                                </div>
-                              </div>
-                              <div className="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--push hidden-pocket">
-                                <div className="MegaMenu__Push">
-                                  <Link to="/bdarkc" className="MegaMenu__PushImageWrapper" onClick={handleLinkClick}>
-                                    <img src={asset('assets/choco/bdark.png')} alt="Brahmi Dark" />
-                                  </Link>
-                                  <p className="MegaMenu__PushHeading Heading u-h6">BRAHMI DARK</p>
-                                </div>
-                              </div>
+                              ))}
                             </div>
                           </div>
                         )}

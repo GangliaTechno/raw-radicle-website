@@ -5,6 +5,62 @@
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
 }
 
+/* Section-specific sharp corners: testimonials, instagram, blog. */
+.rrx-testimonial-card,
+.rrx-video-wrap,
+.rrx-video-wrap img,
+.rrx-instagram-item,
+.rrx-instagram-item img,
+.rr-blog-card,
+.rr-blog-card-image,
+.rr-blog-card-image img,
+.rr-blog-featured-media,
+.rr-blog-featured-media img,
+.rr-blog-featured-copy,
+.rr-blog-article img,
+.rr-blog-link,
+.rrx-round,
+.rrx-arrow,
+.rrx-instagram-arrow,
+.rrx-follow,
+.rrx-buy {
+  border-radius: 0 !important;
+}
+
+/* Global sharp-edge override for buttons and card-like UI surfaces. */
+button,
+[type='button'],
+[type='submit'],
+[type='reset'],
+a.rr-button,
+.rr-button,
+.card,
+.Card,
+[class*='card'],
+[class*='Card'] {
+  border-radius: 0 !important;
+}
+
+/* Strong global no-rounding override (keep at end so it wins). */
+button,
+a[class*='btn'],
+a[class*='Btn'],
+a[class*='button'],
+a[class*='Button'],
+[type='button'],
+[type='submit'],
+[type='reset'],
+[class*='btn'],
+[class*='Btn'],
+[class*='button'],
+[class*='Button'],
+[class*='card'],
+[class*='Card'],
+[class*='panel'],
+[class*='Panel'] {
+  border-radius: 0 !important;
+}
+
 /* Scoped polish for visible storefront cards and buttons. */
 .StaticBanner__Button,
 .MvstProducts__ViewAllBtn,
@@ -112,8 +168,6 @@
   transition: none !important;
 }
 
-.ProductItem,
-.ProductItem *,
 .ProductForm__AddToCart,
 .ProductForm__AddToCart *,
 .CollectionToolbar__LayoutType,
@@ -122,7 +176,6 @@
   transition: none !important;
 }
 
-.ProductItem:hover,
 .ProductForm__AddToCart:hover,
 .CollectionToolbar__LayoutType:hover {
   transform: none !important;
@@ -163,27 +216,13 @@
   }
 }
 
-body.template-product .ProductItem,
-body.template-product .ProductItem *,
-body.template-product .MvstProducts__CardInner,
-body.template-product .MvstProducts__CardInner *,
 body.template-product .Marketplace .Button,
 body.template-product .Marketplace .Button * {
   animation: none !important;
   transition: none !important;
 }
 
-body.template-product .ProductItem:hover,
-body.template-product .MvstProducts__CardInner:hover,
 body.template-product .Marketplace .Button:hover {
-  transform: none !important;
-}
-
-body.template-product .ProductItem__ImageWrapper--withAlternateImage:hover .ProductItem__Image,
-body.template-product .ProductItem__ImageWrapper--withAlternateImage:hover .ProductItem__Image--alternate,
-body.template-product .MvstProducts__CardInner:hover .MvstProducts__Image,
-body.template-product .MvstProducts__CardInner:hover .MvstProducts__Image--secondary {
-  opacity: 1 !important;
   transform: none !important;
 }
 
@@ -950,7 +989,7 @@ textarea {
   display: grid;
   gap: 32px;
   grid-template-columns: 1.4fr 0.8fr 1fr;
-  padding: clamp(42px, 7vw, 80px) clamp(18px, 5vw, 70px);
+  padding: clamp(24px, 4vw, 42px) clamp(18px, 5vw, 70px);
 }
 
 .rr-footer img:not(.rr-footer-logo) {
@@ -1095,104 +1134,162 @@ textarea {
 }
 
 .rr-auth-page {
-  display: grid;
+  align-items: center;
+  background: #efefef;
+  display: flex;
+  justify-content: center;
   min-height: calc(100svh - 85px);
-  padding: 40px 24px;
-  place-items: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/assets/Login_bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 90px 24px 130px;
 }
 
 .rr-auth-card {
-  max-width: 420px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.70);
-  padding: 42px 36px;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-sizing: border-box;
-}
-
-.rr-auth-card img {
-  align-self: center;
-  max-width: 130px;
-  margin-bottom: 8px;
-  justify-self: center;
+  gap: 16px;
+  max-width: 440px;
+  padding: 0;
+  width: 100%;
 }
 
 .rr-auth-card h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 21px;
+  font-weight: 500;
   color: #1c1c1c;
-  text-align: center;
+  letter-spacing: 0.34em;
+  line-height: 1.2;
   margin: 0 0 10px;
-  letter-spacing: 0.05em;
+  text-align: center;
   text-transform: uppercase;
 }
 
-.rr-auth-card input {
-  padding: 13px 16px;
-  border-radius: 8px;
-  border: 1px solid #d2d2d2;
-  background: #ffffff;
+.rr-auth-subtitle {
+  color: #000;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  color: #1c1c1c;
-  outline: none;
-  transition: border-color 0.2s;
-  width: 100%;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.rr-auth-card input {
+  background: transparent;
+  border: 1px solid #d0d0d0;
+  border-radius: 0;
   box-sizing: border-box;
+  color: #1c1c1c;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  height: 46px;
+  outline: none;
+  padding: 0 13px;
+  transition: border-color 0.2s ease;
+  width: 100%;
 }
 
 .rr-auth-card input:focus {
   border-color: #1c1c1c;
 }
 
-.rr-auth-card .rr-button {
-  padding: 13px 18px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  background: #1c1c1c;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
+.rr-auth-password-row {
+  align-items: center;
+  display: flex;
+  position: relative;
   width: 100%;
-  transition: background 0.2s;
+}
+
+.rr-auth-password-row input {
+  padding-right: 170px;
+}
+
+.rr-auth-card .rr-auth-forgot {
+  color: #6f6f6f;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+  position: absolute;
+  right: 13px;
+  text-align: right;
+  text-decoration: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rr-auth-card .rr-button {
+  background: #1c1c1c;
+  border: 1px solid #1c1c1c;
+  border-radius: 0;
+  box-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  height: 45px;
+  letter-spacing: 0;
+  margin-top: 4px;
+  padding: 0 18px;
+  text-transform: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  width: 100%;
 }
 
 .rr-auth-card .rr-button:hover {
-  background: #2a2a2a;
+  background: #000;
+  color: #fff;
 }
 
-.rr-auth-card p {
-  text-align: center;
-  font-size: 14px;
-  margin: 0;
+.rr-auth-status {
   color: #2e7d32;
-}
-
-.rr-auth-card a {
-  text-align: center;
   font-size: 13px;
-  color: #777;
-  text-decoration: underline;
-  margin-top: 5px;
-  font-weight: 500;
+  margin: 0;
+  text-align: center;
 }
 
-.rr-auth-card a:hover {
+.rr-auth-card .rr-auth-switch {
+  color: #4b4b4b;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.rr-auth-card .rr-auth-switch:hover,
+.rr-auth-card .rr-auth-forgot:hover {
   color: #1c1c1c;
+}
+
+@media screen and (max-width: 520px) {
+  .rr-auth-page {
+    padding: 70px 18px 96px;
+  }
+
+  .rr-auth-password-row input {
+    padding-right: 13px;
+  }
+
+  .rr-auth-card .rr-auth-forgot {
+    display: block;
+    margin-top: -5px;
+    position: static;
+    text-align: right;
+    transform: none;
+    width: 100%;
+  }
+
+  .rr-auth-password-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .rr-split {
@@ -1321,16 +1418,11 @@ textarea {
   text-transform: uppercase;
   border: 1px solid #ffffff;
   border-radius: 0px;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: color 0.25s ease;
 }
 
 .StaticBanner__Button:hover {
-  background-color: #1c1c1c;
   color: #ffffff;
-  border-color: #1c1c1c;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 /* Navigation Arrows */
@@ -1419,11 +1511,22 @@ textarea {
 }
 
 .StaticBanner__Dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+  max-width: 10px !important;
+  max-height: 10px !important;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px !important;
   background: rgba(28, 28, 28, 0.24);
   border: 0;
+  box-sizing: border-box;
+  display: block;
+  flex: 0 0 10px;
+  line-height: 0;
   padding: 0;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1610,8 +1713,8 @@ textarea {
   left: 0;
   opacity: 1;
   will-change: transform, opacity;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .MvstProducts__Image--secondary {
@@ -1620,7 +1723,7 @@ textarea {
 
 /* Premium Zoom & Lift Hover Animation */
 .MvstProducts__CardInner:hover .MvstProducts__Image {
-  transform: scale(1.25) translateY(-12px);
+  transform: scale(1.1) translateY(-8px);
 }
 
 .MvstProducts__CardInner:hover .MvstProducts__Image:not(.MvstProducts__Image--secondary) {
@@ -1729,12 +1832,11 @@ textarea {
   text-transform: uppercase;
   border: 1px solid #1c1c1c;
   border-radius: 0px;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: color 0.25s ease;
   text-decoration: none;
 }
 
 .MvstProducts__ViewAllBtn:hover {
-  background-color: #1c1c1c;
   color: #ffffff;
 }
 
@@ -2062,7 +2164,10 @@ body {
 }
 
 .Header__LogoImage {
+  filter: none !important;
   max-width: min(220px, 56vw) !important;
+  outline: 0 !important;
+  text-shadow: none !important;
 }
 
 .MegaMenu {
@@ -2484,7 +2589,7 @@ body {
 
   .rr-footer {
     min-height: 0 !important;
-    padding: 44px 18px 32px !important;
+    padding: 24px 18px 20px !important;
   }
 
   .rr-footer-inner {
@@ -3181,4 +3286,61 @@ body {
   .rr-product-review-filter:hover {
     background: #f3f3f3 !important;
   }
+}
+
+/* Final hard override: testimonial section must be sharp-edged. */
+.rrx-testimonial-card,
+.rrx-testimonial-card *,
+.rrx-video-wrap,
+.rrx-video-wrap img,
+[class*='testimonial'],
+[class*='Testimonial'] {
+  border-radius: 0 !important;
+}
+
+/* Global button swipe: fill left->right on hover, clear left->right on hover-out. */
+.StaticBanner__Button,
+.MvstProducts__ViewAllBtn,
+.rr-button,
+.rr-shop-buy,
+.rrx-buy,
+.rr-contact-submit,
+.rr-product-market-link,
+.rr-product-review-write,
+.rr-review-submit {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.StaticBanner__Button::before,
+.MvstProducts__ViewAllBtn::before,
+.rr-button::before,
+.rr-shop-buy::before,
+.rrx-buy::before,
+.rr-contact-submit::before,
+.rr-product-market-link::before,
+.rr-product-review-write::before,
+.rr-review-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1c1c1c;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.StaticBanner__Button:hover::before,
+.MvstProducts__ViewAllBtn:hover::before,
+.rr-button:hover::before,
+.rr-shop-buy:hover::before,
+.rrx-buy:hover::before,
+.rr-contact-submit:hover::before,
+.rr-product-market-link:hover::before,
+.rr-product-review-write:hover::before,
+.rr-review-submit:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }

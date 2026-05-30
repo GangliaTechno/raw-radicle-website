@@ -25,10 +25,10 @@ export default function Experts({ experts = defaultExperts, title = 'Meet the Ex
         .rrx-experts{padding:86px 0 104px;background:#efefef;box-sizing:border-box}
         .rrx-experts-title{font-family:Montserrat,Arial,sans-serif;font-size:32px;font-weight:400;letter-spacing:10px;text-transform:uppercase;color:#242424;text-align:center;margin:0 0 68px;line-height:1.25}
         .rrx-experts-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;width:100%;margin:0 auto}
-        .rrx-expert-card{margin:0;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 13px 28px rgba(0,0,0,.07);text-align:center;overflow:hidden;transition:transform .28s ease,box-shadow .28s ease}
+        .rrx-expert-card{margin:0;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:0;box-shadow:0 13px 28px rgba(0,0,0,.07);text-align:center;overflow:hidden;transition:transform .28s ease,box-shadow .28s ease}
         .rrx-expert-card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(0,0,0,.1)}
-        .rrx-expert-photo{width:100%;height:362px;object-fit:cover;display:block;background:#f5f5f5;border-top-left-radius:8px;border-top-right-radius:8px}
-        .rrx-expert-fallback{width:100%;height:362px;background:#ded8cf;color:#1c1c1c;display:flex;align-items:center;justify-content:center;font:700 38px Montserrat,Arial,sans-serif;border-top-left-radius:8px;border-top-right-radius:8px}
+        .rrx-expert-photo{width:100%;height:362px;object-fit:cover;display:block;background:#f5f5f5;border-top-left-radius:0;border-top-right-radius:0}
+        .rrx-expert-fallback{width:100%;height:362px;background:#ded8cf;color:#1c1c1c;display:flex;align-items:center;justify-content:center;font:700 38px Montserrat,Arial,sans-serif;border-top-left-radius:0;border-top-right-radius:0}
         .rrx-expert-caption{padding:21px 12px 18px;min-height:91px;box-sizing:border-box}
         .rrx-expert-name{display:block;font-family:Montserrat,Arial,sans-serif;font-size:16px;font-weight:700;color:#202020;margin:0 0 12px;line-height:1.25}
         .rrx-expert-role{display:block;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:400;color:#7f7f7f;line-height:1.35}

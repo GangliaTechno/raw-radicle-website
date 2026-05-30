@@ -101,8 +101,6 @@ function AppLayout() {
 
 
   const isAdmin = location.pathname === '/admin'
-  const isAuth = location.pathname === '/login' || location.pathname === '/register'
-
   return (
     <>
       <ScrollToTop />
@@ -125,7 +123,7 @@ function AppLayout() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      {!isAdmin && !isAuth && <Footer />}
+      {!isAdmin && <Footer />}
     </>
   )
 }

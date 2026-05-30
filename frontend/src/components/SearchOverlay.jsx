@@ -72,7 +72,7 @@ export function SearchOverlay({ open, onClose }) {
                       <img src={asset(product.image)} className="search-result-image" alt={product.name} />
                       <div className="search-result-info">
                         <span className="search-result-title">{product.name.toUpperCase()}</span>
-                        <span className="search-result-price">Rs. {product.price}.00 INR</span>
+                        <span className="search-result-price">MRP ₹ {parseFloat(product.price).toFixed(2)} (inclusive of all taxes)</span>
                       </div>
                     </Link>
                   ))

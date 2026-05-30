@@ -424,7 +424,7 @@ export function HomePage() {
                       />
                     </div>
                     <h3 className="MvstProducts__Name">{product.name.toUpperCase()}</h3>
-                    <p className="MvstProducts__Price">Rs. {product.price}</p>
+                    <p className="MvstProducts__Price">MRP ₹ {parseFloat(product.price).toFixed(2)} (inclusive of all taxes)</p>
                   </Link>
                 </div>
               ))}

@@ -45,8 +45,16 @@ const ChevronIcon = ({ direction }) => (
 
 const formatPrice = (price) => {
   if (price === undefined || price === null || price === '') return ''
-  const value = String(price)
-  return value.includes('Rs.') || value.includes('₹') ? value : `Rs. ${value}`
+  const num = parseFloat(String(price).replace(/Rs\./i, '').replace(/[^\d.]/g, ''))
+  if (isNaN(num)) return price
+  return `MRP ₹ ${num.toFixed(2)}`
+}
+
+const formatOriginalPrice = (price) => {
+  if (price === undefined || price === null || price === '') return ''
+  const num = parseFloat(String(price).replace(/Rs\./i, '').replace(/[^\d.]/g, ''))
+  if (isNaN(num)) return price
+  return `₹ ${num.toFixed(2)}`
 }
 
 export default function Testimonials({ videos = defaultVideos, title = 'Testimonials' }) {
@@ -125,8 +133,8 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
         .rrx-product-name{font-family:Montserrat,Arial,sans-serif;font-size:14px;font-weight:600;color:#1c1c1c;margin:0;line-height:1.4;height:2.8em;overflow:hidden}
         .rrx-price{display:flex;align-items:center;gap:6px;font-family:Montserrat,Arial,sans-serif}.rrx-current{font-size:14px;font-weight:700;color:#1c1c1c}.rrx-original{font-size:13px;color:#888;text-decoration:line-through}
         .rrx-discount{font-size:13px;color:#2e7d32;font-weight:600;margin-top:2px;display:block}
-        .rrx-buy{width:100%;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#fff;background:#1c1c1c;border:1px solid #1c1c1c;padding:12px 24px;cursor:pointer;transition:background .25s ease,color .25s ease}
-        .rrx-buy:hover{background:#fff;color:#1c1c1c}
+        .rrx-buy{width:100%;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#1c1c1c;background:transparent;border:1px solid #1c1c1c;padding:12px 24px;cursor:pointer;transition:color .25s ease}
+        .rrx-buy:hover{color:#fff}
         .rrx-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:999px;background:#fff;border:1px solid rgba(0,0,0,.1);box-shadow:0 4px 16px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10}.rrx-arrow svg{width:18px;height:18px}
         .rrx-arrow:hover{background:#1c1c1c;color:#fff}.rrx-prev{left:8px}.rrx-next{right:8px}
         .rrx-testimonials button:focus-visible,.rrx-testimonial-card:focus-visible,.rrx-testimonials-track:focus-visible{outline:3px solid #b08850;outline-offset:3px}
@@ -192,11 +200,12 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
                   <img className="rrx-product-img" src={item.productImg} alt={item.productName} loading="lazy" />
                   <div>
                     <h3 className="rrx-product-name">{item.productName}</h3>
-                    <div className="rrx-price">
-                      <span className="rrx-current">{formatPrice(item.price)}</span>
-                      {item.originalPrice ? <span className="rrx-original">{formatPrice(item.originalPrice)}</span> : null}
+                    <div className="rrx-price" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px', textAlign: 'left', marginTop: '4px' }}>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                        <span className="rrx-current">{formatPrice(item.price)}</span>
+                      </div>
+                      <span style={{ fontSize: '10px', color: '#8f8f8f', fontWeight: '500', display: 'block' }}>(inclusive of all taxes)</span>
                     </div>
-                    <span className="rrx-discount">14% Off</span>
                   </div>
                 </div>
                 <button className="rrx-buy" type="button" onClick={() => console.log('buy', item.productId || item.id)}>
