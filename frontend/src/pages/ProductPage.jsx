@@ -669,10 +669,18 @@ export function ProductPage() {
             flex-direction: column;
           }
           .rr-product-review-actions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
             width: 100%;
           }
           .rr-product-review-write {
             flex: 1;
+          }
+          .rr-product-review-filter {
+            width: 46px;
+            flex-shrink: 0;
           }
           .rr-product-review-card {
             padding: 22px 18px;

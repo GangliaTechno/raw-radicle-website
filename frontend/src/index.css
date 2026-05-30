@@ -2535,16 +2535,28 @@ body {
     grid-column: span 2 !important;
   }
 
-  .rr-product-review-actions,
   .rr-product-review-top,
   .rr-product-review-product {
     align-items: stretch !important;
     flex-direction: column !important;
   }
 
-  .rr-product-review-write,
-  .rr-product-review-filter {
+  .rr-product-review-actions {
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
     width: 100% !important;
+  }
+
+  .rr-product-review-write {
+    flex: 1 !important;
+    width: auto !important;
+  }
+
+  .rr-product-review-filter {
+    width: 46px !important;
+    flex-shrink: 0 !important;
   }
 
   .rr-review-modal-backdrop {
