@@ -232,7 +232,10 @@ export function ProductPage() {
   const productList = useProducts()
   const product = productList.find((item) => item.id === productId)
   const cms = useProductCms(productId, product)
-  const gallery = useMemo(() => (cms.gallery?.length ? cms.gallery : product?.gallery || []), [cms.gallery, product?.gallery])
+  const gallery = useMemo(() => {
+    const list = cms.gallery?.length ? cms.gallery : product?.gallery || []
+    return list.length ? list : (product?.image ? [product.image] : [])
+  }, [cms.gallery, product?.gallery, product?.image])
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [expandedTabs, setExpandedTabs] = useState({
     features: false,
@@ -252,6 +255,31 @@ export function ProductPage() {
     rating: '5',
     text: '',
   })
+
+  const touchStartRef = useRef({ x: 0, y: 0 })
+
+  const handleTouchStart = (e) => {
+    if (window.innerWidth > 1050) return
+    const touch = e.touches[0]
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+  }
+
+  const handleTouchEnd = (e) => {
+    if (window.innerWidth > 1050) return
+    if (!e.changedTouches || e.changedTouches.length === 0) return
+    const touch = e.changedTouches[0]
+    const deltaX = touch.clientX - touchStartRef.current.x
+    const deltaY = touch.clientY - touchStartRef.current.y
+    const threshold = 40
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold) {
+      if (deltaX < 0) {
+        setSelectedImageIndex((prev) => (prev + 1) % gallery.length)
+      } else {
+        setSelectedImageIndex((prev) => (prev - 1 + gallery.length) % gallery.length)
+      }
+    }
+  }
 
   const displayProduct = product
     ? {
@@ -448,8 +476,10 @@ export function ProductPage() {
         .rr-product-thumb img{width:100%;height:100%;object-fit:contain;display:block}
         .rr-product-thumb:not(.is-selected){border-color:transparent;opacity:.96}.rr-product-thumb.is-selected{border-color:#111;box-shadow:none}
         .rr-product-thumb:focus-visible,.rr-product-market-link:focus-visible,.rr-product-accordion-button:focus-visible{outline:3px solid #b08850;outline-offset:3px}
-        .rr-product-main-image{margin:0;background:transparent;border:0;min-height:595px;display:flex;align-items:center;justify-content:center;padding:0 10px;box-sizing:border-box;box-shadow:none}
-        .rr-product-main-image img{width:auto;height:auto;max-width:100%;max-height:620px;object-fit:contain;display:block}
+        .rr-product-main-viewport{overflow:hidden;width:100%;min-height:595px;position:relative;background:transparent;border:0;box-shadow:none}
+        .rr-product-main-track{display:flex;width:100%;height:100%;transition:transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)}
+        .rr-product-main-image-slide{flex:0 0 100%;width:100%;margin:0;background:transparent;border:0;display:flex;align-items:center;justify-content:center;padding:0 10px;box-sizing:border-box;box-shadow:none}
+        .rr-product-main-image-slide img{width:auto;height:auto;max-width:100%;max-height:620px;object-fit:contain;display:block}
         .rr-product-info-panel{background:transparent;border:0;padding:0;box-shadow:none}
         .rr-product-badge{display:none}
         .rr-product-title{font-family:Montserrat,Arial,sans-serif;font-size:27px;font-weight:700;letter-spacing:.34em;line-height:1.16;text-transform:uppercase;margin:0 0 8px;color:#242424}
@@ -469,7 +499,8 @@ export function ProductPage() {
         .rr-product-market-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 80px;padding-top:24px;border-top:1px solid #d4d4d4}
         .rr-product-market-link{display:flex;align-items:center;justify-content:center;gap:14px;min-height:70px;border:1px solid #d1d1d1;border-radius:12px;background:transparent;color:#1c1c1c;text-decoration:none;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .22s ease,border-color .22s ease,transform .22s ease}
         .rr-product-market-link:hover{background:transparent;border-color:#1c1c1c;color:#fff;transform:translateY(-1px)}
-        .rr-product-market-link img{max-width:82px;max-height:32px;object-fit:contain;display:block}
+        .rr-product-market-link img{height:22px;width:auto;max-width:80px;object-fit:contain;display:block}
+        .rr-product-market-link img.rr-logo-large{height:30px;max-width:95px}
         .rr-product-market-link.is-wide{grid-column:span 2}
         .rr-product-accordions{border-top:1px solid #cfcfcf;margin-left:50px}
         .rr-product-accordion{border-bottom:1px solid #cfcfcf}
@@ -489,7 +520,7 @@ export function ProductPage() {
         .rr-product-related{background:transparent;padding:84px 0 72px;overflow:hidden}.rr-product-related .MvstProducts{padding:0}.rr-product-related .MvstProducts__Title{font-size:28px}.rr-product-related .MvstProducts__Carousel{max-width:100%;margin:0}.rr-product-related .MvstProducts__Slider{padding-top:42px;padding-bottom:50px}
         .rr-product-review-section{background:#efefef;padding:0 34px 90px}.rr-product-review-shell{max-width:1020px;margin:0 auto}.rr-product-review-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 20px}.rr-product-review-summary{display:flex;align-items:center;gap:16px;font-family:Montserrat,Arial,sans-serif;font-size:16px;font-weight:500;color:#111}.rr-review-stars{display:inline-flex;gap:4px;font-size:20px;line-height:1;color:#d0d0d0}.rr-review-stars .is-filled{color:#000}.rr-product-review-count{display:inline-flex;align-items:center;gap:6px}.rr-product-review-count:after{content:'';display:block;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}.rr-product-review-actions{display:flex;align-items:center;gap:12px}.rr-product-review-write,.rr-product-review-filter{height:46px;border:1px solid #e1e1e1;border-radius:8px;background:#f3f3f3;color:#111;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.02em;cursor:pointer}.rr-product-review-write{padding:0 26px}.rr-product-review-filter{width:46px;display:flex;align-items:center;justify-content:center}.rr-product-review-write:hover,.rr-product-review-filter:hover{background:#fff}.rr-product-review-write:hover{color:#fff;border-color:#1c1c1c}.rr-product-review-write:focus-visible,.rr-product-review-filter:focus-visible{outline:3px solid #b08850;outline-offset:3px}.rr-product-review-list{display:grid;gap:20px}.rr-product-review-card{background:#fff;border-radius:8px;padding:25px 24px 28px;box-shadow:0 8px 22px rgba(0,0,0,.08);font-family:Montserrat,Arial,sans-serif}.rr-product-review-author{display:flex;align-items:center;gap:8px;margin:0 0 5px}.rr-product-review-author strong{font-size:17px;font-weight:800;color:#111}.rr-product-review-verified{display:inline-flex;align-items:center;gap:5px;font-size:14px;color:#9a9a9a}.rr-product-review-check{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;background:#161616;color:#fff;font-size:9px;font-weight:800;line-height:1}.rr-product-review-date{font-size:15px;color:#9a9a9a;margin:0 0 11px}.rr-product-review-card .rr-review-stars{font-size:15px;gap:2px;margin:0 0 20px}.rr-product-review-text{font-size:15px;line-height:1.65;color:#333;margin:0 0 18px}.rr-product-review-product{display:flex;align-items:center;gap:18px;border:1px solid #ececec;border-radius:8px;padding:18px 12px;margin-top:16px}.rr-product-review-product img{width:30px;height:30px;object-fit:contain;display:block}.rr-product-review-product span{font-size:14px;color:#333}
         .rr-review-modal-backdrop{position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.48);display:flex;align-items:center;justify-content:center;padding:20px}.rr-review-modal{width:min(520px,100%);background:#fff;border-radius:10px;box-shadow:0 24px 80px rgba(0,0,0,.28);padding:28px;font-family:Montserrat,Arial,sans-serif}.rr-review-modal-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 22px}.rr-review-modal-header h2{font-size:20px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0;color:#111}.rr-review-modal-close{width:36px;height:36px;border:1px solid #e1e1e1;background:#fff;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}.rr-review-form{display:grid;gap:16px}.rr-review-field{display:grid;gap:8px}.rr-review-field span{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#555}.rr-review-input,.rr-review-select,.rr-review-textarea{width:100%;border:1px solid #d8d8d8;border-radius:6px;background:#fff;padding:13px 14px;font-family:Montserrat,Arial,sans-serif;font-size:14px;color:#111;box-sizing:border-box}.rr-review-textarea{min-height:130px;resize:vertical}.rr-review-submit{height:48px;border:1px solid #111;border-radius:6px;background:#111;color:#fff;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}.rr-review-modal-close:focus-visible,.rr-review-input:focus-visible,.rr-review-select:focus-visible,.rr-review-textarea:focus-visible,.rr-review-submit:focus-visible{outline:3px solid #b08850;outline-offset:3px}
-        .rr-product-main-image, .rr-product-main-image img { border-radius: 12px; }
+        .rr-product-main-viewport, .rr-product-main-image-slide img { border-radius: 12px; }
         .rr-product-thumb { border-radius: 8px; }
         .rr-product-thumb img { border-radius: 6px; }
         .MvstProducts__ImageWrap, .MvstProducts__Image { border-radius: 8px; }
@@ -524,15 +555,15 @@ export function ProductPage() {
           .rr-product-thumb img {
             border-radius: 6px !important;
           }
-          .rr-product-main-image {
+          .rr-product-main-viewport {
             min-height: auto !important;
             width: 100% !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            padding: 0 !important;
           }
-          .rr-product-main-image img {
+          .rr-product-main-image-slide {
+            padding: 0 !important;
+            min-height: auto !important;
+          }
+          .rr-product-main-image-slide img {
             max-width: 100% !important;
             max-height: 480px !important;
             border-radius: 12px !important;
@@ -590,14 +621,13 @@ export function ProductPage() {
           .rr-product-thumb img {
             border-radius: 6px !important;
           }
-          .rr-product-main-image {
+          .rr-product-main-viewport {
             min-height: auto !important;
-            padding: 0 !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
           }
-          .rr-product-main-image img {
+          .rr-product-main-image-slide {
+            padding: 0 !important;
+          }
+          .rr-product-main-image-slide img {
             max-width: 90% !important;
             max-height: 360px !important;
             border-radius: 12px !important;
@@ -616,11 +646,8 @@ export function ProductPage() {
             white-space: normal;
           }
           .rr-product-market-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             margin-bottom: 48px;
-          }
-          .rr-product-market-link.is-wide {
-            grid-column: auto;
           }
           .rr-product-feature-grid, .rr-product-luxury {
             grid-template-columns: 1fr;
@@ -691,8 +718,9 @@ export function ProductPage() {
         /* Final product-page sharp-edge override. */
         .rr-product-thumb,
         .rr-product-thumb img,
-        .rr-product-main-image,
-        .rr-product-main-image img,
+        .rr-product-main-viewport,
+        .rr-product-main-image-slide,
+        .rr-product-main-image-slide img,
         .rr-product-market-link,
         .rr-product-feature-card img,
         .rr-product-luxury-image,
@@ -710,6 +738,22 @@ export function ProductPage() {
         .rr-review-textarea,
         .rr-review-submit {
           border-radius: 0 !important;
+        }
+        /* Force 2 columns on all devices for buy buttons */
+        .rr-product-market-grid, 
+        .ProductForm__BuyButtons.Marketplace,
+        .Marketplace {
+          display: grid !important;
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 12px !important;
+        }
+        .rr-product-market-link, 
+        .Marketplace .Button {
+          grid-column: auto !important;
+        }
+        .rr-product-market-link.is-wide,
+        .Marketplace .Button.is-wide {
+          grid-column: span 2 !important;
         }
       `}</style>
 
@@ -729,9 +773,20 @@ export function ProductPage() {
                 </button>
               ))}
             </div>
-            <figure className="rr-product-main-image">
-              <img src={asset(image || displayProduct.image)} alt={displayProduct.name} />
-            </figure>
+            <div className="rr-product-main-viewport" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+              <div
+                className="rr-product-main-track"
+                style={{
+                  transform: `translateX(-${selectedImageIndex * 100}%)`,
+                }}
+              >
+                {gallery.map((item, index) => (
+                  <figure className="rr-product-main-image-slide" key={item}>
+                    <img src={asset(item)} alt={`${displayProduct.name} image ${index + 1}`} />
+                  </figure>
+                ))}
+              </div>
+            </div>
           </div>
 
           <aside className="rr-product-info-panel" aria-label="Product information">
@@ -776,7 +831,16 @@ export function ProductPage() {
                   onClick={(event) => !marketplace.link && event.preventDefault()}
                 >
                   <span>Buy on</span>
-                  {marketplace.logo ? <img src={asset(marketplace.logo)} alt={marketplace.name} loading="lazy" /> : <strong>{marketplace.name}</strong>}
+                  {marketplace.logo ? (
+                    <img
+                      className={['amazon', 'flipkart'].includes((marketplace.name || '').toLowerCase()) ? 'rr-logo-large' : ''}
+                      src={asset(marketplace.logo)}
+                      alt={marketplace.name}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <strong>{marketplace.name}</strong>
+                  )}
                 </a>
               ))}
             </div>

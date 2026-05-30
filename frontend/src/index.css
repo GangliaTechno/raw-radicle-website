@@ -101,6 +101,7 @@ a[class*='Button'],
 .MvstProducts__Arrow,
 .StaticBanner__Arrow,
 .rrx-arrow,
+.rrx-instagram-arrow,
 .rrx-round,
 .rr-product-review-filter,
 .rr-review-modal-close {
@@ -2527,11 +2528,11 @@ body {
   }
 
   .rr-product-market-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .rr-product-market-link.is-wide {
-    grid-column: auto !important;
+    grid-column: span 2 !important;
   }
 
   .rr-product-review-actions,
@@ -2659,11 +2660,6 @@ body {
 
   .rr-shop-grid[data-count="3"] {
     gap: 18px !important;
-  }
-
-  .rrx-instagram-row .rrx-instagram-item {
-    flex-basis: 74vw !important;
-    min-width: 74vw !important;
   }
 }
 
@@ -3344,3 +3340,41 @@ body {
   transform: scaleX(1);
   transform-origin: left;
 }
+
+/* Force 2 columns on all devices for buy buttons */
+.rr-product-market-grid, 
+.ProductForm__BuyButtons.Marketplace,
+.Marketplace {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+.rr-product-market-link, 
+.Marketplace .Button {
+  grid-column: auto !important;
+}
+.rr-product-market-link.is-wide,
+.Marketplace .Button.is-wide {
+  grid-column: span 2 !important;
+}
+
+/* Instagram mobile view: center-snapped carousel with peeking adjacent cards */
+@media screen and (max-width: 480px) {
+  .rrx-instagram {
+    padding: 30px 0 !important;
+  }
+  .rrx-instagram-shell {
+    padding: 0 !important;
+  }
+  .rrx-instagram-row {
+    gap: 12px !important;
+    padding: 10px 13vw 20px !important;
+    scroll-padding: 0 13vw !important;
+  }
+  .rrx-instagram-row .rrx-instagram-item {
+    flex-basis: 74vw !important;
+    min-width: 74vw !important;
+    scroll-snap-align: center !important;
+  }
+}
+

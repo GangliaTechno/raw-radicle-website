@@ -68,7 +68,21 @@ export default function Instagram({ instagram = defaultInstagram, title = 'RAW R
         .rrx-instagram-arrow:hover{background:#1c1c1c;color:#fff}.rrx-instagram-prev{left:12px}.rrx-instagram-next{right:12px}.rrx-instagram-arrow svg{width:18px;height:18px}
         @media(max-width:1024px){.rrx-instagram-row .rrx-instagram-item{flex-basis:calc((100% - 12px)/4);min-width:calc((100% - 12px)/4)}}
         @media(max-width:768px){.rrx-instagram-title{font-size:22px;letter-spacing:4px}.rrx-instagram-row .rrx-instagram-item{flex-basis:calc((100% - 8px)/3);min-width:calc((100% - 8px)/3)}}
-        @media(max-width:480px){.rrx-instagram{padding:30px 8px}.rrx-instagram-row .rrx-instagram-item{flex-basis:calc((100% - 4px)/2);min-width:calc((100% - 4px)/2)}.rrx-instagram-arrow{width:34px;height:34px}}
+        @media(max-width:480px){
+          .rrx-instagram{padding:30px 0}
+          .rrx-instagram-shell{padding:0}
+          .rrx-instagram-row{
+            gap:12px;
+            padding:10px 13vw 20px;
+            scroll-padding:0 13vw
+          }
+          .rrx-instagram-row .rrx-instagram-item{
+            flex-basis:74vw;
+            min-width:74vw;
+            scroll-snap-align:center
+          }
+          .rrx-instagram-arrow{width:34px;height:34px}
+        }
       `}</style>
       <h2 id="rrx-instagram-title" className="rrx-instagram-title">
         {title}
