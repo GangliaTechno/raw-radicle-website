@@ -235,7 +235,7 @@ export function ProductPage() {
   const gallery = useMemo(() => {
     const list = cms.gallery?.length ? cms.gallery : product?.gallery || []
     return list.length ? list : (product?.image ? [product.image] : [])
-  }, [cms.gallery, product?.gallery, product?.image])
+  }, [cms.gallery, product])
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [expandedTabs, setExpandedTabs] = useState({
     features: false,
@@ -632,6 +632,16 @@ export function ProductPage() {
             max-height: 360px !important;
             border-radius: 12px !important;
           }
+          .rr-product-meta-row {
+            margin-bottom: 24px;
+          }
+          .rr-product-rating {
+            margin-top: 18px;
+            font-size: 12px;
+          }
+          .rr-product-price-row {
+            margin-bottom: 16px;
+          }
           .rr-product-title {
             font-size: 22px;
             letter-spacing: .22em;
@@ -644,10 +654,12 @@ export function ProductPage() {
           .rr-product-tagline {
             width: auto;
             white-space: normal;
+            margin-bottom: 20px;
           }
           .rr-product-market-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            margin-bottom: 48px;
+            margin-bottom: 34px;
+            padding-top: 16px;
           }
           .rr-product-feature-grid, .rr-product-luxury {
             grid-template-columns: 1fr;
@@ -820,7 +832,7 @@ export function ProductPage() {
             </div>
 
             <div className="rr-product-price-row">
-              <span className="rr-product-price">₹ {Number(displayProduct.price).toFixed(2)}</span>
+              <span className="rr-product-price">Rs. {Number(displayProduct.price).toFixed(2)}</span>
               <span className="rr-product-tax">(inclusive of all taxes)</span>
             </div>
             <p className="rr-product-tagline">
@@ -942,7 +954,7 @@ export function ProductPage() {
                       <img className="MvstProducts__Image MvstProducts__Image--secondary" src={asset(item.hoverImage || item.image)} alt={`${item.name} Hover`} loading="lazy" />
                     </div>
                     <h3 className="MvstProducts__Name">{item.name.toUpperCase()}</h3>
-                    <p className="MvstProducts__Price">MRP ₹ {parseFloat(item.price).toFixed(2)} (inclusive of all taxes)</p>
+                    <p className="MvstProducts__Price">MRP Rs. {parseFloat(item.price).toFixed(2)} (inclusive of all taxes)</p>
                   </Link>
                 </div>
               ))}

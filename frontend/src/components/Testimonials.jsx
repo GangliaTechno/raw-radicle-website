@@ -203,13 +203,14 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
                     <div className="rrx-price" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px', textAlign: 'left', marginTop: '4px' }}>
                       <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
                         <span className="rrx-current">{formatPrice(item.price)}</span>
+                        {item.originalPrice ? <span className="rrx-original">{formatOriginalPrice(item.originalPrice)}</span> : null}
                       </div>
                       <span style={{ fontSize: '10px', color: '#8f8f8f', fontWeight: '500', display: 'block' }}>(inclusive of all taxes)</span>
                     </div>
                   </div>
                 </div>
                 <button className="rrx-buy" type="button" onClick={() => console.log('buy', item.productId || item.id)}>
-                  View Product
+                  View details
                 </button>
               </div>
             </article>

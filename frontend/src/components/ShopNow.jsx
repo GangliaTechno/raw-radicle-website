@@ -63,7 +63,7 @@ export default function ShopNow({ shopOn = defaultShopOn }) {
         .rr-shop-tile-disabled{opacity:.62;cursor:not-allowed}
         .rr-shop-logo-wrap{width:62px;height:62px;border-radius:13px;background:none;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:35px}
         .rr-shop-logo{width:62px;height:62px;object-fit:cover;display:block}
-        .rr-shop-logo-large{transform:scale(1.55)}
+        .rr-shop-logo-large{transform:scale(1.3)}
         .rr-shop-placeholder{font-family:Montserrat,Arial,sans-serif;font-size:19px;font-weight:700;color:#777}
         .rr-shop-name{font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6d6d6d;text-align:center}
         .rr-shop-buy{margin-top:12px;border:1px solid #1c1c1c;background:transparent;color:#1c1c1c;font-family:Montserrat,Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:9px 12px;text-decoration:none;transition:color .25s ease}
