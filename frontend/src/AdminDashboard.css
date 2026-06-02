@@ -147,14 +147,20 @@
 
 .rr-sidebar-logo {
   align-items: center;
+  background: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
   color: #fff;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 30px 20px;
   text-align: center;
   text-decoration: none;
+  width: 100%;
 }
 
 .rr-sidebar-logo img {
@@ -1294,6 +1300,91 @@
    KPI ANALYTICS DASHBOARD
 ════════════════════════════════════════════════════════════ */
 
+.rr-dashboard-hero {
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(246, 242, 236, 0.86)),
+    url('/assets/pure_chocolate_hero.png') center / cover no-repeat;
+  border: 1px solid var(--rr-line);
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(28, 28, 28, 0.045);
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  min-height: 148px;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.rr-dashboard-hero p {
+  color: var(--rr-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.rr-dashboard-hero h2 {
+  color: var(--rr-ink);
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.rr-dashboard-hero span {
+  color: var(--rr-muted);
+  display: block;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 620px;
+}
+
+.rr-dashboard-hero img {
+  height: auto;
+  max-width: 132px;
+  object-fit: contain;
+}
+
+.rr-dashboard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.rr-dashboard-actions button,
+.rr-dashboard-actions a,
+.rr-dashboard-next button {
+  align-items: center;
+  background: var(--rr-ink);
+  border: 1px solid var(--rr-ink);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: 1.3px;
+  min-height: 40px;
+  padding: 0 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.rr-dashboard-actions a,
+.rr-dashboard-actions button:nth-child(1),
+.rr-dashboard-next button {
+  background: transparent;
+  border-color: rgba(28, 28, 28, 0.18);
+  color: var(--rr-ink);
+}
+
 /* ── Summary KPI Cards ──────────────────────────────────── */
 .kpi-cards-grid {
   display: grid;
@@ -1306,12 +1397,16 @@
   background: #fff;
   border: 1px solid #e8e3da;
   border-radius: 14px;
+  color: inherit;
+  cursor: pointer;
   padding: 20px 18px;
   display: flex;
   gap: 14px;
   align-items: flex-start;
   box-shadow: 0 2px 8px rgba(28,28,28,0.05);
+  text-align: left;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
+  width: 100%;
 }
 
 .kpi-card:hover {
@@ -1351,6 +1446,15 @@
   font-size: 11px;
   font-weight: 600;
   margin: 0;
+}
+
+.kpi-card__action {
+  color: #8b2f2b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
 }
 
 .kpi-card__trend.up  { color: #10b981; }
@@ -1503,6 +1607,51 @@
   color: #1c1b1b;
 }
 
+.rr-dashboard-activity {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rr-dashboard-activity li {
+  align-items: center;
+  border-bottom: 1px solid rgba(28, 28, 28, 0.08);
+  color: var(--rr-ink);
+  display: flex;
+  font-size: 13px;
+  gap: 10px;
+  min-height: 42px;
+  padding: 10px 0;
+}
+
+.rr-dashboard-activity li:last-child {
+  border-bottom: 0;
+}
+
+.rr-dashboard-activity-dot {
+  background: #8b2f2b;
+  border-radius: 50%;
+  flex: 0 0 7px;
+  height: 7px;
+  width: 7px;
+}
+
+.rr-dashboard-next {
+  display: grid;
+  gap: 10px;
+}
+
+.rr-dashboard-next .kpi-panel-header {
+  margin-bottom: 4px;
+}
+
+.rr-dashboard-next button {
+  justify-content: flex-start;
+  width: 100%;
+}
+
 /* ── Product Performance Table ──────────────────────────── */
 .kpi-table {
   width: 100%;
@@ -1614,7 +1763,18 @@
   width: 38px;
 }
 
+.rr-admin .kpi-card__icon svg {
+  fill: none;
+  height: 19px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  width: 19px;
+}
+
 .rr-admin .kpi-card__label,
+.rr-admin .kpi-card__action,
 .rr-admin .kpi-loading,
 .rr-admin .kpi-empty,
 .rr-admin .hbar-label,
@@ -1688,17 +1848,43 @@
 .rr-admin .rr-panel-actions button,
 .rr-admin .rr-table-wrap button,
 .rr-admin .rr-login-card button,
-.rr-admin .rr-topbar a {
+.rr-admin .rr-topbar a,
+.rr-admin .rr-dashboard-actions button,
+.rr-admin .rr-dashboard-actions a,
+.rr-admin .rr-dashboard-next button {
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
 .rr-admin .rr-panel-actions button:hover,
 .rr-admin .rr-login-card button:hover,
-.rr-admin .rr-topbar a:hover {
+.rr-admin .rr-topbar a:hover,
+.rr-admin .rr-dashboard-actions button:hover,
+.rr-admin .rr-dashboard-actions a:hover,
+.rr-admin .rr-dashboard-next button:hover {
   transform: translateY(-1px);
 }
 
 @media (max-width: 620px) {
+  .rr-dashboard-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .rr-dashboard-hero img {
+    max-width: 108px;
+  }
+
+  .rr-dashboard-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .rr-dashboard-actions button,
+  .rr-dashboard-actions a {
+    width: 100%;
+  }
+
   .rr-topbar {
     align-items: flex-start;
     flex-direction: column;

@@ -10,21 +10,71 @@ function fmtTime(secs) {
   return Math.floor(secs / 60) + 'm ' + (secs % 60) + 's';
 }
 
-function SparkCard({ label, value, sub, trend, icon }) {
+function AdminIcon({ type }) {
+  const icons = {
+    views: (
+      <>
+        <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z" />
+        <circle cx="12" cy="12" r="3" />
+      </>
+    ),
+    clicks: (
+      <>
+        <path d="M8 3v11l3-3 3 7 3-1.5-3-6h4L8 3z" />
+      </>
+    ),
+    time: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </>
+    ),
+    products: (
+      <>
+        <path d="M6 2h12l3 5v15H3V7l3-5z" />
+        <path d="M3 7h18" />
+        <path d="M9 11a3 3 0 0 0 6 0" />
+      </>
+    ),
+    users: (
+      <>
+        <circle cx="9" cy="8" r="4" />
+        <path d="M2 21a7 7 0 0 1 14 0" />
+        <path d="M17 11a4 4 0 0 1 0 8" />
+      </>
+    ),
+    subscribers: (
+      <>
+        <path d="M4 5h16v14H4z" />
+        <path d="m4 7 8 6 8-6" />
+      </>
+    ),
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24">
+      {icons[type] || icons.views}
+    </svg>
+  )
+}
+
+function SparkCard({ actionLabel, label, value, trend, icon, onClick }) {
   const up = trend >= 0;
   return (
-    <div className="kpi-card">
+    <button className="kpi-card" onClick={onClick} type="button">
       <div className="kpi-card__icon">{icon}</div>
       <div className="kpi-card__body">
         <p className="kpi-card__label">{label}</p>
         <p className="kpi-card__value">{value}</p>
-        {sub !== undefined && (
+        {trend !== undefined ? (
           <p className={`kpi-card__trend ${up ? 'up' : 'down'}`}>
-            {up ? '▲' : '▼'} {Math.abs(trend)}% vs prev 7d
+            {up ? '+' : '-'}{Math.abs(trend)}% vs previous 7d
           </p>
-        )}
+        ) : actionLabel ? (
+          <p className="kpi-card__action">{actionLabel}</p>
+        ) : null}
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -254,10 +304,14 @@ function AdminDashboard() {
   const [productCms, setProductCms] = useState({})
   const [, setPendingReviews] = useState({})
   const [subscribers, setSubscribers] = useState([])
-  const [, setActivity] = useState(['Opened React admin dashboard'])
+  const [activity, setActivity] = useState(['Opened React admin dashboard'])
   const [status, setStatus] = useState('')
   const [analytics, setAnalytics] = useState(null)
   const [analyticsLoading, setAnalyticsLoading] = useState(false)
+
+  useEffect(() => {
+    document.title = 'Admin Dashboard | Raw Radicles'
+  }, [])
 
   // Users state management
   const [users, setUsers] = useState(() => {
@@ -963,10 +1017,10 @@ function AdminDashboard() {
   return (
     <main className="rr-admin">
       <aside className="rr-sidebar">
-        <a className="rr-sidebar-logo" href="/">
+        <button className="rr-sidebar-logo" onClick={() => setActivePanel('dashboard')} type="button">
           <img src="/assets/RR_Logo-1.png" alt="Raw Radicles" />
           <span>Admin Dashboard</span>
-        </a>
+        </button>
 
         <p className="rr-sidebar-label">Content</p>
         <nav className="rr-sidebar-nav" aria-label="Admin navigation">
@@ -1010,37 +1064,65 @@ function AdminDashboard() {
         <section className="rr-admin-content">
           {activePanel === 'dashboard' ? (
             <>
+              <div className="rr-dashboard-hero">
+                <div>
+                  <p>Content studio</p>
+                  <h2>Raw Radicles dashboard</h2>
+                  <span>Review store health, update content, and jump into the sections that need attention.</span>
+                </div>
+                <img src="/assets/RR_Logo-1.png" alt="Raw Radicles" />
+              </div>
+
+              <div className="rr-dashboard-actions" aria-label="Dashboard quick actions">
+                <button onClick={() => setActivePanel('homepage')} type="button">Edit Homepage</button>
+                <button onClick={() => { setActivePanel('products'); openAddProductModal(); }} type="button">Add Product</button>
+                <button onClick={() => { addBlog(); setActivePanel('blog'); }} type="button">Write Blog</button>
+                <a href="/" target="_blank" rel="noreferrer">View Storefront</a>
+              </div>
+
               {/* ── KPI Summary Cards ───────────────────────────────────── */}
               <div className="kpi-cards-grid">
                 <SparkCard
-                  icon="👁️"
-                  label="Page Views (7d)"
+                  actionLabel="Open storefront"
+                  icon={<AdminIcon type="views" />}
+                  label="Store visits"
+                  onClick={() => window.open('/', '_blank', 'noopener,noreferrer')}
                   value={analytics ? analytics.kpi.totalViews7.toLocaleString() : '—'}
                   trend={analytics ? analytics.kpi.viewsChange : 0}
                 />
                 <SparkCard
-                  icon="🖱️"
-                  label="Total Clicks (7d)"
+                  actionLabel="Review click data"
+                  icon={<AdminIcon type="clicks" />}
+                  label="Button clicks"
+                  onClick={() => setActivePanel('dashboard')}
                   value={analytics ? analytics.kpi.totalClicks7.toLocaleString() : '—'}
                 />
                 <SparkCard
-                  icon="⏱️"
-                  label="Avg. Time on Page"
+                  actionLabel="Check reading time"
+                  icon={<AdminIcon type="time" />}
+                  label="Average reading time"
+                  onClick={() => setActivePanel('dashboard')}
                   value={analytics ? fmtTime(analytics.kpi.avgTimeSeconds) : '—'}
                 />
                 <SparkCard
-                  icon="📦"
-                  label="Total Products"
+                  actionLabel="Manage products"
+                  icon={<AdminIcon type="products" />}
+                  label="Products"
+                  onClick={() => setActivePanel('products')}
                   value={productList.length}
                 />
                 <SparkCard
-                  icon="👤"
-                  label="Total Users"
+                  actionLabel="Manage users"
+                  icon={<AdminIcon type="users" />}
+                  label="Users"
+                  onClick={() => setActivePanel('users')}
                   value={users.length}
                 />
                 <SparkCard
-                  icon="⭐"
+                  actionLabel="Open subscribers"
+                  icon={<AdminIcon type="subscribers" />}
                   label="Subscribers"
+                  onClick={() => setActivePanel('subscribed')}
                   value={subscribers.length}
                 />
               </div>
@@ -1049,8 +1131,8 @@ function AdminDashboard() {
               <div className="kpi-row">
                 <div className="kpi-panel kpi-panel--wide">
                   <div className="kpi-panel-header">
-                    <h3>📈 Daily Page Views — Last 14 Days</h3>
-                    <span className="kpi-badge">Page Views</span>
+                    <h3>Store visits - last 14 days</h3>
+                    <span className="kpi-badge">Visits</span>
                   </div>
                   {analyticsLoading ? (
                     <div className="kpi-loading">Loading…</div>
@@ -1059,7 +1141,7 @@ function AdminDashboard() {
                       data={(analytics.days || []).map(d => ({ label: d.label, value: d.pageViews }))}
                       colorStroke="#e85d26"
                     />
-                  ) : <div className="kpi-empty">No data yet</div>}
+                  ) : <div className="kpi-empty">No visit data yet. Open the storefront to confirm tracking is active.</div>}
                 </div>
               </div>
 
@@ -1067,7 +1149,7 @@ function AdminDashboard() {
                 {/* ── Clicks Line Chart ───────────────────────────────── */}
                 <div className="kpi-panel kpi-panel--wide">
                   <div className="kpi-panel-header">
-                    <h3>🖱️ Daily Clicks — Last 14 Days</h3>
+                    <h3>Button clicks - last 14 days</h3>
                     <span className="kpi-badge kpi-badge--blue">Clicks</span>
                   </div>
                   {analytics ? (
@@ -1075,7 +1157,7 @@ function AdminDashboard() {
                       data={(analytics.days || []).map(d => ({ label: d.label, value: d.clicks }))}
                       colorStroke="#3b82f6"
                     />
-                  ) : <div className="kpi-empty">No data yet</div>}
+                  ) : <div className="kpi-empty">No click data yet. Click tracking will appear after visitors interact with the store.</div>}
                 </div>
               </div>
 
@@ -1083,27 +1165,27 @@ function AdminDashboard() {
                 {/* ── Top Pages ───────────────────────────────────────── */}
                 <div className="kpi-panel">
                   <div className="kpi-panel-header">
-                    <h3>🔝 Most Visited Pages</h3>
+                    <h3>Most viewed pages</h3>
                   </div>
                   {analytics && analytics.topPages.length > 0 ? (
                     <HBar
                       items={analytics.topPages.map(p => ({ label: p.label, value: p.views }))}
                       color="#e85d26"
                     />
-                  ) : <div className="kpi-empty">No page data yet</div>}
+                  ) : <div className="kpi-empty">No page data yet. Store visits will show up here once tracking records traffic.</div>}
                 </div>
 
                 {/* ── Avg Time Per Page ───────────────────────────────── */}
                 <div className="kpi-panel">
                   <div className="kpi-panel-header">
-                    <h3>⏱️ Avg. Time per Page</h3>
+                    <h3>Average reading time</h3>
                   </div>
                   {analytics && analytics.topPages.length > 0 ? (
                     <HBar
                       items={analytics.topPages.map(p => ({ label: p.label, value: p.avgTime }))}
                       color="#10b981"
                     />
-                  ) : <div className="kpi-empty">No time data yet</div>}
+                  ) : <div className="kpi-empty">No reading-time data yet. This appears after visitors spend time on pages.</div>}
                 </div>
               </div>
 
@@ -1111,20 +1193,20 @@ function AdminDashboard() {
                 {/* ── Top Clicked Elements ────────────────────────────── */}
                 <div className="kpi-panel">
                   <div className="kpi-panel-header">
-                    <h3>🔥 Top Clicked Elements</h3>
+                    <h3>Top clicked elements</h3>
                   </div>
                   {analytics && analytics.topClicks.length > 0 ? (
                     <HBar
                       items={analytics.topClicks.map(c => ({ label: c.label, value: c.value }))}
                       color="#8b5cf6"
                     />
-                  ) : <div className="kpi-empty">No click data yet</div>}
+                  ) : <div className="kpi-empty">No click data yet. Product and marketplace clicks will appear here.</div>}
                 </div>
 
                 {/* ── Traffic Breakdown Donut ─────────────────────────── */}
                 <div className="kpi-panel">
                   <div className="kpi-panel-header">
-                    <h3>🍩 Click Breakdown</h3>
+                    <h3>Click breakdown</h3>
                   </div>
                   {analytics && analytics.topClicks.length > 0 ? (() => {
                     const prodClicks = analytics.topClicks.filter(c => c.key.startsWith('product_'));
@@ -1149,14 +1231,52 @@ function AdminDashboard() {
                         </div>
                       </div>
                     );
-                  })() : <div className="kpi-empty">No click breakdown yet</div>}
+                  })() : <div className="kpi-empty">No click breakdown yet. The chart will appear after product, marketplace, or CTA clicks.</div>}
+                </div>
+              </div>
+
+              <div className="kpi-row kpi-row--split rr-dashboard-ops-row">
+                <div className="kpi-panel">
+                  <div className="kpi-panel-header">
+                    <h3>Recent activity</h3>
+                    <span className="kpi-badge">Latest</span>
+                  </div>
+                  <ul className="rr-dashboard-activity">
+                    {activity.length > 0 ? activity.map((item, index) => (
+                      <li key={`${item}-${index}`}>
+                        <span className="rr-dashboard-activity-dot" />
+                        <span>{item}</span>
+                      </li>
+                    )) : (
+                      <li>
+                        <span className="rr-dashboard-activity-dot" />
+                        <span>No recent edits yet.</span>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+
+                <div className="kpi-panel rr-dashboard-next">
+                  <div className="kpi-panel-header">
+                    <h3>Next best actions</h3>
+                    <span className="kpi-badge">Shortcuts</span>
+                  </div>
+                  <button onClick={() => setActivePanel('homepage')} type="button">
+                    Refresh homepage story
+                  </button>
+                  <button onClick={() => setActivePanel('products')} type="button">
+                    Check product content
+                  </button>
+                  <button onClick={() => setActivePanel('subscribed')} type="button">
+                    Review subscriber list
+                  </button>
                 </div>
               </div>
 
               {/* ── Product Performance Table ───────────────────────────── */}
               <div className="kpi-panel kpi-panel--table" style={{ marginTop: 0 }}>
                 <div className="kpi-panel-header">
-                  <h3>📊 Product Performance</h3>
+                  <h3>Product performance</h3>
                   <span className="kpi-badge kpi-badge--green">All time</span>
                 </div>
                 <table className="kpi-table">
