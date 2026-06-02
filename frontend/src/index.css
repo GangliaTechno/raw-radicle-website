@@ -2792,7 +2792,7 @@ body {
   }
 
   .SidebarMenu.Drawer {
-    background: #efefef !important;
+    background: #1c1b1b !important;
     bottom: 0 !important;
     box-shadow: 12px 0 36px rgba(0, 0, 0, 0.18) !important;
     height: 100svh !important;
@@ -2813,7 +2813,9 @@ body {
   }
 
   .SidebarMenu .Drawer__Header {
-    border-bottom: 1px solid rgba(28, 28, 28, 0.1) !important;
+    background: #1c1b1b !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
     height: 68px !important;
     min-height: 68px !important;
     position: relative !important;
@@ -2823,6 +2825,7 @@ body {
     align-items: center !important;
     background: transparent !important;
     border: 0 !important;
+    color: #ffffff !important;
     display: inline-flex !important;
     height: 44px !important;
     justify-content: center !important;
@@ -2833,6 +2836,8 @@ body {
   }
 
   .SidebarMenu .Drawer__Content {
+    background: #1c1b1b !important;
+    color: #ffffff !important;
     display: flex !important;
     flex-direction: column !important;
     height: calc(100svh - 68px) !important;
@@ -2841,6 +2846,8 @@ body {
   }
 
   .SidebarMenu .Drawer__Main {
+    background: #1c1b1b !important;
+    color: #ffffff !important;
     flex: 1 1 auto !important;
     overflow-y: auto !important;
     padding: 22px 22px 34px !important;
@@ -2857,14 +2864,14 @@ body {
   }
 
   .SidebarMenu .Linklist__Item {
-    border-bottom: 1px solid rgba(28, 28, 28, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     margin: 0 !important;
   }
 
   .SidebarMenu .Linklist__Link,
   .SidebarMenu .Collapsible__Button {
     align-items: center !important;
-    color: #1c1c1c !important;
+    color: #ffffff !important;
     display: flex !important;
     font-size: 13px !important;
     font-weight: 700 !important;
@@ -2887,14 +2894,14 @@ body {
   }
 
   .SidebarMenu .Linklist__SubHeading {
-    color: #8a744e !important;
+    color: rgba(255, 255, 255, 0.58) !important;
     font-size: 10px !important;
     letter-spacing: 0.18em !important;
     margin: 8px 0 10px !important;
   }
 
   .SidebarMenu .Link--secondary {
-    color: #4c4c4c !important;
+    color: rgba(255, 255, 255, 0.78) !important;
     display: block !important;
     font-size: 12px !important;
     letter-spacing: 0.08em !important;
@@ -2903,7 +2910,9 @@ body {
   }
 
   .SidebarMenu .Drawer__Footer {
-    border-top: 1px solid rgba(28, 28, 28, 0.1) !important;
+    background: #1c1b1b !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
     box-shadow: none !important;
     flex: 0 0 auto !important;
     padding: 18px 22px max(18px, env(safe-area-inset-bottom)) !important;
@@ -3389,4 +3398,3 @@ body {
     scroll-snap-align: center !important;
   }
 }
-

@@ -1,6 +1,14 @@
 .rr-admin {
   --rr-sidebar-width: 260px;
-  background: #f4f4f4;
+  --rr-ink: #1c1b1b;
+  --rr-muted: #6f6a63;
+  --rr-line: rgba(28, 28, 28, 0.1);
+  --rr-paper: rgba(255, 255, 255, 0.78);
+  --rr-cream: #f6f2ec;
+  --rr-accent: #8b2f2b;
+  background:
+    radial-gradient(circle at top right, rgba(139, 47, 43, 0.08), transparent 30rem),
+    linear-gradient(180deg, #efefef 0%, #f7f3ed 44%, #ffffff 100%);
   color: #1c1c1c;
   font-family: Montserrat, Arial, sans-serif;
   min-height: 100vh;
@@ -19,16 +27,20 @@
 
 .rr-admin-login {
   align-items: center;
+  background:
+    linear-gradient(90deg, rgba(246, 242, 236, 0.9), rgba(255, 255, 255, 0.72)),
+    url('/assets/pure_chocolate_hero.png') center / cover no-repeat;
   display: flex;
   justify-content: center;
   padding: 24px;
 }
 
 .rr-login-card {
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(28, 28, 28, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 18px 44px rgba(28, 28, 28, 0.06);
+  backdrop-filter: blur(18px) saturate(135%);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--rr-line);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(28, 28, 28, 0.12);
   display: grid;
   gap: 16px;
   max-width: 430px;
@@ -43,6 +55,7 @@
 }
 
 .rr-login-card h1 {
+  color: var(--rr-ink);
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 3px;
@@ -53,7 +66,7 @@
 
 .rr-login-card p,
 .rr-login-card small {
-  color: #6f6a63;
+  color: var(--rr-muted);
   font-size: 12px;
   line-height: 1.6;
   margin: 0;
@@ -69,7 +82,7 @@
   background: #fff;
   border: 1px solid #d8d2c8;
   border-radius: 8px;
-  color: #1c1b1b;
+  color: var(--rr-ink);
   min-height: 52px;
   outline: none;
   padding: 15px 16px;
@@ -98,9 +111,9 @@
 .rr-table-wrap button,
 .rr-admin-user button {
   align-items: center;
-  background: #1c1b1b;
-  border: 1px solid #1c1b1b;
-  border-radius: 6px;
+  background: var(--rr-ink);
+  border: 1px solid var(--rr-ink);
+  border-radius: 8px;
   color: #fff;
   cursor: pointer;
   display: inline-flex;
@@ -119,7 +132,7 @@
 }
 
 .rr-sidebar {
-  background: #1c1b1b;
+  background: var(--rr-ink);
   bottom: 0;
   color: #fff;
   display: flex;
@@ -146,15 +159,18 @@
 
 .rr-sidebar-logo img {
   height: auto;
-  max-width: 140px;
+  max-width: 132px;
   transform: translateY(6px);
 }
 
 .rr-sidebar-logo span {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 1px;
+  padding: 6px 10px;
   text-transform: uppercase;
 }
 
@@ -209,6 +225,7 @@
 .rr-sidebar-nav button:hover,
 .rr-sidebar-nav button.is-active {
   background: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
   color: #fff;
 }
 
@@ -241,6 +258,7 @@
 .rr-sidebar-user {
   align-items: center;
   background: rgba(255, 255, 255, 0.08);
+  border: 0;
   border-radius: 6px;
   display: flex;
   gap: 10px;
@@ -316,8 +334,9 @@
 
 .rr-topbar {
   align-items: center;
-  background: #fff;
-  border-bottom: 1px solid #e5e5e5;
+  backdrop-filter: blur(18px) saturate(135%);
+  background: rgba(239, 239, 239, 0.86);
+  border-bottom: 1px solid var(--rr-line);
   display: flex;
   height: 64px;
   justify-content: space-between;
@@ -328,7 +347,7 @@
 }
 
 .rr-topbar p {
-  color: #6a6a6a;
+  color: var(--rr-muted);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.6px;
@@ -337,19 +356,18 @@
 }
 
 .rr-topbar h1 {
-  color: #1c1c1c;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  color: var(--rr-ink);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 2.2px;
   margin: 0;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .rr-topbar a {
   background: transparent;
-  border-color: #e5e5e5;
-  border-radius: 4px;
-  color: #1c1c1c;
+  border-color: rgba(28, 28, 28, 0.18);
+  color: var(--rr-ink);
 }
 
 .rr-admin-header {
@@ -476,7 +494,7 @@
 .rr-admin-content {
   margin: 0 auto;
   max-width: 1360px;
-  padding: 34px 24px 60px;
+  padding: 38px 24px 60px;
 }
 
 .rr-stats {
@@ -489,8 +507,8 @@
 .rr-stats article,
 .rr-panel,
 .rr-product-card {
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(28, 28, 28, 0.1);
+  background: var(--rr-paper);
+  border: 1px solid var(--rr-line);
   border-radius: 8px;
   box-shadow: 0 12px 36px rgba(28, 28, 28, 0.045);
 }
@@ -500,7 +518,7 @@
 }
 
 .rr-stats span {
-  color: #6f6a63;
+  color: var(--rr-muted);
   display: block;
   font-size: 10px;
   font-weight: 700;
@@ -519,8 +537,8 @@
 
 .rr-panel-header {
   align-items: center;
-  background: #f6f2ec;
-  border-bottom: 1px solid rgba(28, 28, 28, 0.1);
+  background: var(--rr-cream);
+  border-bottom: 1px solid var(--rr-line);
   display: flex;
   gap: 14px;
   justify-content: space-between;
@@ -536,7 +554,7 @@
 }
 
 .rr-panel-header span {
-  color: #6f6a63;
+  color: var(--rr-muted);
   font-size: 12px;
 }
 
@@ -561,7 +579,7 @@
 
 .rr-product-card img {
   aspect-ratio: 1;
-  background: #f6f2ec;
+  background: var(--rr-cream);
   border-radius: 8px;
   object-fit: contain;
   padding: 18px;
@@ -569,7 +587,7 @@
 }
 
 .rr-product-card label {
-  color: #6f6a63;
+  color: var(--rr-muted);
   display: grid;
   font-size: 10px;
   font-weight: 700;
@@ -585,8 +603,8 @@
 }
 
 .rr-blog-card {
-  background: #fcfbf9;
-  border: 1px solid rgba(28, 28, 28, 0.1);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--rr-line);
   border-radius: 8px;
   display: grid;
   gap: 16px;
@@ -604,7 +622,7 @@
 
 .rr-blog-card__header span,
 .rr-blog-card label {
-  color: #6f6a63;
+  color: var(--rr-muted);
   display: grid;
   font-size: 10px;
   font-weight: 700;
@@ -614,7 +632,7 @@
 }
 
 .rr-blog-card__header strong {
-  color: #1c1b1b;
+  color: var(--rr-ink);
   display: block;
   font-size: 14px;
   letter-spacing: 0.4px;
@@ -668,7 +686,7 @@
 }
 
 .rr-table-wrap th {
-  color: #6f6a63;
+  color: var(--rr-muted);
   font-size: 10px;
   letter-spacing: 1.8px;
   text-transform: uppercase;
@@ -700,7 +718,7 @@
 }
 
 .rr-toast {
-  background: #1c1b1b;
+  background: var(--rr-ink);
   border-radius: 6px;
   bottom: 24px;
   color: #fff;
@@ -1561,5 +1579,136 @@
   }
   .hbar-row {
     grid-template-columns: 80px 1fr 32px;
+  }
+}
+
+/* Storefront-aligned admin polish */
+.rr-admin .kpi-card,
+.rr-admin .kpi-panel,
+.rr-admin .rr-modal-card {
+  background: var(--rr-paper);
+  border: 1px solid var(--rr-line);
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(28, 28, 28, 0.045);
+}
+
+.rr-admin .kpi-card {
+  min-height: 118px;
+}
+
+.rr-admin .kpi-card:hover {
+  box-shadow: 0 16px 42px rgba(28, 28, 28, 0.075);
+  transform: translateY(-1px);
+}
+
+.rr-admin .kpi-card__icon {
+  align-items: center;
+  background: var(--rr-cream);
+  border: 1px solid rgba(28, 28, 28, 0.08);
+  border-radius: 50%;
+  display: inline-flex;
+  font-size: 18px;
+  height: 38px;
+  justify-content: center;
+  padding: 0;
+  width: 38px;
+}
+
+.rr-admin .kpi-card__label,
+.rr-admin .kpi-loading,
+.rr-admin .kpi-empty,
+.rr-admin .hbar-label,
+.rr-admin .donut-legend-label,
+.rr-admin .rr-modal-form label,
+.rr-admin .rr-product-tabs button {
+  color: var(--rr-muted);
+}
+
+.rr-admin .kpi-card__value,
+.rr-admin .kpi-panel-header h3,
+.rr-admin .hbar-val,
+.rr-admin .donut-legend-val,
+.rr-admin .kpi-table td,
+.rr-admin .rr-product-tabs button:hover,
+.rr-admin .rr-product-tabs button.is-active {
+  color: var(--rr-ink);
+}
+
+.rr-admin .kpi-panel-header {
+  border-bottom: 1px solid rgba(28, 28, 28, 0.08);
+  margin: -4px -2px 18px;
+  padding-bottom: 14px;
+}
+
+.rr-admin .kpi-panel-header h3 {
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.rr-admin .kpi-badge,
+.rr-admin .rr-role-badge {
+  border-radius: 999px;
+}
+
+.rr-admin .hbar-track {
+  background: var(--rr-cream);
+}
+
+.rr-admin .rr-modal-overlay {
+  background: rgba(28, 27, 27, 0.42);
+  backdrop-filter: blur(10px);
+}
+
+.rr-admin .rr-modal-card {
+  backdrop-filter: blur(18px) saturate(135%);
+}
+
+.rr-admin .rr-modal-actions button {
+  border-radius: 8px;
+}
+
+.rr-admin .rr-image-upload-box,
+.rr-admin .rr-image-preview,
+.rr-admin .kpi-prod-thumb,
+.rr-admin .rr-products-table code {
+  border-radius: 8px;
+}
+
+.rr-admin .rr-image-preview,
+.rr-admin .rr-products-table code {
+  background: var(--rr-cream);
+}
+
+.rr-admin .rr-table-wrap tr:hover:not(.is-selected),
+.rr-admin .kpi-table tr:hover td {
+  background: rgba(246, 242, 236, 0.58);
+}
+
+.rr-admin .rr-panel-actions button,
+.rr-admin .rr-table-wrap button,
+.rr-admin .rr-login-card button,
+.rr-admin .rr-topbar a {
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.rr-admin .rr-panel-actions button:hover,
+.rr-admin .rr-login-card button:hover,
+.rr-admin .rr-topbar a:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 620px) {
+  .rr-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    padding-bottom: 14px;
+    padding-top: 14px;
+  }
+
+  .rr-topbar h1 {
+    font-size: 15px;
   }
 }
