@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dotenv": "^16.4.5",
+    "import:assets": "node scripts/import-assets-to-mongo.js",
+    "import:all": "npm run import:json && npm run import:assets",
+    "import:json": "node scripts/import-json-to-mongo.js",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "mongodb": "^7.2.0",
     "path": "^0.12.7"
   }
 }

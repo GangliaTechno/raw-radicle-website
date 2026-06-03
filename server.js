@@ -3,10 +3,19 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+const { Readable } = require("stream");
 const axios = require("axios");
+const { GridFSBucket, MongoClient } = require("mongodb");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_DB = process.env.MONGODB_DB || "raw_radicles";
+const MONGODB_ONLY = process.env.MONGODB_ONLY === "true" || process.env.NODE_ENV === "production";
+
+let mongoClient;
+let mongoDb;
+let mongoConnectPromise;
 
 // Middleware
 app.use(cors());
@@ -24,90 +33,234 @@ const readJsonFile = (filePath, fallback = {}) => {
   return JSON.parse(content);
 };
 
+const isMongoConfigured = () => Boolean(MONGODB_URI);
+
+const getMongoDb = async () => {
+  if (!isMongoConfigured()) return null;
+  if (mongoDb) return mongoDb;
+
+  if (!mongoConnectPromise) {
+    mongoClient = new MongoClient(MONGODB_URI);
+    mongoConnectPromise = mongoClient.connect();
+  }
+
+  await mongoConnectPromise;
+  mongoDb = mongoClient.db(MONGODB_DB);
+  return mongoDb;
+};
+
+const getHomepageCollection = async () => {
+  const db = await getMongoDb();
+  return db ? db.collection("homepage") : null;
+};
+
+const getMongoCollection = async (collectionName) => {
+  const db = await getMongoDb();
+  return db ? db.collection(collectionName) : null;
+};
+
+const getMongoData = async (collectionName, documentId, fallbackReader) => {
+  const fallback = fallbackReader();
+
+  if (!isMongoConfigured()) {
+    return fallback;
+  }
+
+  try {
+    const collection = await getMongoCollection(collectionName);
+    const doc = await collection.findOne({ _id: documentId });
+
+    if (doc && Object.prototype.hasOwnProperty.call(doc, "data")) {
+      return doc.data;
+    }
+
+    await collection.replaceOne(
+      { _id: documentId },
+      { _id: documentId, data: fallback, updatedAt: new Date() },
+      { upsert: true }
+    );
+
+    return fallback;
+  } catch (error) {
+    console.error(`MongoDB ${collectionName} read failed, using JSON fallback:`, error.message);
+    return fallback;
+  }
+};
+
+const saveMongoData = async (collectionName, documentId, data) => {
+  if (!isMongoConfigured()) return;
+
+  const collection = await getMongoCollection(collectionName);
+  await collection.replaceOne(
+    { _id: documentId },
+    { _id: documentId, data, updatedAt: new Date() },
+    { upsert: true }
+  );
+};
+
+const readDataFile = (fileName, fallback = {}) => {
+  if (MONGODB_ONLY) return fallback;
+
+  try {
+    return readJsonFile(path.join(__dirname, fileName), fallback);
+  } catch (error) {
+    console.error(`Failed to read ${fileName}:`, error.message);
+    return fallback;
+  }
+};
+
+const saveDataFile = (fileName, data) => {
+  if (MONGODB_ONLY) return;
+
+  fs.writeFileSync(path.join(__dirname, fileName), JSON.stringify(data, null, 2), "utf8");
+};
+
+const getAssetsBucket = async () => {
+  const db = await getMongoDb();
+  return db ? new GridFSBucket(db, { bucketName: "assets" }) : null;
+};
+
+const getContentType = (fileName) => {
+  const ext = path.extname(fileName).toLowerCase();
+  const types = {
+    ".avif": "image/avif",
+    ".css": "text/css",
+    ".gif": "image/gif",
+    ".html": "text/html",
+    ".ico": "image/x-icon",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".js": "text/javascript",
+    ".json": "application/json",
+    ".m4v": "video/x-m4v",
+    ".mov": "video/quicktime",
+    ".mp4": "video/mp4",
+    ".png": "image/png",
+    ".svg": "image/svg+xml",
+    ".webm": "video/webm",
+    ".webp": "image/webp",
+    ".woff": "font/woff",
+    ".woff2": "font/woff2"
+  };
+  return types[ext] || "application/octet-stream";
+};
+
+const homepageFilePath = path.join(__dirname, "homepage.json");
+
+const readHomepageFromFile = () => {
+  if (MONGODB_ONLY) return {};
+
+  const data = readJsonFile(homepageFilePath);
+  return data && typeof data === "object" && !Array.isArray(data) ? data : {};
+};
+
+const getHomepageData = async () => {
+  const fallback = readHomepageFromFile();
+
+  if (!isMongoConfigured()) {
+    return fallback;
+  }
+
+  try {
+    const collection = await getHomepageCollection();
+    const doc = await collection.findOne({ _id: "homepage" });
+
+    if (doc && doc.data && typeof doc.data === "object" && !Array.isArray(doc.data)) {
+      return doc.data;
+    }
+
+    if (Object.keys(fallback).length > 0) {
+      await collection.replaceOne(
+        { _id: "homepage" },
+        { _id: "homepage", data: fallback, updatedAt: new Date() },
+        { upsert: true }
+      );
+    }
+
+    return fallback;
+  } catch (error) {
+    console.error("MongoDB homepage read failed, using homepage.json:", error.message);
+    return fallback;
+  }
+};
+
+const saveHomepageData = async (data) => {
+  if (isMongoConfigured()) {
+    const collection = await getHomepageCollection();
+    await collection.replaceOne(
+      { _id: "homepage" },
+      { _id: "homepage", data, updatedAt: new Date() },
+      { upsert: true }
+    );
+  }
+
+  if (!MONGODB_ONLY) {
+    fs.writeFileSync(homepageFilePath, JSON.stringify(data, null, 2), "utf8");
+  }
+};
+
 // Product CMS API
-app.get("/api/product-cms/:id", (req, res) => {
+app.get("/api/product-cms/:id", async (req, res) => {
   console.log("==> HIT GET /api/product-cms/ ID:", req.params.id);
   const { id } = req.params;
-  const filePath = path.join(__dirname, "products_cms.json");
-  if (!fs.existsSync(filePath)) {
-    console.log("  File not found, returning empty object");
-    return res.json({});
-  }
   try {
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const data = await getMongoData("productCms", "productCms", () => readDataFile("products_cms.json"));
     console.log("  Data found for ID:", !!data[id]);
     res.json(data[id] || {});
   } catch (e) {
-    console.log("  Error parsing JSON:", e.message);
+    console.log("  Error reading product CMS:", e.message);
     res.json({});
   }
 });
 
-app.post("/api/product-cms/:id", (req, res) => {
+app.post("/api/product-cms/:id", async (req, res) => {
   const { id } = req.params;
-  const filePath = path.join(__dirname, "products_cms.json");
-  let data = {};
-  if (fs.existsSync(filePath)) {
-    try {
-      data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    } catch (e) { }
+  try {
+    const data = await getMongoData("productCms", "productCms", () => readDataFile("products_cms.json"));
+    data[id] = req.body;
+    await saveMongoData("productCms", "productCms", data);
+    saveDataFile("products_cms.json", data);
+    res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to save product CMS" });
   }
-  data[id] = req.body;
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-  res.json({ success: true });
 });
 
 // Products API
-app.get("/api/products", (req, res) => {
-  const filePath = path.join(__dirname, "products.json");
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).json({ error: "Products file not found" });
-  }
+app.get("/api/products", async (req, res) => {
   try {
-    res.json(readJsonFile(filePath));
+    res.json(await getMongoData("products", "products", () => readDataFile("products.json")));
   } catch (e) {
-    console.error("Failed to parse products.json:", e.message);
-    res.status(500).json({ error: "Failed to parse products.json" });
+    console.error("Failed to fetch products:", e.message);
+    res.status(500).json({ error: "Failed to fetch products" });
   }
 });
 
-app.post("/api/products", (req, res) => {
-  const filePath = path.join(__dirname, "products.json");
+app.post("/api/products", async (req, res) => {
   const newData = req.body;
-  
-  let oldData = {};
-  if (fs.existsSync(filePath)) {
-    try {
-      oldData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    } catch (e) {}
-  }
 
-  fs.writeFileSync(filePath, JSON.stringify(newData, null, 2), "utf8");
-  res.json({ success: true, message: "Products updated successfully" });
+  try {
+    await saveMongoData("products", "products", newData);
+    saveDataFile("products.json", newData);
+    res.json({ success: true, message: "Products updated successfully" });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to save products" });
+  }
 });
 
-app.delete("/api/products/:id", (req, res) => {
+app.delete("/api/products/:id", async (req, res) => {
   const { id } = req.params;
-  const productsPath = path.join(__dirname, "products.json");
-  const cmsPath = path.join(__dirname, "products_cms.json");
   try {
-    // 1. Remove from products.json
-    if (fs.existsSync(productsPath)) {
-      const data = JSON.parse(fs.readFileSync(productsPath, "utf8"));
-      if (data[id]) {
-        delete data[id];
-        fs.writeFileSync(productsPath, JSON.stringify(data, null, 2), "utf8");
-      }
-    }
+    const products = await getMongoData("products", "products", () => readDataFile("products.json"));
+    const cms = await getMongoData("productCms", "productCms", () => readDataFile("products_cms.json"));
 
-    // 2. Remove from products_cms.json
-    if (fs.existsSync(cmsPath)) {
-      const data = JSON.parse(fs.readFileSync(cmsPath, "utf8"));
-      if (data[id]) {
-        delete data[id];
-        fs.writeFileSync(cmsPath, JSON.stringify(data, null, 2), "utf8");
-      }
-    }
+    if (products[id]) delete products[id];
+    if (cms[id]) delete cms[id];
+
+    await saveMongoData("products", "products", products);
+    await saveMongoData("productCms", "productCms", cms);
+    saveDataFile("products.json", products);
+    saveDataFile("products_cms.json", cms);
 
     res.json({ success: true, message: `Product ${id} deleted successfully` });
   } catch (e) {
@@ -117,25 +270,24 @@ app.delete("/api/products/:id", (req, res) => {
 });
 
 // Home Page API
-app.get("/api/homepage", (req, res) => {
-  const filePath = path.join(__dirname, "homepage.json");
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).json({ error: "Home page file not found" });
-  }
+app.get("/api/homepage", async (req, res) => {
   try {
-    const data = readJsonFile(filePath);
-    res.json(data && typeof data === "object" && !Array.isArray(data) ? data : {});
+    res.json(await getHomepageData());
   } catch (e) {
-    console.error("Failed to parse homepage.json:", e.message);
-    res.status(500).json({ error: "Failed to parse homepage.json" });
+    console.error("Failed to fetch homepage data:", e.message);
+    res.status(500).json({ error: "Failed to fetch homepage data" });
   }
 });
 
-app.post("/api/homepage", (req, res) => {
-  const filePath = path.join(__dirname, "homepage.json");
+app.post("/api/homepage", async (req, res) => {
   const data = req.body;
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-  res.json({ success: true, message: "Home page updated successfully" });
+  try {
+    await saveHomepageData(data);
+    res.json({ success: true, message: "Home page updated successfully" });
+  } catch (e) {
+    console.error("Failed to save homepage data:", e.message);
+    res.status(500).json({ error: "Failed to save homepage data" });
+  }
 });
 
 app.get("/api/uploads/videos", (req, res) => {
@@ -143,17 +295,29 @@ app.get("/api/uploads/videos", (req, res) => {
   const videoExtensions = new Set([".mp4", ".webm", ".mov", ".m4v"]);
 
   try {
-    if (!fs.existsSync(uploadDir)) {
-      return res.json({ videos: [] });
+    const videos = new Set();
+
+    if (fs.existsSync(uploadDir)) {
+      fs
+        .readdirSync(uploadDir)
+        .filter((fileName) => videoExtensions.has(path.extname(fileName).toLowerCase()))
+        .sort()
+        .forEach((fileName) => videos.add(`assets/uploads/${fileName}`));
     }
 
-    const videos = fs
-      .readdirSync(uploadDir)
-      .filter((fileName) => videoExtensions.has(path.extname(fileName).toLowerCase()))
-      .sort()
-      .map((fileName) => `assets/uploads/${fileName}`);
+    if (!isMongoConfigured()) {
+      return res.json({ videos: Array.from(videos).sort() });
+    }
 
-    res.json({ videos });
+    getMongoDb()
+      .then((db) => db.collection("assets.files").find({ filename: /^assets\/uploads\/.+/ }).toArray())
+      .then((files) => {
+        files
+          .filter((file) => videoExtensions.has(path.extname(file.filename).toLowerCase()))
+          .forEach((file) => videos.add(file.filename));
+        res.json({ videos: Array.from(videos).sort() });
+      })
+      .catch(() => res.json({ videos: Array.from(videos).sort() }));
   } catch (error) {
     res.status(500).json({ error: "Failed to list uploaded videos" });
   }
@@ -187,46 +351,39 @@ const defaultBlogs = [
   }
 ];
 
-app.get("/api/blogs", (req, res) => {
-  const filePath = path.join(__dirname, "blog_cms.json");
-  if (!fs.existsSync(filePath)) {
-    return res.json({ blogs: defaultBlogs });
-  }
+app.get("/api/blogs", async (req, res) => {
   try {
-    const data = fs.readFileSync(filePath, "utf8");
-    res.json(data ? JSON.parse(data) : { blogs: defaultBlogs });
+    res.json(await getMongoData("blogs", "blogs", () => readDataFile("blog_cms.json", { blogs: defaultBlogs })));
   } catch (e) {
     res.json({ blogs: defaultBlogs });
   }
 });
 
-app.post("/api/blogs", (req, res) => {
-  const filePath = path.join(__dirname, "blog_cms.json");
+app.post("/api/blogs", async (req, res) => {
   const blogs = Array.isArray(req.body.blogs) ? req.body.blogs : [];
   const data = {
     blogs,
     updatedAt: req.body.updatedAt || new Date().toISOString()
   };
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-  res.json({ success: true, blogs, message: "Blog content updated successfully" });
+  try {
+    await saveMongoData("blogs", "blogs", data);
+    saveDataFile("blog_cms.json", data);
+    res.json({ success: true, blogs, message: "Blog content updated successfully" });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to save blog content" });
+  }
 });
 
 // Subscriber API
-app.get("/api/subscribers", (req, res) => {
-  const filePath = path.join(__dirname, "subscribers.json");
-  if (!fs.existsSync(filePath)) {
-    return res.json({ subscribers: [] });
-  }
+app.get("/api/subscribers", async (req, res) => {
   try {
-    const data = fs.readFileSync(filePath, "utf8");
-    res.json(data ? JSON.parse(data) : { subscribers: [] });
+    res.json(await getMongoData("subscribers", "subscribers", () => readDataFile("subscribers.json", { subscribers: [] })));
   } catch (e) {
     res.json({ subscribers: [] });
   }
 });
 
-app.post("/api/subscribers", (req, res) => {
-  const filePath = path.join(__dirname, "subscribers.json");
+app.post("/api/subscribers", async (req, res) => {
   const name = String(req.body.name || "").trim();
   const email = String(req.body.email || "").trim().toLowerCase();
   const phone = String(req.body.phone || "").trim();
@@ -235,13 +392,7 @@ app.post("/api/subscribers", (req, res) => {
     return res.status(400).json({ success: false, error: "Name and valid email are required" });
   }
 
-  let data = { subscribers: [] };
-  if (fs.existsSync(filePath)) {
-    try {
-      const content = fs.readFileSync(filePath, "utf8");
-      if (content.trim()) data = JSON.parse(content);
-    } catch (e) {}
-  }
+  const data = await getMongoData("subscribers", "subscribers", () => readDataFile("subscribers.json", { subscribers: [] }));
 
   const existingIndex = (data.subscribers || []).findIndex((subscriber) => subscriber.email === email);
   const subscriber = {
@@ -259,15 +410,19 @@ app.post("/api/subscribers", (req, res) => {
     data.subscribers.unshift(subscriber);
   }
 
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-  res.json({ success: true, subscriber });
+  try {
+    await saveMongoData("subscribers", "subscribers", data);
+    saveDataFile("subscribers.json", data);
+    res.json({ success: true, subscriber });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to save subscriber" });
+  }
 });
 
 // Instagram API
-app.get("/api/instagram/posts", (req, res) => {
-  const filePath = path.join(__dirname, "homepage.json");
+app.get("/api/instagram/posts", async (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const data = await getHomepageData();
     res.json(data.instagram || { posts: [], profileUrl: "" });
   } catch (e) {
     res.status(500).json({ error: "Failed to fetch instagram posts" });
@@ -277,9 +432,8 @@ app.get("/api/instagram/posts", (req, res) => {
 app.post("/api/instagram/refresh", async (req, res) => {
   // This is a placeholder for actual Instagram scraping or API call.
   // For now, we will simulate adding a mock post to show the "replacement" logic.
-  const filePath = path.join(__dirname, "homepage.json");
   try {
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const data = await getHomepageData();
     if (!data.instagram) data.instagram = { posts: [], profileUrl: "" };
 
     // Mock new post
@@ -295,7 +449,7 @@ app.post("/api/instagram/refresh", async (req, res) => {
       data.instagram.posts = data.instagram.posts.slice(0, 8);
     }
 
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+    await saveHomepageData(data);
     res.json({ success: true, message: "Instagram feed refreshed (Simulated)", post: newPost });
   } catch (e) {
     res.status(500).json({ error: "Failed to refresh instagram feed" });
@@ -364,7 +518,7 @@ function updateReviewStatus(score, threshold = 1) {
 }
 
 // Review Management API
-app.post("/api/reviews/submit", (req, res) => {
+app.post("/api/reviews/submit", async (req, res) => {
   const { productId, review } = req.body;
 
   // Calculate Score and Moderation Fields
@@ -382,13 +536,13 @@ app.post("/api/reviews/submit", (req, res) => {
 
   if (status === "approved") {
     // Save to CMS (Approved)
-    const cmsFile = path.join(__dirname, "products_cms.json");
     try {
-      let cms = JSON.parse(fs.readFileSync(cmsFile, "utf8"));
+      let cms = await getMongoData("productCms", "productCms", () => readDataFile("products_cms.json"));
       if (!cms[productId]) cms[productId] = {};
       if (!cms[productId].reviews) cms[productId].reviews = [];
       cms[productId].reviews.push(updatedReview);
-      fs.writeFileSync(cmsFile, JSON.stringify(cms, null, 2), "utf8");
+      await saveMongoData("productCms", "productCms", cms);
+      saveDataFile("products_cms.json", cms);
       return res.json({ success: true, message: "Review approved and published automatically", status: "approved" });
     } catch (e) {
       console.error("Auto-approval failed:", e);
@@ -396,39 +550,32 @@ app.post("/api/reviews/submit", (req, res) => {
   }
 
   // Save to Pending
-  const filePath = path.join(__dirname, "pending_reviews.json");
-  let data = {};
-  if (fs.existsSync(filePath)) {
-    try {
-      const content = fs.readFileSync(filePath, "utf8");
-      if (content.trim()) data = JSON.parse(content);
-    } catch (e) { }
-  }
+  let data = await getMongoData("pendingReviews", "pendingReviews", () => readDataFile("pending_reviews.json"));
   if (!data[productId]) data[productId] = [];
   data[productId].push(updatedReview);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-  res.json({ success: true, message: "Review submitted for moderation", status: "pending" });
+  try {
+    await saveMongoData("pendingReviews", "pendingReviews", data);
+    saveDataFile("pending_reviews.json", data);
+    res.json({ success: true, message: "Review submitted for moderation", status: "pending" });
+  } catch (e) {
+    res.status(500).json({ error: "Failed to save pending review" });
+  }
 });
 
-app.get("/api/reviews/pending", (req, res) => {
-  const filePath = path.join(__dirname, "pending_reviews.json");
-  if (!fs.existsSync(filePath)) return res.json({});
+app.get("/api/reviews/pending", async (req, res) => {
   try {
-    const data = fs.readFileSync(filePath, "utf8");
-    res.json(data ? JSON.parse(data) : {});
+    res.json(await getMongoData("pendingReviews", "pendingReviews", () => readDataFile("pending_reviews.json")));
   } catch (e) {
     res.json({});
   }
 });
 
-app.post("/api/reviews/approve", (req, res) => {
+app.post("/api/reviews/approve", async (req, res) => {
   const { productId, reviewId } = req.body;
-  const pendingFile = path.join(__dirname, "pending_reviews.json");
-  const cmsFile = path.join(__dirname, "products_cms.json");
 
   try {
-    let pending = JSON.parse(fs.readFileSync(pendingFile, "utf8"));
-    let cms = JSON.parse(fs.readFileSync(cmsFile, "utf8"));
+    let pending = await getMongoData("pendingReviews", "pendingReviews", () => readDataFile("pending_reviews.json"));
+    let cms = await getMongoData("productCms", "productCms", () => readDataFile("products_cms.json"));
 
     if (pending[productId]) {
       const reviewIdx = pending[productId].findIndex(r => r.id == reviewId);
@@ -439,8 +586,10 @@ app.post("/api/reviews/approve", (req, res) => {
         if (!cms[productId].reviews) cms[productId].reviews = [];
         cms[productId].reviews.push(review);
 
-        fs.writeFileSync(pendingFile, JSON.stringify(pending, null, 2), "utf8");
-        fs.writeFileSync(cmsFile, JSON.stringify(cms, null, 2), "utf8");
+        await saveMongoData("pendingReviews", "pendingReviews", pending);
+        await saveMongoData("productCms", "productCms", cms);
+        saveDataFile("pending_reviews.json", pending);
+        saveDataFile("products_cms.json", cms);
         return res.json({ success: true });
       }
     }
@@ -450,13 +599,14 @@ app.post("/api/reviews/approve", (req, res) => {
   }
 });
 
-app.delete("/api/reviews/:type/:productId/:reviewId", (req, res) => {
+app.delete("/api/reviews/:type/:productId/:reviewId", async (req, res) => {
   const { type, productId, reviewId } = req.params;
   const fileName = type === "pending" ? "pending_reviews.json" : "products_cms.json";
-  const filePath = path.join(__dirname, fileName);
+  const collectionName = type === "pending" ? "pendingReviews" : "productCms";
+  const documentId = type === "pending" ? "pendingReviews" : "productCms";
 
   try {
-    let data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    let data = await getMongoData(collectionName, documentId, () => readDataFile(fileName));
     if (type === "pending") {
       if (data[productId]) {
         data[productId] = data[productId].filter(r => r.id != reviewId);
@@ -466,7 +616,8 @@ app.delete("/api/reviews/:type/:productId/:reviewId", (req, res) => {
         data[productId].reviews = data[productId].reviews.filter(r => r.id != reviewId);
       }
     }
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+    await saveMongoData(collectionName, documentId, data);
+    saveDataFile(fileName, data);
     res.json({ success: true });
   } catch (e) {
     res.status(500).json({ error: e.message });
@@ -482,19 +633,56 @@ app.post("/api/upload", (req, res) => {
   }
 
   try {
-    const uploadDir = path.join(__dirname, "public", "assets", "uploads");
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-
     // Strip base64 prefix if present
     const base64Image = base64Data.split(";base64,").pop();
-    const filePath = path.join(uploadDir, fileName);
-
-    fs.writeFileSync(filePath, base64Image, { encoding: "base64" });
-
+    const fileBuffer = Buffer.from(base64Image, "base64");
     const relativePath = `assets/uploads/${fileName}`;
-    res.json({ success: true, url: relativePath });
+
+    if (!MONGODB_ONLY) {
+      const uploadDir = path.join(__dirname, "public", "assets", "uploads");
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+
+      const filePath = path.join(uploadDir, fileName);
+      fs.writeFileSync(filePath, fileBuffer);
+    }
+
+    if (!isMongoConfigured()) {
+      if (MONGODB_ONLY) {
+        return res.status(500).json({ success: false, error: "MongoDB is required for uploads" });
+      }
+
+      return res.json({ success: true, url: relativePath });
+    }
+
+    getMongoDb()
+      .then(async (db) => {
+        const bucket = new GridFSBucket(db, { bucketName: "assets" });
+        const existingFiles = await db.collection("assets.files").find({ filename: relativePath }).toArray();
+        await Promise.all(existingFiles.map((file) => bucket.delete(file._id).catch(() => {})));
+
+        await new Promise((resolve, reject) => {
+          const uploadStream = bucket.openUploadStream(relativePath, {
+            contentType: getContentType(fileName),
+            metadata: {
+              source: "admin-upload",
+              uploadedAt: new Date()
+            }
+          });
+          Readable.from(fileBuffer).pipe(uploadStream).on("error", reject).on("finish", resolve);
+        });
+
+        res.json({ success: true, url: relativePath });
+      })
+      .catch((error) => {
+        console.error("MongoDB asset upload failed:", error.message);
+        if (MONGODB_ONLY) {
+          return res.status(500).json({ success: false, error: "MongoDB asset upload failed" });
+        }
+
+        res.json({ success: true, url: relativePath, warning: "Saved locally, but MongoDB asset upload failed" });
+      });
   } catch (err) {
     console.error("Upload failed:", err);
     res.status(500).json({ success: false, error: "Upload failed" });
@@ -528,6 +716,27 @@ const frontendDistPath = path.join(__dirname, "frontend", "dist");
 const serveReactApp = (req, res) => {
   res.sendFile(path.join(frontendDistPath, "index.html"));
 };
+
+app.get(/^\/(assets|css)\/(.+)/, async (req, res, next) => {
+  if (!isMongoConfigured()) return next();
+
+  const assetPath = `${req.params[0]}/${req.params[1]}`.replace(/\\/g, "/");
+
+  try {
+    const db = await getMongoDb();
+    const file = await db.collection("assets.files").findOne({ filename: assetPath });
+
+    if (!file) return next();
+
+    res.setHeader("Content-Type", file.contentType || getContentType(assetPath));
+    res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+
+    const bucket = await getAssetsBucket();
+    bucket.openDownloadStreamByName(assetPath).on("error", next).pipe(res);
+  } catch (error) {
+    next();
+  }
+});
 
 if (fs.existsSync(frontendDistPath)) {
   app.use(express.static(frontendDistPath));
@@ -689,7 +898,18 @@ app.post("/api/order", async (req, res) => {
 
 const ANALYTICS_FILE = path.join(__dirname, 'analytics.json');
 
-function readAnalytics() {
+async function readAnalytics() {
+  if (isMongoConfigured()) {
+    return getMongoData("analytics", "analytics", () => {
+      try {
+        if (fs.existsSync(ANALYTICS_FILE)) {
+          return JSON.parse(fs.readFileSync(ANALYTICS_FILE, 'utf8'));
+        }
+      } catch (e) {}
+      return { daily: {}, pages: {}, clicks: {} };
+    });
+  }
+
   try {
     if (fs.existsSync(ANALYTICS_FILE)) {
       return JSON.parse(fs.readFileSync(ANALYTICS_FILE, 'utf8'));
@@ -698,17 +918,18 @@ function readAnalytics() {
   return { daily: {}, pages: {}, clicks: {} };
 }
 
-function writeAnalytics(data) {
+async function writeAnalytics(data) {
   try {
+    await saveMongoData("analytics", "analytics", data);
     fs.writeFileSync(ANALYTICS_FILE, JSON.stringify(data, null, 2), 'utf8');
   } catch (e) {
-    console.error('Failed to write analytics.json:', e.message);
+    console.error('Failed to write analytics:', e.message);
   }
 }
 
 // GET /api/analytics – summary for dashboard
-app.get('/api/analytics', (req, res) => {
-  const data = readAnalytics();
+app.get('/api/analytics', async (req, res) => {
+  const data = await readAnalytics();
 
   // Build last-14-days array
   const days = [];
@@ -776,11 +997,11 @@ app.get('/api/analytics', (req, res) => {
 });
 
 // POST /api/analytics/event – track a single event from frontend
-app.post('/api/analytics/event', (req, res) => {
+app.post('/api/analytics/event', async (req, res) => {
   const { type, page, detail, duration } = req.body || {};
   if (!type) return res.status(400).json({ error: 'type required' });
 
-  const data = readAnalytics();
+  const data = await readAnalytics();
   const today = new Date().toISOString().split('T')[0];
 
   if (!data.daily[today]) data.daily[today] = { pageViews: 0, clicks: 0, totalTime: 0, sessions: 0 };
@@ -807,7 +1028,7 @@ app.post('/api/analytics/event', (req, res) => {
     }
   }
 
-  writeAnalytics(data);
+  await writeAnalytics(data);
   res.json({ ok: true });
 });
 
@@ -819,6 +1040,22 @@ if (fs.existsSync(frontendDistPath)) {
 }
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+  if (!isMongoConfigured()) {
+    if (MONGODB_ONLY) {
+      console.error("MONGODB_URI is required when MONGODB_ONLY=true.");
+      process.exit(1);
+    }
+
+    console.log("MongoDB is not configured. Using local JSON files.");
+    return;
+  }
+
+  try {
+    await getMongoDb();
+    console.log(`MongoDB connected. Database: ${MONGODB_DB}`);
+  } catch (error) {
+    console.error("MongoDB connection failed. JSON fallbacks may be used:", error.message);
+  }
 });
