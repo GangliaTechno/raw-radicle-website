@@ -14,7 +14,6 @@ export const fallbackHome = {
     { name: 'Dr. Rohan Mehra', role: 'Nutritionist', image: 'assets/experts/doctor3.png' },
     { name: 'Dr. Sarah Khan', role: 'Dermatologist', image: 'assets/experts/doctor4.png' },
     { name: 'Dr. Vikram Singh', role: 'Wellness Expert', image: 'assets/experts/doctor5.png' },
-    { name: 'Dr. Priya Sharma', role: 'Holistic Health Consultant', image: 'assets/experts/doctor6.png' },
   ],
   testimonials: {
     videos: [
