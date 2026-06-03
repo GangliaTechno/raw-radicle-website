@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const defaultVideos = [
   { id: 'v1', url: '/assets/video/video-1.mp4', productId: 'adarkc', productName: 'Ashwagandha Dark Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: '/assets/choco/adark.png', views: '1.2K Views' },
@@ -131,7 +132,7 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
         .rrx-product{display:flex;align-items:center;gap:12px;margin-bottom:20px;text-align:left}
         .rrx-product-img{width:45px;height:45px;object-fit:contain;background:#f5f5f5;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.03)}
         .rrx-product-name{font-family:Montserrat,Arial,sans-serif;font-size:14px;font-weight:600;color:#1c1c1c;margin:0;line-height:1.4;height:2.8em;overflow:hidden}
-        .rrx-price{display:flex;align-items:center;gap:6px;font-family:Montserrat,Arial,sans-serif}.rrx-current{font-size:14px;font-weight:700;color:#1c1c1c}.rrx-original{font-size:13px;color:#888;text-decoration:line-through}
+        .rrx-price{display:flex;align-items:center;gap:6px;font-family:Montserrat,Arial,sans-serif}.rrx-current{font-size:14px;font-weight:700;color:#1c1c1c}
         .rrx-discount{font-size:13px;color:#2e7d32;font-weight:600;margin-top:2px;display:block}
         .rrx-buy{width:100%;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#1c1c1c;background:transparent;border:1px solid #1c1c1c;padding:12px 24px;cursor:pointer;transition:color .25s ease}
         .rrx-buy:hover{color:#fff}
@@ -203,15 +204,14 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
                     <div className="rrx-price" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px', textAlign: 'left', marginTop: '4px' }}>
                       <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
                         <span className="rrx-current">{formatPrice(item.price)}</span>
-                        {item.originalPrice ? <span className="rrx-original">{formatOriginalPrice(item.originalPrice)}</span> : null}
                       </div>
                       <span style={{ fontSize: '10px', color: '#8f8f8f', fontWeight: '500', display: 'block' }}>(inclusive of all taxes)</span>
                     </div>
                   </div>
                 </div>
-                <button className="rrx-buy" type="button" onClick={() => console.log('buy', item.productId || item.id)}>
+                <Link className="rrx-buy" to={`/${item.productId || item.id}`}>
                   View details
-                </button>
+                </Link>
               </div>
             </article>
           ))}
