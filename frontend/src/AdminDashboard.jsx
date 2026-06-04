@@ -990,7 +990,7 @@ function AdminDashboard() {
   if (!user) {
     return (
       <main className="rr-admin rr-admin-login">
-        <div className="rr-login-card">
+        <form className="rr-login-card" onSubmit={handleLogin}>
           <img src="/assets/RR_Logo-1.png" alt="Raw Radicles" />
           <h1>Admin Login</h1>
           {loginError ? <div className="rr-alert">{loginError}</div> : null}
@@ -1008,8 +1008,8 @@ function AdminDashboard() {
             value={loginForm.password}
             onChange={(event) => setLoginForm({ ...loginForm, password: event.target.value })}
           />
-          <button type="button" onClick={handleLogin}>Login</button>
-        </div>
+          <button type="submit">Login</button>
+        </form>
       </main>
     )
   }
