@@ -2,7 +2,7 @@ export const fallbackHome = {
   hero: {
     slides: [{ title: 'Experience the Power of Dark', subtitle: 'CHYAWANAPRASH', image: 'assets/banner1.jpg', link: '/cdarkc' }],
   },
-  staticBanner: { image: 'assets/RRbanner.png', link: '/products' },
+  staticBanner: { image: 'assets/RRbanner_11.png', link: '/products' },
   videoHero: {
     url: 'assets/uploads/cms-1776053796791-newad.mp4',
     title: 'Savor the richness of artisanal Ayurvedic chocolate',

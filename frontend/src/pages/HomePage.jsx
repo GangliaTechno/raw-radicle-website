@@ -36,7 +36,7 @@ export function HomePage() {
 
   // Fallback images for static banner
   const bannerImages = [
-    'assets/RRbanner.png',
+    'assets/RRbanner_11.png',
     'assets/RRbanner_4.png',
     'assets/RRbanner_2.png',
     'assets/RRbanner_3.png',
