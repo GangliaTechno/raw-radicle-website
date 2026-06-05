@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const defaultExperts = [
   { name: 'Dr. Nozer Sheriar', role: 'Gynaecologist', image: '/assets/experts/doctor1.png' },
   { name: 'Dr. Anjali Desai', role: 'Ayurvedic Specialist', image: '/assets/experts/doctor2.png' },
@@ -24,8 +26,9 @@ export default function Experts({ experts = defaultExperts, title = 'Meet the Ex
         .rrx-experts{padding:86px 16px 104px;background:#efefef;box-sizing:border-box}
         .rrx-experts-title{font-family:Montserrat,Arial,sans-serif;font-size:32px;font-weight:400;letter-spacing:10px;text-transform:uppercase;color:#242424;text-align:center;margin:0 0 68px;line-height:1.25}
         .rrx-experts-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;width:100%;margin:0 auto;padding:0 18px;box-sizing:border-box}
-        .rrx-expert-card{margin:0;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:0;box-shadow:0 13px 28px rgba(0,0,0,.07);text-align:center;overflow:hidden;transition:transform .28s ease,box-shadow .28s ease}
-        .rrx-expert-card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(0,0,0,.1)}
+        .rrx-expert-card{display:block;margin:0;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:0;box-shadow:0 13px 28px rgba(0,0,0,.07);text-align:center;overflow:hidden;text-decoration:none;color:inherit;transition:transform .28s ease,box-shadow .28s ease}
+        .rrx-expert-card:hover,.rrx-expert-card:focus-visible{transform:translateY(-5px);box-shadow:0 18px 34px rgba(0,0,0,.1)}
+        .rrx-expert-card:focus-visible{outline:3px solid #b08850;outline-offset:4px}
         .rrx-expert-photo{width:100%;height:430px;object-fit:cover;display:block;background:#f5f5f5;border-top-left-radius:0;border-top-right-radius:0}
         .rrx-expert-fallback{width:100%;height:430px;background:#ded8cf;color:#1c1c1c;display:flex;align-items:center;justify-content:center;font:700 38px Montserrat,Arial,sans-serif;border-top-left-radius:0;border-top-right-radius:0}
         .rrx-expert-caption{padding:24px 14px 21px;min-height:98px;box-sizing:border-box}
@@ -41,7 +44,7 @@ export default function Experts({ experts = defaultExperts, title = 'Meet the Ex
       </h2>
       <div className="rrx-experts-grid">
         {list.map((expert, index) => (
-          <figure className="rrx-expert-card" key={`${expert.name}-${index}`}>
+          <Link className="rrx-expert-card" key={`${expert.name}-${index}`} to={`/about#expert-${index + 1}`}>
             {expert.image ? (
               <img className="rrx-expert-photo" src={expert.image} alt={expert.name} loading="lazy" />
             ) : (
@@ -49,11 +52,11 @@ export default function Experts({ experts = defaultExperts, title = 'Meet the Ex
                 {getInitials(expert.name)}
               </div>
             )}
-            <figcaption className="rrx-expert-caption">
+            <span className="rrx-expert-caption">
               <span className="rrx-expert-name">{expert.name}</span>
               <span className="rrx-expert-role">{expert.role}</span>
-            </figcaption>
-          </figure>
+            </span>
+          </Link>
         ))}
       </div>
     </section>

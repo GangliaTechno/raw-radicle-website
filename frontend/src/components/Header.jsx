@@ -285,15 +285,15 @@ export function Header({ onSearch }) {
                   <img
                     alt="Raw Radicles"
                     className="Header__LogoImage Header__LogoImage--primary"
-                    src={asset('assets/RR_Logo-1.png')}
-                    style={{ maxHeight: '48px', objectFit: 'contain' }}
+                    src={asset('assets/RR_logo embossed_tm.png')}
+                    style={{ maxHeight: '64px', objectFit: 'contain' }}
                   />
                   {isHome && (
                     <img
                       alt="Raw Radicles"
                       className="Header__LogoImage Header__LogoImage--transparent"
-                      src={asset('assets/RR_Logo-1.png')}
-                      style={{ maxHeight: '48px', objectFit: 'contain' }}
+                      src={asset('assets/RR_logo embossed_tm.png')}
+                      style={{ maxHeight: '64px', objectFit: 'contain' }}
                     />
                   )}
                 </Link>

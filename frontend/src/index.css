@@ -3397,3 +3397,9 @@ body {
     scroll-snap-align: center !important;
   }
 }
+
+/* Header logo: the embossed mark is wider, so width is the visible limiter. */
+.Header__LogoImage {
+  max-width: min(270px, 62vw) !important;
+  max-height: 128px !important;
+}
