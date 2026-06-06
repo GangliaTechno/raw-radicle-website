@@ -79,8 +79,8 @@ function SparkCard({ actionLabel, label, value, trend, icon, onClick }) {
 }
 
 function LineChart({ data, colorStroke = '#e85d26' }) {
-  const W = 600, H = 160;
-  const PAD = { t: 14, r: 12, b: 32, l: 38 };
+  const W = 640, H = 140;
+  const PAD = { t: 14, r: 14, b: 28, l: 34 };
   const cW = W - PAD.l - PAD.r;
   const cH = H - PAD.t - PAD.b;
   const max = Math.max(...data.map(d => d.value), 1);
@@ -93,13 +93,13 @@ function LineChart({ data, colorStroke = '#e85d26' }) {
   const areaD = `${pathD} L${pts[pts.length - 1].x.toFixed(1)},${(PAD.t + cH).toFixed(1)} L${pts[0].x.toFixed(1)},${(PAD.t + cH).toFixed(1)} Z`;
   const yTicks = [0, 0.25, 0.5, 0.75, 1].map(f => Math.round(f * max));
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', display: 'block' }}>
+    <svg className="kpi-line-chart" viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', display: 'block' }}>
       {yTicks.map((v, i) => {
         const y = PAD.t + cH - (v / max) * cH;
         return (
-          <g key={i}>
-            <line x1={PAD.l} y1={y} x2={PAD.l + cW} y2={y} stroke="#e8e3da" strokeWidth="1" strokeDasharray="4 3" />
-            <text x={PAD.l - 4} y={y + 4} textAnchor="end" fontSize="9" fill="#9e9789">{v}</text>
+          <g className="kpi-line-grid" key={i}>
+            <line x1={PAD.l} y1={y} x2={PAD.l + cW} y2={y} />
+            <text x={PAD.l - 8} y={y + 4} textAnchor="end">{v}</text>
           </g>
         );
       })}
@@ -109,16 +109,16 @@ function LineChart({ data, colorStroke = '#e85d26' }) {
           <stop offset="100%" stopColor={colorStroke} stopOpacity="0" />
         </linearGradient>
       </defs>
-      <path d={areaD} fill="url(#lc-fill)" />
-      <path d={pathD} fill="none" stroke={colorStroke} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+      <path className="kpi-line-area" d={areaD} fill="url(#lc-fill)" />
+      <path className="kpi-line-path" d={pathD} fill="none" stroke={colorStroke} strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
       {pts.map((p, i) => (
-        <g key={i}>
-          <circle cx={p.x} cy={p.y} r="4.5" fill="#fff" stroke={colorStroke} strokeWidth="2" />
+        <g className="kpi-line-point" key={i}>
+          <circle cx={p.x} cy={p.y} r="2.6" fill={colorStroke} />
           <title>{p.label}: {p.value}</title>
         </g>
       ))}
       {pts.filter((_, i) => i % 2 === 0 || i === pts.length - 1).map((p, i) => (
-        <text key={i} x={p.x} y={H - 6} textAnchor="middle" fontSize="9" fill="#9e9789">{p.label}</text>
+        <text className="kpi-line-label" key={i} x={p.x} y={H - 8} textAnchor="middle">{p.label}</text>
       ))}
     </svg>
   );
@@ -154,9 +154,10 @@ function DonutChart({ segments }) {
     };
   });
   return (
-    <svg viewBox="0 0 120 120" style={{ width: '120px', height: '120px', flexShrink: 0 }}>
+    <svg className="kpi-donut-chart" viewBox="0 0 120 120" style={{ width: '120px', height: '120px', flexShrink: 0 }}>
+      <circle className="kpi-donut-track" cx={cx} cy={cy} r={r} fill="none" strokeWidth={sw} />
       {segmentData.map((seg, i) => (
-        <circle key={i} cx={cx} cy={cy} r={r}
+        <circle className="kpi-donut-segment" key={i} cx={cx} cy={cy} r={r}
           fill="none" stroke={seg.color} strokeWidth={sw}
           strokeDasharray={circ} strokeDashoffset={seg.offset}
           style={{ transformOrigin: `${cx}px ${cy}px`, transform: `rotate(${seg.rotation}deg)`, transition: 'stroke-dashoffset 0.6s ease' }}
@@ -164,8 +165,8 @@ function DonutChart({ segments }) {
           <title>{seg.label}: {seg.value}</title>
         </circle>
       ))}
-      <text x={cx} y={cy - 5} textAnchor="middle" fontSize="15" fontWeight="700" fill="#1c1b1b">{total}</text>
-      <text x={cx} y={cy + 11} textAnchor="middle" fontSize="8" fill="#9e9789">TOTAL CLICKS</text>
+      <text className="kpi-donut-total" x={cx} y={cy - 5} textAnchor="middle">{total}</text>
+      <text className="kpi-donut-caption" x={cx} y={cy + 11} textAnchor="middle">CLICKS</text>
     </svg>
   );
 }

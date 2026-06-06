@@ -3048,6 +3048,14 @@ body {
   z-index: 1100 !important;
 }
 
+@media screen and (min-width: 1001px) {
+  body.rr-logo-scroll-home .Header__FlexItem--logo {
+    transform: translateY(calc(var(--rr-home-logo-progress, 0) * 9px)) !important;
+    transform-origin: left top !important;
+    will-change: transform !important;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .shopify-section--header {
     height: 68px !important;

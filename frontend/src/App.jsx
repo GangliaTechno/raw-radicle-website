@@ -15,10 +15,40 @@ import { HomePage } from './pages/HomePage.jsx'
 import { ProductPage } from './pages/ProductPage.jsx'
 import { ProductsPage } from './pages/ProductsPage.jsx'
 import { SearchPage } from './pages/SearchPage.jsx'
+import { trackPageView } from './services/firebaseAnalytics.js'
+import { getClickDetail, trackStorePageView, trackStoreTimeOnPage, trackStoreEvent } from './services/storeAnalytics.js'
 
 function AppLayout() {
   const [searchOpen, setSearchOpen] = useState(false)
   const location = useLocation()
+
+  useEffect(() => {
+    trackPageView(location)
+    trackStorePageView(location)
+  }, [location])
+
+  useEffect(() => {
+    const page = `${location.pathname}${location.search}${location.hash}`
+    const startedAt = Date.now()
+
+    return () => {
+      trackStoreTimeOnPage(page, startedAt)
+    }
+  }, [location])
+
+  useEffect(() => {
+    const handleTrackedClick = (event) => {
+      const detail = getClickDetail(event.target)
+      if (!detail) return
+      trackStoreEvent('click', {
+        page: `${location.pathname}${location.search}${location.hash}`,
+        detail,
+      })
+    }
+
+    document.addEventListener('click', handleTrackedClick, { capture: true })
+    return () => document.removeEventListener('click', handleTrackedClick, { capture: true })
+  }, [location])
 
   useEffect(() => {
     const isHome = location.pathname === '/'

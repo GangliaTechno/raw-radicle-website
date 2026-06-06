@@ -897,6 +897,7 @@ app.post("/api/order", async (req, res) => {
 // ─── Analytics API ────────────────────────────────────────────────────────────
 
 const ANALYTICS_FILE = path.join(__dirname, 'analytics.json');
+let analyticsWriteQueue = Promise.resolve();
 
 async function readAnalytics() {
   if (isMongoConfigured()) {
@@ -921,7 +922,9 @@ async function readAnalytics() {
 async function writeAnalytics(data) {
   try {
     await saveMongoData("analytics", "analytics", data);
-    fs.writeFileSync(ANALYTICS_FILE, JSON.stringify(data, null, 2), 'utf8');
+    if (!isMongoOnly()) {
+      fs.writeFileSync(ANALYTICS_FILE, JSON.stringify(data, null, 2), 'utf8');
+    }
   } catch (e) {
     console.error('Failed to write analytics:', e.message);
   }
@@ -1001,35 +1004,46 @@ app.post('/api/analytics/event', async (req, res) => {
   const { type, page, detail, duration } = req.body || {};
   if (!type) return res.status(400).json({ error: 'type required' });
 
-  const data = await readAnalytics();
-  const today = new Date().toISOString().split('T')[0];
+  analyticsWriteQueue = analyticsWriteQueue
+    .catch(() => {})
+    .then(async () => {
+      const data = await readAnalytics();
+      const today = new Date().toISOString().split('T')[0];
 
-  if (!data.daily[today]) data.daily[today] = { pageViews: 0, clicks: 0, totalTime: 0, sessions: 0 };
-  if (!data.pages) data.pages = {};
-  if (!data.clicks) data.clicks = {};
+      if (!data.daily[today]) data.daily[today] = { pageViews: 0, clicks: 0, totalTime: 0, sessions: 0 };
+      if (!data.pages) data.pages = {};
+      if (!data.clicks) data.clicks = {};
 
-  if (type === 'pageview') {
-    data.daily[today].pageViews = (data.daily[today].pageViews || 0) + 1;
-    if (page) {
-      if (!data.pages[page]) data.pages[page] = { views: 0, totalTime: 0 };
-      data.pages[page].views = (data.pages[page].views || 0) + 1;
-    }
-  } else if (type === 'click') {
-    data.daily[today].clicks = (data.daily[today].clicks || 0) + 1;
-    if (detail) {
-      data.clicks[detail] = (data.clicks[detail] || 0) + 1;
-    }
-  } else if (type === 'time_on_page') {
-    const secs = parseInt(duration, 10) || 0;
-    data.daily[today].totalTime = (data.daily[today].totalTime || 0) + secs;
-    if (page) {
-      if (!data.pages[page]) data.pages[page] = { views: 0, totalTime: 0 };
-      data.pages[page].totalTime = (data.pages[page].totalTime || 0) + secs;
-    }
+      if (type === 'pageview') {
+        data.daily[today].pageViews = (data.daily[today].pageViews || 0) + 1;
+        if (page) {
+          if (!data.pages[page]) data.pages[page] = { views: 0, totalTime: 0 };
+          data.pages[page].views = (data.pages[page].views || 0) + 1;
+        }
+      } else if (type === 'click') {
+        data.daily[today].clicks = (data.daily[today].clicks || 0) + 1;
+        if (detail) {
+          data.clicks[detail] = (data.clicks[detail] || 0) + 1;
+        }
+      } else if (type === 'time_on_page') {
+        const secs = parseInt(duration, 10) || 0;
+        data.daily[today].totalTime = (data.daily[today].totalTime || 0) + secs;
+        if (page) {
+          if (!data.pages[page]) data.pages[page] = { views: 0, totalTime: 0 };
+          data.pages[page].totalTime = (data.pages[page].totalTime || 0) + secs;
+        }
+      }
+
+      await writeAnalytics(data);
+    });
+
+  try {
+    await analyticsWriteQueue;
+    res.json({ ok: true });
+  } catch (error) {
+    console.error('Failed to record analytics event:', error.message);
+    res.status(500).json({ error: 'Failed to record analytics event' });
   }
-
-  await writeAnalytics(data);
-  res.json({ ok: true });
 });
 
 // --- End of CMS API Endpoints ---
