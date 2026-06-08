@@ -1,6 +1,11 @@
 export const fallbackHome = {
   hero: {
-    slides: [{ title: 'Experience the Power of Dark', subtitle: 'CHYAWANAPRASH', image: 'assets/banner1.jpg', link: '/cdarkc' }],
+    slides: [
+      { title: 'Banner 1', subtitle: '', image: 'assets/RRbanner_11.png', link: '/products' },
+      { title: 'Banner 2', subtitle: '', image: 'assets/RRbanner_4.png', link: '/products' },
+      { title: 'Banner 3', subtitle: '', image: 'assets/RRbanner_2.png', link: '/products' },
+      { title: 'Banner 4', subtitle: '', image: 'assets/RRbanner_3.png', link: '/products' },
+    ],
   },
   staticBanner: { image: 'assets/RRbanner_11.png', link: '/products' },
   videoHero: {

@@ -34,6 +34,7 @@ const readJsonFile = (filePath, fallback = {}) => {
 };
 
 const isMongoConfigured = () => Boolean(MONGODB_URI);
+const isMongoOnly = () => MONGODB_ONLY;
 
 const getMongoDb = async () => {
   if (!isMongoConfigured()) return null;

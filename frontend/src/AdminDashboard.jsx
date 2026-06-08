@@ -186,12 +186,86 @@ const normalizeProducts = (products) =>
     ...product,
   }))
 
-const emptyHomePage = {
-  hero: {},
-  products: [],
-  instagram: {},
-  testimonials: {},
+const defaultHeroSlides = [
+  { title: 'Banner 1', subtitle: '', image: 'assets/RRbanner_11.png', link: '/products' },
+  { title: 'Banner 2', subtitle: '', image: 'assets/RRbanner_4.png', link: '/products' },
+  { title: 'Banner 3', subtitle: '', image: 'assets/RRbanner_2.png', link: '/products' },
+  { title: 'Banner 4', subtitle: '', image: 'assets/RRbanner_3.png', link: '/products' },
+]
+
+const defaultTestimonialVideos = [
+  { id: 'v1', url: 'assets/video/video-1.mp4', productId: 'adarkc', productName: 'Ashwagandha Dark Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/adark.png', views: '1.2K Views' },
+  { id: 'v2', url: 'assets/video/video-2.mp4', productId: 'amilkc', productName: 'Ashwagandha Milk Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/apmilk.png', views: '2.5K Views' },
+  { id: 'v3', url: 'assets/video/video-3.mp4', productId: 'cdarkc', productName: 'Chyawanaprash Dark', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/cdark.png', views: '950 Views' },
+  { id: 'v4', url: 'assets/video/video-4.mp4', productId: 'cmilkc', productName: 'Chyawanaprash Milk', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/cmilk.png', views: '3.1K Views' },
+  { id: 'v5', url: 'assets/video/video-5.mp4', productId: 'bmilkc', productName: 'Brahmi Milk Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/bmilk.png', views: '1.8K Views' },
+  { id: 'v6', url: 'assets/video/video-6.mp4', productId: 'bdarkc', productName: 'Brahmi Dark Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/bdark.png', views: '4.2K Views' },
+  { id: 'v7', url: 'assets/video/video-7.mp4', productId: 'amilkc', productName: 'Ashwagandha Milk Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/apmilk.png', views: '2.1K Views' },
+  { id: 'v8', url: 'assets/video/video-8.mp4', productId: 'cdarkc', productName: 'Chyawanaprash Dark', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/cdark.png', views: '5.7K Views' },
+]
+
+const defaultFaqs = [
+  {
+    question: 'What Ayurvedic ingredients are in your chocolates?',
+    answer: 'Our chocolates are infused with whole Ayurvedic herbs: Ashwagandha, Brahmi, and Chyawanaprash, blended with high-quality cacao.',
+  },
+  {
+    question: 'Are your chocolates vegan and gluten-free?',
+    answer: 'Our dark chocolate slabs are vegan. Our milk chocolate slabs contain dairy. None of our products contain gluten.',
+  },
+  {
+    question: 'How much chocolate should I eat per day?',
+    answer: 'We recommend enjoying 2-3 squares per day as part of a balanced diet.',
+  },
+]
+
+const defaultInstagram = {
+  profileUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz',
+  posts: [
+    { id: 'ig1', image: 'assets/instagram/choco1.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig2', image: 'assets/instagram/choco2.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig3', image: 'assets/instagram/choco3.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig4', image: 'assets/instagram/choco4.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig5', image: 'assets/instagram/choco5.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig6', image: 'assets/instagram/choco6.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig7', image: 'assets/instagram/choco7.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig8', image: 'assets/instagram/choco8.webp', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig9', image: 'assets/amilk/amilk-2.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig10', image: 'assets/cdark/cdark-3.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig11', image: 'assets/bmilk/bmilk-3.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+    { id: 'ig12', image: 'assets/bdark/bdark-3.png', postUrl: 'https://www.instagram.com/rawradicles?igsh=eXZlbzdidDF4eGwz' },
+  ],
 }
+
+const cloneData = (data) => JSON.parse(JSON.stringify(data || {}))
+
+const normalizeHomepageData = (data) => {
+  const next = data && typeof data === 'object' && !Array.isArray(data) ? cloneData(data) : {}
+  if (!Array.isArray(next.hero?.slides) || next.hero.slides.length === 0) {
+    next.hero = { ...(next.hero || {}), slides: cloneData(defaultHeroSlides) }
+  }
+  if (!Array.isArray(next.testimonials?.videos) || next.testimonials.videos.length === 0) {
+    next.testimonials = { ...(next.testimonials || {}), videos: cloneData(defaultTestimonialVideos) }
+  }
+  if (!Array.isArray(next.faqs) || next.faqs.length === 0) {
+    next.faqs = cloneData(defaultFaqs)
+  }
+  if (!Array.isArray(next.instagram?.posts) || next.instagram.posts.length === 0) {
+    next.instagram = { ...cloneData(defaultInstagram), ...(next.instagram || {}), posts: cloneData(defaultInstagram.posts) }
+  }
+  return next
+}
+
+const emptyHomePage = {
+  hero: { slides: defaultHeroSlides },
+  products: [],
+  instagram: defaultInstagram,
+  testimonials: { videos: defaultTestimonialVideos },
+  faqs: defaultFaqs,
+}
+
+const dataChanged = (current, saved) => JSON.stringify(current || {}) !== JSON.stringify(saved || {})
+const stripAdminHtml = (value) => String(value || '').replace(/<[^>]*>/g, '').trim()
 
 const defaultBlogs = [
   {
@@ -300,9 +374,13 @@ function AdminDashboard() {
   const [activePanel, setActivePanel] = useState('dashboard')
   const [products, setProducts] = useState({})
   const [homepage, setHomepage] = useState(emptyHomePage)
+  const [savedHomepage, setSavedHomepage] = useState(emptyHomePage)
   const [blogs, setBlogs] = useState(defaultBlogs)
+  const [savedBlogs, setSavedBlogs] = useState(defaultBlogs)
   const [selectedProductId, setSelectedProductId] = useState('')
   const [productCms, setProductCms] = useState({})
+  const [savedProductCms, setSavedProductCms] = useState({})
+  const [productCmsEditorResetKey, setProductCmsEditorResetKey] = useState(0)
   const [, setPendingReviews] = useState({})
   const [subscribers, setSubscribers] = useState([])
   const [activity, setActivity] = useState(['Opened React admin dashboard'])
@@ -365,13 +443,13 @@ function AdminDashboard() {
   const [productForm, setProductForm] = useState({
     id: '',
     name: '',
-    price: 300,
+    price: '',
     sku: '',
     description: '',
     pageBadge: '',
     badge: '',
-    image: 'assets/choco/cdark.png',
-    hoverImage: 'assets/choco/cdark-1.png',
+    image: '',
+    hoverImage: '',
     gallery: ['', '', '', ''],
     marketplaces: {
       blinkit: '',
@@ -387,14 +465,17 @@ function AdminDashboard() {
       series: '',
       chocolateType: '',
       keyIngredient: '',
-      weight: '60g',
-      storage: '18°C – 24°C (Cool & Dry)',
-      license: 'FSSAI, GS-1, Made in India'
+      weight: '',
+      storage: '',
+      license: ''
     },
-    quality: '<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options. 60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>'
+    quality: ''
   })
 
   const productList = useMemo(() => normalizeProducts(products), [products])
+  const homepageHasChanges = useMemo(() => dataChanged(homepage, savedHomepage), [homepage, savedHomepage])
+  const blogsHaveChanges = useMemo(() => dataChanged(blogs, savedBlogs), [blogs, savedBlogs])
+  const productCmsHasChanges = useMemo(() => dataChanged(productCms, savedProductCms), [productCms, savedProductCms])
 
   const selectedProduct = productList.find((product) => product.id === selectedProductId)
   useEffect(() => {
@@ -413,10 +494,14 @@ function AdminDashboard() {
         fetch('/api/subscribers').then((response) => response.json()).catch(() => ({ subscribers: [] })),
       ])
 
+      const nextHomepage = normalizeHomepageData(homepageResult)
       setProducts(productsResult)
-      setHomepage(homepageResult)
+      setHomepage(nextHomepage)
+      setSavedHomepage(cloneData(nextHomepage))
       setPendingReviews(pendingResult)
-      setBlogs(Array.isArray(blogsResult.blogs) && blogsResult.blogs.length > 0 ? blogsResult.blogs : defaultBlogs)
+      const nextBlogs = Array.isArray(blogsResult.blogs) && blogsResult.blogs.length > 0 ? blogsResult.blogs : defaultBlogs
+      setBlogs(nextBlogs)
+      setSavedBlogs(cloneData(nextBlogs))
       setSubscribers(Array.isArray(subscribersResult.subscribers) ? subscribersResult.subscribers : [])
 
       const firstProductId = Object.keys(productsResult || {})[0] || ''
@@ -442,8 +527,17 @@ function AdminDashboard() {
 
     fetch(`/api/product-cms/${selectedProductId}`)
       .then((response) => response.json())
-      .then((data) => setProductCms(data || {}))
-      .catch(() => setProductCms({}))
+      .then((data) => {
+        const nextData = data || {}
+        setProductCms(nextData)
+        setSavedProductCms(cloneData(nextData))
+        setProductCmsEditorResetKey((key) => key + 1)
+      })
+      .catch(() => {
+        setProductCms({})
+        setSavedProductCms({})
+        setProductCmsEditorResetKey((key) => key + 1)
+      })
   }, [selectedProductId])
 
   const showStatus = (message) => {
@@ -496,9 +590,15 @@ function AdminDashboard() {
     }).then((response) => response.json())
 
     if (result.success) {
+      setSavedHomepage(cloneData(homepage))
       addActivity('Saved homepage content')
       showStatus('Homepage content saved')
     }
+  }
+
+  const cancelHomepageChanges = () => {
+    setHomepage(cloneData(savedHomepage))
+    showStatus('Homepage changes discarded')
   }
 
   const updateBlog = (index, key, value) => {
@@ -551,28 +651,46 @@ function AdminDashboard() {
     }).then((response) => response.json())
 
     if (result.success) {
-      setBlogs(result.blogs || blogs)
+      const nextBlogs = result.blogs || blogs
+      setBlogs(nextBlogs)
+      setSavedBlogs(cloneData(nextBlogs))
       addActivity('Saved blog content')
       showStatus('Blog content saved')
     }
   }
 
+  const cancelBlogChanges = () => {
+    setBlogs(cloneData(savedBlogs))
+    showStatus('Blog changes discarded')
+  }
+
   const saveProductCms = async () => {
     if (!selectedProductId) return
+
+    const nextProductCms = {
+      ...productCms,
+      updatedAt: new Date().toISOString(),
+    }
 
     const result = await fetch(`/api/product-cms/${selectedProductId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...productCms,
-        updatedAt: new Date().toISOString(),
-      }),
+      body: JSON.stringify(nextProductCms),
     }).then((response) => response.json())
 
     if (result.success) {
+      setProductCms(nextProductCms)
+      setSavedProductCms(cloneData(nextProductCms))
+      setProductCmsEditorResetKey((key) => key + 1)
       addActivity(`Saved CMS for ${selectedProductId}`)
       showStatus('Product CMS saved')
     }
+  }
+
+  const cancelProductCmsChanges = () => {
+    setProductCms(cloneData(savedProductCms))
+    setProductCmsEditorResetKey((key) => key + 1)
+    showStatus('Product CMS changes discarded')
   }
 
   const openAddUserModal = () => {
@@ -697,13 +815,13 @@ function AdminDashboard() {
     setProductForm({
       id: '',
       name: '',
-      price: 300,
+      price: '',
       sku: '',
       description: '',
       pageBadge: '',
       badge: '',
-      image: 'assets/choco/cdark.png',
-      hoverImage: 'assets/choco/cdark-1.png',
+      image: '',
+      hoverImage: '',
       gallery: ['', '', '', ''],
       marketplaces: {
         blinkit: '',
@@ -719,11 +837,11 @@ function AdminDashboard() {
         series: '',
         chocolateType: '',
         keyIngredient: '',
-        weight: '60g',
-        storage: '18°C – 24°C (Cool & Dry)',
-        license: 'FSSAI, GS-1, Made in India'
+        weight: '',
+        storage: '',
+        license: ''
       },
-      quality: '<p>We offer free standard shipping on all contiguous product. Transit times are displayed at checkout when selecting shipping options. 60 day free returns and return shipping for these two regions. We also ship to the rest of the world for a reasonable shipping surcharge.</p>'
+      quality: ''
     })
     setIsProductModalOpen(true)
   }
@@ -778,7 +896,7 @@ function AdminDashboard() {
       name: product.name || '',
       price: product.price || '',
       description: product.description || '',
-      pageBadge: bi.badge || '',
+      pageBadge: stripAdminHtml(bi.badge),
       badge: product.badge || '',
       image: product.image || '',
       hoverImage: product.hoverImage || '',
@@ -792,7 +910,7 @@ function AdminDashboard() {
       },
       features: features,
       specs: specFields,
-      quality: details.quality || ''
+      quality: stripAdminHtml(details.quality)
     })
 
     setIsProductModalOpen(true)
@@ -843,9 +961,22 @@ function AdminDashboard() {
       return
     }
 
+    if (!productForm.image.trim()) {
+      setProductFormError('Please upload a primary catalog image.')
+      setActiveProductTab('media')
+      return
+    }
+
+    if (!productForm.hoverImage.trim()) {
+      setProductFormError('Please upload a hover catalog image.')
+      setActiveProductTab('media')
+      return
+    }
+
     const galleryImages = productForm.gallery.filter(g => g.trim() !== '')
     if (galleryImages.length < 4) {
-      setProductFormError('Please enter at least 4 gallery image paths.')
+      setProductFormError('Please upload at least 4 gallery images.')
+      setActiveProductTab('media')
       return
     }
 
@@ -863,8 +994,8 @@ function AdminDashboard() {
       price: priceNum,
       mrp: mrpNum,
       description: productForm.description.trim(),
-      image: productForm.image.trim() || `assets/choco/${id}.png`,
-      hoverImage: productForm.hoverImage.trim() || `assets/choco/${id}-1.png`,
+      image: productForm.image.trim(),
+      hoverImage: productForm.hoverImage.trim(),
       page: pagePath,
       badge: productForm.badge.trim() || null
     }
@@ -902,7 +1033,7 @@ function AdminDashboard() {
           subtitle: '',
           price: priceNum.toFixed(2),
           mrp: mrpNum.toFixed(2),
-          badge: productForm.pageBadge.trim() || '',
+          badge: stripAdminHtml(productForm.pageBadge) || '',
           sku: productForm.sku.trim() || '',
           marketplaces: productForm.marketplaces
         },
@@ -916,7 +1047,7 @@ function AdminDashboard() {
             { title: 'Storage', desc: productForm.specs.storage.trim() },
             { title: 'License', desc: productForm.specs.license.trim() }
           ],
-          quality: productForm.quality.trim()
+          quality: stripAdminHtml(productForm.quality)
         },
         featureGrid: existingCms.featureGrid || [
           {
@@ -976,6 +1107,8 @@ function AdminDashboard() {
       setProducts(updatedCatalog)
       if (selectedProductId === id) {
         setProductCms(updatedCms)
+        setSavedProductCms(cloneData(updatedCms))
+        setProductCmsEditorResetKey((key) => key + 1)
       }
 
       addActivity(`${productModalMode === 'add' ? 'Added' : 'Updated'} product: ${productForm.name}`)
@@ -1383,17 +1516,17 @@ function AdminDashboard() {
               <div className="rr-panel-header">
                 <h2>Homepage Content Editor</h2>
                 <div className="rr-panel-actions">
-                  <button onClick={saveHomepage} type="button">Save Homepage Settings</button>
+                  {homepageHasChanges ? <span className="rr-unsaved-note">Unsaved changes</span> : null}
+                  <button className="rr-btn-secondary" disabled={!homepageHasChanges} onClick={cancelHomepageChanges} type="button">Cancel</button>
+                  <button disabled={!homepageHasChanges} onClick={saveHomepage} type="button">Save Changes</button>
                 </div>
               </div>
 
               <div className="rr-product-tabs rr-homepage-tabs" role="tablist" style={{ marginTop: '0', borderBottom: '1px solid rgba(28, 28, 28, 0.08)', background: '#FAF9F6', padding: '8px 16px 0' }}>
                 <button className={activeHomepageTab === 'hero' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('hero')} type="button">Hero Slides</button>
-                <button className={activeHomepageTab === 'static-banner' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('static-banner')} type="button">Static Banner</button>
                 <button className={activeHomepageTab === 'video-hero' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('video-hero')} type="button">Video Hero</button>
                 <button className={activeHomepageTab === 'experts' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('experts')} type="button">Experts</button>
                 <button className={activeHomepageTab === 'testimonials' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('testimonials')} type="button">Testimonials</button>
-                <button className={activeHomepageTab === 'shopon' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('shopon')} type="button">Marketplaces</button>
                 <button className={activeHomepageTab === 'faqs' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('faqs')} type="button">FAQs</button>
                 <button className={activeHomepageTab === 'instagram' ? 'is-active' : ''} onClick={() => setActiveHomepageTab('instagram')} type="button">Instagram</button>
               </div>
@@ -1422,40 +1555,7 @@ function AdminDashboard() {
                               Remove Slide
                             </button>
                           </div>
-                          <label>
-                            Slide Title
-                            <input
-                              value={slide.title || ''}
-                              onChange={(e) => {
-                                const slides = [...(homepage.hero?.slides || [])];
-                                slides[i] = { ...slide, title: e.target.value };
-                                setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
-                              }}
-                            />
-                          </label>
-                          <label>
-                            Slide Subtitle
-                            <input
-                              value={slide.subtitle || ''}
-                              onChange={(e) => {
-                                const slides = [...(homepage.hero?.slides || [])];
-                                slides[i] = { ...slide, subtitle: e.target.value };
-                                setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
-                              }}
-                            />
-                          </label>
-                          <label style={{ gridColumn: 'span 2' }}>
-                            Redirect Link
-                            <input
-                              value={slide.link || ''}
-                              onChange={(e) => {
-                                const slides = [...(homepage.hero?.slides || [])];
-                                slides[i] = { ...slide, link: e.target.value };
-                                setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
-                              }}
-                            />
-                          </label>
-                          <div style={{ gridColumn: 'span 2' }}>
+                          <div className="rr-admin-media-detail-layout">
                             <ImageField
                               label="Slide Image"
                               value={slide.image || ''}
@@ -1465,6 +1565,41 @@ function AdminDashboard() {
                                 setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
                               }}
                             />
+                            <div className="rr-admin-media-detail-fields">
+                              <label>
+                                Slide Title
+                                <input
+                                  value={slide.title || ''}
+                                  onChange={(e) => {
+                                    const slides = [...(homepage.hero?.slides || [])];
+                                    slides[i] = { ...slide, title: e.target.value };
+                                    setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
+                                  }}
+                                />
+                              </label>
+                              <label>
+                                Slide Subtitle
+                                <input
+                                  value={slide.subtitle || ''}
+                                  onChange={(e) => {
+                                    const slides = [...(homepage.hero?.slides || [])];
+                                    slides[i] = { ...slide, subtitle: e.target.value };
+                                    setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
+                                  }}
+                                />
+                              </label>
+                              <label>
+                                Redirect Link
+                                <input
+                                  value={slide.link || ''}
+                                  onChange={(e) => {
+                                    const slides = [...(homepage.hero?.slides || [])];
+                                    slides[i] = { ...slide, link: e.target.value };
+                                    setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
+                                  }}
+                                />
+                              </label>
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -1489,48 +1624,12 @@ function AdminDashboard() {
                   </div>
                 )}
 
-                {activeHomepageTab === 'static-banner' && (
-                  <div className="rr-homepage-section" style={{ display: 'grid', gap: '16px' }}>
-                    <p style={{ color: '#6f6a63', fontSize: '11px', margin: '0 0 10px', gridColumn: 'span 2' }}>
-                      Configure the main static banner displaying after the product grid.
-                    </p>
-                    <label style={{ gridColumn: 'span 2' }}>
-                      Banner Link
-                      <input
-                        value={homepage.staticBanner?.link || ''}
-                        onChange={(e) => setHomepage({ ...homepage, staticBanner: { ...homepage.staticBanner, link: e.target.value } })}
-                      />
-                    </label>
-                    <div style={{ gridColumn: 'span 2' }}>
-                      <ImageField
-                        label="Banner Image"
-                        value={homepage.staticBanner?.image || ''}
-                        onChange={(url) => setHomepage({ ...homepage, staticBanner: { ...homepage.staticBanner, image: url } })}
-                      />
-                    </div>
-                  </div>
-                )}
-
                 {activeHomepageTab === 'video-hero' && (
                   <div className="rr-homepage-section" style={{ display: 'grid', gap: '16px' }}>
                     <p style={{ color: '#6f6a63', fontSize: '11px', margin: '0 0 10px', gridColumn: 'span 2' }}>
                       Configure the full-width autoplaying video hero banner.
                     </p>
-                    <label>
-                      Video Title
-                      <input
-                        value={homepage.videoHero?.title || ''}
-                        onChange={(e) => setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, title: e.target.value } })}
-                      />
-                    </label>
-                    <label>
-                      Video Subtitle
-                      <input
-                        value={homepage.videoHero?.subtitle || ''}
-                        onChange={(e) => setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, subtitle: e.target.value } })}
-                      />
-                    </label>
-                    <div style={{ gridColumn: 'span 2' }}>
+                    <div className="rr-admin-media-detail-layout">
                       <MediaField
                         label="Video File"
                         value={homepage.videoHero?.url || ''}
@@ -1538,6 +1637,22 @@ function AdminDashboard() {
                         accept="video/*"
                         onChange={(url) => setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, url: url } })}
                       />
+                      <div className="rr-admin-media-detail-fields">
+                        <label>
+                          Video Title
+                          <input
+                            value={homepage.videoHero?.title || ''}
+                            onChange={(e) => setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, title: e.target.value } })}
+                          />
+                        </label>
+                        <label>
+                          Video Subtitle
+                          <input
+                            value={homepage.videoHero?.subtitle || ''}
+                            onChange={(e) => setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, subtitle: e.target.value } })}
+                          />
+                        </label>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -1565,29 +1680,7 @@ function AdminDashboard() {
                               Remove Expert
                             </button>
                           </div>
-                          <label>
-                            Expert Name
-                            <input
-                              value={expert.name || ''}
-                              onChange={(e) => {
-                                const experts = [...(homepage.experts || [])];
-                                experts[i] = { ...expert, name: e.target.value };
-                                setHomepage({ ...homepage, experts });
-                              }}
-                            />
-                          </label>
-                          <label>
-                            Expert Role
-                            <input
-                              value={expert.role || ''}
-                              onChange={(e) => {
-                                const experts = [...(homepage.experts || [])];
-                                experts[i] = { ...expert, role: e.target.value };
-                                setHomepage({ ...homepage, experts });
-                              }}
-                            />
-                          </label>
-                          <div style={{ gridColumn: 'span 2' }}>
+                          <div className="rr-admin-media-detail-layout">
                             <ImageField
                               label="Expert Photo"
                               value={expert.image || ''}
@@ -1597,6 +1690,30 @@ function AdminDashboard() {
                                 setHomepage({ ...homepage, experts });
                               }}
                             />
+                            <div className="rr-admin-media-detail-fields">
+                              <label>
+                                Expert Name
+                                <input
+                                  value={expert.name || ''}
+                                  onChange={(e) => {
+                                    const experts = [...(homepage.experts || [])];
+                                    experts[i] = { ...expert, name: e.target.value };
+                                    setHomepage({ ...homepage, experts });
+                                  }}
+                                />
+                              </label>
+                              <label>
+                                Expert Role
+                                <input
+                                  value={expert.role || ''}
+                                  onChange={(e) => {
+                                    const experts = [...(homepage.experts || [])];
+                                    experts[i] = { ...expert, role: e.target.value };
+                                    setHomepage({ ...homepage, experts });
+                                  }}
+                                />
+                              </label>
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -1642,50 +1759,54 @@ function AdminDashboard() {
                               Remove Testimonial
                             </button>
                           </div>
-                          <label>
-                            Product Name
-                            <input
-                              value={video.productName || ''}
-                              onChange={(e) => {
-                                const videos = [...(homepage.testimonials?.videos || [])];
-                                videos[i] = { ...video, productName: e.target.value };
-                                setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
-                              }}
-                            />
-                          </label>
-                          <label>
-                            Selling Price (INR)
-                            <input
-                              type="number"
-                              value={video.price || ''}
-                              onChange={(e) => {
-                                const videos = [...(homepage.testimonials?.videos || [])];
-                                videos[i] = { ...video, price: e.target.value };
-                                setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
-                              }}
-                            />
-                          </label>
-                          <div style={{ gridColumn: 'span 2', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                            <MediaField
-                              label="Testimonial Video"
-                              value={video.url || ''}
-                              type="video"
-                              accept="video/*"
-                              onChange={(url) => {
-                                const videos = [...(homepage.testimonials?.videos || [])];
-                                videos[i] = { ...video, url: url };
-                                setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
-                              }}
-                            />
-                            <ImageField
-                              label="Product Thumbnail"
-                              value={video.productImg || ''}
-                              onChange={(url) => {
-                                const videos = [...(homepage.testimonials?.videos || [])];
-                                videos[i] = { ...video, productImg: url };
-                                setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
-                              }}
-                            />
+                          <div className="rr-admin-media-detail-layout">
+                            <div className="rr-admin-media-stack">
+                              <MediaField
+                                label="Testimonial Video"
+                                value={video.url || ''}
+                                type="video"
+                                accept="video/*"
+                                onChange={(url) => {
+                                  const videos = [...(homepage.testimonials?.videos || [])];
+                                  videos[i] = { ...video, url: url };
+                                  setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
+                                }}
+                              />
+                              <ImageField
+                                label="Product Thumbnail"
+                                value={video.productImg || ''}
+                                onChange={(url) => {
+                                  const videos = [...(homepage.testimonials?.videos || [])];
+                                  videos[i] = { ...video, productImg: url };
+                                  setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
+                                }}
+                              />
+                            </div>
+                            <div className="rr-admin-media-detail-fields">
+                              <label>
+                                Product Name
+                                <input
+                                  value={video.productName || ''}
+                                  onChange={(e) => {
+                                    const videos = [...(homepage.testimonials?.videos || [])];
+                                    videos[i] = { ...video, productName: e.target.value };
+                                    setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
+                                  }}
+                                />
+                              </label>
+                              <label>
+                                Selling Price (INR)
+                                <input
+                                  type="number"
+                                  value={video.price || ''}
+                                  onChange={(e) => {
+                                    const videos = [...(homepage.testimonials?.videos || [])];
+                                    videos[i] = { ...video, price: e.target.value };
+                                    setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
+                                  }}
+                                />
+                              </label>
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -1707,72 +1828,6 @@ function AdminDashboard() {
                       >
                         + Add Testimonial
                       </button>
-                    </div>
-                  </div>
-                )}
-
-                {activeHomepageTab === 'shopon' && (
-                  <div className="rr-homepage-section" style={{ display: 'grid', gap: '24px' }}>
-                    <div>
-                      <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #eee', paddingBottom: '6px', marginBottom: '16px' }}>Quick Commerce Marketplaces</h3>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                        {(homepage.shopOn?.quickCommerce || []).map((item, i) => (
-                          <div key={i} style={{ display: 'grid', gridTemplateColumns: '120px 1fr 1fr', gap: '16px', alignItems: 'center', background: '#fcfbf9', border: '1px solid rgba(28, 28, 28, 0.08)', borderRadius: '8px', padding: '12px' }}>
-                            <strong style={{ fontSize: '12px' }}>{item.name}</strong>
-                            <label style={{ margin: 0 }}>
-                              Affiliate/Store Link
-                              <input
-                                value={item.link || ''}
-                                onChange={(e) => {
-                                  const quickCommerce = [...(homepage.shopOn?.quickCommerce || [])];
-                                  quickCommerce[i] = { ...item, link: e.target.value };
-                                  setHomepage({ ...homepage, shopOn: { ...homepage.shopOn, quickCommerce } });
-                                }}
-                              />
-                            </label>
-                            <ImageField
-                              label="Marketplace Logo"
-                              value={item.logo || ''}
-                              onChange={(url) => {
-                                const quickCommerce = [...(homepage.shopOn?.quickCommerce || [])];
-                                quickCommerce[i] = { ...item, logo: url };
-                                setHomepage({ ...homepage, shopOn: { ...homepage.shopOn, quickCommerce } });
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #eee', paddingBottom: '6px', marginBottom: '16px' }}>E-Commerce Marketplaces</h3>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                        {(homepage.shopOn?.ecommerce || []).map((item, i) => (
-                          <div key={i} style={{ display: 'grid', gridTemplateColumns: '120px 1fr 1fr', gap: '16px', alignItems: 'center', background: '#fcfbf9', border: '1px solid rgba(28, 28, 28, 0.08)', borderRadius: '8px', padding: '12px' }}>
-                            <strong style={{ fontSize: '12px' }}>{item.name}</strong>
-                            <label style={{ margin: 0 }}>
-                              Affiliate/Store Link
-                              <input
-                                value={item.link || ''}
-                                onChange={(e) => {
-                                  const ecommerce = [...(homepage.shopOn?.ecommerce || [])];
-                                  ecommerce[i] = { ...item, link: e.target.value };
-                                  setHomepage({ ...homepage, shopOn: { ...homepage.shopOn, ecommerce } });
-                                }}
-                              />
-                            </label>
-                            <ImageField
-                              label="Marketplace Logo"
-                              value={item.logo || ''}
-                              onChange={(url) => {
-                                const ecommerce = [...(homepage.shopOn?.ecommerce || [])];
-                                ecommerce[i] = { ...item, logo: url };
-                                setHomepage({ ...homepage, shopOn: { ...homepage.shopOn, ecommerce } });
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
                     </div>
                   </div>
                 )}
@@ -1846,7 +1901,7 @@ function AdminDashboard() {
                 {activeHomepageTab === 'instagram' && (
                   <div className="rr-homepage-section" style={{ display: 'grid', gap: '20px' }}>
                     <p style={{ color: '#6f6a63', fontSize: '11px', margin: '0' }}>
-                      Configure the social feed redirection links and trigger instagram data refreshes.
+                      Manage the Instagram gallery cards shown on the homepage.
                     </p>
                     <label style={{ gridColumn: 'span 2' }}>
                       Instagram Profile URL
@@ -1856,30 +1911,76 @@ function AdminDashboard() {
                       />
                     </label>
 
-                    <div style={{ borderTop: '1px solid #eee', paddingTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                      <span style={{ fontSize: '12px', fontWeight: 600 }}>Simulate Live Feed Post Refresh</span>
-                      <p style={{ color: '#6f6a63', fontSize: '11px', margin: 0 }}>
-                        Clicking this triggers the backend to pull/simulate a new Instagram photo card layout automatically.
-                      </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                      {(homepage.instagram?.posts || []).map((post, i) => (
+                        <div key={post.id || i} className="rr-feature-field-group" style={{ display: 'grid', gap: '16px', background: '#fcfbf9', border: '1px solid rgba(28, 28, 28, 0.08)', borderRadius: '8px', padding: '16px' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(28, 28, 28, 0.08)', paddingBottom: '6px' }}>
+                            <span style={{ fontWeight: 700, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px' }}>Instagram Post {i + 1}</span>
+                            <button
+                              type="button"
+                              className="rr-btn-danger"
+                              style={{ fontSize: '9px', minHeight: '24px', height: '24px', padding: '0 8px' }}
+                              onClick={() => {
+                                const posts = [...(homepage.instagram?.posts || [])];
+                                posts.splice(i, 1);
+                                setHomepage({ ...homepage, instagram: { ...homepage.instagram, posts } });
+                              }}
+                            >
+                              Remove Post
+                            </button>
+                          </div>
+                          <div className="rr-admin-media-detail-layout">
+                            <ImageField
+                              label="Post Image"
+                              value={post.image || ''}
+                              onChange={(url) => {
+                                const posts = [...(homepage.instagram?.posts || [])];
+                                posts[i] = { ...post, image: url };
+                                setHomepage({ ...homepage, instagram: { ...homepage.instagram, posts } });
+                              }}
+                            />
+                            <div className="rr-admin-media-detail-fields">
+                              <label>
+                                Post ID
+                                <input
+                                  value={post.id || ''}
+                                  onChange={(e) => {
+                                    const posts = [...(homepage.instagram?.posts || [])];
+                                    posts[i] = { ...post, id: e.target.value };
+                                    setHomepage({ ...homepage, instagram: { ...homepage.instagram, posts } });
+                                  }}
+                                />
+                              </label>
+                              <label>
+                                Post URL
+                                <input
+                                  value={post.postUrl || post.link || ''}
+                                  onChange={(e) => {
+                                    const posts = [...(homepage.instagram?.posts || [])];
+                                    posts[i] = { ...post, postUrl: e.target.value };
+                                    setHomepage({ ...homepage, instagram: { ...homepage.instagram, posts } });
+                                  }}
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                       <button
                         type="button"
                         className="rr-add-feature-btn"
-                        style={{ alignSelf: 'flex-start' }}
-                        onClick={async () => {
-                          try {
-                            const res = await fetch('/api/instagram/refresh', { method: 'POST' }).then(r => r.json());
-                            if (res.success) {
-                              // Load latest home page data
-                              const nextHp = await fetch('/api/homepage').then(r => r.json());
-                              setHomepage(nextHp);
-                              showStatus('Instagram Feed Refreshed!');
-                            }
-                          } catch {
-                            alert('Refresh failed');
-                          }
+                        onClick={() => {
+                          const posts = [...(homepage.instagram?.posts || [])];
+                          const profileUrl = homepage.instagram?.profileUrl || defaultInstagram.profileUrl;
+                          posts.push({
+                            id: `ig${Date.now()}`,
+                            image: 'assets/instagram/choco1.png',
+                            postUrl: profileUrl,
+                          });
+                          setHomepage({ ...homepage, instagram: { ...homepage.instagram, profileUrl, posts } });
                         }}
                       >
-                        Sync Feed
+                        + Add Instagram Post
                       </button>
                     </div>
                   </div>
@@ -1895,6 +1996,9 @@ function AdminDashboard() {
               value={productCms}
               onChange={setProductCms}
               onSave={saveProductCms}
+              onCancel={cancelProductCmsChanges}
+              hasChanges={productCmsHasChanges}
+              resetKey={productCmsEditorResetKey}
             >
               <select
                 value={selectedProductId}
@@ -1915,8 +2019,10 @@ function AdminDashboard() {
                   <span>Add, edit, and upload photos for the public blog page.</span>
                 </div>
                 <div className="rr-panel-actions">
+                  {blogsHaveChanges ? <span className="rr-unsaved-note">Unsaved changes</span> : null}
                   <button onClick={addBlog} type="button">Add Blog</button>
-                  <button onClick={saveBlogs} type="button">Save Blogs</button>
+                  <button className="rr-btn-secondary" disabled={!blogsHaveChanges} onClick={cancelBlogChanges} type="button">Cancel</button>
+                  <button disabled={!blogsHaveChanges} onClick={saveBlogs} type="button">Save Changes</button>
                 </div>
               </div>
 
@@ -1932,44 +2038,48 @@ function AdminDashboard() {
                     </div>
 
                     <div className="rr-blog-form">
-                      <label>
-                        Blog ID
-                        <input
-                          value={blog.id || ''}
-                          onChange={(event) => updateBlog(index, 'id', event.target.value)}
-                          placeholder="blog-title"
-                        />
-                      </label>
-                      <label>
-                        Category
-                        <input
-                          value={blog.category || ''}
-                          onChange={(event) => updateBlog(index, 'category', event.target.value)}
-                          placeholder="Ingredients"
-                        />
-                      </label>
-                      <label className="rr-blog-field--wide">
-                        Title
-                        <input
-                          value={blog.title || ''}
-                          onChange={(event) => updateBlog(index, 'title', event.target.value)}
-                          placeholder="Blog title"
-                        />
-                      </label>
-                      <label className="rr-blog-field--wide">
-                        Excerpt
-                        <textarea
-                          value={blog.excerpt || ''}
-                          onChange={(event) => updateBlog(index, 'excerpt', event.target.value)}
-                          placeholder="Short summary shown on the blog card"
-                        />
-                      </label>
-                      <div className="rr-blog-field--wide">
+                      <div className="rr-admin-media-detail-layout rr-blog-field--wide">
                         <ImageField
                           label="Blog Photo"
                           value={blog.image || ''}
                           onChange={(url) => updateBlog(index, 'image', url)}
                         />
+                        <div className="rr-admin-media-detail-fields">
+                          <div className="rr-admin-two-column-fields">
+                            <label>
+                              Blog ID
+                              <input
+                                value={blog.id || ''}
+                                onChange={(event) => updateBlog(index, 'id', event.target.value)}
+                                placeholder="blog-title"
+                              />
+                            </label>
+                            <label>
+                              Category
+                              <input
+                                value={blog.category || ''}
+                                onChange={(event) => updateBlog(index, 'category', event.target.value)}
+                                placeholder="Ingredients"
+                              />
+                            </label>
+                          </div>
+                          <label>
+                            Title
+                            <input
+                              value={blog.title || ''}
+                              onChange={(event) => updateBlog(index, 'title', event.target.value)}
+                              placeholder="Blog title"
+                            />
+                          </label>
+                          <label>
+                            Excerpt
+                            <textarea
+                              value={blog.excerpt || ''}
+                              onChange={(event) => updateBlog(index, 'excerpt', event.target.value)}
+                              placeholder="Short summary shown on the blog card"
+                            />
+                          </label>
+                        </div>
                       </div>
                       <label className="rr-blog-field--wide">
                         Blog Content
@@ -2169,12 +2279,12 @@ function AdminDashboard() {
               {activeProductTab === 'basic' && (
                 <div className="rr-tab-content">
                   <label>
-                    Product ID (URL slug, e.g. "cdarkc")
+                    Product ID
                     <input
                       required
                       disabled={productModalMode === 'edit'}
                       value={productForm.id}
-                      placeholder="e.g. cdarkc"
+                      placeholder="cdarkc"
                       onChange={(e) => setProductForm({ ...productForm, id: e.target.value.toLowerCase().replace(/[^a-z0-9]/g, '') })}
                     />
                   </label>
@@ -2188,7 +2298,7 @@ function AdminDashboard() {
                     />
                   </label>
                   <label style={{ gridColumn: 'span 2' }}>
-                    Price (Selling Price)
+                    Selling Price
                     <input
                       required
                       type="number"
@@ -2198,36 +2308,36 @@ function AdminDashboard() {
                     />
                   </label>
                   <label>
-                    SKU Number
+                    SKU
                     <input
                       required
                       value={productForm.sku}
-                      placeholder="e.g. CB-CH-DK-60G"
+                      placeholder="CB-CH-DK-60G"
                       onChange={(e) => setProductForm({ ...productForm, sku: e.target.value })}
                     />
                   </label>
                   <label>
-                    Text line under name (Catalog description)
+                    Catalog Description
                     <input
                       required
                       value={productForm.description}
-                      placeholder="One line description that appears in catalog listings..."
+                      placeholder="Short line shown under the product name"
                       onChange={(e) => setProductForm({ ...productForm, description: e.target.value })}
                     />
                   </label>
                   <label style={{ gridColumn: 'span 2' }}>
-                    Product Page Tagline (Red Box Text)
+                    Product Page Tagline
                     <input
                       value={productForm.pageBadge}
-                      placeholder="e.g. CHYAWANAPRASH DARK: IMMUNITY & VITALITY"
+                      placeholder="CHYAWANAPRASH DARK: IMMUNITY & VITALITY"
                       onChange={(e) => setProductForm({ ...productForm, pageBadge: e.target.value })}
                     />
                   </label>
                   <label style={{ gridColumn: 'span 2' }}>
-                    Catalog Card Badge (e.g. "bestseller", "new")
+                    Catalog Card Badge
                     <input
                       value={productForm.badge}
-                      placeholder="e.g. bestseller, new"
+                      placeholder="bestseller, new"
                       onChange={(e) => setProductForm({ ...productForm, badge: e.target.value })}
                     />
                   </label>
@@ -2235,52 +2345,66 @@ function AdminDashboard() {
               )}
 
               {activeProductTab === 'media' && (
-                <div className="rr-tab-content" style={{ gap: '20px' }}>
-                  <ImageField
-                    label="Catalog Card Image (Primary)"
-                    value={productForm.image}
-                    onChange={(url) => setProductForm({ ...productForm, image: url })}
-                  />
-                  <ImageField
-                    label="Catalog Card Image (Hover/Secondary)"
-                    value={productForm.hoverImage}
-                    onChange={(url) => setProductForm({ ...productForm, hoverImage: url })}
-                  />
-                  <div style={{ gridColumn: 'span 2', fontSize: '11px', fontWeight: 600, borderBottom: '1px solid rgba(28, 28, 28, 0.08)', paddingBottom: '6px', marginTop: '10px' }}>
-                    Gallery Slider Images (At least 4 required)
+                <div className="rr-tab-content rr-product-media-content">
+                  <div className="rr-product-media-section">
+                    <div className="rr-product-media-section__header">
+                      <strong>Catalog Images</strong>
+                      <span>Used on product listing cards.</span>
+                    </div>
+                    <div className="rr-product-media-grid">
+                      <ImageField
+                        label="Primary Image"
+                        value={productForm.image}
+                        onChange={(url) => setProductForm({ ...productForm, image: url })}
+                      />
+                      <ImageField
+                        label="Hover Image"
+                        value={productForm.hoverImage}
+                        onChange={(url) => setProductForm({ ...productForm, hoverImage: url })}
+                      />
+                    </div>
                   </div>
-                  <ImageField
-                    label="Gallery Image 1"
-                    value={productForm.gallery[0]}
-                    onChange={(url) => {
-                      const g = [...productForm.gallery]; g[0] = url;
-                      setProductForm({ ...productForm, gallery: g });
-                    }}
-                  />
-                  <ImageField
-                    label="Gallery Image 2"
-                    value={productForm.gallery[1]}
-                    onChange={(url) => {
-                      const g = [...productForm.gallery]; g[1] = url;
-                      setProductForm({ ...productForm, gallery: g });
-                    }}
-                  />
-                  <ImageField
-                    label="Gallery Image 3"
-                    value={productForm.gallery[2]}
-                    onChange={(url) => {
-                      const g = [...productForm.gallery]; g[2] = url;
-                      setProductForm({ ...productForm, gallery: g });
-                    }}
-                  />
-                  <ImageField
-                    label="Gallery Image 4"
-                    value={productForm.gallery[3]}
-                    onChange={(url) => {
-                      const g = [...productForm.gallery]; g[3] = url;
-                      setProductForm({ ...productForm, gallery: g });
-                    }}
-                  />
+
+                  <div className="rr-product-media-section">
+                    <div className="rr-product-media-section__header">
+                      <strong>Product Gallery</strong>
+                      <span>Shown inside the product detail slider. Keep at least 4 images.</span>
+                    </div>
+                    <div className="rr-product-media-grid">
+                      <ImageField
+                        label="Gallery Image 1"
+                        value={productForm.gallery[0]}
+                        onChange={(url) => {
+                          const g = [...productForm.gallery]; g[0] = url;
+                          setProductForm({ ...productForm, gallery: g });
+                        }}
+                      />
+                      <ImageField
+                        label="Gallery Image 2"
+                        value={productForm.gallery[1]}
+                        onChange={(url) => {
+                          const g = [...productForm.gallery]; g[1] = url;
+                          setProductForm({ ...productForm, gallery: g });
+                        }}
+                      />
+                      <ImageField
+                        label="Gallery Image 3"
+                        value={productForm.gallery[2]}
+                        onChange={(url) => {
+                          const g = [...productForm.gallery]; g[2] = url;
+                          setProductForm({ ...productForm, gallery: g });
+                        }}
+                      />
+                      <ImageField
+                        label="Gallery Image 4"
+                        value={productForm.gallery[3]}
+                        onChange={(url) => {
+                          const g = [...productForm.gallery]; g[3] = url;
+                          setProductForm({ ...productForm, gallery: g });
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -2434,7 +2558,7 @@ function AdminDashboard() {
                     <input
                       required
                       value={productForm.specs.storage}
-                      placeholder="e.g. 18°C – 24°C"
+                      placeholder="18C - 24C"
                       onChange={(e) => setProductForm({ ...productForm, specs: { ...productForm.specs, storage: e.target.value } })}
                     />
                   </label>
@@ -2448,10 +2572,10 @@ function AdminDashboard() {
                     />
                   </label>
                   <label style={{ gridColumn: 'span 2' }}>
-                    Quality & Safety Certified (HTML Content)
+                    Quality & Safety Certified
                     <textarea
                       required
-                      style={{ height: '110px', resize: 'vertical', fontFamily: 'monospace', fontSize: '12px', border: '1px solid #d8d2c8', borderRadius: '8px', padding: '8px' }}
+                      style={{ height: '110px', resize: 'vertical', fontSize: '13px', border: '1px solid #d8d2c8', borderRadius: '8px', padding: '8px' }}
                       value={productForm.quality}
                       onChange={(e) => setProductForm({ ...productForm, quality: e.target.value })}
                     />
@@ -2479,9 +2603,14 @@ function AdminDashboard() {
   )
 }
 
-function JsonPanel({ children, title, value, onChange, onSave }) {
+function JsonPanel({ children, title, value, onChange, onSave, onCancel, hasChanges = true, resetKey = 0 }) {
   const [text, setText] = useState(JSON.stringify(value || {}, null, 2))
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    setText(JSON.stringify(value || {}, null, 2))
+    setError('')
+  }, [resetKey])
 
   const applyText = (nextText) => {
     setText(nextText)
@@ -2500,7 +2629,11 @@ function JsonPanel({ children, title, value, onChange, onSave }) {
         <h2>{title}</h2>
         <div className="rr-panel-actions">
           {children}
-          <button disabled={!!error} onClick={onSave} type="button">Save</button>
+          {hasChanges ? <span className="rr-unsaved-note">Unsaved changes</span> : null}
+          {onCancel ? (
+            <button className="rr-btn-secondary" disabled={!hasChanges} onClick={onCancel} type="button">Cancel</button>
+          ) : null}
+          <button disabled={!!error || !hasChanges} onClick={onSave} type="button">Save Changes</button>
         </div>
       </div>
       {error ? <div className="rr-alert">{error}</div> : null}
@@ -2511,10 +2644,34 @@ function JsonPanel({ children, title, value, onChange, onSave }) {
 
 function MediaField({ label, value, onChange, type = "image", accept = "image/*" }) {
   const fileInputId = `file-input-${label.replace(/[^a-zA-Z0-9]/g, '-')}`;
+  const [pendingFile, setPendingFile] = useState(null);
+  const [pendingPreview, setPendingPreview] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
+    setPendingFile(file);
+    setPendingPreview(URL.createObjectURL(file));
+    e.target.value = '';
+  };
+
+  useEffect(() => {
+    return () => {
+      if (pendingPreview) URL.revokeObjectURL(pendingPreview);
+    };
+  }, [pendingPreview]);
+
+  const clearPendingFile = () => {
+    if (pendingPreview) URL.revokeObjectURL(pendingPreview);
+    setPendingFile(null);
+    setPendingPreview('');
+    setIsUploading(false);
+  };
+
+  const confirmUpload = () => {
+    if (!pendingFile) return;
+    setIsUploading(true);
     const reader = new FileReader();
     reader.onload = async () => {
       try {
@@ -2522,44 +2679,74 @@ function MediaField({ label, value, onChange, type = "image", accept = "image/*"
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            fileName: `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`,
+            fileName: `${Date.now()}-${pendingFile.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`,
             base64Data: reader.result
           })
         }).then(res => res.json());
 
         if (response.success) {
           onChange(response.url);
+          clearPendingFile();
         } else {
           alert('Upload failed: ' + (response.error || 'Unknown error'));
+          setIsUploading(false);
         }
       } catch (err) {
         alert('Upload failed: ' + err.message);
+        setIsUploading(false);
       }
     };
-    reader.readAsDataURL(file);
+    reader.onerror = () => {
+      alert('Upload failed: Could not read selected file');
+      setIsUploading(false);
+    };
+    reader.readAsDataURL(pendingFile);
   };
 
   const previewSrc = value 
     ? (value.startsWith('/') ? value : '/' + value)
     : '';
+  const displaySrc = pendingPreview || previewSrc;
+  const hasMedia = Boolean(displaySrc);
 
   return (
     <div className="rr-image-upload-field">
       <span className="rr-field-label">{label}</span>
-      <div className="rr-image-upload-box">
-        {value ? (
+      <div className={`rr-image-upload-box ${pendingFile ? 'is-pending' : ''}`}>
+        {hasMedia ? (
           <div className="rr-image-preview-container">
             {type === "video" ? (
-              <video src={previewSrc} className="rr-image-preview" controls style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#f6f2ec' }} />
+              <video src={displaySrc} className="rr-image-preview" controls style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#f6f2ec' }} />
             ) : (
-              <img src={previewSrc} alt="Preview" className="rr-image-preview" />
+              <img src={displaySrc} alt="Preview" className="rr-image-preview" />
             )}
-            <button type="button" className="rr-image-remove" onClick={() => onChange('')}>&times;</button>
+            {pendingFile ? (
+              <div className="rr-upload-confirm-panel">
+                <div className="rr-upload-file-meta">
+                  <strong>{pendingFile.name}</strong>
+                  <span>{Math.max(pendingFile.size / 1024 / 1024, 0.01).toFixed(2)} MB</span>
+                </div>
+                <div className="rr-upload-actions">
+                  <button type="button" className="rr-upload-cancel" onClick={clearPendingFile} disabled={isUploading}>Cancel</button>
+                  <button type="button" className="rr-upload-confirm" onClick={confirmUpload} disabled={isUploading}>
+                    {isUploading ? 'Uploading...' : 'Confirm upload'}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <button type="button" className="rr-image-remove" onClick={() => onChange('')} aria-label={`Remove ${label}`}>&times;</button>
+                <div className="rr-upload-existing-actions">
+                  <label htmlFor={fileInputId} className="rr-upload-change">Change</label>
+                </div>
+              </>
+            )}
           </div>
         ) : (
           <label htmlFor={fileInputId} className="rr-image-placeholder">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
-            <span>Upload {type === "video" ? "Video" : "Image"}</span>
+            <span>Choose {type === "video" ? "Video" : "Image"}</span>
+            <small>Preview before upload</small>
           </label>
         )}
         <input

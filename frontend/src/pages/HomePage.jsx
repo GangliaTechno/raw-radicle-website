@@ -34,27 +34,28 @@ export function HomePage() {
   // Carousel Refs
   const productSliderRef = useRef(null)
 
-  // Fallback images for static banner
-  const bannerImages = [
-    'assets/RRbanner_11.png',
-    'assets/RRbanner_4.png',
-    'assets/RRbanner_2.png',
-    'assets/RRbanner_3.png',
-  ]
+  const heroSlides = Array.isArray(home.hero?.slides) && home.hero.slides.length > 0
+    ? home.hero.slides
+    : fallbackHome.hero.slides
+  const bannerImages = heroSlides.map((slide) => slide.image).filter(Boolean)
+  const currentBannerLink = heroSlides[bannerIndex]?.link || home.staticBanner?.link || '/products'
 
   // Banner AutoPlay
   useEffect(() => {
+    if (bannerImages.length <= 1) return undefined
     const timer = setInterval(() => {
       setBannerIndex((prev) => (prev + 1) % bannerImages.length)
     }, 7000)
     return () => clearInterval(timer)
-  }, [bannerIndex, bannerImages.length])
+  }, [bannerImages.length])
 
   const goToPreviousBanner = () => {
+    if (bannerImages.length <= 1) return
     setBannerIndex((prev) => (prev - 1 + bannerImages.length) % bannerImages.length)
   }
 
   const goToNextBanner = () => {
+    if (bannerImages.length <= 1) return
     setBannerIndex((prev) => (prev + 1) % bannerImages.length)
   }
 
@@ -330,7 +331,7 @@ export function HomePage() {
             </div>
           </div>
           <div className="StaticBanner__Content">
-            <Link to="/products" className="StaticBanner__Button">
+            <Link to={currentBannerLink} className="StaticBanner__Button">
               SHOP NOW
             </Link>
           </div>
