@@ -832,7 +832,7 @@ export function ProductPage() {
             </div>
 
             <div className="rr-product-price-row">
-              <span className="rr-product-price">Rs. {Number(displayProduct.price).toFixed(2)}</span>
+              <span className="rr-product-price">₹ {Number(displayProduct.price).toFixed(2)}</span>
               <span className="rr-product-tax">(inclusive of all taxes)</span>
             </div>
             <p className="rr-product-tagline">
@@ -954,7 +954,7 @@ export function ProductPage() {
                       <img className="MvstProducts__Image MvstProducts__Image--secondary" src={asset(item.hoverImage || item.image)} alt={`${item.name} Hover`} loading="lazy" />
                     </div>
                     <h3 className="MvstProducts__Name">{item.name.toUpperCase()}</h3>
-                    <p className="MvstProducts__Price">MRP Rs. {parseFloat(item.price).toFixed(2)} (inclusive of all taxes)</p>
+                    <p className="MvstProducts__Price">MRP ₹ {parseFloat(item.price).toFixed(2)} (inclusive of all taxes)</p>
                   </Link>
                 </div>
               ))}

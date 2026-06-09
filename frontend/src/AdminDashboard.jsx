@@ -617,12 +617,13 @@ function AdminDashboard() {
     setBlogs((current) => [
       ...current,
       {
-        id: `blog-${Date.now()}`,
-        category: 'Journal',
-        title: 'New Blog Title',
-        excerpt: 'Short summary for the blog card.',
-        image: 'assets/chocolate.jpg',
-        body: 'Write the blog content here.',
+        id: '',
+        category: '',
+        title: '',
+        excerpt: '',
+        image: '',
+        body: '',
+        draftKey: `blog-draft-${Date.now()}`,
         createdAt: new Date().toISOString(),
       },
     ])
@@ -639,13 +640,16 @@ function AdminDashboard() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        blogs: blogs.map((blog) => ({
-          ...blog,
-          id: (blog.id || blog.title || `blog-${Date.now()}`)
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-|-$/g, ''),
-        })),
+        blogs: blogs.map((blog) => {
+          const { draftKey, ...blogContent } = blog
+          return {
+            ...blogContent,
+            id: (blog.id || blog.title || `blog-${Date.now()}`)
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/^-|-$/g, ''),
+          }
+        }),
         updatedAt: new Date().toISOString(),
       }),
     }).then((response) => response.json())
@@ -2028,7 +2032,7 @@ function AdminDashboard() {
 
               <div className="rr-blog-list">
                 {blogs.map((blog, index) => (
-                  <div className="rr-blog-card" key={blog.id || index}>
+                  <div className="rr-blog-card" key={blog.draftKey || blog.createdAt || `blog-${index}`}>
                     <div className="rr-blog-card__header">
                       <div>
                         <span>Blog {index + 1}</span>
@@ -2262,17 +2266,21 @@ function AdminDashboard() {
       {isProductModalOpen && (
         <div className="rr-modal-overlay" onClick={() => setIsProductModalOpen(false)}>
           <div className="rr-modal-card rr-product-modal-card" onClick={(e) => e.stopPropagation()}>
-            <div className="rr-modal-header">
-              <h2>{productModalMode === 'add' ? 'Add New Product' : 'Edit Product'}</h2>
+            <div className="rr-modal-header rr-product-modal-header">
+              <div className="rr-product-modal-title">
+                <span>{productModalMode === 'add' ? 'New catalog item' : 'Product editor'}</span>
+                <h2>{productModalMode === 'add' ? 'Add New Product' : productForm.name || 'Edit Product'}</h2>
+                <p>{productModalMode === 'add' ? 'Create a product with catalog details, media, marketplace links, and product page content.' : `Editing ${productForm.id || 'selected product'}`}</p>
+              </div>
               <button className="rr-modal-close" onClick={() => setIsProductModalOpen(false)} type="button">&times;</button>
             </div>
 
-            <div className="rr-product-tabs" role="tablist">
-              <button className={activeProductTab === 'basic' ? 'is-active' : ''} onClick={() => setActiveProductTab('basic')} type="button">Basic Info</button>
-              <button className={activeProductTab === 'media' ? 'is-active' : ''} onClick={() => setActiveProductTab('media')} type="button">Media</button>
-              <button className={activeProductTab === 'marketplaces' ? 'is-active' : ''} onClick={() => setActiveProductTab('marketplaces')} type="button">Marketplaces</button>
-              <button className={activeProductTab === 'features' ? 'is-active' : ''} onClick={() => setActiveProductTab('features')} type="button">Features</button>
-              <button className={activeProductTab === 'specs' ? 'is-active' : ''} onClick={() => setActiveProductTab('specs')} type="button">Specs & Quality</button>
+            <div className="rr-product-tabs" role="tablist" aria-label="Product editor sections">
+              <button aria-selected={activeProductTab === 'basic'} className={activeProductTab === 'basic' ? 'is-active' : ''} onClick={() => setActiveProductTab('basic')} type="button">Basic Info</button>
+              <button aria-selected={activeProductTab === 'media'} className={activeProductTab === 'media' ? 'is-active' : ''} onClick={() => setActiveProductTab('media')} type="button">Media</button>
+              <button aria-selected={activeProductTab === 'marketplaces'} className={activeProductTab === 'marketplaces' ? 'is-active' : ''} onClick={() => setActiveProductTab('marketplaces')} type="button">Marketplaces</button>
+              <button aria-selected={activeProductTab === 'features'} className={activeProductTab === 'features' ? 'is-active' : ''} onClick={() => setActiveProductTab('features')} type="button">Features</button>
+              <button aria-selected={activeProductTab === 'specs'} className={activeProductTab === 'specs' ? 'is-active' : ''} onClick={() => setActiveProductTab('specs')} type="button">Specs & Quality</button>
             </div>
 
             <form onSubmit={handleSaveProduct} className="rr-modal-form rr-product-modal-form">
@@ -2589,7 +2597,7 @@ function AdminDashboard() {
                 </div>
               ) : null}
 
-              <div className="rr-modal-actions" style={{ gridColumn: 'span 2', borderTop: '1px solid #eee', paddingTop: '15px', marginTop: '10px' }}>
+              <div className="rr-modal-actions rr-product-modal-actions">
                 <button type="button" onClick={() => setIsProductModalOpen(false)} className="rr-btn-secondary">Cancel</button>
                 <button type="submit">{productModalMode === 'add' ? 'Add Product' : 'Save Changes'}</button>
               </div>

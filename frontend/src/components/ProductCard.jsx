@@ -86,7 +86,7 @@ export function ProductCard({ product }) {
                   <div className="ProductQuickView__Content">
                     <p className="ProductQuickView__Eyebrow">{product.badge || 'Quick view'}</p>
                     <h3 className="ProductQuickView__Title" id={`quick-view-${product.id}`}>{product.shortName || product.name}</h3>
-                    <p className="ProductQuickView__Price">MRP Rs. {parseFloat(product.price).toFixed(2)}</p>
+                    <p className="ProductQuickView__Price">MRP ₹ {parseFloat(product.price).toFixed(2)}</p>
                     <div className="ProductQuickView__Chips" aria-label="Product benefits">
                       {benefitChips.map((chip) => (
                         <span key={chip}>{chip}</span>
@@ -126,7 +126,7 @@ export function ProductCard({ product }) {
               {product.description || ''}
             </p>
             <div className="ProductItem__PriceList Heading">
-              <span className="ProductItem__Price Price Text--subdued">MRP Rs. {parseFloat(product.price).toFixed(2)} (inclusive of all taxes)</span>
+              <span className="ProductItem__Price Price Text--subdued">MRP ₹ {parseFloat(product.price).toFixed(2)} (inclusive of all taxes)</span>
             </div>
           </div>
         </div>
