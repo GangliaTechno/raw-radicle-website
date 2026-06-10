@@ -38,6 +38,14 @@ const SoundIcon = ({ muted }) => (
   </svg>
 )
 
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" />
+  </svg>
+)
+
 const ChevronIcon = ({ direction }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d={direction === 'next' ? 'M9 6l6 6-6 6' : 'M15 6l-6 6 6 6'} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -51,12 +59,14 @@ const formatPrice = (price) => {
   return `MRP ₹ ${num.toFixed(2)}`
 }
 
-const formatOriginalPrice = (price) => {
+const _formatOriginalPrice = (price) => {
   if (price === undefined || price === null || price === '') return ''
   const num = parseFloat(String(price).replace(/Rs\./i, '').replace(/[^\d.]/g, ''))
   if (isNaN(num)) return price
   return `₹ ${num.toFixed(2)}`
 }
+
+const mediaSrc = (path) => path ? `/${String(path).replace(/^\/+/, '')}` : ''
 
 export default function Testimonials({ videos = defaultVideos, title = 'Testimonials' }) {
   const list = videos?.length ? videos : defaultVideos
@@ -126,7 +136,7 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
         .rrx-overlay{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);display:flex;justify-content:space-between;align-items:flex-end;opacity:0;transition:opacity .3s ease;z-index:4}
         .rrx-video-wrap:hover .rrx-overlay,.rrx-video-wrap:focus-within .rrx-overlay{opacity:1}
         .rrx-views{display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.5);color:#fff;font:500 11px Montserrat,Arial,sans-serif;padding:4px 10px}.rrx-views svg{width:14px;height:14px}
-        .rrx-actions{display:flex;gap:10px}.rrx-round{width:34px;height:34px;border:0;border-radius:999px;background:rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .25s ease,background .25s ease,color .25s ease}.rrx-round svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}.rrx-round svg path[fill="currentColor"]{stroke:none}
+        .rrx-actions{display:flex;gap:10px}.rrx-round{width:34px;height:34px;border:0;border-radius:999px;background:rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .25s ease,background .25s ease,color .25s ease}.rrx-round svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}.rrx-round svg path[fill="currentColor"],.rrx-round svg circle[fill="currentColor"]{stroke:none}
         .rrx-round:hover{background:rgba(255,255,255,.35);transform:scale(1.15)}.rrx-round.is-active{background:rgba(255,68,68,.4);color:#ff4444}
         .rrx-card-content{padding:20px 15px;text-align:center;background:#fff;flex:1;display:flex;flex-direction:column;justify-content:center}
         .rrx-product{display:flex;align-items:center;gap:12px;margin-bottom:20px;text-align:left}
@@ -166,12 +176,12 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
                       videoRefs.current[item.id] = node
                     }}
                     className="rrx-video"
-                    src={item.url}
+                    src={mediaSrc(item.url)}
                     muted={!unmuted[item.id]}
                     loop
                     playsInline
                     preload="metadata"
-                    poster={item.productImg}
+                    poster={mediaSrc(item.productImg)}
                     autoPlay
                   />
                 ) : (
@@ -193,12 +203,17 @@ export default function Testimonials({ videos = defaultVideos, title = 'Testimon
                     <button className="rrx-round" type="button" aria-label={unmuted[item.id] ? 'Mute video' : 'Unmute video'} onClick={() => toggleMute(item.id)}>
                       <SoundIcon muted={!unmuted[item.id]} />
                     </button>
+                    {item.instagramUrl ? (
+                      <a className="rrx-round" href={item.instagramUrl} target="_blank" rel="noreferrer" aria-label="Open testimonial on Instagram">
+                        <InstagramIcon />
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </div>
               <div className="rrx-card-content">
                 <div className="rrx-product">
-                  <img className="rrx-product-img" src={item.productImg} alt={item.productName} loading="lazy" />
+                  <img className="rrx-product-img" src={mediaSrc(item.productImg)} alt={item.productName} loading="lazy" />
                   <div>
                     <h3 className="rrx-product-name">{item.productName}</h3>
                     <div className="rrx-price" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px', textAlign: 'left', marginTop: '4px' }}>

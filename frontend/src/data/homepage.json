@@ -33,6 +33,12 @@
   },
   "videoHero": {
     "url": "assets/uploads/cms-1776053796791-newad.mp4",
+    "videos": [
+      "assets/uploads/cms-1776053796791-newad.mp4",
+      "assets/uploads/Raw-radicles-video.mp4",
+      "assets/uploads/1775732620137-ad.mp4",
+      "assets/uploads/1775732688489-ad1.mp4"
+    ],
     "title": "Savor the richness of artisanal Ayurvedic chocolate",
     "subtitle": "PURE CHOCOLATE INDULGENCE"
   },

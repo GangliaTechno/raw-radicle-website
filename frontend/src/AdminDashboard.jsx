@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import './AdminDashboard.css'
-import { ensureAdmins, upsertAdminUser, getSession, setSession, clearSession, ADMIN_EMAILS, DEFAULT_PASSWORD, USERS_KEY, ADMIN_SESSION_TIMEOUT_MS } from './services/authService.js';
+import { ensureAdmins, upsertAdminUser, getSession, setSession, refreshSession, clearSession, ADMIN_EMAILS, DEFAULT_PASSWORD, USERS_KEY } from './services/authService.js';
 
 // ─── KPI Chart Helpers ────────────────────────────────────────────────────────
 
@@ -26,7 +26,7 @@ function AdminIcon({ type }) {
     time: (
       <>
         <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3 2" />
+        <path d="M12 7v5l3 2" />  
       </>
     ),
     products: (
@@ -193,6 +193,18 @@ const defaultHeroSlides = [
   { title: 'Banner 4', subtitle: '', image: 'assets/RRbanner_3.png', link: '/products' },
 ]
 
+const defaultVideoHero = {
+  url: 'assets/uploads/cms-1776053796791-newad.mp4',
+  videos: [
+    'assets/uploads/cms-1776053796791-newad.mp4',
+    'assets/uploads/Raw-radicles-video.mp4',
+    'assets/uploads/1775732620137-ad.mp4',
+    'assets/uploads/1775732688489-ad1.mp4',
+  ],
+  title: 'Savor the richness of artisanal Ayurvedic chocolate',
+  subtitle: 'PURE CHOCOLATE INDULGENCE',
+}
+
 const defaultTestimonialVideos = [
   { id: 'v1', url: 'assets/video/video-1.mp4', productId: 'adarkc', productName: 'Ashwagandha Dark Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/adark.png', views: '1.2K Views' },
   { id: 'v2', url: 'assets/video/video-2.mp4', productId: 'amilkc', productName: 'Ashwagandha Milk Slab', price: 'Rs. 300', originalPrice: 'Rs. 350', productImg: 'assets/choco/apmilk.png', views: '2.5K Views' },
@@ -239,10 +251,32 @@ const defaultInstagram = {
 
 const cloneData = (data) => JSON.parse(JSON.stringify(data || {}))
 
-const normalizeHomepageData = (data) => {
+const normalizeHomepageData = (data, availableVideos = []) => {
   const next = data && typeof data === 'object' && !Array.isArray(data) ? cloneData(data) : {}
+  const hasVideoHeroConfig = next.videoHero && typeof next.videoHero === 'object' && !Array.isArray(next.videoHero)
   if (!Array.isArray(next.hero?.slides) || next.hero.slides.length === 0) {
     next.hero = { ...(next.hero || {}), slides: cloneData(defaultHeroSlides) }
+  }
+  next.hero = {
+    ...(next.hero || {}),
+    slides: (next.hero?.slides || []).map((slide, index) => ({
+      title: slide.title || `Banner ${index + 1}`,
+      image: slide.image || '',
+      link: '/products',
+    })),
+  }
+  const videoHeroVideos = Array.from(new Set([
+    ...(Array.isArray(next.videoHero?.videos) ? next.videoHero.videos : []),
+    next.videoHero?.url,
+    ...availableVideos,
+    ...(!hasVideoHeroConfig && availableVideos.length === 0 ? defaultVideoHero.videos : []),
+  ].filter(Boolean)))
+
+  next.videoHero = {
+    ...cloneData(defaultVideoHero),
+    ...(next.videoHero || {}),
+    url: videoHeroVideos[0] || defaultVideoHero.url,
+    videos: videoHeroVideos,
   }
   if (!Array.isArray(next.testimonials?.videos) || next.testimonials.videos.length === 0) {
     next.testimonials = { ...(next.testimonials || {}), videos: cloneData(defaultTestimonialVideos) }
@@ -258,6 +292,7 @@ const normalizeHomepageData = (data) => {
 
 const emptyHomePage = {
   hero: { slides: defaultHeroSlides },
+  videoHero: defaultVideoHero,
   products: [],
   instagram: defaultInstagram,
   testimonials: { videos: defaultTestimonialVideos },
@@ -375,6 +410,7 @@ function AdminDashboard() {
   const [products, setProducts] = useState({})
   const [homepage, setHomepage] = useState(emptyHomePage)
   const [savedHomepage, setSavedHomepage] = useState(emptyHomePage)
+  const [uploadedVideos, setUploadedVideos] = useState([])
   const [blogs, setBlogs] = useState(defaultBlogs)
   const [savedBlogs, setSavedBlogs] = useState(defaultBlogs)
   const [selectedProductId, setSelectedProductId] = useState('')
@@ -424,13 +460,40 @@ function AdminDashboard() {
       setUser(currentSession)
     }
 
+    let lastRefreshAt = Date.now()
+    const refreshOnActivity = () => {
+      const now = Date.now()
+      if (now - lastRefreshAt < 60 * 1000) return
+
+      lastRefreshAt = now
+      const refreshedSession = refreshSession()
+
+      if (!refreshedSession) {
+        setUser(null)
+        setLoginError('Your admin session expired. Please log in again.')
+        return
+      }
+
+      setUser(refreshedSession)
+    }
+
     const timeUntilExpiry = Math.max(user.expiresAt - Date.now(), 0)
     const timeout = window.setTimeout(syncSession, timeUntilExpiry)
     const interval = window.setInterval(syncSession, 60 * 1000)
+    const activityEvents = ['click', 'keydown', 'input', 'scroll', 'pointermove']
+
+    activityEvents.forEach((eventName) => {
+      window.addEventListener(eventName, refreshOnActivity, { passive: true })
+    })
+    document.addEventListener('visibilitychange', syncSession)
 
     return () => {
       window.clearTimeout(timeout)
       window.clearInterval(interval)
+      activityEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, refreshOnActivity)
+      })
+      document.removeEventListener('visibilitychange', syncSession)
     }
   }, [user?.expiresAt])
 
@@ -478,6 +541,11 @@ function AdminDashboard() {
   const productCmsHasChanges = useMemo(() => dataChanged(productCms, savedProductCms), [productCms, savedProductCms])
 
   const selectedProduct = productList.find((product) => product.id === selectedProductId)
+  const heroVideoPool = useMemo(() => Array.from(new Set([
+    ...(Array.isArray(homepage.videoHero?.videos) ? homepage.videoHero.videos : []),
+    ...uploadedVideos,
+  ].filter(Boolean))), [homepage.videoHero?.videos, uploadedVideos])
+
   useEffect(() => {
     ensureAdmins()
   }, [])
@@ -486,15 +554,17 @@ function AdminDashboard() {
     if (!user) return
 
     const loadData = async () => {
-      const [productsResult, homepageResult, pendingResult, blogsResult, subscribersResult] = await Promise.all([
+      const [productsResult, homepageResult, pendingResult, blogsResult, subscribersResult, uploadedVideosResult] = await Promise.all([
         fetch('/api/products').then((response) => response.json()).catch(() => ({})),
         fetch('/api/homepage').then((response) => response.json()).catch(() => emptyHomePage),
         fetch('/api/reviews/pending').then((response) => response.json()).catch(() => ({})),
         fetch('/api/blogs').then((response) => response.json()).catch(() => ({ blogs: defaultBlogs })),
         fetch('/api/subscribers').then((response) => response.json()).catch(() => ({ subscribers: [] })),
+        fetch('/api/uploads/videos').then((response) => response.json()).catch(() => ({ videos: [] })),
       ])
 
-      const nextHomepage = normalizeHomepageData(homepageResult)
+      const nextUploadedVideos = Array.isArray(uploadedVideosResult.videos) ? uploadedVideosResult.videos : []
+      const nextHomepage = normalizeHomepageData(homepageResult, nextUploadedVideos)
       setProducts(productsResult)
       setHomepage(nextHomepage)
       setSavedHomepage(cloneData(nextHomepage))
@@ -503,6 +573,7 @@ function AdminDashboard() {
       setBlogs(nextBlogs)
       setSavedBlogs(cloneData(nextBlogs))
       setSubscribers(Array.isArray(subscribersResult.subscribers) ? subscribersResult.subscribers : [])
+      setUploadedVideos(nextUploadedVideos)
 
       const firstProductId = Object.keys(productsResult || {})[0] || ''
       setSelectedProductId((current) => current || firstProductId)
@@ -583,14 +654,16 @@ function AdminDashboard() {
   }
 
   const saveHomepage = async () => {
+    const nextHomepage = normalizeHomepageData(homepage, uploadedVideos)
     const result = await fetch('/api/homepage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(homepage),
+      body: JSON.stringify(nextHomepage),
     }).then((response) => response.json())
 
     if (result.success) {
-      setSavedHomepage(cloneData(homepage))
+      setHomepage(nextHomepage)
+      setSavedHomepage(cloneData(nextHomepage))
       addActivity('Saved homepage content')
       showStatus('Homepage content saved')
     }
@@ -599,6 +672,49 @@ function AdminDashboard() {
   const cancelHomepageChanges = () => {
     setHomepage(cloneData(savedHomepage))
     showStatus('Homepage changes discarded')
+  }
+
+  const removeHeroVideo = async (url) => {
+    if (!url) return
+    if (!window.confirm('Delete this hero video from uploads and remove it from the home page?')) return
+
+    const deleteResult = await fetch(`/api/uploads/videos?path=${encodeURIComponent(url)}`, {
+      method: 'DELETE',
+    }).then((response) => response.json()).catch(() => ({ success: false }))
+
+    if (!deleteResult.success) {
+      showStatus(deleteResult.error || 'Could not delete hero video')
+      return
+    }
+
+    const nextUploadedVideos = uploadedVideos.filter((item) => item !== url)
+    const nextHomepageDraft = {
+      ...homepage,
+      videoHero: {
+        ...homepage.videoHero,
+        url: homepage.videoHero?.url === url ? (homepage.videoHero?.videos || []).find((item) => item !== url) || '' : homepage.videoHero?.url,
+        videos: (homepage.videoHero?.videos || []).filter((item) => item !== url),
+      },
+    }
+    const nextHomepage = normalizeHomepageData(nextHomepageDraft, nextUploadedVideos)
+    const saveResult = await fetch('/api/homepage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nextHomepage),
+    }).then((response) => response.json()).catch(() => ({ success: false }))
+
+    if (!saveResult.success) {
+      showStatus(saveResult.error || 'Deleted video, but could not update homepage')
+      setUploadedVideos(nextUploadedVideos)
+      setHomepage(nextHomepage)
+      return
+    }
+
+    setUploadedVideos(nextUploadedVideos)
+    setHomepage(nextHomepage)
+    setSavedHomepage(cloneData(nextHomepage))
+    addActivity('Removed hero video')
+    showStatus('Hero video removed')
   }
 
   const updateBlog = (index, key, value) => {
@@ -641,7 +757,8 @@ function AdminDashboard() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         blogs: blogs.map((blog) => {
-          const { draftKey, ...blogContent } = blog
+          const blogContent = { ...blog }
+          delete blogContent.draftKey
           return {
             ...blogContent,
             id: (blog.id || blog.title || `blog-${Date.now()}`)
@@ -1539,7 +1656,7 @@ function AdminDashboard() {
                 {activeHomepageTab === 'hero' && (
                   <div className="rr-homepage-section">
                     <p style={{ color: '#6f6a63', fontSize: '11px', margin: '0 0 20px' }}>
-                      Configure the scrolling banner slides at the top of the home page.
+                      Configure the scrolling banner images at the top of the home page. The SHOP NOW button always opens Products.
                     </p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                       {(homepage.hero?.slides || []).map((slide, i) => (
@@ -1565,7 +1682,7 @@ function AdminDashboard() {
                               value={slide.image || ''}
                               onChange={(url) => {
                                 const slides = [...(homepage.hero?.slides || [])];
-                                slides[i] = { ...slide, image: url };
+                                slides[i] = { ...slide, image: url, link: '/products' };
                                 setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
                               }}
                             />
@@ -1581,28 +1698,8 @@ function AdminDashboard() {
                                   }}
                                 />
                               </label>
-                              <label>
-                                Slide Subtitle
-                                <input
-                                  value={slide.subtitle || ''}
-                                  onChange={(e) => {
-                                    const slides = [...(homepage.hero?.slides || [])];
-                                    slides[i] = { ...slide, subtitle: e.target.value };
-                                    setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
-                                  }}
-                                />
-                              </label>
-                              <label>
-                                Redirect Link
-                                <input
-                                  value={slide.link || ''}
-                                  onChange={(e) => {
-                                    const slides = [...(homepage.hero?.slides || [])];
-                                    slides[i] = { ...slide, link: e.target.value };
-                                    setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
-                                  }}
-                                />
-                              </label>
+                              <span className="rr-field-label">Redirect Link</span>
+                              <div className="rr-readonly-value">/products</div>
                             </div>
                           </div>
                         </div>
@@ -1614,9 +1711,8 @@ function AdminDashboard() {
                           const slides = [...(homepage.hero?.slides || [])];
                           slides.push({
                             index: slides.length,
-                            title: 'Experience the Power of Dark',
-                            subtitle: 'CHYAWANAPRASH',
-                            link: '/cdarkc',
+                            title: `Banner ${slides.length + 1}`,
+                            link: '/products',
                             image: 'assets/banner1.jpg'
                           });
                           setHomepage({ ...homepage, hero: { ...homepage.hero, slides } });
@@ -1631,15 +1727,19 @@ function AdminDashboard() {
                 {activeHomepageTab === 'video-hero' && (
                   <div className="rr-homepage-section" style={{ display: 'grid', gap: '16px' }}>
                     <p style={{ color: '#6f6a63', fontSize: '11px', margin: '0 0 10px', gridColumn: 'span 2' }}>
-                      Configure the full-width autoplaying video hero banner.
+                      Manage the video pool for the full-width autoplaying hero banner. The site randomly plays one available video.
                     </p>
                     <div className="rr-admin-media-detail-layout">
                       <MediaField
-                        label="Video File"
-                        value={homepage.videoHero?.url || ''}
+                        label="Add Hero Video"
+                        value=""
                         type="video"
                         accept="video/*"
-                        onChange={(url) => setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, url: url } })}
+                        onChange={(url) => {
+                          const videos = Array.from(new Set([...(homepage.videoHero?.videos || []), url].filter(Boolean)))
+                          setUploadedVideos((current) => Array.from(new Set([...current, url].filter(Boolean))))
+                          setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, url: videos[0] || url, videos } })
+                        }}
                       />
                       <div className="rr-admin-media-detail-fields">
                         <label>
@@ -1656,6 +1756,22 @@ function AdminDashboard() {
                             onChange={(e) => setHomepage({ ...homepage, videoHero: { ...homepage.videoHero, subtitle: e.target.value } })}
                           />
                         </label>
+                        <div>
+                          <span className="rr-field-label">Hero Videos In Database</span>
+                          <div className="rr-video-pool-list">
+                            {heroVideoPool.length ? heroVideoPool.map((url) => (
+                              <div className="rr-video-pool-item" key={url}>
+                                <video src={url.startsWith('/') ? url : '/' + url} muted playsInline controls />
+                                <div className="rr-video-pool-meta">
+                                  <span title={url}>{url}</span>
+                                  <button type="button" className="rr-video-remove" onClick={() => removeHeroVideo(url)}>Remove</button>
+                                </div>
+                              </div>
+                            )) : (
+                              <div className="rr-readonly-value">No hero videos uploaded yet.</div>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1746,7 +1862,10 @@ function AdminDashboard() {
                       Configure customer testimonial videos and their quick purchase card details.
                     </p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                      {(homepage.testimonials?.videos || []).map((video, i) => (
+                      {(homepage.testimonials?.videos || []).map((video, i) => {
+                        const testimonialProduct = productList.find((product) => product.id === video.productId) || null
+
+                        return (
                         <div key={i} className="rr-feature-field-group" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', background: '#fcfbf9', border: '1px solid rgba(28, 28, 28, 0.08)', borderRadius: '8px', padding: '16px' }}>
                           <div style={{ gridColumn: 'span 2', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(28, 28, 28, 0.08)', paddingBottom: '6px' }}>
                             <span style={{ fontWeight: 700, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px' }}>Testimonial {i + 1}</span>
@@ -1776,36 +1895,46 @@ function AdminDashboard() {
                                   setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
                                 }}
                               />
-                              <ImageField
-                                label="Product Thumbnail"
-                                value={video.productImg || ''}
-                                onChange={(url) => {
-                                  const videos = [...(homepage.testimonials?.videos || [])];
-                                  videos[i] = { ...video, productImg: url };
-                                  setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
-                                }}
-                              />
                             </div>
                             <div className="rr-admin-media-detail-fields">
                               <label>
-                                Product Name
-                                <input
-                                  value={video.productName || ''}
+                                Chocolate Product
+                                <select
+                                  value={video.productId || ''}
                                   onChange={(e) => {
+                                    const product = productList.find((item) => item.id === e.target.value)
                                     const videos = [...(homepage.testimonials?.videos || [])];
-                                    videos[i] = { ...video, productName: e.target.value };
+                                    videos[i] = {
+                                      ...video,
+                                      productId: e.target.value,
+                                      productName: product?.name || video.productName || '',
+                                      price: product?.price || video.price || '',
+                                      productImg: product?.image || video.productImg || '',
+                                    };
                                     setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
                                   }}
-                                />
+                                >
+                                  <option value="">Select chocolate product</option>
+                                  {productList.map((product) => (
+                                    <option value={product.id} key={product.id}>{product.name}</option>
+                                  ))}
+                                </select>
                               </label>
+                              {testimonialProduct ? (
+                                <div className="rr-readonly-value rr-testimonial-product-preview">
+                                  <img src={testimonialProduct.image?.startsWith('/') ? testimonialProduct.image : '/' + testimonialProduct.image} alt="" />
+                                  <span>{testimonialProduct.name} · {testimonialProduct.price}</span>
+                                </div>
+                              ) : null}
                               <label>
-                                Selling Price (INR)
+                                Instagram Post Link
                                 <input
-                                  type="number"
-                                  value={video.price || ''}
+                                  type="url"
+                                  value={video.instagramUrl || ''}
+                                  placeholder="https://www.instagram.com/p/..."
                                   onChange={(e) => {
                                     const videos = [...(homepage.testimonials?.videos || [])];
-                                    videos[i] = { ...video, price: e.target.value };
+                                    videos[i] = { ...video, instagramUrl: e.target.value };
                                     setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
                                   }}
                                 />
@@ -1813,7 +1942,8 @@ function AdminDashboard() {
                             </div>
                           </div>
                         </div>
-                      ))}
+                        )
+                      })}
                       <button
                         type="button"
                         className="rr-add-feature-btn"
@@ -1821,11 +1951,14 @@ function AdminDashboard() {
                           const videos = [...(homepage.testimonials?.videos || [])];
                           videos.push({
                             id: `v${Date.now()}`,
-                            url: 'assets/video/video-1.mp4',
-                            productName: 'New Chocolate Bar',
-                            price: '300',
-                            productImg: 'assets/choco/cdark.png',
-                            originalPrice: 350
+                            url: '',
+                            productId: '',
+                            productName: '',
+                            price: '',
+                            productImg: '',
+                            originalPrice: '',
+                            views: '',
+                            instagramUrl: ''
                           });
                           setHomepage({ ...homepage, testimonials: { ...homepage.testimonials, videos } });
                         }}
@@ -2616,9 +2749,11 @@ function JsonPanel({ children, title, value, onChange, onSave, onCancel, hasChan
   const [error, setError] = useState('')
 
   useEffect(() => {
+    // The JSON panel is an editor; resetKey intentionally replaces local draft text after external saves/cancels.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setText(JSON.stringify(value || {}, null, 2))
     setError('')
-  }, [resetKey])
+  }, [resetKey, value])
 
   const applyText = (nextText) => {
     setText(nextText)

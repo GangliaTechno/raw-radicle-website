@@ -324,6 +324,46 @@ app.get("/api/uploads/videos", (req, res) => {
   }
 });
 
+app.delete("/api/uploads/videos", async (req, res) => {
+  const assetPath = String(req.query.path || "").replace(/^\/+/, "").replace(/\\/g, "/");
+  const videoExtensions = new Set([".mp4", ".webm", ".mov", ".m4v"]);
+
+  if (!assetPath.startsWith("assets/uploads/") || !videoExtensions.has(path.extname(assetPath).toLowerCase())) {
+    return res.status(400).json({ success: false, error: "Invalid video path" });
+  }
+
+  try {
+    let deleted = false;
+
+    if (!MONGODB_ONLY) {
+      const uploadDir = path.resolve(__dirname, "public", "assets", "uploads");
+      const filePath = path.resolve(__dirname, "public", assetPath);
+
+      if (!filePath.startsWith(uploadDir + path.sep)) {
+        return res.status(400).json({ success: false, error: "Invalid video path" });
+      }
+
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+        deleted = true;
+      }
+    }
+
+    if (isMongoConfigured()) {
+      const db = await getMongoDb();
+      const bucket = new GridFSBucket(db, { bucketName: "assets" });
+      const files = await db.collection("assets.files").find({ filename: assetPath }).toArray();
+      await Promise.all(files.map((file) => bucket.delete(file._id).catch(() => {})));
+      deleted = deleted || files.length > 0;
+    }
+
+    res.json({ success: true, deleted });
+  } catch (error) {
+    console.error("Failed to delete uploaded video:", error.message);
+    res.status(500).json({ success: false, error: "Failed to delete uploaded video" });
+  }
+});
+
 // Blog CMS API
 const defaultBlogs = [
   {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import HomepageSections from '../HomepageSections.jsx'
 import { fallbackHome } from '../data/home.js'
@@ -7,30 +7,30 @@ import { usePageTitle } from '../hooks/usePageTitle.js'
 import { useProducts } from '../hooks/useProducts.js'
 import { asset } from '../utils/assets.js'
 
+const defaultHeroVideos = [
+  'assets/uploads/cms-1776053796791-newad.mp4',
+  'assets/uploads/Raw-radicles-video.mp4',
+  'assets/uploads/1775732620137-ad.mp4',
+  'assets/uploads/1775732688489-ad1.mp4',
+]
+
+const emptyUploadedVideos = { videos: [] }
+
 export function HomePage() {
   usePageTitle('Raw Radicles')
   const home = useJson('/api/homepage', fallbackHome)
+  const uploadedVideoData = useJson('/api/uploads/videos', emptyUploadedVideos)
   const productList = useProducts()
 
   // States
   const [bannerIndex, setBannerIndex] = useState(0)
+  const [videoHeroSeed] = useState(() => Math.random())
   const bannerSwipeRef = useRef({
     pointerId: null,
     startX: 0,
     startY: 0,
     isSwiping: false,
   })
-  const [selectedVideoUrl] = useState(() => {
-    const videos = [
-      'assets/uploads/cms-1776053796791-newad.mp4',
-      'assets/uploads/Raw-radicles-video.mp4',
-      'assets/uploads/1775732620137-ad.mp4',
-      'assets/uploads/1775732688489-ad1.mp4',
-    ]
-    const randomIndex = Math.floor(Math.random() * videos.length)
-    return videos[randomIndex]
-  })
-
   // Carousel Refs
   const productSliderRef = useRef(null)
 
@@ -38,7 +38,19 @@ export function HomePage() {
     ? home.hero.slides
     : fallbackHome.hero.slides
   const bannerImages = heroSlides.map((slide) => slide.image).filter(Boolean)
-  const currentBannerLink = heroSlides[bannerIndex]?.link || home.staticBanner?.link || '/products'
+  const currentBannerLink = '/products'
+  const { videoHeroUrl } = useMemo(() => {
+    const configuredPool = Array.from(new Set([
+      ...(Array.isArray(home.videoHero?.videos) ? home.videoHero.videos : []),
+      ...(Array.isArray(uploadedVideoData.videos) ? uploadedVideoData.videos : []),
+      home.videoHero?.url,
+    ].filter(Boolean)))
+    const pool = configuredPool.length ? configuredPool : defaultHeroVideos
+
+    return {
+      videoHeroUrl: pool[Math.floor(videoHeroSeed * pool.length)] || fallbackHome.videoHero.url,
+    }
+  }, [home.videoHero, uploadedVideoData, videoHeroSeed])
 
   // Banner AutoPlay
   useEffect(() => {
@@ -282,10 +294,24 @@ export function HomePage() {
   }
 
   const visibleProductIndex = productList.length > 0 && currentIndex === 0 ? productList.length : currentIndex
+  const productById = useMemo(() => productList.reduce((items, product) => {
+    items[product.id] = product
+    return items
+  }, {}), [productList])
   const homepageSections = {
     experts: home.experts?.length ? home.experts : fallbackHome.experts,
     testimonials: {
-      videos: home.testimonials?.videos?.length ? home.testimonials.videos : fallbackHome.testimonials.videos,
+      videos: (home.testimonials?.videos?.length ? home.testimonials.videos : fallbackHome.testimonials.videos).map((video) => {
+        const product = productById[video.productId]
+        if (!product) return video
+
+        return {
+          ...video,
+          productName: product.name,
+          price: product.price,
+          productImg: product.image,
+        }
+      }).filter((video) => video.url && (video.productId || video.productName)),
     },
     instagram: home.instagram?.posts?.length
       ? {
@@ -490,13 +516,14 @@ export function HomePage() {
           <div className="VideoHero__VideoWrapper">
             <video
               className="VideoHero__Video"
+              key={videoHeroUrl}
               autoPlay
               muted
               loop
               playsInline
               poster={asset('assets/pure_chocolate_hero.png')}
             >
-              <source src={asset(selectedVideoUrl)} type="video/mp4" />
+              <source src={asset(videoHeroUrl)} type="video/mp4" />
             </video>
             <div className="VideoHero__Overlay" />
           </div>
