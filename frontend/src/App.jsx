@@ -17,10 +17,31 @@ import { ProductsPage } from './pages/ProductsPage.jsx'
 import { SearchPage } from './pages/SearchPage.jsx'
 import { trackPageView } from './services/firebaseAnalytics.js'
 import { getClickDetail, trackStorePageView, trackStoreTimeOnPage, trackStoreEvent } from './services/storeAnalytics.js'
+import { asset } from './utils/assets.js'
 
 function AppLayout() {
   const [searchOpen, setSearchOpen] = useState(false)
+  const [showPreloader, setShowPreloader] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return sessionStorage.getItem('rr-preloader-seen') !== 'true'
+  })
   const location = useLocation()
+
+  useEffect(() => {
+    if (!showPreloader) return undefined
+
+    document.body.classList.add('rr-preloader-active')
+    const timer = window.setTimeout(() => {
+      sessionStorage.setItem('rr-preloader-seen', 'true')
+      document.body.classList.remove('rr-preloader-active')
+      setShowPreloader(false)
+    }, 1200)
+
+    return () => {
+      window.clearTimeout(timer)
+      document.body.classList.remove('rr-preloader-active')
+    }
+  }, [showPreloader])
 
   useEffect(() => {
     trackPageView(location)
@@ -140,6 +161,13 @@ function AppLayout() {
         />
       )}
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {!isAdmin && showPreloader ? (
+        <div className="rr-site-preloader" aria-label="Loading Raw Radicles" aria-live="polite">
+          <div className="rr-site-preloader-mark">
+            <img src={asset('assets/RR_logo embossed_tm.png')} alt="Raw Radicles" />
+          </div>
+        </div>
+      ) : null}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />

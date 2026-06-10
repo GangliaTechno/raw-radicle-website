@@ -5,6 +5,82 @@
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
 }
 
+body.rr-preloader-active {
+  overflow: hidden;
+}
+
+.rr-site-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  pointer-events: none;
+  animation: rr-preloader-fade 1.2s ease forwards;
+}
+
+.rr-site-preloader-mark {
+  position: relative;
+  width: min(720px, 92vw);
+  max-height: 390px;
+  transform-origin: center;
+  animation: rr-preloader-pulse 1.2s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.rr-site-preloader img {
+  width: 100%;
+  max-height: 390px;
+  display: block;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 24px 40px rgba(28, 27, 27, 0.1))
+    drop-shadow(0 2px 0 rgba(255, 255, 255, 0.85));
+}
+
+@keyframes rr-preloader-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  28% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  68% {
+    opacity: 1;
+    transform: scale(1.025);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes rr-preloader-fade {
+  0%, 72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .rr-site-preloader-mark {
+    width: min(540px, 92vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rr-site-preloader,
+  .rr-site-preloader-mark,
+  .rr-site-preloader img {
+    animation-duration: 0.45s;
+  }
+}
+
 /* Section-specific sharp corners: testimonials, instagram, blog. */
 .rrx-testimonial-card,
 .rrx-video-wrap,
