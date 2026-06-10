@@ -80,26 +80,31 @@ function SparkCard({ actionLabel, label, value, trend, icon, onClick }) {
 
 function LineChart({ data, colorStroke = '#e85d26' }) {
   const W = 640, H = 140;
-  const PAD = { t: 14, r: 14, b: 28, l: 34 };
+  const PAD = { t: 18, r: 18, b: 28, l: 44 };
   const cW = W - PAD.l - PAD.r;
   const cH = H - PAD.t - PAD.b;
-  const max = Math.max(...data.map(d => d.value), 1);
-  const pts = data.map((d, i) => ({
-    x: PAD.l + (i / Math.max(data.length - 1, 1)) * cW,
+  const chartData = data?.length ? data : [{ label: '', value: 0 }];
+  const max = Math.max(...chartData.map(d => d.value), 1);
+  const pts = chartData.map((d, i) => ({
+    x: PAD.l + (i / Math.max(chartData.length - 1, 1)) * cW,
     y: PAD.t + cH - (d.value / max) * cH,
     ...d,
   }));
   const pathD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
   const areaD = `${pathD} L${pts[pts.length - 1].x.toFixed(1)},${(PAD.t + cH).toFixed(1)} L${pts[0].x.toFixed(1)},${(PAD.t + cH).toFixed(1)} Z`;
-  const yTicks = [0, 0.25, 0.5, 0.75, 1].map(f => Math.round(f * max));
+  const yTicks = [1, 0.75, 0.5, 0.25, 0].map((factor) => ({
+    value: Math.round(max * factor),
+    y: PAD.t + cH - factor * cH,
+  }));
+  const xLabelStep = Math.max(1, Math.ceil(pts.length / 8));
   return (
     <svg className="kpi-line-chart" viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', display: 'block' }}>
-      {yTicks.map((v, i) => {
-        const y = PAD.t + cH - (v / max) * cH;
+      {yTicks.map((tick, i) => {
+        const y = tick.y;
         return (
           <g className="kpi-line-grid" key={i}>
             <line x1={PAD.l} y1={y} x2={PAD.l + cW} y2={y} />
-            <text x={PAD.l - 8} y={y + 4} textAnchor="end">{v}</text>
+            <text x={PAD.l - 8} y={y + 4} textAnchor="end">{tick.value}</text>
           </g>
         );
       })}
@@ -112,12 +117,20 @@ function LineChart({ data, colorStroke = '#e85d26' }) {
       <path className="kpi-line-area" d={areaD} fill="url(#lc-fill)" />
       <path className="kpi-line-path" d={pathD} fill="none" stroke={colorStroke} strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
       {pts.map((p, i) => (
-        <g className="kpi-line-point" key={i}>
+        <g className="kpi-line-point" key={i} tabIndex={0} aria-label={`${p.label}: ${p.value}`}>
           <circle cx={p.x} cy={p.y} r="2.6" fill={colorStroke} />
+          <circle className="kpi-line-hitarea" cx={p.x} cy={p.y} r="11" />
+          <g
+            className="kpi-line-tooltip"
+            transform={`translate(${Math.max(42, Math.min(W - 42, p.x))}, ${Math.max(20, p.y - 24)})`}
+          >
+            <rect x="-34" y="-17" width="68" height="22" rx="5" />
+            <text x="0" y="-2" textAnchor="middle">{p.value}</text>
+          </g>
           <title>{p.label}: {p.value}</title>
         </g>
       ))}
-      {pts.filter((_, i) => i % 2 === 0 || i === pts.length - 1).map((p, i) => (
+      {pts.filter((_, i) => i % xLabelStep === 0 || i === pts.length - 1).map((p, i) => (
         <text className="kpi-line-label" key={i} x={p.x} y={H - 8} textAnchor="middle">{p.label}</text>
       ))}
     </svg>
@@ -191,6 +204,14 @@ const defaultHeroSlides = [
   { title: 'Banner 2', subtitle: '', image: 'assets/RRbanner_4.png', link: '/products' },
   { title: 'Banner 3', subtitle: '', image: 'assets/RRbanner_2.png', link: '/products' },
   { title: 'Banner 4', subtitle: '', image: 'assets/RRbanner_3.png', link: '/products' },
+]
+
+const analyticsRangeOptions = [
+  { label: '14 days', days: 14 },
+  { label: '1 month', days: 30 },
+  { label: '3 months', days: 90 },
+  { label: '6 months', days: 180 },
+  { label: '1 year', days: 365 },
 ]
 
 const defaultVideoHero = {
@@ -422,7 +443,8 @@ function AdminDashboard() {
   const [activity, setActivity] = useState(['Opened React admin dashboard'])
   const [status, setStatus] = useState('')
   const [analytics, setAnalytics] = useState(null)
-  const [analyticsLoading, setAnalyticsLoading] = useState(false)
+  const [analyticsLoading, setAnalyticsLoading] = useState(true)
+  const [analyticsRangeDays, setAnalyticsRangeDays] = useState(14)
 
   useEffect(() => {
     document.title = 'Admin Dashboard | Raw Radicles'
@@ -541,10 +563,25 @@ function AdminDashboard() {
   const productCmsHasChanges = useMemo(() => dataChanged(productCms, savedProductCms), [productCms, savedProductCms])
 
   const selectedProduct = productList.find((product) => product.id === selectedProductId)
+  const analyticsRangeLabel = analyticsRangeOptions.find((option) => option.days === analyticsRangeDays)?.label || `${analyticsRangeDays} days`
+  const analyticsActiveDays = (analytics?.days || []).filter((day) => day.pageViews || day.clicks || day.totalTime).length
+  const getProductNameById = (id) => productList.find((product) => product.id === id)?.name || id
+  const getAnalyticsPageLabel = (page) => {
+    const pageId = String(page.url || page.label || '').replace(/^\/+/, '').replace(/\.html$/i, '')
+    if (!pageId) return 'Home'
+    return getProductNameById(pageId)
+  }
+  const getAnalyticsClickLabel = (click) => {
+    const key = String(click.key || '')
+    if (key.startsWith('product_')) return getProductNameById(key.replace(/^product_/, ''))
+    if (key.startsWith('marketplace_')) return `Marketplace: ${key.replace(/^marketplace_/, '').replace(/_/g, ' ')}`
+    if (key.startsWith('cta_')) return `CTA: ${key.replace(/^cta_/, '').replace(/_/g, ' ')}`
+    return click.label || key.replace(/_/g, ' ')
+  }
   const heroVideoPool = useMemo(() => Array.from(new Set([
     ...(Array.isArray(homepage.videoHero?.videos) ? homepage.videoHero.videos : []),
     ...uploadedVideos,
-  ].filter(Boolean))), [homepage.videoHero?.videos, uploadedVideos])
+  ].filter(Boolean))), [homepage.videoHero, uploadedVideos])
 
   useEffect(() => {
     ensureAdmins()
@@ -578,20 +615,33 @@ function AdminDashboard() {
       const firstProductId = Object.keys(productsResult || {})[0] || ''
       setSelectedProductId((current) => current || firstProductId)
 
-      // Load analytics
-      setAnalyticsLoading(true)
-      try {
-        const aData = await fetch('/api/analytics').then(r => r.json())
-        setAnalytics(aData)
-      } catch (e) {
-        console.warn('Analytics unavailable:', e)
-      } finally {
-        setAnalyticsLoading(false)
-      }
     }
 
     loadData()
   }, [user])
+
+  useEffect(() => {
+    if (!user) return
+
+    let active = true
+
+    fetch(`/api/analytics?days=${analyticsRangeDays}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (active) setAnalytics(data)
+      })
+      .catch((error) => {
+        console.warn('Analytics unavailable:', error)
+        if (active) setAnalytics(null)
+      })
+      .finally(() => {
+        if (active) setAnalyticsLoading(false)
+      })
+
+    return () => {
+      active = false
+    }
+  }, [user, analyticsRangeDays])
 
   useEffect(() => {
     if (!selectedProductId) return
@@ -1386,8 +1436,24 @@ function AdminDashboard() {
               <div className="kpi-row">
                 <div className="kpi-panel kpi-panel--wide">
                   <div className="kpi-panel-header">
-                    <h3>Store visits - last 14 days</h3>
+                    <h3>Store visits - past {analyticsRangeLabel}</h3>
                     <span className="kpi-badge">Visits</span>
+                    {analytics ? <span className="kpi-range-summary">{analyticsActiveDays} active days</span> : null}
+                    <div className="kpi-range-controls" aria-label="Analytics date range">
+                      {analyticsRangeOptions.map((option) => (
+                        <button
+                          className={analyticsRangeDays === option.days ? 'is-active' : ''}
+                          key={option.days}
+                          onClick={() => {
+                            setAnalyticsLoading(true)
+                            setAnalyticsRangeDays(option.days)
+                          }}
+                          type="button"
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                   {analyticsLoading ? (
                     <div className="kpi-loading">Loading…</div>
@@ -1404,10 +1470,28 @@ function AdminDashboard() {
                 {/* ── Clicks Line Chart ───────────────────────────────── */}
                 <div className="kpi-panel kpi-panel--wide">
                   <div className="kpi-panel-header">
-                    <h3>Button clicks - last 14 days</h3>
+                    <h3>Button clicks - past {analyticsRangeLabel}</h3>
                     <span className="kpi-badge kpi-badge--blue">Clicks</span>
+                    {analytics ? <span className="kpi-range-summary">{analyticsActiveDays} active days</span> : null}
+                    <div className="kpi-range-controls" aria-label="Analytics date range">
+                      {analyticsRangeOptions.map((option) => (
+                        <button
+                          className={analyticsRangeDays === option.days ? 'is-active' : ''}
+                          key={option.days}
+                          onClick={() => {
+                            setAnalyticsLoading(true)
+                            setAnalyticsRangeDays(option.days)
+                          }}
+                          type="button"
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                  {analytics ? (
+                  {analyticsLoading ? (
+                    <div className="kpi-loading">Loadingâ€¦</div>
+                  ) : analytics ? (
                     <LineChart
                       data={(analytics.days || []).map(d => ({ label: d.label, value: d.clicks }))}
                       colorStroke="#3b82f6"
@@ -1424,7 +1508,7 @@ function AdminDashboard() {
                   </div>
                   {analytics && analytics.topPages.length > 0 ? (
                     <HBar
-                      items={analytics.topPages.map(p => ({ label: p.label, value: p.views }))}
+                      items={analytics.topPages.map(p => ({ label: getAnalyticsPageLabel(p), value: p.views }))}
                       color="#e85d26"
                     />
                   ) : <div className="kpi-empty">No page data yet. Store visits will show up here once tracking records traffic.</div>}
@@ -1437,7 +1521,7 @@ function AdminDashboard() {
                   </div>
                   {analytics && analytics.topPages.length > 0 ? (
                     <HBar
-                      items={analytics.topPages.map(p => ({ label: p.label, value: p.avgTime }))}
+                      items={analytics.topPages.map(p => ({ label: getAnalyticsPageLabel(p), value: p.avgTime }))}
                       color="#10b981"
                     />
                   ) : <div className="kpi-empty">No reading-time data yet. This appears after visitors spend time on pages.</div>}
@@ -1452,7 +1536,7 @@ function AdminDashboard() {
                   </div>
                   {analytics && analytics.topClicks.length > 0 ? (
                     <HBar
-                      items={analytics.topClicks.map(c => ({ label: c.label, value: c.value }))}
+                      items={analytics.topClicks.map(c => ({ label: getAnalyticsClickLabel(c), value: c.value }))}
                       color="#8b5cf6"
                     />
                   ) : <div className="kpi-empty">No click data yet. Product and marketplace clicks will appear here.</div>}

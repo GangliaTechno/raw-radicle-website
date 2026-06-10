@@ -974,10 +974,14 @@ async function writeAnalytics(data) {
 // GET /api/analytics – summary for dashboard
 app.get('/api/analytics', async (req, res) => {
   const data = await readAnalytics();
+  const requestedDays = parseInt(req.query.days, 10);
+  const rangeDays = Number.isFinite(requestedDays)
+    ? Math.min(Math.max(requestedDays, 10), 365)
+    : 14;
 
-  // Build last-14-days array
+  // Build selected date range array
   const days = [];
-  for (let i = 13; i >= 0; i--) {
+  for (let i = rangeDays - 1; i >= 0; i--) {
     const d = new Date();
     d.setDate(d.getDate() - i);
     const key = d.toISOString().split('T')[0];
@@ -1024,6 +1028,7 @@ app.get('/api/analytics', async (req, res) => {
   })();
 
   res.json({
+    rangeDays,
     days,
     topPages,
     topClicks,

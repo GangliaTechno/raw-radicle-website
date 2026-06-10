@@ -2557,6 +2557,42 @@
   overflow: visible;
 }
 
+.rr-admin .kpi-range-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.rr-admin .kpi-range-controls button {
+  min-height: 28px;
+  border: 1px solid rgba(28, 28, 28, 0.1);
+  border-radius: 6px;
+  background: #fff;
+  color: #5c574f;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 0 10px;
+  text-transform: uppercase;
+}
+
+.rr-admin .kpi-range-controls button:hover,
+.rr-admin .kpi-range-controls button.is-active {
+  border-color: rgba(232, 93, 38, 0.35);
+  background: #fff1ea;
+  color: #bf451e;
+}
+
+.rr-admin .kpi-range-summary {
+  color: #8b8378;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
 .rr-admin .kpi-line-grid line {
   stroke: rgba(28, 28, 28, 0.075);
   stroke-width: 1;
@@ -2574,8 +2610,51 @@
   opacity: 0.34;
 }
 
+.rr-admin .kpi-line-path {
+  filter: drop-shadow(0 4px 8px rgba(232, 93, 38, 0.12));
+}
+
+.rr-admin .kpi-line-point {
+  cursor: crosshair;
+  outline: none;
+}
+
 .rr-admin .kpi-line-point circle {
   filter: drop-shadow(0 2px 5px rgba(28, 28, 28, 0.12));
+}
+
+.rr-admin .kpi-line-hitarea {
+  fill: transparent;
+  filter: none;
+  pointer-events: all;
+}
+
+.rr-admin .kpi-line-tooltip {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+.rr-admin .kpi-line-tooltip rect {
+  fill: rgba(28, 27, 27, 0.92);
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.rr-admin .kpi-line-tooltip text {
+  fill: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.rr-admin .kpi-line-point:hover .kpi-line-tooltip,
+.rr-admin .kpi-line-point:focus .kpi-line-tooltip {
+  opacity: 1;
+}
+
+.rr-admin .kpi-line-point:hover circle:first-child,
+.rr-admin .kpi-line-point:focus circle:first-child {
+  r: 4;
 }
 
 .rr-admin .hbar-list {
