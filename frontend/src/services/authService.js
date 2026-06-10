@@ -85,6 +85,7 @@ export const getSession = () => {
 
 export const setSession = (user) => {
   const isAdmin = user.role === 'admin' || ADMIN_EMAILS.includes(user.email?.toLowerCase());
+  const now = Date.now();
 
   localStorage.setItem(
     SESSION_KEY,
@@ -94,9 +95,25 @@ export const setSession = (user) => {
       lastName: user.lastName,
       email: user.email,
       role: user.role,
-      expiresAt: isAdmin ? Date.now() + ADMIN_SESSION_TIMEOUT_MS : null,
+      lastActivityAt: isAdmin ? now : null,
+      expiresAt: isAdmin ? now + ADMIN_SESSION_TIMEOUT_MS : null,
     })
   );
+};
+
+export const refreshSession = () => {
+  const session = getSession();
+  if (!session?.expiresAt) return session;
+
+  const now = Date.now();
+  const refreshedSession = {
+    ...session,
+    lastActivityAt: now,
+    expiresAt: now + ADMIN_SESSION_TIMEOUT_MS,
+  };
+
+  localStorage.setItem(SESSION_KEY, JSON.stringify(refreshedSession));
+  return refreshedSession;
 };
 
 export const clearSession = () => {
