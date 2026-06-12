@@ -1,35 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { asset } from '../utils/assets.js'
 
 const footerData = {
   about: {
-    title: 'About',
-    text: 'A premium wellness company',
+    title: 'Brand',
+    text: 'A premium Ayurvedic wellness company',
+    tagline: 'Same Herbs, New Happiness',
     logo: 'assets/RR_logo embossed_tm.png',
   },
   linkGroups: [
     {
-      title: 'INFO',
+      title: 'Our Chocolates',
       links: [
-        { label: 'Shipping', href: '/contact' },
-        { label: 'Returns & Exchanges', href: '/contact' },
-        { label: 'Warranty', href: '/contact' },
-        { label: 'Contact Us', href: '/contact' },
+        { label: 'Ashwagandha Chocolate', href: '/products' },
+        { label: 'Brahmi Chocolate', href: '/products' },
+        { label: 'Chyawanaprash Chocolate', href: '/products' },
+        { label: 'View All Products', href: '/products' },
       ],
     },
     {
-      title: 'Business',
+      title: 'Buy Now',
       links: [
-        { label: 'Collaboration', href: '/contact' },
-        { label: 'Corporate Gifting', href: '/contact' },
-        { label: 'Do not sell my personal information', href: '/contact' },
+        { label: 'Blinkit', href: 'https://blinkit.com/' },
+        { label: 'Zepto', href: 'https://www.zeptonow.com/' },
+        { label: 'Swiggy Instamart', href: 'https://www.swiggy.com/instamart' },
+        { label: 'Amazon', href: 'https://www.amazon.in/' },
+        { label: 'Flipkart', href: 'https://www.flipkart.com/' },
+      ],
+    },
+    {
+      title: 'Company',
+      links: [
+        { label: 'About Us', href: '/about' },
+        { label: 'Our Experts', href: '/about#source' },
+        { label: 'Blog / The Raw Journal', href: '/blog' },
+        { label: 'Contact Us', href: '/contact' },
       ],
     },
   ],
   newsletter: {
     title: 'Newsletter',
-    text: 'Get updated on new products and sales',
+    text: 'Get updated on new products and stories',
     button: 'Subscribe',
   },
   social: [
@@ -134,7 +146,7 @@ const PaymentIcon = ({ type }) => {
   }
 }
 
-const paymentMethods = [
+const PAYMENT_METHODS = [
   'AMEX',
   'Pay',
   'D',
@@ -176,33 +188,67 @@ const SocialIcon = ({ icon }) => {
 }
 
 export default function Footer({ data = footerData }) {
+  const [email, setEmail] = useState('')
+  const [newsletterStatus, setNewsletterStatus] = useState('')
+
+  const handleNewsletterSubmit = async (event) => {
+    event.preventDefault()
+    const trimmedEmail = email.trim()
+    if (!trimmedEmail) return
+
+    setNewsletterStatus('Submitting...')
+
+    try {
+      const response = await fetch('/api/subscribers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Newsletter Subscriber',
+          email: trimmedEmail,
+          phone: '',
+        }),
+      })
+
+      if (!response.ok) throw new Error('Subscription failed')
+
+      setEmail('')
+      setNewsletterStatus('Thank you for subscribing.')
+    } catch {
+      setNewsletterStatus('Please try again.')
+    }
+  }
+
   return (
     <footer className="rr-footer" role="contentinfo">
       <style>{`
         .rr-footer{background:#1c1c1c;border:2px solid #333;padding:18px 66px 12px;color:#f3f3f3;box-sizing:border-box;min-height:auto;display:flex;flex-direction:column}
-        .rr-footer-inner{display:grid;grid-template-columns:1.45fr .82fr 1.08fr .9fr;gap:38px;width:100%;max-width:none;margin:0 auto;text-align:left;align-items:start}
+        .rr-footer-inner{display:grid;grid-template-columns:1.35fr .95fr .95fr .95fr 1.05fr;gap:32px;width:100%;max-width:none;margin:0 auto;text-align:left;align-items:start}
         .rr-footer-title{font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin:0 0 9px;color:#f5f5f5;line-height:1.2}
-        .rr-footer-text{font-family:Montserrat,Arial,sans-serif;font-size:16px;line-height:1.5;color:#f1f1f1;margin:0 0 8px;max-width:250px}
+        .rr-footer-text{font-family:Montserrat,Arial,sans-serif;font-size:15px;line-height:1.5;color:#f1f1f1;margin:0 0 8px;max-width:250px}
+        .rr-footer-tagline{font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#b59055;margin:0 0 12px;line-height:1.45}
         .rr-footer-logo{width:245px;max-width:100%;height:auto;display:block;margin:0 0 6px;opacity:1}
         .rr-footer-social{display:flex;gap:28px;list-style:none;margin:0;padding:0}
         .rr-footer-social-link{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;color:#fff}
         .rr-footer-social-link svg{width:15px;height:15px;fill:currentColor}
         .rr-footer-social-link:focus-visible,.rr-footer-link:focus-visible,.rr-footer-legal-link:focus-visible,.rr-footer-submit:focus-visible{outline:3px solid #b08850;outline-offset:4px}
         .rr-footer-links{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-        .rr-footer-link{font-family:Montserrat,Arial,sans-serif;font-size:16px;font-weight:400;color:#f1f1f1;text-decoration:none;line-height:1.35}
+        .rr-footer-link{font-family:Montserrat,Arial,sans-serif;font-size:14px;font-weight:400;color:#f1f1f1;text-decoration:none;line-height:1.35}
         .rr-footer-inner>nav .rr-footer-title,.rr-footer-inner>section:not(:first-child) .rr-footer-title{margin-bottom:20px}
-        .rr-footer-inner>nav .rr-footer-links{gap:18px}
+        .rr-footer-inner>nav .rr-footer-links{gap:14px}
         .rr-footer-inner>section:not(:first-child) .rr-footer-text{margin-bottom:20px}
         .rr-footer-inner>section:not(:first-child) .rr-footer-submit{margin-top:8px}
         .rr-footer-link:hover,.rr-footer-legal-link:hover,.rr-footer-submit:hover{color:#bfbfbf}
         .rr-footer-submit{display:inline-block;margin-top:0;background:transparent;border:0;color:#f5f5f5;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;padding:0;cursor:pointer}
-        .rr-footer-aside{margin:12px 14px 0;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;width:calc(100% - 28px);flex-wrap:nowrap}
-        .rr-footer-legal{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f3f3f3}
+        .rr-footer-newsletter-form{display:grid;gap:12px;max-width:260px}
+        .rr-footer-newsletter-input{background:transparent;border:1px solid rgba(255,255,255,.36);color:#fff;font-family:Montserrat,Arial,sans-serif;font-size:13px;min-height:42px;padding:10px 12px;width:100%;box-sizing:border-box}
+        .rr-footer-newsletter-input::placeholder{color:rgba(255,255,255,.62)}
+        .rr-footer-newsletter-status{font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#d8c49a;margin:0;min-height:18px}
+        .rr-footer-aside{margin:18px 0 0;display:flex;align-items:center;justify-content:flex-end;width:100%}
+        .rr-footer-legal{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f3f3f3;text-align:right}
         .rr-footer-legal-link{color:#f3f3f3;text-decoration:none}
-        .rr-footer-payments{display:flex;align-items:center;justify-content:flex-end;gap:12px;list-style:none;margin:0;padding:0}
-        .rr-payment-badge{display:flex;align-items:center;justify-content:center;width:38px;height:24px}
-        @media(max-width:1100px){.rr-footer{padding:20px 32px 14px}.rr-footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px}.rr-footer-aside{margin-top:16px;width:100%}}
-        @media(max-width:760px){.rr-footer-aside{align-items:flex-start;flex-direction:column;flex-wrap:wrap;margin:14px 0 0;width:100%}.rr-footer-payments{justify-content:flex-start;gap:10px;flex-wrap:wrap}}
+        @media(max-width:1180px){.rr-footer{padding:20px 32px 14px}.rr-footer-inner{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px}.rr-footer-aside{margin-top:16px;width:100%}}
+        @media(max-width:900px){.rr-footer-inner{grid-template-columns:repeat(2,minmax(0,1fr))}}
+        @media(max-width:760px){.rr-footer-aside{justify-content:flex-start;margin:14px 0 0;width:100%}.rr-footer-legal{justify-content:flex-start;text-align:left}}
         @media(max-width:640px){.rr-footer{padding:18px 20px 14px}.rr-footer-inner{grid-template-columns:1fr;gap:18px}.rr-footer-text{max-width:none}.rr-footer-logo{width:220px}}
       `}</style>
       <div className="rr-footer-inner">
@@ -211,6 +257,7 @@ export default function Footer({ data = footerData }) {
             {data.about.title}
           </h2>
           <p className="rr-footer-text">{data.about.text}</p>
+          <p className="rr-footer-tagline">{data.about.tagline}</p>
           <FooterLink href="/" aria-label="Raw Radicles home">
             <img className="rr-footer-logo" src={asset(data.about.logo)} alt="Raw Radicles Logo" loading="lazy" />
           </FooterLink>
@@ -233,7 +280,7 @@ export default function Footer({ data = footerData }) {
             <ul className="rr-footer-links">
               {group.links.map((link) => (
                 <li key={link.label}>
-                  <FooterLink className="rr-footer-link" href={link.href}>
+                  <FooterLink className={`rr-footer-link ${group.title === 'Buy Now' ? 'rr-footer-link--marketplace' : ''}`} href={link.href}>
                     {link.label}
                   </FooterLink>
                 </li>
@@ -247,9 +294,22 @@ export default function Footer({ data = footerData }) {
             {data.newsletter.title}
           </h2>
           <p className="rr-footer-text">{data.newsletter.text}</p>
-          <FooterLink className="rr-footer-submit" href="/contact">
-            {data.newsletter.button}
-          </FooterLink>
+          <form className="rr-footer-newsletter-form" onSubmit={handleNewsletterSubmit}>
+            <input
+              className="rr-footer-newsletter-input"
+              type="email"
+              name="email"
+              placeholder="Email address"
+              aria-label="Email address"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            />
+            <button className="rr-footer-submit" type="submit">
+              {data.newsletter.button}
+            </button>
+            <p className="rr-footer-newsletter-status" aria-live="polite">{newsletterStatus}</p>
+          </form>
         </section>
       </div>
 
@@ -263,15 +323,7 @@ export default function Footer({ data = footerData }) {
               </FooterLink>
             </React.Fragment>
           ))}
-          <span aria-hidden="true">|</span>
         </div>
-        <ul className="rr-footer-payments" aria-label="Accepted payment methods">
-          {paymentMethods.map((method) => (
-            <li className="rr-payment-badge" key={method}>
-              <PaymentIcon type={method} />
-            </li>
-          ))}
-        </ul>
       </div>
     </footer>
   )
