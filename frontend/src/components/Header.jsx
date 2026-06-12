@@ -65,13 +65,13 @@ export function Header({ onSearch }) {
       subItems: [
         { label: 'Our Origin', href: '/about#origin' },
         { label: 'Our Philosophy', href: '/about#philosophy' },
-        { label: 'Quality Production', href: '/about#quality' },
-        { label: 'Our Spirit', href: '/about#spirit' },
+        { label: 'Sourcing & Craft', href: '/about#source' },
+        { label: 'The Lion & the Sun', href: '/about#spirit' },
       ],
       pushItems: [
         { label: 'OUR ORIGIN', href: '/about#origin', image: 'assets/about/origin_story.png', alt: 'Our Origin' },
         { label: 'OUR PHILOSOPHY', href: '/about#philosophy', image: 'assets/pure_chocolate_hero.png', alt: 'Our Philosophy' },
-        { label: 'OUR SPIRIT', href: '/about#spirit', image: 'assets/about/lion_sun_detail.png', alt: 'Our Spirit' },
+        { label: 'THE LION & THE SUN', href: '/about#spirit', image: 'assets/about/lion_sun_detail.png', alt: 'The Lion and the Sun' },
       ],
     },
     { label: 'Contact Us', href: '/contact' },

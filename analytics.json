@@ -5,17 +5,212 @@
       "clicks": 0,
       "totalTime": 374,
       "sessions": 0
+    },
+    "2026-06-06": {
+      "pageViews": 25,
+      "clicks": 7,
+      "totalTime": 18,
+      "sessions": 0
+    },
+    "2026-06-07": {
+      "pageViews": 2,
+      "clicks": 0,
+      "totalTime": 0,
+      "sessions": 0
+    },
+    "2026-06-08": {
+      "pageViews": 69,
+      "clicks": 221,
+      "totalTime": 2899,
+      "sessions": 0
+    },
+    "2026-06-09": {
+      "pageViews": 116,
+      "clicks": 211,
+      "totalTime": 8288,
+      "sessions": 0
+    },
+    "2026-06-10": {
+      "pageViews": 99,
+      "clicks": 178,
+      "totalTime": 5419,
+      "sessions": 0
+    },
+    "2026-06-11": {
+      "pageViews": 44,
+      "clicks": 18,
+      "totalTime": 4627,
+      "sessions": 0
+    },
+    "2026-06-12": {
+      "pageViews": 38,
+      "clicks": 43,
+      "totalTime": 1891,
+      "sessions": 0
     }
   },
   "pages": {
     "/": {
-      "views": 1,
-      "totalTime": 6
+      "views": 186,
+      "totalTime": 11753
     },
     "/index.html": {
       "views": 2,
       "totalTime": 368
+    },
+    "/admin": {
+      "views": 78,
+      "totalTime": 1398
+    },
+    "/kpi-smoke-test": {
+      "views": 1,
+      "totalTime": 0
+    },
+    "/blog": {
+      "views": 8,
+      "totalTime": 49
+    },
+    "/products": {
+      "views": 40,
+      "totalTime": 2095
+    },
+    "/cmilkc": {
+      "views": 4,
+      "totalTime": 1202
+    },
+    "/bmilkc": {
+      "views": 5,
+      "totalTime": 180
+    },
+    "/amilkc": {
+      "views": 8,
+      "totalTime": 1838
+    },
+    "/cdarkc": {
+      "views": 3,
+      "totalTime": 36
+    },
+    "/about": {
+      "views": 42,
+      "totalTime": 2790
+    },
+    "/contact": {
+      "views": 6,
+      "totalTime": 215
+    },
+    "/adarkc": {
+      "views": 4,
+      "totalTime": 57
+    },
+    "/login": {
+      "views": 4,
+      "totalTime": 39
+    },
+    "/bdarkc": {
+      "views": 5,
+      "totalTime": 1496
     }
   },
-  "clicks": {}
+  "clicks": {
+    "cta_store_visits30_vs_previous_7d": 1,
+    "cta_productsproducts": 15,
+    "cta_refresh_homepage_story": 2,
+    "product_cdarkc": 4,
+    "product_cmilkc": 6,
+    "cta_login": 17,
+    "product_bmilkc": 4,
+    "cta_features": 15,
+    "cta_review_filters": 1,
+    "cta_write_a_review": 1,
+    "cta_homepage": 36,
+    "cta_static_banner": 9,
+    "cta_video_hero": 28,
+    "cta_experts": 24,
+    "cta_save_homepage_settings": 2,
+    "cta_cancel": 24,
+    "cta_hero_slides": 16,
+    "cta__add_slide": 1,
+    "cta_testimonials": 23,
+    "cta_marketplaces": 20,
+    "cta_faqs": 14,
+    "cta_instagram": 13,
+    "cta_sync_feed": 1,
+    "cta_products": 25,
+    "cta_blog": 15,
+    "cta_edit": 21,
+    "cta_media": 18,
+    "cta_basic_info": 9,
+    "cta_specs__quality": 11,
+    "cta_delete": 1,
+    "cta_homehome": 24,
+    "cta_how_much_chocolate_should_i_eat_per_day": 2,
+    "cta_are_your_chocolates_vegan_and_glutenfree": 3,
+    "cta_what_ayurvedic_ingredients_are_in_your_chocolate": 4,
+    "cta_add_new_product": 4,
+    "cta_users": 10,
+    "cta_subscribed": 9,
+    "cta_dashboard": 17,
+    "cta_shop_now": 1,
+    "product_amilkc": 6,
+    "marketplace_amazon": 1,
+    "cta_blogblog": 6,
+    "cta_rituals__1_min_reada_calmer_snack_break_with_ash": 1,
+    "cta_aboutabout": 15,
+    "cta_dr_rohan_mehranutritionist": 3,
+    "marketplace_flipkart": 2,
+    "cta_store_visits0_vs_previous_7d": 1,
+    "cta_button_clicks222review_click_data": 1,
+    "cta_next_products": 20,
+    "cta_open_navigation": 7,
+    "cta_home": 3,
+    "cta_toggle_products_list": 2,
+    "cta_show_one_product_per_row": 1,
+    "cta_show_two_products_per_row": 2,
+    "cta_review_subscriber_list": 1,
+    "cta_about": 1,
+    "cta_contact_uscontact_us": 5,
+    "cta_next_testimonials": 8,
+    "product_adarkc": 3,
+    "cta_previous_testimonials": 11,
+    "cta_raw_radicles_home": 1,
+    "cta_next_instagram_posts": 7,
+    "cta_previous_instagram_posts": 2,
+    "cta_open_raw_radicles_instagram_post": 3,
+    "cta_account": 2,
+    "cta_linkedin": 1,
+    "cta_specifications": 1,
+    "cta_quality__safety_certified": 1,
+    "cta_like": 5,
+    "cta_add_blog": 11,
+    "cta_add_new_user": 1,
+    "product_bdarkc": 3,
+    "cta_products6manage_products": 1,
+    "cta_edit_homepage": 1,
+    "cta_view_storefront": 2,
+    "cta_show_product_image_4": 2,
+    "cta_show_product_image_3": 1,
+    "cta_show_product_image_1": 1,
+    "cta_show_product_image_2": 1,
+    "cta_next_banner": 9,
+    "cta_unmute_video": 2,
+    "cta_mute_video": 3,
+    "cta__add_testimonial": 2,
+    "cta_admin_dashboard": 1,
+    "cta_view_all_products": 3,
+    "cta_show_three_products_per_row": 1,
+    "cta_close_navigation": 2,
+    "cta_search": 1,
+    "cta_close_search": 1,
+    "cta_1_month": 6,
+    "cta_3_months": 5,
+    "cta_6_months": 3,
+    "cta_1_year": 4,
+    "cta_14_days": 8,
+    "cta_a_calmer_snack_break_with_ashwagandha_chocolate": 1,
+    "cta_users4manage_users": 1,
+    "cta_iiour_philosophy": 8,
+    "cta_iiisourcing__craft": 7,
+    "cta_ivthe_lion__the_sun": 6,
+    "cta_iour_origin": 6
+  }
 }
