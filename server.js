@@ -759,6 +759,10 @@ const serveReactApp = (req, res) => {
 };
 
 app.get(/^\/(assets|css)\/(.+)/, async (req, res, next) => {
+  // CSS is part of the deployed frontend build/public files. In production,
+  // stale GridFS copies can otherwise override the latest committed styles.
+  if (req.params[0] === "css") return next();
+
   if (!isMongoConfigured()) return next();
 
   const assetPath = `${req.params[0]}/${req.params[1]}`.replace(/\\/g, "/");
