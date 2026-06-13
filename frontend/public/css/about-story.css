@@ -405,3 +405,252 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── View switcher ────────────────────────────────────────────────── */
+
+.rr-view-switcher {
+  align-items: center;
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: calc(85px + clamp(20px, 3vw, 32px));
+  transform: translateX(-50%);
+  z-index: 10;
+  border: 1px solid var(--rr-about-line);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--rr-about-paper);
+}
+
+.rr-view-switcher__btn {
+  background: transparent;
+  border: 0;
+  color: var(--rr-about-muted);
+  cursor: pointer;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 10px 22px;
+  text-transform: uppercase;
+  transition: color 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.rr-view-switcher__btn:hover {
+  color: var(--rr-about-ink);
+}
+
+.rr-view-switcher__btn.is-active {
+  background: var(--rr-about-ink);
+  color: var(--rr-about-paper);
+}
+
+/* ── Experts tab list ─────────────────────────────────────────────── */
+
+.rr-experts-facets button {
+  align-items: center;
+  padding: 16px 2px;
+}
+
+.rr-experts-tab-name {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rr-experts-tab-fullname {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.rr-experts-tab-role {
+  color: var(--rr-about-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.rr-experts-facets button[aria-selected='true'] .rr-experts-tab-role {
+  opacity: 1;
+}
+
+/* ── Expert panel: grid layout ───────────────────────────────────── */
+/*
+  The base .rr-about-panel uses position:absolute + opacity/visibility for
+  crossfade. Expert panels reuse that exact mechanism but switch the inner
+  layout to a two-column grid (photo + copy). We never touch display: on
+  .is-active here — we let the base rule handle visibility so the fade works.
+*/
+
+.rr-expert-panel {
+  align-items: center;
+  flex-direction: row;
+  gap: clamp(28px, 3.5vw, 52px);
+  padding-right: 0;
+}
+
+/* photo column ─────────────────────────────────────────────────────── */
+
+.rr-expert-panel-photo-wrap {
+  flex: 0 0 clamp(200px, 22vw, 300px);
+  height: clamp(260px, 30vw, 400px);
+  overflow: hidden;
+  position: relative;
+  /* warm parchment bg while image loads */
+  background: #ede9e0;
+  border: 1px solid rgba(181, 144, 85, 0.18);
+
+  /* 3-D tilt effect */
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.rr-expert-panel-photo-wrap::after {
+  /* diagonal shine overlay */
+  content: '';
+  inset: 0;
+  position: absolute;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.rr-expert-panel-photo {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+  /* subtle 3-D rotation on the image itself */
+  transform: perspective(900px) rotateY(-6deg) scale(1.04);
+  transition: transform 0.55s ease;
+}
+
+.rr-expert-panel.is-active .rr-expert-panel-photo {
+  transform: perspective(900px) rotateY(-3deg) scale(1.02);
+}
+
+/* copy column ─────────────────────────────────────────────────────── */
+
+.rr-expert-panel-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.rr-expert-panel-copy h2 {
+  max-width: 20ch;
+}
+
+.rr-expert-panel-name {
+  color: var(--rr-about-gold) !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.5 !important;
+  margin: -8px 0 20px !important;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+
+@media screen and (max-width: 1000px) {
+  .rr-view-switcher {
+    top: calc(68px + 14px);
+  }
+
+  /* on tablet the panel switches from absolute-stack to static flow.
+     base rule already sets display:none / display:flex on .is-active.
+     for expert panels we need display:flex (row) restored. */
+  .rr-expert-panel.is-active {
+    display: flex !important;
+  }
+
+  .rr-expert-panel {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 20px;
+    padding-right: 0;
+  }
+
+  .rr-expert-panel-photo-wrap {
+    flex: 0 0 clamp(140px, 30vw, 200px);
+    height: clamp(180px, 38vw, 260px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .rr-expert-panel {
+    flex-direction: column;
+  }
+
+  .rr-expert-panel-photo-wrap {
+    flex: none;
+    width: 100%;
+    height: clamp(220px, 65vw, 320px);
+  }
+
+  .rr-expert-panel-photo {
+    transform: perspective(700px) rotateY(-2deg) scale(1.02);
+  }
+
+  .rr-expert-panel.is-active .rr-expert-panel-photo {
+    transform: perspective(700px) rotateY(0deg) scale(1);
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .rr-view-switcher__btn {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 9px 16px;
+  }
+
+  .rr-experts-facets {
+    border-top: 1px solid var(--rr-about-line);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: 0;
+    overflow-x: unset;
+    padding: 0;
+  }
+
+  .rr-experts-facets li {
+    border: 0;
+    border-bottom: 1px solid var(--rr-about-line);
+  }
+
+  .rr-experts-facets button {
+    border: 0;
+    min-height: 54px;
+    padding: 16px 2px;
+    white-space: normal;
+  }
+
+  .rr-experts-facets button[aria-selected='true'] {
+    background: transparent;
+    border-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rr-expert-panel-photo,
+  .rr-expert-panel.is-active .rr-expert-panel-photo {
+    transform: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
