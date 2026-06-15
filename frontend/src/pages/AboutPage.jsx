@@ -136,6 +136,8 @@ export function AboutPage() {
   })
   const [activePanel, setActivePanel] = useState(getPanelFromHash)
   const [activeExpert, setActiveExpert] = useState(getExpertFromHash)
+  const [mobileAboutPanel, setMobileAboutPanel] = useState(null)
+  const [mobileExpert, setMobileExpert] = useState(null)
   const tabRefs = useRef([])
   const expertTabRefs = useRef([])
 
@@ -163,6 +165,14 @@ export function AboutPage() {
 
     if (updateHash && typeof window !== 'undefined') {
       window.history.replaceState(null, '', `${window.location.pathname}#${id}`)
+    }
+  }
+
+  const showAboutPanel = (panel) => {
+    showPanel(panel.id)
+
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches) {
+      setMobileAboutPanel(panel)
     }
   }
 
@@ -194,6 +204,41 @@ export function AboutPage() {
     expertTabRefs.current[nextIndex]?.focus()
     setActiveExpert(expertDetails[nextIndex].id)
   }
+
+  const showExpert = (expert) => {
+    setActiveExpert(expert.id)
+
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches) {
+      setMobileExpert(expert)
+    }
+  }
+
+  const closeMobileExpert = () => {
+    setMobileExpert(null)
+  }
+
+  const closeMobileAboutPanel = () => {
+    setMobileAboutPanel(null)
+  }
+
+  useEffect(() => {
+    if (!mobileExpert && !mobileAboutPanel) return undefined
+
+    const handleKeyUp = (event) => {
+      if (event.key === 'Escape') {
+        closeMobileExpert()
+        closeMobileAboutPanel()
+      }
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keyup', handleKeyUp)
+
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keyup', handleKeyUp)
+    }
+  }, [mobileExpert, mobileAboutPanel])
 
   return (
     <main id="main" role="main" className="about-page-wrapper rr-about-page">
@@ -243,7 +288,7 @@ export function AboutPage() {
                       aria-controls={`about-panel-${panel.id}`}
                       aria-selected={isActive}
                       id={`about-tab-${panel.id}`}
-                      onClick={() => showPanel(panel.id)}
+                      onClick={() => showAboutPanel(panel)}
                       onKeyDown={(event) => handleKeyDown(event, index)}
                       role="tab"
                       tabIndex={isActive ? 0 : -1}
@@ -289,6 +334,33 @@ export function AboutPage() {
               )
             })}
           </div>
+
+          {mobileAboutPanel ? (
+            <div className="rr-about-modal" role="presentation" onClick={closeMobileAboutPanel}>
+              <article
+                aria-labelledby="rr-about-modal-title"
+                aria-modal="true"
+                className="rr-about-modal-card"
+                onClick={(event) => event.stopPropagation()}
+                role="dialog"
+              >
+                <button
+                  aria-label="Close about details"
+                  className="rr-about-modal-close"
+                  onClick={closeMobileAboutPanel}
+                  type="button"
+                >
+                  X
+                </button>
+                <p className="rr-about-eyebrow">{mobileAboutPanel.label}</p>
+                <h2 id="rr-about-modal-title">{mobileAboutPanel.heading}</h2>
+                {mobileAboutPanel.paragraphs.map((paragraph, index) => (
+                  <p key={`${mobileAboutPanel.id}-modal-${index}`}>{paragraph}</p>
+                ))}
+                {mobileAboutPanel.hasEmblem ? <p className="rr-about-leo">Leo & Sol</p> : null}
+              </article>
+            </div>
+          ) : null}
         </section>
       )}
 
@@ -310,9 +382,10 @@ export function AboutPage() {
                     <button
                       ref={(node) => { expertTabRefs.current[index] = node }}
                       aria-controls={`expert-panel-${expert.id}`}
+                      aria-haspopup="dialog"
                       aria-selected={isActive}
                       id={`expert-tab-${expert.id}`}
-                      onClick={() => setActiveExpert(expert.id)}
+                      onClick={() => showExpert(expert)}
                       onKeyDown={(event) => handleExpertKeyDown(event, index)}
                       role="tab"
                       tabIndex={isActive ? 0 : -1}
@@ -365,6 +438,42 @@ export function AboutPage() {
               )
             })}
           </div>
+
+          {mobileExpert ? (
+            <div className="rr-expert-modal" role="presentation" onClick={closeMobileExpert}>
+              <article
+                aria-labelledby="rr-expert-modal-title"
+                aria-modal="true"
+                className="rr-expert-modal-card"
+                onClick={(event) => event.stopPropagation()}
+                role="dialog"
+              >
+                <button
+                  aria-label="Close expert details"
+                  className="rr-expert-modal-close"
+                  onClick={closeMobileExpert}
+                  type="button"
+                >
+                  X
+                </button>
+                <div className="rr-expert-modal-photo-wrap">
+                  <img
+                    className="rr-expert-modal-photo"
+                    src={asset(mobileExpert.image)}
+                    alt={mobileExpert.name}
+                  />
+                </div>
+                <div className="rr-expert-modal-copy">
+                  <p className="rr-about-eyebrow">{mobileExpert.role}</p>
+                  <h2 id="rr-expert-modal-title">{mobileExpert.name}</h2>
+                  <p className="rr-expert-modal-heading">{mobileExpert.heading}</p>
+                  {mobileExpert.paragraphs.map((paragraph, index) => (
+                    <p key={`${mobileExpert.id}-modal-${index}`}>{paragraph}</p>
+                  ))}
+                </div>
+              </article>
+            </div>
+          ) : null}
         </section>
       )}
     </main>

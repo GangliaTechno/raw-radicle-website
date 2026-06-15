@@ -3482,8 +3482,57 @@ body {
   }
 }
 
-/* Header logo: the embossed mark is wider, so width is the visible limiter. */
-.Header__LogoImage {
-  max-width: min(270px, 62vw) !important;
-  max-height: 128px !important;
+/* Header logo: desktop can carry the larger embossed mark; mobile is constrained below. */
+@media screen and (min-width: 1001px) {
+  .Header__LogoImage {
+    max-width: min(270px, 62vw) !important;
+    max-height: 128px !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .Header__FlexItem--logo {
+    max-width: min(390px, 88vw) !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  body.rr-home-logo-scroll .Header__FlexItem--logo,
+  body.rr-logo-scroll-home .Header__FlexItem--logo,
+  body.rr-home-logo-scroll.rr-logo-scroll-home .Header__FlexItem--logo {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  .Header__LogoImage,
+  body.rr-logo-scroll-home .Header__LogoImage,
+  body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
+    max-height: 106px !important;
+    max-width: min(386px, 88vw) !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .Header__LogoImage,
+  body.rr-logo-scroll-home .Header__LogoImage,
+  body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
+    max-height: 100px !important;
+    max-width: min(360px, 86vw) !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .Header__FlexItem--logo,
+  body.rr-home-logo-scroll .Header__FlexItem--logo,
+  body.rr-logo-scroll-home .Header__FlexItem--logo,
+  body.rr-home-logo-scroll.rr-logo-scroll-home .Header__FlexItem--logo,
+  .Header__LogoImage,
+  body.rr-home-logo-scroll .Header__LogoImage,
+  body.rr-logo-scroll-home .Header__LogoImage,
+  body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
+    transition: none !important;
+    will-change: auto !important;
+  }
 }
