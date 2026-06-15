@@ -12,7 +12,7 @@
   font-family: Montserrat, Arial, sans-serif;
   margin-top: -85px;
   min-height: 100svh;
-  overflow: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -272,23 +272,28 @@
     margin-top: -68px;
   }
 
+  /* switcher sits at 68+14=82px top, is ~38px tall, bottom edge ~120px.
+     stage padding-top must clear that: 68 + 14 + 38 + 16px gap = 136px */
   .rr-about-stage {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    min-height: 100svh;
-    padding: calc(68px + 28px) 22px 24px;
+    grid-template-rows: auto;
+    min-height: unset;
+    padding: 136px 20px 40px;
+    gap: 24px;
   }
 
   .rr-about-index {
-    gap: 18px;
+    gap: 20px;
     max-width: none;
   }
 
   .rr-about-thesis {
-    font-size: clamp(28px, 8vw, 44px);
-    max-width: 760px;
+    font-size: clamp(26px, 7vw, 40px);
+    line-height: 1.1;
+    max-width: 100%;
   }
 
+  /* pill chips — wrap freely on tablet */
   .rr-about-facets {
     border: 0;
     flex-flow: row wrap;
@@ -301,14 +306,18 @@
 
   .rr-about-facets button {
     border: 1px solid var(--rr-about-line);
+    border-radius: 4px;
+    font-size: 11px;
     gap: 0;
-    min-height: 40px;
-    padding: 10px 13px;
+    min-height: 36px;
+    padding: 8px 14px;
+    white-space: nowrap;
   }
 
   .rr-about-facets button[aria-selected='true'] {
     background: rgba(181, 144, 85, 0.1);
     border-color: rgba(181, 144, 85, 0.46);
+    color: var(--rr-about-ink);
   }
 
   .rr-about-tab-index,
@@ -317,18 +326,24 @@
     display: none;
   }
 
+  /* panels: static flow, no fixed/min height */
   .rr-about-panels {
     height: auto;
     min-height: 0;
-    overflow: auto;
+    overflow: visible;
   }
 
   .rr-about-panel {
     display: none;
     inset: auto;
     justify-content: flex-start;
+    opacity: 1;
     padding-right: 0;
+    pointer-events: auto;
     position: relative;
+    transform: none;
+    transition: none;
+    visibility: visible;
   }
 
   .rr-about-panel.is-active {
@@ -336,60 +351,97 @@
   }
 
   .rr-about-panel h2 {
-    font-size: clamp(25px, 7vw, 38px);
-    max-width: 18ch;
+    font-size: clamp(22px, 6vw, 34px);
+    margin: 10px 0 16px;
+    max-width: 100%;
   }
 
   .rr-about-panel p {
-    max-width: 760px;
+    font-size: clamp(13px, 3.5vw, 15px);
+    line-height: 1.7;
+    margin: 0 0 12px;
+    max-width: 100%;
   }
 
+  /* hide decorative emblem — wastes vertical space on mobile */
   .rr-about-emblem {
-    height: 150px;
-    justify-self: center;
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 150px;
-  }
-
-  .rr-about-emblem img {
-    width: 108px;
+    display: none;
   }
 }
 
 @media screen and (max-width: 520px) {
   .rr-about-stage {
-    gap: 22px;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding: 130px 16px 32px;
+    gap: 20px;
+    overflow-x: hidden;
+  }
+
+  .rr-about-index,
+  .rr-about-panels,
+  .rr-about-panel {
+    min-width: 0;
+    width: 100%;
   }
 
   .rr-about-eyebrow,
   .rr-about-tag,
   .rr-about-leo {
     font-size: 10px;
+    letter-spacing: 0.18em;
   }
 
+  /* on small phones: single scrollable row so chips never wrap or clip.
+     No negative margins — overflow-x: clip on parent was blocking scroll,
+     so we keep chips inside padding and rely on the ul scrolling itself. */
   .rr-about-facets {
+    margin-left: -16px;
+    margin-right: -16px;
     flex-wrap: nowrap;
-    margin-left: -18px;
-    margin-right: -18px;
     overflow-x: auto;
-    padding: 0 18px 6px;
+    padding: 0 16px 4px;
     scrollbar-width: none;
+    /* small gap so chips breathe */
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .rr-about-facets::-webkit-scrollbar,
-  .rr-about-panels::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+  .rr-about-facets::-webkit-scrollbar {
+    display: none;
   }
 
   .rr-about-facets button {
-    font-size: 11px;
+    font-size: 10px;
+    flex: 0 0 auto;
+    min-height: 32px;
+    padding: 6px 12px;
     white-space: nowrap;
+  }
+
+  .rr-about-panel h2 {
+    font-size: clamp(20px, 5.5vw, 26px);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .rr-about-panel p {
+    overflow-wrap: break-word;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .rr-about-stage {
+    padding: 126px 14px 28px;
+  }
+
+  .rr-view-switcher__btn {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 8px 12px;
+  }
+
+  .rr-about-facets button {
+    font-size: 9px;
+    padding: 5px 10px;
   }
 }
 
@@ -503,7 +555,7 @@
 .rr-expert-panel-photo-wrap {
   flex: 0 0 clamp(200px, 22vw, 300px);
   height: clamp(260px, 30vw, 400px);
-  overflow: hidden;
+  overflow-x: clip;
   position: relative;
   /* warm parchment bg while image loads */
   background: #ede9e0;
@@ -613,10 +665,18 @@
 }
 
 @media screen and (max-width: 520px) {
+  .rr-view-switcher {
+    max-width: calc(100vw - 28px);
+    width: calc(100vw - 28px);
+  }
+
   .rr-view-switcher__btn {
+    flex: 1 1 0;
     font-size: 10px;
     letter-spacing: 0.12em;
-    padding: 9px 16px;
+    min-width: 0;
+    padding: 9px 8px;
+    text-align: center;
   }
 
   .rr-experts-facets {
