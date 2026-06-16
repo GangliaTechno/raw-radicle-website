@@ -13,7 +13,7 @@ export function ScrollToTop() {
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [location.pathname, location.hash])
+  }, [location.pathname, location.hash, location.search])
 
   return null
 }
