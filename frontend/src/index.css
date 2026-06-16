@@ -35,8 +35,7 @@ body.rr-preloader-active {
   display: block;
   object-fit: contain;
   filter:
-    drop-shadow(0 24px 40px rgba(28, 27, 27, 0.1))
-    drop-shadow(0 2px 0 rgba(255, 255, 255, 0.85));
+    drop-shadow(0 24px 40px rgba(28, 27, 27, 0.1)) drop-shadow(0 2px 0 rgba(255, 255, 255, 0.85));
 }
 
 @keyframes rr-preloader-pulse {
@@ -44,14 +43,17 @@ body.rr-preloader-active {
     opacity: 0;
     transform: scale(0.94);
   }
+
   28% {
     opacity: 1;
     transform: scale(1);
   }
+
   68% {
     opacity: 1;
     transform: scale(1.025);
   }
+
   100% {
     opacity: 0;
     transform: scale(0.98);
@@ -59,9 +61,12 @@ body.rr-preloader-active {
 }
 
 @keyframes rr-preloader-fade {
-  0%, 72% {
+
+  0%,
+  72% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -74,6 +79,7 @@ body.rr-preloader-active {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .rr-site-preloader,
   .rr-site-preloader-mark,
   .rr-site-preloader img {
@@ -223,10 +229,8 @@ a[class*='Button'],
 .react-products-grid {
   display: grid !important;
   gap: 40px 28px !important;
-  grid-template-columns: repeat(
-    var(--react-products-desktop-columns, 3),
-    minmax(0, 1fr)
-  ) !important;
+  grid-template-columns: repeat(var(--react-products-desktop-columns, 3),
+      minmax(0, 1fr)) !important;
 }
 
 .react-products-grid .Grid__Cell {
@@ -279,10 +283,8 @@ a[class*='Button'],
   }
 
   .react-products-grid {
-    grid-template-columns: repeat(
-      var(--react-products-mobile-columns, 2),
-      minmax(0, 1fr)
-    ) !important;
+    grid-template-columns: repeat(var(--react-products-mobile-columns, 2),
+        minmax(0, 1fr)) !important;
   }
 }
 
@@ -369,7 +371,7 @@ body.template-product .Marketplace .Button:hover {
   }
 
   .rr-icon-btn span,
-  .rr-header-actions > .rr-icon-btn[href="/admin"] {
+  .rr-header-actions>.rr-icon-btn[href="/admin"] {
     display: none;
   }
 
@@ -411,6 +413,7 @@ body.template-product .Marketplace .Button:hover {
     grid-template-columns: 96px 1fr;
   }
 }
+
 * {
   box-sizing: border-box;
 }
@@ -472,6 +475,13 @@ textarea {
 }
 
 .Header:not(.Header--transparent) {
+  background: rgba(239, 239, 239, 0.86) !important;
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  border-bottom: 1px solid rgba(28, 28, 28, 0.08);
+}
+
+body.rr-logo-scroll-home .Header.Header--transparent {
   background: rgba(239, 239, 239, 0.86) !important;
   backdrop-filter: blur(18px) saturate(135%);
   -webkit-backdrop-filter: blur(18px) saturate(135%);
@@ -571,7 +581,7 @@ textarea {
   position: relative;
 }
 
-.rr-hero > img {
+.rr-hero>img {
   height: 100%;
   inset: 0;
   object-fit: cover;
@@ -598,7 +608,7 @@ textarea {
 .rr-hero-copy p,
 .rr-section-header p,
 .rr-eyebrow,
-.rr-product-info > p:first-child {
+.rr-product-info>p:first-child {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0;
@@ -729,7 +739,7 @@ textarea {
   width: 100%;
 }
 
-.rr-video-section > div {
+.rr-video-section>div {
   align-self: end;
   max-width: 720px;
   padding: clamp(36px, 7vw, 90px);
@@ -785,14 +795,14 @@ textarea {
   width: 100%;
 }
 
-.rr-video-grid article > div {
+.rr-video-grid article>div {
   align-items: center;
   display: flex;
   gap: 12px;
   padding: 14px;
 }
 
-.rr-video-grid article > div img {
+.rr-video-grid article>div img {
   border-radius: 8px;
   height: 56px;
   object-fit: contain;
@@ -809,7 +819,7 @@ textarea {
   text-align: center;
 }
 
-.rr-shop-on-groups > div > div {
+.rr-shop-on-groups>div>div {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -855,7 +865,7 @@ textarea {
   max-width: 1240px;
 }
 
-.rr-toolbar > div {
+.rr-toolbar>div {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -1008,7 +1018,7 @@ textarea {
   max-width: 980px;
 }
 
-.rr-tabs > div:first-child {
+.rr-tabs>div:first-child {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -1630,21 +1640,26 @@ textarea {
     padding: 10px 24px;
     font-size: 11px;
   }
+
   .StaticBanner__Arrow {
     display: none !important;
   }
+
   .StaticBanner__Arrow--prev {
     left: 12px;
   }
+
   .StaticBanner__Arrow--next {
     right: 12px;
   }
+
   /* On mobile/touch devices, hover doesn't exist, so make arrows always visible */
   .StaticBanner .StaticBanner__Arrow {
     opacity: 0.8;
     visibility: visible;
     transform: translateY(-50%) scale(0.9);
   }
+
   .StaticBanner__Dots {
     justify-content: center;
     margin-top: 12px;
@@ -1669,7 +1684,8 @@ textarea {
   --card-gap: 28px;
   --slider-padding: 0px;
   --card-width: calc((100vw - (2 * var(--slider-padding)) - ((var(--cards-visible) - 1) * var(--card-gap))) / var(--cards-visible));
-  padding: 130px 0 80px; /* Generous padding after banner */
+  padding: 130px 0 80px;
+  /* Generous padding after banner */
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -1736,7 +1752,8 @@ textarea {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Acts as the slider viewport viewport */
+  overflow: hidden;
+  /* Acts as the slider viewport viewport */
 }
 
 .MvstProducts__Carousel .MvstProducts__Arrow {
@@ -1753,19 +1770,23 @@ textarea {
 
 .MvstProducts__Slider {
   display: flex;
-  overflow: visible; /* Allows hover zoom/lift without cropping */
+  overflow: visible;
+  /* Allows hover zoom/lift without cropping */
   gap: var(--card-gap);
-  padding: 45px var(--slider-padding) 60px; /* Top/bottom padding prevents zoom cropping at section edges */
+  padding: 45px var(--slider-padding) 60px;
+  /* Top/bottom padding prevents zoom cropping at section edges */
   width: max-content;
   will-change: transform;
-  pointer-events: none; /* Let clicks pass through to arrow buttons underneath */
+  pointer-events: none;
+  /* Let clicks pass through to arrow buttons underneath */
 }
 
 .MvstProducts__Card {
   flex: 0 0 var(--card-width);
   width: var(--card-width);
   position: relative;
-  pointer-events: auto; /* Re-enable clicks on product cards */
+  pointer-events: auto;
+  /* Re-enable clicks on product cards */
 }
 
 .MvstProducts__CardInner {
@@ -1782,7 +1803,8 @@ textarea {
   aspect-ratio: 1;
   background-color: transparent !important;
   position: relative;
-  overflow: visible; /* CRITICAL: Allows hover zoom without clipping */
+  overflow: visible;
+  /* CRITICAL: Allows hover zoom without clipping */
   margin-bottom: 32px;
 }
 
@@ -1790,14 +1812,15 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 4px; /* Big chocolates display */
+  padding: 4px;
+  /* Big chocolates display */
   position: absolute;
   top: 0;
   left: 0;
   opacity: 1;
   will-change: transform, opacity;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .MvstProducts__Image--secondary {
@@ -1830,7 +1853,8 @@ textarea {
 }
 
 .MvstProducts__CardInner:hover .MvstProducts__Name {
-  color: #b08850; /* Elegant gold transition */
+  color: #b08850;
+  /* Elegant gold transition */
 }
 
 .MvstProducts__Price {
@@ -1890,9 +1914,11 @@ textarea {
     width: 38px;
     height: 38px;
   }
+
   .MvstProducts__Arrow--prev {
     left: 12px;
   }
+
   .MvstProducts__Arrow--next {
     right: 12px;
   }
@@ -2194,6 +2220,7 @@ textarea {
 }
 
 @media screen and (max-width: 640px) {
+
   .ExpertSection,
   .TestimonialSection {
     padding: 64px 18px;
@@ -2279,10 +2306,8 @@ body {
 }
 
 .MvstProducts {
-  --card-width: min(
-    460px,
-    calc((100vw - (2 * var(--slider-padding)) - ((var(--cards-visible) - 1) * var(--card-gap))) / var(--cards-visible))
-  );
+  --card-width: min(460px,
+      calc((100vw - (2 * var(--slider-padding)) - ((var(--cards-visible) - 1) * var(--card-gap))) / var(--cards-visible)));
 }
 
 .MvstProducts__Name,
@@ -2863,8 +2888,8 @@ body {
     width: 24px !important;
   }
 
-  .Header__FlexItem--fill:last-child > .Header__Icon:not(.hidden-desk),
-  .Header__FlexItem--fill:last-child > #header-account-link {
+  .Header__FlexItem--fill:last-child>.Header__Icon:not(.hidden-desk),
+  .Header__FlexItem--fill:last-child>#header-account-link {
     align-items: center !important;
     display: inline-flex !important;
     height: 40px !important;
@@ -2904,14 +2929,14 @@ body {
 
   .SidebarMenu.Drawer .Drawer__Header,
   .SidebarMenu.Drawer .Drawer__Footer,
-  .SidebarMenu.Drawer .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item {
+  .SidebarMenu.Drawer .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item {
     opacity: 0;
     transform: translateY(12px);
   }
 
   .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Header,
   .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Footer,
-  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item {
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item {
     opacity: 1;
     transform: translateY(0);
     transition:
@@ -2923,23 +2948,23 @@ body {
     transition-delay: 0.08s !important;
   }
 
-  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(1) {
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item:nth-child(1) {
     transition-delay: 0.12s !important;
   }
 
-  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(2) {
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item:nth-child(2) {
     transition-delay: 0.16s !important;
   }
 
-  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(3) {
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item:nth-child(3) {
     transition-delay: 0.2s !important;
   }
 
-  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(4) {
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item:nth-child(4) {
     transition-delay: 0.24s !important;
   }
 
-  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(5) {
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item:nth-child(5) {
     transition-delay: 0.28s !important;
   }
 
@@ -3074,11 +3099,12 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .SidebarMenu.Drawer,
   .SidebarMenu.Drawer[aria-hidden="false"],
   .SidebarMenu.Drawer .Drawer__Header,
   .SidebarMenu.Drawer .Drawer__Footer,
-  .SidebarMenu.Drawer .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item,
+  .SidebarMenu.Drawer .Drawer__Main>.Drawer__Container>.Collapsible>.Linklist>.Linklist__Item,
   .Drawer__Backdrop {
     animation: none !important;
     transition-duration: 0.01ms !important;
@@ -3096,8 +3122,8 @@ body {
     gap: 8px !important;
   }
 
-  .Header__FlexItem--fill:last-child > .Header__Icon:not(.hidden-desk),
-  .Header__FlexItem--fill:last-child > #header-account-link {
+  .Header__FlexItem--fill:last-child>.Header__Icon:not(.hidden-desk),
+  .Header__FlexItem--fill:last-child>#header-account-link {
     width: 32px !important;
   }
 
@@ -3150,6 +3176,7 @@ body {
 }
 
 @media screen and (max-width: 640px) {
+
   body.rr-logo-scroll-home .Header__LogoImage,
   body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
     max-height: 48px !important;
@@ -3158,6 +3185,7 @@ body {
 }
 
 @media screen and (max-width: 420px) {
+
   body.rr-logo-scroll-home .Header__LogoImage,
   body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
     max-height: 44px !important;
@@ -3252,8 +3280,8 @@ body {
     max-width: min(260px, 74vw) !important;
   }
 
-  .Header__MainNav .HorizontalList__Item > .Heading::after,
-  .Header__MainNav .HorizontalList__Item > a.Heading::after,
+  .Header__MainNav .HorizontalList__Item>.Heading::after,
+  .Header__MainNav .HorizontalList__Item>a.Heading::after,
   .Header__MainNav .HorizontalList__Item .Header__LinkSpacer::after,
   .Drawer .Linklist__Link.is-active,
   .Drawer .Collapsible__Button.is-active,
@@ -3262,8 +3290,8 @@ body {
     box-shadow: none !important;
   }
 
-  .Header__MainNav .HorizontalList__Item > .Heading::after,
-  .Header__MainNav .HorizontalList__Item > a.Heading::after,
+  .Header__MainNav .HorizontalList__Item>.Heading::after,
+  .Header__MainNav .HorizontalList__Item>a.Heading::after,
   .Header__MainNav .HorizontalList__Item .Header__LinkSpacer::after {
     content: none !important;
     opacity: 0 !important;
@@ -3280,6 +3308,7 @@ body {
 }
 
 @media screen and (max-width: 420px) {
+
   .Header__LogoImage,
   body.rr-logo-scroll-home .Header__LogoImage,
   body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
@@ -3290,6 +3319,7 @@ body {
 
 /* Mobile/tablet logo scroll animation mirrors the desktop shrink behavior. */
 @media screen and (max-width: 1000px) {
+
   .shopify-section--header,
   .shopify-section--header .Header,
   .Header,
@@ -3306,8 +3336,7 @@ body {
   body.rr-home-logo-scroll .Header__FlexItem--logo {
     top: 50% !important;
     transform:
-      translate(-50%, calc(-50% + var(--rr-mobile-logo-translate, 0px)))
-      scale(var(--rr-mobile-logo-scale, 1)) !important;
+      translate(-50%, calc(-50% + var(--rr-mobile-logo-translate, 0px))) scale(var(--rr-mobile-logo-scale, 1)) !important;
     transform-origin: center top !important;
     transition: transform 0.24s cubic-bezier(0.2, 0.9, 0.3, 1) !important;
     will-change: transform !important;
@@ -3323,7 +3352,9 @@ body {
 }
 
 /* Touch interaction layer: keep hover behavior for laptop/desktop only. */
-@media screen and (max-width: 1000px), (hover: none) {
+@media screen and (max-width: 1000px),
+(hover: none) {
+
   .rr-product-card:hover,
   .rr-button:hover,
   .rr-shop-buttons a:hover,
@@ -3531,17 +3562,19 @@ body {
 }
 
 /* Force 2 columns on all devices for buy buttons */
-.rr-product-market-grid, 
+.rr-product-market-grid,
 .ProductForm__BuyButtons.Marketplace,
 .Marketplace {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   gap: 12px !important;
 }
-.rr-product-market-link, 
+
+.rr-product-market-link,
 .Marketplace .Button {
   grid-column: auto !important;
 }
+
 .rr-product-market-link.is-wide,
 .Marketplace .Button.is-wide {
   grid-column: span 2 !important;
@@ -3552,14 +3585,17 @@ body {
   .rrx-instagram {
     padding: 30px 0 !important;
   }
+
   .rrx-instagram-shell {
     padding: 0 !important;
   }
+
   .rrx-instagram-row {
     gap: 12px !important;
     padding: 10px 13vw 20px !important;
     scroll-padding: 0 13vw !important;
   }
+
   .rrx-instagram-row .rrx-instagram-item {
     flex-basis: 74vw !important;
     min-width: 74vw !important;
@@ -3600,6 +3636,7 @@ body {
 }
 
 @media screen and (max-width: 420px) {
+
   .Header__LogoImage,
   body.rr-logo-scroll-home .Header__LogoImage,
   body.rr-home-logo-scroll.rr-logo-scroll-home .Header__LogoImage {
@@ -3609,6 +3646,7 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
+
   .Header__FlexItem--logo,
   body.rr-home-logo-scroll .Header__FlexItem--logo,
   body.rr-logo-scroll-home .Header__FlexItem--logo,
