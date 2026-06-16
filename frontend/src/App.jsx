@@ -12,6 +12,7 @@ import { BlogPage } from './pages/BlogPage.jsx'
 
 import { ContactPage } from './pages/ContactPage.jsx'
 import { HomePage } from './pages/HomePage.jsx'
+import { LegalPage } from './pages/LegalPage.jsx'
 import { ProductPage } from './pages/ProductPage.jsx'
 import { ProductsPage } from './pages/ProductsPage.jsx'
 import { SearchPage } from './pages/SearchPage.jsx'
@@ -73,7 +74,7 @@ function AppLayout() {
 
   useEffect(() => {
     const isHome = location.pathname === '/'
-    const innerLogoPaths = ['/about', '/blog', '/contact', '/products', '/login', '/register', '/cdarkc', '/cmilkc', '/amilkc', '/adarkc', '/bdarkc', '/bmilkc']
+    const innerLogoPaths = ['/about', '/blog', '/contact', '/products', '/privacy-policy', '/terms-conditions', '/login', '/register', '/cdarkc', '/cmilkc', '/amilkc', '/adarkc', '/bdarkc', '/bmilkc']
     const shouldLowerInnerLogo = innerLogoPaths.includes(location.pathname)
     document.body.classList.add('rr-home-logo-scroll')
     document.body.classList.toggle('rr-logo-scroll-home', isHome)
@@ -175,7 +176,9 @@ function AppLayout() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/contact" element={<ContactPage />} />
-         <Route path="/:productId" element={<ProductPage />} />
+        <Route path="/privacy-policy" element={<LegalPage type="privacy" />} />
+        <Route path="/terms-conditions" element={<LegalPage type="terms" />} />
+        <Route path="/:productId" element={<ProductPage />} />
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/register" element={<AuthPage mode="register" />} />
         <Route path="/admin" element={<AdminDashboard />} />

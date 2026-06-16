@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { ProductCard } from '../components/ProductCard.jsx'
 import { usePageTitle } from '../hooks/usePageTitle.js'
 import { useProducts } from '../hooks/useProducts.js'
@@ -24,14 +25,30 @@ const DownIcon = () => (
 )
 
 export function ProductsPage() {
-  usePageTitle('All Products')
-  const [category, setCategory] = useState('all')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const requestedCategory = searchParams.get('category')?.toLowerCase() || 'all'
+  const category = Object.keys(categoryLabelMap).includes(requestedCategory) ? requestedCategory : 'all'
   const [sort, setSort] = useState('title-ascending')
   const [desktopCount, setDesktopCount] = useState(3)
   const [mobileCount, setMobileCount] = useState(2)
   const [categoryOpen, setCategoryOpen] = useState(false)
   const [sortOpen, setSortOpen] = useState(false)
   const productList = useProducts()
+  const pageHeading = category === 'all' ? 'All Products' : `${categoryLabelMap[category]} Chocolate`
+
+  usePageTitle(pageHeading)
+
+  const chooseCategory = (nextCategory) => {
+    setCategoryOpen(false)
+    setSortOpen(false)
+
+    if (nextCategory === 'all') {
+      setSearchParams({})
+      return
+    }
+
+    setSearchParams({ category: nextCategory })
+  }
 
   const products = useMemo(() => {
     const visible = category === 'all' ? [...productList] : productList.filter((product) => product.tags.includes(category))
@@ -127,7 +144,7 @@ export function ProductsPage() {
         <header className="PageHeader">
           <div className="Container">
             <div className="SectionHeader SectionHeader--center">
-              <h1 className="SectionHeader__Heading Heading u-h1">All Products</h1>
+              <h1 className="SectionHeader__Heading Heading u-h1">{pageHeading}</h1>
             </div>
           </div>
         </header>
@@ -196,7 +213,7 @@ export function ProductsPage() {
                   </div>
                   <div className="rr-toolbar-options">
                     {Object.entries(categoryLabelMap).map(([key, label]) => (
-                      <button className={`rr-toolbar-option ${category === key ? 'is-selected' : ''}`} type="button" key={key} onClick={() => { setCategory(key); setCategoryOpen(false) }}>
+                      <button className={`rr-toolbar-option ${category === key ? 'is-selected' : ''}`} type="button" key={key} onClick={() => chooseCategory(key)}>
                         {label}
                       </button>
                     ))}

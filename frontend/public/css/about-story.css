@@ -713,7 +713,7 @@
   }
 
   .rr-about-tab-line {
-    display: block;
+    display: none;
   }
 
   .rr-about-modal {
@@ -995,7 +995,7 @@
   }
 
   .rr-about-tab-line {
-    display: block;
+    display: none;
   }
 
   .rr-experts-facets button[aria-selected='true'] {

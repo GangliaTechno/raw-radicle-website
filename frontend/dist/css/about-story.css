@@ -12,7 +12,7 @@
   font-family: Montserrat, Arial, sans-serif;
   margin-top: -85px;
   min-height: 100svh;
-  overflow: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -272,23 +272,28 @@
     margin-top: -68px;
   }
 
+  /* switcher sits at 68+14=82px top, is ~38px tall, bottom edge ~120px.
+     stage padding-top must clear that: 68 + 14 + 38 + 16px gap = 136px */
   .rr-about-stage {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    min-height: 100svh;
-    padding: calc(68px + 28px) 22px 24px;
+    grid-template-rows: auto;
+    min-height: unset;
+    padding: 136px 20px 40px;
+    gap: 24px;
   }
 
   .rr-about-index {
-    gap: 18px;
+    gap: 20px;
     max-width: none;
   }
 
   .rr-about-thesis {
-    font-size: clamp(28px, 8vw, 44px);
-    max-width: 760px;
+    font-size: clamp(26px, 7vw, 40px);
+    line-height: 1.1;
+    max-width: 100%;
   }
 
+  /* pill chips — wrap freely on tablet */
   .rr-about-facets {
     border: 0;
     flex-flow: row wrap;
@@ -301,14 +306,18 @@
 
   .rr-about-facets button {
     border: 1px solid var(--rr-about-line);
+    border-radius: 4px;
+    font-size: 11px;
     gap: 0;
-    min-height: 40px;
-    padding: 10px 13px;
+    min-height: 36px;
+    padding: 8px 14px;
+    white-space: nowrap;
   }
 
   .rr-about-facets button[aria-selected='true'] {
     background: rgba(181, 144, 85, 0.1);
     border-color: rgba(181, 144, 85, 0.46);
+    color: var(--rr-about-ink);
   }
 
   .rr-about-tab-index,
@@ -317,18 +326,24 @@
     display: none;
   }
 
+  /* panels: static flow, no fixed/min height */
   .rr-about-panels {
     height: auto;
     min-height: 0;
-    overflow: auto;
+    overflow: visible;
   }
 
   .rr-about-panel {
     display: none;
     inset: auto;
     justify-content: flex-start;
+    opacity: 1;
     padding-right: 0;
+    pointer-events: auto;
     position: relative;
+    transform: none;
+    transition: none;
+    visibility: visible;
   }
 
   .rr-about-panel.is-active {
@@ -336,60 +351,97 @@
   }
 
   .rr-about-panel h2 {
-    font-size: clamp(25px, 7vw, 38px);
-    max-width: 18ch;
+    font-size: clamp(22px, 6vw, 34px);
+    margin: 10px 0 16px;
+    max-width: 100%;
   }
 
   .rr-about-panel p {
-    max-width: 760px;
+    font-size: clamp(13px, 3.5vw, 15px);
+    line-height: 1.7;
+    margin: 0 0 12px;
+    max-width: 100%;
   }
 
+  /* hide decorative emblem — wastes vertical space on mobile */
   .rr-about-emblem {
-    height: 150px;
-    justify-self: center;
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 150px;
-  }
-
-  .rr-about-emblem img {
-    width: 108px;
+    display: none;
   }
 }
 
 @media screen and (max-width: 520px) {
   .rr-about-stage {
-    gap: 22px;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding: 130px 16px 32px;
+    gap: 20px;
+    overflow-x: hidden;
+  }
+
+  .rr-about-index,
+  .rr-about-panels,
+  .rr-about-panel {
+    min-width: 0;
+    width: 100%;
   }
 
   .rr-about-eyebrow,
   .rr-about-tag,
   .rr-about-leo {
     font-size: 10px;
+    letter-spacing: 0.18em;
   }
 
+  /* on small phones: single scrollable row so chips never wrap or clip.
+     No negative margins — overflow-x: clip on parent was blocking scroll,
+     so we keep chips inside padding and rely on the ul scrolling itself. */
   .rr-about-facets {
+    margin-left: -16px;
+    margin-right: -16px;
     flex-wrap: nowrap;
-    margin-left: -18px;
-    margin-right: -18px;
     overflow-x: auto;
-    padding: 0 18px 6px;
+    padding: 0 16px 4px;
     scrollbar-width: none;
+    /* small gap so chips breathe */
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .rr-about-facets::-webkit-scrollbar,
-  .rr-about-panels::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+  .rr-about-facets::-webkit-scrollbar {
+    display: none;
   }
 
   .rr-about-facets button {
-    font-size: 11px;
+    font-size: 10px;
+    flex: 0 0 auto;
+    min-height: 32px;
+    padding: 6px 12px;
     white-space: nowrap;
+  }
+
+  .rr-about-panel h2 {
+    font-size: clamp(20px, 5.5vw, 26px);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .rr-about-panel p {
+    overflow-wrap: break-word;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .rr-about-stage {
+    padding: 126px 14px 28px;
+  }
+
+  .rr-view-switcher__btn {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 8px 12px;
+  }
+
+  .rr-about-facets button {
+    font-size: 9px;
+    padding: 5px 10px;
   }
 }
 
@@ -402,6 +454,567 @@
   .rr-about-panel,
   .rr-about-tab-line,
   .rr-about-facets button {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── View switcher ────────────────────────────────────────────────── */
+
+.rr-view-switcher {
+  align-items: center;
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: calc(85px + clamp(20px, 3vw, 32px));
+  transform: translateX(-50%);
+  z-index: 10;
+  border: 1px solid var(--rr-about-line);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--rr-about-paper);
+}
+
+.rr-view-switcher__btn {
+  background: transparent;
+  border: 0;
+  color: var(--rr-about-muted);
+  cursor: pointer;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 10px 22px;
+  text-transform: uppercase;
+  transition: color 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.rr-view-switcher__btn:hover {
+  color: var(--rr-about-ink);
+}
+
+.rr-view-switcher__btn.is-active {
+  background: var(--rr-about-ink);
+  color: var(--rr-about-paper);
+}
+
+/* ── Experts tab list ─────────────────────────────────────────────── */
+
+.rr-experts-facets button {
+  align-items: center;
+  padding: 16px 2px;
+}
+
+.rr-experts-tab-name {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rr-experts-tab-fullname {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.rr-experts-tab-role {
+  color: var(--rr-about-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.rr-experts-facets button[aria-selected='true'] .rr-experts-tab-role {
+  opacity: 1;
+}
+
+/* ── Expert panel: grid layout ───────────────────────────────────── */
+/*
+  The base .rr-about-panel uses position:absolute + opacity/visibility for
+  crossfade. Expert panels reuse that exact mechanism but switch the inner
+  layout to a two-column grid (photo + copy). We never touch display: on
+  .is-active here — we let the base rule handle visibility so the fade works.
+*/
+
+.rr-expert-panel {
+  align-items: center;
+  flex-direction: row;
+  gap: clamp(28px, 3.5vw, 52px);
+  padding-right: 0;
+}
+
+/* photo column ─────────────────────────────────────────────────────── */
+
+.rr-expert-panel-photo-wrap {
+  flex: 0 0 clamp(200px, 22vw, 300px);
+  height: clamp(260px, 30vw, 400px);
+  overflow-x: clip;
+  position: relative;
+  /* warm parchment bg while image loads */
+  background: #ede9e0;
+  border: 1px solid rgba(181, 144, 85, 0.18);
+
+  /* 3-D tilt effect */
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.rr-expert-panel-photo-wrap::after {
+  /* diagonal shine overlay */
+  content: '';
+  inset: 0;
+  position: absolute;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.rr-expert-panel-photo {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+  /* subtle 3-D rotation on the image itself */
+  transform: perspective(900px) rotateY(-6deg) scale(1.04);
+  transition: transform 0.55s ease;
+}
+
+.rr-expert-panel.is-active .rr-expert-panel-photo {
+  transform: perspective(900px) rotateY(-3deg) scale(1.02);
+}
+
+/* copy column ─────────────────────────────────────────────────────── */
+
+.rr-expert-panel-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.rr-expert-panel-copy h2 {
+  max-width: 20ch;
+}
+
+.rr-expert-panel-name {
+  color: var(--rr-about-gold) !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.5 !important;
+  margin: -8px 0 20px !important;
+  text-transform: uppercase;
+}
+
+.rr-about-modal,
+.rr-expert-modal {
+  display: none;
+}
+
+@keyframes rr-about-card-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rr-about-card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+
+@media screen and (max-width: 1000px) {
+  .rr-view-switcher {
+    top: calc(68px + 14px);
+  }
+
+  /* on tablet the panel switches from absolute-stack to static flow.
+     base rule already sets display:none / display:flex on .is-active.
+     for expert panels we need display:flex (row) restored. */
+  .rr-expert-panel.is-active {
+    display: flex !important;
+  }
+
+  .rr-expert-panel {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 20px;
+    padding-right: 0;
+  }
+
+  .rr-expert-panel-photo-wrap {
+    flex: 0 0 clamp(140px, 30vw, 200px);
+    height: clamp(180px, 38vw, 260px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .rr-about-stage:not(.rr-experts-stage) .rr-about-panels {
+    display: none;
+  }
+
+  .rr-about-facets {
+    border-top: 1px solid var(--rr-about-line);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: 0;
+    overflow-x: visible;
+    padding: 0;
+  }
+
+  .rr-about-facets li {
+    border: 0;
+    border-bottom: 1px solid var(--rr-about-line);
+  }
+
+  .rr-about-facets button {
+    border: 0;
+    border-radius: 0;
+    flex: 0 1 auto;
+    font-size: 13px;
+    gap: 15px;
+    min-height: 54px;
+    padding: 15px 2px;
+    white-space: normal;
+  }
+
+  .rr-about-facets button[aria-selected='true'] {
+    background: transparent;
+    border-color: transparent;
+    color: var(--rr-about-ink);
+  }
+
+  .rr-about-tab-index {
+    display: inline-block;
+  }
+
+  .rr-about-tab-line {
+    display: block;
+  }
+
+  .rr-about-modal {
+    align-items: center;
+    animation: rr-about-card-fade 0.28s ease both;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 22px;
+    position: fixed;
+    z-index: 120;
+  }
+
+  .rr-about-modal-card {
+    animation: rr-about-card-rise 0.38s cubic-bezier(0.2, 0.9, 0.22, 1) both;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(181, 144, 85, 0.26);
+    box-shadow: 0 28px 80px rgba(28, 27, 27, 0.2);
+    box-sizing: border-box;
+    max-height: calc(100svh - 44px);
+    max-width: 390px;
+    overflow-y: auto;
+    padding: 30px 22px 24px;
+    position: relative;
+    transform-origin: center bottom;
+    width: 100%;
+  }
+
+  .rr-about-modal-close {
+    align-items: center;
+    background: rgba(28, 27, 27, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    height: 34px;
+    justify-content: center;
+    letter-spacing: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 34px;
+  }
+
+  .rr-about-modal-close:hover,
+  .rr-about-modal-close:focus-visible {
+    background: #fff;
+    border-color: rgba(28, 27, 27, 0.8);
+    color: var(--rr-about-ink);
+    outline: none;
+  }
+
+  .rr-about-modal-card h2 {
+    color: var(--rr-about-ink);
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.12;
+    margin: 10px 0 18px;
+  }
+
+  .rr-about-modal-card p {
+    color: var(--rr-about-muted);
+    font-size: 13px;
+    line-height: 1.74;
+    margin: 0 0 12px;
+  }
+
+  .rr-about-modal-card .rr-about-eyebrow,
+  .rr-about-modal-card .rr-about-leo {
+    color: var(--rr-about-gold);
+  }
+
+  .rr-experts-stage .rr-about-index {
+    gap: 18px;
+  }
+
+  .rr-experts-stage .rr-about-panels {
+    display: none;
+  }
+
+  .rr-experts-facets {
+    overflow-x: visible;
+  }
+
+  .rr-experts-facets button {
+    justify-content: flex-start;
+    min-height: 54px;
+    padding: 16px 2px;
+  }
+
+  .rr-experts-facets button::after {
+    content: none;
+  }
+
+  .rr-experts-facets button[aria-selected='true'] {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .rr-experts-tab-name {
+    min-width: 0;
+  }
+
+  .rr-experts-tab-fullname {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  .rr-experts-tab-role {
+    display: block;
+  }
+
+  .rr-expert-panel {
+    flex-direction: column;
+  }
+
+  .rr-expert-panel-photo-wrap {
+    flex: none;
+    width: 100%;
+    height: clamp(220px, 65vw, 320px);
+  }
+
+  .rr-expert-panel-photo {
+    transform: perspective(700px) rotateY(-2deg) scale(1.02);
+  }
+
+  .rr-expert-panel.is-active .rr-expert-panel-photo {
+    transform: perspective(700px) rotateY(0deg) scale(1);
+  }
+
+  .rr-expert-modal {
+    align-items: center;
+    animation: rr-about-card-fade 0.28s ease both;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 22px;
+    position: fixed;
+    z-index: 120;
+  }
+
+  .rr-expert-modal-card {
+    animation: rr-about-card-rise 0.38s cubic-bezier(0.2, 0.9, 0.22, 1) both;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(181, 144, 85, 0.26);
+    box-shadow: 0 28px 80px rgba(28, 27, 27, 0.2);
+    transform-origin: center bottom;
+    box-sizing: border-box;
+    max-height: calc(100svh - 44px);
+    max-width: 380px;
+    overflow-y: auto;
+    padding: 14px 14px 24px;
+    position: relative;
+    width: 100%;
+  }
+
+  .rr-expert-modal-close {
+    align-items: center;
+    background: rgba(28, 27, 27, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    height: 34px;
+    justify-content: center;
+    letter-spacing: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 34px;
+    z-index: 2;
+  }
+
+  .rr-expert-modal-close:hover,
+  .rr-expert-modal-close:focus-visible {
+    background: #fff;
+    border-color: rgba(28, 27, 27, 0.8);
+    color: var(--rr-about-ink);
+    outline: none;
+  }
+
+  .rr-expert-modal-photo-wrap {
+    aspect-ratio: 4 / 5;
+    background: #ede9e0;
+    border: 1px solid rgba(181, 144, 85, 0.18);
+    margin: 0 0 20px;
+    overflow: hidden;
+  }
+
+  .rr-expert-modal-photo {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+  }
+
+  .rr-expert-modal-copy {
+    padding: 0 4px;
+  }
+
+  .rr-expert-modal-copy h2 {
+    color: var(--rr-about-ink);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.12;
+    margin: 8px 0 12px;
+  }
+
+  .rr-expert-modal-copy p {
+    color: var(--rr-about-muted);
+    font-size: 13px;
+    line-height: 1.72;
+    margin: 0 0 12px;
+  }
+
+  .rr-expert-modal-copy .rr-about-eyebrow,
+  .rr-expert-modal-heading {
+    color: var(--rr-about-gold);
+  }
+
+  .rr-expert-modal-heading {
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .rr-view-switcher {
+    max-width: calc(100vw - 28px);
+    width: calc(100vw - 28px);
+  }
+
+  .rr-view-switcher__btn {
+    flex: 1 1 0;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    min-width: 0;
+    padding: 9px 8px;
+    text-align: center;
+  }
+
+  .rr-experts-facets {
+    margin: 0;
+    overflow-x: visible;
+    padding: 0;
+  }
+
+  .rr-about-facets {
+    margin: 0;
+    overflow-x: visible;
+    padding: 0;
+  }
+
+  .rr-about-facets button,
+  .rr-experts-facets button {
+    border: 0;
+    flex: 0 1 auto;
+    font-size: 11px;
+    gap: 15px;
+    min-height: 52px;
+    padding: 13px 2px;
+    white-space: normal;
+  }
+
+  .rr-about-tab-index {
+    display: inline-block;
+  }
+
+  .rr-about-tab-line {
+    display: block;
+  }
+
+  .rr-experts-facets button[aria-selected='true'] {
+    background: transparent;
+    border-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rr-about-modal,
+  .rr-about-modal-card,
+  .rr-expert-modal,
+  .rr-expert-modal-card {
+    animation: none !important;
+  }
+
+  .rr-expert-panel-photo,
+  .rr-expert-panel.is-active .rr-expert-panel-photo {
+    transform: none !important;
     transition-duration: 0.01ms !important;
   }
 }

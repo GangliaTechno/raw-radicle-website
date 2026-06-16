@@ -2878,13 +2878,66 @@ body {
     right: auto !important;
     top: 0 !important;
     transform: translateX(-105%) !important;
+    transition:
+      transform 0.52s cubic-bezier(0.19, 1, 0.22, 1),
+      visibility 0.52s step-end !important;
+    visibility: hidden !important;
     width: min(88vw, 380px) !important;
     z-index: 1200 !important;
+    will-change: transform !important;
   }
 
   .SidebarMenu.Drawer[aria-hidden="false"] {
     transform: translateX(0) !important;
+    transition:
+      transform 0.56s cubic-bezier(0.19, 1, 0.22, 1),
+      visibility 0s step-start !important;
     visibility: visible !important;
+  }
+
+  .SidebarMenu.Drawer .Drawer__Header,
+  .SidebarMenu.Drawer .Drawer__Footer,
+  .SidebarMenu.Drawer .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Header,
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Footer,
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.42s ease,
+      transform 0.52s cubic-bezier(0.19, 1, 0.22, 1) !important;
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Header {
+    transition-delay: 0.08s !important;
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(1) {
+    transition-delay: 0.12s !important;
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(2) {
+    transition-delay: 0.16s !important;
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(3) {
+    transition-delay: 0.2s !important;
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(4) {
+    transition-delay: 0.24s !important;
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item:nth-child(5) {
+    transition-delay: 0.28s !important;
+  }
+
+  .SidebarMenu.Drawer[aria-hidden="false"] .Drawer__Footer {
+    transition-delay: 0.32s !important;
   }
 
   .SidebarMenu .Drawer__Header {
@@ -2994,10 +3047,35 @@ body {
   }
 
   .Drawer__Backdrop {
-    background: rgba(0, 0, 0, 0.36) !important;
+    animation: rr-drawer-backdrop-fade 0.38s ease both !important;
+    background: rgba(0, 0, 0, 0.44) !important;
+    backdrop-filter: blur(4px);
     inset: 0 !important;
     position: fixed !important;
     z-index: 1190 !important;
+  }
+}
+
+@keyframes rr-drawer-backdrop-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .SidebarMenu.Drawer,
+  .SidebarMenu.Drawer[aria-hidden="false"],
+  .SidebarMenu.Drawer .Drawer__Header,
+  .SidebarMenu.Drawer .Drawer__Footer,
+  .SidebarMenu.Drawer .Drawer__Main > .Drawer__Container > .Collapsible > .Linklist > .Linklist__Item,
+  .Drawer__Backdrop {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }
 

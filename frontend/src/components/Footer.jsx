@@ -13,9 +13,9 @@ const footerData = {
     {
       title: 'Our Chocolates',
       links: [
-        { label: 'Ashwagandha Chocolate', href: '/products' },
-        { label: 'Brahmi Chocolate', href: '/products' },
-        { label: 'Chyawanaprash Chocolate', href: '/products' },
+        { label: 'Ashwagandha Chocolate', href: '/products?category=ashwagandha' },
+        { label: 'Brahmi Chocolate', href: '/products?category=brahmi' },
+        { label: 'Chyawanaprash Chocolate', href: '/products?category=chyawanaprash' },
         { label: 'View All Products', href: '/products' },
       ],
     },
@@ -50,8 +50,8 @@ const footerData = {
   ],
   legal: [
     { label: '© Raw Radicles', href: '/' },
-    { label: 'Privacy Policy', href: '/' },
-    { label: 'Terms & Conditions', href: '/' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms & Conditions', href: '/terms-conditions' },
   ],
 }
 
@@ -159,6 +159,7 @@ const PAYMENT_METHODS = [
 ]
 
 const isExternal = (href = '') => /^https?:\/\//.test(href)
+const footerLabel = (label = '') => (label.includes('Raw Radicles') ? '\u00a9 Raw Radicles' : label)
 
 const FooterLink = ({ href, children, className, ...props }) =>
   isExternal(href) ? (
@@ -321,7 +322,7 @@ export default function Footer({ data = footerData }) {
             <React.Fragment key={link.label}>
               {index > 0 ? <span aria-hidden="true">|</span> : null}
               <FooterLink className="rr-footer-legal-link" href={link.href}>
-                {link.label}
+                {footerLabel(link.label)}
               </FooterLink>
             </React.Fragment>
           ))}
