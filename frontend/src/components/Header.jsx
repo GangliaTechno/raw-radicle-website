@@ -14,6 +14,21 @@ export function Header({ onSearch }) {
     }
   }, [location])
 
+  useEffect(() => {
+    if (!menuOpen) {
+      const activeEl = document.activeElement
+      const sidebar = document.getElementById('sidebar-menu')
+      if (sidebar && sidebar.contains(activeEl)) {
+        const openBtn = document.querySelector('button[aria-label="Open navigation"]')
+        if (openBtn) {
+          openBtn.focus()
+        } else {
+          activeEl.blur()
+        }
+      }
+    }
+  }, [menuOpen])
+
   const handleLinkClick = (e) => {
     e.currentTarget.blur()
   }

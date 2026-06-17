@@ -44,7 +44,7 @@ export function ContactPage() {
           <p>Hello! We are available to assist you Monday to Friday, 10 am to 6 pm IST.</p>
           <p>
             <strong>Have a question about your order?</strong> Email{' '}
-            <a href="mailto:director@darshangatma.in">director@darshangatma.in</a>
+            <a href="mailto:director@dashapatmaja.in">director@dashapatmaja.in</a>
           </p>
           <p>
             Please allow 1-2 business days for order processing and fulfillment. You will receive a confirmation once

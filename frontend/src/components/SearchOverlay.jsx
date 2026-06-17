@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts.js'
 import { asset } from '../utils/assets.js'
@@ -13,6 +13,21 @@ export function SearchOverlay({ open, onClose }) {
       [product.name, product.description].join(' ').toLowerCase().includes(query.toLowerCase()),
     )
   }, [query, products])
+
+  useEffect(() => {
+    if (!open) {
+      const activeEl = document.activeElement
+      const searchContainer = document.getElementById('Search')
+      if (searchContainer && searchContainer.contains(activeEl)) {
+        const searchBtn = document.querySelector('button[aria-label="Search"]')
+        if (searchBtn) {
+          searchBtn.focus()
+        } else {
+          activeEl.blur()
+        }
+      }
+    }
+  }, [open])
 
   return (
     <>
@@ -82,7 +97,7 @@ export function SearchOverlay({ open, onClose }) {
           </div>
         </div>
       </div>
-      {open && <div className="Search__Backdrop" onClick={onClose} style={{ zIndex: 900, position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.42)' }} />}
+      {open && <div className="Search__Backdrop" onClick={onClose} style={{ zIndex: 900, position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.42)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }} />}
     </>
   )
 }
