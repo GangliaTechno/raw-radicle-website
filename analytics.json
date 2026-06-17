@@ -73,16 +73,16 @@
       "sessions": 0
     },
     "2026-06-17": {
-      "pageViews": 11,
-      "clicks": 17,
-      "totalTime": 27,
+      "pageViews": 77,
+      "clicks": 79,
+      "totalTime": 4832,
       "sessions": 0
     }
   },
   "pages": {
     "/": {
-      "views": 354,
-      "totalTime": 28411
+      "views": 377,
+      "totalTime": 31174
     },
     "/index.html": {
       "views": 2,
@@ -97,15 +97,15 @@
       "totalTime": 0
     },
     "/blog": {
-      "views": 21,
-      "totalTime": 695
+      "views": 22,
+      "totalTime": 701
     },
     "/products": {
-      "views": 130,
-      "totalTime": 10246
+      "views": 143,
+      "totalTime": 10438
     },
     "/cmilkc": {
-      "views": 4,
+      "views": 5,
       "totalTime": 1202
     },
     "/bmilkc": {
@@ -113,7 +113,7 @@
       "totalTime": 180
     },
     "/amilkc": {
-      "views": 13,
+      "views": 15,
       "totalTime": 3648
     },
     "/cdarkc": {
@@ -121,16 +121,16 @@
       "totalTime": 57
     },
     "/about": {
-      "views": 138,
-      "totalTime": 18782
+      "views": 158,
+      "totalTime": 19751
     },
     "/contact": {
-      "views": 15,
-      "totalTime": 256
+      "views": 19,
+      "totalTime": 1125
     },
     "/adarkc": {
-      "views": 4,
-      "totalTime": 57
+      "views": 6,
+      "totalTime": 63
     },
     "/login": {
       "views": 4,
@@ -146,7 +146,7 @@
     "cta_productsproducts": 25,
     "cta_refresh_homepage_story": 2,
     "product_cdarkc": 5,
-    "product_cmilkc": 6,
+    "product_cmilkc": 7,
     "cta_login": 20,
     "product_bmilkc": 4,
     "cta_features": 15,
@@ -165,8 +165,8 @@
     "cta_faqs": 15,
     "cta_instagram": 15,
     "cta_sync_feed": 1,
-    "cta_products": 41,
-    "cta_blog": 23,
+    "cta_products": 44,
+    "cta_blog": 24,
     "cta_edit": 21,
     "cta_media": 18,
     "cta_basic_info": 9,
@@ -181,26 +181,26 @@
     "cta_subscribed": 10,
     "cta_dashboard": 18,
     "cta_shop_now": 1,
-    "product_amilkc": 11,
+    "product_amilkc": 13,
     "marketplace_amazon": 1,
     "cta_blogblog": 9,
     "cta_rituals__1_min_reada_calmer_snack_break_with_ash": 1,
     "cta_aboutabout": 48,
-    "cta_dr_rohan_mehranutritionist": 4,
+    "cta_dr_rohan_mehranutritionist": 6,
     "marketplace_flipkart": 2,
     "cta_store_visits0_vs_previous_7d": 1,
     "cta_button_clicks222review_click_data": 1,
     "cta_next_products": 39,
-    "cta_open_navigation": 56,
-    "cta_home": 20,
+    "cta_open_navigation": 71,
+    "cta_home": 26,
     "cta_toggle_products_list": 2,
     "cta_show_one_product_per_row": 3,
     "cta_show_two_products_per_row": 5,
     "cta_review_subscriber_list": 1,
-    "cta_about": 9,
+    "cta_about": 11,
     "cta_contact_uscontact_us": 9,
     "cta_next_testimonials": 8,
-    "product_adarkc": 3,
+    "product_adarkc": 5,
     "cta_previous_testimonials": 11,
     "cta_raw_radicles_home": 2,
     "cta_next_instagram_posts": 17,
@@ -242,8 +242,8 @@
     "cta_iiisourcing__craft": 27,
     "cta_ivthe_lion__the_sun": 20,
     "cta_iour_origin": 25,
-    "cta_dr_sarah_khandermatologist": 1,
-    "marketplace_blinkit": 1,
+    "cta_dr_sarah_khandermatologist": 2,
+    "marketplace_blinkit": 2,
     "cta_ashwagandha_chocolate": 6,
     "cta__raw_radicles": 1,
     "cta_privacy_policy": 1,
@@ -254,30 +254,34 @@
     "cta_ivdr_priya_nairnutritional_science_advisor": 2,
     "cta_vdr_arjun_kamathquality__safety_advisor": 2,
     "cta_our_experts": 68,
-    "cta_about_raw_radicles": 37,
+    "cta_about_raw_radicles": 38,
     "cta_iidr_anjali_desaiayurvedic_specialist": 10,
-    "cta_iiidr_rohan_mehranutritionist": 29,
-    "cta_ivdr_sarah_khandermatologist": 23,
+    "cta_iiidr_rohan_mehranutritionist": 30,
+    "cta_ivdr_sarah_khandermatologist": 24,
     "cta_vdr_vikram_singhwellness_expert": 17,
     "cta_idr_nozer_sheriargynaecologist": 5,
-    "cta_dr_manu_sudhiemergency_medicine_bams_mbbs_md": 2,
-    "cta_idr_manu_sudhiemergency_medicine_bams_mbbs_md": 8,
+    "cta_dr_manu_sudhiemergency_medicine_bams_mbbs_md": 9,
+    "cta_idr_manu_sudhiemergency_medicine_bams_mbbs_md": 10,
     "marketplace_zeptonow": 1,
-    "cta_iidr_joy_vargheseayurmedic_doctor": 17,
+    "cta_iidr_joy_vargheseayurmedic_doctor": 19,
     "cta_sort": 2,
-    "cta_by_category": 93,
+    "cta_by_category": 94,
     "cta_our_origin": 1,
     "cta_previous_banner": 3,
-    "cta_x": 33,
-    "cta_contact_us": 5,
+    "cta_x": 34,
+    "cta_contact_us": 6,
     "cta_about_us": 3,
     "cta_blog__the_raw_journal": 5,
-    "cta_ashwagandha": 7,
+    "cta_ashwagandha": 8,
     "cta_chyawanaprash": 4,
     "cta_brahmi": 5,
     "cta_all": 8,
     "cta_brahmi_chocolate": 3,
     "cta_view_all": 1,
-    "cta_chyawanaprash_chocolate": 3
+    "cta_chyawanaprash_chocolate": 3,
+    "cta_go_to_slide_2": 1,
+    "cta_go_to_slide_1": 1,
+    "cta_dr_joy_vargheseayurmedic_doctor": 5,
+    "cta_dr_anjali_desaiayurvedic_specialist": 1
   }
 }

@@ -147,7 +147,19 @@ export function AboutPage() {
 
       if (hash.startsWith('expert-')) {
         setActiveView('experts')
-        setActiveExpert(getExpertFromHash())
+        const expertId = getExpertFromHash()
+        setActiveExpert(expertId)
+
+        const isMobile = window.matchMedia('(max-width: 640px)').matches
+        if (isMobile) {
+          const foundExpert = expertsList.find((e) => e.id === expertId)
+          if (foundExpert) {
+            setMobileExpert(foundExpert)
+          }
+        }
+
+        // On both desktop and mobile, ensure the page is scrolled to the top
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
         return
       }
 
@@ -158,7 +170,7 @@ export function AboutPage() {
     handleHashChange()
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [])
+  }, [expertsList])
 
   const showPanel = (id, updateHash = true) => {
     setActivePanel(id)

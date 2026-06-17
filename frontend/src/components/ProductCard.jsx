@@ -18,6 +18,110 @@ const getBenefitChips = (product) => {
   return ['Natural', 'Vegetarian', 'Crafted']
 }
 
+function SwipeableGallery({ images, name }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe && activeIndex < images.length - 1) {
+      setActiveIndex((prev) => prev + 1)
+    }
+    if (isRightSwipe && activeIndex > 0) {
+      setActiveIndex((prev) => prev - 1)
+    }
+    setTouchStart(0)
+    setTouchEnd(0)
+  }
+
+  const nextSlide = (e) => {
+    e.stopPropagation()
+    if (activeIndex < images.length - 1) {
+      setActiveIndex(activeIndex + 1)
+    }
+  }
+
+  const prevSlide = (e) => {
+    e.stopPropagation()
+    if (activeIndex > 0) {
+      setActiveIndex(activeIndex - 1)
+    }
+  }
+
+  return (
+    <div
+      className="ProductQuickView__Gallery"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className="ProductQuickView__GalleryTrack"
+        style={{
+          transform: `translateX(-${activeIndex * 100}%)`,
+        }}
+      >
+        {images.map((imgUrl, idx) => (
+          <div key={idx} className="ProductQuickView__GallerySlide">
+            <img src={asset(imgUrl)} alt={`${name} - View ${idx + 1}`} />
+          </div>
+        ))}
+      </div>
+
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            className="ProductQuickView__GalleryArrow ProductQuickView__GalleryArrow--prev"
+            onClick={prevSlide}
+            disabled={activeIndex === 0}
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className="ProductQuickView__GalleryArrow ProductQuickView__GalleryArrow--next"
+            onClick={nextSlide}
+            disabled={activeIndex === images.length - 1}
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+          <div className="ProductQuickView__GalleryDots">
+            {images.map((_, index) => (
+              <button
+                type="button"
+                key={index}
+                className={`ProductQuickView__GalleryDot ${index === activeIndex ? 'is-active' : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveIndex(index)
+                }}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
 export function ProductCard({ product }) {
   const [quickViewOpen, setQuickViewOpen] = useState(false)
   const productPath = `/${product.id}`
@@ -81,7 +185,7 @@ export function ProductCard({ product }) {
                 </button>
                 <div className="ProductQuickView__Inner" role="dialog" aria-modal="true" aria-labelledby={`quick-view-${product.id}`} onMouseDown={(event) => event.stopPropagation()}>
                   <div className="ProductQuickView__Media">
-                    <img src={asset(product.image)} alt={product.name} />
+                    <SwipeableGallery images={product.gallery && product.gallery.length ? product.gallery : [product.image, product.hoverImage || product.image]} name={product.name} />
                   </div>
                   <div className="ProductQuickView__Content">
                     <p className="ProductQuickView__Eyebrow">{product.badge || 'Quick view'}</p>
