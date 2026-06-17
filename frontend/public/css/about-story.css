@@ -546,8 +546,15 @@
 .rr-expert-panel {
   align-items: center;
   flex-direction: row;
-  gap: clamp(28px, 3.5vw, 52px);
+  gap: clamp(22px, 2.4vw, 38px);
+  justify-content: flex-start;
   padding-right: 0;
+  transform: translateX(clamp(-72px, -5vw, -34px)) translateY(18px);
+  width: calc(100% + clamp(34px, 5vw, 72px));
+}
+
+.rr-expert-panel.is-active {
+  transform: translateX(clamp(-72px, -5vw, -34px)) translateY(0);
 }
 
 /* photo column ─────────────────────────────────────────────────────── */
@@ -663,6 +670,12 @@
     flex-direction: row;
     gap: 20px;
     padding-right: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  .rr-expert-panel.is-active {
+    transform: none;
   }
 
   .rr-expert-panel-photo-wrap {

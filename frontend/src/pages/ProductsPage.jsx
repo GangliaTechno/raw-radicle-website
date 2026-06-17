@@ -24,6 +24,21 @@ const DownIcon = () => (
   </svg>
 )
 
+const productMatchesCategory = (product, category) => {
+  if (category === 'all') return true
+
+  const tags = Array.isArray(product.tags) ? product.tags : []
+  const searchable = [
+    ...tags,
+    product.herb,
+    product.name,
+    product.shortName,
+    product.description,
+  ].join(' ').toLowerCase()
+
+  return searchable.includes(category)
+}
+
 export function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const requestedCategory = searchParams.get('category')?.toLowerCase() || 'all'
@@ -39,6 +54,7 @@ export function ProductsPage() {
   usePageTitle(pageHeading)
 
   const chooseCategory = (nextCategory) => {
+    console.log("chooseCategory called with:", nextCategory)
     setCategoryOpen(false)
     setSortOpen(false)
 
@@ -51,7 +67,7 @@ export function ProductsPage() {
   }
 
   const products = useMemo(() => {
-    const visible = category === 'all' ? [...productList] : productList.filter((product) => product.tags.includes(category))
+    const visible = productList.filter((product) => productMatchesCategory(product, category))
 
     return visible.sort((a, b) => {
       if (sort === 'title-ascending') return a.name.localeCompare(b.name)
@@ -62,6 +78,8 @@ export function ProductsPage() {
     })
   }, [category, sort, productList])
 
+
+
   return (
     <main className="rr-collection-redesign" id="main" role="main">
       <style>{`
@@ -71,13 +89,15 @@ export function ProductsPage() {
         .rr-collection-redesign .SectionHeader{text-align:center;width:100%;display:flex;align-items:center;justify-content:center;margin:0!important}
         .rr-collection-redesign .SectionHeader__Heading{font-family:Montserrat,Arial,sans-serif;font-size:22px;font-weight:500;letter-spacing:.42em;text-transform:uppercase;color:#fff;margin:0;padding-left:.42em;text-align:center}
         .rr-collection-redesign .CollectionMain{background:#efefef}
-        .rr-products-toolbar{height:56px;border-bottom:1px solid #d2d2d2;background:#efefef;display:flex;align-items:stretch;justify-content:space-between}
+        .rr-products-toolbar{position:relative;z-index:50;height:56px;border-bottom:1px solid #d2d2d2;background:#efefef;display:flex;align-items:stretch;justify-content:space-between}
+        .rr-products-toolbar.is-open{z-index:80 !important}
         .rr-layout-cell{width:116px;border-right:1px solid #d2d2d2;display:flex;align-items:center;justify-content:center}
         .rr-layout-switch{display:flex;align-items:center;gap:18px}
         .rr-layout-button{background:none;border:0;color:#1c1c1c;opacity:.28;padding:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
         .rr-layout-button.is-active{opacity:1}.rr-layout-button svg{width:18px;height:18px}
         .rr-toolbar-controls{margin-left:auto;display:flex;align-items:stretch;height:56px}
         .rr-toolbar-control{position:relative;display:flex;align-items:stretch}
+        .rr-toolbar-control.is-open{z-index:80}
         .rr-toolbar-button{height:56px;border:0;border-left:1px solid #d2d2d2;background:none;padding:0 34px;display:flex;align-items:center;justify-content:center;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#777;white-space:nowrap;cursor:pointer}
         .rr-toolbar-sort .rr-toolbar-button{min-width:154px}.rr-toolbar-category .rr-toolbar-button{min-width:222px}
         .rr-toolbar-popover{position:absolute;top:56px;right:0;z-index:80;width:260px;background:#fff;border:1px solid #d2d2d2;box-shadow:0 14px 36px rgba(0,0,0,.12);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
@@ -150,7 +170,7 @@ export function ProductsPage() {
         </header>
 
         <div className="CollectionMain">
-          <div className="rr-products-toolbar">
+          <div className={`rr-products-toolbar ${categoryOpen || sortOpen ? 'is-open' : ''}`}>
             <div className="rr-layout-cell">
               <div className="rr-layout-switch hidden-phone">
                 <button className={`rr-layout-button ${desktopCount === 2 ? 'is-active' : ''}`} type="button" aria-label="Show two products per row" onClick={() => setDesktopCount(2)}>
@@ -179,7 +199,7 @@ export function ProductsPage() {
             </div>
 
             <div className="rr-toolbar-controls">
-              <div className="rr-toolbar-control rr-toolbar-sort">
+              <div className={`rr-toolbar-control rr-toolbar-sort ${sortOpen ? 'is-open' : ''}`}>
                 <button className="rr-toolbar-button" type="button" aria-expanded={sortOpen} aria-haspopup="true" onClick={() => { setSortOpen(!sortOpen); setCategoryOpen(false) }}>
                   Sort <DownIcon />
                 </button>
@@ -200,7 +220,7 @@ export function ProductsPage() {
                 </div>
               </div>
 
-              <div className="rr-toolbar-control rr-toolbar-category">
+              <div className={`rr-toolbar-control rr-toolbar-category ${categoryOpen ? 'is-open' : ''}`}>
                 <button className="rr-toolbar-button" type="button" aria-expanded={categoryOpen} aria-haspopup="true" onClick={() => { setCategoryOpen(!categoryOpen); setSortOpen(false) }}>
                   By Category <DownIcon />
                 </button>
@@ -227,6 +247,7 @@ export function ProductsPage() {
             <div
               className="Popover__Backdrop"
               onClick={() => {
+                console.log("Backdrop clicked")
                 setCategoryOpen(false)
                 setSortOpen(false)
               }}
