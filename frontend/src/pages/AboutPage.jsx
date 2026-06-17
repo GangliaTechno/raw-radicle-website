@@ -362,7 +362,7 @@ export function AboutPage() {
                   onClick={closeMobileAboutPanel}
                   type="button"
                 >
-                  X
+                  ×
                 </button>
                 <p className="rr-about-eyebrow">{mobileAboutPanel.label}</p>
                 <h2 id="rr-about-modal-title">{mobileAboutPanel.heading}</h2>
@@ -466,7 +466,7 @@ export function AboutPage() {
                   onClick={closeMobileExpert}
                   type="button"
                 >
-                  X
+                  ×
                 </button>
                 <div className="rr-expert-modal-photo-wrap">
                   <img

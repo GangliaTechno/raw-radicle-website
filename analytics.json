@@ -73,16 +73,16 @@
       "sessions": 0
     },
     "2026-06-17": {
-      "pageViews": 77,
-      "clicks": 79,
-      "totalTime": 4832,
+      "pageViews": 104,
+      "clicks": 90,
+      "totalTime": 5458,
       "sessions": 0
     }
   },
   "pages": {
     "/": {
-      "views": 377,
-      "totalTime": 31174
+      "views": 395,
+      "totalTime": 31395
     },
     "/index.html": {
       "views": 2,
@@ -101,7 +101,7 @@
       "totalTime": 701
     },
     "/products": {
-      "views": 143,
+      "views": 145,
       "totalTime": 10438
     },
     "/cmilkc": {
@@ -121,8 +121,8 @@
       "totalTime": 57
     },
     "/about": {
-      "views": 158,
-      "totalTime": 19751
+      "views": 165,
+      "totalTime": 20156
     },
     "/contact": {
       "views": 19,
@@ -143,7 +143,7 @@
   },
   "clicks": {
     "cta_store_visits30_vs_previous_7d": 1,
-    "cta_productsproducts": 25,
+    "cta_productsproducts": 26,
     "cta_refresh_homepage_story": 2,
     "product_cdarkc": 5,
     "product_cmilkc": 7,
@@ -186,13 +186,13 @@
     "cta_blogblog": 9,
     "cta_rituals__1_min_reada_calmer_snack_break_with_ash": 1,
     "cta_aboutabout": 48,
-    "cta_dr_rohan_mehranutritionist": 6,
+    "cta_dr_rohan_mehranutritionist": 7,
     "marketplace_flipkart": 2,
     "cta_store_visits0_vs_previous_7d": 1,
     "cta_button_clicks222review_click_data": 1,
     "cta_next_products": 39,
-    "cta_open_navigation": 71,
-    "cta_home": 26,
+    "cta_open_navigation": 72,
+    "cta_home": 27,
     "cta_toggle_products_list": 2,
     "cta_show_one_product_per_row": 3,
     "cta_show_two_products_per_row": 5,
@@ -257,13 +257,13 @@
     "cta_about_raw_radicles": 38,
     "cta_iidr_anjali_desaiayurvedic_specialist": 10,
     "cta_iiidr_rohan_mehranutritionist": 30,
-    "cta_ivdr_sarah_khandermatologist": 24,
+    "cta_ivdr_sarah_khandermatologist": 25,
     "cta_vdr_vikram_singhwellness_expert": 17,
     "cta_idr_nozer_sheriargynaecologist": 5,
-    "cta_dr_manu_sudhiemergency_medicine_bams_mbbs_md": 9,
+    "cta_dr_manu_sudhiemergency_medicine_bams_mbbs_md": 13,
     "cta_idr_manu_sudhiemergency_medicine_bams_mbbs_md": 10,
     "marketplace_zeptonow": 1,
-    "cta_iidr_joy_vargheseayurmedic_doctor": 19,
+    "cta_iidr_joy_vargheseayurmedic_doctor": 20,
     "cta_sort": 2,
     "cta_by_category": 94,
     "cta_our_origin": 1,
@@ -281,7 +281,7 @@
     "cta_chyawanaprash_chocolate": 3,
     "cta_go_to_slide_2": 1,
     "cta_go_to_slide_1": 1,
-    "cta_dr_joy_vargheseayurmedic_doctor": 5,
+    "cta_dr_joy_vargheseayurmedic_doctor": 6,
     "cta_dr_anjali_desaiayurvedic_specialist": 1
   }
 }
