@@ -424,26 +424,37 @@
 
 /* ===== TABLET ===== */
 @media screen and (max-width: 1140px) {
+    .Header__MainNav {
+        display: none !important;
+    }
+
     .Header--logoLeft .Header__FlexItem--logo {
         flex: 0 0 auto !important;
         min-width: 44px !important;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .Header--logoLeft .Header__FlexItem--fill {
+        flex: 1 1 0% !important;
+        min-width: 0 !important;
+        justify-content: flex-start !important;
     }
 
     .Header--logoLeft .Header__FlexItem--fill:last-child {
-        flex: 0 0 auto !important;
+        flex: 1 1 0% !important;
         min-width: 44px !important;
+        justify-content: flex-end !important;
+        gap: 14px !important;
     }
 
     .Header__SearchForm {
-        width: 180px !important;
+        display: none !important;
     }
 }
 
 @media screen and (max-width: 1000px) {
-    .Header__MainNav {
-        display: none !important;
-    }
-    
     .Header__FlexItem--logo {
         flex: 0 0 auto !important;
         position: absolute !important;

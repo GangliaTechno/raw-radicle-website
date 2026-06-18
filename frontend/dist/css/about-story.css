@@ -1,9 +1,8 @@
 :root {
   --rr-about-ink: #1c1b1b;
   --rr-about-paper: #ffffff;
-  --rr-about-soft: #f8f5ef;
   --rr-about-muted: #5f5a52;
-  --rr-about-gold: #8a6a3f;
+  --rr-about-gold: #b59055;
   --rr-about-line: rgba(28, 27, 27, 0.14);
 }
 
@@ -11,32 +10,25 @@
   background: var(--rr-about-paper);
   color: var(--rr-about-ink);
   font-family: Montserrat, Arial, sans-serif;
-  margin-top: 0;
-  min-height: calc(100svh - 85px);
+  margin-top: -85px;
+  min-height: 100svh;
   overflow-x: clip;
   position: relative;
 }
 
 .rr-about-ambient {
-  bottom: clamp(28px, 5vw, 70px);
-  height: min(34vw, 360px);
-  opacity: 0.45;
-  pointer-events: none;
-  position: absolute;
-  right: clamp(18px, 5vw, 70px);
-  width: min(34vw, 360px);
-  z-index: 0;
+  display: none;
 }
 
 .rr-about-ambient::before {
   background: repeating-conic-gradient(
     from 0deg at 50% 50%,
-    rgba(138, 106, 63, 0.52) 0deg 0.6deg,
+    rgba(181, 144, 85, 0.72) 0deg 0.6deg,
     transparent 0.6deg 5deg
   );
   content: '';
   inset: 0;
-  opacity: 0.05;
+  opacity: 0.08;
   position: absolute;
   -webkit-mask: radial-gradient(circle, transparent 54%, #000 55%, #000 84%, transparent 86%);
   mask: radial-gradient(circle, transparent 54%, #000 55%, #000 84%, transparent 86%);
@@ -48,7 +40,7 @@
   height: auto;
   left: 50%;
   object-fit: contain;
-  opacity: 0.07;
+  opacity: 0.12;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -64,12 +56,10 @@
 .rr-about-stage {
   align-items: center;
   display: grid;
-  gap: clamp(28px, 5vw, 64px);
-  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
-  margin: 0 auto;
-  max-width: 1240px;
-  min-height: calc(100svh - 85px);
-  padding: clamp(54px, 7vw, 86px) clamp(18px, 5vw, 70px);
+  gap: clamp(34px, 5vw, 78px);
+  grid-template-columns: minmax(290px, 0.9fr) minmax(0, 1.1fr);
+  min-height: 100svh;
+  padding: calc(85px + clamp(42px, 7vw, 86px)) clamp(22px, 5vw, 70px) clamp(34px, 5vw, 60px);
   position: relative;
   z-index: 1;
 }
@@ -87,7 +77,7 @@
   color: var(--rr-about-gold);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: 0.24em;
   line-height: 1.5;
   margin: 0;
   text-transform: uppercase;
@@ -95,10 +85,10 @@
 
 .rr-about-thesis {
   color: var(--rr-about-ink);
-  font-size: clamp(34px, 5vw, 62px);
+  font-size: clamp(34px, 4.5vw, 66px);
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 1.1;
+  line-height: 1.05;
   margin: 0;
 }
 
@@ -127,12 +117,9 @@
   color: var(--rr-about-muted);
   cursor: pointer;
   display: flex;
-  font-size: 12px;
-  font-weight: 700;
   gap: 15px;
-  letter-spacing: 0;
   min-height: 54px;
-  padding: 15px 0;
+  padding: 15px 2px;
   text-align: left;
   text-transform: uppercase;
   transition: color 0.3s ease;
@@ -171,23 +158,18 @@
 }
 
 .rr-about-panels {
-  background: var(--rr-about-soft);
-  border: 1px solid rgba(28, 28, 28, 0.08);
-  box-shadow: 0 13px 28px rgba(0, 0, 0, 0.06);
-  height: min(58vh, 520px);
-  min-height: 390px;
-  overflow: hidden;
-  padding: clamp(28px, 5vw, 58px);
+  height: min(68vh, 630px);
+  min-height: 430px;
   position: relative;
 }
 
 .rr-about-panel {
   display: flex;
   flex-direction: column;
-  inset: clamp(28px, 5vw, 58px);
+  inset: 0;
   justify-content: center;
   opacity: 0;
-  padding-right: clamp(84px, 13vw, 178px);
+  padding-right: clamp(120px, 15vw, 240px);
   pointer-events: none;
   position: absolute;
   transform: translateY(18px);
@@ -207,12 +189,12 @@
 
 .rr-about-panel h2 {
   color: var(--rr-about-ink);
-  font-size: clamp(26px, 3vw, 42px);
+  font-size: clamp(28px, 3.8vw, 52px);
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.1;
   margin: 14px 0 22px;
-  max-width: 18ch;
+  max-width: 16ch;
 }
 
 .rr-about-panel p {
@@ -234,17 +216,7 @@
 }
 
 .rr-about-emblem {
-  color: #8a6a3f;
-  display: grid;
-  height: 132px;
-  place-items: center;
-  position: absolute;
-  pointer-events: none;
-  right: clamp(38px, 7vw, 96px);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 132px;
-  z-index: 2;
+  display: none;
 }
 
 .rr-about-emblem-ring {
@@ -254,7 +226,7 @@
     transparent 0.6deg 5deg
   );
   inset: 0;
-  opacity: 0.32;
+  opacity: 0.75;
   position: absolute;
   -webkit-mask: radial-gradient(circle, transparent 52%, #000 53%, #000 86%, transparent 88%);
   mask: radial-gradient(circle, transparent 52%, #000 53%, #000 86%, transparent 88%);
@@ -265,11 +237,11 @@
   filter: saturate(0.85) contrast(1.05);
   height: auto;
   max-height: none;
-  max-width: 94px;
+  max-width: 128px;
   object-fit: contain;
-  opacity: 0.68;
+  opacity: 0.94;
   position: relative;
-  width: 94px;
+  width: 128px;
   z-index: 1;
 }
 
@@ -280,14 +252,16 @@
 
 @media screen and (max-width: 1000px) {
   .rr-about-page {
-    min-height: calc(100svh - 68px);
+    margin-top: -68px;
   }
 
+  /* switcher sits at 68+14=82px top, is ~38px tall, bottom edge ~120px.
+     stage padding-top must clear that: 68 + 14 + 38 + 16px gap = 136px */
   .rr-about-stage {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     min-height: unset;
-    padding: 46px 20px 40px;
+    padding: 136px 20px 40px;
     gap: 24px;
   }
 
@@ -315,6 +289,7 @@
 
   .rr-about-facets button {
     border: 1px solid var(--rr-about-line);
+    border-radius: 4px;
     font-size: 11px;
     gap: 0;
     min-height: 36px;
@@ -336,13 +311,9 @@
 
   /* panels: static flow, no fixed/min height */
   .rr-about-panels {
-    background: transparent;
-    border: 0;
-    box-shadow: none;
     height: auto;
     min-height: 0;
     overflow: visible;
-    padding: 0;
   }
 
   .rr-about-panel {
@@ -363,7 +334,7 @@
   }
 
   .rr-about-panel h2 {
-    font-size: clamp(24px, 6vw, 34px);
+    font-size: clamp(22px, 6vw, 34px);
     margin: 10px 0 16px;
     max-width: 100%;
   }
@@ -383,7 +354,7 @@
 
 @media screen and (max-width: 520px) {
   .rr-about-stage {
-    padding: 36px 16px 32px;
+    padding: 130px 16px 32px;
     gap: 20px;
     overflow-x: hidden;
   }
@@ -399,7 +370,7 @@
   .rr-about-tag,
   .rr-about-leo {
     font-size: 10px;
-    letter-spacing: 0;
+    letter-spacing: 0.18em;
   }
 
   /* on small phones: single scrollable row so chips never wrap or clip.
@@ -442,7 +413,7 @@
 
 @media screen and (max-width: 360px) {
   .rr-about-stage {
-    padding: 32px 14px 28px;
+    padding: 126px 14px 28px;
   }
 
   .rr-view-switcher__btn {
