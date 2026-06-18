@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 const defaultExperts = [
   { name: 'Dr. Nozer Sheriar', role: 'Gynaecologist', image: '/assets/experts/doctor1.png' },
   { name: 'Dr. Anjali Desai', role: 'Ayurvedic Specialist', image: '/assets/experts/doctor2.png' },
@@ -44,7 +42,7 @@ export default function Experts({ experts = defaultExperts, title = 'Meet the Ex
       </h2>
       <div className="rrx-experts-grid">
         {list.map((expert, index) => (
-          <Link className="rrx-expert-card" key={`${expert.name}-${index}`} to={`/about#expert-${index + 1}`}>
+          <article className="rrx-expert-card" key={`${expert.name}-${index}`}>
             {expert.image ? (
               <img className="rrx-expert-photo" src={expert.image} alt={expert.name} loading="lazy" />
             ) : (
@@ -56,7 +54,7 @@ export default function Experts({ experts = defaultExperts, title = 'Meet the Ex
               <span className="rrx-expert-name">{expert.name}</span>
               <span className="rrx-expert-role">{expert.role}</span>
             </span>
-          </Link>
+          </article>
         ))}
       </div>
     </section>
