@@ -4,7 +4,7 @@ import { asset } from '../utils/assets.js'
 
 const footerData = {
   about: {
-    title: 'Brand',
+    title: 'Raw Radicles',
     text: 'A premium Ayurvedic wellness company',
     tagline: 'Same Herbs, New Happiness',
     logo: 'assets/RR_logo embossed_tm.png',
@@ -20,28 +20,26 @@ const footerData = {
       ],
     },
     {
-      title: 'Buy Now',
+      title: 'About',
       links: [
-        { label: 'Blinkit', href: 'https://blinkit.com/' },
-        { label: 'Zepto', href: 'https://www.zeptonow.com/' },
-        { label: 'Swiggy Instamart', href: 'https://www.swiggy.com/instamart' },
-        { label: 'Amazon', href: 'https://www.amazon.in/' },
-        { label: 'Flipkart', href: 'https://www.flipkart.com/' },
+        { label: 'Our Story', href: '/about' },
+        { label: 'Terms of Service', href: '/terms-conditions' },
+        { label: 'Privacy Policy', href: '/privacy-policy' },
       ],
     },
     {
-      title: 'Company',
+      title: 'Help',
       links: [
-        { label: 'About Us', href: '/about' },
-        { label: 'Our Experts', href: '/about#expert-1' },
-        { label: 'Blog / The Raw Journal', href: '/blog' },
         { label: 'Contact Us', href: '/contact' },
+        { label: 'FAQ', href: '/#rr-faqs-title' },
+        { label: 'Shipping', href: '/terms-conditions' },
+        { label: 'Warranty Policy', href: '/terms-conditions' },
       ],
     },
   ],
   newsletter: {
     title: 'Newsletter',
-    text: 'Get updated on new products and stories',
+    text: 'Sign up to our newsletter to receive exclusive offers.',
     button: 'Subscribe',
   },
   social: [
@@ -222,34 +220,32 @@ export default function Footer({ data = footerData }) {
   return (
     <footer className="rr-footer" role="contentinfo">
       <style>{`
-        .rr-footer{background:#1c1c1c;border:2px solid #333;padding:18px 66px 12px;color:#f3f3f3;box-sizing:border-box;min-height:auto;display:flex;flex-direction:column}
-        .rr-footer-inner{display:grid;grid-template-columns:1.35fr .95fr .95fr .95fr 1.05fr;gap:32px;width:100%;max-width:none;margin:0 auto;text-align:left;align-items:start}
-        .rr-footer-title{font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin:0 0 9px;color:#f5f5f5;line-height:1.2}
+        .rr-footer{background:#1c1c1c;border:2px solid #333;padding:46px 26px 18px;color:#f3f3f3;box-sizing:border-box;min-height:auto;display:flex;flex-direction:column}
+        .rr-footer-inner{display:grid;grid-template-columns:minmax(250px,1.25fr) repeat(3,minmax(135px,.72fr)) minmax(260px,1fr);column-gap:clamp(44px,5.2vw,96px);row-gap:32px;width:100%;max-width:none;margin:0 auto;text-align:left;align-items:start}
+        .rr-footer-title{font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin:0 0 26px;color:#f5f5f5;line-height:1.2}
         .rr-footer-text{font-family:Montserrat,Arial,sans-serif;font-size:15px;line-height:1.5;color:#f1f1f1;margin:0 0 8px;max-width:250px}
         .rr-footer-tagline{font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#b59055;margin:0 0 12px;line-height:1.45}
-        .rr-footer-logo{width:245px;max-width:100%;height:auto;display:block;margin:0 0 6px;opacity:1}
+        .rr-footer-logo{width:245px;max-width:100%;height:auto;display:block;margin:0 0 12px;opacity:1}
         .rr-footer-social{display:flex;gap:28px;list-style:none;margin:0;padding:0}
         .rr-footer-social-link{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;color:#fff}
         .rr-footer-social-link svg{width:15px;height:15px;fill:currentColor}
         .rr-footer-social-link:focus-visible,.rr-footer-link:focus-visible,.rr-footer-legal-link:focus-visible,.rr-footer-submit:focus-visible{outline:3px solid #b08850;outline-offset:4px}
-        .rr-footer-links{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-        .rr-footer-link{font-family:Montserrat,Arial,sans-serif;font-size:14px;font-weight:400;color:#f1f1f1;text-decoration:none;line-height:1.35}
-        .rr-footer-inner>nav .rr-footer-title,.rr-footer-inner>section:not(:first-child) .rr-footer-title{margin-bottom:20px}
-        .rr-footer-inner>nav .rr-footer-links{gap:14px}
-        .rr-footer-inner>section:not(:first-child) .rr-footer-text{margin-bottom:20px}
-        .rr-footer-inner>section:not(:first-child) .rr-footer-submit{margin-top:8px}
+        .rr-footer-links{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+        .rr-footer-link{font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:400;color:#d7d7d7;text-decoration:none;line-height:1.3}
+        .rr-footer-inner>section:not(:first-child) .rr-footer-text{margin-bottom:22px}
+        .rr-footer-inner>section:not(:first-child) .rr-footer-submit{margin-top:10px}
         .rr-footer-link:hover,.rr-footer-legal-link:hover,.rr-footer-submit:hover{color:#bfbfbf}
-        .rr-footer-submit{align-items:center;background:#1c1c1c;border:1px solid #f5f5f5;border-radius:0;color:#f5f5f5;cursor:pointer;display:inline-flex;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;justify-content:center;letter-spacing:.18em;min-height:42px;padding:10px 14px;text-transform:uppercase;text-decoration:none;transition:background .25s ease,color .25s ease,border-color .25s ease;width:100%}
-        .rr-footer-submit:hover{background:#f5f5f5;border-color:#f5f5f5;color:#1c1c1c}
-        .rr-footer-newsletter-form{display:grid;gap:10px;max-width:260px}
-        .rr-footer .rr-footer-newsletter-input{background:transparent!important;border:1px solid rgba(255,255,255,.72)!important;border-radius:0!important;color:#f5f5f5!important;font-family:Montserrat,Arial,sans-serif;font-size:13px;min-height:42px;padding:10px 12px;width:100%;box-sizing:border-box}
+        .rr-footer-submit{align-items:center;background:#f5f5f5;border:1px solid #f5f5f5;border-radius:0;color:#1c1c1c;cursor:pointer;display:inline-flex;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:400;justify-content:center;letter-spacing:0;min-height:44px;padding:10px 28px;text-transform:none;text-decoration:none;transition:background .25s ease,color .25s ease,border-color .25s ease;width:max-content}
+        .rr-footer-submit:hover{background:#1c1c1c;border-color:#f5f5f5;color:#f5f5f5}
+        .rr-footer-newsletter-form{display:grid;gap:10px;max-width:288px}
+        .rr-footer .rr-footer-newsletter-input{background:transparent!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:0!important;color:#f5f5f5!important;font-family:Montserrat,Arial,sans-serif;font-size:15px;min-height:46px;padding:10px 12px;width:100%;box-sizing:border-box}
         .rr-footer .rr-footer-newsletter-input::placeholder{color:rgba(255,255,255,.68)!important}
         .rr-footer .rr-footer-newsletter-input:focus{background:#1c1c1c!important;border-color:#f5f5f5!important;outline:0}
         .rr-footer-newsletter-status{font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#d8c49a;margin:0;min-height:18px}
-        .rr-footer-aside{margin:-62px 0 0;display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%}
+        .rr-footer-aside{margin:18px 0 0;display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%}
         .rr-footer-legal{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f3f3f3;text-align:right}
         .rr-footer-legal-link{color:#f3f3f3;text-decoration:none}
-        @media(max-width:1180px){.rr-footer{padding:20px 32px 14px}.rr-footer-inner{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px}.rr-footer-aside{margin-top:8px;width:100%}}
+        @media(max-width:1180px){.rr-footer{padding:40px 32px 16px}.rr-footer-inner{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}.rr-footer-aside{margin-top:18px;width:100%}}
         @media(max-width:900px){.rr-footer-inner{grid-template-columns:repeat(2,minmax(0,1fr))}}
         @media(max-width:760px){.rr-footer-aside{align-items:flex-start;flex-direction:column;justify-content:flex-start;margin:8px 0 0;width:100%}.rr-footer-legal{justify-content:flex-start;text-align:left}}
         @media(max-width:640px){.rr-footer{padding:18px 20px 14px}.rr-footer-inner{grid-template-columns:1fr;gap:18px}.rr-footer-text{max-width:none}.rr-footer-logo{width:220px}}
@@ -259,11 +255,11 @@ export default function Footer({ data = footerData }) {
           <h2 id="rr-footer-about" className="rr-footer-title">
             {data.about.title}
           </h2>
-          <p className="rr-footer-text">{data.about.text}</p>
-          <p className="rr-footer-tagline">{data.about.tagline}</p>
           <FooterLink href="/" aria-label="Raw Radicles home">
             <img className="rr-footer-logo" src={asset(data.about.logo)} alt="Raw Radicles Logo" loading="lazy" />
           </FooterLink>
+          <p className="rr-footer-text">{data.about.text}</p>
+          {data.about.tagline ? <p className="rr-footer-tagline">{data.about.tagline}</p> : null}
         </section>
 
         {data.linkGroups.map((group) => (

@@ -79,23 +79,29 @@
       "sessions": 0
     },
     "2026-06-18": {
-      "pageViews": 19,
+      "pageViews": 20,
       "clicks": 13,
       "totalTime": 1826,
+      "sessions": 0
+    },
+    "2026-06-19": {
+      "pageViews": 28,
+      "clicks": 21,
+      "totalTime": 2095,
       "sessions": 0
     }
   },
   "pages": {
     "/": {
-      "views": 446,
-      "totalTime": 35898
+      "views": 463,
+      "totalTime": 37981
     },
     "/index.html": {
       "views": 2,
       "totalTime": 368
     },
     "/admin": {
-      "views": 97,
+      "views": 98,
       "totalTime": 1398
     },
     "/kpi-smoke-test": {
@@ -127,11 +133,11 @@
       "totalTime": 259
     },
     "/about": {
-      "views": 186,
-      "totalTime": 20304
+      "views": 187,
+      "totalTime": 20307
     },
     "/contact": {
-      "views": 26,
+      "views": 28,
       "totalTime": 1191
     },
     "/adarkc": {
@@ -139,12 +145,20 @@
       "totalTime": 63
     },
     "/login": {
-      "views": 5,
+      "views": 8,
       "totalTime": 59
     },
     "/bdarkc": {
       "views": 5,
       "totalTime": 1496
+    },
+    "/terms-conditions": {
+      "views": 4,
+      "totalTime": 9
+    },
+    "/privacy-policy": {
+      "views": 1,
+      "totalTime": 0
     }
   },
   "clicks": {
@@ -153,12 +167,12 @@
     "cta_refresh_homepage_story": 2,
     "product_cdarkc": 6,
     "product_cmilkc": 7,
-    "cta_login": 26,
+    "cta_login": 27,
     "product_bmilkc": 5,
     "cta_features": 17,
     "cta_review_filters": 2,
     "cta_write_a_review": 3,
-    "cta_homepage": 43,
+    "cta_homepage": 45,
     "cta_static_banner": 9,
     "cta_video_hero": 31,
     "cta_experts": 27,
@@ -171,27 +185,27 @@
     "cta_faqs": 17,
     "cta_instagram": 16,
     "cta_sync_feed": 1,
-    "cta_products": 49,
-    "cta_blog": 27,
+    "cta_products": 50,
+    "cta_blog": 28,
     "cta_edit": 21,
     "cta_media": 18,
     "cta_basic_info": 9,
     "cta_specs__quality": 11,
     "cta_delete": 1,
-    "cta_homehome": 68,
+    "cta_homehome": 69,
     "cta_how_much_chocolate_should_i_eat_per_day": 4,
     "cta_are_your_chocolates_vegan_and_glutenfree": 5,
     "cta_what_ayurvedic_ingredients_are_in_your_chocolate": 6,
     "cta_add_new_product": 5,
-    "cta_users": 16,
-    "cta_subscribed": 13,
+    "cta_users": 17,
+    "cta_subscribed": 14,
     "cta_dashboard": 19,
     "cta_shop_now": 1,
     "product_amilkc": 13,
     "marketplace_amazon": 1,
     "cta_blogblog": 12,
     "cta_rituals__1_min_reada_calmer_snack_break_with_ash": 1,
-    "cta_aboutabout": 55,
+    "cta_aboutabout": 56,
     "cta_dr_rohan_mehranutritionist": 7,
     "marketplace_flipkart": 3,
     "cta_store_visits0_vs_previous_7d": 1,
@@ -204,15 +218,15 @@
     "cta_show_two_products_per_row": 5,
     "cta_review_subscriber_list": 1,
     "cta_about": 11,
-    "cta_contact_uscontact_us": 13,
+    "cta_contact_uscontact_us": 14,
     "cta_next_testimonials": 12,
     "product_adarkc": 5,
     "cta_previous_testimonials": 11,
-    "cta_raw_radicles_home": 2,
+    "cta_raw_radicles_home": 4,
     "cta_next_instagram_posts": 17,
     "cta_previous_instagram_posts": 2,
     "cta_open_raw_radicles_instagram_post": 3,
-    "cta_account": 2,
+    "cta_account": 3,
     "cta_linkedin": 1,
     "cta_specifications": 3,
     "cta_quality__safety_certified": 3,
@@ -252,7 +266,7 @@
     "marketplace_blinkit": 2,
     "cta_ashwagandha_chocolate": 7,
     "cta__raw_radicles": 1,
-    "cta_privacy_policy": 1,
+    "cta_privacy_policy": 2,
     "cta_terms__conditions": 1,
     "cta_idr_dasharathraj_shettyfounder__visionary": 3,
     "cta_iidr_manu_sudhihead_of_formulations": 2,
@@ -275,7 +289,7 @@
     "cta_our_origin": 1,
     "cta_previous_banner": 3,
     "cta_x": 34,
-    "cta_contact_us": 7,
+    "cta_contact_us": 8,
     "cta_about_us": 4,
     "cta_blog__the_raw_journal": 6,
     "cta_ashwagandha": 9,
@@ -295,6 +309,10 @@
     "cta_alphabetically_az": 2,
     "cta_price_low_to_high": 1,
     "cta_price_high_to_low": 1,
-    "cta_logout": 2
+    "cta_logout": 3,
+    "cta_warranty_policy": 2,
+    "cta_shipping": 1,
+    "cta_faq": 1,
+    "cta_terms_of_service": 1
   }
 }
