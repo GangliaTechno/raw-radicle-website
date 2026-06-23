@@ -440,6 +440,26 @@ function AdminDashboard() {
   const [productCmsEditorResetKey, setProductCmsEditorResetKey] = useState(0)
   const [, setPendingReviews] = useState({})
   const [subscribers, setSubscribers] = useState([])
+  const [lastViewedSubscribers, setLastViewedSubscribers] = useState(() => {
+    return localStorage.getItem('lastViewedSubscribers') || '1970-01-01T00:00:00.000Z'
+  })
+
+  const hasNewSubscribers = useMemo(() => {
+    if (activePanel === 'subscribed') return false
+    return subscribers.some((sub) => {
+      if (!sub.createdAt) return false
+      return sub.createdAt > lastViewedSubscribers
+    })
+  }, [subscribers, lastViewedSubscribers, activePanel])
+
+  useEffect(() => {
+    if (activePanel === 'subscribed') {
+      const now = new Date().toISOString()
+      localStorage.setItem('lastViewedSubscribers', now)
+      setLastViewedSubscribers(now)
+    }
+  }, [activePanel])
+
   const [activity, setActivity] = useState(['Opened React admin dashboard'])
   const [status, setStatus] = useState('')
   const [analytics, setAnalytics] = useState(null)
@@ -1338,6 +1358,9 @@ function AdminDashboard() {
             >
               <SidebarIcon type={panel.id} />
               {panel.label}
+              {panel.id === 'subscribed' && hasNewSubscribers && (
+                <span className="rr-notification-dot" title="New subscribers!" />
+              )}
             </button>
           ))}
         </nav>

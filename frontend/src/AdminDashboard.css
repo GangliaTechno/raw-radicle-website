@@ -262,6 +262,23 @@
   width: 6px;
 }
 
+.rr-notification-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #e85d26;
+  border-radius: 50%;
+  margin-left: 8px;
+  box-shadow: 0 0 0 2px rgba(232, 93, 38, 0.2);
+  flex-shrink: 0;
+}
+
+@media (min-width: 1021px) {
+  .rr-notification-dot {
+    margin-left: auto;
+  }
+}
+
 .rr-sidebar-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: auto;

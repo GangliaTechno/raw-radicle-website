@@ -1,3 +1,20 @@
 {
-  "subscribers": []
+  "subscribers": [
+    {
+      "id": "subscriber-1782190817558",
+      "name": "Newsletter Subscriber",
+      "email": "sumithsuvarna111@gmail.com",
+      "phone": "",
+      "createdAt": "2026-06-23T05:00:17.558Z",
+      "updatedAt": "2026-06-23T05:00:17.559Z"
+    },
+    {
+      "id": "subscriber-1782189645462",
+      "name": "Newsletter Subscriber",
+      "email": "vimal.dashapatmaja.solutions@gmail.com",
+      "phone": "",
+      "createdAt": "2026-06-23T04:40:45.462Z",
+      "updatedAt": "2026-06-23T04:40:45.462Z"
+    }
+  ]
 }

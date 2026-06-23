@@ -85,23 +85,41 @@
       "sessions": 0
     },
     "2026-06-19": {
-      "pageViews": 28,
+      "pageViews": 34,
       "clicks": 21,
       "totalTime": 2095,
+      "sessions": 0
+    },
+    "2026-06-21": {
+      "pageViews": 1,
+      "clicks": 0,
+      "totalTime": 0,
+      "sessions": 0
+    },
+    "2026-06-22": {
+      "pageViews": 10,
+      "clicks": 9,
+      "totalTime": 5400,
+      "sessions": 0
+    },
+    "2026-06-23": {
+      "pageViews": 4,
+      "clicks": 14,
+      "totalTime": 0,
       "sessions": 0
     }
   },
   "pages": {
     "/": {
-      "views": 463,
-      "totalTime": 37981
+      "views": 479,
+      "totalTime": 41581
     },
     "/index.html": {
       "views": 2,
       "totalTime": 368
     },
     "/admin": {
-      "views": 98,
+      "views": 99,
       "totalTime": 1398
     },
     "/kpi-smoke-test": {
@@ -109,11 +127,11 @@
       "totalTime": 0
     },
     "/blog": {
-      "views": 29,
+      "views": 30,
       "totalTime": 759
     },
     "/products": {
-      "views": 168,
+      "views": 169,
       "totalTime": 10534
     },
     "/cmilkc": {
@@ -129,7 +147,7 @@
       "totalTime": 3648
     },
     "/cdarkc": {
-      "views": 7,
+      "views": 8,
       "totalTime": 259
     },
     "/about": {
@@ -137,8 +155,8 @@
       "totalTime": 20307
     },
     "/contact": {
-      "views": 28,
-      "totalTime": 1191
+      "views": 29,
+      "totalTime": 2991
     },
     "/adarkc": {
       "views": 6,
@@ -163,11 +181,11 @@
   },
   "clicks": {
     "cta_store_visits30_vs_previous_7d": 1,
-    "cta_productsproducts": 30,
+    "cta_productsproducts": 31,
     "cta_refresh_homepage_story": 2,
-    "product_cdarkc": 6,
+    "product_cdarkc": 7,
     "product_cmilkc": 7,
-    "cta_login": 27,
+    "cta_login": 28,
     "product_bmilkc": 5,
     "cta_features": 17,
     "cta_review_filters": 2,
@@ -192,18 +210,18 @@
     "cta_basic_info": 9,
     "cta_specs__quality": 11,
     "cta_delete": 1,
-    "cta_homehome": 69,
+    "cta_homehome": 71,
     "cta_how_much_chocolate_should_i_eat_per_day": 4,
     "cta_are_your_chocolates_vegan_and_glutenfree": 5,
     "cta_what_ayurvedic_ingredients_are_in_your_chocolate": 6,
     "cta_add_new_product": 5,
-    "cta_users": 17,
-    "cta_subscribed": 14,
-    "cta_dashboard": 19,
+    "cta_users": 18,
+    "cta_subscribed": 20,
+    "cta_dashboard": 23,
     "cta_shop_now": 1,
     "product_amilkc": 13,
     "marketplace_amazon": 1,
-    "cta_blogblog": 12,
+    "cta_blogblog": 13,
     "cta_rituals__1_min_reada_calmer_snack_break_with_ash": 1,
     "cta_aboutabout": 56,
     "cta_dr_rohan_mehranutritionist": 7,
@@ -218,7 +236,7 @@
     "cta_show_two_products_per_row": 5,
     "cta_review_subscriber_list": 1,
     "cta_about": 11,
-    "cta_contact_uscontact_us": 14,
+    "cta_contact_uscontact_us": 15,
     "cta_next_testimonials": 12,
     "product_adarkc": 5,
     "cta_previous_testimonials": 11,
@@ -287,7 +305,7 @@
     "cta_sort": 7,
     "cta_by_category": 100,
     "cta_our_origin": 1,
-    "cta_previous_banner": 3,
+    "cta_previous_banner": 6,
     "cta_x": 34,
     "cta_contact_us": 8,
     "cta_about_us": 4,
@@ -313,6 +331,7 @@
     "cta_warranty_policy": 2,
     "cta_shipping": 1,
     "cta_faq": 1,
-    "cta_terms_of_service": 1
+    "cta_terms_of_service": 1,
+    "cta_subscribe": 2
   }
 }
