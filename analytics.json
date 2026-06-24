@@ -103,23 +103,29 @@
       "sessions": 0
     },
     "2026-06-23": {
-      "pageViews": 4,
+      "pageViews": 7,
       "clicks": 14,
       "totalTime": 0,
+      "sessions": 0
+    },
+    "2026-06-24": {
+      "pageViews": 15,
+      "clicks": 4,
+      "totalTime": 3733,
       "sessions": 0
     }
   },
   "pages": {
     "/": {
-      "views": 479,
-      "totalTime": 41581
+      "views": 490,
+      "totalTime": 45251
     },
     "/index.html": {
       "views": 2,
       "totalTime": 368
     },
     "/admin": {
-      "views": 99,
+      "views": 101,
       "totalTime": 1398
     },
     "/kpi-smoke-test": {
@@ -147,7 +153,7 @@
       "totalTime": 3648
     },
     "/cdarkc": {
-      "views": 8,
+      "views": 9,
       "totalTime": 259
     },
     "/about": {
@@ -155,16 +161,16 @@
       "totalTime": 20307
     },
     "/contact": {
-      "views": 29,
-      "totalTime": 2991
+      "views": 30,
+      "totalTime": 2995
     },
     "/adarkc": {
       "views": 6,
       "totalTime": 63
     },
     "/login": {
-      "views": 8,
-      "totalTime": 59
+      "views": 11,
+      "totalTime": 118
     },
     "/bdarkc": {
       "views": 5,
@@ -210,7 +216,7 @@
     "cta_basic_info": 9,
     "cta_specs__quality": 11,
     "cta_delete": 1,
-    "cta_homehome": 71,
+    "cta_homehome": 72,
     "cta_how_much_chocolate_should_i_eat_per_day": 4,
     "cta_are_your_chocolates_vegan_and_glutenfree": 5,
     "cta_what_ayurvedic_ingredients_are_in_your_chocolate": 6,
@@ -236,7 +242,7 @@
     "cta_show_two_products_per_row": 5,
     "cta_review_subscriber_list": 1,
     "cta_about": 11,
-    "cta_contact_uscontact_us": 15,
+    "cta_contact_uscontact_us": 16,
     "cta_next_testimonials": 12,
     "product_adarkc": 5,
     "cta_previous_testimonials": 11,
@@ -244,7 +250,7 @@
     "cta_next_instagram_posts": 17,
     "cta_previous_instagram_posts": 2,
     "cta_open_raw_radicles_instagram_post": 3,
-    "cta_account": 3,
+    "cta_account": 5,
     "cta_linkedin": 1,
     "cta_specifications": 3,
     "cta_quality__safety_certified": 3,
